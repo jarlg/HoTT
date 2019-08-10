@@ -263,12 +263,12 @@
           
 
             i = 49;
-            data = "1 subgoal (ID 10)	  	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  ============================	  forall i j : PO_graph,	  PO_graph i j ->	  (fun X : PO_graph =>	   match X with	   | inl _ => A	   | inr true => B	   | inr false => C	   end) i ->	  (fun X : PO_graph =>	   match X with	   | inl _ => A	   | inr true => B	   | inr false => C	   end) j	";
+            data = "1 subgoal (ID 10)	  	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  ============================	  forall i j : PO_graph,	  PO_graph i j ->	  (fun X : PO_graph =>	   match X with	   | inl _ => A	   | inr true => B	   | inr false => C	   end) i ->	  (fun X : PO_graph =>	   match X with	   | inl _ => A	   | inr true => B	   | inr false => C	   end) j	1 subgoal (ID 46)	  	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  i : Unit	  j : Bool	  u : PO_graph (inl i) (inr j)	  ============================	  A -> if j then B else C	";
             responses[i]=data;
           
 
             i = 50;
-            data = "1 subgoal (ID 46)	  	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  i : Unit	  j : Bool	  u : PO_graph (inl i) (inr j)	  ============================	  A -> if j then B else C	2 subgoals (ID 63)	  	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  i : Unit	  u : PO_graph (inl i) (inr true)	  ============================	  A -> B		subgoal 2 (ID 64) is:	 A -> C	";
+            data = "2 subgoals (ID 63)	  	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  i : Unit	  u : PO_graph (inl i) (inr true)	  ============================	  A -> B		subgoal 2 (ID 64) is:	 A -> C	";
             responses[i]=data;
           
 
@@ -1008,52 +1008,52 @@
           
 
             i = 198;
-            data = "3 subgoals (ID 540)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  ============================	  forall b : B,	  pushout_rec Y (fun x : B => h (push (inl x)))	    (fun x : C => h (push (inr x)))	    (popp'	       (postcompose_cocone	          (Build_span_cocone (fun x : B => push (inl x))	             (fun x : C => push (inr x)) pp) h)) (pushl b) = 	  h (pushl b)		subgoal 2 (ID 542) is:	 forall c : C,	 pushout_rec Y (fun x : B => h (push (inl x)))	   (fun x : C => h (push (inr x)))	   (popp'	      (postcompose_cocone	         (Build_span_cocone (fun x : B => push (inl x))	            (fun x : C => push (inr x)) pp) h)) (pushr c) = 	 h (pushr c)	subgoal 3 (ID 544) is:	 forall a : A,	 transport	   (fun w : pushout f g =>	    pushout_rec Y (fun x : B => h (push (inl x)))	      (fun x : C => h (push (inr x)))	      (popp'	         (postcompose_cocone	            (Build_span_cocone (fun x : B => push (inl x))	               (fun x : C => push (inr x)) pp) h)) w = 	    h w) (pp a) (?Goal (f a)) = ?Goal0 (g a)	";
+            data = "3 subgoals (ID 522)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  ============================	  forall b : B,	  pushout_rec Y (fun x : B => h (push (inl x)))	    (fun x : C => h (push (inr x)))	    (popp'	       (postcompose_cocone	          (Build_span_cocone (fun x : B => push (inl x))	             (fun x : C => push (inr x)) pp) h)) (pushl b) = 	  h (pushl b)		subgoal 2 (ID 524) is:	 forall c : C,	 pushout_rec Y (fun x : B => h (push (inl x)))	   (fun x : C => h (push (inr x)))	   (popp'	      (postcompose_cocone	         (Build_span_cocone (fun x : B => push (inl x))	            (fun x : C => push (inr x)) pp) h)) (pushr c) = 	 h (pushr c)	subgoal 3 (ID 526) is:	 forall a : A,	 transport	   (fun w : pushout f g =>	    pushout_rec Y (fun x : B => h (push (inl x)))	      (fun x : C => h (push (inr x)))	      (popp'	         (postcompose_cocone	            (Build_span_cocone (fun x : B => push (inl x))	               (fun x : C => push (inr x)) pp) h)) w = 	    h w) (pp a) (?Goal (f a)) = ?Goal0 (g a)	";
             responses[i]=data;
           
 
             i = 199;
-            data = "1 subgoal (ID 540)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  ============================	  forall b : B,	  pushout_rec Y (fun x : B => h (push (inl x)))	    (fun x : C => h (push (inr x)))	    (popp'	       (postcompose_cocone	          (Build_span_cocone (fun x : B => push (inl x))	             (fun x : C => push (inr x)) pp) h)) (pushl b) = 	  h (pushl b)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet *.	</infomsg>	2 subgoals (ID 542)		subgoal 1 (ID 542) is:	 forall c : C,	 pushout_rec Y (fun x : B => h (push (inl x)))	   (fun x : C => h (push (inr x)))	   (popp'	      (postcompose_cocone	         (Build_span_cocone (fun x : B => push (inl x))	            (fun x : C => push (inr x)) pp) h)) (pushr c) = 	 h (pushr c)	subgoal 2 (ID 544) is:	 forall a : A,	 transport	   (fun w : pushout f g =>	    pushout_rec Y (fun x : B => h (push (inl x)))	      (fun x : C => h (push (inr x)))	      (popp'	         (postcompose_cocone	            (Build_span_cocone (fun x : B => push (inl x))	               (fun x : C => push (inr x)) pp) h)) w = 	    h w) (pp a) ((fun b : B => 1) (f a)) = ?Goal (g a)	";
+            data = "1 subgoal (ID 522)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  ============================	  forall b : B,	  pushout_rec Y (fun x : B => h (push (inl x)))	    (fun x : C => h (push (inr x)))	    (popp'	       (postcompose_cocone	          (Build_span_cocone (fun x : B => push (inl x))	             (fun x : C => push (inr x)) pp) h)) (pushl b) = 	  h (pushl b)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet *.	</infomsg>	2 subgoals (ID 524)		subgoal 1 (ID 524) is:	 forall c : C,	 pushout_rec Y (fun x : B => h (push (inl x)))	   (fun x : C => h (push (inr x)))	   (popp'	      (postcompose_cocone	         (Build_span_cocone (fun x : B => push (inl x))	            (fun x : C => push (inr x)) pp) h)) (pushr c) = 	 h (pushr c)	subgoal 2 (ID 526) is:	 forall a : A,	 transport	   (fun w : pushout f g =>	    pushout_rec Y (fun x : B => h (push (inl x)))	      (fun x : C => h (push (inr x)))	      (popp'	         (postcompose_cocone	            (Build_span_cocone (fun x : B => push (inl x))	               (fun x : C => push (inr x)) pp) h)) w = 	    h w) (pp a) ((fun b : B => 1) (f a)) = ?Goal (g a)	";
             responses[i]=data;
           
 
             i = 200;
-            data = "1 subgoal (ID 542)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  ============================	  forall c : C,	  pushout_rec Y (fun x : B => h (push (inl x)))	    (fun x : C => h (push (inr x)))	    (popp'	       (postcompose_cocone	          (Build_span_cocone (fun x : B => push (inl x))	             (fun x : C => push (inr x)) pp) h)) (pushr c) = 	  h (pushr c)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet *.	</infomsg>	1 subgoal (ID 544)		subgoal 1 (ID 544) is:	 forall a : A,	 transport	   (fun w : pushout f g =>	    pushout_rec Y (fun x : B => h (push (inl x)))	      (fun x : C => h (push (inr x)))	      (popp'	         (postcompose_cocone	            (Build_span_cocone (fun x : B => push (inl x))	               (fun x : C => push (inr x)) pp) h)) w = 	    h w) (pp a) ((fun b : B => 1) (f a)) = (fun c : C => 1) (g a)	";
+            data = "1 subgoal (ID 524)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  ============================	  forall c : C,	  pushout_rec Y (fun x : B => h (push (inl x)))	    (fun x : C => h (push (inr x)))	    (popp'	       (postcompose_cocone	          (Build_span_cocone (fun x : B => push (inl x))	             (fun x : C => push (inr x)) pp) h)) (pushr c) = 	  h (pushr c)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet *.	</infomsg>	1 subgoal (ID 526)		subgoal 1 (ID 526) is:	 forall a : A,	 transport	   (fun w : pushout f g =>	    pushout_rec Y (fun x : B => h (push (inl x)))	      (fun x : C => h (push (inr x)))	      (popp'	         (postcompose_cocone	            (Build_span_cocone (fun x : B => push (inl x))	               (fun x : C => push (inr x)) pp) h)) w = 	    h w) (pp a) ((fun b : B => 1) (f a)) = (fun c : C => 1) (g a)	";
             responses[i]=data;
           
 
             i = 201;
-            data = "1 subgoal (ID 544)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  ============================	  forall a : A,	  transport	    (fun w : pushout f g =>	     pushout_rec Y (fun x : B => h (push (inl x)))	       (fun x : C => h (push (inr x)))	       (popp'	          (postcompose_cocone	             (Build_span_cocone (fun x : B => push (inl x))	                (fun x : C => push (inr x)) pp) h)) w = 	     h w) (pp a) ((fun b : B => 1) (f a)) = (fun c : C => 1) (g a)	1 subgoal (ID 551)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  a : A	  ============================	  transport	    (fun w : pushout f g =>	     pushout_rec Y (fun x : B => h (push (inl x)))	       (fun x : C => h (push (inr x)))	       (popp'	          (postcompose_cocone	             (Build_span_cocone (fun x : B => push (inl x))	                (fun x : C => push (inr x)) pp) h)) w = 	     h w) (pp a) 1 = 1	";
+            data = "1 subgoal (ID 526)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  ============================	  forall a : A,	  transport	    (fun w : pushout f g =>	     pushout_rec Y (fun x : B => h (push (inl x)))	       (fun x : C => h (push (inr x)))	       (popp'	          (postcompose_cocone	             (Build_span_cocone (fun x : B => push (inl x))	                (fun x : C => push (inr x)) pp) h)) w = 	     h w) (pp a) ((fun b : B => 1) (f a)) = (fun c : C => 1) (g a)	1 subgoal (ID 533)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  a : A	  ============================	  transport	    (fun w : pushout f g =>	     pushout_rec Y (fun x : B => h (push (inl x)))	       (fun x : C => h (push (inr x)))	       (popp'	          (postcompose_cocone	             (Build_span_cocone (fun x : B => push (inl x))	                (fun x : C => push (inr x)) pp) h)) w = 	     h w) (pp a) 1 = 1	";
             responses[i]=data;
           
 
             i = 202;
-            data = "1 subgoal (ID 558)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  a : A	  ============================	  ((ap	      (pushout_rec Y (fun x : B => h (push (inl x)))	         (fun x : C => h (push (inr x)))	         (popp'	            (postcompose_cocone	               (Build_span_cocone (fun x : B => push (inl x))	                  (fun x : C => push (inr x)) pp) h))) 	      (pp a))^ @ 1) @ ap h (pp a) = 1	";
+            data = "1 subgoal (ID 540)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  a : A	  ============================	  ((ap	      (pushout_rec Y (fun x : B => h (push (inl x)))	         (fun x : C => h (push (inr x)))	         (popp'	            (postcompose_cocone	               (Build_span_cocone (fun x : B => push (inl x))	                  (fun x : C => push (inr x)) pp) h))) 	      (pp a))^ @ 1) @ ap h (pp a) = 1	";
             responses[i]=data;
           
 
             i = 203;
-            data = "1 subgoal (ID 568)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  a : A	  ============================	  (ap	     (pushout_rec Y (fun x : B => h (push (inl x)))	        (fun x : C => h (push (inr x)))	        (popp'	           (postcompose_cocone	              (Build_span_cocone (fun x : B => push (inl x))	                 (fun x : C => push (inr x)) pp) h))) 	     (pp a))^ @ ap h (pp a) = 1	";
+            data = "1 subgoal (ID 550)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  a : A	  ============================	  (ap	     (pushout_rec Y (fun x : B => h (push (inl x)))	        (fun x : C => h (push (inr x)))	        (popp'	           (postcompose_cocone	              (Build_span_cocone (fun x : B => push (inl x))	                 (fun x : C => push (inr x)) pp) h))) 	     (pp a))^ @ ap h (pp a) = 1	";
             responses[i]=data;
           
 
             i = 204;
-            data = "1 subgoal (ID 577)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  a : A	  ============================	  (popp'	     (postcompose_cocone	        (Build_span_cocone (fun x : B => push (inl x))	           (fun x : C => push (inr x)) pp) h) a)^ @ 	  ap h (pp a) = 1	";
+            data = "1 subgoal (ID 559)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  a : A	  ============================	  (popp'	     (postcompose_cocone	        (Build_span_cocone (fun x : B => push (inl x))	           (fun x : C => push (inr x)) pp) h) a)^ @ 	  ap h (pp a) = 1	";
             responses[i]=data;
           
 
             i = 205;
-            data = "1 subgoal (ID 587)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  a : A	  ============================	  ap h (pp a) =	  popp'	    (postcompose_cocone	       (Build_span_cocone (fun x : B => push (inl x))	          (fun x : C => push (inr x)) pp) h) a @ 1	";
+            data = "1 subgoal (ID 569)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  a : A	  ============================	  ap h (pp a) =	  popp'	    (postcompose_cocone	       (Build_span_cocone (fun x : B => push (inl x))	          (fun x : C => push (inr x)) pp) h) a @ 1	";
             responses[i]=data;
           
 
             i = 206;
-            data = "1 subgoal (ID 589)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  a : A	  ============================	  ap h (pp a) =	  (qq	     (postcompose_cocone	        (Build_span_cocone (fun x : B => push (inl x))	           (fun x : C => push (inr x)) pp) h) (inl tt) 	     (inr true) tt a @	   (qq	      (postcompose_cocone	         (Build_span_cocone (fun x : B => push (inl x))	            (fun x : C => push (inr x)) pp) h) (inl tt) 	      (inr false) tt a)^) @ 1	";
+            data = "1 subgoal (ID 571)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  a : A	  ============================	  ap h (pp a) =	  (qq	     (postcompose_cocone	        (Build_span_cocone (fun x : B => push (inl x))	           (fun x : C => push (inr x)) pp) h) (inl tt) 	     (inr true) tt a @	   (qq	      (postcompose_cocone	         (Build_span_cocone (fun x : B => push (inl x))	            (fun x : C => push (inr x)) pp) h) (inl tt) 	      (inr false) tt a)^) @ 1	";
             responses[i]=data;
           
 
             i = 207;
-            data = "1 subgoal (ID 591)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  a : A	  ============================	  ap h (pp a) = (ap h (pp a) @ 1) @ 1	";
+            data = "1 subgoal (ID 573)	  	  H : Funext	  A : Type	  B : Type	  C : Type	  f : A -> B	  g : A -> C	  Y : Type	  h : pushout f g -> Y	  a : A	  ============================	  ap h (pp a) = (ap h (pp a) @ 1) @ 1	";
             responses[i]=data;
           
 
@@ -1203,12 +1203,12 @@
 </div>
 <div class="goal" id="goal0_3_3"><pre><span></span></pre></div>
 <div class="doc" scenenumber="5">
-<a name="lab419"></a><h1 class="section">Pushout as a colimit</h1>
+<a name="lab420"></a><h1 class="section">Pushout as a colimit</h1>
 <div class="doc" scenenumber="4"> </div>
 
  In this file, we define <span class="inlinecode"><a class="idref" href="HoTT.HIT.Colimits.Pushout.html#PO"><span class="id" title="definition">PO</span></a></span> the pushout of two maps as the colimit of a particuliar diagram, and then show that it is equivalent to <span class="inlinecode"><a class="idref" href="HoTT.HIT.Pushout.html#pushout"><span class="id" title="definition">pushout</span></a></span> the primitive pushout defined as an HIT. 
 <div class="doc" scenenumber="10"> </div>
-<a name="lab420"></a><h2 class="section"><span class="inlinecode"><a class="idref" href="HoTT.HIT.Colimits.Pushout.html#PO"><span class="id" title="definition">PO</span></a></span></h2>
+<a name="lab421"></a><h2 class="section"><span class="inlinecode"><a class="idref" href="HoTT.HIT.Colimits.Pushout.html#PO"><span class="id" title="definition">PO</span></a></span></h2>
 <div class="doc" scenenumber="15"> </div>
 
  The shape of a pushout diagram. 
@@ -1872,7 +1872,7 @@ A nice property: the pushout of an equivalence is an equivalence.
 </div>
 <div class="goal" id="goal0_3_19"><pre><span></span></pre></div>
 <div class="doc" scenenumber="21">
-<a name="lab421"></a><h2 class="section">Equivalence with <span class="inlinecode"><a class="idref" href="HoTT.HIT.Pushout.html#pushout"><span class="id" title="definition">pushout</span></a></span>
+<a name="lab422"></a><h2 class="section">Equivalence with <span class="inlinecode"><a class="idref" href="HoTT.HIT.Pushout.html#pushout"><span class="id" title="definition">pushout</span></a></span>
 </h2>
 </div>
 <div scenenumber="23" class="code">
