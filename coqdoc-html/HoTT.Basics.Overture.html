@@ -462,7 +462,13 @@ Dependent composition of functions.
 <span class="id" title="var">Arguments</span> <a class="idref" href="HoTT.Basics.Overture.html#paths_rec"><span class="id" title="definition">paths_rec</span></a> [<span class="id" title="var">A</span>] <span class="id" title="var">a</span> <span class="id" title="var">P</span> <span class="id" title="var">f</span> <span class="id" title="var">y</span> <span class="id" title="var">p</span>.<br/>
 
 <br/>
+<span class="id" title="var">Register</span> <span class="id" title="var">idpath</span> <span class="id" title="keyword">as</span> <span class="id" title="var">core.identity.refl</span>.<br/>
+
+<br/>
 <span class="id" title="keyword">Definition</span> <a name="paths_rect"><span class="id" title="definition">paths_rect</span></a> := <a class="idref" href="HoTT.Basics.Overture.html#paths_ind"><span class="id" title="definition">paths_ind</span></a>.<br/>
+
+<br/>
+<span class="id" title="var">Register</span> <span class="id" title="var">paths_rect</span> <span class="id" title="keyword">as</span> <span class="id" title="var">core.identity.ind</span>.<br/>
 
 <br/>
 <span class="id" title="keyword">Notation</span> <a name="b8b2ebc8e1a8b9aa935c0702efb5dccf"><span class="id" title="notation">&quot;</span></a>x = y :&gt; A" := (@<a class="idref" href="HoTT.Basics.Overture.html#paths"><span class="id" title="inductive">paths</span></a> <span class="id" title="var">A</span> <span class="id" title="var">x</span> <span class="id" title="var">y</span>) : <span class="id" title="var">type_scope</span>.<br/>
@@ -481,6 +487,9 @@ Ensure <span class="inlinecode"><span class="id" title="var">internal_paths_rew<
 <br/>
 <span class="id" title="keyword">Lemma</span> <a name="paths_rew_r"><span class="id" title="lemma">paths_rew_r</span></a> <span class="id" title="var">A</span> <span class="id" title="var">a</span> <span class="id" title="var">y</span> <span class="id" title="var">P</span> (<span class="id" title="var">X</span> : <a class="idref" href="HoTT.Basics.Overture.html#P"><span class="id" title="variable">P</span></a> <a class="idref" href="HoTT.Basics.Overture.html#y"><span class="id" title="variable">y</span></a>) (<span class="id" title="var">H</span> : <a class="idref" href="HoTT.Basics.Overture.html#a"><span class="id" title="variable">a</span></a> <a class="idref" href="HoTT.Basics.Overture.html#b8b2ebc8e1a8b9aa935c0702efb5dccf"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Basics.Overture.html#y"><span class="id" title="variable">y</span></a> <a class="idref" href="HoTT.Basics.Overture.html#b8b2ebc8e1a8b9aa935c0702efb5dccf"><span class="id" title="notation">:&gt;</span></a> <a class="idref" href="HoTT.Basics.Overture.html#A"><span class="id" title="variable">A</span></a>) : <a class="idref" href="HoTT.Basics.Overture.html#P"><span class="id" title="variable">P</span></a> <a class="idref" href="HoTT.Basics.Overture.html#a"><span class="id" title="variable">a</span></a>.<br/>
 <span class="id" title="keyword">Proof</span>. <span class="id" title="tactic">rewrite</span> → <span class="id" title="var">H</span>. <span class="id" title="tactic">exact</span> <span class="id" title="var">X</span>. <span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" title="var">Register</span> <span class="id" title="var">paths</span> <span class="id" title="keyword">as</span> <span class="id" title="var">core.identity.type</span>.<br/>
 
 <br/>
 <span class="id" title="keyword">Global Instance</span> <a name="reflexive_paths"><span class="id" title="instance">reflexive_paths</span></a> {<span class="id" title="var">A</span>} : <a class="idref" href="HoTT.Basics.Overture.html#Reflexive"><span class="id" title="class">Reflexive</span></a> (@<a class="idref" href="HoTT.Basics.Overture.html#paths"><span class="id" title="inductive">paths</span></a> <a class="idref" href="HoTT.Basics.Overture.html#A"><span class="id" title="variable">A</span></a>) | 0 := @<a class="idref" href="HoTT.Basics.Overture.html#idpath"><span class="id" title="constructor">idpath</span></a> <span class="id" title="var">A</span>.<br/>
@@ -528,6 +537,9 @@ The inverse of a path.
 &nbsp;&nbsp;:= <span class="id" title="keyword">match</span> <a class="idref" href="HoTT.Basics.Overture.html#p"><span class="id" title="variable">p</span></a> <span class="id" title="keyword">with</span> <a class="idref" href="HoTT.Basics.Overture.html#idpath"><span class="id" title="constructor">idpath</span></a> ⇒ <a class="idref" href="HoTT.Basics.Overture.html#idpath"><span class="id" title="constructor">idpath</span></a> <span class="id" title="keyword">end</span>.<br/>
 
 <br/>
+<span class="id" title="var">Register</span> <span class="id" title="var">inverse</span> <span class="id" title="keyword">as</span> <span class="id" title="var">core.identity.sym</span>.<br/>
+
+<br/>
 </div>
 
 <div class="doc">
@@ -539,6 +551,16 @@ Declaring this as <span class="inlinecode"><span class="id" title="tactic">simpl
 <br/>
 <span class="id" title="keyword">Global Instance</span> <a name="symmetric_paths"><span class="id" title="instance">symmetric_paths</span></a> {<span class="id" title="var">A</span>} : <a class="idref" href="HoTT.Basics.Overture.html#Symmetric"><span class="id" title="class">Symmetric</span></a> (@<a class="idref" href="HoTT.Basics.Overture.html#paths"><span class="id" title="inductive">paths</span></a> <a class="idref" href="HoTT.Basics.Overture.html#A"><span class="id" title="variable">A</span></a>) | 0 := @<a class="idref" href="HoTT.Basics.Overture.html#inverse"><span class="id" title="definition">inverse</span></a> <span class="id" title="var">A</span>.<br/>
 <span class="id" title="var">Arguments</span> <a class="idref" href="HoTT.Basics.Overture.html#symmetric_paths"><span class="id" title="instance">symmetric_paths</span></a> / .<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+This allows <span class="inlinecode"><span class="id" title="tactic">rewrite</span></span> to both in left-to-right and right-to left directions. 
+</div>
+<div class="code">
+<span class="id" title="keyword">Definition</span> <a name="paths_rect_r"><span class="id" title="definition">paths_rect_r</span></a> (<span class="id" title="var">A</span> : <span class="id" title="keyword">Type</span>) (<span class="id" title="var">x</span> : <a class="idref" href="HoTT.Basics.Overture.html#A"><span class="id" title="variable">A</span></a>) (<span class="id" title="var">P</span> : <a class="idref" href="HoTT.Basics.Overture.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <span class="id" title="keyword">Type</span>) (<span class="id" title="var">p</span> : <a class="idref" href="HoTT.Basics.Overture.html#P"><span class="id" title="variable">P</span></a> <a class="idref" href="HoTT.Basics.Overture.html#x"><span class="id" title="variable">x</span></a>) (<span class="id" title="var">y</span> : <a class="idref" href="HoTT.Basics.Overture.html#A"><span class="id" title="variable">A</span></a>) (<span class="id" title="var">e</span> : <a class="idref" href="HoTT.Basics.Overture.html#paths"><span class="id" title="inductive">paths</span></a> <a class="idref" href="HoTT.Basics.Overture.html#y"><span class="id" title="variable">y</span></a> <a class="idref" href="HoTT.Basics.Overture.html#x"><span class="id" title="variable">x</span></a>) : <a class="idref" href="HoTT.Basics.Overture.html#P"><span class="id" title="variable">P</span></a> <a class="idref" href="HoTT.Basics.Overture.html#y"><span class="id" title="variable">y</span></a> :=<br/>
+&nbsp;&nbsp;<a class="idref" href="HoTT.Basics.Overture.html#paths_rect"><span class="id" title="definition">paths_rect</span></a> <a class="idref" href="HoTT.Basics.Overture.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Basics.Overture.html#x"><span class="id" title="variable">x</span></a> (<span class="id" title="keyword">fun</span> <span class="id" title="var">y</span> <span class="id" title="var">e</span> ⇒ <a class="idref" href="HoTT.Basics.Overture.html#P"><span class="id" title="variable">P</span></a> <a class="idref" href="HoTT.Basics.Overture.html#y"><span class="id" title="variable">y</span></a>) <a class="idref" href="HoTT.Basics.Overture.html#p"><span class="id" title="variable">p</span></a> <a class="idref" href="HoTT.Basics.Overture.html#y"><span class="id" title="variable">y</span></a> (<a class="idref" href="HoTT.Basics.Overture.html#inverse"><span class="id" title="definition">inverse</span></a> <a class="idref" href="HoTT.Basics.Overture.html#e"><span class="id" title="variable">e</span></a>).<br/>
 
 <br/>
 </div>
@@ -587,6 +609,9 @@ See above for the meaning of <span class="inlinecode"><span class="id" title="ta
 <br/>
 <span class="id" title="keyword">Global Instance</span> <a name="transitive_paths"><span class="id" title="instance">transitive_paths</span></a> {<span class="id" title="var">A</span>} : <a class="idref" href="HoTT.Basics.Overture.html#Transitive"><span class="id" title="class">Transitive</span></a> (@<a class="idref" href="HoTT.Basics.Overture.html#paths"><span class="id" title="inductive">paths</span></a> <a class="idref" href="HoTT.Basics.Overture.html#A"><span class="id" title="variable">A</span></a>) | 0 := @<a class="idref" href="HoTT.Basics.Overture.html#concat"><span class="id" title="definition">concat</span></a> <span class="id" title="var">A</span>.<br/>
 <span class="id" title="var">Arguments</span> <a class="idref" href="HoTT.Basics.Overture.html#transitive_paths"><span class="id" title="instance">transitive_paths</span></a> / .<br/>
+
+<br/>
+<span class="id" title="var">Register</span> <span class="id" title="var">concat</span> <span class="id" title="keyword">as</span> <span class="id" title="var">core.identity.trans</span>.<br/>
 
 <br/>
 </div>
@@ -686,6 +711,9 @@ We will first see this appearing in the type of <span class="inlinecode"><a clas
 
 <br/>
 <span class="id" title="keyword">Global</span> <span class="id" title="var">Arguments</span> <a class="idref" href="HoTT.Basics.Overture.html#ap"><span class="id" title="definition">ap</span></a> {<span class="id" title="var">A</span> <span class="id" title="var">B</span>}%<span class="id" title="var">type_scope</span> <span class="id" title="var">f</span>%<span class="id" title="var">function_scope</span> {<span class="id" title="var">x</span> <span class="id" title="var">y</span>} <span class="id" title="var">p</span>%<span class="id" title="var">path_scope</span>.<br/>
+
+<br/>
+<span class="id" title="var">Register</span> <span class="id" title="var">ap</span> <span class="id" title="keyword">as</span> <span class="id" title="var">core.identity.congr</span>.<br/>
 
 <br/>
 </div>
