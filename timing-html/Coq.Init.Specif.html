@@ -103,8 +103,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Specif.v
 Line: 24
-Time: 0.001s">
-<div class="time" style="width: 10%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>Record sig {A} (P : A -&gt; Type) := exist { proj1_sig : A ; proj2_sig : P proj1_sig }.</pre>
 </div>
 <div class="code" title="File: Specif.v
@@ -147,8 +147,8 @@ Arguments proj2_sig {A P} _ / .</pre>
 </div>
 <div class="code" title="File: Specif.v
 Line: 31
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 10%"></div>
 <pre>
 
 Inductive sig2 (A:Type) (P Q:A -&gt; Type) : Type :=
@@ -454,8 +454,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Specif.v
 Line: 105
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 10%"></div>
 <pre>
 
   Lemma Choice :
@@ -494,7 +494,13 @@ Line: 112
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  Defined.
+  Defined.</pre>
+</div>
+<div class="code" title="File: Specif.v
+Line: 113
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
 
 (*
   Lemma bool_choice :
@@ -601,18 +607,18 @@ Line: 140
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  Defined.
-
-</pre>
+  Defined.</pre>
 </div>
 <div class="code" title="File: Specif.v
-Line: 142
+Line: 141
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre>End Dependent_choice_lemmas.</pre>
+<pre>
+
+End Dependent_choice_lemmas.</pre>
 </div>
 <div class="code" title="File: Specif.v
-Line: 142
+Line: 143
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -628,27 +634,27 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Specif.v
-Line: 151
+Line: 152
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition Exc := option.</pre>
-</div>
-<div class="code" title="File: Specif.v
-Line: 151
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Definition value := @Some.</pre>
 </div>
 <div class="code" title="File: Specif.v
 Line: 152
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Definition error := @None.</pre>
+Definition value := @Some.</pre>
 </div>
 <div class="code" title="File: Specif.v
 Line: 153
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Definition error := @None.</pre>
+</div>
+<div class="code" title="File: Specif.v
+Line: 154
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -656,14 +662,14 @@ Time: 0s">
 Arguments value {A} a.</pre>
 </div>
 <div class="code" title="File: Specif.v
-Line: 155
+Line: 156
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Arguments error {A}.</pre>
 </div>
 <div class="code" title="File: Specif.v
-Line: 156
+Line: 157
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -671,7 +677,7 @@ Time: 0s">
 Definition except := False_rec.</pre>
 </div>
 <div class="code" title="File: Specif.v
-Line: 158
+Line: 159
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> (* for compatibility with previous versions *)
@@ -679,13 +685,13 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Specif.v
-Line: 159
+Line: 160
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Arguments except [P] _.</pre>
 </div>
 <div class="code" title="File: Specif.v
-Line: 159
+Line: 160
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -693,50 +699,50 @@ Time: 0s">
 Theorem absurd_set : forall (A:Prop) (C:Set), A -&gt; not A -&gt; C.</pre>
 </div>
 <div class="code" title="File: Specif.v
-Line: 161
+Line: 162
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Specif.v
-Line: 162
+Line: 163
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros A C h1 h2.</pre>
 </div>
 <div class="code" title="File: Specif.v
-Line: 163
+Line: 164
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply False_rec.</pre>
 </div>
 <div class="code" title="File: Specif.v
-Line: 164
+Line: 165
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply (h2 h1).</pre>
 </div>
 <div class="code" title="File: Specif.v
-Line: 165
+Line: 166
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Defined.
-
-</pre>
+Defined.</pre>
 </div>
 <div class="code" title="File: Specif.v
 Line: 167
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre>Hint Resolve existT existT2: core.</pre>
+<pre>
+
+Hint Resolve existT existT2: core.</pre>
 </div>
 <div class="code" title="File: Specif.v
-Line: 168
+Line: 170
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>

@@ -30,7 +30,7 @@ pre {
 
 <div class="code" title="File: unique_choice.v
 Line: 1
-Time: 0.246s">
+Time: 0.243s">
 <div class="time" style="width: 100%"></div>
 <pre>Require Import HoTT.Basics HIT.Truncations HProp.</pre>
 </div>
@@ -68,8 +68,8 @@ Lemma atmost {X} {P : X -&gt; Type}:
 </div>
 <div class="code" title="File: unique_choice.v
 Line: 9
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.41152263374486%"></div>
 <pre>
 intros H H0 [x p] [y q].</pre>
 </div>
@@ -96,8 +96,8 @@ assert (H0: (p =q)) by apply path_ishprop.</pre>
 </div>
 <div class="code" title="File: unique_choice.v
 Line: 13
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.41152263374486%"></div>
 <pre>
 now induction H0.</pre>
 </div>
@@ -106,95 +106,101 @@ Line: 14
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Qed.
-
-</pre>
+Qed.</pre>
 </div>
 <div class="code" title="File: unique_choice.v
-Line: 16
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>Lemma iota {X} (P:X-&gt; Type):
-  (forall x, IsHProp (P x)) -&gt; (hunique P) -&gt; sigT P.</pre>
-</div>
-<div class="code" title="File: unique_choice.v
-Line: 17
+Line: 15
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Proof.</pre>
+
+Lemma iota {X} (P:X-&gt; Type):
+  (forall x, IsHProp (P x)) -&gt; (hunique P) -&gt; sigT P.</pre>
 </div>
 <div class="code" title="File: unique_choice.v
 Line: 18
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-intros H1 [H H0].</pre>
+Proof.</pre>
 </div>
 <div class="code" title="File: unique_choice.v
 Line: 19
-Time: 0.001s">
-<div class="time" style="width: 0.40650406504065%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
-apply (@Trunc_rec -1 (sigT P) );auto.</pre>
+intros H1 [H H0].</pre>
 </div>
 <div class="code" title="File: unique_choice.v
 Line: 20
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-by apply hprop_allpath, atmost.</pre>
+apply (@Trunc_rec -1 (sigT P) );auto.</pre>
 </div>
 <div class="code" title="File: unique_choice.v
 Line: 21
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Qed.
-
-</pre>
+by apply hprop_allpath, atmost.</pre>
+</div>
+<div class="code" title="File: unique_choice.v
+Line: 22
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Qed.</pre>
 </div>
 <div class="code" title="File: unique_choice.v
 Line: 23
-Time: 0.001s">
-<div class="time" style="width: 0.40650406504065%"></div>
-<pre>Lemma unique_choice {X Y} (R:X-&gt;Y-&gt;Type) :
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Lemma unique_choice {X Y} (R:X-&gt;Y-&gt;Type) :
  (forall x y, IsHProp (R x y)) -&gt; (forall x, (hunique (R x)))
    -&gt; {f : X -&gt; Y &amp; forall x, (R x (f x))}.</pre>
-</div>
-<div class="code" title="File: unique_choice.v
-Line: 25
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-intros X0 X1.</pre>
-</div>
-<div class="code" title="File: unique_choice.v
-Line: 26
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-exists (fun x:X =&gt; (pr1 (iota _ (X0 x) (X1 x)))).</pre>
 </div>
 <div class="code" title="File: unique_choice.v
 Line: 27
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-intro x.</pre>
+intros X0 X1.</pre>
 </div>
 <div class="code" title="File: unique_choice.v
 Line: 28
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> apply (pr2 (iota _ (X0 x) (X1 x))).</pre>
+Time: 0.001s">
+<div class="time" style="width: 0.41152263374486%"></div>
+<pre>
+exists (fun x:X =&gt; (pr1 (iota _ (X0 x) (X1 x)))).</pre>
 </div>
 <div class="code" title="File: unique_choice.v
 Line: 29
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Qed.
+intro x.</pre>
+</div>
+<div class="code" title="File: unique_choice.v
+Line: 30
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> apply (pr2 (iota _ (X0 x) (X1 x))).</pre>
+</div>
+<div class="code" title="File: unique_choice.v
+Line: 30
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Qed.</pre>
+</div>
+<div class="code" title="File: unique_choice.v
+Line: 32
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
 
 </pre>
 </div>

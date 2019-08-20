@@ -39,7 +39,7 @@ Time: 0s">
 </div>
 <div class="code" title="File: Empty.v
 Line: 3
-Time: 0.018s">
+Time: 0.019s">
 <div class="time" style="width: 100%"></div>
 <pre>Require Import HoTT.Basics.</pre>
 </div>
@@ -99,42 +99,42 @@ Line: 17
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Defined.
-
-</pre>
+Defined.</pre>
 </div>
 <div class="code" title="File: Empty.v
-Line: 19
+Line: 18
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre>Lemma Empty_rec {T : Type} (falso: Empty) : T.</pre>
+<pre>
+
+Lemma Empty_rec {T : Type} (falso: Empty) : T.</pre>
 </div>
 <div class="code" title="File: Empty.v
-Line: 19
+Line: 20
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Empty.v
-Line: 20
+Line: 21
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> case falso.</pre>
 </div>
 <div class="code" title="File: Empty.v
-Line: 20
+Line: 21
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> Defined.
-
-</pre>
+<pre> Defined.</pre>
 </div>
 <div class="code" title="File: Empty.v
 Line: 21
 Time: 0.002s">
-<div class="time" style="width: 11.111111111111%"></div>
-<pre>Global Instance isequiv_empty_rec `{Funext} (A : Type)
+<div class="time" style="width: 10.526315789474%"></div>
+<pre>
+
+Global Instance isequiv_empty_rec `{Funext} (A : Type)
 : IsEquiv (fun (_ : Unit) =&gt; @Empty_rec A) | 0
   := isequiv_adjointify _
   (fun _ =&gt; tt)
@@ -142,9 +142,9 @@ Time: 0.002s">
   (fun x =&gt; match x with tt =&gt; idpath end).</pre>
 </div>
 <div class="code" title="File: Empty.v
-Line: 26
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 28
+Time: 0.001s">
+<div class="time" style="width: 5.2631578947368%"></div>
 <pre>
 
 Definition equiv_empty_rec `{Funext} (A : Type)
@@ -152,7 +152,7 @@ Definition equiv_empty_rec `{Funext} (A : Type)
   := (BuildEquiv _ _ (fun (_ : Unit) =&gt; @Empty_rec A) _).</pre>
 </div>
 <div class="code" title="File: Empty.v
-Line: 30
+Line: 32
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -162,43 +162,10 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Empty.v
-Line: 33
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>Global Instance hprop_Empty : IsHProp Empty.</pre>
-</div>
-<div class="code" title="File: Empty.v
-Line: 33
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: Empty.v
-Line: 34
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intro x.</pre>
-</div>
-<div class="code" title="File: Empty.v
-Line: 34
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> destruct x.</pre>
-</div>
-<div class="code" title="File: Empty.v
-Line: 34
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> Defined.
-
-</pre>
-</div>
-<div class="code" title="File: Empty.v
 Line: 35
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre>Global Instance all_to_empty_isequiv (T : Type) (f : T -&gt; Empty) : IsEquiv f.</pre>
+<pre>Global Instance hprop_Empty : IsHProp Empty.</pre>
 </div>
 <div class="code" title="File: Empty.v
 Line: 35
@@ -209,8 +176,41 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Empty.v
 Line: 36
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intro x.</pre>
+</div>
+<div class="code" title="File: Empty.v
+Line: 36
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> destruct x.</pre>
+</div>
+<div class="code" title="File: Empty.v
+Line: 36
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> Defined.</pre>
+</div>
+<div class="code" title="File: Empty.v
+Line: 36
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Global Instance all_to_empty_isequiv (T : Type) (f : T -&gt; Empty) : IsEquiv f.</pre>
+</div>
+<div class="code" title="File: Empty.v
+Line: 38
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Empty.v
+Line: 39
 Time: 0.001s">
-<div class="time" style="width: 5.5555555555556%"></div>
+<div class="time" style="width: 5.2631578947368%"></div>
 <pre>
   refine (BuildIsEquiv _ _ _ 
     (Empty_ind (fun _ =&gt; T))                (* := equiv_inf *)
@@ -219,37 +219,37 @@ Time: 0.001s">
     (_)                                     (* adjointify part *)  ).</pre>
 </div>
 <div class="code" title="File: Empty.v
-Line: 41
+Line: 44
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intro t.</pre>
 </div>
 <div class="code" title="File: Empty.v
-Line: 42
+Line: 45
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> 
   exact (Empty_rec (f t)).</pre>
 </div>
 <div class="code" title="File: Empty.v
-Line: 43
+Line: 46
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Defined.
-
-</pre>
-</div>
-<div class="code" title="File: Empty.v
-Line: 45
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>Definition equiv_to_empty {T : Type} (f : T -&gt; Empty) : T &lt;~&gt; Empty
-  := BuildEquiv T Empty f _.</pre>
+Defined.</pre>
 </div>
 <div class="code" title="File: Empty.v
 Line: 47
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Definition equiv_to_empty {T : Type} (f : T -&gt; Empty) : T &lt;~&gt; Empty
+  := BuildEquiv T Empty f _.</pre>
+</div>
+<div class="code" title="File: Empty.v
+Line: 51
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>

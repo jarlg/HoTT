@@ -39,7 +39,7 @@ Time: 0s">
 </div>
 <div class="code" title="File: FunextVarieties.v
 Line: 3
-Time: 0.051s">
+Time: 0.048s">
 <div class="time" style="width: 100%"></div>
 <pre>Require Import HoTT.Basics HoTT.Types EquivalenceVarieties.</pre>
 </div>
@@ -117,7 +117,7 @@ Time: 0s">
 <div class="code" title="File: FunextVarieties.v
 Line: 23
 Time: 0.001s">
-<div class="time" style="width: 1.9607843137255%"></div>
+<div class="time" style="width: 2.0833333333333%"></div>
 <pre>Definition WeakFunext :=
   forall (A : Type) (P : A -&gt; Type),
     (forall x, Contr (P x)) -&gt; Contr (forall x, P x).</pre>
@@ -204,71 +204,71 @@ Line: 41
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Defined.
-
-</pre>
+Defined.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 43
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>Definition NaiveFunext_implies_WeakFunext@{i j max}
-  : NaiveFunext@{i j max} -&gt; WeakFunext@{i j max}.</pre>
-</div>
-<div class="code" title="File: FunextVarieties.v
-Line: 44
+Line: 42
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Proof.</pre>
+
+Definition NaiveFunext_implies_WeakFunext@{i j max}
+  : NaiveFunext@{i j max} -&gt; WeakFunext@{i j max}.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
 Line: 45
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  intros nf A P Pc.</pre>
+Proof.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
 Line: 46
-Time: 0.001s">
-<div class="time" style="width: 1.9607843137255%"></div>
-<pre>
-  exists (fun x =&gt; center (P x)).</pre>
-</div>
-<div class="code" title="File: FunextVarieties.v
-Line: 47
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  intros f; apply nf; intros x.</pre>
+  intros nf A P Pc.</pre>
+</div>
+<div class="code" title="File: FunextVarieties.v
+Line: 47
+Time: 0.001s">
+<div class="time" style="width: 2.0833333333333%"></div>
+<pre>
+  exists (fun x =&gt; center (P x)).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
 Line: 48
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  apply contr.</pre>
+  intros f; apply nf; intros x.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
 Line: 49
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Defined.
-
-</pre>
+  apply contr.</pre>
+</div>
+<div class="code" title="File: FunextVarieties.v
+Line: 50
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Defined.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
 Line: 51
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre>Definition NaiveFunext_implies_NaiveNondepFunext@{i j max}
+<pre>
+
+Definition NaiveFunext_implies_NaiveNondepFunext@{i j max}
   : NaiveFunext@{i j max} -&gt; NaiveNondepFunext@{i j max}
   := fun nf A B f g =&gt; nf A (fun _ =&gt; B) f g.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 53
+Line: 55
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -282,13 +282,13 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 60
+Line: 62
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section Homotopies.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 60
+Line: 62
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -296,14 +296,14 @@ Time: 0s">
   Context (wf : WeakFunext).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 62
+Line: 64
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Context {A:Type} {B : A -&gt; Type}.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 63
+Line: 65
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -311,7 +311,7 @@ Time: 0s">
   Context (f : forall x, B x).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 65
+Line: 67
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -320,13 +320,13 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 68
+Line: 70
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Let idhtpy : f == f := fun x =&gt; idpath (f x).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 68
+Line: 70
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -336,33 +336,33 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 72
+Line: 74
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance contr_basedhtpy : Contr {g : forall x, B x &amp; f == g } | 1.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 72
+Line: 74
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 73
+Line: 75
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     exists (f;idhtpy).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 74
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 76
+Time: 0.001s">
+<div class="time" style="width: 2.0833333333333%"></div>
 <pre> intros [g h].</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 74
+Line: 76
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -370,21 +370,21 @@ Time: 0s">
    </pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 76
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 78
+Time: 0.001s">
+<div class="time" style="width: 2.0833333333333%"></div>
 <pre>pose (r := fun k =&gt; existT (fun g =&gt; f == g)
       (fun x =&gt; (k x).1) (fun x =&gt; (k x).2)).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 77
+Line: 79
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     pose (s := fun (g : forall x, B x) (h : f == g) x =&gt; (g x ; h x)).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 78
+Line: 80
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -392,59 +392,65 @@ Time: 0s">
    </pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 80
+Line: 82
 Time: 0.001s">
-<div class="time" style="width: 1.9607843137255%"></div>
+<div class="time" style="width: 2.0833333333333%"></div>
 <pre>change (r (fun x =&gt; (f x ; idpath (f x))) = r (s g h)).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 80
+Line: 82
 Time: 0.003s">
-<div class="time" style="width: 5.8823529411765%"></div>
+<div class="time" style="width: 6.25%"></div>
 <pre>
     apply ap; refine (@path_contr _ _ _ _).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 81
+Line: 83
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply wf.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 82
+Line: 84
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros x; exact (contr_basedpaths (f x)).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 82
+Line: 84
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  Defined.
+  Defined.</pre>
+</div>
+<div class="code" title="File: FunextVarieties.v
+Line: 85
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
 
   (** This enables us to prove that pointwise homotopies have the same elimination rule as the identity type. *)
 
  </pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 87
+Line: 89
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Context (Q : forall g (h : f == g), Type).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 87
+Line: 89
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Context (d : Q f idhtpy).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 88
+Line: 90
 Time: 0.004s">
-<div class="time" style="width: 7.843137254902%"></div>
+<div class="time" style="width: 8.3333333333333%"></div>
 <pre>
 
   Definition htpy_ind g h : Q g h
@@ -452,7 +458,7 @@ Time: 0.004s">
          (@path_contr _ _ _ _) d.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 92
+Line: 94
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -461,9 +467,9 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 95
+Line: 97
 Time: 0.006s">
-<div class="time" style="width: 11.764705882353%"></div>
+<div class="time" style="width: 12.5%"></div>
 <pre>Definition htpy_ind_beta : htpy_ind f idhtpy = d
     := transport (fun p : (f;idhtpy) = (f;idhtpy) =&gt;
                     transport (fun gh =&gt; Q gh.1 gh.2) p d = d)
@@ -472,15 +478,15 @@ Time: 0.006s">
          (idpath _).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 100
+Line: 102
 Time: 0.002s">
-<div class="time" style="width: 3.921568627451%"></div>
+<div class="time" style="width: 4.1666666666667%"></div>
 <pre>
 
 End Homotopies.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 102
+Line: 104
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -488,53 +494,33 @@ Time: 0s">
 (** Now the proof is fairly easy; we can just use the same induction principle on both sides.  This proof also preserves all the universes. *)</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 104
+Line: 106
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Theorem WeakFunext_implies_Funext@{i j max}
   : WeakFunext@{i j max} -&gt; Funext_type@{i j max}.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 105
+Line: 107
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 106
+Line: 108
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros wf; hnf; intros A B f g.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 107
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 109
+Time: 0.001s">
+<div class="time" style="width: 2.0833333333333%"></div>
 <pre>
   refine (isequiv_adjointify (@apD10 A B f g)
     (htpy_ind wf f (fun g' _ =&gt; f = g') idpath g) _ _).</pre>
-</div>
-<div class="code" title="File: FunextVarieties.v
-Line: 109
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: FunextVarieties.v
-Line: 110
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> revert g; refine (htpy_ind wf _ _ _).</pre>
-</div>
-<div class="code" title="File: FunextVarieties.v
-Line: 110
-Time: 0.001s">
-<div class="time" style="width: 1.9607843137255%"></div>
-<pre>
-    refine (ap _ (htpy_ind_beta wf _ _ _)).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
 Line: 111
@@ -547,33 +533,59 @@ Time: 0s">
 Line: 112
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> intros h; destruct h.</pre>
+<pre> revert g; refine (htpy_ind wf _ _ _).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
 Line: 112
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 2.0833333333333%"></div>
 <pre>
-    refine (htpy_ind_beta wf _ _ _).</pre>
+    refine (ap _ (htpy_ind_beta wf _ _ _)).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
 Line: 113
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Defined.
+  -</pre>
+</div>
+<div class="code" title="File: FunextVarieties.v
+Line: 114
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros h; destruct h.</pre>
+</div>
+<div class="code" title="File: FunextVarieties.v
+Line: 114
+Time: 0.001s">
+<div class="time" style="width: 2.0833333333333%"></div>
+<pre>
+    refine (htpy_ind_beta wf _ _ _).</pre>
+</div>
+<div class="code" title="File: FunextVarieties.v
+Line: 115
+Time: 0.002s">
+<div class="time" style="width: 4.1666666666667%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: FunextVarieties.v
+Line: 116
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
 
 (** We add some hints to the typeclass database, so if we happen to have hypotheses of [WeakFunext] or [NaiveFunext] floating around, we get [Funext] automatically. *)</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 116
+Line: 118
 Time: 0.001s">
-<div class="time" style="width: 1.9607843137255%"></div>
+<div class="time" style="width: 2.0833333333333%"></div>
 <pre>Definition NaiveFunext_implies_Funext : NaiveFunext -&gt; Funext_type
   := WeakFunext_implies_Funext o NaiveFunext_implies_WeakFunext.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 117
+Line: 119
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -583,9 +595,9 @@ Time: 0s">
 (** First we show that naive non-dependent funext suffices to show that postcomposition with an equivalence is an equivalence. *)</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 121
-Time: 0.007s">
-<div class="time" style="width: 13.725490196078%"></div>
+Line: 123
+Time: 0.008s">
+<div class="time" style="width: 16.666666666667%"></div>
 <pre>Definition equiv_postcompose_from_NaiveNondepFunext
            (nf : NaiveNondepFunext) {A B C : Type} (f : B &lt;~&gt; C)
   : (A -&gt; B) &lt;~&gt; (A -&gt; C)
@@ -598,7 +610,7 @@ Time: 0.007s">
           (fun g =&gt; nf _ _ _ _ (fun y =&gt; eissect f (g y)))).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 130
+Line: 132
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -606,87 +618,93 @@ Time: 0s">
 (** Now, if each [P x] is contractible, the projection [pr1 : {x:X &amp; P x} -&gt; X] is an equivalence (this requires no funext).  Thus, postcomposition with it is also an equivalence, and hence the fiber of postcomposition over [idmap X] is contractible.  But this fiber is "the type of sections of [pr1]" and hence equivalent to [forall x:X, P x].  The latter equivalence requires full funext to prove, but without any funext we can show that [forall x:X, P x] is a *retract* of the type of sections, hence also contractible. *)</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 132
+Line: 134
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Theorem NaiveNondepFunext_implies_WeakFunext
   : NaiveNondepFunext -&gt; WeakFunext.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 133
+Line: 135
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 134
+Line: 136
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros nf X P H.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 135
+Line: 137
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   pose (T := (hfiber (equiv_postcompose_from_NaiveNondepFunext nf (equiv_pr1 P)) idmap)).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 136
+Line: 138
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   assert (X1 : Contr T).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 137
+Line: 139
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   {</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 138
+Line: 140
 Time: 0.002s">
-<div class="time" style="width: 3.921568627451%"></div>
+<div class="time" style="width: 4.1666666666667%"></div>
 <pre> apply fcontr_isequiv; exact _.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 138
+Line: 140
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> }</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 138
-Time: 0.006s">
-<div class="time" style="width: 11.764705882353%"></div>
+Line: 140
+Time: 0.007s">
+<div class="time" style="width: 14.583333333333%"></div>
 <pre>
   exact (@contr_retract T _ _
            (fun fp x =&gt; transport P (ap10 fp.2 x) (fp.1 x).2)
            (fun f =&gt; ((fun x =&gt; (x ; f x)) ; 1)) (fun f =&gt; 1)).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 141
+Line: 143
+Time: 0.002s">
+<div class="time" style="width: 4.1666666666667%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: FunextVarieties.v
+Line: 144
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Defined.
 
 (** Therefore, naive nondependent funext also implies full funext.  Interestingly, this requires the universe of the assumption codomain to be not just that of the conclusion codomain, but the max of that universe with the domain universe (which is unchanged). *)</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 144
+Line: 146
 Time: 0.001s">
-<div class="time" style="width: 1.9607843137255%"></div>
+<div class="time" style="width: 2.0833333333333%"></div>
 <pre>Definition NaiveNondepFunext_implies_Funext@{i j max}
   : NaiveNondepFunext@{i max max} -&gt; Funext_type@{i j max}
   := WeakFunext_implies_Funext o NaiveNondepFunext_implies_WeakFunext.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 146
+Line: 148
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -697,48 +715,48 @@ Time: 0s">
 (** If universe [U_i] is functionally extensional, then so are universes [U_j] for [j ≤ i]. *)</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 151
+Line: 153
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Lemma Funext_downward_closed `{H : Funext_type} : Funext_type.</pre>
-</div>
-<div class="code" title="File: FunextVarieties.v
-Line: 151
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: FunextVarieties.v
-Line: 152
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  apply @NaiveFunext_implies_Funext.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
 Line: 153
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  apply Funext_implies_NaiveFunext in H.</pre>
+Proof.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
 Line: 154
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  hnf in *.</pre>
+  apply @NaiveFunext_implies_Funext.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
 Line: 155
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  intros A P f g H'.</pre>
+  apply Funext_implies_NaiveFunext in H.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
 Line: 156
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  hnf in *.</pre>
+</div>
+<div class="code" title="File: FunextVarieties.v
+Line: 157
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  intros A P f g H'.</pre>
+</div>
+<div class="code" title="File: FunextVarieties.v
+Line: 158
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -746,76 +764,88 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 158
+Line: 160
 Time: 0.001s">
-<div class="time" style="width: 1.9607843137255%"></div>
+<div class="time" style="width: 2.0833333333333%"></div>
 <pre>case (H (Lift A) (fun x =&gt; Lift (P x)) f g (fun x =&gt; ap lift (H' x))).</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 158
+Line: 160
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   exact idpath.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 159
+Line: 161
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Defined.
+Defined.</pre>
+</div>
+<div class="code" title="File: FunextVarieties.v
+Line: 162
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
 
 (** We re-declare this instance depending on the global [Funext] typeclass, since it is useful on its own. *)</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 162
+Line: 164
 Time: 0.001s">
-<div class="time" style="width: 1.9607843137255%"></div>
+<div class="time" style="width: 2.0833333333333%"></div>
 <pre>Global Instance contr_basedhomotopy `{Funext}
        {A:Type} {B : A -&gt; Type} (f : forall x, B x)
 : Contr {g : forall x, B x &amp; f == g }.</pre>
-</div>
-<div class="code" title="File: FunextVarieties.v
-Line: 164
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: FunextVarieties.v
-Line: 165
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  apply contr_basedhtpy.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
 Line: 166
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  apply NaiveFunext_implies_WeakFunext.</pre>
+Proof.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
 Line: 167
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  apply Funext_implies_NaiveFunext.</pre>
+  apply contr_basedhtpy.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
 Line: 168
-Time: 0.011s">
-<div class="time" style="width: 21.56862745098%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  apply NaiveFunext_implies_WeakFunext.</pre>
+</div>
+<div class="code" title="File: FunextVarieties.v
+Line: 169
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  apply Funext_implies_NaiveFunext.</pre>
+</div>
+<div class="code" title="File: FunextVarieties.v
+Line: 170
+Time: 0.012s">
+<div class="time" style="width: 25%"></div>
 <pre>
   unfold Funext_type; exact _.</pre>
 </div>
 <div class="code" title="File: FunextVarieties.v
-Line: 170
+Line: 171
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Defined.
+Defined.</pre>
+</div>
+<div class="code" title="File: FunextVarieties.v
+Line: 173
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
 
 </pre>
 </div>
