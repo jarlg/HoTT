@@ -30,19 +30,77 @@ pre {
 
 <div class="code" title="File: Cube.v
 Line: 1
-Time: 0.042s">
-<div class="time" style="width: 100%"></div>
-<pre>Require Import HoTT.Basics HoTT.Types.</pre>
+Time: 0.019s">
+<div class="time" style="width: 0.38516115953781%"></div>
+<pre>Require Import Basics.</pre>
 </div>
 <div class="code" title="File: Cube.v
 Line: 1
-Time: 0.003s">
-<div class="time" style="width: 7.1428571428571%"></div>
+Time: 0.022s">
+<div class="time" style="width: 0.44597607946483%"></div>
 <pre>
-Require Import DPath Square.</pre>
+Require Import DPath.</pre>
 </div>
 <div class="code" title="File: Cube.v
 Line: 2
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+Require Import Square.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 3
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+Require Import DSquare.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 4
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Require Import Types.Paths.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 5
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Declare Scope cube_scope.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 7
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Delimit Scope cube_scope with cube.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 8
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Local Unset Elimination Schemes.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 9
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Generalizable All Variables.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 10
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Local Open Scope square_scope.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 12
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -59,306 +117,2804 @@ x011   |               |          x011----pi11----x111   |
  p01i  |               |           p01i  ==si1i=&gt;  p11i  |  
      \ |               |               \               \ |  
       x010----pi10----x110              x010----pi10----x110
- *)</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 16
-Time: 0.005s">
-<div class="time" style="width: 11.904761904762%"></div>
-<pre>Definition Cube {A} {x000 x010 x100 x110 x001 x011 x101 x111 : A}
-          {p0i0 : x000 = x010} {p1i0 : x100 = x110}
-          {pi00 : x000 = x100} {pi10 : x010 = x110}
-          {p0i1 : x001 = x011} {p1i1 : x101 = x111}
-          {pi01 : x001 = x101} {pi11 : x011 = x111}
-          {p00i : x000 = x001} {p01i : x010 = x011}
-          {p10i : x100 = x101} {p11i : x110 = x111}
-          (s0ii : Square p0i0 p0i1 p00i p01i)
-          (s1ii : Square p1i0 p1i1 p10i p11i)
-          (sii0 : Square p0i0 p1i0 pi00 pi10)
-          (sii1 : Square p0i1 p1i1 pi01 pi11)
-          (si0i : Square p00i p10i pi00 pi01)
-          (si1i : Square p01i p11i pi10 pi11) : Type.</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 28
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 29
-Time: 0.01s">
-<div class="time" style="width: 23.809523809524%"></div>
-<pre>
-  unshelve (refine (@dpath _ (fun bdry : { xs : (A*A)*(A*A) &amp;
-                                   ((fst (fst xs) = snd (fst xs))
-                                    * (fst (snd xs) = snd (snd xs)))
-                                   * ((fst (fst xs) = fst (snd xs))
-                                      * (snd (fst xs) = snd (snd xs))) }
-                 =&gt; Square (fst (snd (pr2 bdry))) (snd (snd (pr2 bdry)))
-                           (fst (fst (pr2 bdry))) (snd (fst (pr2 bdry))))
-                _ _ _ _ _)).</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 37
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 38
-Time: 0.003s">
-<div class="time" style="width: 7.1428571428571%"></div>
-<pre> exists ((x000,x001),(x010,x011)); split; split; cbn; assumption.</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 38
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 39
-Time: 0.004s">
-<div class="time" style="width: 9.5238095238095%"></div>
-<pre> exists ((x100,x101),(x110,x111)); split; split; cbn; assumption.</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 39
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 40
-Time: 0.035s">
-<div class="time" style="width: 83.333333333333%"></div>
-<pre> destruct pi00, pi01, pi10, pi11; cbn in *.</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 40
-Time: 0.014s">
-<div class="time" style="width: 33.333333333333%"></div>
-<pre>
-    destruct sii0, sii1, si0i, si1i; reflexivity.</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 41
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
+ *)
+ 
+(* Contents:
+  * Definition of Cube
+  * Cube reflexivity
+  * Cube face rewriting
+  * Cubes from paths between squares
+  * Cubes from squres
+  * Cube flipping
+  * Kan fillers
+  * Cube concatenation
+  * natural cubes from ap
+*)
+
+
+(* Homogeneous cubes *)
+(* Cube left right top bottom front back *)</pre>
 </div>
 <div class="code" title="File: Cube.v
 Line: 42
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> assumption.</pre>
+Time: 0.008s">
+<div class="time" style="width: 0.16217311980539%"></div>
+<pre>Cumulative Inductive Cube {A}
+  : forall x000 {x010 x100 x110 x001 x011 x101 x111 : A}
+  {p0i0 : x000 = x010} {p1i0 : x100 = x110} {pi00 : x000 = x100}
+  {pi10 : x010 = x110} {p0i1 : x001 = x011} {p1i1 : x101 = x111}
+  {pi01 : x001 = x101} {pi11 : x011 = x111} {p00i : x000 = x001}
+  {p01i : x010 = x011} {p10i : x100 = x101} {p11i : x110 = x111}
+  (s0ii : Square p0i0 p0i1 p00i p01i) (s1ii : Square p1i0 p1i1 p10i p11i)
+  (sii0 : Square p0i0 p1i0 pi00 pi10) (sii1 : Square p0i1 p1i1 pi01 pi11)
+  (si0i : Square p00i p10i pi00 pi01) (si1i : Square p01i p11i pi10 pi11), Type
+  := idcube : forall x, Cube x 1 1 1 1 1 1.</pre>
 </div>
 <div class="code" title="File: Cube.v
-Line: 42
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 43
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> assumption.</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 43
-Time: 0.035s">
-<div class="time" style="width: 83.333333333333%"></div>
-<pre>
-Defined.</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 44
-Time: 0.011s">
-<div class="time" style="width: 26.190476190476%"></div>
+Line: 51
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
 <pre>
 
-Definition sqsx_compose {X A B C} (i : X -&gt; A)
-           (f : A -&gt; B) {g : B -&gt; C} {k : A -&gt; C}
-           (h : g o f == k) {x y : X} (p : x = y)
-  : Cube (sqsx (f o i) (fun x =&gt; h (i x)) p)
-         (sqsx f h (ap i p))
-         (sqid (h (i x))) (sqid (h (i y)))
-         (ap (ap g) (ap_compose i f p)) (ap_compose i k p).</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 52
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
+Arguments Cube {_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _}.</pre>
 </div>
 <div class="code" title="File: Cube.v
 Line: 53
-Time: 0.026s">
-<div class="time" style="width: 61.904761904762%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
 <pre>
-  destruct p; reflexivity.</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 54
-Time: 0.028s">
-<div class="time" style="width: 66.666666666667%"></div>
-<pre>
-Defined.</pre>
+
+Scheme Cube_ind := Induction for Cube Sort Type.</pre>
 </div>
 <div class="code" title="File: Cube.v
 Line: 55
-Time: 0.011s">
-<div class="time" style="width: 26.190476190476%"></div>
-<pre>
-
-Definition cubetr {A} {x000 x010 x100 x110 x001 x011 x101 x111 : A}
-          {p0i0 : x000 = x010} {p1i0 : x100 = x110}
-          {pi00 : x000 = x100} {pi10 : x010 = x110}
-          {p0i1 : x001 = x011} {p1i1 : x101 = x111}
-          {pi01 : x001 = x101} {pi11 : x011 = x111}
-          {p00i : x000 = x001} {p01i : x010 = x011}
-          {p10i : x100 = x101} {p11i : x110 = x111}
-          {s0ii : Square p0i0 p0i1 p00i p01i}
-          {s1ii : Square p1i0 p1i1 p10i p11i}
-          {sii0 : Square p0i0 p1i0 pi00 pi10}
-          {sii1 : Square p0i1 p1i1 pi01 pi11}
-          {si0i : Square p00i p10i pi00 pi01}
-          {si1i : Square p01i p11i pi10 pi11}
-          (c : Cube s0ii s1ii sii0 sii1 si0i si1i)
-  : Cube sii0 sii1 s0ii s1ii (sqtr si0i) (sqtr si1i).</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 71
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 72
-Time: 0.012s">
-<div class="time" style="width: 28.571428571429%"></div>
-<pre>
-  destruct pi00, pi01, pi10, pi11; cbn in *.</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 73
-Time: 0.015s">
-<div class="time" style="width: 35.714285714286%"></div>
-<pre>
-  destruct sii0, sii1, si0i, si1i; cbn in *.</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 74
-Time: 0.002s">
-<div class="time" style="width: 4.7619047619048%"></div>
-<pre>
-  destruct c.</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 75
-Time: 0.005s">
-<div class="time" style="width: 11.904761904762%"></div>
-<pre>
-  destruct p00i, p01i; cbn in *.</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 76
-Time: 0.034s">
-<div class="time" style="width: 80.952380952381%"></div>
-<pre>
-  destruct s0ii; reflexivity.</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 77
-Time: 0.023s">
-<div class="time" style="width: 54.761904761905%"></div>
-<pre>
-Defined.</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 78
-Time: 0.011s">
-<div class="time" style="width: 26.190476190476%"></div>
-<pre>
-
-
-Definition cuberot {A} {x000 x010 x100 x110 x001 x011 x101 x111 : A}
-          {p0i0 : x000 = x010} {p1i0 : x100 = x110}
-          {pi00 : x000 = x100} {pi10 : x010 = x110}
-          {p0i1 : x001 = x011} {p1i1 : x101 = x111}
-          {pi01 : x001 = x101} {pi11 : x011 = x111}
-          {p00i : x000 = x001} {p01i : x010 = x011}
-          {p10i : x100 = x101} {p11i : x110 = x111}
-          {s0ii : Square p0i0 p0i1 p00i p01i}
-          {s1ii : Square p1i0 p1i1 p10i p11i}
-          {sii0 : Square p0i0 p1i0 pi00 pi10}
-          {sii1 : Square p0i1 p1i1 pi01 pi11}
-          {si0i : Square p00i p10i pi00 pi01}
-          {si1i : Square p01i p11i pi10 pi11}
-          (c : Cube s0ii s1ii sii0 sii1 si0i si1i)
-  : Cube (sqtr sii0) (sqtr sii1) (sqtr si0i) (sqtr si1i) s0ii s1ii.</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 95
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 96
-Time: 0.011s">
-<div class="time" style="width: 26.190476190476%"></div>
-<pre>
-  destruct pi00, pi01, pi10, pi11; cbn in *.</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 97
-Time: 0.013s">
-<div class="time" style="width: 30.952380952381%"></div>
-<pre>
-  destruct sii0, sii1, si0i, si1i; cbn in *.</pre>
-</div>
-<div class="code" title="File: Cube.v
-Line: 98
 Time: 0.001s">
-<div class="time" style="width: 2.3809523809524%"></div>
+<div class="time" style="width: 0.020271639975674%"></div>
 <pre>
-  destruct c.</pre>
+Arguments Cube_ind {A} P f
+  {_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _}.</pre>
 </div>
 <div class="code" title="File: Cube.v
-Line: 99
-Time: 0.005s">
-<div class="time" style="width: 11.904761904762%"></div>
+Line: 57
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
 <pre>
-  destruct p00i, p01i; cbn in *.</pre>
+
+Scheme Cube_rec := Minimality for Cube Sort Type.</pre>
 </div>
 <div class="code" title="File: Cube.v
-Line: 100
-Time: 0.011s">
-<div class="time" style="width: 26.190476190476%"></div>
+Line: 59
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
 <pre>
-  destruct s0ii; reflexivity.</pre>
+Arguments Cube_rec {A} P f
+  {_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _}.</pre>
 </div>
 <div class="code" title="File: Cube.v
-Line: 101
-Time: 0.029s">
-<div class="time" style="width: 69.047619047619%"></div>
+Line: 61
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(* These notations make it easier to write our lemmas *)</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 63
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Local Notation hr := (sq_refl_h _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 63
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Local Notation vr := (sq_refl_v _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 64
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Local Notation tr := sq_tr.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 65
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Local Notation fv := sq_flip_v.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 66
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(* Cubes form a path of squares up to retyping *)</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 68
+Time: 0.031s">
+<div class="time" style="width: 0.62842083924589%"></div>
+<pre>Definition cu_path {A} {x000 x010 x100 x110 x001 x011 x101 x111 : A}
+  {p0i0 : x000 = x010} {p1i0 : x100 = x110} {pi00 : x000 = x100}
+  {pi10 : x010 = x110} {p0i1 : x001 = x011} {p1i1 : x101 = x111}
+  {pi01 : x001 = x101} {pi11 : x011 = x111} {p00i : x000 = x001}
+  {p01i : x010 = x011} {p10i : x100 = x101} {p11i : x110 = x111}
+  (s0ii : Square p0i0 p0i1 p00i p01i) (s1ii : Square p1i0 p1i1 p10i p11i)
+  (sii0 : Square p0i0 p1i0 pi00 pi10) (sii1 : Square p0i1 p1i1 pi01 pi11)
+  (si0i : Square p00i p10i pi00 pi01) (si1i : Square p01i p11i pi10 pi11)
+  : (tr (fv s0ii)) @h (si0i @h (tr s1ii)) =
+      sq_ccGG
+        (moveL_Vp _ _ _ (sq_path^-1 sii0))
+        (moveL_Vp _ _ _ (sq_path^-1 sii1)) si1i
+      -&gt; Cube s0ii s1ii sii0 sii1 si0i si1i.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 80
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 81
+Time: 0.014s">
+<div class="time" style="width: 0.28380295965944%"></div>
+<pre>
+  destruct sii0, sii1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 82
+Time: 0.024s">
+<div class="time" style="width: 0.48651935941618%"></div>
+<pre>
+  cbn.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 83
+Time: 0.298s">
+<div class="time" style="width: 6.0409487127509%"></div>
+<pre>
+  rewrite (eisretr sq_G1 si0i)^,
+    (eisretr sq_1G s0ii)^,
+    (eisretr sq_1G s1ii)^.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 86
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  intro X.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 87
+Time: 0.163s">
+<div class="time" style="width: 3.3042773160349%"></div>
+<pre>
+  by destruct (sq_G1^-1 si0i), (sq_1G^-1 s0ii),
+    (sq_1G^-1 s1ii), X, p00i.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 89
+Time: 0.081s">
+<div class="time" style="width: 1.6420028380296%"></div>
 <pre>
 Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 90
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(* This is an equivalence, albeit a slow one *)
+(* TODO: speed this up *)</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 93
+Time: 0.014s">
+<div class="time" style="width: 0.28380295965944%"></div>
+<pre>Global Instance isequiv_cu_path {A}
+  {x000 x010 x100 x110 x001 x011 x101 x111 : A}
+  {p0i0 : x000 = x010} {p1i0 : x100 = x110} {pi00 : x000 = x100}
+  {pi10 : x010 = x110} {p0i1 : x001 = x011} {p1i1 : x101 = x111}
+  {pi01 : x001 = x101} {pi11 : x011 = x111} {p00i : x000 = x001}
+  {p01i : x010 = x011} {p10i : x100 = x101} {p11i : x110 = x111}
+  {s0ii : Square p0i0 p0i1 p00i p01i} {s1ii : Square p1i0 p1i1 p10i p11i}
+  {sii0 : Square p0i0 p1i0 pi00 pi10} {sii1 : Square p0i1 p1i1 pi01 pi11}
+  {si0i : Square p00i p10i pi00 pi01} {si1i : Square p01i p11i pi10 pi11}
+  : IsEquiv (cu_path s0ii s1ii sii0 sii1 si0i si1i).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 102
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
 </div>
 <div class="code" title="File: Cube.v
 Line: 103
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+  serapply isequiv_adjointify.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 104
+Time: 0.028s">
+<div class="time" style="width: 0.56760591931887%"></div>
+<pre>
+  1,2: by intros [].</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 105
+Time: 0.031s">
+<div class="time" style="width: 0.62842083924589%"></div>
+<pre>
+  destruct sii0, sii1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 106
+Time: 0.77s">
+<div class="time" style="width: 15.609162781269%"></div>
+<pre>
+  cbn.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 107
+Time: 0.199s">
+<div class="time" style="width: 4.0340563551591%"></div>
+<pre>
+  rewrite &lt;- (eisretr sq_G1 si0i).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 108
+Time: 0.335s">
+<div class="time" style="width: 6.7909993918508%"></div>
+<pre>
+  rewrite &lt;- (eisretr sq_1G s0ii).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 109
+Time: 0.494s">
+<div class="time" style="width: 10.014190147983%"></div>
+<pre>
+  rewrite &lt;- (eisretr sq_1G s1ii).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 110
+Time: 1.817s">
+<div class="time" style="width: 36.8335698358%"></div>
+<pre>
+  destruct (@equiv_inv _ _ sq_G1 _ si0i).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 111
+Time: 1.322s">
+<div class="time" style="width: 26.799108047841%"></div>
+<pre>
+  destruct (@equiv_inv _ _ sq_1G _ s0ii).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 112
+Time: 0.893s">
+<div class="time" style="width: 18.102574498277%"></div>
+<pre>
+  destruct (@equiv_inv _ _ sq_1G _ s1ii).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 113
+Time: 0.312s">
+<div class="time" style="width: 6.3247516724103%"></div>
+<pre>
+  destruct p00i.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 114
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+  intro X.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 115
+Time: 0.486s">
+<div class="time" style="width: 9.8520170281776%"></div>
+<pre>
+  by destruct X.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 116
+Time: 1.765s">
+<div class="time" style="width: 35.779444557065%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 117
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+
+Arguments cu_path {_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 119
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Section Reflexivity.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 121
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  (* Cube reflexivity *)
+
+ </pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 125
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Context {A} {a00 a10 a01 a11 : A}
+    {px0 : a00 = a10} {px1 : a01 = a11}
+    {p0x : a00 = a01} {p1x : a10 = a11}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 127
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  (* Left right reflexivity *)
+ </pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 130
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>Definition cu_refl_lr (s : Square px0 px1 p0x p1x) : Cube s s hr hr hr hr.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 130
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 131
+Time: 0.006s">
+<div class="time" style="width: 0.12162983985404%"></div>
+<pre>
+    by destruct s.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 132
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 133
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  (* Top bottom reflexivity *)
+ </pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 136
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>Definition cu_refl_tb (s : Square px0 px1 p0x p1x) : Cube hr hr s s vr vr.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 136
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 137
+Time: 0.006s">
+<div class="time" style="width: 0.12162983985404%"></div>
+<pre>
+    by destruct s.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 138
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 139
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  (* Front back reflexivity *)
+ </pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 142
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>Definition cu_refl_fb (s : Square px0 px1 p0x p1x) : Cube vr vr vr vr s s.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 142
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 143
+Time: 0.006s">
+<div class="time" style="width: 0.12162983985404%"></div>
+<pre>
+    by destruct s.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 144
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 145
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+
+End Reflexivity.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 147
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(* Lemmas for rewriting faces of cubes *)</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 149
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Section CubeRewriting.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 149
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+
+  Context {A} {x000 x010 x100 x110 x001 x011 x101 x111 : A}
+    {p0i0 : x000 = x010} {p1i0 : x100 = x110} {pi00 : x000 = x100}
+    {pi10 : x010 = x110} {p0i1 : x001 = x011} {p1i1 : x101 = x111}
+    {pi01 : x001 = x101} {pi11 : x011 = x111} {p00i : x000 = x001}
+    {p01i : x010 = x011} {p10i : x100 = x101} {p11i : x110 = x111}
+    {s0ii : Square p0i0 p0i1 p00i p01i} {s1ii : Square p1i0 p1i1 p10i p11i}
+    {sii0 : Square p0i0 p1i0 pi00 pi10} {sii1 : Square p0i1 p1i1 pi01 pi11}
+    {si0i : Square p00i p10i pi00 pi01} {si1i : Square p01i p11i pi10 pi11}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 158
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  (* We write the most general version and derive special cases from this *)
+ </pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 161
+Time: 0.007s">
+<div class="time" style="width: 0.14190147982972%"></div>
+<pre>Definition cu_GGGGGG {s0ii' s1ii' sii0' sii1' si0i' si1i'}
+    (t0ii : s0ii = s0ii') (t1ii : s1ii = s1ii') (tii0 : sii0 = sii0')
+    (tii1 : sii1 = sii1') (ti0i : si0i = si0i') (ti1i : si1i = si1i')
+    : Cube s0ii s1ii sii0 sii1 si0i si1i
+    -&gt; Cube s0ii' s1ii' sii0' sii1' si0i' si1i'.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 165
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 166
+Time: 0.007s">
+<div class="time" style="width: 0.14190147982972%"></div>
+<pre>
+    by destruct t0ii, t1ii, tii0, tii1, ti0i, ti1i.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 167
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 168
+Time: 0.004s">
+<div class="time" style="width: 0.081086559902696%"></div>
+<pre>
+
+  Global Instance isequiv_cu_GGGGGG {s0ii' s1ii' sii0' sii1' si0i' si1i'}
+    (t0ii : s0ii = s0ii') (t1ii : s1ii = s1ii') (tii0 : sii0 = sii0')
+    (tii1 : sii1 = sii1') (ti0i : si0i = si0i') (ti1i : si1i = si1i')
+    : IsEquiv (cu_GGGGGG t0ii t1ii tii0 tii1 ti0i ti1i).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 173
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 174
+Time: 0.009s">
+<div class="time" style="width: 0.18244475978107%"></div>
+<pre>
+    destruct t0ii, t1ii, tii0, tii1, ti0i, ti1i; exact _.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 175
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 176
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+
+  Context {s0ii' s1ii' sii0' sii1' si0i' si1i'}
+    (t0ii : s0ii = s0ii') (t1ii : s1ii = s1ii') (tii0 : sii0 = sii0')
+    (tii1 : sii1 = sii1') (ti0i : si0i = si0i') (ti1i : si1i = si1i').</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 180
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+
+  Definition cu_Gccccc := cu_GGGGGG t0ii 1 1 1 1 1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 182
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+  Definition cu_cGcccc := cu_GGGGGG 1 t1ii 1 1 1 1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 183
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+  Definition cu_ccGccc := cu_GGGGGG 1 1 tii0 1 1 1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 184
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+  Definition cu_cccGcc := cu_GGGGGG 1 1 1 tii1 1 1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 185
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+  Definition cu_ccccGc := cu_GGGGGG 1 1 1 1 ti0i 1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 186
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+  Definition cu_cccccG := cu_GGGGGG 1 1 1 1 1 ti1i.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 187
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+  Definition cu_ccGGGG := cu_GGGGGG 1 1 tii0 tii1 ti0i ti1i.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 188
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+  Definition cu_GGGGcc := cu_GGGGGG t0ii t1ii tii0 tii1 1 1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 189
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+  Definition cu_GGcccc := cu_GGGGGG t0ii t1ii 1 1 1 1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 190
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+  Definition cu_ccGGcc := cu_GGGGGG 1 1 tii0 tii1 1 1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 191
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+  Definition cu_ccccGG := cu_GGGGGG 1 1 1 1 ti0i ti1i.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 192
+Time: 0.01s">
+<div class="time" style="width: 0.20271639975674%"></div>
+<pre>
+
+End CubeRewriting.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 194
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(* Rotating top and bottom to front and back *)</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 196
+Time: 0.019s">
+<div class="time" style="width: 0.38516115953781%"></div>
+<pre>Definition cu_rot_tb_fb {A} {x000 x010 x100 x110 x001 x011 x101 x111 : A}
+  {p0i0 : x000 = x010} {p1i0 : x100 = x110} {pi00 : x000 = x100}
+  {pi10 : x010 = x110} {p0i1 : x001 = x011} {p1i1 : x101 = x111}
+  {pi01 : x001 = x101} {pi11 : x011 = x111} {p00i : x000 = x001}
+  {p01i : x010 = x011} {p10i : x100 = x101} {p11i : x110 = x111}
+  (s0ii : Square p0i0 p0i1 p00i p01i) (s1ii : Square p1i0 p1i1 p10i p11i)
+  (sii0 : Square p0i0 p1i0 pi00 pi10) (sii1 : Square p0i1 p1i1 pi01 pi11)
+  (si0i : Square p00i p10i pi00 pi01) (si1i : Square p01i p11i pi10 pi11)
+  : Cube si0i si1i (sq_tr s0ii) (sq_tr s1ii) (sq_tr sii0) (sq_tr sii1)
+   -&gt; Cube s0ii s1ii sii0 sii1 si0i si1i.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 205
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 206
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  intro cube.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 207
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+  refine (cu_GGGGcc _ _ _ _ _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 208
+Time: 0.012s">
+<div class="time" style="width: 0.24325967970809%"></div>
+<pre>
+  1,2,3,4: exact (eissect tr _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 209
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  revert cube.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 210
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+  set (a := tr s0ii).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 211
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+  set (b := tr s1ii).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 212
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+  set (c := tr sii0).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 213
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+  set (d := tr sii1).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 214
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  clearbody a b c d; clear s0ii s1ii sii0 sii1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 215
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  intro cube.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 216
+Time: 0.015s">
+<div class="time" style="width: 0.30407459963511%"></div>
+<pre>
+  by destruct cube.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 217
+Time: 0.004s">
+<div class="time" style="width: 0.081086559902696%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 218
+Time: 0.009s">
+<div class="time" style="width: 0.18244475978107%"></div>
+<pre>
+
+Global Instance isequiv_cu_rot_tb_fb
+  {A} {x000 x010 x100 x110 x001 x011 x101 x111 : A}
+  {p0i0 : x000 = x010} {p1i0 : x100 = x110} {pi00 : x000 = x100}
+  {pi10 : x010 = x110} {p0i1 : x001 = x011} {p1i1 : x101 = x111}
+  {pi01 : x001 = x101} {pi11 : x011 = x111} {p00i : x000 = x001}
+  {p01i : x010 = x011} {p10i : x100 = x101} {p11i : x110 = x111}
+  {s0ii : Square p0i0 p0i1 p00i p01i} {s1ii : Square p1i0 p1i1 p10i p11i}
+  {sii0 : Square p0i0 p1i0 pi00 pi10} {sii1 : Square p0i1 p1i1 pi01 pi11}
+  {si0i : Square p00i p10i pi00 pi01} {si1i : Square p01i p11i pi10 pi11}
+  : IsEquiv (cu_rot_tb_fb s0ii s1ii sii0 sii1 si0i si1i).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 229
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 230
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+  serapply isequiv_adjointify.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 231
+Time: 0.023s">
+<div class="time" style="width: 0.4662477194405%"></div>
+<pre>
+  1,2 : by intros [].</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 232
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  unfold Sect.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 233
+Time: 0.006s">
+<div class="time" style="width: 0.12162983985404%"></div>
+<pre>
+  rewrite &lt;- (eissect tr s0ii).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 234
+Time: 0.006s">
+<div class="time" style="width: 0.12162983985404%"></div>
+<pre>
+  rewrite &lt;- (eissect tr s1ii).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 235
+Time: 0.008s">
+<div class="time" style="width: 0.16217311980539%"></div>
+<pre>
+  rewrite &lt;- (eissect tr sii0).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 236
+Time: 0.007s">
+<div class="time" style="width: 0.14190147982972%"></div>
+<pre>
+  rewrite &lt;- (eissect tr sii1).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 237
+Time: 0.01s">
+<div class="time" style="width: 0.20271639975674%"></div>
+<pre>
+  set (a := tr s0ii).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 238
+Time: 0.01s">
+<div class="time" style="width: 0.20271639975674%"></div>
+<pre>
+  set (b := tr s1ii).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 239
+Time: 0.009s">
+<div class="time" style="width: 0.18244475978107%"></div>
+<pre>
+  set (c := tr sii0).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 240
+Time: 0.009s">
+<div class="time" style="width: 0.18244475978107%"></div>
+<pre>
+  set (d := tr sii1).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 241
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+  clearbody a b c d; clear s0ii s1ii sii0 sii1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 242
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  intro X.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 243
+Time: 0.051s">
+<div class="time" style="width: 1.0338536387594%"></div>
+<pre>
+  rewrite &lt;- (eissect (cu_ccGGGG (eisretr tr _)
+    (eisretr tr _) (eisretr tr _) (eisretr tr _)) X).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 245
+Time: 0.071s">
+<div class="time" style="width: 1.4392864382729%"></div>
+<pre>
+  set (e := cu_ccGGGG (eisretr tr _) (eisretr tr _)
+    (eisretr tr _) (eisretr tr _) X).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 247
+Time: 0.011s">
+<div class="time" style="width: 0.22298803973241%"></div>
+<pre>
+  clearbody e; clear X.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 248
+Time: 0.027s">
+<div class="time" style="width: 0.5473342793432%"></div>
+<pre>
+  by destruct e.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 249
+Time: 0.025s">
+<div class="time" style="width: 0.50679099939185%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 250
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+
+Arguments cu_rot_tb_fb {_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 252
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Section CubesFromPaths.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 254
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  (* Degnerate cubes formed from paths between squares *)
+
+  (* The first case is easiest to prove and can be written as equivalences *)
+ </pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 259
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>Definition cu_G11 {A} {a00 a10 a01 a11 : A}
+    {px0 : a00 = a10} {px1 : a01 = a11}
+    {p0x : a00 = a01} {p1x : a10 = a11}
+    (s s' : Square px0 px1 p0x p1x)
+    : s = s' -&gt; Cube s s' hr hr hr hr.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 263
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 264
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+    destruct s; intro.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 265
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+    apply cu_path.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 266
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+    refine (equiv_concat_l (sq_concat_h_1s (1%square @h (tr s'))
+      (p0y:=1) (p1y:=1)) _ _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 268
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+    refine (equiv_concat_l (sq_concat_h_1s (tr s')
+      (p0y:=1) (p1y:=1)) _ _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 270
+Time: 0.019s">
+<div class="time" style="width: 0.38516115953781%"></div>
+<pre>
+    cbn; apply equiv_moveR_equiv_M.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 271
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+    by symmetry.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 272
+Time: 0.007s">
+<div class="time" style="width: 0.14190147982972%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 273
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  (* This makes proving it is an equivalence very easy *)
+ </pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 276
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>Global Instance isequiv_cu_G11 {A} {a00 a10 a01 a11 : A}
+    {px0 : a00 = a10} {px1 : a01 = a11}
+    {p0x : a00 = a01} {p1x : a10 = a11}
+    {s s' : Square px0 px1 p0x p1x}
+  : IsEquiv (cu_G11 s s').</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 280
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 281
+Time: 2.735s">
+<div class="time" style="width: 55.442935333468%"></div>
+<pre>
+    destruct s; exact _.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 282
+Time: 0.042s">
+<div class="time" style="width: 0.85140887897831%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 283
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  (* This case can be reduced to the first by rotating the cube
+     and rewriting some faces *)
+ </pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 287
+Time: 0.004s">
+<div class="time" style="width: 0.081086559902696%"></div>
+<pre>Definition cu_1G1 {A} {a00 a10 a01 a11 : A}
+    {px0 : a00 = a10} {px1 : a01 = a11}
+    {p0x : a00 = a01} {p1x : a10 = a11}
+    (s s' : Square px0 px1 p0x p1x)
+  : s = s' -&gt; Cube hr hr s s' vr vr.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 291
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 292
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    intro p.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 293
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+    apply cu_rot_tb_fb.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 294
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+    apply cu_rot_tb_fb.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 295
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+    apply (ap tr) in p.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 296
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+    refine (cu_ccGGGG _ _ _ _ _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 297
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+    1,2: exact sq_tr_refl_v^.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 298
+Time: 0.027s">
+<div class="time" style="width: 0.5473342793432%"></div>
+<pre>
+    1,2: exact (eisretr tr _)^.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 299
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+    by apply cu_G11.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 300
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 301
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  (* This is automatically an equivalence *)
+ </pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 304
+Time: 0.193s">
+<div class="time" style="width: 3.9124265153051%"></div>
+<pre>Global Instance isequiv_cu_1G1 {A} {a00 a10 a01 a11 : A}
+    {px0 : a00 = a10} {px1 : a01 = a11}
+    {p0x : a00 = a01} {p1x : a10 = a11}
+    (s s' : Square px0 px1 p0x p1x)
+  : IsEquiv (cu_1G1 s s') := _.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 308
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  (* Finally this is an even simpler rotation *)
+ </pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 311
+Time: 0.004s">
+<div class="time" style="width: 0.081086559902696%"></div>
+<pre>Definition cu_11G {A} {a00 a10 a01 a11 : A}
+    {px0 : a00 = a10} {px1 : a01 = a11}
+    {p0x : a00 = a01} {p1x : a10 = a11}
+    (s s' : Square px0 px1 p0x p1x)
+    : s = s' -&gt; Cube vr vr vr vr s s'.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 315
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 316
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    intro p.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 317
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+    apply cu_rot_tb_fb.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 318
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+    refine (cu_ccGGGG _ _ _ _ _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 319
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+    1,2,3,4: exact sq_tr_refl_v^.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 320
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+    by apply cu_G11.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 321
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 322
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  (* Which is also automatically an equivalence *)
+ </pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 325
+Time: 0.074s">
+<div class="time" style="width: 1.5001013581999%"></div>
+<pre>Global Instance isequiv_cu_11G {A} {a00 a10 a01 a11 : A}
+    {px0 : a00 = a10} {px1 : a01 = a11}
+    {p0x : a00 = a01} {p1x : a10 = a11}
+    (s s' : Square px0 px1 p0x p1x)
+  : IsEquiv (cu_11G s s') := _.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 329
+Time: 0.022s">
+<div class="time" style="width: 0.44597607946483%"></div>
+<pre>
+
+End CubesFromPaths.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 331
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Arguments cu_G11 {_ _ _ _ _ _ _ _ _ _ _}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 333
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Arguments cu_1G1 {_ _ _ _ _ _ _ _ _ _ _}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 334
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Arguments cu_11G {_ _ _ _ _ _ _ _ _ _ _}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 335
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(* Degnerate cubes given by squares *)</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 337
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Section PathSquares.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 337
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  Section PathSquaresMaps.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 339
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+    Context {A} {x y : A} {a00 a10 a01 a11 : x = y}
+      (px0 : a00 = a10) (px1 : a01 = a11)
+      (p0x : a00 = a01) (p1x : a10 = a11).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 343
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+
+    Definition cu_GG1 : Square px0 px1 p0x p1x
+      -&gt; Cube (sq_G1 px0) (sq_G1 px1) (sq_G1 p0x) (sq_G1 p1x) 1 1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 346
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 347
+Time: 0.005s">
+<div class="time" style="width: 0.10135819987837%"></div>
+<pre>
+      destruct p0x, p1x, a10.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 348
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      intro.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 349
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+      refine (cu_G11 _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 350
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+      refine (equiv_ap _ _ _ _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 351
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+      by apply sq_G1^-1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 352
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+    Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 353
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+
+    Definition cu_1GG : Square px0 px1 p0x p1x
+      -&gt; Cube 1 1 (sq_1G px0) (sq_1G px1) (sq_1G p0x) (sq_1G p1x).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 356
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 357
+Time: 0.005s">
+<div class="time" style="width: 0.10135819987837%"></div>
+<pre>
+      destruct px0, px1, a01.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 358
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      intro.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 359
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+      refine (cu_11G _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 360
+Time: 0.102s">
+<div class="time" style="width: 2.0677072775188%"></div>
+<pre>
+      refine (equiv_ap _ _ _ _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 361
+Time: 0.42s">
+<div class="time" style="width: 8.5140887897831%"></div>
+<pre>
+      by apply sq_1G^-1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 362
+Time: 0.006s">
+<div class="time" style="width: 0.12162983985404%"></div>
+<pre>
+    Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 363
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+
+    Definition cu_G1G : Square px0 px1 p0x p1x
+      -&gt; Cube (sq_1G px0) (sq_1G px1) 1 1 (sq_G1 p0x) (sq_G1 p1x).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 366
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 367
+Time: 0.005s">
+<div class="time" style="width: 0.10135819987837%"></div>
+<pre>
+      destruct p0x, p1x, a10.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 368
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      intro.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 369
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+      refine (cu_G11 _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 370
+Time: 0.102s">
+<div class="time" style="width: 2.0677072775188%"></div>
+<pre>
+      refine (equiv_ap _ _ _ _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 371
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+      by apply sq_G1^-1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 372
+Time: 0.004s">
+<div class="time" style="width: 0.081086559902696%"></div>
+<pre>
+    Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 373
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+
+  End PathSquaresMaps.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 375
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  Context {A} {x y : A} {a00 a10 a01 a11 : x = y}
+    {px0 : a00 = a10} {px1 : a01 = a11}
+    {p0x : a00 = a01} {p1x : a10 = a11}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 379
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  Global Instance isequiv_cu_GG1  
+    : IsEquiv (cu_GG1 px0 px1 p0x p1x).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 382
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 383
+Time: 0.028s">
+<div class="time" style="width: 0.56760591931887%"></div>
+<pre>
+    destruct p0x, p1x, a10; exact _.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 384
+Time: 0.005s">
+<div class="time" style="width: 0.10135819987837%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 385
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+
+  Global Instance isequiv_cu_1GG
+    : IsEquiv (cu_1GG px0 px1 p0x p1x).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 388
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 389
+Time: 0.231s">
+<div class="time" style="width: 4.6827488343807%"></div>
+<pre>
+    destruct px0, px1, a01; exact _.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 390
+Time: 0.02s">
+<div class="time" style="width: 0.40543279951348%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 391
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+
+  Global Instance isequiv_cu_G1G
+    : IsEquiv (cu_GG1 px0 px1 p0x p1x).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 394
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 395
+Time: 0.028s">
+<div class="time" style="width: 0.56760591931887%"></div>
+<pre>
+    destruct p0x, p1x, a10; exact _.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 396
+Time: 0.005s">
+<div class="time" style="width: 0.10135819987837%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 397
+Time: 0.022s">
+<div class="time" style="width: 0.44597607946483%"></div>
+<pre>
+
+End PathSquares.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 399
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Arguments cu_GG1 {_ _ _ _ _ _ _ _ _ _ _}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 401
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Arguments cu_G1G {_ _ _ _ _ _ _ _ _ _ _}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 402
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Arguments cu_1GG {_ _ _ _ _ _ _ _ _ _ _}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 403
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Section CubeDSquare.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 405
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  Context {A B} {f g : A -&gt; B} {a00 a10 a01 a11 : A}
+    {px0 : a00 = a10} {px1 : a01 = a11}
+    {p0x : a00 = a01} {p1x : a10 = a11}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 409
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  (* Cubes can be given by DSquares over Paths*)
+ </pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 412
+Time: 0.01s">
+<div class="time" style="width: 0.20271639975674%"></div>
+<pre>Definition cu_ds (s : Square px0 px1 p0x p1x)
+    {b00 : f a00 = g a00} {b01 : f a01 = g a01}
+    {b10 : f a10 = g a10} {b11 : f a11 = g a11}
+    (qx0 : DPath (fun x =&gt; f x = g x) px0 b00 b10)
+    (qx1 : DPath (fun x =&gt; f x = g x) px1 b01 b11)
+    (q0x : DPath (fun x =&gt; f x = g x) p0x b00 b01)
+    (q1x : DPath (fun x =&gt; f x = g x) p1x b10 b11)
+    : DSquare (fun x =&gt; f x = g x) s qx0 qx1 q0x q1x
+    -&gt; Cube (sq_dp qx0) (sq_dp qx1) (sq_dp q0x) (sq_dp q1x)
+        (sq_ap f s) (sq_ap g s).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 421
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 422
+Time: 0.004s">
+<div class="time" style="width: 0.081086559902696%"></div>
+<pre>
+    destruct s.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 423
+Time: 0.006s">
+<div class="time" style="width: 0.12162983985404%"></div>
+<pre>
+    apply cu_GG1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 424
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 425
+Time: 0.005s">
+<div class="time" style="width: 0.10135819987837%"></div>
+<pre>
+
+  Global Instance isequiv_cu_ds {s : Square px0 px1 p0x p1x}
+    {b00 : f a00 = g a00} {b01 : f a01 = g a01}
+    {b10 : f a10 = g a10} {b11 : f a11 = g a11}
+    {qx0 : DPath (fun x =&gt; f x = g x) px0 b00 b10}
+    {qx1 : DPath (fun x =&gt; f x = g x) px1 b01 b11}
+    {q0x : DPath (fun x =&gt; f x = g x) p0x b00 b01}
+    {q1x : DPath (fun x =&gt; f x = g x) p1x b10 b11}
+    : IsEquiv (cu_ds s qx0 qx1 q0x q1x).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 434
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 435
+Time: 0.01s">
+<div class="time" style="width: 0.20271639975674%"></div>
+<pre>
+    unfold cu_ds; destruct s; exact _.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 436
+Time: 0.005s">
+<div class="time" style="width: 0.10135819987837%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 437
+Time: 0.004s">
+<div class="time" style="width: 0.081086559902696%"></div>
+<pre>
+
+End CubeDSquare.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 439
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+
+Arguments cu_ds {_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 441
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Section CubeDPath.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 443
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+
+  Context {A B : Type} {x1 x2 : A} {a00 a01 a10 a11 : A -&gt; B}
+    {px0 : a00 == a10} {px1 : a01 == a11} {p0x : a00 == a01} {p1x : a10 == a11}
+    {f1 : Square (px0 x1) (px1 x1) (p0x x1) (p1x x1)}
+    {f2 : Square (px0 x2) (px1 x2) (p0x x2) (p1x x2)}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 448
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  (* Cubes can be given by DPaths over Squares *)
+ </pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 451
+Time: 0.006s">
+<div class="time" style="width: 0.12162983985404%"></div>
+<pre>Definition cu_dp {p : x1 = x2} 
+    : Cube f1 f2 (sq_dp (dp_apD px0 p)) (sq_dp (dp_apD px1 p))
+       (sq_dp (dp_apD p0x p)) (sq_dp (dp_apD p1x p))
+    -&gt; DPath (fun x =&gt; Square (px0 x) (px1 x) (p0x x) (p1x x)) p f1 f2.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 454
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 455
+Time: 0.019s">
+<div class="time" style="width: 0.38516115953781%"></div>
+<pre>
+    destruct p; apply cu_G11^-1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 456
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 457
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+
+  Global Instance isequiv_cu_dp {p : x1 = x2} : IsEquiv (cu_dp (p:=p)).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 459
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 460
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    unfold cu_dp.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 461
+Time: 0.005s">
+<div class="time" style="width: 0.10135819987837%"></div>
+<pre>
+    destruct p.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 462
+Time: 0.008s">
+<div class="time" style="width: 0.16217311980539%"></div>
+<pre>
+    exact _.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 463
+Time: 0.006s">
+<div class="time" style="width: 0.12162983985404%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 464
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+
+End CubeDPath.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 466
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(* Flipping a cube along the left right direction *)</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 468
+Time: 0.01s">
+<div class="time" style="width: 0.20271639975674%"></div>
+<pre>Definition cu_flip_lr {A} {x000 x010 x100 x110 x001 x011 x101 x111 : A}
+  {p0i0 : x000 = x010} {p1i0 : x100 = x110} {pi00 : x000 = x100}
+  {pi10 : x010 = x110} {p0i1 : x001 = x011} {p1i1 : x101 = x111}
+  {pi01 : x001 = x101} {pi11 : x011 = x111} {p00i : x000 = x001}
+  {p01i : x010 = x011} {p10i : x100 = x101} {p11i : x110 = x111}
+  (s0ii : Square p0i0 p0i1 p00i p01i) (s1ii : Square p1i0 p1i1 p10i p11i)
+  (sii0 : Square p0i0 p1i0 pi00 pi10) (sii1 : Square p0i1 p1i1 pi01 pi11)
+  (si0i : Square p00i p10i pi00 pi01) (si1i : Square p01i p11i pi10 pi11)
+  : Cube s0ii s1ii sii0 sii1 si0i si1i
+  -&gt; Cube s1ii s0ii (sq_flip_h sii0) (sq_flip_h sii1)
+        (sq_flip_h si0i) (sq_flip_h si1i).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 478
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 479
+Time: 0.007s">
+<div class="time" style="width: 0.14190147982972%"></div>
+<pre>
+  destruct si1i, si0i.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 480
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  intro.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 481
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+  refine (cu_GGGGcc _ _ _ _ _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 482
+Time: 0.005s">
+<div class="time" style="width: 0.10135819987837%"></div>
+<pre>
+  1,2,3,4: exact (eisretr sq_G1 _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 483
+Time: 0.039s">
+<div class="time" style="width: 0.79059395905129%"></div>
+<pre>
+  apply cu_GG1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 484
+Time: 0.007s">
+<div class="time" style="width: 0.14190147982972%"></div>
+<pre>
+  apply sq_flip_h^-1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 485
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+  apply cu_GG1^-1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 486
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+  refine (cu_GGGGcc _ _ _ _ _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 487
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+  1,2: exact (eisretr sq_G1 _)^.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 488
+Time: 0.031s">
+<div class="time" style="width: 0.62842083924589%"></div>
+<pre>
+  1,2: by apply moveL_equiv_M, moveL_equiv_M, moveL_equiv_V.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 489
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  exact X.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 490
+Time: 0.011s">
+<div class="time" style="width: 0.22298803973241%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 491
+Time: 0.009s">
+<div class="time" style="width: 0.18244475978107%"></div>
+<pre>
+
+Global Instance isequiv_cu_flip_lr {A}
+  {x000 x010 x100 x110 x001 x011 x101 x111 : A}
+  {p0i0 : x000 = x010} {p1i0 : x100 = x110} {pi00 : x000 = x100}
+  {pi10 : x010 = x110} {p0i1 : x001 = x011} {p1i1 : x101 = x111}
+  {pi01 : x001 = x101} {pi11 : x011 = x111} {p00i : x000 = x001}
+  {p01i : x010 = x011} {p10i : x100 = x101} {p11i : x110 = x111}
+  {s0ii : Square p0i0 p0i1 p00i p01i} {s1ii : Square p1i0 p1i1 p10i p11i}
+  {sii0 : Square p0i0 p1i0 pi00 pi10} {sii1 : Square p0i1 p1i1 pi01 pi11}
+  {si0i : Square p00i p10i pi00 pi01} {si1i : Square p01i p11i pi10 pi11}
+  : IsEquiv (cu_flip_lr s0ii s1ii sii0 sii1 si0i si1i).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 502
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 503
+Time: 0.008s">
+<div class="time" style="width: 0.16217311980539%"></div>
+<pre>
+  destruct si1i, si0i.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 504
+Time: 0.107s">
+<div class="time" style="width: 2.1690654773971%"></div>
+<pre>
+  exact _.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 505
+Time: 0.04s">
+<div class="time" style="width: 0.81086559902696%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 506
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+
+Arguments cu_flip_lr {_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 508
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(* Cube Kan fillers ~ Every open crate has a lid *)
+
+
+</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 512
+Time: 0.005s">
+<div class="time" style="width: 0.10135819987837%"></div>
+<pre>Definition cu_fill_left {A} {x000 x010 x100 x110 x001 x011 x101 x111 : A}
+  {p0i0 : x000 = x010} {p1i0 : x100 = x110} {pi00 : x000 = x100}
+  {pi10 : x010 = x110} {p0i1 : x001 = x011} {p1i1 : x101 = x111}
+  {pi01 : x001 = x101} {pi11 : x011 = x111} {p00i : x000 = x001}
+  {p01i : x010 = x011} {p10i : x100 = x101} {p11i : x110 = x111}
+                                      (s1ii : Square p1i0 p1i1 p10i p11i)
+  (sii0 : Square p0i0 p1i0 pi00 pi10) (sii1 : Square p0i1 p1i1 pi01 pi11)
+  (si0i : Square p00i p10i pi00 pi01) (si1i : Square p01i p11i pi10 pi11)
+  : {s0ii : Square p0i0 p0i1 p00i p01i &amp; Cube s0ii s1ii sii0 sii1 si0i si1i}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 520
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 521
+Time: 0.005s">
+<div class="time" style="width: 0.10135819987837%"></div>
+<pre>
+  destruct si0i, si1i.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 522
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+  set (a := sq_G1^-1 s1ii).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 523
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+  set (b := sq_G1^-1 sii0).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 524
+Time: 0.006s">
+<div class="time" style="width: 0.12162983985404%"></div>
+<pre>
+  set (c := sq_G1^-1 sii1).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 525
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+  rewrite &lt;- (eisretr sq_G1 s1ii).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 526
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+  rewrite &lt;- (eisretr sq_G1 sii0).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 527
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+  rewrite &lt;- (eisretr sq_G1 sii1).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 528
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  change (sq_G1^-1 s1ii) with a.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 529
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  change (sq_G1^-1 sii0) with b.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 530
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  change (sq_G1^-1 sii1) with c.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 531
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  clearbody a b c.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 532
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  clear s1ii sii0 sii1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 533
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+  refine (sq_G1 (b @ a @ c^); _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 534
+Time: 0.011s">
+<div class="time" style="width: 0.22298803973241%"></div>
+<pre>
+  by destruct a, b, c, p0i1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 535
+Time: 0.007s">
+<div class="time" style="width: 0.14190147982972%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 536
+Time: 0.005s">
+<div class="time" style="width: 0.10135819987837%"></div>
+<pre>
+
+Definition cu_fill_right {A} {x000 x010 x100 x110 x001 x011 x101 x111 : A}
+  {p0i0 : x000 = x010} {p1i0 : x100 = x110} {pi00 : x000 = x100}
+  {pi10 : x010 = x110} {p0i1 : x001 = x011} {p1i1 : x101 = x111}
+  {pi01 : x001 = x101} {pi11 : x011 = x111} {p00i : x000 = x001}
+  {p01i : x010 = x011} {p10i : x100 = x101} {p11i : x110 = x111}
+  (s0ii : Square p0i0 p0i1 p00i p01i)
+  (sii0 : Square p0i0 p1i0 pi00 pi10) (sii1 : Square p0i1 p1i1 pi01 pi11)
+  (si0i : Square p00i p10i pi00 pi01) (si1i : Square p01i p11i pi10 pi11)
+  : {s1ii : Square p1i0 p1i1 p10i p11i &amp; Cube s0ii s1ii sii0 sii1 si0i si1i}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 546
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 547
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  refine (_;_).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 548
+Time: 0.007s">
+<div class="time" style="width: 0.14190147982972%"></div>
+<pre>
+  apply cu_flip_lr^-1.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 549
+Time: 0.016s">
+<div class="time" style="width: 0.32434623961078%"></div>
+<pre>
+  apply cu_fill_left.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 550
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 551
+Time: 0.005s">
+<div class="time" style="width: 0.10135819987837%"></div>
+<pre>
+
+Definition cu_fill_top {A} {x000 x010 x100 x110 x001 x011 x101 x111 : A}
+  {p0i0 : x000 = x010} {p1i0 : x100 = x110} {pi00 : x000 = x100}
+  {pi10 : x010 = x110} {p0i1 : x001 = x011} {p1i1 : x101 = x111}
+  {pi01 : x001 = x101} {pi11 : x011 = x111} {p00i : x000 = x001}
+  {p01i : x010 = x011} {p10i : x100 = x101} {p11i : x110 = x111}
+  (s0ii : Square p0i0 p0i1 p00i p01i) (s1ii : Square p1i0 p1i1 p10i p11i)
+                                      (sii1 : Square p0i1 p1i1 pi01 pi11)
+  (si0i : Square p00i p10i pi00 pi01) (si1i : Square p01i p11i pi10 pi11)
+  : {sii0 : Square p0i0 p1i0 pi00 pi10 &amp; Cube s0ii s1ii sii0 sii1 si0i si1i}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 561
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 562
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  refine (_;_).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 563
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+  apply cu_rot_tb_fb.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 564
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+  apply cu_rot_tb_fb.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 565
+Time: 0.008s">
+<div class="time" style="width: 0.16217311980539%"></div>
+<pre>
+  refine (cu_Gccccc (eisretr tr _)^ _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 566
+Time: 0.016s">
+<div class="time" style="width: 0.32434623961078%"></div>
+<pre>
+  apply cu_fill_left.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 567
+Time: 0.012s">
+<div class="time" style="width: 0.24325967970809%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 568
+Time: 0.005s">
+<div class="time" style="width: 0.10135819987837%"></div>
+<pre>
+
+Definition cu_fill_bottom {A} {x000 x010 x100 x110 x001 x011 x101 x111 : A}
+  {p0i0 : x000 = x010} {p1i0 : x100 = x110} {pi00 : x000 = x100}
+  {pi10 : x010 = x110} {p0i1 : x001 = x011} {p1i1 : x101 = x111}
+  {pi01 : x001 = x101} {pi11 : x011 = x111} {p00i : x000 = x001}
+  {p01i : x010 = x011} {p10i : x100 = x101} {p11i : x110 = x111}
+  (s0ii : Square p0i0 p0i1 p00i p01i) (s1ii : Square p1i0 p1i1 p10i p11i)
+  (sii0 : Square p0i0 p1i0 pi00 pi10)
+  (si0i : Square p00i p10i pi00 pi01) (si1i : Square p01i p11i pi10 pi11)
+  : {sii1 : Square p0i1 p1i1 pi01 pi11 &amp; Cube s0ii s1ii sii0 sii1 si0i si1i}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 578
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 579
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  refine (_;_).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 580
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+  apply cu_rot_tb_fb.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 581
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+  apply cu_rot_tb_fb.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 582
+Time: 0.008s">
+<div class="time" style="width: 0.16217311980539%"></div>
+<pre>
+  refine (cu_cGcccc (eisretr tr _)^ _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 583
+Time: 0.016s">
+<div class="time" style="width: 0.32434623961078%"></div>
+<pre>
+  apply cu_fill_right.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 584
+Time: 0.006s">
+<div class="time" style="width: 0.12162983985404%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 585
+Time: 0.005s">
+<div class="time" style="width: 0.10135819987837%"></div>
+<pre>
+
+Definition cu_fill_front {A} {x000 x010 x100 x110 x001 x011 x101 x111 : A}
+  {p0i0 : x000 = x010} {p1i0 : x100 = x110} {pi00 : x000 = x100}
+  {pi10 : x010 = x110} {p0i1 : x001 = x011} {p1i1 : x101 = x111}
+  {pi01 : x001 = x101} {pi11 : x011 = x111} {p00i : x000 = x001}
+  {p01i : x010 = x011} {p10i : x100 = x101} {p11i : x110 = x111}
+  (s0ii : Square p0i0 p0i1 p00i p01i) (s1ii : Square p1i0 p1i1 p10i p11i)
+  (sii0 : Square p0i0 p1i0 pi00 pi10) (sii1 : Square p0i1 p1i1 pi01 pi11)
+                                      (si1i : Square p01i p11i pi10 pi11)
+  : {si0i : Square p00i p10i pi00 pi01 &amp; Cube s0ii s1ii sii0 sii1 si0i si1i}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 595
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 596
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  refine (_;_).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 597
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+  apply cu_rot_tb_fb.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 598
+Time: 0.016s">
+<div class="time" style="width: 0.32434623961078%"></div>
+<pre>
+  apply cu_fill_left.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 599
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 600
+Time: 0.005s">
+<div class="time" style="width: 0.10135819987837%"></div>
+<pre>
+
+Definition cu_fill_back {A} {x000 x010 x100 x110 x001 x011 x101 x111 : A}
+  {p0i0 : x000 = x010} {p1i0 : x100 = x110} {pi00 : x000 = x100}
+  {pi10 : x010 = x110} {p0i1 : x001 = x011} {p1i1 : x101 = x111}
+  {pi01 : x001 = x101} {pi11 : x011 = x111} {p00i : x000 = x001}
+  {p01i : x010 = x011} {p10i : x100 = x101} {p11i : x110 = x111}
+  (s0ii : Square p0i0 p0i1 p00i p01i) (s1ii : Square p1i0 p1i1 p10i p11i)
+  (sii0 : Square p0i0 p1i0 pi00 pi10) (sii1 : Square p0i1 p1i1 pi01 pi11)
+  (si0i : Square p00i p10i pi00 pi01)
+  : {si1i : Square p01i p11i pi10 pi11 &amp; Cube s0ii s1ii sii0 sii1 si0i si1i}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 610
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 611
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  refine (_;_).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 612
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+  apply cu_rot_tb_fb.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 613
+Time: 0.016s">
+<div class="time" style="width: 0.32434623961078%"></div>
+<pre>
+  apply cu_fill_right.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 614
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 615
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(* Cube concatenation *)</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 617
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Section CubeConcat.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 617
+Time: 0.014s">
+<div class="time" style="width: 0.28380295965944%"></div>
+<pre>
+
+  Context {A} {x000 x010 x100 x110 x001 x011 x101 x111 x201 x200 x210 x211 : A}
+    {p0i0 : x000 = x010} {p1i0 : x100 = x110} {pi00 : x000 = x100}
+    {pi10 : x010 = x110} {p0i1 : x001 = x011} {p1i1 : x101 = x111}
+    {pi01 : x001 = x101} {pi11 : x011 = x111} {p00i : x000 = x001}
+    {p01i : x010 = x011} {p10i : x100 = x101} {p11i : x110 = x111}
+    {pj01 : x101 = x201} {pj11 : x111 = x211} {pj10 : x110 = x210}
+    {pj00 : x100 = x200} {p2i1 : x201 = x211} {p2i0 : x200 = x210}
+    {p20i : x200 = x201} {p21i : x210 = x211}
+    {s0ii : Square p0i0 p0i1 p00i p01i} {s1ii : Square p1i0 p1i1 p10i p11i}
+    {sii0 : Square p0i0 p1i0 pi00 pi10} {sii1 : Square p0i1 p1i1 pi01 pi11}
+    {si0i : Square p00i p10i pi00 pi01} {si1i : Square p01i p11i pi10 pi11}
+    {sji0 : Square p1i0 p2i0 pj00 pj10} {sji1 : Square p1i1 p2i1 pj01 pj11}
+    {sj0i : Square p10i p20i pj00 pj01} {sj1i : Square p11i p21i pj10 pj11}
+    {s2ii : Square p2i0 p2i1 p20i p21i}.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 632
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  (* We only define left right concatenation for now since that is what we
+     need. The other concatenations will not be as nice however, due to the
+     orientation of the faces of the cubes. *)
+
+  (* TODO: Work out why this is so slow *)
+  (* Left right concatenation *)
+ </pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 640
+Time: 0.013s">
+<div class="time" style="width: 0.26353131968376%"></div>
+<pre>Definition cu_concat_lr : Cube s0ii s1ii sii0 sii1 si0i si1i
+    -&gt; Cube s1ii s2ii sji0 sji1 sj0i sj1i
+    -&gt; Cube s0ii s2ii (sq_concat_h sii0 sji0) (sq_concat_h sii1 sji1)
+         (sq_concat_h si0i sj0i) (sq_concat_h si1i sj1i).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 643
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 644
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    intros a b.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 645
+Time: 0.013s">
+<div class="time" style="width: 0.26353131968376%"></div>
+<pre>
+    destruct b.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 646
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    unfold sq_concat_h.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 647
+Time: 4.933s">
+<div class="time" style="width: 100%"></div>
+<pre>
+    by destruct a.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 648
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 649
+Time: 0.002s">
+<div class="time" style="width: 0.040543279951348%"></div>
+<pre>
+
+End CubeConcat.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 651
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(* Notation for left right concatenation *)</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 653
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Notation "x '@lr' y" := (cu_concat_lr x y) (at level 10) : cube_scope.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 653
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Local Notation apc := (ap_compose_sq _ _ _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 655
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(* sq_ap analogue for ap_compse *)</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 657
+Time: 0.009s">
+<div class="time" style="width: 0.18244475978107%"></div>
+<pre>Definition sq_ap_compose {A B C : Type} {a00 a10 a01 a11 : A}
+  {px0 : a00 = a10} {px1 : a01 = a11} {p0x : a00 = a01} {p1x : a10 = a11}
+  (f : A -&gt; B) (g : B -&gt; C) (s : Square px0 px1 p0x p1x)
+  : Cube (sq_ap (g o f) s) (sq_ap g (sq_ap f s)) apc apc apc apc.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 660
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 661
+Time: 0.014s">
+<div class="time" style="width: 0.28380295965944%"></div>
+<pre>
+  by destruct s.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 662
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 663
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Local Notation api := (ap_idmap_sq _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 665
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(* sq_ap analogue for ap_idmap *)</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 667
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>Definition sq_ap_idmap {A : Type} {a00 a10 a01 a11 : A}
+  {px0 : a00 = a10} {px1 : a01 = a11} {p0x : a00 = a01} {p1x : a10 = a11}
+  (s : Square px0 px1 p0x p1x)
+  : Cube (sq_ap idmap s) s api api api api.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 670
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 671
+Time: 0.008s">
+<div class="time" style="width: 0.16217311980539%"></div>
+<pre>
+  by destruct s.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 672
+Time: 0.001s">
+<div class="time" style="width: 0.020271639975674%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 673
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Local Notation apn := (ap_nat _ _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 675
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(* sq_ap analogue for ap_nat *)</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 677
+Time: 0.006s">
+<div class="time" style="width: 0.12162983985404%"></div>
+<pre>Definition sq_ap_nat
+  {A B : Type} {a00 a10 a01 a11 : A} (f f' : A -&gt; B) (h : f == f')
+  {px0 : a00 = a10} {px1 : a01 = a11} {p0x : a00 = a01} {p1x : a10 = a11}
+  (s : Square px0 px1 p0x p1x)
+  : Cube (sq_ap f s) (sq_ap f' s) (ap_nat h _) apn apn apn.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 681
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 682
+Time: 0.047s">
+<div class="time" style="width: 0.95276707885668%"></div>
+<pre>
+  destruct s as [x]; cbn; by destruct (h x).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 683
+Time: 0.008s">
+<div class="time" style="width: 0.16217311980539%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 684
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(* Uncurry a function in sq_ap2 *)</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 686
+Time: 0.016s">
+<div class="time" style="width: 0.32434623961078%"></div>
+<pre>Definition sq_ap_uncurry {A B C} (f : A -&gt; B -&gt; C)
+  {a a' : A} (p : a = a') {b b' : B} (q : b = b')
+  : Cube (sq_ap (uncurry f) (sq_prod hr vr)) (sq_ap2 f p q)
+  (ap_uncurry _ _ _) (ap_uncurry _ _ _) (ap_uncurry _ _ _) (ap_uncurry _ _ _).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 689
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 690
+Time: 0.02s">
+<div class="time" style="width: 0.40543279951348%"></div>
+<pre>
+  by destruct p, q.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 691
+Time: 0.006s">
+<div class="time" style="width: 0.12162983985404%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 692
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(* ap for cubes *)</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 694
+Time: 0.022s">
+<div class="time" style="width: 0.44597607946483%"></div>
+<pre>Definition cu_ap {A B} {x000 x010 x100 x110 x001 x011 x101 x111 : A}
+  {p0i0 : x000 = x010} {p1i0 : x100 = x110} {pi00 : x000 = x100}
+  {pi10 : x010 = x110} {p0i1 : x001 = x011} {p1i1 : x101 = x111}
+  {pi01 : x001 = x101} {pi11 : x011 = x111} {p00i : x000 = x001}
+  {p01i : x010 = x011} {p10i : x100 = x101} {p11i : x110 = x111}
+  {s0ii : Square p0i0 p0i1 p00i p01i} {s1ii : Square p1i0 p1i1 p10i p11i}
+  {sii0 : Square p0i0 p1i0 pi00 pi10} {sii1 : Square p0i1 p1i1 pi01 pi11}
+  {si0i : Square p00i p10i pi00 pi01} {si1i : Square p01i p11i pi10 pi11}
+  (f : A -&gt; B) (c : Cube s0ii s1ii sii0 sii1 si0i si1i)
+  : Cube (sq_ap f s0ii) (sq_ap f s1ii) (sq_ap f sii0)
+     (sq_ap f sii1) (sq_ap f si0i) (sq_ap f si1i).</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 704
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 705
+Time: 0.019s">
+<div class="time" style="width: 0.38516115953781%"></div>
+<pre>
+  by destruct c.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 706
+Time: 0.003s">
+<div class="time" style="width: 0.060814919927022%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Cube.v
+Line: 708
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>

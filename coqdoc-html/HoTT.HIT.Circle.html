@@ -36,6 +36,9 @@
 <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Spaces.Int.html#"><span class="id" title="library">Spaces.Int</span></a>.<br/>
 <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.HIT.Coeq.html#"><span class="id" title="library">HIT.Coeq</span></a>.<br/>
 <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Modalities.Modality.html#"><span class="id" title="library">Modalities.Modality</span></a> <a class="idref" href="HoTT.HIT.Truncations.html#"><span class="id" title="library">HIT.Truncations</span></a> <a class="idref" href="HoTT.HIT.Connectedness.html#"><span class="id" title="library">HIT.Connectedness</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Cubical.DPath.html#"><span class="id" title="library">Cubical.DPath</span></a>.<br/>
+
+<br/>
 <span class="id" title="keyword">Import</span> <span class="id" title="var">TrM</span>.<br/>
 <span class="id" title="keyword">Local Open</span> <span class="id" title="keyword">Scope</span> <span class="id" title="var">path_scope</span>.<br/>
 
@@ -114,6 +117,9 @@ But we want to allow the user to forget that we've defined the circle in that wa
 <span class="id" title="keyword">Defined</span>.<br/>
 
 <br/>
+
+<br/>
+<span class="id" title="keyword">Global Instance</span> <a name="ispointed_S1"><span class="id" title="instance">ispointed_S1</span></a> : <a class="idref" href="HoTT.Basics.Overture.html#IsPointed"><span class="id" title="class">IsPointed</span></a> <a class="idref" href="HoTT.HIT.Circle.html#S1"><span class="id" title="definition">S1</span></a> := <a class="idref" href="HoTT.HIT.Circle.html#base"><span class="id" title="definition">base</span></a>.<br/>
 
 <br/>
 </div>
@@ -282,6 +288,21 @@ It follows that the circle is a 1-type.
 
 <br/>
 <span class="id" title="keyword">End</span> <a class="idref" href="HoTT.HIT.Circle.html#AssumeUnivalence"><span class="id" title="section">AssumeUnivalence</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="S1_ind_dp"><span class="id" title="definition">S1_ind_dp</span></a> (<span class="id" title="var">P</span> : <a class="idref" href="HoTT.HIT.Circle.html#S1"><span class="id" title="definition">S1</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <span class="id" title="keyword">Type</span>) (<span class="id" title="var">b</span> : <a class="idref" href="HoTT.HIT.Circle.html#P"><span class="id" title="variable">P</span></a> <a class="idref" href="HoTT.HIT.Circle.html#base"><span class="id" title="definition">base</span></a>)<br/>
+&nbsp;&nbsp;(<span class="id" title="var">bl</span> : <a class="idref" href="HoTT.Cubical.DPath.html#DPath"><span class="id" title="definition">DPath</span></a> <a class="idref" href="HoTT.HIT.Circle.html#P"><span class="id" title="variable">P</span></a> <a class="idref" href="HoTT.HIT.Circle.html#loop"><span class="id" title="definition">loop</span></a> <a class="idref" href="HoTT.HIT.Circle.html#b"><span class="id" title="variable">b</span></a> <a class="idref" href="HoTT.HIT.Circle.html#b"><span class="id" title="variable">b</span></a>) (<span class="id" title="var">x</span> : <a class="idref" href="HoTT.HIT.Circle.html#S1"><span class="id" title="definition">S1</span></a>) : <a class="idref" href="HoTT.HIT.Circle.html#P"><span class="id" title="variable">P</span></a> <a class="idref" href="HoTT.HIT.Circle.html#x"><span class="id" title="variable">x</span></a><br/>
+&nbsp;&nbsp;:= <a class="idref" href="HoTT.HIT.Circle.html#S1_ind"><span class="id" title="definition">S1_ind</span></a> <a class="idref" href="HoTT.HIT.Circle.html#P"><span class="id" title="variable">P</span></a> <a class="idref" href="HoTT.HIT.Circle.html#b"><span class="id" title="variable">b</span></a> (<a class="idref" href="HoTT.Cubical.DPath.html#dp_path_transport"><span class="id" title="definition">dp_path_transport</span></a><a class="idref" href="HoTT.Basics.Overture.html#f3f2d22838b594a6e5dbfb541ecf90ae"><span class="id" title="notation">^-1</span></a> <a class="idref" href="HoTT.HIT.Circle.html#bl"><span class="id" title="variable">bl</span></a>) <a class="idref" href="HoTT.HIT.Circle.html#x"><span class="id" title="variable">x</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="S1_ind_dp_beta_loop"><span class="id" title="definition">S1_ind_dp_beta_loop</span></a> (<span class="id" title="var">P</span> : <a class="idref" href="HoTT.HIT.Circle.html#S1"><span class="id" title="definition">S1</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <span class="id" title="keyword">Type</span>) (<span class="id" title="var">b</span> : <a class="idref" href="HoTT.HIT.Circle.html#P"><span class="id" title="variable">P</span></a> <a class="idref" href="HoTT.HIT.Circle.html#base"><span class="id" title="definition">base</span></a>)<br/>
+&nbsp;&nbsp;(<span class="id" title="var">bl</span> : <a class="idref" href="HoTT.Cubical.DPath.html#DPath"><span class="id" title="definition">DPath</span></a> <a class="idref" href="HoTT.HIT.Circle.html#P"><span class="id" title="variable">P</span></a> <a class="idref" href="HoTT.HIT.Circle.html#loop"><span class="id" title="definition">loop</span></a> <a class="idref" href="HoTT.HIT.Circle.html#b"><span class="id" title="variable">b</span></a> <a class="idref" href="HoTT.HIT.Circle.html#b"><span class="id" title="variable">b</span></a>) : <a class="idref" href="HoTT.Cubical.DPath.html#dp_apD"><span class="id" title="definition">dp_apD</span></a> (<a class="idref" href="HoTT.HIT.Circle.html#S1_ind_dp"><span class="id" title="definition">S1_ind_dp</span></a> <a class="idref" href="HoTT.HIT.Circle.html#P"><span class="id" title="variable">P</span></a> <a class="idref" href="HoTT.HIT.Circle.html#b"><span class="id" title="variable">b</span></a> <a class="idref" href="HoTT.HIT.Circle.html#bl"><span class="id" title="variable">bl</span></a>) <a class="idref" href="HoTT.HIT.Circle.html#loop"><span class="id" title="definition">loop</span></a> <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.HIT.Circle.html#bl"><span class="id" title="variable">bl</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Cubical.DPath.html#dp_apD_path_transport"><span class="id" title="definition">dp_apD_path_transport</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">exact</span> (<a class="idref" href="HoTT.HIT.Circle.html#S1_ind_beta_loop"><span class="id" title="definition">S1_ind_beta_loop</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span>).<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
 </div>
 </div>
 
