@@ -533,17 +533,17 @@
           
 
             i = 103;
-            data = "1 subgoal (ID 194)	  	  A : Type	  B : Type	  a : A	  ============================	  Decidable {x : A & inl x = inl a}	";
+            data = "1 subgoal (ID 194)	  	  A : Type	  B : Type	  a : A	  ============================	  Decidable {x : A & inl x = inl a}	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	";
             responses[i]=data;
           
 
             i = 104;
-            data = "<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	1 subgoal (ID 196)		subgoal 1 (ID 196) is:	 Decidable {x : A & inl x = inr b}	1 subgoal (ID 196)	  	  A : Type	  B : Type	  b : B	  ============================	  Decidable {x : A & inl x = inr b}	No more subgoals.	";
+            data = "1 subgoal (ID 196)		subgoal 1 (ID 196) is:	 Decidable {x : A & inl x = inr b}	";
             responses[i]=data;
           
 
             i = 105;
-            data = "";
+            data = "1 subgoal (ID 196)	  	  A : Type	  B : Type	  b : B	  ============================	  Decidable {x : A & inl x = inr b}	No more subgoals.	";
             responses[i]=data;
           
 
@@ -568,12 +568,12 @@
           
 
             i = 110;
-            data = "1 subgoal (ID 204)	  	  A : Type	  B : Type	  b : B	  ============================	  IsHProp {x : B & inr x = inr b}	No more subgoals.	";
+            data = "1 subgoal (ID 204)	  	  A : Type	  B : Type	  b : B	  ============================	  IsHProp {x : B & inr x = inr b}	";
             responses[i]=data;
           
 
             i = 111;
-            data = "";
+            data = "No more subgoals.	";
             responses[i]=data;
           
 
@@ -2748,12 +2748,12 @@
           
 
             i = 546;
-            data = "1 subgoal (ID 912)	  	  A : Type	  B : Type	  C : Type	  ============================	  Sect	    (fun X : A + B + C =>	     match X with	     | inl (inl a) => inl a	     | inl (inr b) => inr (inl b)	     | inr c => inr (inr c)	     end)	    (fun X : A + (B + C) =>	     match X with	     | inl a => inl (inl a)	     | inr (inl b) => inl (inr b)	     | inr (inr c) => inr c	     end)	";
+            data = "1 subgoal (ID 912)	  	  A : Type	  B : Type	  C : Type	  ============================	  Sect	    (fun X : A + B + C =>	     match X with	     | inl (inl a) => inl a	     | inl (inr b) => inr (inl b)	     | inr c => inr (inr c)	     end)	    (fun X : A + (B + C) =>	     match X with	     | inl a => inl (inl a)	     | inr (inl b) => inl (inr b)	     | inr (inr c) => inr c	     end)	No more subgoals.	";
             responses[i]=data;
           
 
             i = 547;
-            data = "No more subgoals.	";
+            data = "";
             responses[i]=data;
           
 
@@ -2903,12 +2903,12 @@
           
 
             i = 577;
-            data = "1 subgoal (ID 1013)	  	  A : Type	  B : Type	  C : Type	  ============================	  Sect	    (fun abc : A * (B + C) =>	     let a := fst abc in	     let bc := snd abc in	     match bc with	     | inl b => inl (a, b)	     | inr c => inr (a, c)	     end)	    (fun ax : A * B + A * C =>	     match ax with	     | inl p =>	         let p0 := p in let a := fst p0 in let b := snd p0 in (a, inl b)	     | inr p =>	         let p0 := p in let a := fst p0 in let c := snd p0 in (a, inr c)	     end)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	1 subgoal (ID 1015)		subgoal 1 (ID 1015) is:	 forall x : A * (B + C),	 (fun x0 : A * B + A * C =>	  match	    x0 as s	    return	      ((let a :=	          fst	            match s with	            | inl p =>	                let p0 := p in	                let a := fst p0 in let b := snd p0 in (a, inl b)	            | inr p =>	                let p0 := p in	                let a := fst p0 in let c := snd p0 in (a, inr c)	            end in	        let bc :=	          snd	            match s with	            | inl p =>	                let p0 := p in	                let a0 := fst p0 in let b := snd p0 in (a0, inl b)	            | inr p =>	                let p0 := p in	                let a0 := fst p0 in let c := snd p0 in (a0, inr c)	            end in	        match bc with	        | inl b => inl (a, b)	        | inr c => inr (a, c)	        end) = s)	  with	  | inl p => (fun (a : A) (b : B) => 1) (fst p) (snd p)	  | inr p => (fun (a : A) (c : C) => 1) (fst p) (snd p)	  end)	   ((fun abc : A * (B + C) =>	     let a := fst abc in	     let bc := snd abc in	     match bc with	     | inl b => inl (a, b)	     | inr c => inr (a, c)	     end) x) =	 ap	   (fun abc : A * (B + C) =>	    let a := fst abc in	    let bc := snd abc in	    match bc with	    | inl b => inl (a, b)	    | inr c => inr (a, c)	    end)	   ((fun x0 : A * (B + C) =>	     (fun (a : A) (snd : B + C) =>	      match	        snd as s	        return	          (match	             (let a0 := a in	              let bc := s in	              match bc with	              | inl b => inl (a0, b)	              | inr c => inr (a0, c)	              end)	           with	           | inl p =>	               let p0 := p in	               let a0 := fst p0 in let b := Datatypes.snd p0 in (a0, inl b)	           | inr p =>	               let p0 := p in	               let a0 := fst p0 in let c := Datatypes.snd p0 in (a0, inr c)	           end = (a, s))	      with	      | inl b => 1	      | inr c => 1	      end) (fst x0) (snd x0)) x)	";
+            data = "1 subgoal (ID 1013)	  	  A : Type	  B : Type	  C : Type	  ============================	  Sect	    (fun abc : A * (B + C) =>	     let a := fst abc in	     let bc := snd abc in	     match bc with	     | inl b => inl (a, b)	     | inr c => inr (a, c)	     end)	    (fun ax : A * B + A * C =>	     match ax with	     | inl p =>	         let p0 := p in let a := fst p0 in let b := snd p0 in (a, inl b)	     | inr p =>	         let p0 := p in let a := fst p0 in let c := snd p0 in (a, inr c)	     end)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	";
             responses[i]=data;
           
 
             i = 578;
-            data = "1 subgoal (ID 1015)	  	  A : Type	  B : Type	  C : Type	  ============================	  forall x : A * (B + C),	  (fun x0 : A * B + A * C =>	   match	     x0 as s	     return	       ((let a :=	           fst	             match s with	             | inl p =>	                 let p0 := p in	                 let a := fst p0 in let b := snd p0 in (a, inl b)	             | inr p =>	                 let p0 := p in	                 let a := fst p0 in let c := snd p0 in (a, inr c)	             end in	         let bc :=	           snd	             match s with	             | inl p =>	                 let p0 := p in	                 let a0 := fst p0 in let b := snd p0 in (a0, inl b)	             | inr p =>	                 let p0 := p in	                 let a0 := fst p0 in let c := snd p0 in (a0, inr c)	             end in	         match bc with	         | inl b => inl (a, b)	         | inr c => inr (a, c)	         end) = s)	   with	   | inl p => (fun (a : A) (b : B) => 1) (fst p) (snd p)	   | inr p => (fun (a : A) (c : C) => 1) (fst p) (snd p)	   end)	    ((fun abc : A * (B + C) =>	      let a := fst abc in	      let bc := snd abc in	      match bc with	      | inl b => inl (a, b)	      | inr c => inr (a, c)	      end) x) =	  ap	    (fun abc : A * (B + C) =>	     let a := fst abc in	     let bc := snd abc in	     match bc with	     | inl b => inl (a, b)	     | inr c => inr (a, c)	     end)	    ((fun x0 : A * (B + C) =>	      (fun (a : A) (snd : B + C) =>	       match	         snd as s	         return	           (match	              (let a0 := a in	               let bc := s in	               match bc with	               | inl b => inl (a0, b)	               | inr c => inr (a0, c)	               end)	            with	            | inl p =>	                let p0 := p in	                let a0 := fst p0 in let b := Datatypes.snd p0 in (a0, inl b)	            | inr p =>	                let p0 := p in	                let a0 := fst p0 in let c := Datatypes.snd p0 in (a0, inr c)	            end = (a, s))	       with	       | inl b => 1	       | inr c => 1	       end) (fst x0) (snd x0)) x)	No more subgoals.	";
+            data = "1 subgoal (ID 1015)		subgoal 1 (ID 1015) is:	 forall x : A * (B + C),	 (fun x0 : A * B + A * C =>	  match	    x0 as s	    return	      ((let a :=	          fst	            match s with	            | inl p =>	                let p0 := p in	                let a := fst p0 in let b := snd p0 in (a, inl b)	            | inr p =>	                let p0 := p in	                let a := fst p0 in let c := snd p0 in (a, inr c)	            end in	        let bc :=	          snd	            match s with	            | inl p =>	                let p0 := p in	                let a0 := fst p0 in let b := snd p0 in (a0, inl b)	            | inr p =>	                let p0 := p in	                let a0 := fst p0 in let c := snd p0 in (a0, inr c)	            end in	        match bc with	        | inl b => inl (a, b)	        | inr c => inr (a, c)	        end) = s)	  with	  | inl p => (fun (a : A) (b : B) => 1) (fst p) (snd p)	  | inr p => (fun (a : A) (c : C) => 1) (fst p) (snd p)	  end)	   ((fun abc : A * (B + C) =>	     let a := fst abc in	     let bc := snd abc in	     match bc with	     | inl b => inl (a, b)	     | inr c => inr (a, c)	     end) x) =	 ap	   (fun abc : A * (B + C) =>	    let a := fst abc in	    let bc := snd abc in	    match bc with	    | inl b => inl (a, b)	    | inr c => inr (a, c)	    end)	   ((fun x0 : A * (B + C) =>	     (fun (a : A) (snd : B + C) =>	      match	        snd as s	        return	          (match	             (let a0 := a in	              let bc := s in	              match bc with	              | inl b => inl (a0, b)	              | inr c => inr (a0, c)	              end)	           with	           | inl p =>	               let p0 := p in	               let a0 := fst p0 in let b := Datatypes.snd p0 in (a0, inl b)	           | inr p =>	               let p0 := p in	               let a0 := fst p0 in let c := Datatypes.snd p0 in (a0, inr c)	           end = (a, s))	      with	      | inl b => 1	      | inr c => 1	      end) (fst x0) (snd x0)) x)	1 subgoal (ID 1015)	  	  A : Type	  B : Type	  C : Type	  ============================	  forall x : A * (B + C),	  (fun x0 : A * B + A * C =>	   match	     x0 as s	     return	       ((let a :=	           fst	             match s with	             | inl p =>	                 let p0 := p in	                 let a := fst p0 in let b := snd p0 in (a, inl b)	             | inr p =>	                 let p0 := p in	                 let a := fst p0 in let c := snd p0 in (a, inr c)	             end in	         let bc :=	           snd	             match s with	             | inl p =>	                 let p0 := p in	                 let a0 := fst p0 in let b := snd p0 in (a0, inl b)	             | inr p =>	                 let p0 := p in	                 let a0 := fst p0 in let c := snd p0 in (a0, inr c)	             end in	         match bc with	         | inl b => inl (a, b)	         | inr c => inr (a, c)	         end) = s)	   with	   | inl p => (fun (a : A) (b : B) => 1) (fst p) (snd p)	   | inr p => (fun (a : A) (c : C) => 1) (fst p) (snd p)	   end)	    ((fun abc : A * (B + C) =>	      let a := fst abc in	      let bc := snd abc in	      match bc with	      | inl b => inl (a, b)	      | inr c => inr (a, c)	      end) x) =	  ap	    (fun abc : A * (B + C) =>	     let a := fst abc in	     let bc := snd abc in	     match bc with	     | inl b => inl (a, b)	     | inr c => inr (a, c)	     end)	    ((fun x0 : A * (B + C) =>	      (fun (a : A) (snd : B + C) =>	       match	         snd as s	         return	           (match	              (let a0 := a in	               let bc := s in	               match bc with	               | inl b => inl (a0, b)	               | inr c => inr (a0, c)	               end)	            with	            | inl p =>	                let p0 := p in	                let a0 := fst p0 in let b := Datatypes.snd p0 in (a0, inl b)	            | inr p =>	                let p0 := p in	                let a0 := fst p0 in let c := Datatypes.snd p0 in (a0, inr c)	            end = (a, s))	       with	       | inl b => 1	       | inr c => 1	       end) (fst x0) (snd x0)) x)	No more subgoals.	";
             responses[i]=data;
           
 

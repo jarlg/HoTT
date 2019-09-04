@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="coqdoc.css" rel="stylesheet" type="text/css" />
+<title>HoTT.Pointed.Core</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library HoTT.Pointed.Core</h1>
+
+<div class="code">
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Basics.html#"><span class="id" title="library">Basics</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Types.html#"><span class="id" title="library">Types</span></a>.<br/>
+
+<br/>
+<span class="id" title="var">Declare</span> <span class="id" title="keyword">Scope</span> <span class="id" title="var">pointed_scope</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Local Open</span> <span class="id" title="keyword">Scope</span> <span class="id" title="var">pointed_scope</span>.<br/>
+<span class="id" title="keyword">Local Open</span> <span class="id" title="keyword">Scope</span> <span class="id" title="var">path_scope</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Generalizable</span> <span class="id" title="keyword">Variables</span> <span class="id" title="var">A</span> <span class="id" title="var">B</span> <span class="id" title="var">f</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab495"></a><h1 class="section">Pointed Types</h1>
+
+<div class="paragraph"> </div>
+
+ A sigma type of pointed components is pointed. 
+</div>
+<div class="code">
+<span class="id" title="keyword">Global Instance</span> <a name="ispointed_sigma"><span class="id" title="instance">ispointed_sigma</span></a> `{<a class="idref" href="HoTT.Basics.Overture.html#IsPointed"><span class="id" title="class">IsPointed</span></a> <span class="id" title="var">A</span>} `{<a class="idref" href="HoTT.Basics.Overture.html#IsPointed"><span class="id" title="class">IsPointed</span></a> (<span class="id" title="var">B</span> (<a class="idref" href="HoTT.Basics.Overture.html#point"><span class="id" title="definition">point</span></a> <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a>))}<br/>
+: <a class="idref" href="HoTT.Basics.Overture.html#IsPointed"><span class="id" title="class">IsPointed</span></a> (<a class="idref" href="Coq.Init.Specif.html#sigT"><span class="id" title="abbreviation">sigT</span></a> <a class="idref" href="HoTT.Pointed.Core.html#B"><span class="id" title="variable">B</span></a>)<br/>
+&nbsp;&nbsp;:= <a class="idref" href="HoTT.Basics.Overture.html#9302c87983df9fcf813fed38017558ae"><span class="id" title="notation">(</span></a><a class="idref" href="HoTT.Basics.Overture.html#point"><span class="id" title="definition">point</span></a> <span class="id" title="var">A</span><a class="idref" href="HoTT.Basics.Overture.html#9302c87983df9fcf813fed38017558ae"><span class="id" title="notation">;</span></a> <a class="idref" href="HoTT.Basics.Overture.html#point"><span class="id" title="definition">point</span></a> (<span class="id" title="var">B</span> (<a class="idref" href="HoTT.Basics.Overture.html#point"><span class="id" title="definition">point</span></a> <span class="id" title="var">A</span>))<a class="idref" href="HoTT.Basics.Overture.html#9302c87983df9fcf813fed38017558ae"><span class="id" title="notation">)</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+A cartesian product of pointed types is pointed. 
+</div>
+<div class="code">
+<span class="id" title="keyword">Global Instance</span> <a name="ispointed_prod"><span class="id" title="instance">ispointed_prod</span></a> `{<a class="idref" href="HoTT.Basics.Overture.html#IsPointed"><span class="id" title="class">IsPointed</span></a> <span class="id" title="var">A</span>, <a class="idref" href="HoTT.Basics.Overture.html#IsPointed"><span class="id" title="class">IsPointed</span></a> <span class="id" title="var">B</span>} : <a class="idref" href="HoTT.Basics.Overture.html#IsPointed"><span class="id" title="class">IsPointed</span></a> (<a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="Coq.Init.Datatypes.html#11c698c8685bb8ab1cf725545c085ac4"><span class="id" title="notation">×</span></a> <a class="idref" href="HoTT.Pointed.Core.html#B"><span class="id" title="variable">B</span></a>)<br/>
+&nbsp;&nbsp;:= <a class="idref" href="Coq.Init.Datatypes.html#e6756e10c36f149b18b4a8741ed83079"><span class="id" title="notation">(</span></a><a class="idref" href="HoTT.Basics.Overture.html#point"><span class="id" title="definition">point</span></a> <span class="id" title="var">A</span><a class="idref" href="Coq.Init.Datatypes.html#e6756e10c36f149b18b4a8741ed83079"><span class="id" title="notation">,</span></a> <a class="idref" href="HoTT.Basics.Overture.html#point"><span class="id" title="definition">point</span></a> <span class="id" title="var">B</span><a class="idref" href="Coq.Init.Datatypes.html#e6756e10c36f149b18b4a8741ed83079"><span class="id" title="notation">)</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Notation</span> <a name="867ca46dea6d6884af1893325332ab7c"><span class="id" title="notation">&quot;</span></a>X * Y" := (<a class="idref" href="HoTT.Basics.Overture.html#Build_pType"><span class="id" title="constructor">Build_pType</span></a> (<span class="id" title="var">X</span> <a class="idref" href="Coq.Init.Datatypes.html#11c698c8685bb8ab1cf725545c085ac4"><span class="id" title="notation">×</span></a> <span class="id" title="var">Y</span>) <a class="idref" href="HoTT.Pointed.Core.html#ispointed_prod"><span class="id" title="instance">ispointed_prod</span></a>) : <span class="id" title="var">pointed_scope</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab496"></a><h2 class="section">Pointed functions</h2>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Record</span> <a name="pMap"><span class="id" title="record">pMap</span></a> (<span class="id" title="var">A</span> <span class="id" title="var">B</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>) :=<br/>
+&nbsp;&nbsp;{ <a name="pointed_fun"><span class="id" title="projection">pointed_fun</span></a> : <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Pointed.Core.html#B"><span class="id" title="variable">B</span></a> ;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="point_eq"><span class="id" title="projection">point_eq</span></a> : <a class="idref" href="HoTT.Pointed.Core.html#pointed_fun"><span class="id" title="method">pointed_fun</span></a> (<a class="idref" href="HoTT.Basics.Overture.html#point"><span class="id" title="definition">point</span></a> <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a>) <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Basics.Overture.html#point"><span class="id" title="definition">point</span></a> <a class="idref" href="HoTT.Pointed.Core.html#B"><span class="id" title="variable">B</span></a> }.<br/>
+
+<br/>
+<span class="id" title="var">Arguments</span> <a class="idref" href="HoTT.Pointed.Core.html#point_eq"><span class="id" title="projection">point_eq</span></a> {<span class="id" title="var">A</span> <span class="id" title="var">B</span>} <span class="id" title="var">f</span> : <span class="id" title="tactic">rename</span>.<br/>
+<span class="id" title="keyword">Coercion</span> <a class="idref" href="HoTT.Pointed.Core.html#pointed_fun"><span class="id" title="projection">pointed_fun</span></a> <a class="idref" href="HoTT.Pointed.Core.html#pointed_fun"><span class="id" title="projection">:</span></a> <a class="idref" href="HoTT.Pointed.Core.html#pointed_fun"><span class="id" title="projection">pMap</span></a> <a class="idref" href="HoTT.Pointed.Core.html#pointed_fun"><span class="id" title="projection">&gt;-&gt;</span></a> <a class="idref" href="HoTT.Pointed.Core.html#pointed_fun"><span class="id" title="projection">Funclass</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Infix</span> <a name="dce20fa1e59aa814d0a053d0ce7a8a86"><span class="id" title="notation">&quot;</span></a>-&gt;*" := <a class="idref" href="HoTT.Pointed.Core.html#pMap"><span class="id" title="record">pMap</span></a> : <span class="id" title="var">pointed_scope</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="pmap_idmap"><span class="id" title="definition">pmap_idmap</span></a> {<span class="id" title="var">A</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>} : <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Pointed.Core.html#dce20fa1e59aa814d0a053d0ce7a8a86"><span class="id" title="notation">-&gt;*</span></a> <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a><br/>
+&nbsp;&nbsp;:= <a class="idref" href="HoTT.Pointed.Core.html#Build_pMap"><span class="id" title="constructor">Build_pMap</span></a> <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Basics.Overture.html#idmap"><span class="id" title="abbreviation">idmap</span></a> 1.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="pmap_compose"><span class="id" title="definition">pmap_compose</span></a> {<span class="id" title="var">A</span> <span class="id" title="var">B</span> <span class="id" title="var">C</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" title="var">g</span> : <a class="idref" href="HoTT.Pointed.Core.html#B"><span class="id" title="variable">B</span></a> <a class="idref" href="HoTT.Pointed.Core.html#dce20fa1e59aa814d0a053d0ce7a8a86"><span class="id" title="notation">-&gt;*</span></a> <a class="idref" href="HoTT.Pointed.Core.html#C"><span class="id" title="variable">C</span></a>) (<span class="id" title="var">f</span> : <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Pointed.Core.html#dce20fa1e59aa814d0a053d0ce7a8a86"><span class="id" title="notation">-&gt;*</span></a> <a class="idref" href="HoTT.Pointed.Core.html#B"><span class="id" title="variable">B</span></a>)<br/>
+: <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Pointed.Core.html#dce20fa1e59aa814d0a053d0ce7a8a86"><span class="id" title="notation">-&gt;*</span></a> <a class="idref" href="HoTT.Pointed.Core.html#C"><span class="id" title="variable">C</span></a><br/>
+&nbsp;&nbsp;:= <a class="idref" href="HoTT.Pointed.Core.html#Build_pMap"><span class="id" title="constructor">Build_pMap</span></a> <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Pointed.Core.html#C"><span class="id" title="variable">C</span></a> (<a class="idref" href="HoTT.Pointed.Core.html#g"><span class="id" title="variable">g</span></a> <a class="idref" href="HoTT.Basics.Overture.html#38b1404556adb9f3c135a0fea94b5bdf"><span class="id" title="notation">o</span></a> <a class="idref" href="HoTT.Pointed.Core.html#f"><span class="id" title="variable">f</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="HoTT.Basics.Overture.html#ap"><span class="id" title="definition">ap</span></a> <a class="idref" href="HoTT.Pointed.Core.html#g"><span class="id" title="variable">g</span></a> (<a class="idref" href="HoTT.Pointed.Core.html#point_eq"><span class="id" title="projection">point_eq</span></a> <a class="idref" href="HoTT.Pointed.Core.html#f"><span class="id" title="variable">f</span></a>) <a class="idref" href="HoTT.Basics.Overture.html#da4283005a63bc086811fc2e64b35356"><span class="id" title="notation">@</span></a> <a class="idref" href="HoTT.Pointed.Core.html#point_eq"><span class="id" title="projection">point_eq</span></a> <a class="idref" href="HoTT.Pointed.Core.html#g"><span class="id" title="variable">g</span></a>).<br/>
+
+<br/>
+<span class="id" title="keyword">Infix</span> <a name="0d028156a07f625666eaec1a9aed44c4"><span class="id" title="notation">&quot;</span></a>o*" := <a class="idref" href="HoTT.Pointed.Core.html#pmap_compose"><span class="id" title="definition">pmap_compose</span></a> : <span class="id" title="var">pointed_scope</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab497"></a><h2 class="section">Pointed homotopies</h2>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Record</span> <a name="pHomotopy"><span class="id" title="record">pHomotopy</span></a> {<span class="id" title="var">A</span> <span class="id" title="var">B</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>} (<span class="id" title="var">f</span> <span class="id" title="var">g</span> : <a class="idref" href="HoTT.Pointed.Core.html#pMap"><span class="id" title="record">pMap</span></a> <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Pointed.Core.html#B"><span class="id" title="variable">B</span></a>) :=<br/>
+&nbsp;&nbsp;{ <a name="pointed_htpy"><span class="id" title="projection">pointed_htpy</span></a> : <a class="idref" href="HoTT.Pointed.Core.html#f"><span class="id" title="variable">f</span></a> <a class="idref" href="HoTT.Basics.Overture.html#2596316c6f2ff161cb03e25fd8914390"><span class="id" title="notation">==</span></a> <a class="idref" href="HoTT.Pointed.Core.html#g"><span class="id" title="variable">g</span></a> ;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="point_htpy"><span class="id" title="projection">point_htpy</span></a> : <a class="idref" href="HoTT.Pointed.Core.html#pointed_htpy"><span class="id" title="method">pointed_htpy</span></a> (<a class="idref" href="HoTT.Basics.Overture.html#point"><span class="id" title="definition">point</span></a> <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a>) <a class="idref" href="HoTT.Basics.Overture.html#da4283005a63bc086811fc2e64b35356"><span class="id" title="notation">@</span></a> <a class="idref" href="HoTT.Pointed.Core.html#point_eq"><span class="id" title="projection">point_eq</span></a> <a class="idref" href="HoTT.Pointed.Core.html#g"><span class="id" title="variable">g</span></a> <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Pointed.Core.html#point_eq"><span class="id" title="projection">point_eq</span></a> <a class="idref" href="HoTT.Pointed.Core.html#f"><span class="id" title="variable">f</span></a> }.<br/>
+
+<br/>
+<span class="id" title="var">Arguments</span> <a class="idref" href="HoTT.Pointed.Core.html#Build_pHomotopy"><span class="id" title="constructor">Build_pHomotopy</span></a> {<span class="id" title="var">A</span> <span class="id" title="var">B</span> <span class="id" title="var">f</span> <span class="id" title="var">g</span>} <span class="id" title="var">p</span> <span class="id" title="var">q</span> : <span class="id" title="tactic">rename</span>.<br/>
+<span class="id" title="var">Arguments</span> <a class="idref" href="HoTT.Pointed.Core.html#point_htpy"><span class="id" title="projection">point_htpy</span></a> {<span class="id" title="var">A</span> <span class="id" title="var">B</span> <span class="id" title="var">f</span> <span class="id" title="var">g</span>} <span class="id" title="var">p</span> : <span class="id" title="tactic">rename</span>.<br/>
+<span class="id" title="var">Arguments</span> <a class="idref" href="HoTT.Pointed.Core.html#pointed_htpy"><span class="id" title="projection">pointed_htpy</span></a> {<span class="id" title="var">A</span> <span class="id" title="var">B</span> <span class="id" title="var">f</span> <span class="id" title="var">g</span>} <span class="id" title="var">p</span> <span class="id" title="var">x</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Coercion</span> <a class="idref" href="HoTT.Pointed.Core.html#pointed_htpy"><span class="id" title="projection">pointed_htpy</span></a> <a class="idref" href="HoTT.Pointed.Core.html#pointed_htpy"><span class="id" title="projection">:</span></a> <a class="idref" href="HoTT.Pointed.Core.html#pointed_htpy"><span class="id" title="projection">pHomotopy</span></a> <a class="idref" href="HoTT.Pointed.Core.html#pointed_htpy"><span class="id" title="projection">&gt;-&gt;</span></a> <a class="idref" href="HoTT.Pointed.Core.html#pointed_htpy"><span class="id" title="projection">pointwise_paths</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Infix</span> <a name="dc9f9d584001e6dc3295fc596e6e94f6"><span class="id" title="notation">&quot;</span></a>==*" := <a class="idref" href="HoTT.Pointed.Core.html#pHomotopy"><span class="id" title="record">pHomotopy</span></a> : <span class="id" title="var">pointed_scope</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab498"></a><h2 class="section">Pointed equivalences</h2>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Record</span> <a name="pEquiv"><span class="id" title="record">pEquiv</span></a> (<span class="id" title="var">A</span> <span class="id" title="var">B</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>) :=<br/>
+&nbsp;&nbsp;{ <a name="pointed_equiv_fun"><span class="id" title="projection">pointed_equiv_fun</span></a> : <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Pointed.Core.html#dce20fa1e59aa814d0a053d0ce7a8a86"><span class="id" title="notation">-&gt;*</span></a> <a class="idref" href="HoTT.Pointed.Core.html#B"><span class="id" title="variable">B</span></a> ;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="pointed_isequiv"><span class="id" title="projection">pointed_isequiv</span></a> : <a class="idref" href="HoTT.Basics.Overture.html#IsEquiv"><span class="id" title="class">IsEquiv</span></a> <a class="idref" href="HoTT.Pointed.Core.html#pointed_equiv_fun"><span class="id" title="method">pointed_equiv_fun</span></a><br/>
+&nbsp;&nbsp;}.<br/>
+
+<br/>
+
+<br/>
+<span class="id" title="keyword">Infix</span> <a name="103880150f1b8a9c385f8c09ab3e01b0"><span class="id" title="notation">&quot;</span></a>&lt;~&gt;*" := <a class="idref" href="HoTT.Pointed.Core.html#pEquiv"><span class="id" title="record">pEquiv</span></a> : <span class="id" title="var">pointed_scope</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Coercion</span> <a class="idref" href="HoTT.Pointed.Core.html#pointed_equiv_fun"><span class="id" title="projection">pointed_equiv_fun</span></a> <a class="idref" href="HoTT.Pointed.Core.html#pointed_equiv_fun"><span class="id" title="projection">:</span></a> <a class="idref" href="HoTT.Pointed.Core.html#pointed_equiv_fun"><span class="id" title="projection">pEquiv</span></a> <a class="idref" href="HoTT.Pointed.Core.html#pointed_equiv_fun"><span class="id" title="projection">&gt;-&gt;</span></a> <a class="idref" href="HoTT.Pointed.Core.html#pointed_equiv_fun"><span class="id" title="projection">pMap</span></a>.<br/>
+<span class="id" title="keyword">Global</span> <span class="id" title="var">Existing</span> <span class="id" title="keyword">Instance</span> <span class="id" title="var">pointed_isequiv</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Coercion</span> <span class="id" title="var">pointed_equiv_equiv</span> {<span class="id" title="var">A</span> <span class="id" title="var">B</span>} (<span class="id" title="var">f</span> : <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Pointed.Core.html#103880150f1b8a9c385f8c09ab3e01b0"><span class="id" title="notation">&lt;~&gt;*</span></a> <a class="idref" href="HoTT.Pointed.Core.html#B"><span class="id" title="variable">B</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">&lt;~&gt;</span></a> <a class="idref" href="HoTT.Pointed.Core.html#B"><span class="id" title="variable">B</span></a> := <a class="idref" href="HoTT.Basics.Overture.html#BuildEquiv"><span class="id" title="constructor">BuildEquiv</span></a> <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Pointed.Core.html#B"><span class="id" title="variable">B</span></a> <a class="idref" href="HoTT.Pointed.Core.html#f"><span class="id" title="variable">f</span></a> <span class="id" title="var">_</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="pFam"><span class="id" title="definition">pFam</span></a> (<span class="id" title="var">A</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>) := <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">{</span></a><span class="id" title="var">P</span> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">:</span></a> <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <span class="id" title="keyword">Type</span> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">&amp;</span></a> <a class="idref" href="HoTT.Pointed.Core.html#P"><span class="id" title="variable">P</span></a> (<a class="idref" href="HoTT.Basics.Overture.html#point"><span class="id" title="definition">point</span></a> <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a>)<a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">}</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="IsTrunc_pFam"><span class="id" title="definition">IsTrunc_pFam</span></a> <span class="id" title="var">n</span> {<span class="id" title="var">A</span>} (<span class="id" title="var">X</span> : <a class="idref" href="HoTT.Pointed.Core.html#pFam"><span class="id" title="definition">pFam</span></a> <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a>) := <a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">∀</span></a> <span class="id" title="var">x</span><a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">,</span></a> <a class="idref" href="HoTT.Basics.Overture.html#IsTrunc"><span class="id" title="class">IsTrunc</span></a> <a class="idref" href="HoTT.Pointed.Core.html#n"><span class="id" title="variable">n</span></a> (<a class="idref" href="HoTT.Pointed.Core.html#X"><span class="id" title="variable">X</span></a><a class="idref" href="HoTT.Basics.Overture.html#a0d4c290984547f24aacc208636427e2"><span class="id" title="notation">.1</span></a> <a class="idref" href="HoTT.Pointed.Core.html#x"><span class="id" title="variable">x</span></a>).<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="psigma"><span class="id" title="definition">psigma</span></a> : <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">{</span></a><span class="id" title="var">A</span> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">:</span></a> <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">&amp;</span></a> <a class="idref" href="HoTT.Pointed.Core.html#pFam"><span class="id" title="definition">pFam</span></a> <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a><a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">}</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">intros</span> [[<span class="id" title="var">A</span> <span class="id" title="var">a</span>] [<span class="id" title="var">P</span> <span class="id" title="var">p</span>]].<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">∃</span> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">{</span></a><span class="id" title="var">x</span> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">:</span></a> <span class="id" title="var">A</span> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">&amp;</span></a> <span class="id" title="var">P</span> <a class="idref" href="HoTT.Pointed.Core.html#x"><span class="id" title="variable">x</span></a><a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">}</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">exact</span> <a class="idref" href="HoTT.Basics.Overture.html#9302c87983df9fcf813fed38017558ae"><span class="id" title="notation">(</span></a><span class="id" title="var">a</span><a class="idref" href="HoTT.Basics.Overture.html#9302c87983df9fcf813fed38017558ae"><span class="id" title="notation">;</span></a> <span class="id" title="var">p</span><a class="idref" href="HoTT.Basics.Overture.html#9302c87983df9fcf813fed38017558ae"><span class="id" title="notation">)</span></a>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="pforall"><span class="id" title="definition">pforall</span></a> : <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">{</span></a><span class="id" title="var">A</span> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">:</span></a> <span class="id" title="keyword">Type</span> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">&amp;</span></a> <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a><a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">}</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">intros</span> [<span class="id" title="var">A</span> <span class="id" title="var">F</span>].<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">exact</span> (<a class="idref" href="HoTT.Basics.Overture.html#Build_pType"><span class="id" title="constructor">Build_pType</span></a> (<a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">∀</span></a> <a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">(</span></a><span class="id" title="var">a</span> : <span class="id" title="var">A</span><a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">),</span></a> <a class="idref" href="HoTT.Basics.Overture.html#pointed_type"><span class="id" title="projection">pointed_type</span></a> (<span class="id" title="var">F</span> <a class="idref" href="HoTT.Pointed.Core.html#a"><span class="id" title="variable">a</span></a>)) (<a class="idref" href="HoTT.Basics.Overture.html#ispointed_type"><span class="id" title="projection">ispointed_type</span></a> <a class="idref" href="HoTT.Basics.Overture.html#38b1404556adb9f3c135a0fea94b5bdf"><span class="id" title="notation">o</span></a> <span class="id" title="var">F</span>)).<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+The following tactic often allows us to "pretend" that pointed maps and homotopies preserve basepoints strictly.  We have carefully defined <span class="inlinecode"><a class="idref" href="HoTT.Pointed.Core.html#pMap"><span class="id" title="record">pMap</span></a></span> and <span class="inlinecode"><a class="idref" href="HoTT.Pointed.Core.html#pHomotopy"><span class="id" title="record">pHomotopy</span></a></span> so that when destructed, their second components are paths with right endpoints free, to which we can apply Paulin-Morhing path-induction. 
+</div>
+<div class="code">
+<span class="id" title="keyword">Ltac</span> <span class="id" title="var">pointed_reduce</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">unfold</span> <a class="idref" href="HoTT.Pointed.Core.html#pointed_fun"><span class="id" title="projection">pointed_fun</span></a>, <a class="idref" href="HoTT.Pointed.Core.html#pointed_htpy"><span class="id" title="projection">pointed_htpy</span></a>; <span class="id" title="var">cbn</span>;<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">repeat</span> <span class="id" title="keyword">match</span> <span class="id" title="keyword">goal</span> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" title="var">X</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a> |- <span class="id" title="var">_</span> ] ⇒ <span class="id" title="tactic">destruct</span> <span class="id" title="var">X</span> <span class="id" title="keyword">as</span> [<span class="id" title="var">X</span> ?]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" title="var">phi</span> : <a class="idref" href="HoTT.Pointed.Core.html#pMap"><span class="id" title="record">pMap</span></a> ?<span class="id" title="var">X</span> ?<span class="id" title="var">Y</span> |- <span class="id" title="var">_</span> ] ⇒ <span class="id" title="tactic">destruct</span> <span class="id" title="var">phi</span> <span class="id" title="keyword">as</span> [<span class="id" title="var">phi</span> ?]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" title="var">alpha</span> : <a class="idref" href="HoTT.Pointed.Core.html#pHomotopy"><span class="id" title="record">pHomotopy</span></a> ?<span class="id" title="var">f</span> ?<span class="id" title="var">g</span> |- <span class="id" title="var">_</span> ] ⇒ <span class="id" title="tactic">destruct</span> <span class="id" title="var">alpha</span> <span class="id" title="keyword">as</span> [<span class="id" title="var">alpha</span> ?]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" title="var">equiv</span> : <a class="idref" href="HoTT.Pointed.Core.html#pEquiv"><span class="id" title="record">pEquiv</span></a> ?<span class="id" title="var">X</span> ?<span class="id" title="var">Y</span> |- <span class="id" title="var">_</span> ] ⇒ <span class="id" title="tactic">destruct</span> <span class="id" title="var">equiv</span> <span class="id" title="keyword">as</span> [<span class="id" title="var">equiv</span> ?]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">end</span>;<br/>
+&nbsp;&nbsp;<span class="id" title="var">cbn</span> <span class="id" title="tactic">in</span> *; <span class="id" title="tactic">unfold</span> <a class="idref" href="HoTT.Basics.Overture.html#point"><span class="id" title="definition">point</span></a> <span class="id" title="tactic">in</span> *;<br/>
+&nbsp;&nbsp;<span class="id" title="var">path_induction</span>; <span class="id" title="var">cbn</span>;<br/>
+&nbsp;&nbsp;</div>
+
+<div class="doc">
+TODO: <span class="inlinecode"><span class="id" title="var">pointed_reduce</span></span> uses <span class="inlinecode"><span class="id" title="tactic">rewrite</span></span>, and thus according to our current general rules, it should only be used in opaque proofs.  We don't yet need any of the proofs that use it to be transparent, but there's a good chance we will eventually.  At that point we can consider whether to allow it in transparent proofs, modify it to not use <span class="inlinecode"><span class="id" title="tactic">rewrite</span></span>, or exclude it from proofs that need to be transparent. 
+</div>
+<div class="code">
+&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> ?<a class="idref" href="HoTT.Basics.PathGroupoids.html#concat_p1"><span class="id" title="definition">concat_p1</span></a>, ?<a class="idref" href="HoTT.Basics.PathGroupoids.html#concat_1p"><span class="id" title="definition">concat_1p</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab499"></a><h2 class="section">Equivalences</h2>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="issig_ptype"><span class="id" title="definition">issig_ptype</span></a> : <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">{</span></a> <span class="id" title="var">X</span> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">:</span></a> <span class="id" title="keyword">Type</span> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">&amp;</span></a> <a class="idref" href="HoTT.Pointed.Core.html#X"><span class="id" title="variable">X</span></a> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">}</span></a> <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">&lt;~&gt;</span></a> <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">issig</span> <a class="idref" href="HoTT.Basics.Overture.html#Build_pType"><span class="id" title="constructor">Build_pType</span></a> <a class="idref" href="HoTT.Basics.Overture.html#pointed_type"><span class="id" title="projection">pointed_type</span></a> <a class="idref" href="HoTT.Basics.Overture.html#ispointed_type"><span class="id" title="projection">ispointed_type</span></a>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="issig_pmap"><span class="id" title="definition">issig_pmap</span></a> (<span class="id" title="var">A</span> <span class="id" title="var">B</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>)<br/>
+: <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">{</span></a> <span class="id" title="var">f</span> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">:</span></a> <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Pointed.Core.html#B"><span class="id" title="variable">B</span></a> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">&amp;</span></a> <a class="idref" href="HoTT.Pointed.Core.html#f"><span class="id" title="variable">f</span></a> (<a class="idref" href="HoTT.Basics.Overture.html#point"><span class="id" title="definition">point</span></a> <a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a>) <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Basics.Overture.html#point"><span class="id" title="definition">point</span></a> <a class="idref" href="HoTT.Pointed.Core.html#B"><span class="id" title="variable">B</span></a> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">}</span></a> <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">&lt;~&gt;</span></a> <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">(</span></a><a class="idref" href="HoTT.Pointed.Core.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Pointed.Core.html#dce20fa1e59aa814d0a053d0ce7a8a86"><span class="id" title="notation">-&gt;*</span></a> <a class="idref" href="HoTT.Pointed.Core.html#B"><span class="id" title="variable">B</span></a><a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">)</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">issig</span> (@<a class="idref" href="HoTT.Pointed.Core.html#Build_pMap"><span class="id" title="constructor">Build_pMap</span></a> <span class="id" title="var">A</span> <span class="id" title="var">B</span>) (@<a class="idref" href="HoTT.Pointed.Core.html#pointed_fun"><span class="id" title="projection">pointed_fun</span></a> <span class="id" title="var">A</span> <span class="id" title="var">B</span>) (@<a class="idref" href="HoTT.Pointed.Core.html#point_eq"><span class="id" title="projection">point_eq</span></a> <span class="id" title="var">A</span> <span class="id" title="var">B</span>).<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>
