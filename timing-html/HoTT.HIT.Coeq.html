@@ -40,14 +40,14 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 4
-Time: 0.044s">
-<div class="time" style="width: 15.017064846416%"></div>
+Time: 0.051s">
+<div class="time" style="width: 15.789473684211%"></div>
 <pre>Require Import HoTT.Basics UnivalenceImpliesFunext.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 4
 Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre>
 Require Import Types.Paths Types.Forall Types.Sigma Types.Arrow Types.Universe.</pre>
 </div>
@@ -76,8 +76,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 9
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre>
 
   Private Inductive Coeq {B A : Type@{i}} (f g : B -&gt; A) : Type@{i} :=
@@ -97,31 +97,31 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-  Axiom cp : forall {B A f g} (b:B), @coeq B A f g (f b) = coeq (g b).</pre>
+  Axiom cglue : forall {B A f g} (b:B), @coeq B A f g (f b) = coeq (g b).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 16
-Time: 0.004s">
-<div class="time" style="width: 1.3651877133106%"></div>
+Time: 0.005s">
+<div class="time" style="width: 1.5479876160991%"></div>
 <pre>
 
   Definition Coeq_ind {B A f g} (P : @Coeq B A f g -&gt; Type)
              (coeq' : forall a, P (coeq a))
-             (cp' : forall b, (cp b) # (coeq' (f b)) = coeq' (g b))
+             (cglue' : forall b, (cglue b) # (coeq' (f b)) = coeq' (g b))
   : forall w, P w
-    := fun w =&gt; match w with coeq a =&gt; fun _ =&gt; coeq' a end cp'.</pre>
+    := fun w =&gt; match w with coeq a =&gt; fun _ =&gt; coeq' a end cglue'.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 22
-Time: 0.005s">
-<div class="time" style="width: 1.7064846416382%"></div>
+Time: 0.006s">
+<div class="time" style="width: 1.8575851393189%"></div>
 <pre>
 
-  Axiom Coeq_ind_beta_cp
+  Axiom Coeq_ind_beta_cglue
   : forall {B A f g} (P : @Coeq B A f g -&gt; Type)
            (coeq' : forall a, P (coeq a))
-           (cp' : forall b, (cp b) # (coeq' (f b)) = coeq' (g b)) (b:B),
-      apD (Coeq_ind P coeq' cp') (cp b) = cp' b.</pre>
+           (cglue' : forall b, (cglue b) # (coeq' (f b)) = coeq' (g b)) (b:B),
+      apD (Coeq_ind P coeq' cglue') (cglue b) = cglue' b.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 28
@@ -134,23 +134,23 @@ End Coeq.</pre>
 <div class="code" title="File: Coeq.v
 Line: 30
 Time: 0.003s">
-<div class="time" style="width: 1.0238907849829%"></div>
+<div class="time" style="width: 0.92879256965944%"></div>
 <pre>
 
 Definition Coeq_rec {B A f g} (P : Type) (coeq' : A -&gt; P)
-  (cp' : forall b, coeq' (f b) = coeq' (g b))
+  (cglue' : forall b, coeq' (f b) = coeq' (g b))
   : @Coeq B A f g -&gt; P
-  := Coeq_ind (fun _ =&gt; P) coeq' (fun b =&gt; transport_const _ _ @ cp' b).</pre>
+  := Coeq_ind (fun _ =&gt; P) coeq' (fun b =&gt; transport_const _ _ @ cglue' b).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 35
 Time: 0.002s">
-<div class="time" style="width: 0.68259385665529%"></div>
+<div class="time" style="width: 0.61919504643963%"></div>
 <pre>
 
-Definition Coeq_rec_beta_cp {B A f g} (P : Type) (coeq' : A -&gt; P)
-  (cp' : forall b:B, coeq' (f b) = coeq' (g b)) (b:B)
-  : ap (Coeq_rec P coeq' cp') (cp b) = cp' b.</pre>
+Definition Coeq_rec_beta_cglue {B A f g} (P : Type) (coeq' : A -&gt; P)
+  (cglue' : forall b:B, coeq' (f b) = coeq' (g b)) (b:B)
+  : ap (Coeq_rec P coeq' cglue') (cglue b) = cglue' b.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 39
@@ -176,28 +176,28 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 43
-Time: 0.003s">
-<div class="time" style="width: 1.0238907849829%"></div>
-<pre>eapply (cancelL (transport_const (cp b) _)).</pre>
+Time: 0.004s">
+<div class="time" style="width: 1.2383900928793%"></div>
+<pre>eapply (cancelL (transport_const (cglue b) _)).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 43
 Time: 0.003s">
-<div class="time" style="width: 1.0238907849829%"></div>
+<div class="time" style="width: 0.92879256965944%"></div>
 <pre>
-  refine ((apD_const (@Coeq_ind B A f g (fun _ =&gt; P) coeq' _) (cp b))^ @ _).</pre>
+  refine ((apD_const (@Coeq_ind B A f g (fun _ =&gt; P) coeq' _) (cglue b))^ @ _).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 44
 Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre>
-  refine (Coeq_ind_beta_cp (fun _ =&gt; P) _ _ _).</pre>
+  refine (Coeq_ind_beta_cglue (fun _ =&gt; P) _ _ _).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 45
-Time: 0.016s">
-<div class="time" style="width: 5.4607508532423%"></div>
+Time: 0.02s">
+<div class="time" style="width: 6.1919504643963%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -213,8 +213,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 49
-Time: 0.004s">
-<div class="time" style="width: 1.3651877133106%"></div>
+Time: 0.005s">
+<div class="time" style="width: 1.5479876160991%"></div>
 <pre>Definition functor_coeq {B A f g B' A' f' g'}
            (h : B -&gt; B') (k : A -&gt; A')
            (p : k o f == f' o h) (q : k o g == g' o h)
@@ -229,15 +229,15 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 53
-Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.61919504643963%"></div>
 <pre>
   refine (Coeq_rec _ (coeq o k) _); intros b.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 54
 Time: 0.002s">
-<div class="time" style="width: 0.68259385665529%"></div>
+<div class="time" style="width: 0.61919504643963%"></div>
 <pre>
   refine (ap coeq (p b) @ _ @ ap coeq (q b)^).</pre>
 </div>
@@ -246,33 +246,33 @@ Line: 55
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  apply cp.</pre>
+  apply cglue.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 56
-Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.61919504643963%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 57
-Time: 0.017s">
-<div class="time" style="width: 5.80204778157%"></div>
+Time: 0.019s">
+<div class="time" style="width: 5.8823529411765%"></div>
 <pre>
 
-Definition functor_coeq_beta_cp {B A f g B' A' f' g'}
+Definition functor_coeq_beta_cglue {B A f g B' A' f' g'}
            (h : B -&gt; B') (k : A -&gt; A')
            (p : k o f == f' o h) (q : k o g == g' o h)
            (b : B)
-: ap (functor_coeq h k p q) (cp b)
-  = ap coeq (p b) @ cp (h b) @ ap coeq (q b)^
-:= (Coeq_rec_beta_cp _ _ _ b).</pre>
+: ap (functor_coeq h k p q) (cglue b)
+  = ap coeq (p b) @ cglue (h b) @ ap coeq (q b)^
+:= (Coeq_rec_beta_cglue _ _ _ b).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 65
-Time: 0.02s">
-<div class="time" style="width: 6.8259385665529%"></div>
+Time: 0.024s">
+<div class="time" style="width: 7.4303405572755%"></div>
 <pre>
 
 Definition functor_coeq_compose {B A f g B' A' f' g' B'' A'' f'' g''}
@@ -294,77 +294,77 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 76
-Time: 0.003s">
-<div class="time" style="width: 1.0238907849829%"></div>
+Time: 0.004s">
+<div class="time" style="width: 1.2383900928793%"></div>
 <pre>
   refine (Coeq_ind _ (fun a =&gt; 1) _); cbn; intros b.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 77
-Time: 0.008s">
-<div class="time" style="width: 2.7303754266212%"></div>
+Time: 0.009s">
+<div class="time" style="width: 2.7863777089783%"></div>
 <pre>
   rewrite transport_paths_FlFr.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 78
-Time: 0.016s">
-<div class="time" style="width: 5.4607508532423%"></div>
+Time: 0.019s">
+<div class="time" style="width: 5.8823529411765%"></div>
 <pre>
   rewrite concat_p1; apply moveR_Vp; rewrite concat_p1.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 79
-Time: 0.004s">
-<div class="time" style="width: 1.3651877133106%"></div>
+Time: 0.005s">
+<div class="time" style="width: 1.5479876160991%"></div>
 <pre>
   rewrite ap_compose.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 80
-Time: 0.112s">
-<div class="time" style="width: 38.225255972696%"></div>
+Time: 0.137s">
+<div class="time" style="width: 42.414860681115%"></div>
 <pre>
-  rewrite !functor_coeq_beta_cp, !ap_pp, functor_coeq_beta_cp.</pre>
+  rewrite !functor_coeq_beta_cglue, !ap_pp, functor_coeq_beta_cglue.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 81
-Time: 0.047s">
-<div class="time" style="width: 16.040955631399%"></div>
+Time: 0.056s">
+<div class="time" style="width: 17.33746130031%"></div>
 <pre>
   rewrite &lt;- !ap_compose.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 82
 Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre> cbn.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 82
-Time: 0.068s">
-<div class="time" style="width: 23.20819112628%"></div>
+Time: 0.07s">
+<div class="time" style="width: 21.671826625387%"></div>
 <pre>
   rewrite !ap_V, ap_pp, inv_pp, &lt;- ap_compose, !concat_p_pp.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 83
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre>
   reflexivity.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 84
-Time: 0.07s">
-<div class="time" style="width: 23.890784982935%"></div>
+Time: 0.075s">
+<div class="time" style="width: 23.219814241486%"></div>
 <pre>
 Qed.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 85
-Time: 0.011s">
-<div class="time" style="width: 3.7542662116041%"></div>
+Time: 0.012s">
+<div class="time" style="width: 3.7151702786378%"></div>
 <pre>
 
 Definition functor_coeq_homotopy {B A f g B' A' f' g'}
@@ -387,30 +387,30 @@ Proof.</pre>
 <div class="code" title="File: Coeq.v
 Line: 96
 Time: 0.002s">
-<div class="time" style="width: 0.68259385665529%"></div>
+<div class="time" style="width: 0.61919504643963%"></div>
 <pre>
   refine (Coeq_ind _ (fun a =&gt; ap coeq (s a)) _); cbn; intros b.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 97
-Time: 0.002s">
-<div class="time" style="width: 0.68259385665529%"></div>
+Time: 0.003s">
+<div class="time" style="width: 0.92879256965944%"></div>
 <pre>
-  refine (transport_paths_FlFr (cp b) _ @ _).</pre>
+  refine (transport_paths_FlFr (cglue b) _ @ _).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 98
-Time: 0.005s">
-<div class="time" style="width: 1.7064846416382%"></div>
+Time: 0.006s">
+<div class="time" style="width: 1.8575851393189%"></div>
 <pre>
   rewrite concat_pp_p; apply moveR_Vp.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 99
-Time: 0.053s">
-<div class="time" style="width: 18.088737201365%"></div>
+Time: 0.058s">
+<div class="time" style="width: 17.956656346749%"></div>
 <pre>
-  rewrite !functor_coeq_beta_cp.</pre>
+  rewrite !functor_coeq_beta_cglue.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 100
@@ -422,58 +422,58 @@ Time: 0s">
 <div class="code" title="File: Coeq.v
 Line: 101
 Time: 0.017s">
-<div class="time" style="width: 5.80204778157%"></div>
+<div class="time" style="width: 5.2631578947368%"></div>
 <pre>
   rewrite !concat_p_pp.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 102
 Time: 0.005s">
-<div class="time" style="width: 1.7064846416382%"></div>
+<div class="time" style="width: 1.5479876160991%"></div>
 <pre>
   rewrite &lt;- (ap_pp (@coeq _ _ f' g') (s (f b)) (p' b)).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 103
-Time: 0.056s">
-<div class="time" style="width: 19.112627986348%"></div>
+Time: 0.059s">
+<div class="time" style="width: 18.266253869969%"></div>
 <pre>
   rewrite u, ap_pp, !concat_pp_p; apply whiskerL; rewrite !concat_p_pp.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 104
 Time: 0.005s">
-<div class="time" style="width: 1.7064846416382%"></div>
+<div class="time" style="width: 1.5479876160991%"></div>
 <pre>
   rewrite ap_V; apply moveR_pV.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 105
-Time: 0.017s">
-<div class="time" style="width: 5.80204778157%"></div>
+Time: 0.018s">
+<div class="time" style="width: 5.5727554179567%"></div>
 <pre>
   rewrite !concat_pp_p, &lt;- (ap_pp (@coeq _ _ f' g') (s (g b)) (q' b)).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 106
-Time: 0.012s">
-<div class="time" style="width: 4.0955631399317%"></div>
+Time: 0.013s">
+<div class="time" style="width: 4.0247678018576%"></div>
 <pre>
   rewrite v, ap_pp, ap_V, concat_V_pp.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 107
-Time: 0.007s">
-<div class="time" style="width: 2.3890784982935%"></div>
+Time: 0.008s">
+<div class="time" style="width: 2.4767801857585%"></div>
 <pre>
   rewrite &lt;- !ap_compose.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 108
 Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre>
-  exact (concat_Ap (@cp _ _ f' g') (r b)).</pre>
+  exact (concat_Ap (@cglue _ _ f' g') (r b)).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 109
@@ -500,7 +500,7 @@ Time: 0s">
   rewrite !concat_pp_p, &lt;- (ap_pp (@coeq _ _ f' g') (s (g b)) (q' b)).
   rewrite v, ap_pp, ap_V, concat_V_pp.
   rewrite &lt;- !ap_compose.
-  exact (concat_Ap (@cp _ _ f' g') (r b)).
+  exact (concat_Ap (@cglue _ _ f' g') (r b)).
  </pre>
 </div>
 <div class="code" title="File: Coeq.v
@@ -511,15 +511,15 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 119
-Time: 0.062s">
-<div class="time" style="width: 21.160409556314%"></div>
+Time: 0.067s">
+<div class="time" style="width: 20.743034055728%"></div>
 <pre>
 Qed.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 120
-Time: 0.012s">
-<div class="time" style="width: 4.0955631399317%"></div>
+Time: 0.013s">
+<div class="time" style="width: 4.0247678018576%"></div>
 <pre>
 
 Definition functor_coeq_sect {B A f g B' A' f' g'}
@@ -542,44 +542,44 @@ Proof.</pre>
 <div class="code" title="File: Coeq.v
 Line: 131
 Time: 0.002s">
-<div class="time" style="width: 0.68259385665529%"></div>
+<div class="time" style="width: 0.61919504643963%"></div>
 <pre>
   refine (Coeq_ind _ (fun a =&gt; ap coeq (s a)) _); cbn; intros b.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 132
 Time: 0.003s">
-<div class="time" style="width: 1.0238907849829%"></div>
+<div class="time" style="width: 0.92879256965944%"></div>
 <pre>
-  refine (transport_paths_FFlr (cp b) _ @ _).</pre>
+  refine (transport_paths_FFlr (cglue b) _ @ _).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 133
-Time: 0.005s">
-<div class="time" style="width: 1.7064846416382%"></div>
+Time: 0.009s">
+<div class="time" style="width: 2.7863777089783%"></div>
 <pre>
   rewrite concat_pp_p; apply moveR_Vp.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 134
-Time: 0.032s">
-<div class="time" style="width: 10.921501706485%"></div>
+Time: 0.038s">
+<div class="time" style="width: 11.764705882353%"></div>
 <pre>
-  rewrite functor_coeq_beta_cp, !ap_pp.</pre>
+  rewrite functor_coeq_beta_cglue, !ap_pp.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 135
-Time: 0.017s">
-<div class="time" style="width: 5.80204778157%"></div>
+Time: 0.019s">
+<div class="time" style="width: 5.8823529411765%"></div>
 <pre>
   rewrite &lt;- !ap_compose; cbn.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 136
-Time: 0.016s">
-<div class="time" style="width: 5.4607508532423%"></div>
+Time: 0.018s">
+<div class="time" style="width: 5.5727554179567%"></div>
 <pre>
-  rewrite functor_coeq_beta_cp.</pre>
+  rewrite functor_coeq_beta_cglue.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 137
@@ -590,59 +590,59 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 138
-Time: 0.022s">
-<div class="time" style="width: 7.5085324232082%"></div>
+Time: 0.028s">
+<div class="time" style="width: 8.6687306501548%"></div>
 <pre>
   rewrite !concat_p_pp.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 139
-Time: 0.045s">
-<div class="time" style="width: 15.358361774744%"></div>
+Time: 0.053s">
+<div class="time" style="width: 16.40866873065%"></div>
 <pre>
   rewrite &lt;- u, !ap_pp, !(ap_compose k' coeq).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 140
-Time: 0.047s">
-<div class="time" style="width: 16.040955631399%"></div>
+Time: 0.056s">
+<div class="time" style="width: 17.33746130031%"></div>
 <pre>
   rewrite !concat_pp_p; do 2 apply whiskerL.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 141
-Time: 0.022s">
-<div class="time" style="width: 7.5085324232082%"></div>
+Time: 0.031s">
+<div class="time" style="width: 9.5975232198142%"></div>
 <pre>
   rewrite !concat_p_pp.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 142
-Time: 0.002s">
-<div class="time" style="width: 0.68259385665529%"></div>
+Time: 0.003s">
+<div class="time" style="width: 0.92879256965944%"></div>
 <pre>
   rewrite &lt;- v.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 143
-Time: 0.068s">
-<div class="time" style="width: 23.20819112628%"></div>
+Time: 0.081s">
+<div class="time" style="width: 25.077399380805%"></div>
 <pre>
   rewrite !ap_pp, !ap_V, !concat_p_pp, !concat_pV_p.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 144
-Time: 0.008s">
-<div class="time" style="width: 2.7303754266212%"></div>
+Time: 0.01s">
+<div class="time" style="width: 3.0959752321981%"></div>
 <pre>
   rewrite &lt;- !ap_compose.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 145
-Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.61919504643963%"></div>
 <pre>
-  exact (concat_Ap cp (r b)).</pre>
+  exact (concat_Ap cglue (r b)).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 146
@@ -669,7 +669,7 @@ Time: 0s">
   rewrite &lt;- v.
   rewrite !ap_pp, !ap_V, !concat_p_pp, !concat_pV_p.
   rewrite &lt;- !ap_compose.
-  exact (concat_Ap cp (r b)).
+  exact (concat_Ap cglue (r b)).
  </pre>
 </div>
 <div class="code" title="File: Coeq.v
@@ -680,8 +680,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 156
-Time: 0.085s">
-<div class="time" style="width: 29.01023890785%"></div>
+Time: 0.107s">
+<div class="time" style="width: 33.12693498452%"></div>
 <pre>
 Qed.</pre>
 </div>
@@ -696,7 +696,7 @@ Section IsEquivFunctorCoeq.</pre>
 <div class="code" title="File: Coeq.v
 Line: 159
 Time: 0.004s">
-<div class="time" style="width: 1.3651877133106%"></div>
+<div class="time" style="width: 1.2383900928793%"></div>
 <pre>
 
   Context {B A f g B' A' f' g'}
@@ -723,7 +723,7 @@ Time: 0s">
 <div class="code" title="File: Coeq.v
 Line: 168
 Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre>
     refine (functor_coeq h^-1 k^-1 _ _).</pre>
 </div>
@@ -743,7 +743,7 @@ Time: 0s">
 <div class="code" title="File: Coeq.v
 Line: 170
 Time: 0.002s">
-<div class="time" style="width: 0.68259385665529%"></div>
+<div class="time" style="width: 0.61919504643963%"></div>
 <pre>
       refine (ap (k^-1 o f') (eisretr h b)^ @ _ @ eissect k (f (h^-1 b))).</pre>
 </div>
@@ -770,7 +770,7 @@ Time: 0s">
 <div class="code" title="File: Coeq.v
 Line: 173
 Time: 0.002s">
-<div class="time" style="width: 0.68259385665529%"></div>
+<div class="time" style="width: 0.61919504643963%"></div>
 <pre>
       refine (ap (k^-1 o g') (eisretr h b)^ @ _ @ eissect k (g (h^-1 b))).</pre>
 </div>
@@ -814,7 +814,7 @@ Time: 0s">
 <div class="code" title="File: Coeq.v
 Line: 181
 Time: 0.002s">
-<div class="time" style="width: 0.68259385665529%"></div>
+<div class="time" style="width: 0.61919504643963%"></div>
 <pre>
     refine (functor_coeq_sect _ _ _ _ _ _ _ _
                               (eisretr h) (eisretr k) _ _); intros b.</pre>
@@ -829,56 +829,56 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 185
-Time: 0.033s">
-<div class="time" style="width: 11.262798634812%"></div>
+Time: 0.036s">
+<div class="time" style="width: 11.145510835913%"></div>
 <pre>all:rewrite !ap_pp, &lt;- eisadj.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 185
-Time: 0.013s">
-<div class="time" style="width: 4.4368600682594%"></div>
+Time: 0.016s">
+<div class="time" style="width: 4.953560371517%"></div>
 <pre>
     all:rewrite &lt;- !ap_compose.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 186
-Time: 0.007s">
-<div class="time" style="width: 2.3890784982935%"></div>
+Time: 0.008s">
+<div class="time" style="width: 2.4767801857585%"></div>
 <pre>
     all:rewrite (concat_pA1_p (eisretr k) _ _).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 187
-Time: 0.004s">
-<div class="time" style="width: 1.3651877133106%"></div>
+Time: 0.005s">
+<div class="time" style="width: 1.5479876160991%"></div>
 <pre>
     all:rewrite concat_pV_p.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 188
-Time: 0.009s">
-<div class="time" style="width: 3.0716723549488%"></div>
+Time: 0.01s">
+<div class="time" style="width: 3.0959752321981%"></div>
 <pre>
     all:rewrite &lt;- (ap_compose (k^-1 o _) k).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 189
 Time: 0.008s">
-<div class="time" style="width: 2.7303754266212%"></div>
+<div class="time" style="width: 2.4767801857585%"></div>
 <pre>
     all:rewrite (ap_compose _ (k o k^-1)).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 190
-Time: 0.008s">
-<div class="time" style="width: 2.7303754266212%"></div>
+Time: 0.01s">
+<div class="time" style="width: 3.0959752321981%"></div>
 <pre>
     all:rewrite (concat_A1p (eisretr k) (ap _ (eisretr h b)^)).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 191
-Time: 0.006s">
-<div class="time" style="width: 2.0477815699659%"></div>
+Time: 0.008s">
+<div class="time" style="width: 2.4767801857585%"></div>
 <pre>
     all:rewrite ap_V, concat_pV_p; reflexivity.</pre>
 </div>
@@ -921,15 +921,15 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 205
-Time: 0.014s">
-<div class="time" style="width: 4.778156996587%"></div>
+Time: 0.017s">
+<div class="time" style="width: 5.2631578947368%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 206
 Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre>
 
   Definition functor_coeq_eisretr
@@ -952,71 +952,71 @@ Time: 0s">
 <div class="code" title="File: Coeq.v
 Line: 211
 Time: 0.002s">
-<div class="time" style="width: 0.68259385665529%"></div>
+<div class="time" style="width: 0.61919504643963%"></div>
 <pre>
     refine (functor_coeq_sect _ _ _ _ _ _ _ _
                               (eissect h) (eissect k) _ _); intros b.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 213
-Time: 0.047s">
-<div class="time" style="width: 16.040955631399%"></div>
+Time: 0.057s">
+<div class="time" style="width: 17.647058823529%"></div>
 <pre>
     all:rewrite !concat_p_pp, eisadj, &lt;- ap_V, &lt;- !ap_compose.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 214
-Time: 0.01s">
-<div class="time" style="width: 3.4129692832765%"></div>
+Time: 0.012s">
+<div class="time" style="width: 3.7151702786378%"></div>
 <pre>
     all:rewrite (ap_compose (_ o h) k^-1).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 215
-Time: 0.047s">
-<div class="time" style="width: 16.040955631399%"></div>
+Time: 0.055s">
+<div class="time" style="width: 17.02786377709%"></div>
 <pre>
     all:rewrite &lt;- !(ap_pp k^-1), !concat_pp_p.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 216
 Time: 0.004s">
-<div class="time" style="width: 1.3651877133106%"></div>
+<div class="time" style="width: 1.2383900928793%"></div>
 <pre>
     1:rewrite (concat_Ap (fun b =&gt; (p b)^) (eissect h b)^).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 217
-Time: 0.004s">
-<div class="time" style="width: 1.3651877133106%"></div>
+Time: 0.005s">
+<div class="time" style="width: 1.5479876160991%"></div>
 <pre>
     2:rewrite (concat_Ap (fun b =&gt; (q b)^) (eissect h b)^).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 218
-Time: 0.009s">
-<div class="time" style="width: 3.0716723549488%"></div>
+Time: 0.011s">
+<div class="time" style="width: 3.405572755418%"></div>
 <pre>
     all:rewrite concat_p_Vp, concat_p_pp.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 219
-Time: 0.021s">
-<div class="time" style="width: 7.1672354948805%"></div>
+Time: 0.026s">
+<div class="time" style="width: 8.0495356037152%"></div>
 <pre>
     all:rewrite &lt;- (ap_compose (k o _) k^-1), (ap_compose _ (k^-1 o k)).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 220
-Time: 0.006s">
-<div class="time" style="width: 2.0477815699659%"></div>
+Time: 0.007s">
+<div class="time" style="width: 2.1671826625387%"></div>
 <pre>
     all:rewrite (concat_A1p (eissect k) _).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 221
-Time: 0.007s">
-<div class="time" style="width: 2.3890784982935%"></div>
+Time: 0.008s">
+<div class="time" style="width: 2.4767801857585%"></div>
 <pre>
     all:rewrite ap_V, concat_pV_p; reflexivity.</pre>
 </div>
@@ -1059,15 +1059,15 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 235
-Time: 0.022s">
-<div class="time" style="width: 7.5085324232082%"></div>
+Time: 0.028s">
+<div class="time" style="width: 8.6687306501548%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 236
 Time: 0.002s">
-<div class="time" style="width: 0.68259385665529%"></div>
+<div class="time" style="width: 0.61919504643963%"></div>
 <pre>
 
   Global Instance isequiv_functor_coeq
@@ -1077,8 +1077,8 @@ Time: 0.002s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 241
-Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.61919504643963%"></div>
 <pre>
 
   Definition equiv_functor_coeq
@@ -1087,16 +1087,16 @@ Time: 0.001s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 245
-Time: 0.021s">
-<div class="time" style="width: 7.1672354948805%"></div>
+Time: 0.028s">
+<div class="time" style="width: 8.6687306501548%"></div>
 <pre>
 
 End IsEquivFunctorCoeq.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 247
-Time: 0.008s">
-<div class="time" style="width: 2.7303754266212%"></div>
+Time: 0.009s">
+<div class="time" style="width: 2.7863777089783%"></div>
 <pre>
 
 Definition equiv_functor_coeq' {B A f g B' A' f' g'}
@@ -1124,15 +1124,15 @@ Time: 0s">
 <div class="code" title="File: Coeq.v
 Line: 256
 Time: 0.002s">
-<div class="time" style="width: 0.68259385665529%"></div>
+<div class="time" style="width: 0.61919504643963%"></div>
 <pre>
   Context `{Funext}
           {B A : Type} {f g : B -&gt; A} {B' A' : Type} {f' g' : B' -&gt; A'}
           (P : Type) (coeq' : A -&gt; A' -&gt; P)
-          (cpl : forall b a', coeq' (f b) a' = coeq' (g b) a')
-          (cpr : forall a b', coeq' a (f' b') = coeq' a (g' b'))
-          (cplr : forall b b', cpl b (f' b') @ cpr (g b) b'
-                               = cpr (f b) b' @ cpl b (g' b')).</pre>
+          (cgluel : forall b a', coeq' (f b) a' = coeq' (g b) a')
+          (cgluer : forall a b', coeq' a (f' b') = coeq' a (g' b'))
+          (cgluelr : forall b b', cgluel b (f' b') @ cgluer (g b) b'
+                               = cgluer (f b) b' @ cgluel b (g' b')).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 263
@@ -1215,7 +1215,7 @@ Line: 273
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-        apply cpr.</pre>
+        apply cgluer.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 274
@@ -1233,7 +1233,7 @@ Time: 0s">
 <div class="code" title="File: Coeq.v
 Line: 275
 Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre>
       apply path_arrow; intros a.</pre>
 </div>
@@ -1268,7 +1268,7 @@ Line: 278
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-        apply cpl.</pre>
+        apply cgluel.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 279
@@ -1286,30 +1286,30 @@ Time: 0s">
 <div class="code" title="File: Coeq.v
 Line: 280
 Time: 0.002s">
-<div class="time" style="width: 0.68259385665529%"></div>
+<div class="time" style="width: 0.61919504643963%"></div>
 <pre>
-        refine (transport_paths_FlFr (cp b') (cpl b (f' b')) @ _).</pre>
+        refine (transport_paths_FlFr (cglue b') (cgluel b (f' b')) @ _).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 281
 Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre>
         refine (concat_pp_p _ _ _ @ _).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 282
 Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre>
         apply moveR_Vp.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 283
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre>
-        refine (_ @ cplr b b' @ _).</pre>
+        refine (_ @ cgluelr b b' @ _).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 284
@@ -1321,15 +1321,15 @@ Time: 0s">
 <div class="code" title="File: Coeq.v
 Line: 285
 Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre> apply whiskerL.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 285
-Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.61919504643963%"></div>
 <pre>
-          apply Coeq_rec_beta_cp.</pre>
+          apply Coeq_rec_beta_cglue.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 286
@@ -1340,28 +1340,28 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 287
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre> apply whiskerR.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 287
 Time: 0.003s">
-<div class="time" style="width: 1.0238907849829%"></div>
+<div class="time" style="width: 0.92879256965944%"></div>
 <pre>
-          symmetry; apply Coeq_rec_beta_cp.</pre>
+          symmetry; apply Coeq_rec_beta_cglue.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 288
-Time: 0.009s">
-<div class="time" style="width: 3.0716723549488%"></div>
+Time: 0.011s">
+<div class="time" style="width: 3.405572755418%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 289
 Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre>
 
   Definition Coeq_rec2_beta (a : A) (a' : A')
@@ -1371,11 +1371,11 @@ Time: 0.001s">
 <div class="code" title="File: Coeq.v
 Line: 293
 Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre>
 
-  Definition Coeq_rec2_beta_cpl (a : A) (b' : B')
-  : ap (Coeq_rec2 (coeq a)) (cp b') = cpr a b'.</pre>
+  Definition Coeq_rec2_beta_cgluel (a : A) (b' : B')
+  : ap (Coeq_rec2 (coeq a)) (cglue b') = cgluer a b'.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 296
@@ -1386,10 +1386,10 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 297
-Time: 0.011s">
-<div class="time" style="width: 3.7542662116041%"></div>
+Time: 0.014s">
+<div class="time" style="width: 4.3343653250774%"></div>
 <pre>
-    apply Coeq_rec_beta_cp.</pre>
+    apply Coeq_rec_beta_cglue.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 298
@@ -1401,11 +1401,11 @@ Time: 0s">
 <div class="code" title="File: Coeq.v
 Line: 299
 Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre>
 
-  Definition Coeq_rec2_beta_cpr (b : B) (a' : A')
-  : ap (fun x =&gt; Coeq_rec2 x (coeq a')) (cp b) = cpl b a'.</pre>
+  Definition Coeq_rec2_beta_cgluer (b : B) (a' : A')
+  : ap (fun x =&gt; Coeq_rec2 x (coeq a')) (cglue b) = cgluel b a'.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 302
@@ -1416,10 +1416,10 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 303
-Time: 0.004s">
-<div class="time" style="width: 1.3651877133106%"></div>
+Time: 0.005s">
+<div class="time" style="width: 1.5479876160991%"></div>
 <pre>
-    transitivity (ap10 (ap Coeq_rec2 (cp b)) (coeq a')).</pre>
+    transitivity (ap10 (ap Coeq_rec2 (cglue b)) (coeq a')).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 304
@@ -1431,13 +1431,13 @@ Time: 0s">
 <div class="code" title="File: Coeq.v
 Line: 305
 Time: 0.003s">
-<div class="time" style="width: 1.0238907849829%"></div>
+<div class="time" style="width: 0.92879256965944%"></div>
 <pre> refine (ap_compose Coeq_rec2 (fun h =&gt; h (coeq a')) _ @ _).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 305
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre>
       apply ap_apply_l.</pre>
 </div>
@@ -1450,28 +1450,28 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 307
-Time: 0.145s">
-<div class="time" style="width: 49.488054607509%"></div>
-<pre> unfold Coeq_rec2; rewrite Coeq_rec_beta_cp.</pre>
+Time: 0.178s">
+<div class="time" style="width: 55.108359133127%"></div>
+<pre> unfold Coeq_rec2; rewrite Coeq_rec_beta_cglue.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 307
-Time: 0.094s">
-<div class="time" style="width: 32.081911262799%"></div>
+Time: 0.098s">
+<div class="time" style="width: 30.340557275542%"></div>
 <pre>
       rewrite ap10_path_arrow.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 308
-Time: 0.011s">
-<div class="time" style="width: 3.7542662116041%"></div>
+Time: 0.012s">
+<div class="time" style="width: 3.7151702786378%"></div>
 <pre>
       reflexivity.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 309
-Time: 0.151s">
-<div class="time" style="width: 51.535836177474%"></div>
+Time: 0.158s">
+<div class="time" style="width: 48.916408668731%"></div>
 <pre>
   Defined.</pre>
 </div>
@@ -1481,14 +1481,14 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-  (** TODO: [Coeq_rec2_beta_cplr] *)
+  (** TODO: [Coeq_rec2_beta_cgluelr] *)
 
 </pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 313
-Time: 0.061s">
-<div class="time" style="width: 20.819112627986%"></div>
+Time: 0.068s">
+<div class="time" style="width: 21.052631578947%"></div>
 <pre>End CoeqRec2.</pre>
 </div>
 <div class="code" title="File: Coeq.v
@@ -1509,27 +1509,27 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 316
-Time: 0.015s">
-<div class="time" style="width: 5.1194539249147%"></div>
+Time: 0.018s">
+<div class="time" style="width: 5.5727554179567%"></div>
 <pre>
   Context `{Funext}
           {B A : Type} {f g : B -&gt; A} {B' A' : Type} {f' g' : B' -&gt; A'}
           (P : Coeq f g -&gt; Coeq f' g' -&gt; Type)
           (coeq' : forall a a', P (coeq a) (coeq a'))
-          (cpl : forall b a',
-                   transport (fun x =&gt; P x (coeq a')) (cp b)
+          (cgluel : forall b a',
+                   transport (fun x =&gt; P x (coeq a')) (cglue b)
                              (coeq' (f b) a') = coeq' (g b) a')
-          (cpr : forall a b',
-                   transport (fun y =&gt; P (coeq a) y) (cp b')
+          (cgluer : forall a b',
+                   transport (fun y =&gt; P (coeq a) y) (cglue b')
                              (coeq' a (f' b')) = coeq' a (g' b'))
           (** Perhaps this should really be written using [concatD]. *)
-          (cplr : forall b b',
-                  ap (transport (P (coeq (g b))) (cp b')) (cpl b (f' b'))
-                  @ cpr (g b) b'
-                  = transport_transport P (cp b) (cp b') (coeq' (f b) (f' b'))
-                  @ ap (transport (fun x =&gt; P x (coeq (g' b'))) (cp b))
-                       (cpr (f b) b')
-                  @ cpl b (g' b')).</pre>
+          (cgluelr : forall b b',
+                  ap (transport (P (coeq (g b))) (cglue b')) (cgluel b (f' b'))
+                  @ cgluer (g b) b'
+                  = transport_transport P (cglue b) (cglue b') (coeq' (f b) (f' b'))
+                  @ ap (transport (fun x =&gt; P x (coeq (g' b'))) (cglue b))
+                       (cgluer (f b) b')
+                  @ cgluel b (g' b')).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 334
@@ -1612,7 +1612,7 @@ Line: 344
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-        apply cpr.</pre>
+        apply cgluer.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 345
@@ -1630,7 +1630,7 @@ Time: 0s">
 <div class="code" title="File: Coeq.v
 Line: 346
 Time: 0.002s">
-<div class="time" style="width: 0.68259385665529%"></div>
+<div class="time" style="width: 0.61919504643963%"></div>
 <pre>
       apply path_forall; intros a.</pre>
 </div>
@@ -1663,7 +1663,7 @@ Time: 0s">
 <div class="code" title="File: Coeq.v
 Line: 349
 Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre>
         refine (transport_forall_constant _ _ _ @ _).</pre>
 </div>
@@ -1672,7 +1672,7 @@ Line: 350
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-        apply cpl.</pre>
+        apply cgluel.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 351
@@ -1683,23 +1683,23 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 352
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre> intros b'; cbn.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 352
-Time: 0.005s">
-<div class="time" style="width: 1.7064846416382%"></div>
+Time: 0.004s">
+<div class="time" style="width: 1.2383900928793%"></div>
 <pre>
-        refine (transport_paths_FlFr_D (cp b') _ @ _).</pre>
+        refine (transport_paths_FlFr_D (cglue b') _ @ _).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 353
-Time: 0.018s">
-<div class="time" style="width: 6.1433447098976%"></div>
+Time: 0.017s">
+<div class="time" style="width: 5.2631578947368%"></div>
 <pre>
-        rewrite Coeq_ind_beta_cp.</pre>
+        rewrite Coeq_ind_beta_cglue.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 354
@@ -1717,15 +1717,15 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 356
-Time: 0.014s">
-<div class="time" style="width: 4.778156996587%"></div>
+Time: 0.013s">
+<div class="time" style="width: 4.0247678018576%"></div>
 <pre>
         rewrite ap_pp.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 357
-Time: 0.029s">
-<div class="time" style="width: 9.8976109215017%"></div>
+Time: 0.03s">
+<div class="time" style="width: 9.2879256965944%"></div>
 <pre>
         repeat rewrite concat_p_pp.</pre>
 </div>
@@ -1739,11 +1739,11 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 360
-Time: 0.015s">
-<div class="time" style="width: 5.1194539249147%"></div>
+Time: 0.014s">
+<div class="time" style="width: 4.3343653250774%"></div>
 <pre>set (G := (Coeq_ind (P (coeq (f b)))
                             (fun a' : A' =&gt; coeq' (f b) a')
-                            (fun b'0 : B' =&gt; cpr (f b) b'0))).</pre>
+                            (fun b'0 : B' =&gt; cgluer (f b) b'0))).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 362
@@ -1755,14 +1755,14 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 364
-Time: 0.032s">
-<div class="time" style="width: 10.921501706485%"></div>
-<pre>rewrite (apD_transport_forall_constant P (cp b) G (cp b')); simpl.</pre>
+Time: 0.033s">
+<div class="time" style="width: 10.216718266254%"></div>
+<pre>rewrite (apD_transport_forall_constant P (cglue b) G (cglue b')); simpl.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 364
-Time: 0.124s">
-<div class="time" style="width: 42.320819112628%"></div>
+Time: 0.126s">
+<div class="time" style="width: 39.009287925697%"></div>
 <pre>
         rewrite !inv_pp, !inv_V.</pre>
 </div>
@@ -1776,8 +1776,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 367
-Time: 0.122s">
-<div class="time" style="width: 41.638225255973%"></div>
+Time: 0.123s">
+<div class="time" style="width: 38.080495356037%"></div>
 <pre>rewrite !concat_pp_p; apply whiskerL.</pre>
 </div>
 <div class="code" title="File: Coeq.v
@@ -1790,8 +1790,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 369
-Time: 0.1s">
-<div class="time" style="width: 34.129692832765%"></div>
+Time: 0.106s">
+<div class="time" style="width: 32.8173374613%"></div>
 <pre>rewrite !concat_p_pp, concat_pV_p.</pre>
 </div>
 <div class="code" title="File: Coeq.v
@@ -1805,8 +1805,8 @@ Time: 0s">
 <div class="code" title="File: Coeq.v
 Line: 371
 Time: 0.017s">
-<div class="time" style="width: 5.80204778157%"></div>
-<pre>subst G; rewrite Coeq_ind_beta_cp; simpl.</pre>
+<div class="time" style="width: 5.2631578947368%"></div>
+<pre>subst G; rewrite Coeq_ind_beta_cglue; simpl.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 371
@@ -1818,16 +1818,16 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 373
-Time: 0.055s">
-<div class="time" style="width: 18.77133105802%"></div>
+Time: 0.054s">
+<div class="time" style="width: 16.71826625387%"></div>
 <pre>rewrite !concat_pp_p; do 2 apply moveR_Vp; rewrite !concat_p_pp.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 373
-Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.61919504643963%"></div>
 <pre>
-        apply cplr.</pre>
+        apply cgluelr.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 374
@@ -1852,19 +1852,19 @@ Time: 0s">
         (** Our first order of business is to get rid of the [Coeq_ind]s, which only occur in the following incarnation. *)
         set (G := (Coeq_ind (P (coeq (f b)))
                             (fun a' : A' =&gt; coeq' (f b) a')
-                            (fun b'0 : B' =&gt; cpr (f b) b'0))).
+                            (fun b'0 : B' =&gt; cgluer (f b) b'0))).
         (** Let's reduce the [apD (loop # G)] first. *)
-        rewrite (apD_transport_forall_constant P (cp b) G (cp b')); simpl.
+        rewrite (apD_transport_forall_constant P (cglue b) G (cglue b')); simpl.
         rewrite !inv_pp, !inv_V.
         (** Now we can cancel a [transport_forall_constant]. *)
         rewrite !concat_pp_p; apply whiskerL.
         (** And a path-inverse pair.  This removes all the [transport_forall_constant]s. *)
         rewrite !concat_p_pp, concat_pV_p.
         (** Now we can beta-reduce the last remaining [G]. *)
-        subst G; rewrite Coeq_ind_beta_cp; simpl.
+        subst G; rewrite Coeq_ind_beta_cglue; simpl.
         (** Now we just have to rearrange it a bit. *)
         rewrite !concat_pp_p; do 2 apply moveR_Vp; rewrite !concat_p_pp.
-        apply cplr.
+        apply cgluelr.
        </pre>
 </div>
 <div class="code" title="File: Coeq.v
@@ -1875,15 +1875,15 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 394
-Time: 0.293s">
+Time: 0.323s">
 <div class="time" style="width: 100%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 395
-Time: 0.108s">
-<div class="time" style="width: 36.860068259386%"></div>
+Time: 0.12s">
+<div class="time" style="width: 37.151702786378%"></div>
 <pre>
 
 End CoeqInd2.</pre>
@@ -1900,10 +1900,10 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 400
-Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.61919504643963%"></div>
 <pre>Definition Coeq_sym_map {B A} (f g : B -&gt; A) : Coeq f g -&gt; Coeq g f :=
-  Coeq_rec (Coeq g f) coeq (fun b : B =&gt; (cp b)^).</pre>
+  Coeq_rec (Coeq g f) coeq (fun b : B =&gt; (cglue b)^).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 401
@@ -1930,7 +1930,7 @@ Time: 0s">
 <div class="code" title="File: Coeq.v
 Line: 405
 Time: 0.001s">
-<div class="time" style="width: 0.34129692832765%"></div>
+<div class="time" style="width: 0.30959752321981%"></div>
 <pre> srapply @Coeq_ind.</pre>
 </div>
 <div class="code" title="File: Coeq.v
@@ -1961,15 +1961,15 @@ Time: 0s">
 </div>
 <div class="code" title="File: Coeq.v
 Line: 407
-Time: 0.121s">
-<div class="time" style="width: 41.296928327645%"></div>
+Time: 0.126s">
+<div class="time" style="width: 39.009287925697%"></div>
 <pre>
-    abstract (rewrite transport_paths_FFlr, Coeq_rec_beta_cp, ap_V, Coeq_rec_beta_cp; hott_simpl).</pre>
+    abstract (rewrite transport_paths_FFlr, Coeq_rec_beta_cglue, ap_V, Coeq_rec_beta_cglue; hott_simpl).</pre>
 </div>
 <div class="code" title="File: Coeq.v
 Line: 408
 Time: 0.002s">
-<div class="time" style="width: 0.68259385665529%"></div>
+<div class="time" style="width: 0.61919504643963%"></div>
 <pre>
 Defined.</pre>
 </div>
