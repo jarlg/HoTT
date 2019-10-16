@@ -523,12 +523,12 @@
           
 
             i = 101;
-            data = "1 subgoal (ID 2319)	  	  O : Modality	  H : Lex O	  A : Type	  B : Type	  C : Type	  f : B -> A	  g : C -> A	  ============================	  functor_pullback f g (O_functor O f) (O_functor O g) 	    (to O A) (to O B) (to O C) (to_O_natural O f) 	    (to_O_natural O g) ==	  (fun x : Pullback f g =>	   pullback_corec	     (O_functor_square O pullback_pr1 pullback_pr2 f g (pullback_commsq f g))	     (to O (Pullback f g) x))	";
+            data = "1 subgoal (ID 2319)	  	  O : Modality	  H : Lex O	  A : Type	  B : Type	  C : Type	  f : B -> A	  g : C -> A	  ============================	  functor_pullback f g (O_functor O f) (O_functor O g) 	    (to O A) (to O B) (to O C) (to_O_natural O f) 	    (to_O_natural O g) ==	  (fun x : Pullback f g =>	   pullback_corec	     (O_functor_square O pullback_pr1 pullback_pr2 f g (pullback_commsq f g))	     (to O (Pullback f g) x))	1 subgoal (ID 2339)	  	  O : Modality	  H : Lex O	  A : Type	  B : Type	  C : Type	  f : B -> A	  g : C -> A	  b : B	  c : C	  e : f b = g c	  ============================	  (to O B b; to O C c;	  (to_O_natural O f b @ ap (to O A) e) @ (to_O_natural O g c)^) =	  (O_functor O pullback_pr1 (to O (Pullback f g) (b; c; e));	  O_functor O pullback_pr2 (to O (Pullback f g) (b; c; e));	  O_functor_square O pullback_pr1 pullback_pr2 f g 	    (pullback_commsq f g) (to O (Pullback f g) (b; c; e)))	";
             responses[i]=data;
           
 
             i = 102;
-            data = "1 subgoal (ID 2339)	  	  O : Modality	  H : Lex O	  A : Type	  B : Type	  C : Type	  f : B -> A	  g : C -> A	  b : B	  c : C	  e : f b = g c	  ============================	  (to O B b; to O C c;	  (to_O_natural O f b @ ap (to O A) e) @ (to_O_natural O g c)^) =	  (O_functor O pullback_pr1 (to O (Pullback f g) (b; c; e));	  O_functor O pullback_pr2 (to O (Pullback f g) (b; c; e));	  O_functor_square O pullback_pr1 pullback_pr2 f g 	    (pullback_commsq f g) (to O (Pullback f g) (b; c; e)))	1 subgoal (ID 2366)	  	  O : Modality	  H : Lex O	  A : Type	  B : Type	  C : Type	  f : B -> A	  g : C -> A	  b : B	  c : C	  e : f b = g c	  ============================	  transport	    (fun b0 : O B => {c0 : O C & O_functor O f b0 = O_functor O g c0})	    (to_O_natural O pullback_pr1 (b; c; e))^	    (to O C c; (to_O_natural O f b @ ap (to O A) e) @ (to_O_natural O g c)^) =	  (O_functor O pullback_pr2 (to O (Pullback f g) (b; c; e));	  O_functor_square O pullback_pr1 pullback_pr2 f g 	    (pullback_commsq f g) (to O (Pullback f g) (b; c; e)))	";
+            data = "1 subgoal (ID 2366)	  	  O : Modality	  H : Lex O	  A : Type	  B : Type	  C : Type	  f : B -> A	  g : C -> A	  b : B	  c : C	  e : f b = g c	  ============================	  transport	    (fun b0 : O B => {c0 : O C & O_functor O f b0 = O_functor O g c0})	    (to_O_natural O pullback_pr1 (b; c; e))^	    (to O C c; (to_O_natural O f b @ ap (to O A) e) @ (to_O_natural O g c)^) =	  (O_functor O pullback_pr2 (to O (Pullback f g) (b; c; e));	  O_functor_square O pullback_pr1 pullback_pr2 f g 	    (pullback_commsq f g) (to O (Pullback f g) (b; c; e)))	";
             responses[i]=data;
           
 
@@ -2678,7 +2678,7 @@
 </div>
 <div class="goal" id="goal0_3_7"><pre><span></span></pre></div>
 <div class="doc" scenenumber="9">
-The following numbered lemmas are all actually equivalent characterizations of lex-ness.  We prove this for some of them, but we don't make the reverse implications Instances; usually <span class="inlinecode"><a class="idref" href="HoTT.HIT.Connectedness.html#isconnected_paths"><span class="id" title="instance">isconnected_paths</span></a></span> is the easier way to prove lexness. 
+The following numbered lemmas are all actually equivalent characterizations of lex-ness.  We prove this for some of them, but we don't make the reverse implications Instances; usually <span class="inlinecode"><a class="idref" href="HoTT.Truncations.Connectedness.html#isconnected_paths"><span class="id" title="instance">isconnected_paths</span></a></span> is the easier way to prove lexness. 
 <div class="doc" scenenumber="3"> </div>
 
  1. Every map between connected types is a connected map. 
@@ -3630,7 +3630,7 @@ By assumption, <span class="inlinecode"><span class="id" title="keyword">fun</sp
 </div>
 <div class="goal" id="goal0_3_67"><pre><span></span></pre></div>
 <div class="doc" scenenumber="69">
-Lex modalities preserve <span class="inlinecode"><a class="idref" href="Coq.Init.Peano.html#n"><span class="id" title="variable">n</span></a></span>-types for all <span class="inlinecode"><a class="idref" href="Coq.Init.Peano.html#n"><span class="id" title="variable">n</span></a></span>.  This is definitely not equivalent to lex-ness, since it is true for the truncation modalities that are not lex.  But it is also not true of all modalities; e.g. the shape modality in a cohesive topos can take 0-types to <span class="inlinecode"><a class="idref" href="HoTT.HIT.Truncations.html#oo"><span class="id" title="abbreviation">oo</span></a></span>-types. 
+Lex modalities preserve <span class="inlinecode"><a class="idref" href="Coq.Init.Peano.html#n"><span class="id" title="variable">n</span></a></span>-types for all <span class="inlinecode"><a class="idref" href="Coq.Init.Peano.html#n"><span class="id" title="variable">n</span></a></span>.  This is definitely not equivalent to lex-ness, since it is true for the truncation modalities that are not lex.  But it is also not true of all modalities; e.g. the shape modality in a cohesive topos can take 0-types to <span class="inlinecode"><a class="idref" href="HoTT.Truncations.Core.html#oo"><span class="id" title="abbreviation">oo</span></a></span>-types. 
 </div>
 <div scenenumber="71" class="code">
 <span class="command" onmouseout="
