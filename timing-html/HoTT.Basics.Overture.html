@@ -167,8 +167,8 @@ Definition relation (A : Type) := A -&gt; A -&gt; Type.</pre>
 </div>
 <div class="code" title="File: Overture.v
 Line: 24
-Time: 0.001s">
-<div class="time" style="width: 50%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
 Class Reflexive {A} (R : relation A) :=
@@ -176,8 +176,8 @@ Class Reflexive {A} (R : relation A) :=
 </div>
 <div class="code" title="File: Overture.v
 Line: 27
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 50%"></div>
 <pre>
 
 Class Symmetric {A} (R : relation A) :=
@@ -202,8 +202,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Overture.v
 Line: 35
-Time: 0.001s">
-<div class="time" style="width: 50%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>Class PreOrder {A} (R : relation A) :=
   { PreOrder_Reflexive : Reflexive R | 2 ;
     PreOrder_Transitive : Transitive R | 2 }.</pre>
@@ -786,8 +786,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Overture.v
 Line: 155
-Time: 0.001s">
-<div class="time" style="width: 50%"></div>
+Time: 0.002s">
+<div class="time" style="width: 100%"></div>
 <pre>Instance iff_compose : Transitive iff | 1
   := fun A B C f g =&gt; (fst g o fst f , snd f o snd g).</pre>
 </div>
@@ -830,8 +830,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Overture.v
 Line: 163
-Time: 0.001s">
-<div class="time" style="width: 50%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>Instance iff_reflexive : Reflexive iff | 1
   := fun A =&gt; (idmap , idmap).</pre>
 </div>
@@ -1015,8 +1015,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Overture.v
 Line: 198
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 50%"></div>
 <pre>
 
 Lemma paths_rew_r A a y P (X : P y) (H : a = y :&gt; A) : P a.</pre>
@@ -1081,8 +1081,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Overture.v
 Line: 209
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 50%"></div>
 <pre>Definition paths_ind' {A : Type} (P : forall (a b : A), (a = b) -&gt; Type)
   : (forall (a : A), P a a idpath) -&gt; forall (a b : A) (p : a = b), P a b p.</pre>
 </div>
@@ -1148,8 +1148,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Overture.v
 Line: 222
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 50%"></div>
 <pre>Definition inverse {A : Type} {x y : A} (p : x = y) : y = x
   := match p with idpath =&gt; idpath end.</pre>
 </div>
@@ -1237,8 +1237,8 @@ Module Export symmetric_paths := inverseSymmetric inverse.
 </div>
 <div class="code" title="File: Overture.v
 Line: 256
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 50%"></div>
 <pre>Definition concat {A : Type} {x y z : A} (p : x = y) (q : y = z) : x = z :=
   match p, q with idpath, idpath =&gt; idpath end.</pre>
 </div>
@@ -1352,8 +1352,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Overture.v
 Line: 281
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 50%"></div>
 <pre>Definition transport {A : Type} (P : A -&gt; Type) {x y : A} (p : x = y) (u : P x) : P y :=
   match p with idpath =&gt; u end.</pre>
 </div>
@@ -1444,8 +1444,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Overture.v
 Line: 304
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 50%"></div>
 <pre>
 
 Definition pointwise_paths A (P : A -&gt; Type) (f g : forall x, P x)
@@ -1453,8 +1453,8 @@ Definition pointwise_paths A (P : A -&gt; Type) (f g : forall x, P x)
 </div>
 <div class="code" title="File: Overture.v
 Line: 307
-Time: 0.001s">
-<div class="time" style="width: 50%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
 Definition pointwise_paths_concat {A} {P : A -&gt; Type} {f g h : forall x, P x}
@@ -1479,8 +1479,8 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Overture.v
 Line: 315
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 50%"></div>
 <pre>
   intros ? ?; reflexivity.</pre>
 </div>
@@ -1605,8 +1605,8 @@ Notation "f == g" := (pointwise_paths f g) : type_scope.</pre>
 </div>
 <div class="code" title="File: Overture.v
 Line: 339
-Time: 0.001s">
-<div class="time" style="width: 50%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
 Definition apD10 {A} {B:A-&gt;Type} {f g : forall x, B x} (h:f=g)
@@ -1623,8 +1623,8 @@ Global Arguments apD10 {A%type_scope B} {f g}%function_scope h%path_scope _.</pr
 </div>
 <div class="code" title="File: Overture.v
 Line: 345
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 50%"></div>
 <pre>
 
 Definition ap10 {A B} {f g:A-&gt;B} (h:f=g) : f == g
@@ -1669,8 +1669,8 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Overture.v
 Line: 355
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 50%"></div>
 <pre>
   case h, p; reflexivity.</pre>
 </div>
@@ -1691,8 +1691,8 @@ Global Arguments ap11 {A B}%type_scope {f g}%function_scope h%path_scope {x y} p
 </div>
 <div class="code" title="File: Overture.v
 Line: 359
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 50%"></div>
 <pre>
 
 Definition ap2 {A B C} (f : A -&gt; B -&gt; C) {x1 x2 y1 y2}:
@@ -1707,8 +1707,8 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Overture.v
 Line: 363
-Time: 0.001s">
-<div class="time" style="width: 50%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 intros H1 H2;destruct H1,H2;reflexivity.</pre>
 </div>
@@ -1747,8 +1747,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Overture.v
 Line: 372
-Time: 0.002s">
-<div class="time" style="width: 100%"></div>
+Time: 0.001s">
+<div class="time" style="width: 50%"></div>
 <pre>Definition apD {A:Type} {B:A-&gt;Type} (f:forall a:A, B a) {x y:A} (p:x=y):
   p # (f x) = f y
   :=
@@ -1817,8 +1817,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Overture.v
 Line: 400
-Time: 0.001s">
-<div class="time" style="width: 50%"></div>
+Time: 0.002s">
+<div class="time" style="width: 100%"></div>
 <pre>Cumulative Class IsEquiv {A B : Type} (f : A -&gt; B) := BuildIsEquiv {
   equiv_inv : B -&gt; A ;
   eisretr : Sect equiv_inv f;
@@ -1865,8 +1865,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Overture.v
 Line: 412
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 50%"></div>
 <pre>Cumulative Record Equiv A B := BuildEquiv {
   equiv_fun : A -&gt; B ;
   equiv_isequiv : IsEquiv equiv_fun
@@ -2154,8 +2154,8 @@ Local Open Scope trunc_scope.</pre>
 </div>
 <div class="code" title="File: Overture.v
 Line: 488
-Time: 0.001s">
-<div class="time" style="width: 50%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 Fixpoint nat_to_trunc_index (n : nat) : trunc_index
   := match n with
@@ -2173,8 +2173,8 @@ Coercion nat_to_trunc_index : nat &gt;-&gt; trunc_index.</pre>
 </div>
 <div class="code" title="File: Overture.v
 Line: 495
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 50%"></div>
 <pre>
 
 Definition int_to_trunc_index (v : Decimal.int) : option trunc_index
@@ -2204,8 +2204,8 @@ Fixpoint trunc_index_to_little_uint n acc :=
 </div>
 <div class="code" title="File: Overture.v
 Line: 514
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 50%"></div>
 <pre>
 
 Definition trunc_index_to_int n :=
@@ -2245,8 +2245,8 @@ Notation "-1" := (- 1) : trunc_scope.</pre>
 </div>
 <div class="code" title="File: Overture.v
 Line: 525
-Time: 0.001s">
-<div class="time" style="width: 50%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
 Fixpoint IsTrunc_internal (n : trunc_index) (A : Type) : Type :=
@@ -2265,8 +2265,8 @@ Arguments IsTrunc_internal n A : simpl nomatch.</pre>
 </div>
 <div class="code" title="File: Overture.v
 Line: 533
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 50%"></div>
 <pre>
 
 Class IsTrunc (n : trunc_index) (A : Type) : Type :=
@@ -2480,8 +2480,8 @@ Existing Class Funext.</pre>
 </div>
 <div class="code" title="File: Overture.v
 Line: 592
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 50%"></div>
 <pre>
 Axiom isequiv_apD10 : forall `{Funext} (A : Type) (P : A -&gt; Type) f g, IsEquiv (@apD10 A P f g).</pre>
 </div>
@@ -2494,8 +2494,8 @@ Global Existing Instance isequiv_apD10.</pre>
 </div>
 <div class="code" title="File: Overture.v
 Line: 594
-Time: 0.001s">
-<div class="time" style="width: 50%"></div>
+Time: 0.002s">
+<div class="time" style="width: 100%"></div>
 <pre>
 
 Definition path_forall `{Funext} {A : Type} {P : A -&gt; Type} (f g : forall x : A, P x) :
@@ -2661,8 +2661,8 @@ Definition symmetric_neq {A} {x y : A} : x &lt;&gt; y -&gt; y &lt;&gt; x
 </div>
 <div class="code" title="File: Overture.v
 Line: 641
-Time: 0.001s">
-<div class="time" style="width: 50%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
 Definition complement {A} (R : relation A) : relation A :=
@@ -2678,8 +2678,8 @@ Typeclasses Opaque complement.</pre>
 </div>
 <div class="code" title="File: Overture.v
 Line: 646
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 50%"></div>
 <pre>
 
 Class Irreflexive {A} (R : relation A) :=
@@ -2771,8 +2771,8 @@ Arguments point A {_}.</pre>
 </div>
 <div class="code" title="File: Overture.v
 Line: 667
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 50%"></div>
 <pre>
 
 Record pType :=
