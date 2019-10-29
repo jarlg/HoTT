@@ -24,6 +24,7 @@
 <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Diagrams.Diagram.html#"><span class="id" title="library">Diagrams.Diagram</span></a>.<br/>
 <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Diagrams.Graph.html#"><span class="id" title="library">Diagrams.Graph</span></a>.<br/>
 <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Diagrams.Cocone.html#"><span class="id" title="library">Diagrams.Cocone</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Diagrams.ConstantDiagram.html#"><span class="id" title="library">Diagrams.ConstantDiagram</span></a>.<br/>
 
 <br/>
 <span class="id" title="keyword">Local Open</span> <span class="id" title="keyword">Scope</span> <span class="id" title="var">path_scope</span>.<br/>
@@ -36,7 +37,7 @@
 This file contains the definition of colimits, and functoriality results on colimits. 
 <div class="paragraph"> </div>
 
-<a name="lab365"></a><h1 class="section">Colimits</h1>
+<a name="lab372"></a><h1 class="section">Colimits</h1>
 
 <div class="paragraph"> </div>
 
@@ -75,14 +76,14 @@ This file contains the definition of colimits, and functoriality results on coli
 </div>
 
 <div class="doc">
-<a name="lab366"></a><h1 class="section">Existence of colimits</h1>
+<a name="lab373"></a><h1 class="section">Existence of colimits</h1>
 
 <div class="paragraph"> </div>
 
  Whatever the diagram considered, there exists a colimit of it. The existence is given by the HIT <span class="inlinecode"><a class="idref" href="HoTT.Categories.Limits.Functors.html#functors.colimit"><span class="id" title="section">colimit</span></a></span>. 
 <div class="paragraph"> </div>
 
-<a name="lab367"></a><h2 class="section">Definition of the HIT</h2>
+<a name="lab374"></a><h2 class="section">Definition of the HIT</h2>
 
 </div>
 <div class="code">
@@ -145,6 +146,44 @@ This file contains the definition of colimits, and functoriality results on coli
 </div>
 
 <div class="doc">
+Colimit_rec is an equivalence 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Global Instance</span> <a name="isequiv_colimit_rec"><span class="id" title="instance">isequiv_colimit_rec</span></a> `{<a class="idref" href="HoTT.Basics.Overture.html#Funext"><span class="id" title="class">Funext</span></a>} {<span class="id" title="var">G</span> : <a class="idref" href="HoTT.Diagrams.Graph.html#Graph"><span class="id" title="record">Graph</span></a>}<br/>
+&nbsp;&nbsp;{<span class="id" title="var">D</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#Diagram"><span class="id" title="record">Diagram</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#G"><span class="id" title="variable">G</span></a>} (<span class="id" title="var">P</span> : <span class="id" title="keyword">Type</span>) : <a class="idref" href="HoTT.Basics.Overture.html#IsEquiv"><span class="id" title="class">IsEquiv</span></a> (<a class="idref" href="HoTT.Colimits.Colimit.html#Colimit_rec"><span class="id" title="definition">Colimit_rec</span></a> (<span class="id" title="var">D</span>:=<a class="idref" href="HoTT.Colimits.Colimit.html#D"><span class="id" title="variable">D</span></a>) <a class="idref" href="HoTT.Colimits.Colimit.html#P"><span class="id" title="variable">P</span></a>).<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Basics.Equivalences.html#isequiv_adjointify"><span class="id" title="definition">isequiv_adjointify</span></a>.<br/>
+&nbsp;&nbsp;{ <span class="id" title="tactic">intro</span> <span class="id" title="var">f</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Diagrams.Cocone.html#Build_Cocone"><span class="id" title="constructor">Build_Cocone</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;1: <span class="id" title="tactic">intros</span> <span class="id" title="var">i</span> <span class="id" title="var">g</span>; <span class="id" title="tactic">apply</span> <span class="id" title="var">f</span>, (<a class="idref" href="HoTT.Colimits.Colimit.html#colim"><span class="id" title="constructor">colim</span></a> <span class="id" title="var">i</span> <span class="id" title="var">g</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">i</span> <span class="id" title="var">j</span> <span class="id" title="var">g</span> <span class="id" title="var">x</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Basics.Overture.html#ap"><span class="id" title="definition">ap</span></a>, <a class="idref" href="HoTT.Colimits.Colimit.html#colimp"><span class="id" title="axiom">colimp</span></a>. }<br/>
+&nbsp;&nbsp;{ <span class="id" title="tactic">intro</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Basics.Overture.html#path_forall"><span class="id" title="definition">path_forall</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Colimits.Colimit.html#Colimit_ind"><span class="id" title="definition">Colimit_ind</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;1: <span class="id" title="tactic">reflexivity</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> ????; <span class="id" title="var">cbn</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Types.Paths.html#transport_paths_FlFr"><span class="id" title="definition">transport_paths_FlFr</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Colimits.Colimit.html#Colimit_rec_beta_colimp"><span class="id" title="definition">Colimit_rec_beta_colimp</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">hott_simpl</span>. }<br/>
+&nbsp;&nbsp;{ <span class="id" title="tactic">intros</span> [].<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Diagrams.Cocone.html#path_cocone"><span class="id" title="definition">path_cocone</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;1: <span class="id" title="tactic">reflexivity</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> ????; <span class="id" title="var">cbn</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Colimits.Colimit.html#Colimit_rec_beta_colimp"><span class="id" title="definition">Colimit_rec_beta_colimp</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">hott_simpl</span>. }<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="equiv_colimit_rec"><span class="id" title="definition">equiv_colimit_rec</span></a> `{<a class="idref" href="HoTT.Basics.Overture.html#Funext"><span class="id" title="class">Funext</span></a>} {<span class="id" title="var">G</span> : <a class="idref" href="HoTT.Diagrams.Graph.html#Graph"><span class="id" title="record">Graph</span></a>} {<span class="id" title="var">D</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#Diagram"><span class="id" title="record">Diagram</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#G"><span class="id" title="variable">G</span></a>} (<span class="id" title="var">P</span> : <span class="id" title="keyword">Type</span>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="HoTT.Diagrams.Cocone.html#Cocone"><span class="id" title="class">Cocone</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#D"><span class="id" title="variable">D</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#P"><span class="id" title="variable">P</span></a> <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">&lt;~&gt;</span></a> <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">(</span></a><a class="idref" href="HoTT.Colimits.Colimit.html#Colimit"><span class="id" title="inductive">Colimit</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#D"><span class="id" title="variable">D</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#P"><span class="id" title="variable">P</span></a><a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">)</span></a> := <a class="idref" href="HoTT.Basics.Overture.html#BuildEquiv"><span class="id" title="constructor">BuildEquiv</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> (<a class="idref" href="HoTT.Colimits.Colimit.html#isequiv_colimit_rec"><span class="id" title="instance">isequiv_colimit_rec</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#P"><span class="id" title="variable">P</span></a>).<br/>
+
+<br/>
+</div>
+
+<div class="doc">
 And we can now show that the HIT is actually a colimit. 
 </div>
 <div class="code">
@@ -158,7 +197,7 @@ And we can now show that the HIT is actually a colimit.
 &nbsp;&nbsp;: <a class="idref" href="HoTT.Diagrams.Cocone.html#UniversalCocone"><span class="id" title="class">UniversalCocone</span></a> (<a class="idref" href="HoTT.Colimits.Colimit.html#cocone_colimit"><span class="id" title="definition">cocone_colimit</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#D"><span class="id" title="variable">D</span></a>).<br/>
 <span class="id" title="keyword">Proof</span>.<br/>
 &nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Diagrams.Cocone.html#Build_UniversalCocone"><span class="id" title="constructor">Build_UniversalCocone</span></a>; <span class="id" title="tactic">intro</span> <span class="id" title="var">Y</span>.<br/>
-&nbsp;&nbsp;<span class="id" title="tactic">simple</span> <span class="id" title="tactic">refine</span> (<a class="idref" href="HoTT.Basics.Equivalences.html#isequiv_adjointify"><span class="id" title="definition">isequiv_adjointify</span></a> <span class="id" title="var">_</span> (<a class="idref" href="HoTT.Colimits.Colimit.html#Colimit_rec"><span class="id" title="definition">Colimit_rec</span></a> <span class="id" title="var">Y</span>) <span class="id" title="var">_</span> <span class="id" title="var">_</span>).<br/>
+&nbsp;&nbsp;<span class="id" title="var">serapply</span> (<a class="idref" href="HoTT.Basics.Equivalences.html#isequiv_adjointify"><span class="id" title="definition">isequiv_adjointify</span></a> <span class="id" title="var">_</span> (<a class="idref" href="HoTT.Colimits.Colimit.html#Colimit_rec"><span class="id" title="definition">Colimit_rec</span></a> <span class="id" title="var">Y</span>) <span class="id" title="var">_</span> <span class="id" title="var">_</span>).<br/>
 &nbsp;&nbsp;- <span class="id" title="tactic">intros</span> <span class="id" title="var">C</span>.<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Diagrams.Cocone.html#path_cocone"><span class="id" title="definition">path_cocone</span></a>.<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;1: <span class="id" title="tactic">reflexivity</span>.<br/>
@@ -184,7 +223,7 @@ And we can now show that the HIT is actually a colimit.
 </div>
 
 <div class="doc">
-<a name="lab368"></a><h1 class="section">Functoriality of colimits</h1>
+<a name="lab375"></a><h1 class="section">Functoriality of colimits</h1>
 
 </div>
 <div class="code">
@@ -210,7 +249,7 @@ Colimits are preserved by composition with a (diagram) equivalence.
 &nbsp;&nbsp;<span class="id" title="keyword">Proof</span>.<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">HQ</span>.<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">serapply</span> (<a class="idref" href="HoTT.Colimits.Colimit.html#Build_IsColimit"><span class="id" title="constructor">Build_IsColimit</span></a> (<a class="idref" href="HoTT.Diagrams.Cocone.html#cocone_precompose"><span class="id" title="definition">cocone_precompose</span></a> <span class="id" title="var">m</span> <span class="id" title="var">HQ</span>) <span class="id" title="var">_</span>).<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Diagrams.Cocone.html#precompose_equiv_universality"><span class="id" title="instance">precompose_equiv_universality</span></a>, <span class="id" title="var">HQ</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Diagrams.Cocone.html#cocone_precompose_equiv_universality"><span class="id" title="instance">cocone_precompose_equiv_universality</span></a>, <span class="id" title="var">HQ</span>.<br/>
 &nbsp;&nbsp;<span class="id" title="keyword">Defined</span>.<br/>
 
 <br/>
@@ -219,7 +258,7 @@ Colimits are preserved by composition with a (diagram) equivalence.
 &nbsp;&nbsp;<span class="id" title="keyword">Proof</span>.<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">HQ</span>.<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">serapply</span> (<a class="idref" href="HoTT.Colimits.Colimit.html#Build_IsColimit"><span class="id" title="constructor">Build_IsColimit</span></a> (<a class="idref" href="HoTT.Diagrams.Cocone.html#cocone_postcompose"><span class="id" title="definition">cocone_postcompose</span></a> <span class="id" title="var">HQ</span> <span class="id" title="var">f</span>) <span class="id" title="var">_</span>).<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Diagrams.Cocone.html#postcompose_equiv_universality"><span class="id" title="instance">postcompose_equiv_universality</span></a>, <span class="id" title="var">HQ</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Diagrams.Cocone.html#cocone_postcompose_equiv_universality"><span class="id" title="instance">cocone_postcompose_equiv_universality</span></a>, <span class="id" title="var">HQ</span>.<br/>
 &nbsp;&nbsp;<span class="id" title="keyword">Defined</span>.<br/>
 
 <br/>
@@ -231,7 +270,7 @@ A diagram map <span class="inlinecode"><a class="idref" href="HoTT.Categories.Fu
 <div class="code">
 
 <br/>
-&nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="functoriality_colimit"><span class="id" title="definition">functoriality_colimit</span></a> {<span class="id" title="var">D1</span> <span class="id" title="var">D2</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#Diagram"><span class="id" title="record">Diagram</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.G"><span class="id" title="variable">G</span></a>} (<span class="id" title="var">m</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#DiagramMap"><span class="id" title="record">DiagramMap</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#D1"><span class="id" title="variable">D1</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#D2"><span class="id" title="variable">D2</span></a>)<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="functor_colimit"><span class="id" title="definition">functor_colimit</span></a> {<span class="id" title="var">D1</span> <span class="id" title="var">D2</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#Diagram"><span class="id" title="record">Diagram</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.G"><span class="id" title="variable">G</span></a>} (<span class="id" title="var">m</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#DiagramMap"><span class="id" title="record">DiagramMap</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#D1"><span class="id" title="variable">D1</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#D2"><span class="id" title="variable">D2</span></a>)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;{<span class="id" title="var">Q1</span> <span class="id" title="var">Q2</span>} (<span class="id" title="var">HQ1</span> : <a class="idref" href="HoTT.Colimits.Colimit.html#IsColimit"><span class="id" title="class">IsColimit</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#D1"><span class="id" title="variable">D1</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#Q1"><span class="id" title="variable">Q1</span></a>) (<span class="id" title="var">HQ2</span> : <a class="idref" href="HoTT.Colimits.Colimit.html#IsColimit"><span class="id" title="class">IsColimit</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#D2"><span class="id" title="variable">D2</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#Q2"><span class="id" title="variable">Q2</span></a>)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;: <a class="idref" href="HoTT.Colimits.Colimit.html#Q1"><span class="id" title="variable">Q1</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#Q2"><span class="id" title="variable">Q2</span></a> := <a class="idref" href="HoTT.Colimits.Colimit.html#cocone_postcompose_inv"><span class="id" title="definition">cocone_postcompose_inv</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#HQ1"><span class="id" title="variable">HQ1</span></a> (<a class="idref" href="HoTT.Diagrams.Cocone.html#cocone_precompose"><span class="id" title="definition">cocone_precompose</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#m"><span class="id" title="variable">m</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#HQ2"><span class="id" title="variable">HQ2</span></a>).<br/>
 
@@ -244,18 +283,18 @@ And this map commutes with diagram map.
 <div class="code">
 
 <br/>
-&nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="functoriality_colimit_commute"><span class="id" title="definition">functoriality_colimit_commute</span></a> {<span class="id" title="var">D1</span> <span class="id" title="var">D2</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#Diagram"><span class="id" title="record">Diagram</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.G"><span class="id" title="variable">G</span></a>}<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="functor_colimit_commute"><span class="id" title="definition">functor_colimit_commute</span></a> {<span class="id" title="var">D1</span> <span class="id" title="var">D2</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#Diagram"><span class="id" title="record">Diagram</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.G"><span class="id" title="variable">G</span></a>}<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" title="var">m</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#DiagramMap"><span class="id" title="record">DiagramMap</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#D1"><span class="id" title="variable">D1</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#D2"><span class="id" title="variable">D2</span></a>) {<span class="id" title="var">Q1</span> <span class="id" title="var">Q2</span>}<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" title="var">HQ1</span> : <a class="idref" href="HoTT.Colimits.Colimit.html#IsColimit"><span class="id" title="class">IsColimit</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#D1"><span class="id" title="variable">D1</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#Q1"><span class="id" title="variable">Q1</span></a>) (<span class="id" title="var">HQ2</span>: <a class="idref" href="HoTT.Colimits.Colimit.html#IsColimit"><span class="id" title="class">IsColimit</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#D2"><span class="id" title="variable">D2</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#Q2"><span class="id" title="variable">Q2</span></a>)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;: <a class="idref" href="HoTT.Diagrams.Cocone.html#cocone_precompose"><span class="id" title="definition">cocone_precompose</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#m"><span class="id" title="variable">m</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#HQ2"><span class="id" title="variable">HQ2</span></a><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Diagrams.Cocone.html#cocone_postcompose"><span class="id" title="definition">cocone_postcompose</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#HQ1"><span class="id" title="variable">HQ1</span></a> (<a class="idref" href="HoTT.Colimits.Colimit.html#functoriality_colimit"><span class="id" title="definition">functoriality_colimit</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#m"><span class="id" title="variable">m</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#HQ1"><span class="id" title="variable">HQ1</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#HQ2"><span class="id" title="variable">HQ2</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Diagrams.Cocone.html#cocone_postcompose"><span class="id" title="definition">cocone_postcompose</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#HQ1"><span class="id" title="variable">HQ1</span></a> (<a class="idref" href="HoTT.Colimits.Colimit.html#functor_colimit"><span class="id" title="definition">functor_colimit</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#m"><span class="id" title="variable">m</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#HQ1"><span class="id" title="variable">HQ1</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#HQ2"><span class="id" title="variable">HQ2</span></a>)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="HoTT.Basics.Overture.html#6bc2e8b4a6e295632a90f5f35132db8d"><span class="id" title="notation">(</span></a><a class="idref" href="HoTT.Basics.Overture.html#eisretr"><span class="id" title="projection">eisretr</span></a> (<a class="idref" href="HoTT.Diagrams.Cocone.html#cocone_postcompose"><span class="id" title="definition">cocone_postcompose</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#HQ1"><span class="id" title="variable">HQ1</span></a>) <span class="id" title="var">_</span><a class="idref" href="HoTT.Basics.Overture.html#6bc2e8b4a6e295632a90f5f35132db8d"><span class="id" title="notation">)^</span></a>.<br/>
 
 <br/>
 </div>
 
 <div class="doc">
-<a name="lab369"></a><h2 class="section">Colimits of equivalent diagrams</h2>
+<a name="lab376"></a><h2 class="section">Colimits of equivalent diagrams</h2>
 
 <div class="paragraph"> </div>
 
@@ -268,9 +307,9 @@ And this map commutes with diagram map.
 &nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" title="var">HQ1</span> : <a class="idref" href="HoTT.Colimits.Colimit.html#IsColimit"><span class="id" title="class">IsColimit</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#D1"><span class="id" title="variable">D1</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#Q1"><span class="id" title="variable">Q1</span></a>) (<span class="id" title="var">HQ2</span> : <a class="idref" href="HoTT.Colimits.Colimit.html#IsColimit"><span class="id" title="class">IsColimit</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#D2"><span class="id" title="variable">D2</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#Q2"><span class="id" title="variable">Q2</span></a>).<br/>
 
 <br/>
-&nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="functoriality_colimit_eissect"><span class="id" title="definition">functoriality_colimit_eissect</span></a><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;: <a class="idref" href="HoTT.Basics.Overture.html#Sect"><span class="id" title="definition">Sect</span></a> (<a class="idref" href="HoTT.Colimits.Colimit.html#functoriality_colimit"><span class="id" title="definition">functoriality_colimit</span></a> (<a class="idref" href="HoTT.Diagrams.Diagram.html#diagram_equiv_inv"><span class="id" title="lemma">diagram_equiv_inv</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.m"><span class="id" title="variable">m</span></a>) <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ2"><span class="id" title="variable">HQ2</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ1"><span class="id" title="variable">HQ1</span></a>)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="HoTT.Colimits.Colimit.html#functoriality_colimit"><span class="id" title="definition">functoriality_colimit</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.m"><span class="id" title="variable">m</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ1"><span class="id" title="variable">HQ1</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ2"><span class="id" title="variable">HQ2</span></a>).<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="functor_colimit_eissect"><span class="id" title="definition">functor_colimit_eissect</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;: <a class="idref" href="HoTT.Basics.Overture.html#Sect"><span class="id" title="definition">Sect</span></a> (<a class="idref" href="HoTT.Colimits.Colimit.html#functor_colimit"><span class="id" title="definition">functor_colimit</span></a> (<a class="idref" href="HoTT.Diagrams.Diagram.html#diagram_equiv_inv"><span class="id" title="lemma">diagram_equiv_inv</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.m"><span class="id" title="variable">m</span></a>) <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ2"><span class="id" title="variable">HQ2</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ1"><span class="id" title="variable">HQ1</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="HoTT.Colimits.Colimit.html#functor_colimit"><span class="id" title="definition">functor_colimit</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.m"><span class="id" title="variable">m</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ1"><span class="id" title="variable">HQ1</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ2"><span class="id" title="variable">HQ2</span></a>).<br/>
 &nbsp;&nbsp;<span class="id" title="keyword">Proof</span>.<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Basics.Overture.html#ap10"><span class="id" title="definition">ap10</span></a>.<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">serapply</span> (<a class="idref" href="HoTT.Types.Paths.html#equiv_inj"><span class="id" title="definition">equiv_inj</span></a> (<a class="idref" href="HoTT.Diagrams.Cocone.html#cocone_postcompose"><span class="id" title="definition">cocone_postcompose</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ2"><span class="id" title="variable">HQ2</span></a>) <span class="id" title="var">_</span>).<br/>
@@ -285,9 +324,9 @@ And this map commutes with diagram map.
 &nbsp;&nbsp;<span class="id" title="keyword">Defined</span>.<br/>
 
 <br/>
-&nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="functoriality_colimit_eisretr"><span class="id" title="definition">functoriality_colimit_eisretr</span></a><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;: <a class="idref" href="HoTT.Basics.Overture.html#Sect"><span class="id" title="definition">Sect</span></a> (<a class="idref" href="HoTT.Colimits.Colimit.html#functoriality_colimit"><span class="id" title="definition">functoriality_colimit</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.m"><span class="id" title="variable">m</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ1"><span class="id" title="variable">HQ1</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ2"><span class="id" title="variable">HQ2</span></a>)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="HoTT.Colimits.Colimit.html#functoriality_colimit"><span class="id" title="definition">functoriality_colimit</span></a> (<a class="idref" href="HoTT.Diagrams.Diagram.html#diagram_equiv_inv"><span class="id" title="lemma">diagram_equiv_inv</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.m"><span class="id" title="variable">m</span></a>) <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ2"><span class="id" title="variable">HQ2</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ1"><span class="id" title="variable">HQ1</span></a>).<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="functor_colimit_eisretr"><span class="id" title="definition">functor_colimit_eisretr</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;: <a class="idref" href="HoTT.Basics.Overture.html#Sect"><span class="id" title="definition">Sect</span></a> (<a class="idref" href="HoTT.Colimits.Colimit.html#functor_colimit"><span class="id" title="definition">functor_colimit</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.m"><span class="id" title="variable">m</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ1"><span class="id" title="variable">HQ1</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ2"><span class="id" title="variable">HQ2</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="HoTT.Colimits.Colimit.html#functor_colimit"><span class="id" title="definition">functor_colimit</span></a> (<a class="idref" href="HoTT.Diagrams.Diagram.html#diagram_equiv_inv"><span class="id" title="lemma">diagram_equiv_inv</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.m"><span class="id" title="variable">m</span></a>) <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ2"><span class="id" title="variable">HQ2</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ1"><span class="id" title="variable">HQ1</span></a>).<br/>
 &nbsp;&nbsp;<span class="id" title="keyword">Proof</span>.<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Basics.Overture.html#ap10"><span class="id" title="definition">ap10</span></a>.<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">serapply</span> (<a class="idref" href="HoTT.Types.Paths.html#equiv_inj"><span class="id" title="definition">equiv_inj</span></a> (<a class="idref" href="HoTT.Diagrams.Cocone.html#cocone_postcompose"><span class="id" title="definition">cocone_postcompose</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ1"><span class="id" title="variable">HQ1</span></a>) <span class="id" title="var">_</span>).<br/>
@@ -302,14 +341,14 @@ And this map commutes with diagram map.
 &nbsp;&nbsp;<span class="id" title="keyword">Defined</span>.<br/>
 
 <br/>
-&nbsp;&nbsp;<span class="id" title="keyword">Global Instance</span> <a name="isequiv_functoriality_colimit"><span class="id" title="instance">isequiv_functoriality_colimit</span></a><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;: <a class="idref" href="HoTT.Basics.Overture.html#IsEquiv"><span class="id" title="class">IsEquiv</span></a> (<a class="idref" href="HoTT.Colimits.Colimit.html#functoriality_colimit"><span class="id" title="definition">functoriality_colimit</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.m"><span class="id" title="variable">m</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ1"><span class="id" title="variable">HQ1</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ2"><span class="id" title="variable">HQ2</span></a>)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="HoTT.Basics.Equivalences.html#isequiv_adjointify"><span class="id" title="definition">isequiv_adjointify</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <a class="idref" href="HoTT.Colimits.Colimit.html#functoriality_colimit_eissect"><span class="id" title="definition">functoriality_colimit_eissect</span></a><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="HoTT.Colimits.Colimit.html#functoriality_colimit_eisretr"><span class="id" title="definition">functoriality_colimit_eisretr</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Global Instance</span> <a name="isequiv_functor_colimit"><span class="id" title="instance">isequiv_functor_colimit</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;: <a class="idref" href="HoTT.Basics.Overture.html#IsEquiv"><span class="id" title="class">IsEquiv</span></a> (<a class="idref" href="HoTT.Colimits.Colimit.html#functor_colimit"><span class="id" title="definition">functor_colimit</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.m"><span class="id" title="variable">m</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ1"><span class="id" title="variable">HQ1</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.HQ2"><span class="id" title="variable">HQ2</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="HoTT.Basics.Equivalences.html#isequiv_adjointify"><span class="id" title="definition">isequiv_adjointify</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="HoTT.Colimits.Colimit.html#functor_colimit_eissect"><span class="id" title="definition">functor_colimit_eissect</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#functor_colimit_eisretr"><span class="id" title="definition">functor_colimit_eisretr</span></a>.<br/>
 
 <br/>
-&nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="functoriality_colimit_equiv"><span class="id" title="definition">functoriality_colimit_equiv</span></a> : <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.Q1"><span class="id" title="variable">Q1</span></a> <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">&lt;~&gt;</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.Q2"><span class="id" title="variable">Q2</span></a><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="HoTT.Basics.Overture.html#BuildEquiv"><span class="id" title="constructor">BuildEquiv</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <a class="idref" href="HoTT.Colimits.Colimit.html#isequiv_functoriality_colimit"><span class="id" title="instance">isequiv_functoriality_colimit</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="equiv_functor_colimit"><span class="id" title="definition">equiv_functor_colimit</span></a> : <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.Q1"><span class="id" title="variable">Q1</span></a> <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">&lt;~&gt;</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit.Q2"><span class="id" title="variable">Q2</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="HoTT.Basics.Overture.html#BuildEquiv"><span class="id" title="constructor">BuildEquiv</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <a class="idref" href="HoTT.Colimits.Colimit.html#isequiv_functor_colimit"><span class="id" title="instance">isequiv_functor_colimit</span></a>.<br/>
 
 <br/>
 <span class="id" title="keyword">End</span> <a class="idref" href="HoTT.Colimits.Colimit.html#FunctorialityColimit"><span class="id" title="section">FunctorialityColimit</span></a>.<br/>
@@ -318,7 +357,7 @@ And this map commutes with diagram map.
 </div>
 
 <div class="doc">
-<a name="lab370"></a><h1 class="section">Unicity of colimits</h1>
+<a name="lab377"></a><h1 class="section">Unicity of colimits</h1>
 
 <div class="paragraph"> </div>
 
@@ -331,9 +370,29 @@ And this map commutes with diagram map.
 &nbsp;&nbsp;(<span class="id" title="var">HQ1</span> : <a class="idref" href="HoTT.Colimits.Colimit.html#IsColimit"><span class="id" title="class">IsColimit</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#D"><span class="id" title="variable">D</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#Q1"><span class="id" title="variable">Q1</span></a>) (<span class="id" title="var">HQ2</span> : <a class="idref" href="HoTT.Colimits.Colimit.html#IsColimit"><span class="id" title="class">IsColimit</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#D"><span class="id" title="variable">D</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#Q2"><span class="id" title="variable">Q2</span></a>)<br/>
 &nbsp;&nbsp;: <a class="idref" href="HoTT.Colimits.Colimit.html#Q1"><span class="id" title="variable">Q1</span></a> <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">&lt;~&gt;</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#Q2"><span class="id" title="variable">Q2</span></a>.<br/>
 <span class="id" title="keyword">Proof</span>.<br/>
-&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Colimits.Colimit.html#functoriality_colimit_equiv"><span class="id" title="definition">functoriality_colimit_equiv</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Colimits.Colimit.html#equiv_functor_colimit"><span class="id" title="definition">equiv_functor_colimit</span></a>.<br/>
 &nbsp;&nbsp;<span class="id" title="var">serapply</span> (<a class="idref" href="HoTT.Diagrams.Diagram.html#Build_diagram_equiv"><span class="id" title="constructor">Build_diagram_equiv</span></a> (<a class="idref" href="HoTT.Diagrams.Diagram.html#diagram_idmap"><span class="id" title="definition">diagram_idmap</span></a> <span class="id" title="var">D</span>)).<br/>
 <span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab378"></a><h1 class="section">Colimits are left adjoint to constant diagram</h1>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Theorem</span> <a name="colimit_adjoint"><span class="id" title="lemma">colimit_adjoint</span></a> `{<a class="idref" href="HoTT.Basics.Overture.html#Funext"><span class="id" title="class">Funext</span></a>} {<span class="id" title="var">G</span> : <a class="idref" href="HoTT.Diagrams.Graph.html#Graph"><span class="id" title="record">Graph</span></a>} {<span class="id" title="var">D</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#Diagram"><span class="id" title="record">Diagram</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#G"><span class="id" title="variable">G</span></a>} {<span class="id" title="var">C</span> : <span class="id" title="keyword">Type</span>}<br/>
+&nbsp;&nbsp;: <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">(</span></a><a class="idref" href="HoTT.Colimits.Colimit.html#Colimit"><span class="id" title="inductive">Colimit</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#D"><span class="id" title="variable">D</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#C"><span class="id" title="variable">C</span></a><a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">)</span></a> <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">&lt;~&gt;</span></a> <a class="idref" href="HoTT.Diagrams.Diagram.html#DiagramMap"><span class="id" title="record">DiagramMap</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#D"><span class="id" title="variable">D</span></a> (<a class="idref" href="HoTT.Diagrams.ConstantDiagram.html#diagram_const"><span class="id" title="definition">diagram_const</span></a> <a class="idref" href="HoTT.Colimits.Colimit.html#C"><span class="id" title="variable">C</span></a>).<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">symmetry</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">refine</span> (<a class="idref" href="HoTT.Colimits.Colimit.html#equiv_colimit_rec"><span class="id" title="definition">equiv_colimit_rec</span></a> <span class="id" title="var">C</span> <a class="idref" href="HoTT.Basics.Equivalences.html#68564a0dae726954e87d0b3370608d69"><span class="id" title="notation">oE</span></a> <span class="id" title="var">_</span>).<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Diagrams.ConstantDiagram.html#equiv_diagram_const_cocone"><span class="id" title="definition">equiv_diagram_const_cocone</span></a>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
 </div>
 </div>
 

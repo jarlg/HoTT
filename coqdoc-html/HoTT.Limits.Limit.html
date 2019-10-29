@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="coqdoc.css" rel="stylesheet" type="text/css" />
+<title>HoTT.Limits.Limit</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library HoTT.Limits.Limit</h1>
+
+<div class="code">
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Basics.html#"><span class="id" title="library">Basics</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Types.html#"><span class="id" title="library">Types</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Diagrams.Diagram.html#"><span class="id" title="library">Diagrams.Diagram</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Diagrams.Graph.html#"><span class="id" title="library">Diagrams.Graph</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Diagrams.Cone.html#"><span class="id" title="library">Diagrams.Cone</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Diagrams.ConstantDiagram.html#"><span class="id" title="library">Diagrams.ConstantDiagram</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Local Open</span> <span class="id" title="keyword">Scope</span> <span class="id" title="var">path_scope</span>.<br/>
+<span class="id" title="keyword">Generalizable</span> <span class="id" title="keyword">All</span> <span class="id" title="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+This file contains the definition of limits, and functoriality results on limits. 
+<div class="paragraph"> </div>
+
+<a name="lab357"></a><h1 class="section">Limits</h1>
+
+<div class="paragraph"> </div>
+
+ A Limit is the extremity of a cone. 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Class</span> <a name="IsLimit"><span class="id" title="record">IsLimit</span></a> `(<span class="id" title="var">D</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#Diagram"><span class="id" title="record">Diagram</span></a> <span class="id" title="var">G</span>) (<span class="id" title="var">Q</span> : <span class="id" title="keyword">Type</span>) := {<br/>
+&nbsp;&nbsp;<a name="islimit_cone"><span class="id" title="projection">islimit_cone</span></a> :&gt; <a class="idref" href="HoTT.Diagrams.Cone.html#Cone"><span class="id" title="class">Cone</span></a> <a class="idref" href="HoTT.Limits.Limit.html#Q"><span class="id" title="variable">Q</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D"><span class="id" title="variable">D</span></a>;<br/>
+&nbsp;&nbsp;<a name="islimit_unicone"><span class="id" title="projection">islimit_unicone</span></a> : <a class="idref" href="HoTT.Diagrams.Cone.html#UniversalCone"><span class="id" title="class">UniversalCone</span></a> <a class="idref" href="HoTT.Limits.Limit.html#islimit_cone"><span class="id" title="method">islimit_cone</span></a>;<br/>
+}.<br/>
+
+<br/>
+<span class="id" title="keyword">Coercion</span> <a class="idref" href="HoTT.Limits.Limit.html#islimit_cone"><span class="id" title="projection">islimit_cone</span></a> <a class="idref" href="HoTT.Limits.Limit.html#islimit_cone"><span class="id" title="projection">:</span></a> <a class="idref" href="HoTT.Limits.Limit.html#islimit_cone"><span class="id" title="projection">IsLimit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#islimit_cone"><span class="id" title="projection">&gt;-&gt;</span></a> <a class="idref" href="HoTT.Limits.Limit.html#islimit_cone"><span class="id" title="projection">Cone</span></a>.<br/>
+
+<br/>
+<span class="id" title="var">Arguments</span> <a class="idref" href="HoTT.Limits.Limit.html#Build_IsLimit"><span class="id" title="constructor">Build_IsLimit</span></a> {<span class="id" title="var">G</span> <span class="id" title="var">D</span> <span class="id" title="var">Q</span>} <span class="id" title="var">C</span> <span class="id" title="var">H</span> : <span class="id" title="tactic">rename</span>.<br/>
+<span class="id" title="var">Arguments</span> <a class="idref" href="HoTT.Limits.Limit.html#islimit_cone"><span class="id" title="projection">islimit_cone</span></a> {<span class="id" title="var">G</span> <span class="id" title="var">D</span> <span class="id" title="var">Q</span>} <span class="id" title="var">C</span> : <span class="id" title="tactic">rename</span>.<br/>
+<span class="id" title="var">Arguments</span> <a class="idref" href="HoTT.Limits.Limit.html#islimit_unicone"><span class="id" title="projection">islimit_unicone</span></a> {<span class="id" title="var">G</span> <span class="id" title="var">D</span> <span class="id" title="var">Q</span>} <span class="id" title="var">H</span> : <span class="id" title="tactic">rename</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<span class="inlinecode"><a class="idref" href="HoTT.Limits.Limit.html#cone_precompose_inv"><span class="id" title="definition">cone_precompose_inv</span></a></span> is defined for convenience: it is only the inverse of <span class="inlinecode"><a class="idref" href="HoTT.Diagrams.Cone.html#cone_precompose"><span class="id" title="definition">cone_precompose</span></a></span>. It allows to recover the map <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.h"><span class="id" title="variable">h</span></a></span> from a cone <span class="inlinecode"><a class="idref" href="HoTT.Categories.KanExtensions.Functors.html#kan_extension_functors.C'"><span class="id" title="variable">C'</span></a></span>. 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="cone_precompose_inv"><span class="id" title="definition">cone_precompose_inv</span></a> `{<span class="id" title="var">D</span>: <a class="idref" href="HoTT.Diagrams.Diagram.html#Diagram"><span class="id" title="record">Diagram</span></a> <span class="id" title="var">G</span>} {<span class="id" title="var">Q</span> <span class="id" title="var">X</span>}<br/>
+&nbsp;&nbsp;(<span class="id" title="var">H</span> : <a class="idref" href="HoTT.Limits.Limit.html#IsLimit"><span class="id" title="class">IsLimit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D"><span class="id" title="variable">D</span></a> <a class="idref" href="HoTT.Limits.Limit.html#Q"><span class="id" title="variable">Q</span></a>) (<span class="id" title="var">C'</span> : <a class="idref" href="HoTT.Diagrams.Cone.html#Cone"><span class="id" title="class">Cone</span></a> <a class="idref" href="HoTT.Limits.Limit.html#X"><span class="id" title="variable">X</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D"><span class="id" title="variable">D</span></a>) : <a class="idref" href="HoTT.Limits.Limit.html#X"><span class="id" title="variable">X</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Limits.Limit.html#Q"><span class="id" title="variable">Q</span></a><br/>
+&nbsp;&nbsp;:= @<a class="idref" href="HoTT.Basics.Overture.html#equiv_inv"><span class="id" title="projection">equiv_inv</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> (<a class="idref" href="HoTT.Limits.Limit.html#islimit_unicone"><span class="id" title="projection">islimit_unicone</span></a> <a class="idref" href="HoTT.Limits.Limit.html#H"><span class="id" title="variable">H</span></a> <a class="idref" href="HoTT.Limits.Limit.html#X"><span class="id" title="variable">X</span></a>) <a class="idref" href="HoTT.Limits.Limit.html#C'"><span class="id" title="variable">C'</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab358"></a><h1 class="section">Existence of limits</h1>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Record</span> <a name="Limit"><span class="id" title="record">Limit</span></a> `(<span class="id" title="var">D</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#Diagram"><span class="id" title="record">Diagram</span></a> <span class="id" title="var">G</span>) := {<br/>
+&nbsp;&nbsp;<a name="lim"><span class="id" title="projection">lim</span></a> : <a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">∀</span></a> <span class="id" title="var">i</span><a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">,</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D"><span class="id" title="variable">D</span></a> <a class="idref" href="HoTT.Limits.Limit.html#i"><span class="id" title="variable">i</span></a>;<br/>
+&nbsp;&nbsp;<a name="limp"><span class="id" title="projection">limp</span></a> : <a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">∀</span></a> <span class="id" title="var">i</span> <span class="id" title="var">j</span> (<span class="id" title="var">g</span> : <a class="idref" href="HoTT.Limits.Limit.html#G"><span class="id" title="variable">G</span></a> <a class="idref" href="HoTT.Limits.Limit.html#i"><span class="id" title="variable">i</span></a> <a class="idref" href="HoTT.Limits.Limit.html#j"><span class="id" title="variable">j</span></a><a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">),</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D"><span class="id" title="variable">D</span></a> <a class="idref" href="HoTT.Diagrams.Diagram.html#c7586d6039e7bdd25481a6ad49b3705d"><span class="id" title="notation">_f</span></a> <a class="idref" href="HoTT.Limits.Limit.html#g"><span class="id" title="variable">g</span></a> (<a class="idref" href="HoTT.Limits.Limit.html#lim"><span class="id" title="method">lim</span></a> <a class="idref" href="HoTT.Limits.Limit.html#i"><span class="id" title="variable">i</span></a>) <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Limits.Limit.html#lim"><span class="id" title="method">lim</span></a> <a class="idref" href="HoTT.Limits.Limit.html#j"><span class="id" title="variable">j</span></a>;<br/>
+}.<br/>
+
+<br/>
+<span class="id" title="var">Arguments</span> <a class="idref" href="HoTT.Limits.Limit.html#lim"><span class="id" title="projection">lim</span></a> {<span class="id" title="var">_</span> <span class="id" title="var">_</span>}.<br/>
+<span class="id" title="var">Arguments</span> <a class="idref" href="HoTT.Limits.Limit.html#limp"><span class="id" title="projection">limp</span></a> {<span class="id" title="var">_</span> <span class="id" title="var">_</span>}.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="cone_limit"><span class="id" title="definition">cone_limit</span></a> `(<span class="id" title="var">D</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#Diagram"><span class="id" title="record">Diagram</span></a> <span class="id" title="var">G</span>) : <a class="idref" href="HoTT.Diagrams.Cone.html#Cone"><span class="id" title="class">Cone</span></a> (<a class="idref" href="HoTT.Limits.Limit.html#Limit"><span class="id" title="record">Limit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D"><span class="id" title="variable">D</span></a>) <a class="idref" href="HoTT.Limits.Limit.html#D"><span class="id" title="variable">D</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Diagrams.Cone.html#Build_Cone"><span class="id" title="constructor">Build_Cone</span></a>.<br/>
+&nbsp;&nbsp;+ <span class="id" title="tactic">intros</span> <span class="id" title="var">i</span> <span class="id" title="var">x</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> (<a class="idref" href="HoTT.Limits.Limit.html#lim"><span class="id" title="projection">lim</span></a> <span class="id" title="var">x</span> <span class="id" title="var">i</span>).<br/>
+&nbsp;&nbsp;+ <span class="id" title="tactic">intros</span> <span class="id" title="var">i</span> <span class="id" title="var">j</span> <span class="id" title="var">g</span> <span class="id" title="var">x</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Limits.Limit.html#limp"><span class="id" title="projection">limp</span></a>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Global Instance</span> <a name="unicone_limit"><span class="id" title="instance">unicone_limit</span></a> `(<span class="id" title="var">D</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#Diagram"><span class="id" title="record">Diagram</span></a> <span class="id" title="var">G</span>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="HoTT.Diagrams.Cone.html#UniversalCone"><span class="id" title="class">UniversalCone</span></a> (<a class="idref" href="HoTT.Limits.Limit.html#cone_limit"><span class="id" title="definition">cone_limit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D"><span class="id" title="variable">D</span></a>).<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Diagrams.Cone.html#Build_UniversalCone"><span class="id" title="constructor">Build_UniversalCone</span></a>; <span class="id" title="tactic">intro</span> <span class="id" title="var">Y</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Basics.Equivalences.html#isequiv_adjointify"><span class="id" title="definition">isequiv_adjointify</span></a>.<br/>
+&nbsp;&nbsp;{ <span class="id" title="tactic">intros</span> <span class="id" title="var">c</span> <span class="id" title="var">y</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Limits.Limit.html#Build_Limit"><span class="id" title="constructor">Build_Limit</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{ <span class="id" title="tactic">intro</span> <span class="id" title="var">i</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> (<a class="idref" href="HoTT.Diagrams.Cone.html#legs"><span class="id" title="projection">legs</span></a> <span class="id" title="var">c</span> <span class="id" title="var">i</span> <span class="id" title="var">y</span>). }<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">i</span> <span class="id" title="var">j</span> <span class="id" title="var">g</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Diagrams.Cone.html#legs_comm"><span class="id" title="projection">legs_comm</span></a>. }<br/>
+&nbsp;&nbsp;<span class="id" title="var">all</span>: <span class="id" title="tactic">intro</span>; <span class="id" title="tactic">reflexivity</span>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Global Instance</span> <a name="islimit_limit"><span class="id" title="instance">islimit_limit</span></a> `(<span class="id" title="var">D</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#Diagram"><span class="id" title="record">Diagram</span></a> <span class="id" title="var">G</span>) : <a class="idref" href="HoTT.Limits.Limit.html#IsLimit"><span class="id" title="class">IsLimit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D"><span class="id" title="variable">D</span></a> (<a class="idref" href="HoTT.Limits.Limit.html#Limit"><span class="id" title="record">Limit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D"><span class="id" title="variable">D</span></a>)<br/>
+&nbsp;&nbsp;:= <a class="idref" href="HoTT.Limits.Limit.html#Build_IsLimit"><span class="id" title="constructor">Build_IsLimit</span></a> (<a class="idref" href="HoTT.Limits.Limit.html#cone_limit"><span class="id" title="definition">cone_limit</span></a> <span class="id" title="var">_</span>) <span class="id" title="var">_</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab359"></a><h1 class="section">Functoriality of limits</h1>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Section</span> <a name="FunctorialityLimit"><span class="id" title="section">FunctorialityLimit</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Context</span> `{<a class="idref" href="HoTT.Basics.Overture.html#Funext"><span class="id" title="class">Funext</span></a>} {<span class="id" title="var">G</span> : <a class="idref" href="HoTT.Diagrams.Graph.html#Graph"><span class="id" title="record">Graph</span></a>}.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Limits are preserved by composition with a (diagram) equivalence. 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="islimit_precompose_equiv"><span class="id" title="definition">islimit_precompose_equiv</span></a> {<span class="id" title="var">D</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#Diagram"><span class="id" title="record">Diagram</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.G"><span class="id" title="variable">G</span></a>} `(<span class="id" title="var">f</span> : <span class="id" title="var">Q</span> <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">&lt;~&gt;</span></a> <span class="id" title="var">Q'</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;: <a class="idref" href="HoTT.Limits.Limit.html#IsLimit"><span class="id" title="class">IsLimit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D"><span class="id" title="variable">D</span></a> <a class="idref" href="HoTT.Limits.Limit.html#Q'"><span class="id" title="variable">Q'</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Limits.Limit.html#IsLimit"><span class="id" title="class">IsLimit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D"><span class="id" title="variable">D</span></a> <a class="idref" href="HoTT.Limits.Limit.html#Q"><span class="id" title="variable">Q</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">HQ</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">serapply</span> (<a class="idref" href="HoTT.Limits.Limit.html#Build_IsLimit"><span class="id" title="constructor">Build_IsLimit</span></a> (<a class="idref" href="HoTT.Diagrams.Cone.html#cone_precompose"><span class="id" title="definition">cone_precompose</span></a> <span class="id" title="var">HQ</span> <span class="id" title="var">f</span>) <span class="id" title="var">_</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Diagrams.Cone.html#cone_precompose_equiv_universality"><span class="id" title="instance">cone_precompose_equiv_universality</span></a>, <span class="id" title="var">HQ</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="islimit_postcompose_equiv"><span class="id" title="definition">islimit_postcompose_equiv</span></a> {<span class="id" title="var">D1</span> <span class="id" title="var">D2</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#Diagram"><span class="id" title="record">Diagram</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.G"><span class="id" title="variable">G</span></a>} (<span class="id" title="var">m</span> : <a class="idref" href="HoTT.Limits.Limit.html#D1"><span class="id" title="variable">D1</span></a> <a class="idref" href="HoTT.Diagrams.Diagram.html#19674d50802deb812a81f7a836f35199"><span class="id" title="notation">¬</span></a><a class="idref" href="HoTT.Diagrams.Diagram.html#19674d50802deb812a81f7a836f35199"><span class="id" title="notation">d</span></a><a class="idref" href="HoTT.Diagrams.Diagram.html#19674d50802deb812a81f7a836f35199"><span class="id" title="notation">¬</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D2"><span class="id" title="variable">D2</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{<span class="id" title="var">Q</span> : <span class="id" title="keyword">Type</span>} : <a class="idref" href="HoTT.Limits.Limit.html#IsLimit"><span class="id" title="class">IsLimit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D1"><span class="id" title="variable">D1</span></a> <a class="idref" href="HoTT.Limits.Limit.html#Q"><span class="id" title="variable">Q</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Limits.Limit.html#IsLimit"><span class="id" title="class">IsLimit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D2"><span class="id" title="variable">D2</span></a> <a class="idref" href="HoTT.Limits.Limit.html#Q"><span class="id" title="variable">Q</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">HQ</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">serapply</span> (<a class="idref" href="HoTT.Limits.Limit.html#Build_IsLimit"><span class="id" title="constructor">Build_IsLimit</span></a> (<a class="idref" href="HoTT.Diagrams.Cone.html#cone_postcompose"><span class="id" title="definition">cone_postcompose</span></a> <span class="id" title="var">m</span> <span class="id" title="var">HQ</span>) <span class="id" title="var">_</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Diagrams.Cone.html#cone_postcompose_equiv_universality"><span class="id" title="instance">cone_postcompose_equiv_universality</span></a>, <span class="id" title="var">HQ</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+A diagram map <span class="inlinecode"><a class="idref" href="HoTT.Categories.Functor.Attributes.html#fully_faithful_helpers.m"><span class="id" title="variable">m</span></a></span> : <span class="inlinecode"><a class="idref" href="Coq.Init.Decimal.html#D1"><span class="id" title="constructor">D1</span></a></span> =&gt; <span class="inlinecode"><a class="idref" href="Coq.Init.Decimal.html#D2"><span class="id" title="constructor">D2</span></a></span> induces a map between any two limits of <span class="inlinecode"><a class="idref" href="Coq.Init.Decimal.html#D1"><span class="id" title="constructor">D1</span></a></span> and <span class="inlinecode"><a class="idref" href="Coq.Init.Decimal.html#D2"><span class="id" title="constructor">D2</span></a></span>. 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="functor_limit"><span class="id" title="definition">functor_limit</span></a> {<span class="id" title="var">D1</span> <span class="id" title="var">D2</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#Diagram"><span class="id" title="record">Diagram</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.G"><span class="id" title="variable">G</span></a>} (<span class="id" title="var">m</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#DiagramMap"><span class="id" title="record">DiagramMap</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D1"><span class="id" title="variable">D1</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D2"><span class="id" title="variable">D2</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{<span class="id" title="var">Q1</span> <span class="id" title="var">Q2</span>} (<span class="id" title="var">HQ1</span> : <a class="idref" href="HoTT.Limits.Limit.html#IsLimit"><span class="id" title="class">IsLimit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D1"><span class="id" title="variable">D1</span></a> <a class="idref" href="HoTT.Limits.Limit.html#Q1"><span class="id" title="variable">Q1</span></a>) (<span class="id" title="var">HQ2</span> : <a class="idref" href="HoTT.Limits.Limit.html#IsLimit"><span class="id" title="class">IsLimit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D2"><span class="id" title="variable">D2</span></a> <a class="idref" href="HoTT.Limits.Limit.html#Q2"><span class="id" title="variable">Q2</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;: <a class="idref" href="HoTT.Limits.Limit.html#Q1"><span class="id" title="variable">Q1</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Limits.Limit.html#Q2"><span class="id" title="variable">Q2</span></a> := <a class="idref" href="HoTT.Limits.Limit.html#cone_precompose_inv"><span class="id" title="definition">cone_precompose_inv</span></a> <a class="idref" href="HoTT.Limits.Limit.html#HQ2"><span class="id" title="variable">HQ2</span></a> (<a class="idref" href="HoTT.Diagrams.Cone.html#cone_postcompose"><span class="id" title="definition">cone_postcompose</span></a> <a class="idref" href="HoTT.Limits.Limit.html#m"><span class="id" title="variable">m</span></a> <a class="idref" href="HoTT.Limits.Limit.html#HQ1"><span class="id" title="variable">HQ1</span></a>).<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+And this map commutes with diagram map. 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="functor_limit_commute"><span class="id" title="definition">functor_limit_commute</span></a> {<span class="id" title="var">D1</span> <span class="id" title="var">D2</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#Diagram"><span class="id" title="record">Diagram</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.G"><span class="id" title="variable">G</span></a>}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" title="var">m</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#DiagramMap"><span class="id" title="record">DiagramMap</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D1"><span class="id" title="variable">D1</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D2"><span class="id" title="variable">D2</span></a>) {<span class="id" title="var">Q1</span> <span class="id" title="var">Q2</span>}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" title="var">HQ1</span> : <a class="idref" href="HoTT.Limits.Limit.html#IsLimit"><span class="id" title="class">IsLimit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D1"><span class="id" title="variable">D1</span></a> <a class="idref" href="HoTT.Limits.Limit.html#Q1"><span class="id" title="variable">Q1</span></a>) (<span class="id" title="var">HQ2</span> : <a class="idref" href="HoTT.Limits.Limit.html#IsLimit"><span class="id" title="class">IsLimit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D2"><span class="id" title="variable">D2</span></a> <a class="idref" href="HoTT.Limits.Limit.html#Q2"><span class="id" title="variable">Q2</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;: <a class="idref" href="HoTT.Diagrams.Cone.html#cone_postcompose"><span class="id" title="definition">cone_postcompose</span></a> <a class="idref" href="HoTT.Limits.Limit.html#m"><span class="id" title="variable">m</span></a> <a class="idref" href="HoTT.Limits.Limit.html#HQ1"><span class="id" title="variable">HQ1</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Diagrams.Cone.html#cone_precompose"><span class="id" title="definition">cone_precompose</span></a> <a class="idref" href="HoTT.Limits.Limit.html#HQ2"><span class="id" title="variable">HQ2</span></a> (<a class="idref" href="HoTT.Limits.Limit.html#functor_limit"><span class="id" title="definition">functor_limit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#m"><span class="id" title="variable">m</span></a> <a class="idref" href="HoTT.Limits.Limit.html#HQ1"><span class="id" title="variable">HQ1</span></a> <a class="idref" href="HoTT.Limits.Limit.html#HQ2"><span class="id" title="variable">HQ2</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="HoTT.Basics.Overture.html#6bc2e8b4a6e295632a90f5f35132db8d"><span class="id" title="notation">(</span></a><a class="idref" href="HoTT.Basics.Overture.html#eisretr"><span class="id" title="projection">eisretr</span></a> (<a class="idref" href="HoTT.Diagrams.Cone.html#cone_precompose"><span class="id" title="definition">cone_precompose</span></a> <a class="idref" href="HoTT.Limits.Limit.html#HQ2"><span class="id" title="variable">HQ2</span></a>) <span class="id" title="var">_</span><a class="idref" href="HoTT.Basics.Overture.html#6bc2e8b4a6e295632a90f5f35132db8d"><span class="id" title="notation">)^</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab360"></a><h2 class="section">Limits of equivalent diagrams</h2>
+
+<div class="paragraph"> </div>
+
+ Now we have than two equivalent diagrams have equivalent limits. 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Context</span> {<span class="id" title="var">D1</span> <span class="id" title="var">D2</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#Diagram"><span class="id" title="record">Diagram</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.G"><span class="id" title="variable">G</span></a>} (<span class="id" title="var">m</span> : <a class="idref" href="HoTT.Limits.Limit.html#D1"><span class="id" title="variable">D1</span></a> <a class="idref" href="HoTT.Diagrams.Diagram.html#19674d50802deb812a81f7a836f35199"><span class="id" title="notation">¬</span></a><a class="idref" href="HoTT.Diagrams.Diagram.html#19674d50802deb812a81f7a836f35199"><span class="id" title="notation">d</span></a><a class="idref" href="HoTT.Diagrams.Diagram.html#19674d50802deb812a81f7a836f35199"><span class="id" title="notation">¬</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D2"><span class="id" title="variable">D2</span></a>) {<span class="id" title="var">Q1</span> <span class="id" title="var">Q2</span>}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" title="var">HQ1</span> : <a class="idref" href="HoTT.Limits.Limit.html#IsLimit"><span class="id" title="class">IsLimit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D1"><span class="id" title="variable">D1</span></a> <a class="idref" href="HoTT.Limits.Limit.html#Q1"><span class="id" title="variable">Q1</span></a>) (<span class="id" title="var">HQ2</span> : <a class="idref" href="HoTT.Limits.Limit.html#IsLimit"><span class="id" title="class">IsLimit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D2"><span class="id" title="variable">D2</span></a> <a class="idref" href="HoTT.Limits.Limit.html#Q2"><span class="id" title="variable">Q2</span></a>).<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="functor_limit_eissect"><span class="id" title="definition">functor_limit_eissect</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;: <a class="idref" href="HoTT.Basics.Overture.html#Sect"><span class="id" title="definition">Sect</span></a> (<a class="idref" href="HoTT.Limits.Limit.html#functor_limit"><span class="id" title="definition">functor_limit</span></a> (<a class="idref" href="HoTT.Diagrams.Diagram.html#diagram_equiv_inv"><span class="id" title="lemma">diagram_equiv_inv</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.m"><span class="id" title="variable">m</span></a>) <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.HQ2"><span class="id" title="variable">HQ2</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.HQ1"><span class="id" title="variable">HQ1</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="HoTT.Limits.Limit.html#functor_limit"><span class="id" title="definition">functor_limit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.m"><span class="id" title="variable">m</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.HQ1"><span class="id" title="variable">HQ1</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.HQ2"><span class="id" title="variable">HQ2</span></a>).<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Basics.Overture.html#ap10"><span class="id" title="definition">ap10</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">serapply</span> (<a class="idref" href="HoTT.Types.Paths.html#equiv_inj"><span class="id" title="definition">equiv_inj</span></a> (<a class="idref" href="HoTT.Diagrams.Cone.html#cone_precompose"><span class="id" title="definition">cone_precompose</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.HQ2"><span class="id" title="variable">HQ2</span></a>) <span class="id" title="var">_</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;1: <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.HQ2"><span class="id" title="variable">HQ2</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">etransitivity</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;2:<span class="id" title="tactic">symmetry</span>; <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Diagrams.Cone.html#cone_precompose_identity"><span class="id" title="definition">cone_precompose_identity</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">etransitivity</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;1: <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Diagrams.Cone.html#cone_precompose_comp"><span class="id" title="definition">cone_precompose_comp</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Basics.Overture.html#eisretr"><span class="id" title="projection">eisretr</span></a>, <a class="idref" href="HoTT.Diagrams.Cone.html#cone_postcompose_precompose"><span class="id" title="definition">cone_postcompose_precompose</span></a>, <a class="idref" href="HoTT.Basics.Overture.html#eisretr"><span class="id" title="projection">eisretr</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Diagrams.Cone.html#cone_postcompose_comp"><span class="id" title="definition">cone_postcompose_comp</span></a>, <a class="idref" href="HoTT.Diagrams.Diagram.html#diagram_inv_is_section"><span class="id" title="lemma">diagram_inv_is_section</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Diagrams.Cone.html#cone_postcompose_identity"><span class="id" title="definition">cone_postcompose_identity</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="functor_limit_eisretr"><span class="id" title="definition">functor_limit_eisretr</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;: <a class="idref" href="HoTT.Basics.Overture.html#Sect"><span class="id" title="definition">Sect</span></a> (<a class="idref" href="HoTT.Limits.Limit.html#functor_limit"><span class="id" title="definition">functor_limit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.m"><span class="id" title="variable">m</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.HQ1"><span class="id" title="variable">HQ1</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.HQ2"><span class="id" title="variable">HQ2</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="HoTT.Limits.Limit.html#functor_limit"><span class="id" title="definition">functor_limit</span></a> (<a class="idref" href="HoTT.Diagrams.Diagram.html#diagram_equiv_inv"><span class="id" title="lemma">diagram_equiv_inv</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.m"><span class="id" title="variable">m</span></a>) <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.HQ2"><span class="id" title="variable">HQ2</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.HQ1"><span class="id" title="variable">HQ1</span></a>).<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Basics.Overture.html#ap10"><span class="id" title="definition">ap10</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">serapply</span> (<a class="idref" href="HoTT.Types.Paths.html#equiv_inj"><span class="id" title="definition">equiv_inj</span></a> (<a class="idref" href="HoTT.Diagrams.Cone.html#cone_precompose"><span class="id" title="definition">cone_precompose</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.HQ1"><span class="id" title="variable">HQ1</span></a>) <span class="id" title="var">_</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;1: <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.HQ1"><span class="id" title="variable">HQ1</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">etransitivity</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;2:<span class="id" title="tactic">symmetry</span>; <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Diagrams.Cone.html#cone_precompose_identity"><span class="id" title="definition">cone_precompose_identity</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">etransitivity</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;1: <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Diagrams.Cone.html#cone_precompose_comp"><span class="id" title="definition">cone_precompose_comp</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Basics.Overture.html#eisretr"><span class="id" title="projection">eisretr</span></a>, <a class="idref" href="HoTT.Diagrams.Cone.html#cone_postcompose_precompose"><span class="id" title="definition">cone_postcompose_precompose</span></a>, <a class="idref" href="HoTT.Basics.Overture.html#eisretr"><span class="id" title="projection">eisretr</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Diagrams.Cone.html#cone_postcompose_comp"><span class="id" title="definition">cone_postcompose_comp</span></a>, <a class="idref" href="HoTT.Diagrams.Diagram.html#diagram_inv_is_retraction"><span class="id" title="lemma">diagram_inv_is_retraction</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Diagrams.Cone.html#cone_postcompose_identity"><span class="id" title="definition">cone_postcompose_identity</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Global Instance</span> <a name="isequiv_functor_limit"><span class="id" title="instance">isequiv_functor_limit</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;: <a class="idref" href="HoTT.Basics.Overture.html#IsEquiv"><span class="id" title="class">IsEquiv</span></a> (<a class="idref" href="HoTT.Limits.Limit.html#functor_limit"><span class="id" title="definition">functor_limit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.m"><span class="id" title="variable">m</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.HQ1"><span class="id" title="variable">HQ1</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.HQ2"><span class="id" title="variable">HQ2</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="HoTT.Basics.Equivalences.html#isequiv_adjointify"><span class="id" title="definition">isequiv_adjointify</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="HoTT.Limits.Limit.html#functor_limit_eissect"><span class="id" title="definition">functor_limit_eissect</span></a> <a class="idref" href="HoTT.Limits.Limit.html#functor_limit_eisretr"><span class="id" title="definition">functor_limit_eisretr</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="equiv_functor_limit"><span class="id" title="definition">equiv_functor_limit</span></a> : <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.Q1"><span class="id" title="variable">Q1</span></a> <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">&lt;~&gt;</span></a> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit.Q2"><span class="id" title="variable">Q2</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="HoTT.Basics.Overture.html#BuildEquiv"><span class="id" title="constructor">BuildEquiv</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <a class="idref" href="HoTT.Limits.Limit.html#isequiv_functor_limit"><span class="id" title="instance">isequiv_functor_limit</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">End</span> <a class="idref" href="HoTT.Limits.Limit.html#FunctorialityLimit"><span class="id" title="section">FunctorialityLimit</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab361"></a><h1 class="section">Unicity of limits</h1>
+
+<div class="paragraph"> </div>
+
+ A particuliar case of the functoriality result is that all limits of a diagram are equivalent (and hence equal in presence of univalence). 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Theorem</span> <a name="limit_unicity"><span class="id" title="lemma">limit_unicity</span></a> `{<a class="idref" href="HoTT.Basics.Overture.html#Funext"><span class="id" title="class">Funext</span></a>} {<span class="id" title="var">G</span> : <a class="idref" href="HoTT.Diagrams.Graph.html#Graph"><span class="id" title="record">Graph</span></a>} {<span class="id" title="var">D</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#Diagram"><span class="id" title="record">Diagram</span></a> <a class="idref" href="HoTT.Limits.Limit.html#G"><span class="id" title="variable">G</span></a>} {<span class="id" title="var">Q1</span> <span class="id" title="var">Q2</span> : <span class="id" title="keyword">Type</span>}<br/>
+&nbsp;&nbsp;(<span class="id" title="var">HQ1</span> : <a class="idref" href="HoTT.Limits.Limit.html#IsLimit"><span class="id" title="class">IsLimit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D"><span class="id" title="variable">D</span></a> <a class="idref" href="HoTT.Limits.Limit.html#Q1"><span class="id" title="variable">Q1</span></a>) (<span class="id" title="var">HQ2</span> : <a class="idref" href="HoTT.Limits.Limit.html#IsLimit"><span class="id" title="class">IsLimit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D"><span class="id" title="variable">D</span></a> <a class="idref" href="HoTT.Limits.Limit.html#Q2"><span class="id" title="variable">Q2</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="HoTT.Limits.Limit.html#Q1"><span class="id" title="variable">Q1</span></a> <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">&lt;~&gt;</span></a> <a class="idref" href="HoTT.Limits.Limit.html#Q2"><span class="id" title="variable">Q2</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Limits.Limit.html#equiv_functor_limit"><span class="id" title="definition">equiv_functor_limit</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">serapply</span> (<a class="idref" href="HoTT.Diagrams.Diagram.html#Build_diagram_equiv"><span class="id" title="constructor">Build_diagram_equiv</span></a> (<a class="idref" href="HoTT.Diagrams.Diagram.html#diagram_idmap"><span class="id" title="definition">diagram_idmap</span></a> <span class="id" title="var">D</span>)).<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab362"></a><h1 class="section">Limits are right adjoint to constant diagram</h1>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Theorem</span> <a name="limit_adjoint"><span class="id" title="lemma">limit_adjoint</span></a> `{<a class="idref" href="HoTT.Basics.Overture.html#Funext"><span class="id" title="class">Funext</span></a>} {<span class="id" title="var">G</span> : <a class="idref" href="HoTT.Diagrams.Graph.html#Graph"><span class="id" title="record">Graph</span></a>} {<span class="id" title="var">D</span> : <a class="idref" href="HoTT.Diagrams.Diagram.html#Diagram"><span class="id" title="record">Diagram</span></a> <a class="idref" href="HoTT.Limits.Limit.html#G"><span class="id" title="variable">G</span></a>} {<span class="id" title="var">C</span> : <span class="id" title="keyword">Type</span>}<br/>
+&nbsp;&nbsp;: <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">(</span></a><a class="idref" href="HoTT.Limits.Limit.html#C"><span class="id" title="variable">C</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Limits.Limit.html#Limit"><span class="id" title="record">Limit</span></a> <a class="idref" href="HoTT.Limits.Limit.html#D"><span class="id" title="variable">D</span></a><a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">)</span></a> <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">&lt;~&gt;</span></a> <a class="idref" href="HoTT.Diagrams.Diagram.html#DiagramMap"><span class="id" title="record">DiagramMap</span></a> (<a class="idref" href="HoTT.Diagrams.ConstantDiagram.html#diagram_const"><span class="id" title="definition">diagram_const</span></a> <a class="idref" href="HoTT.Limits.Limit.html#C"><span class="id" title="variable">C</span></a>) <a class="idref" href="HoTT.Limits.Limit.html#D"><span class="id" title="variable">D</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Basics.Equivalences.html#equiv_adjointify"><span class="id" title="definition">equiv_adjointify</span></a>.<br/>
+&nbsp;&nbsp;{ <span class="id" title="tactic">intro</span> <span class="id" title="var">f</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Diagrams.Diagram.html#Build_DiagramMap"><span class="id" title="constructor">Build_DiagramMap</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{ <span class="id" title="tactic">intros</span> <span class="id" title="var">i</span> <span class="id" title="var">c</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Limits.Limit.html#lim"><span class="id" title="projection">lim</span></a>, <span class="id" title="var">f</span>, <span class="id" title="var">c</span>. }<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">i</span> <span class="id" title="var">j</span> <span class="id" title="var">g</span> <span class="id" title="var">x</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Limits.Limit.html#limp"><span class="id" title="projection">limp</span></a>. }<br/>
+&nbsp;&nbsp;{ <span class="id" title="tactic">intros</span> [<span class="id" title="var">f</span> <span class="id" title="var">p</span>] <span class="id" title="var">c</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Limits.Limit.html#Build_Limit"><span class="id" title="constructor">Build_Limit</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{ <span class="id" title="tactic">intro</span> <span class="id" title="var">i</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <span class="id" title="var">f</span>, <span class="id" title="var">c</span>. }<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">i</span> <span class="id" title="var">j</span> <span class="id" title="var">g</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <span class="id" title="var">p</span>. }<br/>
+&nbsp;&nbsp;1,2: <span class="id" title="tactic">intro</span>; <span class="id" title="tactic">reflexivity</span>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

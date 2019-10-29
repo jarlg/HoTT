@@ -30,27 +30,27 @@ pre {
 
 <div class="code" title="File: Torus.v
 Line: 1
-Time: 0.022s">
-<div class="time" style="width: 10.891089108911%"></div>
+Time: 0.024s">
+<div class="time" style="width: 11.111111111111%"></div>
 <pre>Require Import Basics.</pre>
 </div>
 <div class="code" title="File: Torus.v
 Line: 1
 Time: 0.025s">
-<div class="time" style="width: 12.376237623762%"></div>
+<div class="time" style="width: 11.574074074074%"></div>
 <pre>
 Require Import Types.</pre>
 </div>
 <div class="code" title="File: Torus.v
 Line: 2
 Time: 0.018s">
-<div class="time" style="width: 8.9108910891089%"></div>
+<div class="time" style="width: 8.3333333333333%"></div>
 <pre>
 Require Import Cubical.</pre>
 </div>
 <div class="code" title="File: Torus.v
 Line: 3
-Time: 0.202s">
+Time: 0.216s">
 <div class="time" style="width: 100%"></div>
 <pre>
 Require Import HIT.Circle.</pre>
@@ -130,7 +130,7 @@ Time: 0s">
 <div class="code" title="File: Torus.v
 Line: 21
 Time: 0.001s">
-<div class="time" style="width: 0.4950495049505%"></div>
+<div class="time" style="width: 0.46296296296296%"></div>
 <pre>Definition Torus_ind (P : Torus -&gt; Type) (pb : P tbase)
     (pla : DPath P loop_a pb pb) (plb : DPath P loop_b pb pb)
     (ps : DSquare P surf pla pla plb plb) (x : Torus) : P x.</pre>
@@ -167,8 +167,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Torus.v
 Line: 29
-Time: 0.004s">
-<div class="time" style="width: 1.980198019802%"></div>
+Time: 0.005s">
+<div class="time" style="width: 2.3148148148148%"></div>
 <pre>Axiom Torus_ind_beta_loop_a : forall (P : Torus -&gt; Type) (pb : P tbase)
     (pla : DPath P loop_a pb pb) (plb : DPath P loop_b pb pb)
     (ps : DSquare P surf pla pla plb plb), DSquare P hr
@@ -177,7 +177,7 @@ Time: 0.004s">
 <div class="code" title="File: Torus.v
 Line: 32
 Time: 0.004s">
-<div class="time" style="width: 1.980198019802%"></div>
+<div class="time" style="width: 1.8518518518519%"></div>
 <pre>
 
   Axiom Torus_ind_beta_loop_b : forall (P : Torus -&gt; Type) (pb : P tbase)
@@ -198,8 +198,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Torus.v
 Line: 42
-Time: 0.013s">
-<div class="time" style="width: 6.4356435643564%"></div>
+Time: 0.014s">
+<div class="time" style="width: 6.4814814814815%"></div>
 <pre>Axiom Torus_ind_beta_surf : forall (P : Torus -&gt; Type) (pb : P tbase)
     (pla : DPath P loop_a pb pb) (plb : DPath P loop_b pb pb)
     (ps : DSquare P surf pla pla plb plb),
@@ -226,7 +226,7 @@ Time: 0s">
 <div class="code" title="File: Torus.v
 Line: 51
 Time: 0.002s">
-<div class="time" style="width: 0.99009900990099%"></div>
+<div class="time" style="width: 0.92592592592593%"></div>
 <pre>Definition Torus_rec (P : Type) (pb : P) (pla plb : pb = pb)
   (ps : Square pla pla plb plb) : Torus -&gt; P
   := Torus_ind _ pb (dp_const pla) (dp_const plb) (ds_const ps).</pre>
@@ -242,7 +242,7 @@ Time: 0s">
 <div class="code" title="File: Torus.v
 Line: 55
 Time: 0.001s">
-<div class="time" style="width: 0.4950495049505%"></div>
+<div class="time" style="width: 0.46296296296296%"></div>
 <pre>Lemma Torus_rec_beta_loop_a (P : Type) (pb : P) (pla plb : pb = pb)
   (ps : Square pla pla plb plb)
   : Square (ap (Torus_rec P pb pla plb ps) loop_a) pla 1 1.</pre>
@@ -256,8 +256,8 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Torus.v
 Line: 58
-Time: 0.027s">
-<div class="time" style="width: 13.366336633663%"></div>
+Time: 0.033s">
+<div class="time" style="width: 15.277777777778%"></div>
 <pre>
   refine (sq_GGcc _ (eissect _ _)
     (ds_const'^-1 (Torus_ind_beta_loop_a _ _ _ _ _))).</pre>
@@ -265,21 +265,21 @@ Time: 0.027s">
 <div class="code" title="File: Torus.v
 Line: 60
 Time: 0.002s">
-<div class="time" style="width: 0.99009900990099%"></div>
+<div class="time" style="width: 0.92592592592593%"></div>
 <pre>
   apply moveR_equiv_V, dp_apD_const.</pre>
 </div>
 <div class="code" title="File: Torus.v
 Line: 61
-Time: 0.008s">
-<div class="time" style="width: 3.960396039604%"></div>
+Time: 0.009s">
+<div class="time" style="width: 4.1666666666667%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Torus.v
 Line: 62
 Time: 0.001s">
-<div class="time" style="width: 0.4950495049505%"></div>
+<div class="time" style="width: 0.46296296296296%"></div>
 <pre>
 
 Lemma Torus_rec_beta_loop_b (P : Type) (pb : P) (pla plb : pb = pb)
@@ -295,23 +295,23 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Torus.v
 Line: 67
-Time: 0.027s">
-<div class="time" style="width: 13.366336633663%"></div>
+Time: 0.03s">
+<div class="time" style="width: 13.888888888889%"></div>
 <pre>
   refine (sq_GGcc _ (eissect _ _)
     (ds_const'^-1 (Torus_ind_beta_loop_b _ _ _ _ _))).</pre>
 </div>
 <div class="code" title="File: Torus.v
 Line: 69
-Time: 0.003s">
-<div class="time" style="width: 1.4851485148515%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.92592592592593%"></div>
 <pre>
   apply moveR_equiv_V, dp_apD_const.</pre>
 </div>
 <div class="code" title="File: Torus.v
 Line: 70
-Time: 0.053s">
-<div class="time" style="width: 26.237623762376%"></div>
+Time: 0.056s">
+<div class="time" style="width: 25.925925925926%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -328,7 +328,7 @@ Time: 0s">
 <div class="code" title="File: Torus.v
 Line: 75
 Time: 0.003s">
-<div class="time" style="width: 1.4851485148515%"></div>
+<div class="time" style="width: 1.3888888888889%"></div>
 <pre>Definition Torus_rec_beta_surf (P : Type) (pb : P) (pla plb : pb = pb)
   (ps : Square pla pla plb plb)
   :  Cube (sq_ap (Torus_rec P pb pla plb ps) surf) ps
