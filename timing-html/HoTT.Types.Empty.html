@@ -39,7 +39,7 @@ Time: 0s">
 </div>
 <div class="code" title="File: Empty.v
 Line: 3
-Time: 0.019s">
+Time: 0.022s">
 <div class="time" style="width: 100%"></div>
 <pre>Require Import HoTT.Basics.</pre>
 </div>
@@ -82,8 +82,8 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Empty.v
 Line: 15
-Time: 0.001s">
-<div class="time" style="width: 5.2631578947368%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   refine (BuildContr (forall x:Empty, A x) (Empty_ind A) _).</pre>
 </div>
@@ -118,8 +118,8 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Empty.v
 Line: 21
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 4.5454545454545%"></div>
 <pre> case falso.</pre>
 </div>
 <div class="code" title="File: Empty.v
@@ -130,8 +130,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Empty.v
 Line: 21
-Time: 0.002s">
-<div class="time" style="width: 10.526315789474%"></div>
+Time: 0.003s">
+<div class="time" style="width: 13.636363636364%"></div>
 <pre>
 
 Global Instance isequiv_empty_rec `{Funext} (A : Type)
@@ -143,13 +143,13 @@ Global Instance isequiv_empty_rec `{Funext} (A : Type)
 </div>
 <div class="code" title="File: Empty.v
 Line: 28
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.002s">
+<div class="time" style="width: 9.0909090909091%"></div>
 <pre>
 
 Definition equiv_empty_rec `{Funext} (A : Type)
   : Unit &lt;~&gt; (Empty -&gt; A)
-  := (BuildEquiv _ _ (fun (_ : Unit) =&gt; @Empty_rec A) _).</pre>
+  := (Build_Equiv _ _ (fun (_ : Unit) =&gt; @Empty_rec A) _).</pre>
 </div>
 <div class="code" title="File: Empty.v
 Line: 32
@@ -188,8 +188,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Empty.v
 Line: 36
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 4.5454545454545%"></div>
 <pre> Defined.</pre>
 </div>
 <div class="code" title="File: Empty.v
@@ -210,9 +210,9 @@ Proof.</pre>
 <div class="code" title="File: Empty.v
 Line: 39
 Time: 0.001s">
-<div class="time" style="width: 5.2631578947368%"></div>
+<div class="time" style="width: 4.5454545454545%"></div>
 <pre>
-  refine (BuildIsEquiv _ _ _ 
+  refine (Build_IsEquiv _ _ _ 
     (Empty_ind (fun _ =&gt; T))                (* := equiv_inf *)
     (fun fals:Empty =&gt; match fals with end) (* : Sect equiv_inf f *)
     (fun t:T =&gt; match (f t) with end)       (* : Sect f equiv_inf *)
@@ -235,7 +235,7 @@ Time: 0s">
 <div class="code" title="File: Empty.v
 Line: 46
 Time: 0.001s">
-<div class="time" style="width: 5.2631578947368%"></div>
+<div class="time" style="width: 4.5454545454545%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -246,7 +246,7 @@ Time: 0s">
 <pre>
 
 Definition equiv_to_empty {T : Type} (f : T -&gt; Empty) : T &lt;~&gt; Empty
-  := BuildEquiv T Empty f _.</pre>
+  := Build_Equiv T Empty f _.</pre>
 </div>
 <div class="code" title="File: Empty.v
 Line: 51

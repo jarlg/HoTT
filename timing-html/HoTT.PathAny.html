@@ -30,7 +30,7 @@ pre {
 
 <div class="code" title="File: PathAny.v
 Line: 1
-Time: 0.053s">
+Time: 0.054s">
 <div class="time" style="width: 100%"></div>
 <pre>Require Import HoTT.Basics HoTT.Types Fibrations FunextVarieties.</pre>
 </div>
@@ -70,10 +70,10 @@ Time: 0s">
 </div>
 <div class="code" title="File: PathAny.v
 Line: 11
-Time: 0.01s">
-<div class="time" style="width: 18.867924528302%"></div>
+Time: 0.011s">
+<div class="time" style="width: 20.37037037037%"></div>
 <pre>
-  srefine (BuildEquiv _ _ _ _).</pre>
+  srefine (Build_Equiv _ _ _ _).</pre>
 </div>
 <div class="code" title="File: PathAny.v
 Line: 12
@@ -112,13 +112,13 @@ Time: 0s">
 <div class="code" title="File: PathAny.v
 Line: 16
 Time: 0.004s">
-<div class="time" style="width: 7.5471698113208%"></div>
+<div class="time" style="width: 7.4074074074074%"></div>
 <pre>refine (@isequiv_contr_contr {x:A &amp; a=x} {x:A &amp; P a x} _ _ _).</pre>
 </div>
 <div class="code" title="File: PathAny.v
 Line: 16
 Time: 0.001s">
-<div class="time" style="width: 1.8867924528302%"></div>
+<div class="time" style="width: 1.8518518518519%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -161,7 +161,7 @@ Time: 0s">
 <div class="code" title="File: PathAny.v
 Line: 35
 Time: 0.002s">
-<div class="time" style="width: 3.7735849056604%"></div>
+<div class="time" style="width: 3.7037037037037%"></div>
 <pre>Definition contr_sigma_sigma (A : Type) (B : A -&gt; Type)
            (C : A -&gt; Type) (D : forall a, B a -&gt; C a -&gt; Type)
            {cac : Contr {x:A &amp; C x} }
@@ -178,29 +178,29 @@ Proof.</pre>
 </div>
 <div class="code" title="File: PathAny.v
 Line: 41
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1.8518518518519%"></div>
 <pre>
   pose (d := (center {y:B a &amp; D a y c}).2).</pre>
 </div>
 <div class="code" title="File: PathAny.v
 Line: 42
 Time: 0.001s">
-<div class="time" style="width: 1.8867924528302%"></div>
+<div class="time" style="width: 1.8518518518519%"></div>
 <pre>
   set (b := (center {y:B a &amp; D a y c}).1) in *.</pre>
 </div>
 <div class="code" title="File: PathAny.v
 Line: 43
 Time: 0.001s">
-<div class="time" style="width: 1.8867924528302%"></div>
+<div class="time" style="width: 1.8518518518519%"></div>
 <pre>
   exists ((a;b);(c;d)).</pre>
 </div>
 <div class="code" title="File: PathAny.v
 Line: 44
 Time: 0.004s">
-<div class="time" style="width: 7.5471698113208%"></div>
+<div class="time" style="width: 7.4074074074074%"></div>
 <pre>
   intros [[a' b'] [c' d']]; cbn in *.</pre>
 </div>
@@ -220,30 +220,30 @@ Time: 0s">
 </div>
 <div class="code" title="File: PathAny.v
 Line: 47
-Time: 0.003s">
-<div class="time" style="width: 5.6603773584906%"></div>
+Time: 0.004s">
+<div class="time" style="width: 7.4074074074074%"></div>
 <pre>
   change (((a;b);(c;d)) = ((ac'.1;bd'.1);(ac'.2;bd'.2))
           :&gt; {ab : {x:A &amp; B x} &amp; {y:C ab.1 &amp; D ab.1 ab.2 y} }).</pre>
 </div>
 <div class="code" title="File: PathAny.v
 Line: 49
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1.8518518518519%"></div>
 <pre>
   clearbody ac' bd'; clear a' b' c' d'.</pre>
 </div>
 <div class="code" title="File: PathAny.v
 Line: 50
 Time: 0.008s">
-<div class="time" style="width: 15.094339622642%"></div>
+<div class="time" style="width: 14.814814814815%"></div>
 <pre>
   destruct (@path_contr {x:A &amp; C x} _ (a;c) ac').</pre>
 </div>
 <div class="code" title="File: PathAny.v
 Line: 51
 Time: 0.01s">
-<div class="time" style="width: 18.867924528302%"></div>
+<div class="time" style="width: 18.518518518519%"></div>
 <pre>
   destruct (@path_contr {y:B a &amp; D a y c} _ (b;d) bd').</pre>
 </div>
@@ -257,7 +257,7 @@ Time: 0s">
 <div class="code" title="File: PathAny.v
 Line: 53
 Time: 0.005s">
-<div class="time" style="width: 9.4339622641509%"></div>
+<div class="time" style="width: 9.2592592592593%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -271,8 +271,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: PathAny.v
 Line: 56
-Time: 0.001s">
-<div class="time" style="width: 1.8867924528302%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>Ltac contr_sigsig a c :=
   match goal with
   | [ |- Contr (@sig (@sig ?A ?B) (fun ab =&gt; @sig (@?C ab) (@?D ab))) ] =&gt;
