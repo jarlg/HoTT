@@ -31,13 +31,13 @@ pre {
 <div class="code" title="File: Cone.v
 Line: 1
 Time: 0.018s">
-<div class="time" style="width: 81.818181818182%"></div>
+<div class="time" style="width: 78.260869565217%"></div>
 <pre>Require Import Basics.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 1
-Time: 0.021s">
-<div class="time" style="width: 95.454545454545%"></div>
+Time: 0.022s">
+<div class="time" style="width: 95.652173913043%"></div>
 <pre>
 Require Import Types.</pre>
 </div>
@@ -51,7 +51,7 @@ Require Import Diagrams.Graph.</pre>
 <div class="code" title="File: Cone.v
 Line: 3
 Time: 0.002s">
-<div class="time" style="width: 9.0909090909091%"></div>
+<div class="time" style="width: 8.695652173913%"></div>
 <pre>
 Require Import Diagrams.Diagram.</pre>
 </div>
@@ -85,7 +85,7 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 12
 Time: 0.005s">
-<div class="time" style="width: 22.727272727273%"></div>
+<div class="time" style="width: 21.739130434783%"></div>
 <pre>Class Cone (X : Type) {G : Graph} (D : Diagram G) := {
   legs   : forall i, X -&gt; D i;
   legs_comm : forall i j (g : G i j), (D _f g) o legs i == legs j;
@@ -149,7 +149,7 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 28
 Time: 0.008s">
-<div class="time" style="width: 36.363636363636%"></div>
+<div class="time" style="width: 34.782608695652%"></div>
 <pre>Definition path_cocone_naive {C1 C2 : Cone X D}
     (P := fun q' =&gt; forall {i j : G} (g : G i j) (x : X),
       D _f g (q' i x) = q' j x)
@@ -169,7 +169,7 @@ Time: 0.008s">
 <div class="code" title="File: Cone.v
 Line: 42
 Time: 0.003s">
-<div class="time" style="width: 13.636363636364%"></div>
+<div class="time" style="width: 13.04347826087%"></div>
 <pre>
 
   Definition path_cone {C1 C2 : Cone X D}
@@ -189,14 +189,14 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 50
 Time: 0.004s">
-<div class="time" style="width: 18.181818181818%"></div>
+<div class="time" style="width: 17.391304347826%"></div>
 <pre>
     destruct C1 as [legs pp_q], C2 as [r pp_r].</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 51
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     refine (path_cocone_naive (path_forall _ _
       (fun i =&gt; path_forall _ _ (path_legs i))) _).</pre>
@@ -204,35 +204,35 @@ Time: 0.001s">
 <div class="code" title="File: Cone.v
 Line: 53
 Time: 0.003s">
-<div class="time" style="width: 13.636363636364%"></div>
+<div class="time" style="width: 13.04347826087%"></div>
 <pre>
     cbn; funext i j f x.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 54
-Time: 0.017s">
-<div class="time" style="width: 77.272727272727%"></div>
+Time: 0.018s">
+<div class="time" style="width: 78.260869565217%"></div>
 <pre>
     rewrite 4 transport_forall_constant, transport_paths_FlFr.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 55
 Time: 0.004s">
-<div class="time" style="width: 18.181818181818%"></div>
+<div class="time" style="width: 17.391304347826%"></div>
 <pre>
     rewrite concat_pp_p; apply moveR_Vp.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 56
 Time: 0.003s">
-<div class="time" style="width: 13.636363636364%"></div>
+<div class="time" style="width: 13.04347826087%"></div>
 <pre>
     rewrite ap_compose.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 57
 Time: 0.01s">
-<div class="time" style="width: 45.454545454545%"></div>
+<div class="time" style="width: 43.478260869565%"></div>
 <pre>
     rewrite 2 (ap_apply_lD2 (path_forall legs r
       (fun i =&gt; path_forall (legs i) (r i) (path_legs i)))).</pre>
@@ -240,7 +240,7 @@ Time: 0.01s">
 <div class="code" title="File: Cone.v
 Line: 59
 Time: 0.014s">
-<div class="time" style="width: 63.636363636364%"></div>
+<div class="time" style="width: 60.869565217391%"></div>
 <pre>
     rewrite 3 eisretr.</pre>
 </div>
@@ -253,7 +253,7 @@ Time: 0s">
 </div>
 <div class="code" title="File: Cone.v
 Line: 61
-Time: 0.022s">
+Time: 0.023s">
 <div class="time" style="width: 100%"></div>
 <pre>
   Defined.</pre>
@@ -292,8 +292,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Cone.v
 Line: 70
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     1: exact (C i o f).</pre>
 </div>
@@ -335,7 +335,7 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 82
 Time: 0.003s">
-<div class="time" style="width: 13.636363636364%"></div>
+<div class="time" style="width: 13.04347826087%"></div>
 <pre>Class UniversalCone (C : Cone X D) := {
     is_universal :&gt; forall Y, IsEquiv (@cone_precompose C Y);
   }.</pre>
@@ -350,8 +350,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Cone.v
 Line: 86
-Time: 0.012s">
-<div class="time" style="width: 54.545454545455%"></div>
+Time: 0.013s">
+<div class="time" style="width: 56.521739130435%"></div>
 <pre>
 
 End Cone.</pre>
@@ -409,14 +409,14 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 101
 Time: 0.002s">
-<div class="time" style="width: 9.0909090909091%"></div>
+<div class="time" style="width: 8.695652173913%"></div>
 <pre>
     serapply path_cone; intro i.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 102
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     1: reflexivity.</pre>
 </div>
@@ -430,21 +430,21 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 104
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     refine (concat_p1 _ @ (concat_1p _)^).</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 105
-Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+Time: 0.002s">
+<div class="time" style="width: 8.695652173913%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 106
 Time: 0.002s">
-<div class="time" style="width: 9.0909090909091%"></div>
+<div class="time" style="width: 8.695652173913%"></div>
 <pre>
 
   Definition cone_precompose_comp {D : Diagram G}
@@ -462,35 +462,35 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 112
 Time: 0.002s">
-<div class="time" style="width: 9.0909090909091%"></div>
+<div class="time" style="width: 8.695652173913%"></div>
 <pre>
     serapply path_cone; intro i.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 113
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     1: reflexivity.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 114
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     intros j h x; simpl.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 115
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     refine (concat_p1 _ @ (concat_1p _)^).</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 116
 Time: 0.002s">
-<div class="time" style="width: 9.0909090909091%"></div>
+<div class="time" style="width: 8.695652173913%"></div>
 <pre>
   Defined.</pre>
 </div>
@@ -551,7 +551,7 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 129
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     etransitivity.</pre>
 </div>
@@ -565,7 +565,7 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 131
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     apply ap, legs_comm.</pre>
 </div>
@@ -588,8 +588,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Cone.v
 Line: 137
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>Definition cone_postcompose_identity (D : Diagram G) (X : Type)
     : cone_postcompose (X:=X) (diagram_idmap D) == idmap.</pre>
 </div>
@@ -603,14 +603,14 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 139
 Time: 0.003s">
-<div class="time" style="width: 13.636363636364%"></div>
+<div class="time" style="width: 13.04347826087%"></div>
 <pre>
     intro C; serapply path_cone; simpl.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 140
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     1: reflexivity.</pre>
 </div>
@@ -624,28 +624,28 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 142
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     refine (_ @ (concat_1p _)^).</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 143
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     refine (concat_p1 _ @ concat_1p _ @ ap_idmap _).</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 144
 Time: 0.004s">
-<div class="time" style="width: 18.181818181818%"></div>
+<div class="time" style="width: 17.391304347826%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 145
-Time: 0.003s">
-<div class="time" style="width: 13.636363636364%"></div>
+Time: 0.002s">
+<div class="time" style="width: 8.695652173913%"></div>
 <pre>
 
   Definition cone_postcompose_comp {D1 D2 D3 : Diagram G}
@@ -670,28 +670,28 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 152
 Time: 0.002s">
-<div class="time" style="width: 9.0909090909091%"></div>
+<div class="time" style="width: 8.695652173913%"></div>
 <pre>
     serapply path_cone.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 153
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     1: reflexivity.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 154
 Time: 0.002s">
-<div class="time" style="width: 9.0909090909091%"></div>
+<div class="time" style="width: 8.695652173913%"></div>
 <pre>
     intros i j g x; simpl.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 155
 Time: 0.002s">
-<div class="time" style="width: 9.0909090909091%"></div>
+<div class="time" style="width: 8.695652173913%"></div>
 <pre>
     refine (concat_p1 _ @ _ @ (concat_1p _)^).</pre>
 </div>
@@ -705,21 +705,21 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 157
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     refine (_ @ concat_p_pp _ _ _).</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 158
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     apply ap.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 159
 Time: 0.003s">
-<div class="time" style="width: 13.636363636364%"></div>
+<div class="time" style="width: 13.04347826087%"></div>
 <pre>
     rewrite ap_pp.</pre>
 </div>
@@ -733,21 +733,21 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 161
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     symmetry.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 162
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     by apply ap_compose.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 163
-Time: 0.016s">
-<div class="time" style="width: 72.727272727273%"></div>
+Time: 0.017s">
+<div class="time" style="width: 73.913043478261%"></div>
 <pre>
   Defined.</pre>
 </div>
@@ -764,7 +764,7 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 168
 Time: 0.002s">
-<div class="time" style="width: 9.0909090909091%"></div>
+<div class="time" style="width: 8.695652173913%"></div>
 <pre>Definition cone_postcompose_precompose {D1 D2 : Diagram G}
              (m : DiagramMap D1 D2) `(f : Y -&gt; X) (C : Cone X D1)
     : cone_precompose (cone_postcompose m C) f
@@ -780,28 +780,28 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 172
 Time: 0.002s">
-<div class="time" style="width: 9.0909090909091%"></div>
+<div class="time" style="width: 8.695652173913%"></div>
 <pre>
     serapply path_cone; intro i.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 173
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     1: reflexivity.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 174
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     intros j g x; simpl.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 175
 Time: 0.002s">
-<div class="time" style="width: 9.0909090909091%"></div>
+<div class="time" style="width: 8.695652173913%"></div>
 <pre>
     refine (concat_p1 _ @ _ @ (concat_1p _)^).</pre>
 </div>
@@ -814,8 +814,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Cone.v
 Line: 177
-Time: 0.005s">
-<div class="time" style="width: 22.727272727273%"></div>
+Time: 0.006s">
+<div class="time" style="width: 26.086956521739%"></div>
 <pre>
   Defined.</pre>
 </div>
@@ -832,7 +832,7 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 182
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>Global Instance cone_precompose_equiv {D1 D2 : Diagram G}
     (m : D1 ~d~ D2) (X : Type) : IsEquiv (cone_postcompose (X:=X) m).</pre>
 </div>
@@ -846,7 +846,7 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 184
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     serapply isequiv_adjointify.</pre>
 </div>
@@ -887,7 +887,7 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 189
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre> apply cone_postcompose_comp.</pre>
 </div>
 <div class="code" title="File: Cone.v
@@ -900,7 +900,7 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 190
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre> rewrite diagram_inv_is_section.</pre>
 </div>
 <div class="code" title="File: Cone.v
@@ -925,8 +925,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Cone.v
 Line: 192
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
       etransitivity.</pre>
 </div>
@@ -940,7 +940,7 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 194
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre> apply cone_postcompose_comp.</pre>
 </div>
 <div class="code" title="File: Cone.v
@@ -953,7 +953,7 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 195
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre> rewrite diagram_inv_is_retraction.</pre>
 </div>
 <div class="code" title="File: Cone.v
@@ -966,7 +966,7 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 196
 Time: 0.003s">
-<div class="time" style="width: 13.636363636364%"></div>
+<div class="time" style="width: 13.04347826087%"></div>
 <pre>
   Defined.</pre>
 </div>
@@ -983,7 +983,7 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 201
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>Global Instance cone_postcompose_equiv {D : Diagram G} `(f : Y &lt;~&gt; X)
     : IsEquiv (fun C : Cone X D =&gt; cone_precompose C f).</pre>
 </div>
@@ -997,14 +997,14 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 203
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     serapply isequiv_adjointify.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 204
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     1: exact (fun C =&gt; cone_precompose C f^-1).</pre>
 </div>
@@ -1024,7 +1024,7 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 206
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
       etransitivity.</pre>
 </div>
@@ -1037,8 +1037,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Cone.v
 Line: 208
-Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre> symmetry.</pre>
 </div>
 <div class="code" title="File: Cone.v
@@ -1058,7 +1058,7 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 210
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre> etransitivity.</pre>
 </div>
 <div class="code" title="File: Cone.v
@@ -1098,7 +1098,7 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 214
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
       etransitivity.</pre>
 </div>
@@ -1132,7 +1132,7 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 218
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre> etransitivity.</pre>
 </div>
 <div class="code" title="File: Cone.v
@@ -1159,7 +1159,7 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 221
 Time: 0.002s">
-<div class="time" style="width: 9.0909090909091%"></div>
+<div class="time" style="width: 8.695652173913%"></div>
 <pre>
   Defined.</pre>
 </div>
@@ -1178,7 +1178,7 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 228
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>Global Instance cone_postcompose_equiv_universality {D1 D2 : Diagram G}
     (m: D1 ~d~ D2) {X} (C : Cone X D1) (_ : UniversalCone C)
     : UniversalCone (cone_postcompose (X:=X) m C).</pre>
@@ -1193,35 +1193,35 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 231
 Time: 0.011s">
-<div class="time" style="width: 50%"></div>
+<div class="time" style="width: 47.826086956522%"></div>
 <pre>
     serapply Build_UniversalCone; intro.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 232
 Time: 0.003s">
-<div class="time" style="width: 13.636363636364%"></div>
+<div class="time" style="width: 13.04347826087%"></div>
 <pre>
     rewrite (path_forall _ _ (fun f =&gt; cone_postcompose_precompose m f C)).</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 233
 Time: 0.003s">
-<div class="time" style="width: 13.636363636364%"></div>
+<div class="time" style="width: 13.04347826087%"></div>
 <pre>
     serapply isequiv_compose.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 234
 Time: 0.002s">
-<div class="time" style="width: 9.0909090909091%"></div>
+<div class="time" style="width: 8.695652173913%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 235
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
 
   Global Instance cone_precompose_equiv_universality {D: Diagram G} `(f: Y &lt;~&gt; X)
@@ -1238,35 +1238,35 @@ Time: 0s">
 <div class="code" title="File: Cone.v
 Line: 240
 Time: 0.012s">
-<div class="time" style="width: 54.545454545455%"></div>
+<div class="time" style="width: 52.173913043478%"></div>
 <pre>
     serapply Build_UniversalCone; intro.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 241
 Time: 0.003s">
-<div class="time" style="width: 13.636363636364%"></div>
+<div class="time" style="width: 13.04347826087%"></div>
 <pre>
     rewrite &lt;- (path_forall _ _ (fun g =&gt; cone_precompose_comp g f C)).</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 242
-Time: 0.01s">
-<div class="time" style="width: 45.454545454545%"></div>
+Time: 0.009s">
+<div class="time" style="width: 39.130434782609%"></div>
 <pre>
     serapply isequiv_compose.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 243
 Time: 0.001s">
-<div class="time" style="width: 4.5454545454545%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Cone.v
 Line: 244
 Time: 0.02s">
-<div class="time" style="width: 90.909090909091%"></div>
+<div class="time" style="width: 86.95652173913%"></div>
 <pre>
 
 End FunctorialityCone.</pre>
