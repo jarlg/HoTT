@@ -30,13 +30,13 @@ pre {
 
 <div class="code" title="File: rationals.v
 Line: 1
-Time: 0.035s">
-<div class="time" style="width: 6.82261208577%"></div>
+Time: 0.031s">
+<div class="time" style="width: 6.5126050420168%"></div>
 <pre>Require Import HoTT.Types.Universe.</pre>
 </div>
 <div class="code" title="File: rationals.v
 Line: 1
-Time: 0.513s">
+Time: 0.476s">
 <div class="time" style="width: 100%"></div>
 <pre>
 Require Import
@@ -60,9 +60,9 @@ Time: 0s">
 <div class="code" title="File: rationals.v
 Line: 12
 Time: 0.006s">
-<div class="time" style="width: 1.1695906432749%"></div>
+<div class="time" style="width: 1.2605042016807%"></div>
 <pre>Class RationalsToField@{i j k l} (A : Type@{i}) :=
-  rationals_to_field : forall (B : Type@{j}) `{Field@{j l k} B}
+  rationals_to_field : forall (B : Type@{j}) `{IsField@{j l k} B}
     `{!FieldCharacteristic B 0}, A -&gt; B.</pre>
 </div>
 <div class="code" title="File: rationals.v
@@ -87,15 +87,15 @@ Time: 0s">
 <div class="code" title="File: rationals.v
 Line: 20
 Time: 0.039s">
-<div class="time" style="width: 7.6023391812865%"></div>
+<div class="time" style="width: 8.1932773109244%"></div>
 <pre>Class Rationals A {Aap : Apart A} {Aplus Amult Azero Aone Aneg Arecip Ale Alt}
   `{U : !RationalsToField A} :=
-  { rationals_field :&gt; @DecField A Aplus Amult Azero Aone Aneg Arecip
+  { rationals_field :&gt; @IsDecField A Aplus Amult Azero Aone Aneg Arecip
   ; rationals_order :&gt; FullPseudoSemiRingOrder Ale Alt
-  ; rationals_to_field_mor :&gt; forall `{Field B} `{!FieldCharacteristic B 0},
-    SemiRingPreserving (rationals_to_field A B)
-  ; rationals_initial : forall `{Field B} `{!FieldCharacteristic B 0}
-    {h : A -&gt; B} `{!SemiRingPreserving h} x,
+  ; rationals_to_field_mor :&gt; forall `{IsField B} `{!FieldCharacteristic B 0},
+    IsSemiRingPreserving (rationals_to_field A B)
+  ; rationals_initial : forall `{IsField B} `{!FieldCharacteristic B 0}
+    {h : A -&gt; B} `{!IsSemiRingPreserving h} x,
     rationals_to_field A B x = h x }.</pre>
 </div>
 <div class="code" title="File: rationals.v

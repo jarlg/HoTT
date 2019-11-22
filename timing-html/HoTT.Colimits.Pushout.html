@@ -37,27 +37,27 @@ Time: 0s">
 <div class="code" title="File: Pushout.v
 Line: 1
 Time: 0.017s">
-<div class="time" style="width: 9.6045197740113%"></div>
+<div class="time" style="width: 9.9415204678363%"></div>
 <pre>Require Import HoTT.Basics.</pre>
 </div>
 <div class="code" title="File: Pushout.v
 Line: 1
-Time: 0.024s">
-<div class="time" style="width: 13.559322033898%"></div>
+Time: 0.021s">
+<div class="time" style="width: 12.280701754386%"></div>
 <pre>
 Require Import HoTT.Types.</pre>
 </div>
 <div class="code" title="File: Pushout.v
 Line: 2
 Time: 0.009s">
-<div class="time" style="width: 5.0847457627119%"></div>
+<div class="time" style="width: 5.2631578947368%"></div>
 <pre>
 Require Import HSet TruncType.</pre>
 </div>
 <div class="code" title="File: Pushout.v
 Line: 3
-Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
 Require Export HIT.Coeq.</pre>
 </div>
@@ -74,36 +74,24 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-
 (** * Homotopy Pushouts *)
-
-(*
-Record Span :=
-  { A : Type; B : Type; C : Type;
-    f : C -&gt; A;
-    g : C -&gt; B }.
-
-Record Cocone (S : Span) (D : Type) :=
-  { i : A S -&gt; D;
-    j : B S -&gt; D;
-    h : forall c, i (f S c) = j (g S c) }.
-*)
 
 (** We define pushouts in terms of coproducts and coequalizers. *)
 
 </pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 23
+Line: 10
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
-<pre>Definition Pushout {A B C : Type} (f : A -&gt; B) (g : A -&gt; C) : Type
-  := Coeq (inl o f) (inr o g).</pre>
+<div class="time" style="width: 1.1695906432749%"></div>
+<pre>Definition Pushout@{i j k l} {A : Type@{i}} {B : Type@{j}} {C : Type@{k}}
+  (f : A -&gt; B) (g : A -&gt; C) : Type@{l}
+  := Coeq@{l l} (inl o f) (inr o g).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 24
-Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+Line: 12
+Time: 0.003s">
+<div class="time" style="width: 1.7543859649123%"></div>
 <pre>
 
 Definition push {A B C : Type} {f : A -&gt; B} {g : A -&gt; C}
@@ -111,26 +99,26 @@ Definition push {A B C : Type} {f : A -&gt; B} {g : A -&gt; C}
   := @coeq _ _ (inl o f) (inr o g).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 28
+Line: 16
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
 
 Definition pushl {A B C} {f : A -&gt; B} {g : A -&gt; C} (b : B)
   : Pushout f g := push (inl b).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 31
+Line: 19
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
 Definition pushr {A B C} {f : A -&gt; B} {g : A -&gt; C} (c : C)
   : Pushout f g := push (inr c).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 33
+Line: 21
 Time: 0.004s">
-<div class="time" style="width: 2.2598870056497%"></div>
+<div class="time" style="width: 2.3391812865497%"></div>
 <pre>
 
 Definition pglue {A B C : Type} {f : A -&gt; B} {g : A -&gt; C} (a : A)
@@ -138,7 +126,7 @@ Definition pglue {A B C : Type} {f : A -&gt; B} {g : A -&gt; C} (a : A)
   := @cglue A (B+C) (inl o f) (inr o g) a.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 37
+Line: 25
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -146,28 +134,28 @@ Time: 0s">
 (* Some versions with explicit parameters. *)</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 39
+Line: 27
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>Definition pushl' {A B C} (f : A -&gt; B) (g : A -&gt; C) (b : B) : Pushout f g := pushl b.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 39
+Line: 27
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Definition pushr' {A B C} (f : A -&gt; B) (g : A -&gt; C) (c : C) : Pushout f g := pushr c.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 40
+Line: 28
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
 Definition pglue' {A B C : Type} (f : A -&gt; B) (g : A -&gt; C) (a : A) : pushl (f a) = pushr (g a)
   := pglue a.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 42
+Line: 30
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -175,28 +163,33 @@ Time: 0s">
 Section PushoutInd.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 44
+Line: 32
 Time: 0.003s">
-<div class="time" style="width: 1.6949152542373%"></div>
+<div class="time" style="width: 1.7543859649123%"></div>
 <pre>
 
-  Context {A B C : Type} {f : A -&gt; B} {g : A -&gt; C} (P : Pushout f g -&gt; Type)
-          (pushb : forall b : B, P (pushl b))
-          (pushc : forall c : C, P (pushr c))
-          (pusha : forall a : A, (pglue a) # (pushb (f a)) = pushc (g a)).</pre>
+  Context {A B C : Type} {f : A -&gt; B} {g : A -&gt; C}
+    (P : Pushout f g -&gt; Type)
+    (pushb : forall b : B, P (pushl b))
+    (pushc : forall c : C, P (pushr c))
+    (pusha : forall a : A, (pglue a) # (pushb (f a)) = pushc (g a)).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 49
-Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+Line: 38
+Time: 0.002s">
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
 
   Definition Pushout_ind
     : forall (w : Pushout f g), P w
-    := Coeq_ind P (fun bc =&gt; match bc with inl b =&gt; pushb b | inr c =&gt; pushc c end) pusha.</pre>
+    := Coeq_ind P (fun bc =&gt;
+      match bc with
+        | inl b =&gt; pushb b
+        | inr c =&gt; pushc c 
+      end) pusha.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 53
+Line: 46
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -205,7 +198,7 @@ Time: 0s">
     := 1.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 56
+Line: 49
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -213,9 +206,9 @@ Time: 0s">
     := 1.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 58
-Time: 0.005s">
-<div class="time" style="width: 2.8248587570621%"></div>
+Line: 51
+Time: 0.004s">
+<div class="time" style="width: 2.3391812865497%"></div>
 <pre>
 
   Definition Pushout_ind_beta_pglue (a:A)
@@ -223,15 +216,15 @@ Time: 0.005s">
     := Coeq_ind_beta_cglue P (fun bc =&gt; match bc with inl b =&gt; pushb b | inr c =&gt; pushc c end) pusha a.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 62
+Line: 55
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
 
 End PushoutInd.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 64
+Line: 57
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -239,43 +232,43 @@ Time: 0s">
 (** But we want to allow the user to forget that we've defined pushouts in terms of coequalizers. *)</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 66
+Line: 59
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Arguments Pushout : simpl never.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 66
+Line: 59
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Arguments push : simpl never.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 67
+Line: 60
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Arguments pglue : simpl never.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 68
+Line: 61
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Arguments Pushout_ind : simpl never.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 69
+Line: 62
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Arguments Pushout_ind_beta_pglue : simpl never.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 70
+Line: 63
 Time: 0.004s">
-<div class="time" style="width: 2.2598870056497%"></div>
+<div class="time" style="width: 2.3391812865497%"></div>
 <pre>
 
 Definition Pushout_rec {A B C} {f : A -&gt; B} {g : A -&gt; C} (P : Type)
@@ -286,9 +279,9 @@ Definition Pushout_rec {A B C} {f : A -&gt; B} {g : A -&gt; C} (P : Type)
   := Pushout_ind (fun _ =&gt; P) pushb pushc (fun a =&gt; transport_const _ _ @ pusha a).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 77
+Line: 70
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
 
 Definition Pushout_rec_beta_pglue {A B C f g} (P : Type)
@@ -299,49 +292,49 @@ Definition Pushout_rec_beta_pglue {A B C f g} (P : Type)
   : ap (Pushout_rec P pushb pushc pusha) (pglue a) = pusha a.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 84
+Line: 77
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 85
+Line: 78
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   unfold Pushout_rec.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 86
-Time: 0.004s">
-<div class="time" style="width: 2.2598870056497%"></div>
+Line: 79
+Time: 0.003s">
+<div class="time" style="width: 1.7543859649123%"></div>
 <pre>
   eapply (cancelL (transport_const (pglue a) _)).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 87
+Line: 80
 Time: 0.004s">
-<div class="time" style="width: 2.2598870056497%"></div>
+<div class="time" style="width: 2.3391812865497%"></div>
 <pre>
   refine ((apD_const (@Pushout_ind A B C f g (fun _ =&gt; P) pushb pushc _) (pglue a))^ @ _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 88
+Line: 81
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
   refine (Pushout_ind_beta_pglue (fun _ =&gt; P) _ _ _ _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 89
-Time: 0.019s">
-<div class="time" style="width: 10.734463276836%"></div>
+Line: 82
+Time: 0.018s">
+<div class="time" style="width: 10.526315789474%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 90
+Line: 83
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -351,53 +344,53 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 93
+Line: 86
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>Definition pushout_unrec {A B C P} (f : A -&gt; B) (g : A -&gt; C)
            (h : Pushout f g -&gt; P)
   : {psh : (B -&gt; P) * (C -&gt; P) &amp;
            forall a, fst psh (f a) = snd psh (g a)}.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 96
+Line: 89
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 97
+Line: 90
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
   exists (h o pushl , h o pushr).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 98
+Line: 91
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros a; cbn.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 99
+Line: 92
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   exact (ap h (pglue a)).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 100
+Line: 93
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 101
-Time: 0.003s">
-<div class="time" style="width: 1.6949152542373%"></div>
+Line: 94
+Time: 0.002s">
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
 
 Definition isequiv_Pushout_rec `{Funext} {A B C} (f : A -&gt; B) (g : A -&gt; C) P
@@ -406,45 +399,112 @@ Definition isequiv_Pushout_rec `{Funext} {A B C} (f : A -&gt; B) (g : A -&gt; C)
              =&gt; Pushout_rec P (fst p.1) (snd p.1) p.2).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 106
+Line: 99
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 107
-Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+Line: 100
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   srefine (isequiv_adjointify _ (pushout_unrec f g) _ _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 108
+Line: 101
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 109
+Line: 102
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros h.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 109
+Line: 102
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply path_arrow; intros x.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 110
+Line: 103
 Time: 0.004s">
-<div class="time" style="width: 2.2598870056497%"></div>
+<div class="time" style="width: 2.3391812865497%"></div>
 <pre>
     srefine (Pushout_ind (fun x =&gt; Pushout_rec P (fst (pushout_unrec f g h).1) (snd (pushout_unrec f g h).1) (pushout_unrec f g h).2 x = h x) _ _ _ x).</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 104
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 105
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros b; reflexivity.</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 105
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 106
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros c; reflexivity.</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 106
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 107
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros a; cbn.</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 107
+Time: 0.039s">
+<div class="time" style="width: 22.80701754386%"></div>
+<pre>
+      abstract (rewrite transport_paths_FlFr, Pushout_rec_beta_pglue;
+                rewrite concat_p1; apply concat_Vp).</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 109
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 110
+Time: 0.003s">
+<div class="time" style="width: 1.7543859649123%"></div>
+<pre> intros [[pushb pushc] pusha]; unfold pushout_unrec; cbn.</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 110
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    srefine (path_sigma' _ _ _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
 Line: 111
@@ -455,9 +515,9 @@ Time: 0s">
 </div>
 <div class="code" title="File: Pushout.v
 Line: 112
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intros b; reflexivity.</pre>
+Time: 0.001s">
+<div class="time" style="width: 0.58479532163743%"></div>
+<pre> srefine (path_prod' _ _); reflexivity.</pre>
 </div>
 <div class="code" title="File: Pushout.v
 Line: 112
@@ -470,94 +530,27 @@ Time: 0s">
 Line: 113
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> intros c; reflexivity.</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 113
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    +</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 114
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intros a; cbn.</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 114
-Time: 0.04s">
-<div class="time" style="width: 22.598870056497%"></div>
-<pre>
-      abstract (rewrite transport_paths_FlFr, Pushout_rec_beta_pglue;
-                rewrite concat_p1; apply concat_Vp).</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 116
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 117
-Time: 0.003s">
-<div class="time" style="width: 1.6949152542373%"></div>
-<pre> intros [[pushb pushc] pusha]; unfold pushout_unrec; cbn.</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 117
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    srefine (path_sigma' _ _ _).</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 118
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    +</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 119
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> srefine (path_prod' _ _); reflexivity.</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 119
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    +</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 120
-Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
 <pre> apply path_forall; intros a.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 120
+Line: 113
 Time: 0.021s">
-<div class="time" style="width: 11.864406779661%"></div>
+<div class="time" style="width: 12.280701754386%"></div>
 <pre>
       abstract (rewrite transport_forall_constant, Pushout_rec_beta_pglue;
                 reflexivity).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 122
-Time: 0.013s">
-<div class="time" style="width: 7.3446327683616%"></div>
+Line: 115
+Time: 0.012s">
+<div class="time" style="width: 7.0175438596491%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 123
+Line: 116
 Time: 0.004s">
-<div class="time" style="width: 2.2598870056497%"></div>
+<div class="time" style="width: 2.3391812865497%"></div>
 <pre>
 
 Definition equiv_Pushout_rec `{Funext} {A B C} (f : A -&gt; B) (g : A -&gt; C) P
@@ -567,9 +560,9 @@ Definition equiv_Pushout_rec `{Funext} {A B C} (f : A -&gt; B) (g : A -&gt; C) P
   := Build_Equiv _ _ _ (isequiv_Pushout_rec f g P).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 129
+Line: 122
 Time: 0.003s">
-<div class="time" style="width: 1.6949152542373%"></div>
+<div class="time" style="width: 1.7543859649123%"></div>
 <pre>
 
 Definition equiv_pushout_unrec `{Funext} {A B C} (f : A -&gt; B) (g : A -&gt; C) P
@@ -579,7 +572,7 @@ Definition equiv_pushout_unrec `{Funext} {A B C} (f : A -&gt; B) (g : A -&gt; C)
   := equiv_inverse (equiv_Pushout_rec f g P).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 135
+Line: 128
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -589,15 +582,15 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 138
-Time: 0.004s">
-<div class="time" style="width: 2.2598870056497%"></div>
+Line: 131
+Time: 0.003s">
+<div class="time" style="width: 1.7543859649123%"></div>
 <pre>Definition pushout_sym_map {A B C} {f : A -&gt; B} {g : A -&gt; C}
   : Pushout f g -&gt; Pushout g f
   := Pushout_rec (Pushout g f) pushr pushl (fun a : A =&gt; (pglue a)^).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 140
+Line: 133
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -605,82 +598,82 @@ Time: 0s">
 Lemma sect_pushout_sym_map {A B C f g} : Sect (@pushout_sym_map A C B g f) (@pushout_sym_map A B C f g).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 142
+Line: 135
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 143
+Line: 136
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   unfold Sect.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 144
+Line: 137
 Time: 0.003s">
-<div class="time" style="width: 1.6949152542373%"></div>
+<div class="time" style="width: 1.7543859649123%"></div>
 <pre> srapply @Pushout_ind.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 144
+Line: 137
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 145
+Line: 138
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros; reflexivity.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 145
+Line: 138
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 146
+Line: 139
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros; reflexivity.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 146
+Line: 139
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 147
+Line: 140
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intro a.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 147
-Time: 0.177s">
+Line: 140
+Time: 0.171s">
 <div class="time" style="width: 100%"></div>
 <pre>
     abstract (rewrite transport_paths_FFlr, Pushout_rec_beta_pglue, ap_V, Pushout_rec_beta_pglue; hott_simpl).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 148
-Time: 0.003s">
-<div class="time" style="width: 1.6949152542373%"></div>
+Line: 141
+Time: 0.002s">
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 149
-Time: 0.003s">
-<div class="time" style="width: 1.6949152542373%"></div>
+Line: 142
+Time: 0.002s">
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
 
 Definition pushout_sym {A B C} {f : A -&gt; B} {g : A -&gt; C}
@@ -688,7 +681,7 @@ Definition pushout_sym {A B C} {f : A -&gt; B} {g : A -&gt; C}
 equiv_adjointify pushout_sym_map pushout_sym_map sect_pushout_sym_map sect_pushout_sym_map.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 153
+Line: 146
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -700,22 +693,22 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 158
+Line: 151
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section EquivPushout.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 158
+Line: 151
 Time: 0.007s">
-<div class="time" style="width: 3.954802259887%"></div>
+<div class="time" style="width: 4.093567251462%"></div>
 <pre>
   Context {A B C f g A' B' C' f' g'}
           (eA : A &lt;~&gt; A') (eB : B &lt;~&gt; B') (eC : C &lt;~&gt; C')
           (p : eB o f == f' o eA) (q : eC o g == g' o eA).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 161
+Line: 154
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -724,70 +717,70 @@ Time: 0s">
     : Pushout f g &lt;~&gt; Pushout f' g'.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 164
+Line: 157
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 165
+Line: 158
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
     refine (equiv_functor_coeq' eA (equiv_functor_sum' eB eC) _ _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 166
+Line: 159
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     all:unfold pointwise_paths.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 167
-Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+Line: 160
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
     all:intro; simpl; apply ap.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 168
+Line: 161
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 169
+Line: 162
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply p.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 169
+Line: 162
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 170
+Line: 163
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply q.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 170
-Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+Line: 163
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 171
+Line: 164
 Time: 0.008s">
-<div class="time" style="width: 4.5197740112994%"></div>
+<div class="time" style="width: 4.6783625730994%"></div>
 <pre>
 
   Lemma equiv_pushout_pglue (a : A)
@@ -795,76 +788,76 @@ Time: 0.008s">
       = ap pushl (p a) @ pglue (eA a) @ ap pushr (q a)^.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 175
+Line: 168
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 176
+Line: 169
 Time: 0.004s">
-<div class="time" style="width: 2.2598870056497%"></div>
+<div class="time" style="width: 2.3391812865497%"></div>
 <pre>
     refine (functor_coeq_beta_cglue _ _ _ _ a @ _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 177
+Line: 170
 Time: 0.003s">
-<div class="time" style="width: 1.6949152542373%"></div>
+<div class="time" style="width: 1.7543859649123%"></div>
 <pre>
     refine (_ @@ 1 @@ _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 178
+Line: 171
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 179
+Line: 172
 Time: 0.004s">
-<div class="time" style="width: 2.2598870056497%"></div>
+<div class="time" style="width: 2.3391812865497%"></div>
 <pre> symmetry; refine (ap_compose inl coeq _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 179
+Line: 172
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 180
+Line: 173
 Time: 0.004s">
-<div class="time" style="width: 2.2598870056497%"></div>
+<div class="time" style="width: 2.3391812865497%"></div>
 <pre> refine (ap (ap coeq) (ap_V _ _)^ @ _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 180
+Line: 173
 Time: 0.003s">
-<div class="time" style="width: 1.6949152542373%"></div>
+<div class="time" style="width: 1.7543859649123%"></div>
 <pre>
       symmetry; refine (ap_compose inr coeq _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 181
-Time: 0.018s">
-<div class="time" style="width: 10.169491525424%"></div>
+Line: 174
+Time: 0.017s">
+<div class="time" style="width: 9.9415204678363%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 182
-Time: 0.009s">
-<div class="time" style="width: 5.0847457627119%"></div>
+Line: 175
+Time: 0.008s">
+<div class="time" style="width: 4.6783625730994%"></div>
 <pre>
 
 End EquivPushout.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 184
+Line: 177
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -876,13 +869,13 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 189
+Line: 182
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section EquivSigmaPushout.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 189
+Line: 182
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -892,103 +885,103 @@ Time: 0s">
           (f : forall x, A x -&gt; B x) (g : forall x, A x -&gt; C x).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 193
+Line: 186
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
 
   Let esp1 : { x : X &amp; Pushout (f x) (g x) }
              -&gt; Pushout (functor_sigma idmap f) (functor_sigma idmap g).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 196
+Line: 189
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 197
+Line: 190
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros [x p].</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 198
+Line: 191
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     srefine (Pushout_rec _ _ _ _ p).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 199
+Line: 192
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 200
+Line: 193
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros b.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 200
+Line: 193
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact (pushl (x;b)).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 200
+Line: 193
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 201
+Line: 194
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros c.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 201
+Line: 194
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact (pushr (x;c)).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 201
+Line: 194
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 202
+Line: 195
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros a; cbn.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 202
+Line: 195
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact (pglue (x;a)).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 202
-Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+Line: 195
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 203
-Time: 0.004s">
-<div class="time" style="width: 2.2598870056497%"></div>
+Line: 196
+Time: 0.003s">
+<div class="time" style="width: 1.7543859649123%"></div>
 <pre>
 
   Let esp1_beta_pglue (x : X) (a : A x)
@@ -996,179 +989,179 @@ Time: 0.004s">
       = pglue (x;a).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 207
+Line: 200
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 208
-Time: 0.015s">
-<div class="time" style="width: 8.4745762711864%"></div>
+Line: 201
+Time: 0.013s">
+<div class="time" style="width: 7.6023391812865%"></div>
 <pre>
     rewrite (ap_path_sigma (fun x =&gt; Pushout (f x) (g x))
                            (fun x a =&gt; esp1 (x;a)) 1 (pglue a)); cbn.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 210
+Line: 203
 Time: 0.009s">
-<div class="time" style="width: 5.0847457627119%"></div>
+<div class="time" style="width: 5.2631578947368%"></div>
 <pre>
     rewrite !concat_p1.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 211
-Time: 0.011s">
-<div class="time" style="width: 6.2146892655367%"></div>
+Line: 204
+Time: 0.01s">
+<div class="time" style="width: 5.8479532163743%"></div>
 <pre>
     unfold esp1; rewrite Pushout_rec_beta_pglue.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 212
+Line: 205
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
     reflexivity.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 213
-Time: 0.026s">
-<div class="time" style="width: 14.689265536723%"></div>
+Line: 206
+Time: 0.023s">
+<div class="time" style="width: 13.450292397661%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 214
+Line: 207
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
 
   Let esp2 : Pushout (functor_sigma idmap f) (functor_sigma idmap g)
              -&gt; { x : X &amp; Pushout (f x) (g x) }.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 217
+Line: 210
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 218
+Line: 211
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     srefine (Pushout_rec _ _ _ _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 219
+Line: 212
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 220
+Line: 213
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact (functor_sigma idmap (fun x =&gt; @pushl _ _ _ (f x) (g x))).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 220
+Line: 213
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 221
+Line: 214
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact (functor_sigma idmap (fun x =&gt; @pushr _ _ _ (f x) (g x))).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 221
+Line: 214
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 222
+Line: 215
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre> intros [x a]; unfold functor_sigma; cbn.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 222
+Line: 215
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       srefine (path_sigma' _ 1 _); cbn.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 223
+Line: 216
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       apply pglue.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 224
-Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+Line: 217
+Time: 0.002s">
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 225
+Line: 218
 Time: 0.004s">
-<div class="time" style="width: 2.2598870056497%"></div>
+<div class="time" style="width: 2.3391812865497%"></div>
 <pre>
 
   Let esp2_beta_pglue (x : X) (a : A x)
     : ap esp2 (pglue (x;a)) = path_sigma' (fun x:X =&gt; Pushout (f x) (g x)) 1 (pglue a).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 228
+Line: 221
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 229
+Line: 222
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     unfold esp2.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 230
-Time: 0.014s">
-<div class="time" style="width: 7.909604519774%"></div>
+Line: 223
+Time: 0.013s">
+<div class="time" style="width: 7.6023391812865%"></div>
 <pre>
     rewrite Pushout_rec_beta_pglue.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 231
+Line: 224
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
     reflexivity.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 232
-Time: 0.009s">
-<div class="time" style="width: 5.0847457627119%"></div>
+Line: 225
+Time: 0.008s">
+<div class="time" style="width: 4.6783625730994%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 233
+Line: 226
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
 
   Definition equiv_sigma_pushout
@@ -1176,244 +1169,244 @@ Time: 0.001s">
         &lt;~&gt; Pushout (functor_sigma idmap f) (functor_sigma idmap g).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 237
+Line: 230
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 238
+Line: 231
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     srefine (equiv_adjointify esp1 esp2 _ _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 239
+Line: 232
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 240
+Line: 233
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre> srefine (Pushout_ind _ _ _ _); cbn.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 240
+Line: 233
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       +</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 241
+Line: 234
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> reflexivity.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 241
+Line: 234
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       +</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 242
+Line: 235
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> reflexivity.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 242
+Line: 235
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       +</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 243
+Line: 236
 Time: 0.003s">
-<div class="time" style="width: 1.6949152542373%"></div>
+<div class="time" style="width: 1.7543859649123%"></div>
 <pre> intros [x a].</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 243
-Time: 0.008s">
-<div class="time" style="width: 4.5197740112994%"></div>
+Line: 236
+Time: 0.007s">
+<div class="time" style="width: 4.093567251462%"></div>
 <pre>
         rewrite transport_paths_FlFr.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 244
-Time: 0.017s">
-<div class="time" style="width: 9.6045197740113%"></div>
+Line: 237
+Time: 0.016s">
+<div class="time" style="width: 9.3567251461988%"></div>
 <pre>
         rewrite ap_idmap, concat_p1.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 245
+Line: 238
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
         apply moveR_Vp.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 246
-Time: 0.005s">
-<div class="time" style="width: 2.8248587570621%"></div>
+Line: 239
+Time: 0.004s">
+<div class="time" style="width: 2.3391812865497%"></div>
 <pre> rewrite concat_p1.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 246
-Time: 0.005s">
-<div class="time" style="width: 2.8248587570621%"></div>
+Line: 239
+Time: 0.004s">
+<div class="time" style="width: 2.3391812865497%"></div>
 <pre>
         rewrite ap_compose.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 247
-Time: 0.029s">
-<div class="time" style="width: 16.38418079096%"></div>
+Line: 240
+Time: 0.027s">
+<div class="time" style="width: 15.789473684211%"></div>
 <pre>
         rewrite esp2_beta_pglue, esp1_beta_pglue.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 248
+Line: 241
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
         reflexivity.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 249
+Line: 242
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 250
+Line: 243
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros [x a]; revert a.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 250
+Line: 243
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
       srefine (Pushout_ind _ _ _ _); cbn.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 251
+Line: 244
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       +</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 252
+Line: 245
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> reflexivity.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 252
+Line: 245
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       +</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 253
+Line: 246
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> reflexivity.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 253
+Line: 246
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       +</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 254
+Line: 247
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros a.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 254
+Line: 247
 Time: 0.006s">
-<div class="time" style="width: 3.3898305084746%"></div>
+<div class="time" style="width: 3.5087719298246%"></div>
 <pre>
         rewrite transport_paths_FlFr.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 255
-Time: 0.012s">
-<div class="time" style="width: 6.7796610169492%"></div>
+Line: 248
+Time: 0.011s">
+<div class="time" style="width: 6.4327485380117%"></div>
 <pre>
         rewrite concat_p1; apply moveR_Vp; rewrite concat_p1.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 256
-Time: 0.008s">
-<div class="time" style="width: 4.5197740112994%"></div>
+Line: 249
+Time: 0.007s">
+<div class="time" style="width: 4.093567251462%"></div>
 <pre>
         rewrite (ap_compose (exist _ x) (esp2 o esp1)).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 257
-Time: 0.006s">
-<div class="time" style="width: 3.3898305084746%"></div>
+Line: 250
+Time: 0.005s">
+<div class="time" style="width: 2.9239766081871%"></div>
 <pre>
         rewrite (ap_compose esp1 esp2).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 258
+Line: 251
 Time: 0.006s">
-<div class="time" style="width: 3.3898305084746%"></div>
+<div class="time" style="width: 3.5087719298246%"></div>
 <pre>
         rewrite (ap_existT (fun x =&gt; Pushout (f x) (g x)) x _ _ (pglue a)).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 259
+Line: 252
 Time: 0.024s">
-<div class="time" style="width: 13.559322033898%"></div>
+<div class="time" style="width: 14.035087719298%"></div>
 <pre>
         rewrite esp1_beta_pglue, esp2_beta_pglue.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 260
-Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+Line: 253
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
         reflexivity.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 261
-Time: 0.064s">
-<div class="time" style="width: 36.158192090395%"></div>
+Line: 254
+Time: 0.061s">
+<div class="time" style="width: 35.672514619883%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 262
-Time: 0.043s">
-<div class="time" style="width: 24.293785310734%"></div>
+Line: 255
+Time: 0.04s">
+<div class="time" style="width: 23.391812865497%"></div>
 <pre>
 
 End EquivSigmaPushout.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 264
+Line: 257
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1423,13 +1416,13 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 267
+Line: 260
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section PushoutAssoc.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 267
+Line: 260
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1438,57 +1431,57 @@ Time: 0s">
           (f1 : A1 -&gt; B) (g1 : A1 -&gt; C) (f2 : A2 -&gt; C) (g2 : A2 -&gt; D).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 270
+Line: 263
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
 
   Definition pushout_assoc_left := Pushout (pushr' f1 g1 o f2) g2.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 272
+Line: 265
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
   Let pushll : B -&gt; pushout_assoc_left
     := pushl' (pushr' f1 g1 o f2) g2 o pushl' f1 g1.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 274
+Line: 267
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
   Let pushlm : C -&gt; pushout_assoc_left
     := pushl' (pushr' f1 g1 o f2) g2 o pushr' f1 g1.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 276
+Line: 269
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
   Let pushlr : D -&gt; pushout_assoc_left
     := pushr' (pushr' f1 g1 o f2) g2.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 278
-Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+Line: 271
+Time: 0.003s">
+<div class="time" style="width: 1.7543859649123%"></div>
 <pre>
   Let pgluell : forall a1, pushll (f1 a1) = pushlm (g1 a1)
     := fun a1 =&gt; ap (pushl' (pushr' f1 g1 o f2) g2) (pglue' f1 g1 a1).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 280
+Line: 273
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
   Let pgluelr : forall a2, pushlm (f2 a2) = pushlr (g2 a2)
     := fun a2 =&gt; pglue' (pushr' f1 g1 o f2) g2 a2.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 282
+Line: 275
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
 
   Definition pushout_assoc_left_ind
@@ -1501,68 +1494,68 @@ Time: 0.002s">
     : forall x, P x.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 291
+Line: 284
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 292
+Line: 285
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     srefine (Pushout_ind _ _ pushd _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 293
+Line: 286
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 294
+Line: 287
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> srefine (Pushout_ind _ pushb pushc _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 294
+Line: 287
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       intros a1.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 295
+Line: 288
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
       exact (transport_compose P pushl _ _ @ pusha1 a1).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 296
+Line: 289
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 297
+Line: 290
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact pusha2.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 297
+Line: 290
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 298
+Line: 291
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1570,7 +1563,7 @@ Time: 0s">
   Section Pushout_Assoc_Left_Rec.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 300
+Line: 293
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1583,7 +1576,7 @@ Time: 0s">
             (pusha2 : forall a2, pushc (f2 a2) = pushd (g2 a2)).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 307
+Line: 300
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1592,54 +1585,54 @@ Time: 0s">
       : pushout_assoc_left -&gt; P.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 310
+Line: 303
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     Proof.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 311
+Line: 304
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       srefine (Pushout_rec _ _ pushd _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 312
+Line: 305
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 313
+Line: 306
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> srefine (Pushout_rec _ pushb pushc pusha1).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 313
+Line: 306
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 314
+Line: 307
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact pusha2.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 314
+Line: 307
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     Defined.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 315
+Line: 308
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1648,87 +1641,87 @@ Time: 0s">
       : ap pushout_assoc_left_rec (pgluell a1) = pusha1 a1.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 318
+Line: 311
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     Proof.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 319
+Line: 312
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       unfold pgluell.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 320
-Time: 0.008s">
-<div class="time" style="width: 4.5197740112994%"></div>
+Line: 313
+Time: 0.007s">
+<div class="time" style="width: 4.093567251462%"></div>
 <pre>
       rewrite &lt;- (ap_compose (pushl' (pushr' f1 g1 o f2) g2)
                              pushout_assoc_left_rec).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 322
+Line: 315
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
       change (ap (Pushout_rec P pushb pushc pusha1) (pglue' f1 g1 a1) = pusha1 a1).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 323
+Line: 316
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
       apply Pushout_rec_beta_pglue.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 324
+Line: 317
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
     Defined.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 325
-Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+Line: 318
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
     Definition pushout_assoc_left_rec_beta_pgluelr a2
       : ap pushout_assoc_left_rec (pgluelr a2) = pusha2 a2.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 328
+Line: 321
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     Proof.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 329
+Line: 322
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       unfold pushout_assoc_left_rec, pgluelr.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 330
-Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+Line: 323
+Time: 0.007s">
+<div class="time" style="width: 4.093567251462%"></div>
 <pre>
       apply (Pushout_rec_beta_pglue (f := pushr' f1 g1 o f2) (g := g2)).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 331
+Line: 324
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     Defined.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 332
+Line: 325
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1736,57 +1729,57 @@ Time: 0s">
   End Pushout_Assoc_Left_Rec.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 334
+Line: 327
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
 
   Definition pushout_assoc_right := Pushout f1 (pushl' f2 g2 o g1).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 336
+Line: 329
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
   Let pushrl : B -&gt; pushout_assoc_right
     := pushl' f1 (pushl' f2 g2 o g1).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 338
+Line: 331
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
   Let pushrm : C -&gt; pushout_assoc_right
     := pushr' f1 (pushl' f2 g2 o g1) o pushl' f2 g2.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 340
+Line: 333
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
   Let pushrr : D -&gt; pushout_assoc_right
     := pushr' f1 (pushl' f2 g2 o g1) o pushr' f2 g2.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 342
+Line: 335
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
   Let pgluerl : forall a1, pushrl (f1 a1) = pushrm (g1 a1)
     := fun a1 =&gt; pglue' f1 (pushl' f2 g2 o g1) a1.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 344
+Line: 337
 Time: 0.003s">
-<div class="time" style="width: 1.6949152542373%"></div>
+<div class="time" style="width: 1.7543859649123%"></div>
 <pre>
   Let pgluerr : forall a2, pushrm (f2 a2) = pushrr (g2 a2)
     := fun a2 =&gt; ap (pushr' f1 (pushl' f2 g2 o g1)) (pglue' f2 g2 a2).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 346
+Line: 339
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
 
   Definition pushout_assoc_right_ind
@@ -1799,68 +1792,68 @@ Time: 0.002s">
     : forall x, P x.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 355
+Line: 348
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 356
+Line: 349
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     srefine (Pushout_ind _ pushb _ _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 357
+Line: 350
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 358
+Line: 351
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre> srefine (Pushout_ind _ pushc pushd _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 358
+Line: 351
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       intros a2.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 359
-Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+Line: 352
+Time: 0.003s">
+<div class="time" style="width: 1.7543859649123%"></div>
 <pre>
       exact (transport_compose P pushr _ _ @ pusha2 a2).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 360
+Line: 353
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 361
+Line: 354
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact pusha1.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 361
+Line: 354
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 362
+Line: 355
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1868,7 +1861,7 @@ Time: 0s">
   Section Pushout_Assoc_Right_Rec.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 364
+Line: 357
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1881,7 +1874,7 @@ Time: 0s">
             (pusha2 : forall a2, pushc (f2 a2) = pushd (g2 a2)).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 371
+Line: 364
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1890,44 +1883,81 @@ Time: 0s">
       : pushout_assoc_right -&gt; P.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 374
+Line: 367
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     Proof.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 375
+Line: 368
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       srefine (Pushout_rec _ pushb _ _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 376
+Line: 369
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 377
+Line: 370
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> srefine (Pushout_rec _ pushc pushd pusha2).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 377
+Line: 370
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 378
+Line: 371
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact pusha1.</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 371
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    Defined.</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 372
+Time: 0.001s">
+<div class="time" style="width: 0.58479532163743%"></div>
+<pre>
+
+    Definition pushout_assoc_right_rec_beta_pgluerl a1
+      : ap pushout_assoc_right_rec (pgluerl a1) = pusha1 a1.</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 375
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    Proof.</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 376
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      unfold pushout_assoc_right_rec, pgluerl.</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 377
+Time: 0.002s">
+<div class="time" style="width: 1.1695906432749%"></div>
+<pre>
+      apply (Pushout_rec_beta_pglue (f := f1) (g := pushl' f2 g2 o g1)).</pre>
 </div>
 <div class="code" title="File: Pushout.v
 Line: 378
@@ -1939,11 +1969,11 @@ Time: 0s">
 <div class="code" title="File: Pushout.v
 Line: 379
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
 
-    Definition pushout_assoc_right_rec_beta_pgluerl a1
-      : ap pushout_assoc_right_rec (pgluerl a1) = pusha1 a1.</pre>
+    Definition pushout_assoc_right_rec_beta_pgluerr a2
+      : ap pushout_assoc_right_rec (pgluerr a2) = pusha2 a2.</pre>
 </div>
 <div class="code" title="File: Pushout.v
 Line: 382
@@ -1957,142 +1987,105 @@ Line: 383
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-      unfold pushout_assoc_right_rec, pgluerl.</pre>
+      unfold pgluerr.</pre>
 </div>
 <div class="code" title="File: Pushout.v
 Line: 384
-Time: 0.003s">
-<div class="time" style="width: 1.6949152542373%"></div>
+Time: 0.008s">
+<div class="time" style="width: 4.6783625730994%"></div>
 <pre>
-      apply (Pushout_rec_beta_pglue (f := f1) (g := pushl' f2 g2 o g1)).</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 385
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    Defined.</pre>
+      rewrite &lt;- (ap_compose (pushr' f1 (pushl' f2 g2 o g1))
+                             pushout_assoc_right_rec).</pre>
 </div>
 <div class="code" title="File: Pushout.v
 Line: 386
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
-
-    Definition pushout_assoc_right_rec_beta_pgluerr a2
-      : ap pushout_assoc_right_rec (pgluerr a2) = pusha2 a2.</pre>
+      change (ap (Pushout_rec P pushc pushd pusha2) (pglue' f2 g2 a2) = pusha2 a2).</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 387
+Time: 0.001s">
+<div class="time" style="width: 0.58479532163743%"></div>
+<pre>
+      apply Pushout_rec_beta_pglue.</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 388
+Time: 0.002s">
+<div class="time" style="width: 1.1695906432749%"></div>
+<pre>
+    Defined.</pre>
 </div>
 <div class="code" title="File: Pushout.v
 Line: 389
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    Proof.</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 390
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      unfold pgluerr.</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 391
-Time: 0.008s">
-<div class="time" style="width: 4.5197740112994%"></div>
-<pre>
-      rewrite &lt;- (ap_compose (pushr' f1 (pushl' f2 g2 o g1))
-                             pushout_assoc_right_rec).</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 393
-Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
-<pre>
-      change (ap (Pushout_rec P pushc pushd pusha2) (pglue' f2 g2 a2) = pusha2 a2).</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 394
-Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
-<pre>
-      apply Pushout_rec_beta_pglue.</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 395
-Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
-<pre>
-    Defined.</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 396
-Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
-<pre>
 
   End Pushout_Assoc_Right_Rec.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 398
+Line: 391
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.1695906432749%"></div>
 <pre>
 
   Definition equiv_pushout_assoc
     : Pushout (pushr' f1 g1 o f2) g2 &lt;~&gt; Pushout f1 (pushl' f2 g2 o g1).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 401
+Line: 394
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 402
+Line: 395
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     srefine (equiv_adjointify _ _ _ _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 403
+Line: 396
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 404
+Line: 397
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact (pushout_assoc_left_rec _ pushrl pushrm pushrr pgluerl pgluerr).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 404
+Line: 397
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 405
+Line: 398
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact (pushout_assoc_right_rec _ pushll pushlm pushlr pgluell pgluelr).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 405
+Line: 398
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 406
-Time: 0.149s">
-<div class="time" style="width: 84.180790960452%"></div>
+Line: 399
+Time: 0.143s">
+<div class="time" style="width: 83.625730994152%"></div>
 <pre> abstract (
       srefine (pushout_assoc_right_ind
                  _ (fun _ =&gt; 1) (fun _ =&gt; 1) (fun _ =&gt; 1) _ _);
@@ -2104,16 +2097,16 @@ Time: 0.149s">
       rewrite concat_p1, ap_idmap; apply concat_Vp ).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 414
+Line: 407
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 415
-Time: 0.137s">
-<div class="time" style="width: 77.401129943503%"></div>
+Line: 408
+Time: 0.132s">
+<div class="time" style="width: 77.19298245614%"></div>
 <pre> abstract (
       srefine (pushout_assoc_left_ind
                  _ (fun _ =&gt; 1) (fun _ =&gt; 1) (fun _ =&gt; 1) _ _);
@@ -2125,22 +2118,22 @@ Time: 0.137s">
       rewrite concat_p1, ap_idmap; apply concat_Vp ).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 423
-Time: 0.018s">
-<div class="time" style="width: 10.169491525424%"></div>
+Line: 416
+Time: 0.017s">
+<div class="time" style="width: 9.9415204678363%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 424
-Time: 0.024s">
-<div class="time" style="width: 13.559322033898%"></div>
+Line: 417
+Time: 0.023s">
+<div class="time" style="width: 13.450292397661%"></div>
 <pre>
 
 End PushoutAssoc.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 426
+Line: 419
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2150,135 +2143,135 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 429
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 422
+Time: 0.001s">
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>Global Instance isequiv_pushout_isequiv {A B C} (f : A -&gt; B) (g : A -&gt; C)
        `{IsEquiv _ _ f} : IsEquiv (pushr' f g).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 430
+Line: 423
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 431
+Line: 424
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   srefine (isequiv_adjointify _ _ _ _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 432
+Line: 425
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 433
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 426
+Time: 0.001s">
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre> srefine (Pushout_rec C (g o f^-1) idmap _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 433
+Line: 426
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros a; cbn; apply ap, eissect.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 434
+Line: 427
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 435
+Line: 428
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre> srefine (Pushout_ind _ _ _ _); cbn.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 435
+Line: 428
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 436
+Line: 429
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros b; change (pushr' f g (g (f^-1 b)) = pushl b).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 436
+Line: 429
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
       transitivity (pushl' f g (f (f^-1 b))).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 437
+Line: 430
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       *</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 438
+Line: 431
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre> symmetry; apply pglue.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 438
+Line: 431
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       *</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 439
+Line: 432
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply ap, eisretr.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 439
+Line: 432
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 440
+Line: 433
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros c; reflexivity.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 440
+Line: 433
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 441
+Line: 434
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros a.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 441
-Time: 0.095s">
-<div class="time" style="width: 53.672316384181%"></div>
+Line: 434
+Time: 0.092s">
+<div class="time" style="width: 53.801169590643%"></div>
 <pre>
       abstract (
       rewrite transport_paths_FlFr, ap_compose, !concat_pp_p;
@@ -2286,6 +2279,49 @@ Time: 0.095s">
       rewrite Pushout_rec_beta_pglue, eisadj, ap_idmap, concat_p1;
       rewrite &lt;- ap_compose, &lt;- (ap_compose g (pushr' f g));
       exact (concat_Ap (pglue' f g) (eissect f a)) ).</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 440
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 441
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros c; reflexivity.</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 441
+Time: 0.014s">
+<div class="time" style="width: 8.187134502924%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 442
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Global Instance isequiv_pushout_isequiv' {A B C} (f : A -&gt; B) (g : A -&gt; C)
+       `{IsEquiv _ _ g} : IsEquiv (pushl' f g).</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 445
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Pushout.v
+Line: 446
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  srefine (isequiv_adjointify _ _ _ _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
 Line: 447
@@ -2298,153 +2334,110 @@ Time: 0s">
 Line: 448
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> intros c; reflexivity.</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 448
-Time: 0.01s">
-<div class="time" style="width: 5.6497175141243%"></div>
-<pre>
-Defined.</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 449
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-
-Global Instance isequiv_pushout_isequiv' {A B C} (f : A -&gt; B) (g : A -&gt; C)
-       `{IsEquiv _ _ g} : IsEquiv (pushl' f g).</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 452
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 453
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  srefine (isequiv_adjointify _ _ _ _).</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 454
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Pushout.v
-Line: 455
-Time: 0s">
-<div class="time" style="width: 0%"></div>
 <pre> srefine (Pushout_rec B idmap (f o g^-1) _).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 455
+Line: 448
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros a; cbn.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 456
+Line: 449
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre> symmetry; apply ap, eissect.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 456
+Line: 449
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 457
-Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+Line: 450
+Time: 0.001s">
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre> srefine (Pushout_ind _ _ _ _); cbn.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 457
+Line: 450
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 458
+Line: 451
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros b; reflexivity.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 458
+Line: 451
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 459
+Line: 452
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros c; change (pushl' f g (f (g^-1 c)) = pushr c).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 459
+Line: 452
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.58479532163743%"></div>
 <pre>
       transitivity (pushr' f g (g (g^-1 c))).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 460
+Line: 453
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       *</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 461
+Line: 454
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply pglue.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 461
+Line: 454
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       *</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 462
+Line: 455
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply ap, eisretr.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 462
+Line: 455
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 463
+Line: 456
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros a.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 463
-Time: 0.098s">
-<div class="time" style="width: 55.367231638418%"></div>
+Line: 456
+Time: 0.094s">
+<div class="time" style="width: 54.970760233918%"></div>
 <pre>
       abstract (
       rewrite transport_paths_FlFr, ap_compose, !concat_pp_p;
@@ -2455,27 +2448,27 @@ Time: 0.098s">
       exact (concat_Ap (pglue' f g) (eissect g a)) ).</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 470
+Line: 463
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 471
+Line: 464
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros c; reflexivity.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 471
-Time: 0.01s">
-<div class="time" style="width: 5.6497175141243%"></div>
+Line: 464
+Time: 0.009s">
+<div class="time" style="width: 5.2631578947368%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Pushout.v
-Line: 473
+Line: 466
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>

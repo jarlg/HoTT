@@ -2898,12 +2898,12 @@
           
 
             i = 576;
-            data = "1 subgoal (ID 1011)	  	  A : Type	  B : Type	  C : Type	  ============================	  Sect	    (fun ax : A * B + A * C =>	     match ax with	     | inl p =>	         let p0 := p in let a := fst p0 in let b := snd p0 in (a, inl b)	     | inr p =>	         let p0 := p in let a := fst p0 in let c := snd p0 in (a, inr c)	     end)	    (fun abc : A * (B + C) =>	     let a := fst abc in	     let bc := snd abc in	     match bc with	     | inl b => inl (a, b)	     | inr c => inr (a, c)	     end)	";
+            data = "1 subgoal (ID 1011)	  	  A : Type	  B : Type	  C : Type	  ============================	  Sect	    (fun ax : A * B + A * C =>	     match ax with	     | inl p =>	         let p0 := p in let a := fst p0 in let b := snd p0 in (a, inl b)	     | inr p =>	         let p0 := p in let a := fst p0 in let c := snd p0 in (a, inr c)	     end)	    (fun abc : A * (B + C) =>	     let a := fst abc in	     let bc := snd abc in	     match bc with	     | inl b => inl (a, b)	     | inr c => inr (a, c)	     end)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	2 subgoals (ID 1013)		subgoal 1 (ID 1013) is:	 Sect	   (fun abc : A * (B + C) =>	    let a := fst abc in	    let bc := snd abc in	    match bc with	    | inl b => inl (a, b)	    | inr c => inr (a, c)	    end)	   (fun ax : A * B + A * C =>	    match ax with	    | inl p =>	        let p0 := p in let a := fst p0 in let b := snd p0 in (a, inl b)	    | inr p =>	        let p0 := p in let a := fst p0 in let c := snd p0 in (a, inr c)	    end)	subgoal 2 (ID 1015) is:	 forall x : A * (B + C),	 (fun x0 : A * B + A * C =>	  match	    x0 as s	    return	      ((let a :=	          fst	            match s with	            | inl p =>	                let p0 := p in	                let a := fst p0 in let b := snd p0 in (a, inl b)	            | inr p =>	                let p0 := p in	                let a := fst p0 in let c := snd p0 in (a, inr c)	            end in	        let bc :=	          snd	            match s with	            | inl p =>	                let p0 := p in	                let a0 := fst p0 in let b := snd p0 in (a0, inl b)	            | inr p =>	                let p0 := p in	                let a0 := fst p0 in let c := snd p0 in (a0, inr c)	            end in	        match bc with	        | inl b => inl (a, b)	        | inr c => inr (a, c)	        end) = s)	  with	  | inl p => (fun (a : A) (b : B) => 1) (fst p) (snd p)	  | inr p => (fun (a : A) (c : C) => 1) (fst p) (snd p)	  end)	   ((fun abc : A * (B + C) =>	     let a := fst abc in	     let bc := snd abc in	     match bc with	     | inl b => inl (a, b)	     | inr c => inr (a, c)	     end) x) =	 ap	   (fun abc : A * (B + C) =>	    let a := fst abc in	    let bc := snd abc in	    match bc with	    | inl b => inl (a, b)	    | inr c => inr (a, c)	    end) (?eissect x)	";
             responses[i]=data;
           
 
             i = 577;
-            data = "<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	2 subgoals (ID 1013)		subgoal 1 (ID 1013) is:	 Sect	   (fun abc : A * (B + C) =>	    let a := fst abc in	    let bc := snd abc in	    match bc with	    | inl b => inl (a, b)	    | inr c => inr (a, c)	    end)	   (fun ax : A * B + A * C =>	    match ax with	    | inl p =>	        let p0 := p in let a := fst p0 in let b := snd p0 in (a, inl b)	    | inr p =>	        let p0 := p in let a := fst p0 in let c := snd p0 in (a, inr c)	    end)	subgoal 2 (ID 1015) is:	 forall x : A * (B + C),	 (fun x0 : A * B + A * C =>	  match	    x0 as s	    return	      ((let a :=	          fst	            match s with	            | inl p =>	                let p0 := p in	                let a := fst p0 in let b := snd p0 in (a, inl b)	            | inr p =>	                let p0 := p in	                let a := fst p0 in let c := snd p0 in (a, inr c)	            end in	        let bc :=	          snd	            match s with	            | inl p =>	                let p0 := p in	                let a0 := fst p0 in let b := snd p0 in (a0, inl b)	            | inr p =>	                let p0 := p in	                let a0 := fst p0 in let c := snd p0 in (a0, inr c)	            end in	        match bc with	        | inl b => inl (a, b)	        | inr c => inr (a, c)	        end) = s)	  with	  | inl p => (fun (a : A) (b : B) => 1) (fst p) (snd p)	  | inr p => (fun (a : A) (c : C) => 1) (fst p) (snd p)	  end)	   ((fun abc : A * (B + C) =>	     let a := fst abc in	     let bc := snd abc in	     match bc with	     | inl b => inl (a, b)	     | inr c => inr (a, c)	     end) x) =	 ap	   (fun abc : A * (B + C) =>	    let a := fst abc in	    let bc := snd abc in	    match bc with	    | inl b => inl (a, b)	    | inr c => inr (a, c)	    end) (?eissect x)	1 subgoal (ID 1013)	  	  A : Type	  B : Type	  C : Type	  ============================	  Sect	    (fun abc : A * (B + C) =>	     let a := fst abc in	     let bc := snd abc in	     match bc with	     | inl b => inl (a, b)	     | inr c => inr (a, c)	     end)	    (fun ax : A * B + A * C =>	     match ax with	     | inl p =>	         let p0 := p in let a := fst p0 in let b := snd p0 in (a, inl b)	     | inr p =>	         let p0 := p in let a := fst p0 in let c := snd p0 in (a, inr c)	     end)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	1 subgoal (ID 1015)		subgoal 1 (ID 1015) is:	 forall x : A * (B + C),	 (fun x0 : A * B + A * C =>	  match	    x0 as s	    return	      ((let a :=	          fst	            match s with	            | inl p =>	                let p0 := p in	                let a := fst p0 in let b := snd p0 in (a, inl b)	            | inr p =>	                let p0 := p in	                let a := fst p0 in let c := snd p0 in (a, inr c)	            end in	        let bc :=	          snd	            match s with	            | inl p =>	                let p0 := p in	                let a0 := fst p0 in let b := snd p0 in (a0, inl b)	            | inr p =>	                let p0 := p in	                let a0 := fst p0 in let c := snd p0 in (a0, inr c)	            end in	        match bc with	        | inl b => inl (a, b)	        | inr c => inr (a, c)	        end) = s)	  with	  | inl p => (fun (a : A) (b : B) => 1) (fst p) (snd p)	  | inr p => (fun (a : A) (c : C) => 1) (fst p) (snd p)	  end)	   ((fun abc : A * (B + C) =>	     let a := fst abc in	     let bc := snd abc in	     match bc with	     | inl b => inl (a, b)	     | inr c => inr (a, c)	     end) x) =	 ap	   (fun abc : A * (B + C) =>	    let a := fst abc in	    let bc := snd abc in	    match bc with	    | inl b => inl (a, b)	    | inr c => inr (a, c)	    end)	   ((fun x0 : A * (B + C) =>	     (fun (a : A) (snd : B + C) =>	      match	        snd as s	        return	          (match	             (let a0 := a in	              let bc := s in	              match bc with	              | inl b => inl (a0, b)	              | inr c => inr (a0, c)	              end)	           with	           | inl p =>	               let p0 := p in	               let a0 := fst p0 in let b := Datatypes.snd p0 in (a0, inl b)	           | inr p =>	               let p0 := p in	               let a0 := fst p0 in let c := Datatypes.snd p0 in (a0, inr c)	           end = (a, s))	      with	      | inl b => 1	      | inr c => 1	      end) (fst x0) (snd x0)) x)	";
+            data = "1 subgoal (ID 1013)	  	  A : Type	  B : Type	  C : Type	  ============================	  Sect	    (fun abc : A * (B + C) =>	     let a := fst abc in	     let bc := snd abc in	     match bc with	     | inl b => inl (a, b)	     | inr c => inr (a, c)	     end)	    (fun ax : A * B + A * C =>	     match ax with	     | inl p =>	         let p0 := p in let a := fst p0 in let b := snd p0 in (a, inl b)	     | inr p =>	         let p0 := p in let a := fst p0 in let c := snd p0 in (a, inr c)	     end)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	1 subgoal (ID 1015)		subgoal 1 (ID 1015) is:	 forall x : A * (B + C),	 (fun x0 : A * B + A * C =>	  match	    x0 as s	    return	      ((let a :=	          fst	            match s with	            | inl p =>	                let p0 := p in	                let a := fst p0 in let b := snd p0 in (a, inl b)	            | inr p =>	                let p0 := p in	                let a := fst p0 in let c := snd p0 in (a, inr c)	            end in	        let bc :=	          snd	            match s with	            | inl p =>	                let p0 := p in	                let a0 := fst p0 in let b := snd p0 in (a0, inl b)	            | inr p =>	                let p0 := p in	                let a0 := fst p0 in let c := snd p0 in (a0, inr c)	            end in	        match bc with	        | inl b => inl (a, b)	        | inr c => inr (a, c)	        end) = s)	  with	  | inl p => (fun (a : A) (b : B) => 1) (fst p) (snd p)	  | inr p => (fun (a : A) (c : C) => 1) (fst p) (snd p)	  end)	   ((fun abc : A * (B + C) =>	     let a := fst abc in	     let bc := snd abc in	     match bc with	     | inl b => inl (a, b)	     | inr c => inr (a, c)	     end) x) =	 ap	   (fun abc : A * (B + C) =>	    let a := fst abc in	    let bc := snd abc in	    match bc with	    | inl b => inl (a, b)	    | inr c => inr (a, c)	    end)	   ((fun x0 : A * (B + C) =>	     (fun (a : A) (snd : B + C) =>	      match	        snd as s	        return	          (match	             (let a0 := a in	              let bc := s in	              match bc with	              | inl b => inl (a0, b)	              | inr c => inr (a0, c)	              end)	           with	           | inl p =>	               let p0 := p in	               let a0 := fst p0 in let b := Datatypes.snd p0 in (a0, inl b)	           | inr p =>	               let p0 := p in	               let a0 := fst p0 in let c := Datatypes.snd p0 in (a0, inr c)	           end = (a, s))	      with	      | inl b => 1	      | inr c => 1	      end) (fst x0) (snd x0)) x)	";
             responses[i]=data;
           
 
@@ -2938,12 +2938,12 @@
           
 
             i = 584;
-            data = "1 subgoal (ID 1018)	  	  A : Type	  B : Type	  C : Type	  ============================	  Sect	    (fun ax : B * A + C * A =>	     match ax with	     | inl p =>	         let p0 := p in let b := fst p0 in let a := snd p0 in (inl b, a)	     | inr p =>	         let p0 := p in let c := fst p0 in let a := snd p0 in (inr c, a)	     end)	    (fun abc : (B + C) * A =>	     let bc := fst abc in	     let a := snd abc in	     match bc with	     | inl b => inl (b, a)	     | inr c => inr (c, a)	     end)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	";
+            data = "1 subgoal (ID 1018)	  	  A : Type	  B : Type	  C : Type	  ============================	  Sect	    (fun ax : B * A + C * A =>	     match ax with	     | inl p =>	         let p0 := p in let b := fst p0 in let a := snd p0 in (inl b, a)	     | inr p =>	         let p0 := p in let c := fst p0 in let a := snd p0 in (inr c, a)	     end)	    (fun abc : (B + C) * A =>	     let bc := fst abc in	     let a := snd abc in	     match bc with	     | inl b => inl (b, a)	     | inr c => inr (c, a)	     end)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	2 subgoals (ID 1020)		subgoal 1 (ID 1020) is:	 Sect	   (fun abc : (B + C) * A =>	    let bc := fst abc in	    let a := snd abc in	    match bc with	    | inl b => inl (b, a)	    | inr c => inr (c, a)	    end)	   (fun ax : B * A + C * A =>	    match ax with	    | inl p =>	        let p0 := p in let b := fst p0 in let a := snd p0 in (inl b, a)	    | inr p =>	        let p0 := p in let c := fst p0 in let a := snd p0 in (inr c, a)	    end)	subgoal 2 (ID 1022) is:	 forall x : (B + C) * A,	 (fun x0 : B * A + C * A =>	  match	    x0 as s	    return	      ((let bc :=	          fst	            match s with	            | inl p =>	                let p0 := p in	                let b := fst p0 in let a := snd p0 in (inl b, a)	            | inr p =>	                let p0 := p in	                let c := fst p0 in let a := snd p0 in (inr c, a)	            end in	        let a :=	          snd	            match s with	            | inl p =>	                let p0 := p in	                let b := fst p0 in let a := snd p0 in (inl b, a)	            | inr p =>	                let p0 := p in	                let c := fst p0 in let a := snd p0 in (inr c, a)	            end in	        match bc with	        | inl b => inl (b, a)	        | inr c => inr (c, a)	        end) = s)	  with	  | inl p => (fun (b : B) (a : A) => 1) (fst p) (snd p)	  | inr p => (fun (c : C) (a : A) => 1) (fst p) (snd p)	  end)	   ((fun abc : (B + C) * A =>	     let bc := fst abc in	     let a := snd abc in	     match bc with	     | inl b => inl (b, a)	     | inr c => inr (c, a)	     end) x) =	 ap	   (fun abc : (B + C) * A =>	    let bc := fst abc in	    let a := snd abc in	    match bc with	    | inl b => inl (b, a)	    | inr c => inr (c, a)	    end) (?eissect x)	";
             responses[i]=data;
           
 
             i = 585;
-            data = "2 subgoals (ID 1020)		subgoal 1 (ID 1020) is:	 Sect	   (fun abc : (B + C) * A =>	    let bc := fst abc in	    let a := snd abc in	    match bc with	    | inl b => inl (b, a)	    | inr c => inr (c, a)	    end)	   (fun ax : B * A + C * A =>	    match ax with	    | inl p =>	        let p0 := p in let b := fst p0 in let a := snd p0 in (inl b, a)	    | inr p =>	        let p0 := p in let c := fst p0 in let a := snd p0 in (inr c, a)	    end)	subgoal 2 (ID 1022) is:	 forall x : (B + C) * A,	 (fun x0 : B * A + C * A =>	  match	    x0 as s	    return	      ((let bc :=	          fst	            match s with	            | inl p =>	                let p0 := p in	                let b := fst p0 in let a := snd p0 in (inl b, a)	            | inr p =>	                let p0 := p in	                let c := fst p0 in let a := snd p0 in (inr c, a)	            end in	        let a :=	          snd	            match s with	            | inl p =>	                let p0 := p in	                let b := fst p0 in let a := snd p0 in (inl b, a)	            | inr p =>	                let p0 := p in	                let c := fst p0 in let a := snd p0 in (inr c, a)	            end in	        match bc with	        | inl b => inl (b, a)	        | inr c => inr (c, a)	        end) = s)	  with	  | inl p => (fun (b : B) (a : A) => 1) (fst p) (snd p)	  | inr p => (fun (c : C) (a : A) => 1) (fst p) (snd p)	  end)	   ((fun abc : (B + C) * A =>	     let bc := fst abc in	     let a := snd abc in	     match bc with	     | inl b => inl (b, a)	     | inr c => inr (c, a)	     end) x) =	 ap	   (fun abc : (B + C) * A =>	    let bc := fst abc in	    let a := snd abc in	    match bc with	    | inl b => inl (b, a)	    | inr c => inr (c, a)	    end) (?eissect x)	1 subgoal (ID 1020)	  	  A : Type	  B : Type	  C : Type	  ============================	  Sect	    (fun abc : (B + C) * A =>	     let bc := fst abc in	     let a := snd abc in	     match bc with	     | inl b => inl (b, a)	     | inr c => inr (c, a)	     end)	    (fun ax : B * A + C * A =>	     match ax with	     | inl p =>	         let p0 := p in let b := fst p0 in let a := snd p0 in (inl b, a)	     | inr p =>	         let p0 := p in let c := fst p0 in let a := snd p0 in (inr c, a)	     end)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	1 subgoal (ID 1022)		subgoal 1 (ID 1022) is:	 forall x : (B + C) * A,	 (fun x0 : B * A + C * A =>	  match	    x0 as s	    return	      ((let bc :=	          fst	            match s with	            | inl p =>	                let p0 := p in	                let b := fst p0 in let a := snd p0 in (inl b, a)	            | inr p =>	                let p0 := p in	                let c := fst p0 in let a := snd p0 in (inr c, a)	            end in	        let a :=	          snd	            match s with	            | inl p =>	                let p0 := p in	                let b := fst p0 in let a := snd p0 in (inl b, a)	            | inr p =>	                let p0 := p in	                let c := fst p0 in let a := snd p0 in (inr c, a)	            end in	        match bc with	        | inl b => inl (b, a)	        | inr c => inr (c, a)	        end) = s)	  with	  | inl p => (fun (b : B) (a : A) => 1) (fst p) (snd p)	  | inr p => (fun (c : C) (a : A) => 1) (fst p) (snd p)	  end)	   ((fun abc : (B + C) * A =>	     let bc := fst abc in	     let a := snd abc in	     match bc with	     | inl b => inl (b, a)	     | inr c => inr (c, a)	     end) x) =	 ap	   (fun abc : (B + C) * A =>	    let bc := fst abc in	    let a := snd abc in	    match bc with	    | inl b => inl (b, a)	    | inr c => inr (c, a)	    end)	   ((fun x0 : (B + C) * A =>	     (fun fst : B + C =>	      match	        fst as s	        return	          (forall snd : A,	           match	             (let bc := s in	              let a := snd in	              match bc with	              | inl b => inl (b, a)	              | inr c => inr (c, a)	              end)	           with	           | inl p =>	               let p0 := p in	               let b := Datatypes.fst p0 in let a := snd p0 in (inl b, a)	           | inr p =>	               let p0 := p in	               let c := Datatypes.fst p0 in let a := snd p0 in (inr c, a)	           end = (s, snd))	      with	      | inl b => fun a : A => 1	      | inr c => fun a : A => 1	      end) (fst x0) (snd x0)) x)	";
+            data = "1 subgoal (ID 1020)	  	  A : Type	  B : Type	  C : Type	  ============================	  Sect	    (fun abc : (B + C) * A =>	     let bc := fst abc in	     let a := snd abc in	     match bc with	     | inl b => inl (b, a)	     | inr c => inr (c, a)	     end)	    (fun ax : B * A + C * A =>	     match ax with	     | inl p =>	         let p0 := p in let b := fst p0 in let a := snd p0 in (inl b, a)	     | inr p =>	         let p0 := p in let c := fst p0 in let a := snd p0 in (inr c, a)	     end)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	1 subgoal (ID 1022)		subgoal 1 (ID 1022) is:	 forall x : (B + C) * A,	 (fun x0 : B * A + C * A =>	  match	    x0 as s	    return	      ((let bc :=	          fst	            match s with	            | inl p =>	                let p0 := p in	                let b := fst p0 in let a := snd p0 in (inl b, a)	            | inr p =>	                let p0 := p in	                let c := fst p0 in let a := snd p0 in (inr c, a)	            end in	        let a :=	          snd	            match s with	            | inl p =>	                let p0 := p in	                let b := fst p0 in let a := snd p0 in (inl b, a)	            | inr p =>	                let p0 := p in	                let c := fst p0 in let a := snd p0 in (inr c, a)	            end in	        match bc with	        | inl b => inl (b, a)	        | inr c => inr (c, a)	        end) = s)	  with	  | inl p => (fun (b : B) (a : A) => 1) (fst p) (snd p)	  | inr p => (fun (c : C) (a : A) => 1) (fst p) (snd p)	  end)	   ((fun abc : (B + C) * A =>	     let bc := fst abc in	     let a := snd abc in	     match bc with	     | inl b => inl (b, a)	     | inr c => inr (c, a)	     end) x) =	 ap	   (fun abc : (B + C) * A =>	    let bc := fst abc in	    let a := snd abc in	    match bc with	    | inl b => inl (b, a)	    | inr c => inr (c, a)	    end)	   ((fun x0 : (B + C) * A =>	     (fun fst : B + C =>	      match	        fst as s	        return	          (forall snd : A,	           match	             (let bc := s in	              let a := snd in	              match bc with	              | inl b => inl (b, a)	              | inr c => inr (c, a)	              end)	           with	           | inl p =>	               let p0 := p in	               let b := Datatypes.fst p0 in let a := snd p0 in (inl b, a)	           | inr p =>	               let p0 := p in	               let c := Datatypes.fst p0 in let a := snd p0 in (inr c, a)	           end = (s, snd))	      with	      | inl b => fun a : A => 1	      | inr c => fun a : A => 1	      end) (fst x0) (snd x0)) x)	";
             responses[i]=data;
           
 
@@ -3033,12 +3033,12 @@
           
 
             i = 603;
-            data = "1 subgoal (ID 1035)	  	  A : Type	  B : Type	  C : A + B -> Type	  ============================	  Sect	    (fun abc : {a : A & C (inl a)} + {b : B & C (inr b)} =>	     match abc with	     | inl s => let s0 := s in let a := s0.1 in let c := s0.2 in (inl a; c)	     | inr s => let s0 := s in let b := s0.1 in let c := s0.2 in (inr b; c)	     end)	    (fun xc : {x : A + B & C x} =>	     let x := xc.1 in	     let c := xc.2 in	     match	       x as x0 return (C x0 -> {a : A & C (inl a)} + {b : B & C (inr b)})	     with	     | inl a => fun c0 : C (inl a) => inl (a; c0)	     | inr b => fun c0 : C (inr b) => inr (b; c0)	     end c)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	";
+            data = "1 subgoal (ID 1035)	  	  A : Type	  B : Type	  C : A + B -> Type	  ============================	  Sect	    (fun abc : {a : A & C (inl a)} + {b : B & C (inr b)} =>	     match abc with	     | inl s => let s0 := s in let a := s0.1 in let c := s0.2 in (inl a; c)	     | inr s => let s0 := s in let b := s0.1 in let c := s0.2 in (inr b; c)	     end)	    (fun xc : {x : A + B & C x} =>	     let x := xc.1 in	     let c := xc.2 in	     match	       x as x0 return (C x0 -> {a : A & C (inl a)} + {b : B & C (inr b)})	     with	     | inl a => fun c0 : C (inl a) => inl (a; c0)	     | inr b => fun c0 : C (inr b) => inr (b; c0)	     end c)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	2 subgoals (ID 1037)		subgoal 1 (ID 1037) is:	 Sect	   (fun xc : {x : A + B & C x} =>	    let x := xc.1 in	    let c := xc.2 in	    match	      x as x0 return (C x0 -> {a : A & C (inl a)} + {b : B & C (inr b)})	    with	    | inl a => fun c0 : C (inl a) => inl (a; c0)	    | inr b => fun c0 : C (inr b) => inr (b; c0)	    end c)	   (fun abc : {a : A & C (inl a)} + {b : B & C (inr b)} =>	    match abc with	    | inl s => let s0 := s in let a := s0.1 in let c := s0.2 in (inl a; c)	    | inr s => let s0 := s in let b := s0.1 in let c := s0.2 in (inr b; c)	    end)	subgoal 2 (ID 1039) is:	 forall x : {x : A + B & C x},	 (fun x0 : {a : A & C (inl a)} + {b : B & C (inr b)} =>	  match	    x0 as s	    return	      ((let x1 :=	          match s with	          | inl s0 =>	              let s1 := s0 in let a := s1.1 in let c := s1.2 in (inl a; c)	          | inr s0 =>	              let s1 := s0 in let b := s1.1 in let c := s1.2 in (inr b; c)	          end.1 in	        let c :=	          match s with	          | inl s0 =>	              let s1 := s0 in let a := s1.1 in let c := s1.2 in (inl a; c)	          | inr s0 =>	              let s1 := s0 in let b := s1.1 in let c := s1.2 in (inr b; c)	          end.2 in	        match	          x1 as x2 return (C x2 -> {a : A & C (inl a)} + {b : B & C (inr b)})	        with	        | inl a => fun c0 : C (inl a) => inl (a; c0)	        | inr b => fun c0 : C (inr b) => inr (b; c0)	        end c) = s)	  with	  | inl s => (fun (a : A) (c : C (inl a)) => 1) s.1 s.2	  | inr s => (fun (b : B) (c : C (inr b)) => 1) s.1 s.2	  end)	   ((fun xc : {x0 : A + B & C x0} =>	     let x0 := xc.1 in	     let c := xc.2 in	     match	       x0 as x1 return (C x1 -> {a : A & C (inl a)} + {b : B & C (inr b)})	     with	     | inl a => fun c0 : C (inl a) => inl (a; c0)	     | inr b => fun c0 : C (inr b) => inr (b; c0)	     end c) x) =	 ap	   (fun xc : {x0 : A + B & C x0} =>	    let x0 := xc.1 in	    let c := xc.2 in	    match	      x0 as x1 return (C x1 -> {a : A & C (inl a)} + {b : B & C (inr b)})	    with	    | inl a => fun c0 : C (inl a) => inl (a; c0)	    | inr b => fun c0 : C (inr b) => inr (b; c0)	    end c) (?eissect x)	";
             responses[i]=data;
           
 
             i = 604;
-            data = "2 subgoals (ID 1037)		subgoal 1 (ID 1037) is:	 Sect	   (fun xc : {x : A + B & C x} =>	    let x := xc.1 in	    let c := xc.2 in	    match	      x as x0 return (C x0 -> {a : A & C (inl a)} + {b : B & C (inr b)})	    with	    | inl a => fun c0 : C (inl a) => inl (a; c0)	    | inr b => fun c0 : C (inr b) => inr (b; c0)	    end c)	   (fun abc : {a : A & C (inl a)} + {b : B & C (inr b)} =>	    match abc with	    | inl s => let s0 := s in let a := s0.1 in let c := s0.2 in (inl a; c)	    | inr s => let s0 := s in let b := s0.1 in let c := s0.2 in (inr b; c)	    end)	subgoal 2 (ID 1039) is:	 forall x : {x : A + B & C x},	 (fun x0 : {a : A & C (inl a)} + {b : B & C (inr b)} =>	  match	    x0 as s	    return	      ((let x1 :=	          match s with	          | inl s0 =>	              let s1 := s0 in let a := s1.1 in let c := s1.2 in (inl a; c)	          | inr s0 =>	              let s1 := s0 in let b := s1.1 in let c := s1.2 in (inr b; c)	          end.1 in	        let c :=	          match s with	          | inl s0 =>	              let s1 := s0 in let a := s1.1 in let c := s1.2 in (inl a; c)	          | inr s0 =>	              let s1 := s0 in let b := s1.1 in let c := s1.2 in (inr b; c)	          end.2 in	        match	          x1 as x2 return (C x2 -> {a : A & C (inl a)} + {b : B & C (inr b)})	        with	        | inl a => fun c0 : C (inl a) => inl (a; c0)	        | inr b => fun c0 : C (inr b) => inr (b; c0)	        end c) = s)	  with	  | inl s => (fun (a : A) (c : C (inl a)) => 1) s.1 s.2	  | inr s => (fun (b : B) (c : C (inr b)) => 1) s.1 s.2	  end)	   ((fun xc : {x0 : A + B & C x0} =>	     let x0 := xc.1 in	     let c := xc.2 in	     match	       x0 as x1 return (C x1 -> {a : A & C (inl a)} + {b : B & C (inr b)})	     with	     | inl a => fun c0 : C (inl a) => inl (a; c0)	     | inr b => fun c0 : C (inr b) => inr (b; c0)	     end c) x) =	 ap	   (fun xc : {x0 : A + B & C x0} =>	    let x0 := xc.1 in	    let c := xc.2 in	    match	      x0 as x1 return (C x1 -> {a : A & C (inl a)} + {b : B & C (inr b)})	    with	    | inl a => fun c0 : C (inl a) => inl (a; c0)	    | inr b => fun c0 : C (inr b) => inr (b; c0)	    end c) (?eissect x)	1 subgoal (ID 1037)	  	  A : Type	  B : Type	  C : A + B -> Type	  ============================	  Sect	    (fun xc : {x : A + B & C x} =>	     let x := xc.1 in	     let c := xc.2 in	     match	       x as x0 return (C x0 -> {a : A & C (inl a)} + {b : B & C (inr b)})	     with	     | inl a => fun c0 : C (inl a) => inl (a; c0)	     | inr b => fun c0 : C (inr b) => inr (b; c0)	     end c)	    (fun abc : {a : A & C (inl a)} + {b : B & C (inr b)} =>	     match abc with	     | inl s => let s0 := s in let a := s0.1 in let c := s0.2 in (inl a; c)	     | inr s => let s0 := s in let b := s0.1 in let c := s0.2 in (inr b; c)	     end)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	1 subgoal (ID 1039)		subgoal 1 (ID 1039) is:	 forall x : {x : A + B & C x},	 (fun x0 : {a : A & C (inl a)} + {b : B & C (inr b)} =>	  match	    x0 as s	    return	      ((let x1 :=	          match s with	          | inl s0 =>	              let s1 := s0 in let a := s1.1 in let c := s1.2 in (inl a; c)	          | inr s0 =>	              let s1 := s0 in let b := s1.1 in let c := s1.2 in (inr b; c)	          end.1 in	        let c :=	          match s with	          | inl s0 =>	              let s1 := s0 in let a := s1.1 in let c := s1.2 in (inl a; c)	          | inr s0 =>	              let s1 := s0 in let b := s1.1 in let c := s1.2 in (inr b; c)	          end.2 in	        match	          x1 as x2 return (C x2 -> {a : A & C (inl a)} + {b : B & C (inr b)})	        with	        | inl a => fun c0 : C (inl a) => inl (a; c0)	        | inr b => fun c0 : C (inr b) => inr (b; c0)	        end c) = s)	  with	  | inl s => (fun (a : A) (c : C (inl a)) => 1) s.1 s.2	  | inr s => (fun (b : B) (c : C (inr b)) => 1) s.1 s.2	  end)	   ((fun xc : {x0 : A + B & C x0} =>	     let x0 := xc.1 in	     let c := xc.2 in	     match	       x0 as x1 return (C x1 -> {a : A & C (inl a)} + {b : B & C (inr b)})	     with	     | inl a => fun c0 : C (inl a) => inl (a; c0)	     | inr b => fun c0 : C (inr b) => inr (b; c0)	     end c) x) =	 ap	   (fun xc : {x0 : A + B & C x0} =>	    let x0 := xc.1 in	    let c := xc.2 in	    match	      x0 as x1 return (C x1 -> {a : A & C (inl a)} + {b : B & C (inr b)})	    with	    | inl a => fun c0 : C (inl a) => inl (a; c0)	    | inr b => fun c0 : C (inr b) => inr (b; c0)	    end c)	   ((fun x0 : {x0 : A + B & C x0} =>	     (fun proj1_sig : A + B =>	      match	        proj1_sig as s	        return	          (forall proj2_sig : C s,	           match	             (let x1 := s in	              let c := proj2_sig in	              match	                x1 as x2	                return (C x2 -> {a : A & C (inl a)} + {b : B & C (inr b)})	              with	              | inl a => fun c0 : C (inl a) => inl (a; c0)	              | inr b => fun c0 : C (inr b) => inr (b; c0)	              end c)	           with	           | inl s0 =>	               let s1 := s0 in let a := s1.1 in let c := s1.2 in (inl a; c)	           | inr s0 =>	               let s1 := s0 in let b := s1.1 in let c := s1.2 in (inr b; c)	           end = (s; proj2_sig))	      with	      | inl a => fun c : C (inl a) => 1	      | inr b => fun c : C (inr b) => 1	      end) x0.1 x0.2) x)	";
+            data = "1 subgoal (ID 1037)	  	  A : Type	  B : Type	  C : A + B -> Type	  ============================	  Sect	    (fun xc : {x : A + B & C x} =>	     let x := xc.1 in	     let c := xc.2 in	     match	       x as x0 return (C x0 -> {a : A & C (inl a)} + {b : B & C (inr b)})	     with	     | inl a => fun c0 : C (inl a) => inl (a; c0)	     | inr b => fun c0 : C (inr b) => inr (b; c0)	     end c)	    (fun abc : {a : A & C (inl a)} + {b : B & C (inr b)} =>	     match abc with	     | inl s => let s0 := s in let a := s0.1 in let c := s0.2 in (inl a; c)	     | inr s => let s0 := s in let b := s0.1 in let c := s0.2 in (inr b; c)	     end)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	1 subgoal (ID 1039)		subgoal 1 (ID 1039) is:	 forall x : {x : A + B & C x},	 (fun x0 : {a : A & C (inl a)} + {b : B & C (inr b)} =>	  match	    x0 as s	    return	      ((let x1 :=	          match s with	          | inl s0 =>	              let s1 := s0 in let a := s1.1 in let c := s1.2 in (inl a; c)	          | inr s0 =>	              let s1 := s0 in let b := s1.1 in let c := s1.2 in (inr b; c)	          end.1 in	        let c :=	          match s with	          | inl s0 =>	              let s1 := s0 in let a := s1.1 in let c := s1.2 in (inl a; c)	          | inr s0 =>	              let s1 := s0 in let b := s1.1 in let c := s1.2 in (inr b; c)	          end.2 in	        match	          x1 as x2 return (C x2 -> {a : A & C (inl a)} + {b : B & C (inr b)})	        with	        | inl a => fun c0 : C (inl a) => inl (a; c0)	        | inr b => fun c0 : C (inr b) => inr (b; c0)	        end c) = s)	  with	  | inl s => (fun (a : A) (c : C (inl a)) => 1) s.1 s.2	  | inr s => (fun (b : B) (c : C (inr b)) => 1) s.1 s.2	  end)	   ((fun xc : {x0 : A + B & C x0} =>	     let x0 := xc.1 in	     let c := xc.2 in	     match	       x0 as x1 return (C x1 -> {a : A & C (inl a)} + {b : B & C (inr b)})	     with	     | inl a => fun c0 : C (inl a) => inl (a; c0)	     | inr b => fun c0 : C (inr b) => inr (b; c0)	     end c) x) =	 ap	   (fun xc : {x0 : A + B & C x0} =>	    let x0 := xc.1 in	    let c := xc.2 in	    match	      x0 as x1 return (C x1 -> {a : A & C (inl a)} + {b : B & C (inr b)})	    with	    | inl a => fun c0 : C (inl a) => inl (a; c0)	    | inr b => fun c0 : C (inr b) => inr (b; c0)	    end c)	   ((fun x0 : {x0 : A + B & C x0} =>	     (fun proj1_sig : A + B =>	      match	        proj1_sig as s	        return	          (forall proj2_sig : C s,	           match	             (let x1 := s in	              let c := proj2_sig in	              match	                x1 as x2	                return (C x2 -> {a : A & C (inl a)} + {b : B & C (inr b)})	              with	              | inl a => fun c0 : C (inl a) => inl (a; c0)	              | inr b => fun c0 : C (inr b) => inr (b; c0)	              end c)	           with	           | inl s0 =>	               let s1 := s0 in let a := s1.1 in let c := s1.2 in (inl a; c)	           | inr s0 =>	               let s1 := s0 in let b := s1.1 in let c := s1.2 in (inr b; c)	           end = (s; proj2_sig))	      with	      | inl a => fun c : C (inl a) => 1	      | inr b => fun c : C (inr b) => 1	      end) x0.1 x0.2) x)	";
             responses[i]=data;
           
 
@@ -3103,12 +3103,12 @@
           
 
             i = 617;
-            data = "1 subgoal (ID 972)	  	  A : Type	  B : Type	  C : Type	  f : C -> A + B	  ============================	  Sect	    (fun c : C =>	     let s := is_inl_or_is_inr (f c) in	     match s with	     | inl i => inl (c; i)	     | inr i => inr (c; i)	     end)	    (sum_ind (fun _ : {c : C & is_inl (f c)} + {c : C & is_inr (f c)} => C)	       pr1 pr1)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	1 subgoal (ID 974)		subgoal 1 (ID 974) is:	 Sect	   (sum_ind (fun _ : {c : C & is_inl (f c)} + {c : C & is_inr (f c)} => C)	      pr1 pr1)	   (fun c : C =>	    let s := is_inl_or_is_inr (f c) in	    match s with	    | inl i => inl (c; i)	    | inr i => inr (c; i)	    end)	";
+            data = "1 subgoal (ID 972)	  	  A : Type	  B : Type	  C : Type	  f : C -> A + B	  ============================	  Sect	    (fun c : C =>	     let s := is_inl_or_is_inr (f c) in	     match s with	     | inl i => inl (c; i)	     | inr i => inr (c; i)	     end)	    (sum_ind (fun _ : {c : C & is_inl (f c)} + {c : C & is_inr (f c)} => C)	       pr1 pr1)	";
             responses[i]=data;
           
 
             i = 618;
-            data = "1 subgoal (ID 974)	  	  A : Type	  B : Type	  C : Type	  f : C -> A + B	  ============================	  Sect	    (sum_ind (fun _ : {c : C & is_inl (f c)} + {c : C & is_inr (f c)} => C)	       pr1 pr1)	    (fun c : C =>	     let s := is_inl_or_is_inr (f c) in	     match s with	     | inl i => inl (c; i)	     | inr i => inr (c; i)	     end)	4 subgoals (ID 1040)	  	  A : Type	  B : Type	  C : Type	  f : C -> A + B	  c : C	  l : is_inl (f c)	  i : is_inl (f c)	  ============================	  inl (c; i) = inl (c; l)		subgoal 2 (ID 1041) is:	 inr (c; i) = inl (c; l)	subgoal 3 (ID 1052) is:	 inl (c; i) = inr (c; r)	subgoal 4 (ID 1053) is:	 inr (c; i) = inr (c; r)	";
+            data = "<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	1 subgoal (ID 974)		subgoal 1 (ID 974) is:	 Sect	   (sum_ind (fun _ : {c : C & is_inl (f c)} + {c : C & is_inr (f c)} => C)	      pr1 pr1)	   (fun c : C =>	    let s := is_inl_or_is_inr (f c) in	    match s with	    | inl i => inl (c; i)	    | inr i => inr (c; i)	    end)	1 subgoal (ID 974)	  	  A : Type	  B : Type	  C : Type	  f : C -> A + B	  ============================	  Sect	    (sum_ind (fun _ : {c : C & is_inl (f c)} + {c : C & is_inr (f c)} => C)	       pr1 pr1)	    (fun c : C =>	     let s := is_inl_or_is_inr (f c) in	     match s with	     | inl i => inl (c; i)	     | inr i => inr (c; i)	     end)	4 subgoals (ID 1040)	  	  A : Type	  B : Type	  C : Type	  f : C -> A + B	  c : C	  l : is_inl (f c)	  i : is_inl (f c)	  ============================	  inl (c; i) = inl (c; l)		subgoal 2 (ID 1041) is:	 inr (c; i) = inl (c; l)	subgoal 3 (ID 1052) is:	 inl (c; i) = inr (c; r)	subgoal 4 (ID 1053) is:	 inr (c; i) = inr (c; r)	";
             responses[i]=data;
           
 
@@ -3978,12 +3978,12 @@
           
 
             i = 792;
-            data = "1 subgoal (ID 1133)	  	  A : Type	  B : Type	  ============================	  Sect (sum_of_sigT A B) (sigT_of_sum A B)	";
+            data = "1 subgoal (ID 1133)	  	  A : Type	  B : Type	  ============================	  Sect (sum_of_sigT A B) (sigT_of_sum A B)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	1 subgoal (ID 1134)		subgoal 1 (ID 1134) is:	 Sect (sigT_of_sum A B) (sum_of_sigT A B)	";
             responses[i]=data;
           
 
             i = 793;
-            data = "<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	1 subgoal (ID 1134)		subgoal 1 (ID 1134) is:	 Sect (sigT_of_sum A B) (sum_of_sigT A B)	1 subgoal (ID 1134)	  	  A : Type	  B : Type	  ============================	  Sect (sigT_of_sum A B) (sum_of_sigT A B)	No more subgoals.	";
+            data = "1 subgoal (ID 1134)	  	  A : Type	  B : Type	  ============================	  Sect (sigT_of_sum A B) (sum_of_sigT A B)	No more subgoals.	";
             responses[i]=data;
           
 
@@ -4135,7 +4135,7 @@
 </span></div>
 <div class="goal" id="goal0_3_3"><pre><span></span></pre></div>
 <div class="doc" scenenumber="5">
-<a name="lab143"></a><h1 class="section">Theorems about disjoint unions</h1>
+<a name="lab142"></a><h1 class="section">Theorems about disjoint unions</h1>
 </div>
 <div scenenumber="7" class="code">
 <span class="command" onmouseout="
@@ -4204,12 +4204,12 @@ The following are only required for the equivalence between <span class="inlinec
 </div>
 <div class="goal" id="goal0_3_11"><pre><span></span></pre></div>
 <div class="doc" scenenumber="13">
-<a name="lab144"></a><h2 class="section">CoUnpacking</h2>
+<a name="lab143"></a><h2 class="section">CoUnpacking</h2>
 <div class="doc" scenenumber="4"> </div>
 
  Sums are coproducts, so there should be a dual to <span class="inlinecode"><a class="idref" href="HoTT.Types.Prod.html#unpack_prod"><span class="id" title="definition">unpack_prod</span></a></span>.  I'm not sure what it is, though. 
 <div class="doc" scenenumber="8"> </div>
-<a name="lab145"></a><h2 class="section">Eta conversion</h2>
+<a name="lab144"></a><h2 class="section">Eta conversion</h2>
 </div>
 <div scenenumber="15" class="code">
 <span class="command" onmouseout="
@@ -4232,7 +4232,7 @@ The following are only required for the equivalence between <span class="inlinec
 </div>
 <div class="goal" id="goal0_3_15"><pre><span></span></pre></div>
 <div class="doc" scenenumber="17">
-<a name="lab146"></a><h2 class="section">Paths</h2>
+<a name="lab145"></a><h2 class="section">Paths</h2>
 </div>
 <div scenenumber="19" class="code">
 <span class="command" onmouseout="
@@ -4437,7 +4437,7 @@ This lets us identify the path space of a sum type, up to equivalence.
 </div>
 <div class="goal" id="goal0_3_27"><pre><span></span></pre></div>
 <div class="doc" scenenumber="29">
-<a name="lab147"></a><h2 class="section">Fibers of <span class="inlinecode"><a class="idref" href="HoTT.Categories.Functor.Sum.html#inl"><span class="id" title="definition">inl</span></a></span> and <span class="inlinecode"><a class="idref" href="HoTT.Categories.Functor.Sum.html#inr"><span class="id" title="definition">inr</span></a></span>
+<a name="lab146"></a><h2 class="section">Fibers of <span class="inlinecode"><a class="idref" href="HoTT.Categories.Functor.Sum.html#inl"><span class="id" title="definition">inl</span></a></span> and <span class="inlinecode"><a class="idref" href="HoTT.Categories.Functor.Sum.html#inr"><span class="id" title="definition">inr</span></a></span>
 </h2>
 <div class="doc" scenenumber="4"> </div>
 
@@ -4594,7 +4594,7 @@ This lets us identify the path space of a sum type, up to equivalence.
 </div>
 <div class="goal" id="goal0_3_31"><pre><span></span></pre></div>
 <div class="doc" scenenumber="33">
-<a name="lab148"></a><h2 class="section">Decomposition</h2>
+<a name="lab147"></a><h2 class="section">Decomposition</h2>
 <div class="doc" scenenumber="4"> </div>
 
  Conversely, a decidable predicate decomposes a type as a sum. 
@@ -4794,7 +4794,7 @@ This lets us identify the path space of a sum type, up to equivalence.
 </div>
 <div class="goal" id="goal0_3_35"><pre><span></span></pre></div>
 <div class="doc" scenenumber="37">
-<a name="lab149"></a><h2 class="section">Transport</h2>
+<a name="lab148"></a><h2 class="section">Transport</h2>
 </div>
 <div scenenumber="39" class="code">
 <span class="command" onmouseout="
@@ -4819,7 +4819,7 @@ This lets us identify the path space of a sum type, up to equivalence.
 </div>
 <div class="goal" id="goal0_3_39"><pre><span></span></pre></div>
 <div class="doc" scenenumber="41">
-<a name="lab150"></a><h2 class="section">Detecting the summands</h2>
+<a name="lab149"></a><h2 class="section">Detecting the summands</h2>
 </div>
 <div scenenumber="43" class="code">
 <span class="command" onmouseout="
@@ -5146,7 +5146,7 @@ This lets us identify the path space of a sum type, up to equivalence.
 </div>
 <div class="goal" id="goal0_3_43"><pre><span></span></pre></div>
 <div class="doc" scenenumber="45">
-<a name="lab151"></a><h2 class="section">Functorial action</h2>
+<a name="lab150"></a><h2 class="section">Functorial action</h2>
 </div>
 <div scenenumber="47" class="code">
 <span class="command" onmouseout="
@@ -5423,7 +5423,7 @@ Why doesn't Coq find this?
 </div>
 <div class="goal" id="goal0_3_59"><pre><span></span></pre></div>
 <div class="doc" scenenumber="61">
-<a name="lab152"></a><h2 class="section">"Unfunctorial action"</h2>
+<a name="lab151"></a><h2 class="section">"Unfunctorial action"</h2>
 <div class="doc" scenenumber="4"> </div>
 
  Not every function <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.A"><span class="id" title="variable">A</span></a></span> <span class="inlinecode">+</span> <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.B"><span class="id" title="variable">B</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="HoTT.Categories.Comma.Functorial.html#functorial.composition_of.A'"><span class="id" title="variable">A'</span></a></span> <span class="inlinecode">+</span> <span class="inlinecode"><a class="idref" href="HoTT.Categories.Comma.Functorial.html#functorial.composition_of.B'"><span class="id" title="variable">B'</span></a></span> is of the form <span class="inlinecode"><a class="idref" href="HoTT.Types.Sum.html#functor_sum"><span class="id" title="definition">functor_sum</span></a></span> <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.f"><span class="id" title="variable">f</span></a></span> <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.g"><span class="id" title="variable">g</span></a></span>.  However, this is the case if it preserves the summands, i.e. if it maps <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.A"><span class="id" title="variable">A</span></a></span> into <span class="inlinecode"><a class="idref" href="HoTT.Categories.Comma.Functorial.html#functorial.composition_of.A'"><span class="id" title="variable">A'</span></a></span> and <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.B"><span class="id" title="variable">B</span></a></span> into <span class="inlinecode"><a class="idref" href="HoTT.Categories.Comma.Functorial.html#functorial.composition_of.B'"><span class="id" title="variable">B'</span></a></span>.  More generally, if a function <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.A"><span class="id" title="variable">A</span></a></span> <span class="inlinecode">+</span> <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.B"><span class="id" title="variable">B</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="HoTT.Categories.Comma.Functorial.html#functorial.composition_of.A'"><span class="id" title="variable">A'</span></a></span> <span class="inlinecode">+</span> <span class="inlinecode"><a class="idref" href="HoTT.Categories.Comma.Functorial.html#functorial.composition_of.B'"><span class="id" title="variable">B'</span></a></span> maps <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.A"><span class="id" title="variable">A</span></a></span> into <span class="inlinecode"><a class="idref" href="HoTT.Categories.Comma.Functorial.html#functorial.composition_of.A'"><span class="id" title="variable">A'</span></a></span> only, then we can extract from it a function <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.A"><span class="id" title="variable">A</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="HoTT.Categories.Comma.Functorial.html#functorial.composition_of.A'"><span class="id" title="variable">A'</span></a></span>.  Since these operations are a sort of inverse to <span class="inlinecode"><a class="idref" href="HoTT.Types.Sum.html#functor_sum"><span class="id" title="definition">functor_sum</span></a></span>, we call them <span class="inlinecode"><span class="id" title="var">unfunctor_sum_</span>×</span>. 
@@ -5929,7 +5929,7 @@ Why doesn't Coq find this?
 </div>
 <div class="goal" id="goal0_3_67"><pre><span></span></pre></div>
 <div class="doc" scenenumber="69">
-<a name="lab153"></a><h2 class="section">Functoriality on equivalences</h2>
+<a name="lab152"></a><h2 class="section">Functoriality on equivalences</h2>
 </div>
 <div scenenumber="71" class="code">
 <span class="command" onmouseout="
@@ -6006,7 +6006,7 @@ Why doesn't Coq find this?
 </div>
 <div class="goal" id="goal0_3_71"><pre><span></span></pre></div>
 <div class="doc" scenenumber="73">
-<a name="lab154"></a><h2 class="section">Unfunctoriality on equivalences</h2>
+<a name="lab153"></a><h2 class="section">Unfunctoriality on equivalences</h2>
 </div>
 <div scenenumber="75" class="code">
 <span class="command" onmouseout="
@@ -6264,7 +6264,7 @@ Why doesn't Coq find this?
 </div>
 <div class="goal" id="goal0_3_75"><pre><span></span></pre></div>
 <div class="doc" scenenumber="77">
-<a name="lab155"></a><h2 class="section">Symmetry</h2>
+<a name="lab154"></a><h2 class="section">Symmetry</h2>
 </div>
 <div scenenumber="79" class="code">
 <span class="command" onmouseout="
@@ -6302,7 +6302,7 @@ Why doesn't Coq find this?
 </div>
 <div class="goal" id="goal0_3_79"><pre><span></span></pre></div>
 <div class="doc" scenenumber="81">
-<a name="lab156"></a><h2 class="section">Associativity</h2>
+<a name="lab155"></a><h2 class="section">Associativity</h2>
 </div>
 <div scenenumber="83" class="code">
 <span class="command" onmouseout="
@@ -6358,7 +6358,7 @@ Why doesn't Coq find this?
 </div>
 <div class="goal" id="goal0_3_83"><pre><span></span></pre></div>
 <div class="doc" scenenumber="85">
-<a name="lab157"></a><h2 class="section">Identity</h2>
+<a name="lab156"></a><h2 class="section">Identity</h2>
 </div>
 <div scenenumber="87" class="code">
 <span class="command" onmouseout="
@@ -6433,7 +6433,7 @@ Why doesn't Coq find this?
 </div>
 <div class="goal" id="goal0_3_87"><pre><span></span></pre></div>
 <div class="doc" scenenumber="89">
-<a name="lab158"></a><h2 class="section">Distributivity</h2>
+<a name="lab157"></a><h2 class="section">Distributivity</h2>
 </div>
 <div scenenumber="91" class="code">
 <span class="command" onmouseout="
@@ -6548,7 +6548,7 @@ Why doesn't Coq find this?
 </div>
 <div class="goal" id="goal0_3_91"><pre><span></span></pre></div>
 <div class="doc" scenenumber="93">
-<a name="lab159"></a><h2 class="section">Extensivity</h2>
+<a name="lab158"></a><h2 class="section">Extensivity</h2>
 <div class="doc" scenenumber="4"> </div>
 
  We can phrase extensivity in two ways, using either dependent types or functions. 
@@ -6724,7 +6724,7 @@ The second is a statement about functions into a sum type.
 </div>
 <div class="goal" id="goal0_3_99"><pre><span></span></pre></div>
 <div class="doc" scenenumber="101">
-<a name="lab160"></a><h2 class="section">Indecomposability</h2>
+<a name="lab159"></a><h2 class="section">Indecomposability</h2>
 <div class="doc" scenenumber="4"> </div>
 
  A type is indecomposable if whenever it maps into a finite sum, it lands entirely in one of the summands.  It suffices to assert this for binary and nullary sums; in the latter case it reduces to nonemptiness. 
@@ -6995,7 +6995,7 @@ This looks messy, but it just amounts to swapping the middle two summands in <sp
 </div>
 <div class="goal" id="goal0_3_119"><pre><span></span></pre></div>
 <div class="doc" scenenumber="121">
-<a name="lab161"></a><h2 class="section">Universal mapping properties</h2>
+<a name="lab160"></a><h2 class="section">Universal mapping properties</h2>
 <div class="doc" scenenumber="4"> </div>
 
  Ordinary universal mapping properties are expressed as equivalences of sets or spaces of functions.  In type theory, we can go beyond this and express an equivalence of types of *dependent* functions. 
@@ -7063,7 +7063,7 @@ This looks messy, but it just amounts to swapping the middle two summands in <sp
 </div>
 <div class="goal" id="goal0_3_123"><pre><span></span></pre></div>
 <div class="doc" scenenumber="125">
-<a name="lab162"></a><h2 class="section">Sums preserve most truncation</h2>
+<a name="lab161"></a><h2 class="section">Sums preserve most truncation</h2>
 </div>
 <div scenenumber="127" class="code">
 <span class="command" onmouseout="
@@ -7109,7 +7109,7 @@ This looks messy, but it just amounts to swapping the middle two summands in <sp
       "><br>
 <br>
 <span class="id" title="keyword">Global Instance</span> <a name="hset_sum"><span class="id" title="instance">hset_sum</span></a> `{<span class="id" title="var">HA</span> : <a class="idref" href="HoTT.Basics.Overture.html#IsHSet"><span class="id" title="abbreviation">IsHSet</span></a> <span class="id" title="var">A</span>, <span class="id" title="var">HB</span> : <a class="idref" href="HoTT.Basics.Overture.html#IsHSet"><span class="id" title="abbreviation">IsHSet</span></a> <span class="id" title="var">B</span>} : <a class="idref" href="HoTT.Basics.Overture.html#IsHSet"><span class="id" title="abbreviation">IsHSet</span></a> (<a class="idref" href="HoTT.Types.Sum.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="Coq.Init.Datatypes.html#e03f39daf98516fa530d3f6f5a1b4d92"><span class="id" title="notation">+</span></a> <a class="idref" href="HoTT.Types.Sum.html#B"><span class="id" title="variable">B</span></a>) | 100<br>
-  := @<a class="idref" href="HoTT.Types.Sum.html#trunc_sum"><span class="id" title="instance">trunc_sum</span></a> <a class="idref" href="HoTT.Basics.Overture.html#e47d7aae8d47823f116e25f0da4f217f"><span class="id" title="notation">-2</span></a> <span class="id" title="var">A</span> <span class="id" title="var">HA</span> <span class="id" title="var">B</span> <span class="id" title="var">HB</span>.</span><span class="command" onmouseout="
+  := @<a class="idref" href="HoTT.Types.Sum.html#trunc_sum"><span class="id" title="instance">trunc_sum</span></a> (-2) <span class="id" title="var">A</span> <span class="id" title="var">HA</span> <span class="id" title="var">B</span> <span class="id" title="var">HB</span>.</span><span class="command" onmouseout="
       mouseout('0_3_127');
       " onmouseover="
       mouseover(718, '0_3_127');
@@ -7179,7 +7179,7 @@ Sums don't preserve hprops in general, but they do for disjoint sums.
 </div>
 <div class="goal" id="goal0_3_131"><pre><span></span></pre></div>
 <div class="doc" scenenumber="133">
-<a name="lab163"></a><h2 class="section">Decidability</h2>
+<a name="lab162"></a><h2 class="section">Decidability</h2>
 <div class="doc" scenenumber="4"> </div>
 
  Sums preserve decidability 
@@ -7376,7 +7376,7 @@ Because of <span class="inlinecode"><a class="idref" href="HoTT.Types.Sum.html#i
 </div>
 <div class="goal" id="goal0_3_143"><pre><span></span></pre></div>
 <div class="doc" scenenumber="145">
-<a name="lab164"></a><h2 class="section">Binary coproducts are equivalent to dependent sigmas where the first component is a bool.</h2>
+<a name="lab163"></a><h2 class="section">Binary coproducts are equivalent to dependent sigmas where the first component is a bool.</h2>
 </div>
 <div scenenumber="147" class="code">
 <span class="command" onmouseout="

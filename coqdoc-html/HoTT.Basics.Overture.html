@@ -873,7 +873,7 @@ See above for the meaning of <span class="inlinecode"><span class="id" title="ta
    While the second option was the one used originally, and it is the most concise one, it makes more sense to use the first one in a formalized development, since it exposes most directly equivalence as a structure.  In particular, it is easier to extract directly from it the data of a homotopy inverse to <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.f"><span class="id" title="variable">f</span></a></span>, which is what we care about having most in practice.  Thus, adjoint equivalences are what we will refer to merely as *equivalences*. 
 <div class="paragraph"> </div>
 
- Naming convention: we use <span class="inlinecode"><a class="idref" href="HoTT.Categories.Category.Morphisms.html#EpiMono.equiv"><span class="id" title="section">equiv</span></a></span> and <span class="inlinecode"><a class="idref" href="HoTT.HIT.quotient.html#Equiv"><span class="id" title="section">Equiv</span></a></span> systematically to denote types of equivalences, and <span class="inlinecode"><a class="idref" href="HoTT.Categories.Adjoint.HomCoercions.html#isequiv"><span class="id" title="section">isequiv</span></a></span> and <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#IsEquiv"><span class="id" title="record">IsEquiv</span></a></span> systematically to denote the assertion that a given map is an equivalence. 
+ Naming convention: we use <span class="inlinecode"><a class="idref" href="HoTT.Categories.Category.Morphisms.html#EpiMono.equiv"><span class="id" title="section">equiv</span></a></span> and <span class="inlinecode"><a class="idref" href="HoTT.Colimits.Quotient.html#Equiv"><span class="id" title="section">Equiv</span></a></span> systematically to denote types of equivalences, and <span class="inlinecode"><a class="idref" href="HoTT.Categories.Adjoint.HomCoercions.html#isequiv"><span class="id" title="section">isequiv</span></a></span> and <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#IsEquiv"><span class="id" title="record">IsEquiv</span></a></span> systematically to denote the assertion that a given map is an equivalence. 
 <div class="paragraph"> </div>
 
  The fact that <span class="inlinecode"><a class="idref" href="HoTT.Categories.Adjoint.Pointwise.html#AdjointPointwise.r"><span class="id" title="section">r</span></a></span> is a left inverse of <span class="inlinecode"><a class="idref" href="HoTT.Categories.Cat.Morphisms.html#iso_lemmas.s"><span class="id" title="variable">s</span></a></span>. As a mnemonic, note that the partially applied type <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#Sect"><span class="id" title="definition">Sect</span></a></span> <span class="inlinecode"><a class="idref" href="HoTT.Categories.Cat.Morphisms.html#iso_lemmas.s"><span class="id" title="variable">s</span></a></span> is the type of proofs that <span class="inlinecode"><a class="idref" href="HoTT.Categories.Cat.Morphisms.html#iso_lemmas.s"><span class="id" title="variable">s</span></a></span> is a section. 
@@ -997,7 +997,7 @@ In order to achieve moderate coverage and speedy resolution, we currently follow
  We use the <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#Contr_internal"><span class="id" title="record">Contr_internal</span></a></span> record so as not to pollute typeclass search; we only do truncation typeclass search on the <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#IsTrunc"><span class="id" title="record">IsTrunc</span></a></span> datatype, usually.  We will define a notation <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#Contr"><span class="id" title="abbreviation">Contr</span></a></span> which is equivalent to <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#Contr_internal"><span class="id" title="record">Contr_internal</span></a></span>, but picked up by typeclass search.  However, we must make <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#Contr_internal"><span class="id" title="record">Contr_internal</span></a></span> a class so that we pick up typeclasses on <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#center"><span class="id" title="projection">center</span></a></span> and <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#contr"><span class="id" title="projection">contr</span></a></span>.  However, the only typeclass rule we register is the one that turns it into a <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#Contr"><span class="id" title="abbreviation">Contr</span></a></span>/<span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#IsTrunc"><span class="id" title="record">IsTrunc</span></a></span>.  Unfortunately, this means that declaring an instance like <span class="inlinecode"><span class="id" title="keyword">Instance</span></span> <span class="inlinecode"><span class="id" title="var">contr_foo</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#Contr"><span class="id" title="abbreviation">Contr</span></a></span> <span class="inlinecode"><span class="id" title="var">foo</span></span> <span class="inlinecode">:=</span> <span class="inlinecode">{</span> <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#center"><span class="id" title="projection">center</span></a></span> <span class="inlinecode">:=</span> <span class="inlinecode"><span class="id" title="var">bar</span></span> <span class="inlinecode">}.</span> will fail with mismatched instances/contexts.  Instead, we must iota expand such definitions to get around Coq's deficiencies, and write <span class="inlinecode"><span class="id" title="keyword">Instance</span></span> <span class="inlinecode"><span class="id" title="var">contr_foo</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#Contr"><span class="id" title="abbreviation">Contr</span></a></span> <span class="inlinecode"><span class="id" title="var">foo</span></span> <span class="inlinecode">:=</span> <span class="inlinecode"><span class="id" title="keyword">let</span></span> <span class="inlinecode"><a class="idref" href="HoTT.Categories.Grothendieck.PseudofunctorToCat.html#x"><span class="id" title="projection">x</span></a></span> <span class="inlinecode">:=</span> <span class="inlinecode">{|</span> <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#center"><span class="id" title="projection">center</span></a></span> <span class="inlinecode">:=</span> <span class="inlinecode"><span class="id" title="var">bar</span></span> <span class="inlinecode">|}</span> <span class="inlinecode"><span class="id" title="tactic">in</span></span> <span class="inlinecode"><a class="idref" href="HoTT.Categories.Grothendieck.PseudofunctorToCat.html#x"><span class="id" title="projection">x</span></a>.</span> 
 </div>
 <div class="code">
-<span class="id" title="keyword">Class</span> <a name="Contr_internal"><span class="id" title="record">Contr_internal</span></a> (<span class="id" title="var">A</span> : <span class="id" title="keyword">Type</span>) := <a name="BuildContr"><span class="id" title="constructor">BuildContr</span></a> {<br/>
+<span class="id" title="keyword">Class</span> <a name="Contr_internal"><span class="id" title="record">Contr_internal</span></a> (<span class="id" title="var">A</span> : <span class="id" title="keyword">Type</span>) := <a name="Build_Contr"><span class="id" title="constructor">Build_Contr</span></a> {<br/>
 &nbsp;&nbsp;<a name="center"><span class="id" title="projection">center</span></a> : <a class="idref" href="HoTT.Basics.Overture.html#A"><span class="id" title="variable">A</span></a> ;<br/>
 &nbsp;&nbsp;<a name="contr"><span class="id" title="projection">contr</span></a> : (<a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">∀</span></a> <span class="id" title="var">y</span> : <a class="idref" href="HoTT.Basics.Overture.html#A"><span class="id" title="variable">A</span></a><a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">,</span></a> <a class="idref" href="HoTT.Basics.Overture.html#center"><span class="id" title="method">center</span></a> <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Basics.Overture.html#y"><span class="id" title="variable">y</span></a>)<br/>
 }.<br/>
@@ -1106,19 +1106,11 @@ Include the basic numerals, so we don't need to go through the coercion from <sp
 
 <br/>
 <span class="id" title="var">Numeral</span> <span class="id" title="keyword">Notation</span> <a class="idref" href="HoTT.Basics.Overture.html#trunc_index"><span class="id" title="inductive">trunc_index</span></a> <a class="idref" href="HoTT.Basics.Overture.html#int_to_trunc_index"><span class="id" title="definition">int_to_trunc_index</span></a> <a class="idref" href="HoTT.Basics.Overture.html#trunc_index_to_int"><span class="id" title="definition">trunc_index_to_int</span></a> : <span class="id" title="var">trunc_scope</span> (<span class="id" title="var">warning</span> <span class="id" title="keyword">after</span> 5000).<br/>
-</div>
-
-<div class="doc">
-We declare <span class="inlinecode">-2</span> and <span class="inlinecode">-1</span> as notations so that they bind tighter than application, so we can write <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#IsTrunc"><span class="id" title="record">IsTrunc</span></a></span> <span class="inlinecode">-1</span> rather than <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#IsTrunc"><span class="id" title="record">IsTrunc</span></a></span> <span class="inlinecode">(-1)</span>. 
-</div>
-<div class="code">
-<span class="id" title="keyword">Notation</span> <a name="e47d7aae8d47823f116e25f0da4f217f"><span class="id" title="notation">&quot;</span></a>-2" := (- 2) : <span class="id" title="var">trunc_scope</span>.<br/>
-<span class="id" title="keyword">Notation</span> <a name="1a8ec123dd7d8a39d00bfcc0b46c8dd4"><span class="id" title="notation">&quot;</span></a>-1" := (- 1) : <span class="id" title="var">trunc_scope</span>.<br/>
 
 <br/>
 <span class="id" title="keyword">Fixpoint</span> <a name="IsTrunc_internal"><span class="id" title="definition">IsTrunc_internal</span></a> (<span class="id" title="var">n</span> : <a class="idref" href="HoTT.Basics.Overture.html#trunc_index"><span class="id" title="inductive">trunc_index</span></a>) (<span class="id" title="var">A</span> : <span class="id" title="keyword">Type</span>) : <span class="id" title="keyword">Type</span> :=<br/>
 &nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="HoTT.Basics.Overture.html#n"><span class="id" title="variable">n</span></a> <span class="id" title="keyword">with</span><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="HoTT.Basics.Overture.html#e47d7aae8d47823f116e25f0da4f217f"><span class="id" title="notation">-2</span></a> ⇒ <a class="idref" href="HoTT.Basics.Overture.html#Contr_internal"><span class="id" title="class">Contr_internal</span></a> <a class="idref" href="HoTT.Basics.Overture.html#A"><span class="id" title="variable">A</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;| -2 ⇒ <a class="idref" href="HoTT.Basics.Overture.html#Contr_internal"><span class="id" title="class">Contr_internal</span></a> <a class="idref" href="HoTT.Basics.Overture.html#A"><span class="id" title="variable">A</span></a><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="var">n'</span><a class="idref" href="HoTT.Basics.Overture.html#b76e54fb8c8bc6b885dddb77bd7d01b8"><span class="id" title="notation">.+1</span></a> ⇒ <a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">∀</span></a> <a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">(</span></a><span class="id" title="var">x</span> <span class="id" title="var">y</span> : <a class="idref" href="HoTT.Basics.Overture.html#A"><span class="id" title="variable">A</span></a><a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">),</span></a> <a class="idref" href="HoTT.Basics.Overture.html#IsTrunc_internal"><span class="id" title="definition">IsTrunc_internal</span></a> <span class="id" title="var">n'</span> (<a class="idref" href="HoTT.Basics.Overture.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Basics.Overture.html#y"><span class="id" title="variable">y</span></a>)<br/>
 &nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
 
@@ -1174,8 +1166,8 @@ Picking up the <span class="inlinecode"><span class="id" title="keyword">∀</sp
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">end</span> : <span class="id" title="var">core</span>.<br/>
 
 <br/>
-<span class="id" title="keyword">Notation</span> <a name="Contr"><span class="id" title="abbreviation">Contr</span></a> := (<a class="idref" href="HoTT.Basics.Overture.html#IsTrunc"><span class="id" title="class">IsTrunc</span></a> <a class="idref" href="HoTT.Basics.Overture.html#e47d7aae8d47823f116e25f0da4f217f"><span class="id" title="notation">-2</span></a>).<br/>
-<span class="id" title="keyword">Notation</span> <a name="IsHProp"><span class="id" title="abbreviation">IsHProp</span></a> := (<a class="idref" href="HoTT.Basics.Overture.html#IsTrunc"><span class="id" title="class">IsTrunc</span></a> <a class="idref" href="HoTT.Basics.Overture.html#1a8ec123dd7d8a39d00bfcc0b46c8dd4"><span class="id" title="notation">-1</span></a>).<br/>
+<span class="id" title="keyword">Notation</span> <a name="Contr"><span class="id" title="abbreviation">Contr</span></a> := (<a class="idref" href="HoTT.Basics.Overture.html#IsTrunc"><span class="id" title="class">IsTrunc</span></a> (-2)).<br/>
+<span class="id" title="keyword">Notation</span> <a name="IsHProp"><span class="id" title="abbreviation">IsHProp</span></a> := (<a class="idref" href="HoTT.Basics.Overture.html#IsTrunc"><span class="id" title="class">IsTrunc</span></a> (-1)).<br/>
 <span class="id" title="keyword">Notation</span> <a name="IsHSet"><span class="id" title="abbreviation">IsHSet</span></a> := (<a class="idref" href="HoTT.Basics.Overture.html#IsTrunc"><span class="id" title="class">IsTrunc</span></a> 0).<br/>
 
 <br/>
@@ -1520,6 +1512,34 @@ An alternative version of <span class="inlinecode"><span class="id" title="var">
 </div>
 
 <div class="doc">
+A shorter name for <span class="inlinecode"><span class="id" title="var">notypeclasses</span></span> <span class="inlinecode"><span class="id" title="tactic">refine</span></span>. 
+</div>
+<div class="code">
+<span class="id" title="keyword">Tactic Notation</span> "ntc_refine" <span class="id" title="var">uconstr</span>(<span class="id" title="var">term</span>) := <span class="id" title="var">notypeclasses</span> <span class="id" title="tactic">refine</span> <span class="id" title="var">term</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Ltac</span> <span class="id" title="var">ntc_rapply</span> <span class="id" title="var">p</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="var">ntc_refine</span> <span class="id" title="var">p</span> ||<br/>
+&nbsp;&nbsp;<span class="id" title="var">ntc_refine</span> (<span class="id" title="var">p</span> <span class="id" title="var">_</span>) ||<br/>
+&nbsp;&nbsp;<span class="id" title="var">ntc_refine</span> (<span class="id" title="var">p</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span>) ||<br/>
+&nbsp;&nbsp;<span class="id" title="var">ntc_refine</span> (<span class="id" title="var">p</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span>) ||<br/>
+&nbsp;&nbsp;<span class="id" title="var">ntc_refine</span> (<span class="id" title="var">p</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span>) ||<br/>
+&nbsp;&nbsp;<span class="id" title="var">ntc_refine</span> (<span class="id" title="var">p</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span>) ||<br/>
+&nbsp;&nbsp;<span class="id" title="var">ntc_refine</span> (<span class="id" title="var">p</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span>) ||<br/>
+&nbsp;&nbsp;<span class="id" title="var">ntc_refine</span> (<span class="id" title="var">p</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span>) ||<br/>
+&nbsp;&nbsp;<span class="id" title="var">ntc_refine</span> (<span class="id" title="var">p</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span>) ||<br/>
+&nbsp;&nbsp;<span class="id" title="var">ntc_refine</span> (<span class="id" title="var">p</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span>) ||<br/>
+&nbsp;&nbsp;<span class="id" title="var">ntc_refine</span> (<span class="id" title="var">p</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span>) ||<br/>
+&nbsp;&nbsp;<span class="id" title="var">ntc_refine</span> (<span class="id" title="var">p</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span>) ||<br/>
+&nbsp;&nbsp;<span class="id" title="var">ntc_refine</span> (<span class="id" title="var">p</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span>) ||<br/>
+&nbsp;&nbsp;<span class="id" title="var">ntc_refine</span> (<span class="id" title="var">p</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span>) ||<br/>
+&nbsp;&nbsp;<span class="id" title="var">ntc_refine</span> (<span class="id" title="var">p</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span>) ||<br/>
+&nbsp;&nbsp;<span class="id" title="var">ntc_refine</span> (<span class="id" title="var">p</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span>).<br/>
+
+<br/>
+</div>
+
+<div class="doc">
 Ssreflect tactics, adapted by Robbert Krebbers 
 </div>
 <div class="code">
@@ -1671,6 +1691,46 @@ The tactic <span class="inlinecode"><span class="id" title="var">f_ap</span></sp
 </div>
 
 <div class="doc">
+Find the head of the given expression. 
+</div>
+<div class="code">
+<span class="id" title="keyword">Ltac</span> <span class="id" title="var">head</span> <span class="id" title="var">expr</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">match</span> <span class="id" title="var">expr</span> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;| ?<span class="id" title="var">f</span> <span class="id" title="var">_</span> ⇒ <span class="id" title="var">head</span> <span class="id" title="var">f</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="var">_</span> ⇒ <span class="id" title="var">expr</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+This tactic gets the constructor of any one-constructor inductive type. 
+</div>
+<div class="code">
+<span class="id" title="keyword">Ltac</span> <span class="id" title="var">get_constructor_head</span> <span class="id" title="var">T</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">x</span> := <span class="id" title="tactic">fresh</span> <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">x'</span> := <span class="id" title="tactic">fresh</span> <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">h</span> := <span class="id" title="var">open_constr</span>:(<span class="id" title="var">_</span>) <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">__</span> := <span class="id" title="keyword">constr</span>:(<span class="id" title="keyword">fun</span> (<span class="id" title="var">x</span> : <span class="id" title="var">T</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⇒ <span class="id" title="keyword">let</span> <span class="id" title="var">x'</span> := <a class="idref" href="HoTT.Basics.Overture.html#x"><span class="id" title="variable">x</span></a> <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">ltac</span>:(<span class="id" title="tactic">destruct</span> <span class="id" title="var">x</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">x'</span> := (<span class="id" title="tactic">eval</span> <span class="id" title="tactic">cbv</span> <span class="id" title="keyword">delta</span> [<span class="id" title="var">x'</span>] <span class="id" title="tactic">in</span> <span class="id" title="var">x'</span>) <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">x'</span> := <span class="id" title="var">head</span> <span class="id" title="var">x'</span> <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">unify</span> <span class="id" title="var">h</span> <span class="id" title="var">x'</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">exact</span> <a class="idref" href="Coq.Init.Logic.html#I"><span class="id" title="constructor">I</span></a>)) <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;<span class="id" title="var">h</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Ltac</span> <span class="id" title="var">ntc_constructor</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">lazymatch</span> <span class="id" title="keyword">goal</span> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| [ |- ?<span class="id" title="var">G</span> ] ⇒ <span class="id" title="keyword">let</span> <span class="id" title="var">build</span> := <span class="id" title="var">get_constructor_head</span> <span class="id" title="var">G</span> <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">ntc_rapply</span> <span class="id" title="var">build</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
 <span class="inlinecode"><span class="id" title="var">revert_opaque</span></span> <span class="inlinecode"><a class="idref" href="HoTT.Categories.Grothendieck.PseudofunctorToCat.html#x"><span class="id" title="projection">x</span></a></span> is like <span class="inlinecode"><span class="id" title="var">revert</span></span> <span class="inlinecode"><a class="idref" href="HoTT.Categories.Grothendieck.PseudofunctorToCat.html#x"><span class="id" title="projection">x</span></a></span>, except that it fails if <span class="inlinecode"><a class="idref" href="HoTT.Categories.Grothendieck.PseudofunctorToCat.html#x"><span class="id" title="projection">x</span></a></span> is not an opaque variable (i.e. if it has a <span class="inlinecode">:=</span> definition rather than just a type). 
 </div>
 <div class="code">
@@ -1752,6 +1812,221 @@ A variant that doesn't substitute in the goal and hypotheses.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">y'</span> := (<span class="id" title="tactic">eval</span> <span class="id" title="tactic">hnf</span> <span class="id" title="tactic">in</span> <span class="id" title="var">y</span>) <span class="id" title="tactic">in</span><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">change</span> (<span class="id" title="var">R</span> <span class="id" title="var">x'</span> <span class="id" title="var">y'</span>)<br/>
 &nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+This tactic is a version of <span class="inlinecode"><span class="id" title="var">tryif</span></span> <span class="inlinecode"><span class="id" title="var">require</span></span> <span class="inlinecode">()</span> <span class="inlinecode"><span class="id" title="keyword">then</span></span> <span class="inlinecode"><span class="id" title="var">if_yes</span></span> <span class="inlinecode">()</span> <span class="inlinecode"><span class="id" title="keyword">else</span></span> <span class="inlinecode"><span class="id" title="var">if_no</span></span> <span class="inlinecode">()</span> which is suitable for use in constructing constrs by virtue of being evaluated during the Ltac expression evaluation phase rather than during the tactic running phase.
+All three arguments are expected to be tactic thunks which will be passed a dummy unit argument.
+</div>
+<div class="code">
+<span class="id" title="keyword">Ltac</span> <span class="id" title="var">tryif_cps</span> <span class="id" title="var">require</span> <span class="id" title="var">if_yes</span> <span class="id" title="var">if_no</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">res</span> := <span class="id" title="keyword">match</span> <span class="id" title="keyword">constr</span>:(<span class="id" title="keyword">Set</span>) <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="var">_</span> ⇒ <span class="id" title="keyword">let</span> <span class="id" title="var">__</span> := <span class="id" title="keyword">match</span> <span class="id" title="keyword">constr</span>:(<span class="id" title="keyword">Set</span>) <span class="id" title="keyword">with</span> <span class="id" title="var">_</span> ⇒ <span class="id" title="var">require</span> () <span class="id" title="keyword">end</span> <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">ltac</span>:(<span class="id" title="var">if_yes</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="var">_</span> ⇒ <span class="id" title="keyword">ltac</span>:(<span class="id" title="var">if_no</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">end</span> <span class="id" title="tactic">in</span> <span class="id" title="var">res</span> ().<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+The following tactic <span class="inlinecode"><span class="id" title="var">issig</span></span> proves automatically that a record type is equivalent to a nested Sigma-type. Specifically, it proves a goal that looks like
+
+<div class="paragraph"> </div>
+
+<pre>
+   { x : A &amp; B x } &lt;~&gt; Some_Record
+</pre>
+
+<div class="paragraph"> </div>
+
+In fact you don't even have to write down the sigma type. Though it is good practice to write it out anyway, this tactic can work out the sigma type and tell you what it should look like.
+
+<div class="paragraph"> </div>
+
+The following should generate the desired equivalence. You can check the definition to see what type it has and therefore what the sigma type should be.
+
+<div class="paragraph"> </div>
+
+<pre>
+  Definition issig_myrecord
+    : _ &lt;~&gt; MyRecord := ltac:(issig).
+
+  Check issig_myrecord.
+</pre>
+
+<div class="paragraph"> </div>
+
+In order to define this tactic we have many helper tactics.
+
+<div class="paragraph"> </div>
+
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Local Ltac</span> <span class="id" title="var">peel_evars</span> <span class="id" title="var">term</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">lazymatch</span> <span class="id" title="var">term</span> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| ?<span class="id" title="var">f</span> ?<span class="id" title="var">x</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;⇒ <span class="id" title="var">tryif_cps</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">ltac</span>:(<span class="id" title="keyword">fun</span> <span class="id" title="var">_</span> ⇒ <span class="id" title="var">has_evar</span> <span class="id" title="var">x</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">ltac</span>:(<span class="id" title="keyword">fun</span> <span class="id" title="var">_</span> ⇒ <span class="id" title="var">peel_evars</span> <span class="id" title="var">f</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">ltac</span>:(<span class="id" title="keyword">fun</span> <span class="id" title="var">_</span> ⇒ <span class="id" title="var">term</span>)<br/>
+&nbsp;&nbsp;| <span class="id" title="var">_</span> ⇒ <span class="id" title="var">term</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Local Ltac</span> <span class="id" title="var">pi_to_sig</span> <span class="id" title="var">ty</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">lazymatch</span> (<span class="id" title="tactic">eval</span> <span class="id" title="tactic">cbv</span> <span class="id" title="keyword">beta</span> <span class="id" title="tactic">in</span> <span class="id" title="var">ty</span>) <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| <a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">∀</span></a> <a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">(</span></a><span class="id" title="var">x</span> : ?<span class="id" title="var">T</span>) (<span class="id" title="var">y</span> : @?<span class="id" title="var">A</span> <a class="idref" href="HoTT.Basics.Overture.html#x"><span class="id" title="variable">x</span></a><a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">),</span></a> @?<span class="id" title="var">P</span> <a class="idref" href="HoTT.Basics.Overture.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="HoTT.Basics.Overture.html#y"><span class="id" title="variable">y</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;⇒ <span class="id" title="keyword">let</span> <span class="id" title="var">x'</span> := <span class="id" title="tactic">fresh</span> <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">constr</span>:(@<a class="idref" href="Coq.Init.Specif.html#sigT"><span class="id" title="abbreviation">sigT</span></a> <span class="id" title="var">T</span> (<span class="id" title="keyword">fun</span> <span class="id" title="var">x'</span> : <span class="id" title="var">T</span> ⇒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">ltac</span>:(<span class="id" title="keyword">let</span> <span class="id" title="var">res</span> := <span class="id" title="var">pi_to_sig</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">∀</span></a> <span class="id" title="var">y</span> : <span class="id" title="var">A</span> <span class="id" title="var">x'</span><a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">,</span></a> <span class="id" title="var">P</span> <span class="id" title="var">x'</span> <a class="idref" href="HoTT.Basics.Overture.html#y"><span class="id" title="variable">y</span></a>) <span class="id" title="tactic">in</span> <span class="id" title="tactic">exact</span> <span class="id" title="var">res</span>)))<br/>
+&nbsp;&nbsp;| ?<span class="id" title="var">T</span> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <span class="id" title="var">_</span> ⇒ <span class="id" title="var">T</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Local Ltac</span> <span class="id" title="var">ctor_to_sig</span> <span class="id" title="var">ctor</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">ctor</span> := <span class="id" title="var">peel_evars</span> <span class="id" title="var">ctor</span> <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">t</span> := <span class="id" title="keyword">type</span> <span class="id" title="keyword">of</span> <span class="id" title="var">ctor</span> <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;<span class="id" title="var">pi_to_sig</span> <span class="id" title="var">t</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Local Ltac</span> <span class="id" title="var">unify_first_evar_with</span> <span class="id" title="var">term</span> <span class="id" title="var">u</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">lazymatch</span> <span class="id" title="var">term</span> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| ?<span class="id" title="var">f</span> ?<span class="id" title="var">x</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;⇒ <span class="id" title="var">tryif</span> <span class="id" title="var">has_evar</span> <span class="id" title="var">f</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">then</span> <span class="id" title="var">unify_first_evar_with</span> <span class="id" title="var">f</span> <span class="id" title="var">u</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">else</span> <span class="id" title="var">unify</span> <span class="id" title="var">x</span> <span class="id" title="var">u</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Local Ltac</span> <span class="id" title="var">unify_with_projections</span> <span class="id" title="var">term</span> <span class="id" title="var">u</span> :=<br/>
+&nbsp;&nbsp;(<span class="id" title="var">unify_first_evar_with</span> <span class="id" title="var">term</span> <span class="id" title="var">u</span><a class="idref" href="HoTT.Basics.Overture.html#a0d4c290984547f24aacc208636427e2"><span class="id" title="notation">.1</span></a>; <span class="id" title="var">unify_with_projections</span> <span class="id" title="var">term</span> <span class="id" title="var">u</span><a class="idref" href="HoTT.Basics.Overture.html#dec9bdefe956e49d73ffc4a7400937db"><span class="id" title="notation">.2</span></a>) +<br/>
+&nbsp;&nbsp;(<span class="id" title="var">unify_first_evar_with</span> <span class="id" title="var">term</span> <span class="id" title="var">u</span>;<br/>
+&nbsp;&nbsp;&nbsp;<span class="id" title="var">tryif</span> <span class="id" title="var">has_evar</span> <span class="id" title="var">term</span> <span class="id" title="keyword">then</span> <span class="id" title="tactic">fail</span> 0 <span class="id" title="var">term</span> "has evars remaining" <span class="id" title="keyword">else</span> <span class="id" title="tactic">idtac</span>).<br/>
+
+<br/>
+<span class="id" title="keyword">Local Ltac</span> <span class="id" title="var">refine_with_existT_as_much_as_needed_then_destruct</span> <span class="id" title="var">v</span> :=<br/>
+&nbsp;&nbsp;((<span class="id" title="tactic">destruct</span> <span class="id" title="var">v</span>; <span class="id" title="var">shelve</span>) +<br/>
+&nbsp;&nbsp;&nbsp;(<span class="id" title="tactic">simple</span> <span class="id" title="var">notypeclasses</span> <span class="id" title="tactic">refine</span> <a class="idref" href="HoTT.Basics.Overture.html#4887cec9c4a6ccb88dc6b18963c35c8f"><span class="id" title="notation">(</span></a><span class="id" title="var">_</span> <a class="idref" href="HoTT.Basics.Overture.html#4887cec9c4a6ccb88dc6b18963c35c8f"><span class="id" title="notation">;</span></a> <span class="id" title="var">_</span><a class="idref" href="HoTT.Basics.Overture.html#4887cec9c4a6ccb88dc6b18963c35c8f"><span class="id" title="notation">)</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;[ <span class="id" title="tactic">destruct</span> <span class="id" title="var">v</span>; <span class="id" title="var">shelve</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="var">refine_with_existT_as_much_as_needed_then_destruct</span> <span class="id" title="var">v</span> ])).<br/>
+
+<br/>
+<span class="id" title="keyword">Ltac</span> <span class="id" title="var">issig</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">hnf</span>; <br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">A</span> := <span class="id" title="keyword">match</span> <span class="id" title="keyword">goal</span> <span class="id" title="keyword">with</span> |- ?<span class="id" title="var">sigma</span> <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">&lt;~&gt;</span></a> ?<span class="id" title="var">record</span> ⇒ <span class="id" title="keyword">constr</span>:(<span class="id" title="var">sigma</span>) <span class="id" title="keyword">end</span> <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">B</span> := <span class="id" title="keyword">match</span> <span class="id" title="keyword">goal</span> <span class="id" title="keyword">with</span> |- ?<span class="id" title="var">sigma</span> <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">&lt;~&gt;</span></a> ?<span class="id" title="var">record</span> ⇒ <span class="id" title="keyword">constr</span>:(<span class="id" title="var">record</span>) <span class="id" title="keyword">end</span> <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">u</span> := <span class="id" title="tactic">fresh</span> "u" <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">v</span> := <span class="id" title="tactic">fresh</span> "v" <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;</div>
+
+<div class="doc">
+We build an equivalence with 5 holes. 
+</div>
+<div class="code">
+&nbsp;&nbsp;<span class="id" title="tactic">simple</span> <span class="id" title="var">notypeclasses</span> <span class="id" title="tactic">refine</span>  <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="HoTT.Basics.Overture.html#Build_Equiv"><span class="id" title="constructor">Build_Equiv</span></a> <span class="id" title="var">A</span> <span class="id" title="var">B</span> <span class="id" title="var">_</span> (<a class="idref" href="HoTT.Basics.Overture.html#Build_IsEquiv"><span class="id" title="constructor">Build_IsEquiv</span></a> <span class="id" title="var">A</span> <span class="id" title="var">B</span> (<span class="id" title="keyword">fun</span> <span class="id" title="var">u</span> ⇒ <span class="id" title="var">_</span>) (<span class="id" title="keyword">fun</span> <span class="id" title="var">v</span> ⇒ <span class="id" title="var">_</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" title="keyword">fun</span> <span class="id" title="var">v</span> ⇒ <span class="id" title="var">_</span>) (<span class="id" title="keyword">fun</span> <span class="id" title="var">u</span> ⇒ <span class="id" title="var">_</span>) (<span class="id" title="keyword">fun</span> <span class="id" title="var">_</span> ⇒ <span class="id" title="var">_</span>)));<br/>
+&nbsp;&nbsp;</div>
+
+<div class="doc">
+Going from a sigma type to a record 
+</div>
+<div class="code">
+&nbsp;&nbsp;[ <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">T</span> := <span class="id" title="keyword">match</span> <span class="id" title="keyword">goal</span> <span class="id" title="keyword">with</span> |- ?<span class="id" title="var">T</span> ⇒ <span class="id" title="var">T</span> <span class="id" title="keyword">end</span> <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">built</span> := <span class="id" title="var">open_constr</span>:(<span class="id" title="keyword">ltac</span>:(<span class="id" title="var">ntc_constructor</span>) : <span class="id" title="var">T</span>) <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">A'</span> := <span class="id" title="var">ctor_to_sig</span> <span class="id" title="var">built</span> <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">unify</span> <span class="id" title="var">A</span> <span class="id" title="var">A'</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">unify_with_projections</span> <span class="id" title="var">built</span> <span class="id" title="var">u</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">refine</span> <span class="id" title="var">built</span><br/>
+&nbsp;&nbsp;</div>
+
+<div class="doc">
+Going from a record to a sigma type 
+</div>
+<div class="code">
+&nbsp;&nbsp;| <span class="id" title="var">refine_with_existT_as_much_as_needed_then_destruct</span> <span class="id" title="var">v</span><br/>
+&nbsp;&nbsp;</div>
+
+<div class="doc">
+Proving eissect 
+</div>
+<div class="code">
+&nbsp;&nbsp;| <span class="id" title="tactic">destruct</span> <span class="id" title="var">v</span>; <span class="id" title="var">cbn</span> [<span class="id" title="var">pr1</span> <span class="id" title="var">pr2</span>]; <span class="id" title="tactic">reflexivity</span><br/>
+&nbsp;&nbsp;</div>
+
+<div class="doc">
+Proving eisretr 
+</div>
+<div class="code">
+&nbsp;&nbsp;| <span class="id" title="tactic">reflexivity</span><br/>
+&nbsp;&nbsp;</div>
+
+<div class="doc">
+Proving eisadj 
+</div>
+<div class="code">
+&nbsp;&nbsp;| <span class="id" title="tactic">reflexivity</span> ].<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+We show how the tactic works in a couple of examples. 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="issig_contr"><span class="id" title="definition">issig_contr</span></a> (<span class="id" title="var">A</span> : <span class="id" title="keyword">Type</span>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">{</span></a><span class="id" title="var">x</span> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">:</span></a> <a class="idref" href="HoTT.Basics.Overture.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">&amp;</span></a> <a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">∀</span></a> <span class="id" title="var">y</span><a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">,</span></a> <a class="idref" href="HoTT.Basics.Overture.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Basics.Overture.html#y"><span class="id" title="variable">y</span></a><a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">}</span></a> <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">&lt;~&gt;</span></a> <a class="idref" href="HoTT.Basics.Overture.html#Contr"><span class="id" title="abbreviation">Contr</span></a> <a class="idref" href="HoTT.Basics.Overture.html#A"><span class="id" title="variable">A</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">issig</span>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="issig_equiv"><span class="id" title="definition">issig_equiv</span></a> (<span class="id" title="var">A</span> <span class="id" title="var">B</span> : <span class="id" title="keyword">Type</span>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">{</span></a><span class="id" title="var">f</span> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">:</span></a> <a class="idref" href="HoTT.Basics.Overture.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Basics.Overture.html#B"><span class="id" title="variable">B</span></a> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">&amp;</span></a> <a class="idref" href="HoTT.Basics.Overture.html#IsEquiv"><span class="id" title="class">IsEquiv</span></a> <a class="idref" href="HoTT.Basics.Overture.html#f"><span class="id" title="variable">f</span></a><a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">}</span></a> <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">&lt;~&gt;</span></a> <a class="idref" href="HoTT.Basics.Overture.html#Equiv"><span class="id" title="record">Equiv</span></a> <a class="idref" href="HoTT.Basics.Overture.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Basics.Overture.html#B"><span class="id" title="variable">B</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">issig</span>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="issig_isequiv"><span class="id" title="definition">issig_isequiv</span></a> {<span class="id" title="var">A</span> <span class="id" title="var">B</span> : <span class="id" title="keyword">Type</span>} (<span class="id" title="var">f</span> : <a class="idref" href="HoTT.Basics.Overture.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Basics.Overture.html#B"><span class="id" title="variable">B</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">{</span></a><span class="id" title="var">g</span> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">:</span></a> <a class="idref" href="HoTT.Basics.Overture.html#B"><span class="id" title="variable">B</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Basics.Overture.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">&amp;</span></a> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">{</span></a><span class="id" title="var">r</span> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">:</span></a> <a class="idref" href="HoTT.Basics.Overture.html#Sect"><span class="id" title="definition">Sect</span></a> <a class="idref" href="HoTT.Basics.Overture.html#g"><span class="id" title="variable">g</span></a> <a class="idref" href="HoTT.Basics.Overture.html#f"><span class="id" title="variable">f</span></a> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">&amp;</span></a> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">{</span></a> <span class="id" title="var">s</span> <a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">:</span></a> <a class="idref" href="HoTT.Basics.Overture.html#Sect"><span class="id" title="definition">Sect</span></a> <a class="idref" href="HoTT.Basics.Overture.html#f"><span class="id" title="variable">f</span></a> <a class="idref" href="HoTT.Basics.Overture.html#g"><span class="id" title="variable">g</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">&amp;</span></a> <a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">∀</span></a> <span class="id" title="var">x</span> : <a class="idref" href="HoTT.Basics.Overture.html#A"><span class="id" title="variable">A</span></a><a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">,</span></a> <a class="idref" href="HoTT.Basics.Overture.html#r"><span class="id" title="variable">r</span></a> (<a class="idref" href="HoTT.Basics.Overture.html#f"><span class="id" title="variable">f</span></a> <a class="idref" href="HoTT.Basics.Overture.html#x"><span class="id" title="variable">x</span></a>) <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Basics.Overture.html#ap"><span class="id" title="definition">ap</span></a> <a class="idref" href="HoTT.Basics.Overture.html#f"><span class="id" title="variable">f</span></a> (<a class="idref" href="HoTT.Basics.Overture.html#s"><span class="id" title="variable">s</span></a> <a class="idref" href="HoTT.Basics.Overture.html#x"><span class="id" title="variable">x</span></a>)<a class="idref" href="Coq.Init.Specif.html#cc5e56ba3765e2d6b17e66d19b966f1d"><span class="id" title="notation">}}}</span></a><br/>
+&nbsp;&nbsp;<a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">&lt;~&gt;</span></a> <a class="idref" href="HoTT.Basics.Overture.html#IsEquiv"><span class="id" title="class">IsEquiv</span></a> <a class="idref" href="HoTT.Basics.Overture.html#f"><span class="id" title="variable">f</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">issig</span>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+The general reasoning behind the issig tactic is: if we know the type of the record, econstructor will give us the constructor applied to evars for each field. If we assume that there are no evars in the type, we can unify the first evar with u.1, the next evar with u.2.1, the next with u.2.2.1, etc, and if we run out of evars or projections, we backtrack and instead fill the final evar with u.2.2....2. (Note that if we strip the trailing evars from the constructor before unifying them, we get a term with a Pi type, and if we drop the final codomain and turn the Pi type into a Sigma, this lets us autogenerate the Sigma type we should be using; this is how the versions that don't need a hand-crafted Sigma type work: they unify the generated type with the term in the goal that should be the Sigma type.)
+
+<div class="paragraph"> </div>
+
+Generating the function the other way is a bit trickier, because there's no easy way to get our hands on all the projections of the record, and moreover we don't even know how many pairings we'll need. The thing we want to do is introduce the right number of pairings, destruct the variable of record type in the goal for each component, and then magically use the right projection. I'll get back to the magic in a moment; first we need to take care of the "right number" of pairings. We could pull a trick where we infer the number by looking at the term we get from econstructor in a goal whose type is the record. Instead, I chose the more concise route of coding a tactic that introduces the minimum number of pairings needed to make the magic work. How does it know the minimum number? It doesn't need to! The wonder of (recursive) multisuccess tactics is that you can say "try no pairings, and if that makes any future tactic fail, backtrack and try one pairing, and if that doesn't work, backtrack and try two pairings, etc". (The downside is that the error messages you get when you set things up wrong are truly incomprehensible, because if you make a typo in any of the fields of the Sigma type the error message you end up getting is something like "(_; _) is a Sigma type but it was expected to have the type of the final field" (and it's always about the final field, regardless of which field you made a typo in). So plausibly it's worth it to still do the small issig tactics by hand, and only use this tactic for &gt;= 5 fields or something.)
+
+<div class="paragraph"> </div>
+
+Okay, now onto the magic. How do we know which field is the right one? Well, there's only one answer that lets us prove the section and retraction by destruct+reflexivity, so we can let unification solve this problem for us. It's important to have destructed the record variable in each of the pair-component evars, because unification is not (yet) smart enough to invert records for us; this is what the destruct before shelve in the inverse function generation tactic is. We cbn pr1 and pr2 to make the unification problem be completely syntactic (no need to unfold anything during unification). This is probably not strictly necessary, but seems like good form to me.
+
+<div class="paragraph"> </div>
+
+Finally, we can prove the other one of the section/retraction pair (I can never recall which is which), and the adjoint, by reflexively. (Perhaps it would be better to use exact idpath, if we want to not have to unfold reflexivity when using equivalences generated by these tactics.) 
+</div>
+<div class="code">
 </div>
 </div>
 

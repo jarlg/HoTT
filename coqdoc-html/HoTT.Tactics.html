@@ -28,12 +28,12 @@
 </div>
 
 <div class="doc">
-<a name="lab542"></a><h1 class="section">Extra tactics for homotopy type theory.</h1>
+<a name="lab550"></a><h1 class="section">Extra tactics for homotopy type theory.</h1>
 
 <div class="paragraph"> </div>
 
-<a name="lab543"></a><h2 class="section">Tactics for dealing with <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#Funext"><span class="id" title="axiom">Funext</span></a></span></h2>
-<a name="lab544"></a><h3 class="section">Tactics about <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#transport"><span class="id" title="definition">transport</span></a></span>ing with <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#path_forall"><span class="id" title="definition">path_forall</span></a></span></h3>
+<a name="lab551"></a><h2 class="section">Tactics for dealing with <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#Funext"><span class="id" title="axiom">Funext</span></a></span></h2>
+<a name="lab552"></a><h3 class="section">Tactics about <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#transport"><span class="id" title="definition">transport</span></a></span>ing with <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#path_forall"><span class="id" title="definition">path_forall</span></a></span></h3>
 
 <div class="paragraph"> </div>
 
@@ -237,7 +237,7 @@ An example showing that it works
 </div>
 
 <div class="doc">
-<a name="lab545"></a><h2 class="section">A more powerful variant of <span class="inlinecode"><span class="id" title="var">path_induction</span></span></h2>
+<a name="lab553"></a><h2 class="section">A more powerful variant of <span class="inlinecode"><span class="id" title="var">path_induction</span></span></h2>
  We first define some helper tactics, and then define <span class="inlinecode"><span class="id" title="var">path_induction_hammer</span></span>, which has poor computational behavior, but is vastly more powerful than <span class="inlinecode"><span class="id" title="var">path_induction</span></span>, and removes paths which are discoverably contractible, and paths which only appear in the goal, etc. 
 <div class="paragraph"> </div>
 
@@ -385,7 +385,7 @@ And now the actual tactic.  Note that the order of the cases in the <span class=
 </div>
 
 <div class="doc">
-<a name="lab546"></a><h1 class="section">Miscellaneous tactics</h1>
+<a name="lab554"></a><h1 class="section">Miscellaneous tactics</h1>
 
 <div class="paragraph"> </div>
 
@@ -524,19 +524,6 @@ The point is that for a user-defined tactic, Coq has to resolve the meaning of t
 <span class="id" title="keyword">Tactic Notation</span> "simpl" "rewrite"      "?" <span class="id" title="var">open_constr</span>(<span class="id" title="var">term</span>) "in" "*" "|-" := <span class="id" title="var">simpl_do_clear</span> <span class="id" title="keyword">ltac</span>:(<span class="id" title="keyword">fun</span> <span class="id" title="var">H</span> ⇒ <span class="id" title="tactic">rewrite</span>    ?<span class="id" title="var">H</span> <span class="id" title="tactic">in</span> × |- ) <span class="id" title="var">term</span>.<br/>
 <span class="id" title="keyword">Tactic Notation</span> "simpl" "rewrite" "-&gt;" "?" <span class="id" title="var">open_constr</span>(<span class="id" title="var">term</span>) "in" "*" "|-" := <span class="id" title="var">simpl_do_clear</span> <span class="id" title="keyword">ltac</span>:(<span class="id" title="keyword">fun</span> <span class="id" title="var">H</span> ⇒ <span class="id" title="tactic">rewrite</span> → ?<span class="id" title="var">H</span> <span class="id" title="tactic">in</span> × |- ) <span class="id" title="var">term</span>.<br/>
 <span class="id" title="keyword">Tactic Notation</span> "simpl" "rewrite" "&lt;-" "?" <span class="id" title="var">open_constr</span>(<span class="id" title="var">term</span>) "in" "*" "|-" := <span class="id" title="var">simpl_do_clear</span> <span class="id" title="keyword">ltac</span>:(<span class="id" title="keyword">fun</span> <span class="id" title="var">H</span> ⇒ <span class="id" title="tactic">rewrite</span> &lt;- ?<span class="id" title="var">H</span> <span class="id" title="tactic">in</span> × |- ) <span class="id" title="var">term</span>.<br/>
-
-<br/>
-</div>
-
-<div class="doc">
-find the head of the given expression 
-</div>
-<div class="code">
-<span class="id" title="keyword">Ltac</span> <span class="id" title="var">head</span> <span class="id" title="var">expr</span> :=<br/>
-&nbsp;&nbsp;<span class="id" title="keyword">match</span> <span class="id" title="var">expr</span> <span class="id" title="keyword">with</span><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;| ?<span class="id" title="var">f</span> <span class="id" title="var">_</span> ⇒ <span class="id" title="var">head</span> <span class="id" title="var">f</span><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="var">_</span> ⇒ <span class="id" title="var">expr</span><br/>
-&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
 
 <br/>
 <span class="id" title="keyword">Ltac</span> <span class="id" title="var">head_hnf</span> <span class="id" title="var">expr</span> := <span class="id" title="keyword">let</span> <span class="id" title="var">expr'</span> := <span class="id" title="tactic">eval</span> <span class="id" title="tactic">hnf</span> <span class="id" title="tactic">in</span> <span class="id" title="var">expr</span> <span class="id" title="tactic">in</span> <span class="id" title="var">head</span> <span class="id" title="var">expr'</span>.<br/>
