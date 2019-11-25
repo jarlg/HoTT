@@ -192,6 +192,17 @@ By induction, an <span class="inlinecode"><a class="idref" href="Coq.Init.Peano.
 <span class="id" title="keyword">Defined</span>.<br/>
 
 <br/>
+<span class="id" title="keyword">Definition</span> <a name="isconnected_pred_add"><span class="id" title="definition">isconnected_pred_add</span></a> <span class="id" title="var">n</span> <span class="id" title="var">m</span> <span class="id" title="var">A</span> `{<span class="id" title="var">H</span> : <a class="idref" href="HoTT.Truncations.Core.html#TrM.RSU.IsConnected"><span class="id" title="class">IsConnected</span></a> (<a class="idref" href="HoTT.Truncations.Connectedness.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Basics.Trunc.html#5c37b2558ec22aeb7a122cb85ff5d685"><span class="id" title="notation">+2+</span></a> <a class="idref" href="HoTT.Truncations.Connectedness.html#m"><span class="id" title="variable">m</span></a>) <a class="idref" href="HoTT.Truncations.Connectedness.html#A"><span class="id" title="variable">A</span></a>}<br/>
+&nbsp;&nbsp;: <a class="idref" href="HoTT.Truncations.Core.html#TrM.RSU.IsConnected"><span class="id" title="class">IsConnected</span></a> <a class="idref" href="HoTT.Truncations.Connectedness.html#m"><span class="id" title="variable">m</span></a> <a class="idref" href="HoTT.Truncations.Connectedness.html#A"><span class="id" title="variable">A</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">induction</span> <span class="id" title="var">n</span>.<br/>
+&nbsp;&nbsp;1: <span class="id" title="tactic">assumption</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <span class="id" title="var">IHn</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Truncations.Connectedness.html#isconnected_pred"><span class="id" title="definition">isconnected_pred</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">assumption</span>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
 </div>
 
 <div class="doc">
@@ -269,6 +280,14 @@ By induction, an <span class="inlinecode"><a class="idref" href="Coq.Init.Peano.
 &nbsp;&nbsp;- <span class="id" title="tactic">intros</span> <span class="id" title="var">nx</span>.<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> (<a class="idref" href="HoTT.Truncations.Core.html#Trunc_rec"><span class="id" title="definition">Trunc_rec</span></a> (<span class="id" title="var">n</span> := -1) <span class="id" title="var">nx</span>).<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">exact</span> (<a class="idref" href="HoTT.Basics.Overture.html#center"><span class="id" title="projection">center</span></a> (<a class="idref" href="HoTT.Truncations.Core.html#merely"><span class="id" title="definition">merely</span></a> <span class="id" title="var">X</span>)).<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Global Instance</span> <a name="isconnected_trunc"><span class="id" title="instance">isconnected_trunc</span></a> {<span class="id" title="var">X</span> : <span class="id" title="keyword">Type</span>} <span class="id" title="var">n</span> <span class="id" title="var">m</span> `{<a class="idref" href="HoTT.Truncations.Core.html#TrM.RSU.IsConnected"><span class="id" title="class">IsConnected</span></a> <a class="idref" href="HoTT.Truncations.Connectedness.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Truncations.Connectedness.html#X"><span class="id" title="variable">X</span></a>}<br/>
+&nbsp;&nbsp;: <a class="idref" href="HoTT.Truncations.Core.html#TrM.RSU.IsConnected"><span class="id" title="class">IsConnected</span></a> <a class="idref" href="HoTT.Truncations.Connectedness.html#n"><span class="id" title="variable">n</span></a> (<a class="idref" href="HoTT.Truncations.Core.html#Tr"><span class="id" title="definition">Tr</span></a> <a class="idref" href="HoTT.Truncations.Connectedness.html#m"><span class="id" title="variable">m</span></a> <a class="idref" href="HoTT.Truncations.Connectedness.html#X"><span class="id" title="variable">X</span></a>).<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">unfold</span> <a class="idref" href="HoTT.Truncations.Core.html#TrM.RSU.IsConnected"><span class="id" title="class">IsConnected</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">serapply</span> (<a class="idref" href="HoTT.Basics.Equivalences.html#contr_equiv'"><span class="id" title="definition">contr_equiv'</span></a> <span class="id" title="var">_</span> <a class="idref" href="HoTT.Basics.Equivalences.html#76214fa316f18d720833e810bbfd71fb"><span class="id" title="notation">(</span></a><a class="idref" href="HoTT.Truncations.Core.html#Trunc_swap"><span class="id" title="definition">Trunc_swap</span></a> <span class="id" title="var">n</span> <span class="id" title="var">m</span> <span class="id" title="var">X</span><a class="idref" href="HoTT.Basics.Equivalences.html#76214fa316f18d720833e810bbfd71fb"><span class="id" title="notation">)^-1</span></a>).<br/>
 <span class="id" title="keyword">Defined</span>.<br/>
 
 <br/>
