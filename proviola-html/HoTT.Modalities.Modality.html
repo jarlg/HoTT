@@ -2408,12 +2408,12 @@
           
 
             i = 478;
-            data = "1 subgoal (ID 81)	  	  O : Modality	  A : Type2le	  H : In O A	  P : A -> Type	  ============================	  {x : A & O (P x)} <~> O {x : A & O (P x)}	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	1 subgoal (ID 83)		subgoal 1 (ID 83) is:	 O {x : A & O (P x)} <~> O {x : A & P x}	";
+            data = "1 subgoal (ID 81)	  	  O : Modality	  A : Type2le	  H : In O A	  P : A -> Type	  ============================	  {x : A & O (P x)} <~> O {x : A & O (P x)}	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	";
             responses[i]=data;
           
 
             i = 479;
-            data = "1 subgoal (ID 83)	  	  O : Modality	  A : Type2le	  H : In O A	  P : A -> Type	  ============================	  O {x : A & O (P x)} <~> O {x : A & P x}	No more subgoals.	";
+            data = "1 subgoal (ID 83)		subgoal 1 (ID 83) is:	 O {x : A & O (P x)} <~> O {x : A & P x}	1 subgoal (ID 83)	  	  O : Modality	  A : Type2le	  H : In O A	  P : A -> Type	  ============================	  O {x : A & O (P x)} <~> O {x : A & P x}	No more subgoals.	";
             responses[i]=data;
           
 
@@ -2508,12 +2508,12 @@
           
 
             i = 498;
-            data = "1 subgoal (ID 78)	  	  fs : Funext	  O : Modality	  A : Type	  B : Type	  f : A -> B	  ============================	  IsConnMap O (fun a : A => (f a; to O {x : A & f x = f a} (a; 1)))	No more subgoals.	";
+            data = "1 subgoal (ID 78)	  	  fs : Funext	  O : Modality	  A : Type	  B : Type	  f : A -> B	  ============================	  IsConnMap O (fun a : A => (f a; to O {x : A & f x = f a} (a; 1)))	";
             responses[i]=data;
           
 
             i = 499;
-            data = "";
+            data = "No more subgoals.	";
             responses[i]=data;
           
 
@@ -3528,7 +3528,7 @@
 </div>
 <div class="goal" id="goal0_3_3"><pre><span></span></pre></div>
 <div class="doc" scenenumber="5">
-<a name="lab277"></a><h1 class="section">Modalities</h1>
+<a name="lab340"></a><h1 class="section">Modalities</h1>
 </div>
 <div scenenumber="7" class="code">
 <span class="command" onmouseout="
@@ -3689,7 +3689,7 @@ We add an extra unused universe parameter <span class="inlinecode"><a class="idr
 </div>
 <div class="goal" id="goal0_3_23"><pre><span></span></pre></div>
 <div class="doc" scenenumber="25">
-<a name="lab278"></a><h2 class="section">Modalities are reflective subuniverses</h2>
+<a name="lab341"></a><h2 class="section">Modalities are reflective subuniverses</h2>
 <div class="doc" scenenumber="4"> </div>
 
  We show that modalities have underlying reflective subuniverses.  It is important in some applications, such as <span class="inlinecode"><a class="idref" href="HoTT.Truncations.Core.html#Trunc.Trunc"><span class="id" title="inductive">Trunc</span></a></span>, that this construction uses the general <span class="inlinecode"><a class="idref" href="HoTT.Modalities.Modality.html#Modalities_Theory.O_ind"><span class="id" title="definition">O_ind</span></a></span> given as part of the modality data.  For instance, this ensures that <span class="inlinecode"><a class="idref" href="HoTT.Modalities.ReflectiveSubuniverse.html#ReflectiveSubuniverses_Theory.O_functor"><span class="id" title="definition">O_functor</span></a></span> reduces to simply an application of <span class="inlinecode"><a class="idref" href="HoTT.Modalities.Modality.html#Modalities_Theory.O_ind"><span class="id" title="definition">O_ind</span></a></span>.
@@ -4056,7 +4056,7 @@ The reason Coq won't actually accept this as a module of type <span class="inlin
 </div>
 <div class="goal" id="goal0_3_55"><pre><span></span></pre></div>
 <div class="doc" scenenumber="57">
-<a name="lab279"></a><h2 class="section">Easy modalities</h2>
+<a name="lab342"></a><h2 class="section">Easy modalities</h2>
 <div class="doc" scenenumber="4"> </div>
 
  Our definition of modality is slightly different from the one in the book, which requires an induction principle only into families of the form <span class="inlinecode"><span class="id" title="keyword">fun</span></span> <span class="inlinecode"><a class="idref" href="HoTT.Modalities.Modality.html#oa"><span class="id" title="variable">oa</span></a></span> <span class="inlinecode">⇒</span> <span class="inlinecode"><a class="idref" href="HoTT.Tests.html#Issue754_1.O"><span class="id" title="constructor">O</span></a></span> <span class="inlinecode">(<a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.B"><span class="id" title="variable">B</span></a></span> <span class="inlinecode"><a class="idref" href="HoTT.Modalities.Modality.html#oa"><span class="id" title="variable">oa</span></a>)</span>, and similarly only that path-spaces of types <span class="inlinecode"><a class="idref" href="HoTT.Tests.html#Issue754_1.O"><span class="id" title="constructor">O</span></a></span> <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.A"><span class="id" title="variable">A</span></a></span> are modal, where "modal" means that the unit is an equivalence.  This is equivalent, roughly since every modal type <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.A"><span class="id" title="variable">A</span></a></span> (in this sense) is equivalent to <span class="inlinecode"><a class="idref" href="HoTT.Tests.html#Issue754_1.O"><span class="id" title="constructor">O</span></a></span> <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.A"><span class="id" title="variable">A</span></a></span>.
@@ -4590,7 +4590,7 @@ As promised, we redefine <span class="inlinecode"><a class="idref" href="HoTT.Mo
 </div>
 <div class="goal" id="goal0_3_79"><pre><span></span></pre></div>
 <div class="doc" scenenumber="81">
-<a name="lab280"></a><h2 class="section">The induction principle <span class="inlinecode"><a class="idref" href="HoTT.Modalities.Modality.html#Modalities_Theory.O_ind"><span class="id" title="definition">O_ind</span></a></span>, like most induction principles, is an equivalence.</h2>
+<a name="lab343"></a><h2 class="section">The induction principle <span class="inlinecode"><a class="idref" href="HoTT.Modalities.Modality.html#Modalities_Theory.O_ind"><span class="id" title="definition">O_ind</span></a></span>, like most induction principles, is an equivalence.</h2>
 </div>
 <div scenenumber="83" class="code">
 <span class="command" onmouseout="
@@ -5160,7 +5160,7 @@ Corollary 7.3.10.  (Theorem 7.3.9 is true for any reflective subuniverse.)
 </div>
 <div class="goal" id="goal0_3_119"><pre><span></span></pre></div>
 <div class="doc" scenenumber="121">
-<a name="lab281"></a><h2 class="section">The modal factorization system</h2>
+<a name="lab344"></a><h2 class="section">The modal factorization system</h2>
 </div>
 <div scenenumber="123" class="code">
 <span class="command" onmouseout="
@@ -5697,7 +5697,7 @@ Apparently Coq needs a little help to see that these paths are the same.
 </div>
 <div class="goal" id="goal0_3_151"><pre><span></span></pre></div>
 <div class="doc" scenenumber="153">
-<a name="lab282"></a><h2 class="section">Restriction of a family of modalities</h2>
+<a name="lab345"></a><h2 class="section">Restriction of a family of modalities</h2>
 <div class="doc" scenenumber="4"> </div>
 
  This is just like restriction of reflective subuniverses. 
@@ -5813,7 +5813,7 @@ Apparently Coq needs a little help to see that these paths are the same.
 </div>
 <div class="goal" id="goal0_3_155"><pre><span></span></pre></div>
 <div class="doc" scenenumber="157">
-<a name="lab283"></a><h2 class="section">Union of families of modalities</h2>
+<a name="lab346"></a><h2 class="section">Union of families of modalities</h2>
 </div>
 <div scenenumber="159" class="code">
 <span class="command" onmouseout="

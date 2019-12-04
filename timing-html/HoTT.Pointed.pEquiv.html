@@ -30,21 +30,21 @@ pre {
 
 <div class="code" title="File: pEquiv.v
 Line: 1
-Time: 0.026s">
-<div class="time" style="width: 19.402985074627%"></div>
+Time: 0.02s">
+<div class="time" style="width: 20%"></div>
 <pre>Require Import Basics.</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 1
-Time: 0.029s">
-<div class="time" style="width: 21.641791044776%"></div>
+Time: 0.023s">
+<div class="time" style="width: 23%"></div>
 <pre>
 Require Import Types.</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 2
-Time: 0.003s">
-<div class="time" style="width: 2.2388059701493%"></div>
+Time: 0.002s">
+<div class="time" style="width: 2%"></div>
 <pre>
 Require Import Pointed.Core.</pre>
 </div>
@@ -66,8 +66,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 7
-Time: 0.007s">
-<div class="time" style="width: 5.2238805970149%"></div>
+Time: 0.005s">
+<div class="time" style="width: 5%"></div>
 <pre>Definition pequiv_pmap_idmap {A} : A &lt;~&gt;* A
   := Build_pEquiv _ _ pmap_idmap _.</pre>
 </div>
@@ -130,29 +130,29 @@ Proof.</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 17
-Time: 0.04s">
-<div class="time" style="width: 29.850746268657%"></div>
+Time: 0.027s">
+<div class="time" style="width: 27%"></div>
 <pre>
   serapply Build_pEquiv.</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 18
-Time: 0.001s">
-<div class="time" style="width: 0.74626865671642%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   1: apply (Build_pMap _ _ f^-1).</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 19
 Time: 0.001s">
-<div class="time" style="width: 0.74626865671642%"></div>
+<div class="time" style="width: 1%"></div>
 <pre>
   1: apply moveR_equiv_V; symmetry; apply point_eq.</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 20
-Time: 0.025s">
-<div class="time" style="width: 18.65671641791%"></div>
+Time: 0.019s">
+<div class="time" style="width: 19%"></div>
 <pre>
   exact _.</pre>
 </div>
@@ -216,8 +216,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 31
-Time: 0.003s">
-<div class="time" style="width: 2.2388059701493%"></div>
+Time: 0.002s">
+<div class="time" style="width: 2%"></div>
 <pre>Definition pequiv_compose {A B C : pType} (f : A &lt;~&gt;* B) (g : B &lt;~&gt;* C)
   : A &lt;~&gt;* C := (Build_pEquiv A C (g o* f) isequiv_compose).</pre>
 </div>
@@ -274,8 +274,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 41
-Time: 0.002s">
-<div class="time" style="width: 1.4925373134328%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1%"></div>
 <pre>Definition issig_pequiv (A B : pType)
   : { f : A &lt;~&gt; B &amp; f (point A) = point B } &lt;~&gt; (A &lt;~&gt;* B).</pre>
 </div>
@@ -289,29 +289,29 @@ Proof.</pre>
 <div class="code" title="File: pEquiv.v
 Line: 43
 Time: 0.001s">
-<div class="time" style="width: 0.74626865671642%"></div>
+<div class="time" style="width: 1%"></div>
 <pre>
   transitivity { f : A -&gt;* B &amp; IsEquiv f }.</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 44
-Time: 0.016s">
-<div class="time" style="width: 11.940298507463%"></div>
+Time: 0.012s">
+<div class="time" style="width: 12%"></div>
 <pre>
   2: issig.</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 45
-Time: 0.002s">
-<div class="time" style="width: 1.4925373134328%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1%"></div>
 <pre>
   refine ((equiv_functor_sigma' (P := fun f =&gt; IsEquiv f.1)
     (issig_pmap A B) (fun f =&gt; equiv_idmap _)) oE _).</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 47
-Time: 0.003s">
-<div class="time" style="width: 2.2388059701493%"></div>
+Time: 0.002s">
+<div class="time" style="width: 2%"></div>
 <pre>
   refine (_ oE (equiv_functor_sigma' (Q := fun f =&gt; f.1 (point A) = point B)
     (issig_equiv A B)^-1 (fun f =&gt; equiv_idmap _))).</pre>
@@ -319,35 +319,35 @@ Time: 0.003s">
 <div class="code" title="File: pEquiv.v
 Line: 49
 Time: 0.001s">
-<div class="time" style="width: 0.74626865671642%"></div>
+<div class="time" style="width: 1%"></div>
 <pre>
   refine (_ oE (equiv_sigma_assoc _ _)^-1).</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 50
-Time: 0.001s">
-<div class="time" style="width: 0.74626865671642%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   refine (equiv_sigma_assoc _ _ oE _).</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 51
-Time: 0.001s">
-<div class="time" style="width: 0.74626865671642%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   refine (equiv_functor_sigma' 1 _).</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 52
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1%"></div>
 <pre>
   intro; cbn; apply equiv_sigma_symm0.</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 53
-Time: 0.014s">
-<div class="time" style="width: 10.44776119403%"></div>
+Time: 0.011s">
+<div class="time" style="width: 11%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -361,8 +361,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 56
-Time: 0.02s">
-<div class="time" style="width: 14.925373134328%"></div>
+Time: 0.018s">
+<div class="time" style="width: 18%"></div>
 <pre>Definition Build_pEquiv' {A B : pType} (f : A &lt;~&gt; B)
   (p : f (point A) = point B)
   : A &lt;~&gt;* B := Build_pEquiv _ _ (Build_pMap _ _ f p) _.</pre>
@@ -390,15 +390,15 @@ Proof.</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 61
-Time: 0.001s">
-<div class="time" style="width: 0.74626865671642%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   destruct A as [A a], B as [B b].</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 62
-Time: 0.003s">
-<div class="time" style="width: 2.2388059701493%"></div>
+Time: 0.002s">
+<div class="time" style="width: 2%"></div>
 <pre>
   refine (equiv_ap issig_ptype (A;a) (B;b) oE _).</pre>
 </div>
@@ -418,8 +418,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 65
-Time: 0.001s">
-<div class="time" style="width: 0.74626865671642%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   refine (equiv_functor_sigma' (equiv_path_universe A B) _); intros f.</pre>
 </div>
@@ -432,22 +432,22 @@ Time: 0s">
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 67
-Time: 0.002s">
-<div class="time" style="width: 1.4925373134328%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1%"></div>
 <pre>
   apply transport_path_universe.</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 68
-Time: 0.006s">
-<div class="time" style="width: 4.4776119402985%"></div>
+Time: 0.004s">
+<div class="time" style="width: 4%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 69
 Time: 0.001s">
-<div class="time" style="width: 0.74626865671642%"></div>
+<div class="time" style="width: 1%"></div>
 <pre>
 
 Definition path_ptype `{Univalence} {A B : pType} : (A &lt;~&gt;* B) -&gt; A = B
@@ -470,15 +470,15 @@ Proof.</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 75
-Time: 0.002s">
-<div class="time" style="width: 1.4925373134328%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1%"></div>
 <pre>
   intros p; apply (ap issig_ptype^-1) in p.</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 76
-Time: 0.002s">
-<div class="time" style="width: 1.4925373134328%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1%"></div>
 <pre>
   srefine (Build_pEquiv' (equiv_path A B p..1) p..2).</pre>
 </div>
@@ -500,7 +500,7 @@ Time: 0s">
 <div class="code" title="File: pEquiv.v
 Line: 80
 Time: 0.001s">
-<div class="time" style="width: 0.74626865671642%"></div>
+<div class="time" style="width: 1%"></div>
 <pre>Definition pSect {A B : pType} (s : A -&gt;* B) (r : B -&gt;* A)
   := r o* s ==* pmap_idmap.</pre>
 </div>
@@ -522,8 +522,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 85
-Time: 0.001s">
-<div class="time" style="width: 0.74626865671642%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>Definition peissect {A B : pType} (f : A &lt;~&gt;* B) : pSect f f^-1*.</pre>
 </div>
 <div class="code" title="File: pEquiv.v
@@ -535,8 +535,8 @@ Proof.</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 86
-Time: 0.012s">
-<div class="time" style="width: 8.955223880597%"></div>
+Time: 0.009s">
+<div class="time" style="width: 9%"></div>
 <pre>
   pointed_reduce.</pre>
 </div>
@@ -556,8 +556,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 89
-Time: 0.007s">
-<div class="time" style="width: 5.2238805970149%"></div>
+Time: 0.005s">
+<div class="time" style="width: 5%"></div>
 <pre>
   pointed_reduce.</pre>
 </div>
@@ -570,15 +570,15 @@ Time: 0s">
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 91
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1%"></div>
 <pre>
   apply inverse, concat_1p.</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 92
-Time: 0.013s">
-<div class="time" style="width: 9.7014925373134%"></div>
+Time: 0.008s">
+<div class="time" style="width: 8%"></div>
 <pre>
 Qed.</pre>
 </div>
@@ -619,8 +619,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 98
-Time: 0.023s">
-<div class="time" style="width: 17.164179104478%"></div>
+Time: 0.017s">
+<div class="time" style="width: 17%"></div>
 <pre>
   pointed_reduce.</pre>
 </div>
@@ -633,7 +633,7 @@ Time: 0s">
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 100
-Time: 0.134s">
+Time: 0.1s">
 <div class="time" style="width: 100%"></div>
 <pre>
   hott_simpl.</pre>
@@ -647,8 +647,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 102
-Time: 0.007s">
-<div class="time" style="width: 5.2238805970149%"></div>
+Time: 0.006s">
+<div class="time" style="width: 6%"></div>
 <pre>
 Qed.</pre>
 </div>
@@ -678,8 +678,8 @@ Proof.</pre>
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 109
-Time: 0.027s">
-<div class="time" style="width: 20.149253731343%"></div>
+Time: 0.024s">
+<div class="time" style="width: 24%"></div>
 <pre>
   serapply Build_pEquiv.</pre>
 </div>
@@ -692,8 +692,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 111
-Time: 0.001s">
-<div class="time" style="width: 0.74626865671642%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   serapply (isequiv_adjointify f f').</pre>
 </div>
@@ -744,7 +744,7 @@ Proof.</pre>
 <div class="code" title="File: pEquiv.v
 Line: 120
 Time: 0.025s">
-<div class="time" style="width: 18.65671641791%"></div>
+<div class="time" style="width: 25%"></div>
 <pre>
   serapply Build_pEquiv.</pre>
 </div>
@@ -757,8 +757,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: pEquiv.v
 Line: 122
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1%"></div>
 <pre>
   serapply (isequiv_adjointify f f').</pre>
 </div>

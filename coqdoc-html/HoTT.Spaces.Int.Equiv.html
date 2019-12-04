@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="coqdoc.css" rel="stylesheet" type="text/css" />
+<title>HoTT.Spaces.Int.Equiv</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library HoTT.Spaces.Int.Equiv</h1>
+
+<div class="code">
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Basics.html#"><span class="id" title="library">Basics</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Spaces.Pos.html#"><span class="id" title="library">Spaces.Pos</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Spaces.Int.Core.html#"><span class="id" title="library">Spaces.Int.Core</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Spaces.Int.Spec.html#"><span class="id" title="library">Spaces.Int.Spec</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab252"></a><h2 class="section">Iteration of equivalences</h2>
+
+<div class="paragraph"> </div>
+
+<a name="lab253"></a><h3 class="section">Iteration by arbitrary integers</h3>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="int_iter"><span class="id" title="definition">int_iter</span></a> {<span class="id" title="var">A</span>} (<span class="id" title="var">f</span> : <a class="idref" href="HoTT.Spaces.Int.Equiv.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#A"><span class="id" title="variable">A</span></a>) `{!<a class="idref" href="HoTT.Basics.Overture.html#IsEquiv"><span class="id" title="class">IsEquiv</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#f"><span class="id" title="variable">f</span></a>} (<span class="id" title="var">n</span> : <a class="idref" href="HoTT.Spaces.Int.Core.html#Int"><span class="id" title="inductive">Int</span></a>) : <a class="idref" href="HoTT.Spaces.Int.Equiv.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#A"><span class="id" title="variable">A</span></a><br/>
+&nbsp;&nbsp;:= <span class="id" title="keyword">match</span> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#n"><span class="id" title="variable">n</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="HoTT.Spaces.Int.Core.html#neg"><span class="id" title="constructor">neg</span></a> <span class="id" title="var">n</span> ⇒ <span class="id" title="keyword">fun</span> <span class="id" title="var">x</span> ⇒ <a class="idref" href="HoTT.Spaces.Pos.Core.html#pos_iter"><span class="id" title="definition">pos_iter</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#f"><span class="id" title="variable">f</span></a><a class="idref" href="HoTT.Basics.Overture.html#f3f2d22838b594a6e5dbfb541ecf90ae"><span class="id" title="notation">^-1</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#x"><span class="id" title="variable">x</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="HoTT.Spaces.Int.Core.html#zero"><span class="id" title="constructor">zero</span></a> ⇒ <a class="idref" href="HoTT.Basics.Overture.html#idmap"><span class="id" title="abbreviation">idmap</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="HoTT.Spaces.Int.Core.html#pos"><span class="id" title="constructor">pos</span></a> <span class="id" title="var">n</span> ⇒ <span class="id" title="keyword">fun</span> <span class="id" title="var">x</span> ⇒ <a class="idref" href="HoTT.Spaces.Pos.Core.html#pos_iter"><span class="id" title="definition">pos_iter</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#f"><span class="id" title="variable">f</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#x"><span class="id" title="variable">x</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Iteration by arbitrary integers requires the endofunction to be an equivalence, so that we can define a negative iteration by using its inverse. 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="int_iter_succ_l"><span class="id" title="definition">int_iter_succ_l</span></a> {<span class="id" title="var">A</span>} (<span class="id" title="var">f</span> : <a class="idref" href="HoTT.Spaces.Int.Equiv.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#A"><span class="id" title="variable">A</span></a>) `{<a class="idref" href="HoTT.Basics.Overture.html#IsEquiv"><span class="id" title="class">IsEquiv</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#f"><span class="id" title="variable">f</span></a>}<br/>
+&nbsp;&nbsp;(<span class="id" title="var">n</span> : <a class="idref" href="HoTT.Spaces.Int.Core.html#Int"><span class="id" title="inductive">Int</span></a>) (<span class="id" title="var">a</span> : <a class="idref" href="HoTT.Spaces.Int.Equiv.html#A"><span class="id" title="variable">A</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="HoTT.Spaces.Int.Equiv.html#int_iter"><span class="id" title="definition">int_iter</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#f"><span class="id" title="variable">f</span></a> (<a class="idref" href="HoTT.Spaces.Int.Core.html#int_succ"><span class="id" title="definition">int_succ</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#n"><span class="id" title="variable">n</span></a>) <a class="idref" href="HoTT.Spaces.Int.Equiv.html#a"><span class="id" title="variable">a</span></a> <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#f"><span class="id" title="variable">f</span></a> (<a class="idref" href="HoTT.Spaces.Int.Equiv.html#int_iter"><span class="id" title="definition">int_iter</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#f"><span class="id" title="variable">f</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#a"><span class="id" title="variable">a</span></a>).<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">destruct</span> <span class="id" title="var">n</span> <span class="id" title="keyword">as</span> [<span class="id" title="var">n</span>| |<span class="id" title="var">n</span>]; <span class="id" title="tactic">trivial</span>.<br/>
+&nbsp;&nbsp;+ <span class="id" title="var">revert</span> <span class="id" title="var">n</span> <span class="id" title="var">f</span> <span class="id" title="var">H</span> <span class="id" title="var">a</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Spaces.Pos.Core.html#pos_peano_ind"><span class="id" title="definition">pos_peano_ind</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{ <span class="id" title="tactic">intros</span> <span class="id" title="var">f</span> <span class="id" title="var">H</span> <span class="id" title="var">a</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">symmetry</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Basics.Overture.html#eisretr"><span class="id" title="projection">eisretr</span></a>. }<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">hnf</span>; <span class="id" title="tactic">intros</span> <span class="id" title="var">n</span> <span class="id" title="var">p</span> <span class="id" title="var">f</span> <span class="id" title="var">H</span> <span class="id" title="var">a</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">refine</span> (<a class="idref" href="HoTT.Basics.Overture.html#ap"><span class="id" title="definition">ap</span></a> (<span class="id" title="keyword">fun</span> <span class="id" title="var">x</span> ⇒ <span class="id" title="var">_</span> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#x"><span class="id" title="variable">x</span></a> <span class="id" title="var">_</span>) <span class="id" title="var">_</span> <a class="idref" href="HoTT.Basics.Overture.html#da4283005a63bc086811fc2e64b35356"><span class="id" title="notation">@</span></a> <span class="id" title="var">_</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;1: <span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Spaces.Int.Spec.html#int_neg_pos_succ"><span class="id" title="lemma">int_neg_pos_succ</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;1: <span class="id" title="tactic">exact</span> (<a class="idref" href="HoTT.Basics.Overture.html#eisretr"><span class="id" title="projection">eisretr</span></a> <a class="idref" href="HoTT.Spaces.Int.Core.html#int_succ"><span class="id" title="definition">int_succ</span></a> (<a class="idref" href="HoTT.Spaces.Int.Core.html#neg"><span class="id" title="constructor">neg</span></a> <span class="id" title="var">n</span>)).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Basics.Equivalences.html#moveL_equiv_M"><span class="id" title="definition">moveL_equiv_M</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">cbn</span>; <span class="id" title="tactic">symmetry</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Spaces.Pos.Spec.html#pos_iter_succ_l"><span class="id" title="lemma">pos_iter_succ_l</span></a>.<br/>
+&nbsp;&nbsp;+ <span class="id" title="var">cbn</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Spaces.Pos.Spec.html#pos_add_1_r"><span class="id" title="lemma">pos_add_1_r</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Spaces.Pos.Spec.html#pos_iter_succ_l"><span class="id" title="lemma">pos_iter_succ_l</span></a>.<br/>
+<span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="int_iter_succ_r"><span class="id" title="definition">int_iter_succ_r</span></a> {<span class="id" title="var">A</span>} (<span class="id" title="var">f</span> : <a class="idref" href="HoTT.Spaces.Int.Equiv.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#A"><span class="id" title="variable">A</span></a>) `{<a class="idref" href="HoTT.Basics.Overture.html#IsEquiv"><span class="id" title="class">IsEquiv</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#f"><span class="id" title="variable">f</span></a>}<br/>
+&nbsp;&nbsp;(<span class="id" title="var">n</span> : <a class="idref" href="HoTT.Spaces.Int.Core.html#Int"><span class="id" title="inductive">Int</span></a>) (<span class="id" title="var">a</span> : <a class="idref" href="HoTT.Spaces.Int.Equiv.html#A"><span class="id" title="variable">A</span></a>) : <a class="idref" href="HoTT.Spaces.Int.Equiv.html#int_iter"><span class="id" title="definition">int_iter</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#f"><span class="id" title="variable">f</span></a> (<a class="idref" href="HoTT.Spaces.Int.Core.html#int_succ"><span class="id" title="definition">int_succ</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#n"><span class="id" title="variable">n</span></a>) <a class="idref" href="HoTT.Spaces.Int.Equiv.html#a"><span class="id" title="variable">a</span></a> <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#int_iter"><span class="id" title="definition">int_iter</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#f"><span class="id" title="variable">f</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#n"><span class="id" title="variable">n</span></a> (<a class="idref" href="HoTT.Spaces.Int.Equiv.html#f"><span class="id" title="variable">f</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#a"><span class="id" title="variable">a</span></a>).<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">destruct</span> <span class="id" title="var">n</span> <span class="id" title="keyword">as</span> [<span class="id" title="var">n</span>| |<span class="id" title="var">n</span>]; <span class="id" title="tactic">trivial</span>.<br/>
++ <span class="id" title="var">revert</span> <span class="id" title="var">n</span> <span class="id" title="var">f</span> <span class="id" title="var">H</span> <span class="id" title="var">a</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Spaces.Pos.Core.html#pos_peano_ind"><span class="id" title="definition">pos_peano_ind</span></a>.<br/>
+&nbsp;&nbsp;{ <span class="id" title="tactic">intros</span> <span class="id" title="var">f</span> <span class="id" title="var">H</span> <span class="id" title="var">a</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">symmetry</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Basics.Overture.html#eissect"><span class="id" title="projection">eissect</span></a>. }<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">hnf</span>; <span class="id" title="tactic">intros</span> <span class="id" title="var">n</span> <span class="id" title="var">p</span> <span class="id" title="var">f</span> <span class="id" title="var">H</span> <span class="id" title="var">a</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Spaces.Int.Spec.html#int_neg_pos_succ"><span class="id" title="lemma">int_neg_pos_succ</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">refine</span> (<a class="idref" href="HoTT.Basics.Overture.html#ap"><span class="id" title="definition">ap</span></a> (<span class="id" title="keyword">fun</span> <span class="id" title="var">x</span> ⇒ <span class="id" title="var">_</span> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#x"><span class="id" title="variable">x</span></a> <span class="id" title="var">_</span>) <span class="id" title="var">_</span> <a class="idref" href="HoTT.Basics.Overture.html#da4283005a63bc086811fc2e64b35356"><span class="id" title="notation">@</span></a> <span class="id" title="var">_</span>).<br/>
+&nbsp;&nbsp;1: <span class="id" title="tactic">exact</span> (<a class="idref" href="HoTT.Basics.Overture.html#eisretr"><span class="id" title="projection">eisretr</span></a> <a class="idref" href="HoTT.Spaces.Int.Core.html#int_succ"><span class="id" title="definition">int_succ</span></a> (<a class="idref" href="HoTT.Spaces.Int.Core.html#neg"><span class="id" title="constructor">neg</span></a> <span class="id" title="var">n</span>)).<br/>
+&nbsp;&nbsp;<span class="id" title="var">cbn</span>; <span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Spaces.Pos.Spec.html#pos_add_1_r"><span class="id" title="lemma">pos_add_1_r</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Spaces.Pos.Spec.html#pos_iter_succ_r"><span class="id" title="lemma">pos_iter_succ_r</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Basics.Overture.html#eissect"><span class="id" title="projection">eissect</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">reflexivity</span>.<br/>
++ <span class="id" title="var">cbn</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Spaces.Pos.Spec.html#pos_add_1_r"><span class="id" title="lemma">pos_add_1_r</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Spaces.Pos.Spec.html#pos_iter_succ_r"><span class="id" title="lemma">pos_iter_succ_r</span></a>.<br/>
+<span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="iter_int_pred_l"><span class="id" title="definition">iter_int_pred_l</span></a> {<span class="id" title="var">A</span>} (<span class="id" title="var">f</span> : <a class="idref" href="HoTT.Spaces.Int.Equiv.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#A"><span class="id" title="variable">A</span></a>) `{<a class="idref" href="HoTT.Basics.Overture.html#IsEquiv"><span class="id" title="class">IsEquiv</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#f"><span class="id" title="variable">f</span></a>}<br/>
+&nbsp;&nbsp;(<span class="id" title="var">n</span> : <a class="idref" href="HoTT.Spaces.Int.Core.html#Int"><span class="id" title="inductive">Int</span></a>) (<span class="id" title="var">a</span> : <a class="idref" href="HoTT.Spaces.Int.Equiv.html#A"><span class="id" title="variable">A</span></a>)<br/>
+: <a class="idref" href="HoTT.Spaces.Int.Equiv.html#int_iter"><span class="id" title="definition">int_iter</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#f"><span class="id" title="variable">f</span></a> (<a class="idref" href="HoTT.Spaces.Int.Core.html#int_pred"><span class="id" title="definition">int_pred</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#n"><span class="id" title="variable">n</span></a>) <a class="idref" href="HoTT.Spaces.Int.Equiv.html#a"><span class="id" title="variable">a</span></a> <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#f"><span class="id" title="variable">f</span></a><a class="idref" href="HoTT.Basics.Overture.html#f3f2d22838b594a6e5dbfb541ecf90ae"><span class="id" title="notation">^-1</span></a> (<a class="idref" href="HoTT.Spaces.Int.Equiv.html#int_iter"><span class="id" title="definition">int_iter</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#f"><span class="id" title="variable">f</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#a"><span class="id" title="variable">a</span></a>).<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">destruct</span> <span class="id" title="var">n</span> <span class="id" title="keyword">as</span> [<span class="id" title="var">n</span>| |<span class="id" title="var">n</span>]; <span class="id" title="tactic">trivial</span>.<br/>
+&nbsp;&nbsp;+ <span class="id" title="var">cbn</span>; <span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Spaces.Pos.Spec.html#pos_add_1_r"><span class="id" title="lemma">pos_add_1_r</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">by</span> <span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Spaces.Pos.Spec.html#pos_iter_succ_l"><span class="id" title="lemma">pos_iter_succ_l</span></a>.<br/>
+&nbsp;&nbsp;+ <span class="id" title="var">revert</span> <span class="id" title="var">n</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Spaces.Pos.Core.html#pos_peano_ind"><span class="id" title="definition">pos_peano_ind</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;- <span class="id" title="var">cbn</span>; <span class="id" title="tactic">symmetry</span>; <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Basics.Overture.html#eissect"><span class="id" title="projection">eissect</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;- <span class="id" title="tactic">hnf</span>; <span class="id" title="tactic">intros</span> <span class="id" title="var">p</span> <span class="id" title="var">q</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> &lt;- <a class="idref" href="HoTT.Spaces.Pos.Spec.html#pos_add_1_r"><span class="id" title="lemma">pos_add_1_r</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">change</span> (<a class="idref" href="HoTT.Spaces.Int.Core.html#int_pred"><span class="id" title="definition">int_pred</span></a> (<a class="idref" href="HoTT.Spaces.Int.Core.html#pos"><span class="id" title="constructor">pos</span></a> (<span class="id" title="var">p</span> <a class="idref" href="HoTT.Spaces.Pos.Core.html#50efadf7a9f9d41adb2b162cbba3bda7"><span class="id" title="notation">+</span></a> 1)%<span class="id" title="var">pos</span>))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">with</span> (<a class="idref" href="HoTT.Spaces.Int.Core.html#int_pred"><span class="id" title="definition">int_pred</span></a> (<a class="idref" href="HoTT.Spaces.Int.Core.html#int_succ"><span class="id" title="definition">int_succ</span></a> (<a class="idref" href="HoTT.Spaces.Int.Core.html#pos"><span class="id" title="constructor">pos</span></a> <span class="id" title="var">p</span>))).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Spaces.Int.Spec.html#int_pred_succ"><span class="id" title="definition">int_pred_succ</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">change</span> (<a class="idref" href="HoTT.Spaces.Int.Core.html#pos"><span class="id" title="constructor">pos</span></a> (<span class="id" title="var">p</span> <a class="idref" href="HoTT.Spaces.Pos.Core.html#50efadf7a9f9d41adb2b162cbba3bda7"><span class="id" title="notation">+</span></a> 1)%<span class="id" title="var">pos</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">with</span> (<a class="idref" href="HoTT.Spaces.Int.Core.html#int_succ"><span class="id" title="definition">int_succ</span></a> (<a class="idref" href="HoTT.Spaces.Int.Core.html#pos"><span class="id" title="constructor">pos</span></a> <span class="id" title="var">p</span>)).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#int_iter_succ_l"><span class="id" title="definition">int_iter_succ_l</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">symmetry</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Basics.Overture.html#eissect"><span class="id" title="projection">eissect</span></a>.<br/>
+<span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="iter_int_pred_r"><span class="id" title="definition">iter_int_pred_r</span></a> {<span class="id" title="var">A</span>} (<span class="id" title="var">f</span> : <a class="idref" href="HoTT.Spaces.Int.Equiv.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#A"><span class="id" title="variable">A</span></a>) `{<a class="idref" href="HoTT.Basics.Overture.html#IsEquiv"><span class="id" title="class">IsEquiv</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#f"><span class="id" title="variable">f</span></a>}<br/>
+&nbsp;&nbsp;(<span class="id" title="var">n</span> : <a class="idref" href="HoTT.Spaces.Int.Core.html#Int"><span class="id" title="inductive">Int</span></a>) (<span class="id" title="var">a</span> : <a class="idref" href="HoTT.Spaces.Int.Equiv.html#A"><span class="id" title="variable">A</span></a>)<br/>
+: <a class="idref" href="HoTT.Spaces.Int.Equiv.html#int_iter"><span class="id" title="definition">int_iter</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#f"><span class="id" title="variable">f</span></a> (<a class="idref" href="HoTT.Spaces.Int.Core.html#int_pred"><span class="id" title="definition">int_pred</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#n"><span class="id" title="variable">n</span></a>) <a class="idref" href="HoTT.Spaces.Int.Equiv.html#a"><span class="id" title="variable">a</span></a> <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#int_iter"><span class="id" title="definition">int_iter</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#f"><span class="id" title="variable">f</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#n"><span class="id" title="variable">n</span></a> (<a class="idref" href="HoTT.Spaces.Int.Equiv.html#f"><span class="id" title="variable">f</span></a><a class="idref" href="HoTT.Basics.Overture.html#f3f2d22838b594a6e5dbfb541ecf90ae"><span class="id" title="notation">^-1</span></a> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#a"><span class="id" title="variable">a</span></a>).<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">revert</span> <span class="id" title="var">f</span> <span class="id" title="var">H</span> <span class="id" title="var">n</span> <span class="id" title="var">a</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">destruct</span> <span class="id" title="var">n</span> <span class="id" title="keyword">as</span> [<span class="id" title="var">n</span>| |<span class="id" title="var">n</span>]; <span class="id" title="tactic">trivial</span>;<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">induction</span> <span class="id" title="var">n</span> <span class="id" title="keyword">as</span> [|<span class="id" title="var">n</span> <span class="id" title="var">nH</span>] <span class="id" title="keyword">using</span> <a class="idref" href="HoTT.Spaces.Pos.Core.html#pos_peano_ind"><span class="id" title="definition">pos_peano_ind</span></a>; <span class="id" title="tactic">trivial</span>.<br/>
+&nbsp;&nbsp;2: <span class="id" title="tactic">hnf</span>; <span class="id" title="tactic">intros</span>; <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Basics.Overture.html#symmetry"><span class="id" title="definition">symmetry</span></a>, <a class="idref" href="HoTT.Basics.Overture.html#eisretr"><span class="id" title="projection">eisretr</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">all</span>: <span class="id" title="tactic">rewrite</span> &lt;- <a class="idref" href="HoTT.Spaces.Pos.Spec.html#pos_add_1_r"><span class="id" title="lemma">pos_add_1_r</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">all</span>: <span class="id" title="tactic">intro</span> <span class="id" title="var">a</span>.<br/>
+&nbsp;&nbsp;1: <span class="id" title="tactic">change</span> (<a class="idref" href="HoTT.Spaces.Int.Core.html#neg"><span class="id" title="constructor">neg</span></a> (<span class="id" title="var">n</span> <a class="idref" href="HoTT.Spaces.Pos.Core.html#50efadf7a9f9d41adb2b162cbba3bda7"><span class="id" title="notation">+</span></a> 1)%<span class="id" title="var">pos</span>) <span class="id" title="keyword">with</span> (<a class="idref" href="HoTT.Spaces.Int.Core.html#int_pred"><span class="id" title="definition">int_pred</span></a> (<a class="idref" href="HoTT.Spaces.Int.Core.html#neg"><span class="id" title="constructor">neg</span></a> <span class="id" title="var">n</span>)).<br/>
+&nbsp;&nbsp;2: <span class="id" title="tactic">change</span> (<a class="idref" href="HoTT.Spaces.Int.Core.html#pos"><span class="id" title="constructor">pos</span></a> (<span class="id" title="var">n</span> <a class="idref" href="HoTT.Spaces.Pos.Core.html#50efadf7a9f9d41adb2b162cbba3bda7"><span class="id" title="notation">+</span></a> 1)%<span class="id" title="var">pos</span>) <span class="id" title="keyword">with</span> (<a class="idref" href="HoTT.Spaces.Int.Core.html#int_succ"><span class="id" title="definition">int_succ</span></a> (<a class="idref" href="HoTT.Spaces.Int.Core.html#pos"><span class="id" title="constructor">pos</span></a> <span class="id" title="var">n</span>)).<br/>
+&nbsp;&nbsp;1: <span class="id" title="tactic">rewrite</span> &lt;- 2 <a class="idref" href="HoTT.Spaces.Int.Spec.html#int_neg_pos_succ"><span class="id" title="lemma">int_neg_pos_succ</span></a>.<br/>
+&nbsp;&nbsp;1: <span class="id" title="var">cbn</span>; <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Spaces.Pos.Spec.html#pos_iter_succ_r"><span class="id" title="lemma">pos_iter_succ_r</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Spaces.Int.Spec.html#int_pred_succ"><span class="id" title="definition">int_pred_succ</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Spaces.Int.Equiv.html#int_iter_succ_r"><span class="id" title="definition">int_iter_succ_r</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Basics.Overture.html#eisretr"><span class="id" title="projection">eisretr</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">reflexivity</span>.<br/>
+<span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>
