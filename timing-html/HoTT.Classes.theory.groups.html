@@ -30,7 +30,7 @@ pre {
 
 <div class="code" title="File: groups.v
 Line: 1
-Time: 0.434s">
+Time: 0.444s">
 <div class="time" style="width: 100%"></div>
 <pre>Require Import
   HoTT.Classes.interfaces.abstract_algebra.</pre>
@@ -41,17 +41,25 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-Section group_props.</pre>
+Local Open Scope mc_mult_scope.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 4
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
+
+Section group_props.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 6
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
   Context `{IsGroup G}.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 5
+Line: 7
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -60,98 +68,98 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 8
+Line: 10
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance negate_involutive : Involutive (-).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 8
+Line: 10
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 9
+Line: 11
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros x.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 10
+Line: 12
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
-    transitivity (mon_unit &amp; x).</pre>
+    transitivity (mon_unit * x).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 11
+Line: 13
 Time: 0.003s">
-<div class="time" style="width: 0.69124423963134%"></div>
+<div class="time" style="width: 0.67567567567568%"></div>
 <pre>
     2: apply left_identity.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 12
+Line: 14
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
-    transitivity ((- - x &amp; - x) &amp; x).</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 13
-Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
-<pre>
-    2: apply (@ap _ _ (fun y =&gt; y &amp; x)),
-          left_inverse.</pre>
+    transitivity ((- - x * - x) * x).</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 15
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
-    transitivity (- - x &amp; (- x &amp; x)).</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 16
-Time: 0.006s">
-<div class="time" style="width: 1.3824884792627%"></div>
-<pre>
-    2: apply associativity.</pre>
+    2: apply (@ap _ _ (fun y =&gt; y * x)),
+          left_inverse.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 17
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
-    transitivity (- - x &amp; mon_unit).</pre>
+    transitivity (- - x * (- x * x)).</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 18
-Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+Time: 0.005s">
+<div class="time" style="width: 1.1261261261261%"></div>
 <pre>
-    2: apply ap, symmetry, left_inverse.</pre>
+    2: apply associativity.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 19
-Time: 0.004s">
-<div class="time" style="width: 0.92165898617512%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
-    apply symmetry, right_identity.</pre>
+    transitivity (- - x * mon_unit).</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 20
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
+<pre>
+    2: apply ap, symmetry, left_inverse.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 21
+Time: 0.003s">
+<div class="time" style="width: 0.67567567567568%"></div>
+<pre>
+    apply symmetry, right_identity.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 22
+Time: 0.001s">
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 21
+Line: 23
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -159,42 +167,42 @@ Time: 0s">
   Global Instance isinj_group_negate : IsInjective (-).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 23
+Line: 25
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 24
+Line: 26
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros x y E.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 25
-Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+Line: 27
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
     refine ((involutive x)^ @ _ @ involutive y).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 26
+Line: 28
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply ap, E.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 27
+Line: 29
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 28
+Line: 30
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -202,277 +210,277 @@ Time: 0s">
   Lemma negate_mon_unit : - mon_unit = mon_unit.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 30
+Line: 32
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 31
+Line: 33
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     change ((fun x =&gt; - mon_unit = x) mon_unit).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 32
+Line: 34
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
     apply (transport _ (left_inverse mon_unit)).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 33
-Time: 0.004s">
-<div class="time" style="width: 0.92165898617512%"></div>
+Line: 35
+Time: 0.003s">
+<div class="time" style="width: 0.67567567567568%"></div>
 <pre>
     apply symmetry, right_identity.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 34
+Line: 36
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Qed.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 35
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-
-  Global Instance group_cancelL : forall z : G, LeftCancellation (&amp;) z.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 37
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
+
+  Global Instance group_cancelL : forall z : G, LeftCancellation (.*.) z.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 39
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 38
+Line: 40
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros z x y E.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 39
-Time: 0.006s">
-<div class="time" style="width: 1.3824884792627%"></div>
+Line: 41
+Time: 0.004s">
+<div class="time" style="width: 0.9009009009009%"></div>
 <pre>
     rewrite &lt;- (left_identity x).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 40
-Time: 0.002s">
-<div class="time" style="width: 0.46082949308756%"></div>
+Line: 42
+Time: 0.001s">
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
     rewrite &lt;- (left_inverse (unit:=mon_unit) z).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 41
-Time: 0.015s">
-<div class="time" style="width: 3.4562211981567%"></div>
+Line: 43
+Time: 0.012s">
+<div class="time" style="width: 2.7027027027027%"></div>
 <pre>
     rewrite &lt;- simple_associativity.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 42
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    rewrite E.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 43
-Time: 0.026s">
-<div class="time" style="width: 5.9907834101382%"></div>
-<pre>
-    rewrite simple_associativity, (left_inverse z), left_identity.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 44
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    reflexivity.</pre>
+    rewrite E.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 45
-Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+Time: 0.025s">
+<div class="time" style="width: 5.6306306306306%"></div>
 <pre>
-  Qed.</pre>
+    rewrite simple_associativity, (left_inverse z), left_identity.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 46
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-
-  Global Instance group_cancelR: forall z : G, RightCancellation (&amp;) z.</pre>
+    reflexivity.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 47
+Time: 0.001s">
+<div class="time" style="width: 0.22522522522523%"></div>
+<pre>
+  Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 48
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
+
+  Global Instance group_cancelR: forall z : G, RightCancellation (.*.) z.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 50
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 49
+Line: 51
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros z x y E.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 50
+Line: 52
 Time: 0.005s">
-<div class="time" style="width: 1.1520737327189%"></div>
+<div class="time" style="width: 1.1261261261261%"></div>
 <pre>
     rewrite &lt;-(right_identity x).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 51
+Line: 53
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
     rewrite &lt;-(right_inverse (unit:=mon_unit) z).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 52
-Time: 0.008s">
-<div class="time" style="width: 1.8433179723502%"></div>
+Line: 54
+Time: 0.007s">
+<div class="time" style="width: 1.5765765765766%"></div>
 <pre>
     rewrite associativity.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 53
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    rewrite E.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 54
-Time: 0.015s">
-<div class="time" style="width: 3.4562211981567%"></div>
-<pre>
-    rewrite &lt;-(associativity y ), right_inverse, right_identity.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 55
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    reflexivity.</pre>
+    rewrite E.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 56
+Time: 0.014s">
+<div class="time" style="width: 3.1531531531532%"></div>
+<pre>
+    rewrite &lt;-(associativity y ), right_inverse, right_identity.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 57
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    reflexivity.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 58
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 57
+Line: 59
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
 
-  Lemma negate_sg_op x y : - (x &amp; y) = -y &amp; -x.</pre>
+  Lemma negate_sg_op x y : - (x * y) = -y * -x.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 59
+Line: 61
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 60
-Time: 0.006s">
-<div class="time" style="width: 1.3824884792627%"></div>
-<pre>
-    rewrite &lt;- (left_identity (-y &amp; -x)).</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 61
-Time: 0.002s">
-<div class="time" style="width: 0.46082949308756%"></div>
-<pre>
-    rewrite &lt;- (left_inverse (unit:=mon_unit) (x &amp; y)).</pre>
-</div>
-<div class="code" title="File: groups.v
 Line: 62
-Time: 0.013s">
-<div class="time" style="width: 2.9953917050691%"></div>
+Time: 0.005s">
+<div class="time" style="width: 1.1261261261261%"></div>
 <pre>
-    rewrite &lt;- simple_associativity.</pre>
+    rewrite &lt;- (left_identity (-y * -x)).</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 63
-Time: 0.013s">
-<div class="time" style="width: 2.9953917050691%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.22522522522523%"></div>
+<pre>
+    rewrite &lt;- (left_inverse (unit:=mon_unit) (x * y)).</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 64
+Time: 0.011s">
+<div class="time" style="width: 2.4774774774775%"></div>
 <pre>
     rewrite &lt;- simple_associativity.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 64
+Line: 65
+Time: 0.011s">
+<div class="time" style="width: 2.4774774774775%"></div>
+<pre>
+    rewrite &lt;- simple_associativity.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 66
 Time: 0.008s">
-<div class="time" style="width: 1.8433179723502%"></div>
+<div class="time" style="width: 1.8018018018018%"></div>
 <pre>
     rewrite (associativity y).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 65
-Time: 0.002s">
-<div class="time" style="width: 0.46082949308756%"></div>
-<pre>
-    rewrite right_inverse.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 66
-Time: 0.005s">
-<div class="time" style="width: 1.1520737327189%"></div>
-<pre>
-    rewrite (left_identity (-x)).</pre>
-</div>
-<div class="code" title="File: groups.v
 Line: 67
 Time: 0.002s">
-<div class="time" style="width: 0.46082949308756%"></div>
+<div class="time" style="width: 0.45045045045045%"></div>
 <pre>
     rewrite right_inverse.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 68
-Time: 0.013s">
-<div class="time" style="width: 2.9953917050691%"></div>
+Time: 0.005s">
+<div class="time" style="width: 1.1261261261261%"></div>
+<pre>
+    rewrite (left_identity (-x)).</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 69
+Time: 0.002s">
+<div class="time" style="width: 0.45045045045045%"></div>
+<pre>
+    rewrite right_inverse.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 70
+Time: 0.012s">
+<div class="time" style="width: 2.7027027027027%"></div>
 <pre>
     apply symmetry, right_identity.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 69
-Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+Line: 71
+Time: 0.002s">
+<div class="time" style="width: 0.45045045045045%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 70
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 72
+Time: 0.001s">
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
 
 End group_props.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 72
+Line: 74
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -480,67 +488,59 @@ Time: 0s">
 Section abgroup_props.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 74
-Time: 0.002s">
-<div class="time" style="width: 0.46082949308756%"></div>
+Line: 76
+Time: 0.001s">
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
 
-  Lemma negate_sg_op_distr `{IsAbGroup G} x y : -(x &amp; y) = -x &amp; -y.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 76
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  Proof.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 77
-Time: 0.004s">
-<div class="time" style="width: 0.92165898617512%"></div>
-<pre>
-    path_via (-y &amp; -x).</pre>
+  Lemma negate_sg_op_distr `{IsAbGroup G} x y : -(x * y) = -x * -y.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 78
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    -</pre>
+  Proof.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 79
+Time: 0.003s">
+<div class="time" style="width: 0.67567567567568%"></div>
+<pre>
+    path_via (-y * -x).</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 80
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    -</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 81
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply negate_sg_op.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 79
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    -</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 80
-Time: 0.006s">
-<div class="time" style="width: 1.3824884792627%"></div>
-<pre> apply commutativity.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 80
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 81
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-
-End abgroup_props.</pre>
+    -</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 82
+Time: 0.005s">
+<div class="time" style="width: 1.1261261261261%"></div>
+<pre> apply commutativity.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 82
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 83
@@ -548,18 +548,26 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-Section groupmor_props.</pre>
+End abgroup_props.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 85
-Time: 0.002s">
-<div class="time" style="width: 0.46082949308756%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Section groupmor_props.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 87
+Time: 0.001s">
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
 
   Context `{IsGroup A} `{IsGroup B} {f : A -&gt; B} `{!IsMonoidPreserving f}.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 87
+Line: 89
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -567,54 +575,46 @@ Time: 0s">
   Lemma preserves_negate x : f (-x) = -f x.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 89
+Line: 91
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 90
+Line: 92
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
-    apply (left_cancellation (&amp;) (f x)).</pre>
+    apply (left_cancellation (.*.) (f x)).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 91
+Line: 93
 Time: 0.003s">
-<div class="time" style="width: 0.69124423963134%"></div>
+<div class="time" style="width: 0.67567567567568%"></div>
 <pre>
     rewrite &lt;-preserves_sg_op.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 92
-Time: 0.004s">
-<div class="time" style="width: 0.92165898617512%"></div>
+Line: 94
+Time: 0.003s">
+<div class="time" style="width: 0.67567567567568%"></div>
 <pre>
     rewrite 2!right_inverse.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 93
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    apply preserves_mon_unit.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 94
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 95
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-
-End groupmor_props.</pre>
+    apply preserves_mon_unit.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 96
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 97
@@ -622,21 +622,29 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-Section from_another_sg.</pre>
+End groupmor_props.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 99
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Section from_another_sg.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 101
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
 
   Context
     `{IsSemiGroup A} `{IsHSet B}
     `{Bop : SgOp B} (f : B -&gt; A) `{!IsInjective f}
-    (op_correct : forall x y, f (x &amp; y) = f x &amp; f y).</pre>
+    (op_correct : forall x y, f (x * y) = f x * f y).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 104
+Line: 106
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -644,74 +652,74 @@ Time: 0s">
   Lemma projected_sg: IsSemiGroup B.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 106
+Line: 108
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 107
+Line: 109
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   split.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 108
+Line: 110
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 109
+Line: 111
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply _.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 109
+Line: 111
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 110
+Line: 112
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> repeat intro; apply (injective f).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 110
+Line: 112
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
     rewrite !op_correct.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 111
+Line: 113
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre> apply associativity.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 111
+Line: 113
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 112
+Line: 114
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 End from_another_sg.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 113
+Line: 115
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -719,17 +727,17 @@ Time: 0s">
 Section from_another_com.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 115
+Line: 117
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
 
   Context `{SgOp A} `{!Commutative (A:=A) sg_op} {B}
    `{Bop : SgOp B} (f : B -&gt; A) `{!IsInjective f}
-   (op_correct : forall x y, f (x &amp; y) = f x &amp; f y).</pre>
+   (op_correct : forall x y, f (x * y) = f x * f y).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 119
+Line: 121
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -737,54 +745,46 @@ Time: 0s">
   Lemma projected_comm : Commutative (A:=B) sg_op.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 121
+Line: 123
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 122
+Line: 124
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros x y.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 123
+Line: 125
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply (injective f).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 124
+Line: 126
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     rewrite 2!op_correct.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 125
+Line: 127
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply commutativity.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 126
+Line: 128
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Qed.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 127
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-
-End from_another_com.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 129
@@ -792,21 +792,29 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-Section from_another_com_sg.</pre>
+End from_another_com.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 131
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Section from_another_com_sg.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 133
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
 
   Context
     `{IsCommutativeSemiGroup A} `{IsHSet B}
     `{Bop : SgOp B} (f : B -&gt; A) `{!IsInjective f}
-    (op_correct : forall x y, f (x &amp; y) = f x &amp; f y).</pre>
+    (op_correct : forall x y, f (x * y) = f x * f y).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 136
+Line: 138
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -814,59 +822,51 @@ Time: 0s">
   Lemma projected_com_sg : IsCommutativeSemiGroup B.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 138
+Line: 140
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 139
+Line: 141
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     split.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 140
+Line: 142
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 141
+Line: 143
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply (projected_sg f);assumption.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 141
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    -</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 142
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> apply (projected_comm f);assumption.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 142
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 143
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-
-End from_another_com_sg.</pre>
+    -</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 144
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> apply (projected_comm f);assumption.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 144
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 145
@@ -874,20 +874,28 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-Section from_another_monoid.</pre>
+End from_another_com_sg.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 147
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Section from_another_monoid.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 149
 Time: 0.002s">
-<div class="time" style="width: 0.46082949308756%"></div>
+<div class="time" style="width: 0.45045045045045%"></div>
 <pre>
 
   Context `{IsMonoid A} `{IsHSet B}
    `{Bop : SgOp B} `{Bunit : MonUnit B} (f : B -&gt; A) `{!IsInjective f}
-   (op_correct : forall x y, f (x &amp; y) = f x &amp; f y) (unit_correct : f mon_unit = mon_unit).</pre>
+   (op_correct : forall x y, f (x * y) = f x * f y) (unit_correct : f mon_unit = mon_unit).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 151
+Line: 153
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -895,106 +903,98 @@ Time: 0s">
   Lemma projected_monoid : IsMonoid B.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 153
+Line: 155
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 154
+Line: 156
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     split.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 155
+Line: 157
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 156
+Line: 158
 Time: 0.003s">
-<div class="time" style="width: 0.69124423963134%"></div>
+<div class="time" style="width: 0.67567567567568%"></div>
 <pre> apply (projected_sg f).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 156
+Line: 158
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> assumption.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 156
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    -</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 157
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> repeat intro; apply (injective f).</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 157
-Time: 0.002s">
-<div class="time" style="width: 0.46082949308756%"></div>
-<pre>
-      rewrite op_correct, unit_correct, left_identity.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 158
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-      reflexivity.</pre>
+    -</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 159
 Time: 0s">
 <div class="time" style="width: 0%"></div>
+<pre> repeat intro; apply (injective f).</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 159
+Time: 0.002s">
+<div class="time" style="width: 0.45045045045045%"></div>
 <pre>
-    -</pre>
+      rewrite op_correct, unit_correct, left_identity.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 160
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> repeat intro; apply (injective f).</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 160
-Time: 0.002s">
-<div class="time" style="width: 0.46082949308756%"></div>
 <pre>
-      rewrite op_correct, unit_correct, right_identity.</pre>
+      reflexivity.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 161
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-      reflexivity.</pre>
+    -</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 162
 Time: 0s">
 <div class="time" style="width: 0%"></div>
+<pre> repeat intro; apply (injective f).</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 162
+Time: 0.002s">
+<div class="time" style="width: 0.45045045045045%"></div>
 <pre>
-  Qed.</pre>
+      rewrite op_correct, unit_correct, right_identity.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 163
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-
-End from_another_monoid.</pre>
+      reflexivity.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 164
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 165
@@ -1002,22 +1002,30 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-Section from_another_com_monoid.</pre>
+End from_another_monoid.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 167
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Section from_another_com_monoid.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 169
 Time: 0.002s">
-<div class="time" style="width: 0.46082949308756%"></div>
+<div class="time" style="width: 0.45045045045045%"></div>
 <pre>
 
   Context
    `{IsCommutativeMonoid A} `{IsHSet B}
    `{Bop : SgOp B} `{Bunit : MonUnit B} (f : B -&gt; A) `{!IsInjective f}
-   (op_correct : forall x y, f (x &amp; y) = f x &amp; f y)
+   (op_correct : forall x y, f (x * y) = f x * f y)
    (unit_correct : f mon_unit = mon_unit).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 173
+Line: 175
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1025,59 +1033,51 @@ Time: 0s">
   Lemma projected_com_monoid : IsCommutativeMonoid B.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 175
+Line: 177
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 176
+Line: 178
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     split.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 177
+Line: 179
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 178
+Line: 180
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre> apply (projected_monoid f);assumption.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 178
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    -</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 179
-Time: 0.003s">
-<div class="time" style="width: 0.69124423963134%"></div>
-<pre> apply (projected_comm f);assumption.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 179
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 180
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-
-End from_another_com_monoid.</pre>
+    -</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 181
+Time: 0.003s">
+<div class="time" style="width: 0.67567567567568%"></div>
+<pre> apply (projected_comm f);assumption.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 181
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 182
@@ -1085,24 +1085,32 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-Section from_another_group.</pre>
+End from_another_com_monoid.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 184
-Time: 0.004s">
-<div class="time" style="width: 0.92165898617512%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Section from_another_group.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 186
+Time: 0.003s">
+<div class="time" style="width: 0.67567567567568%"></div>
 <pre>
 
   Context
     `{IsGroup A} `{IsHSet B}
     `{Bop : SgOp B} `{Bunit : MonUnit B} `{Bnegate : Negate B}
     (f : B -&gt; A) `{!IsInjective f}
-    (op_correct : forall x y, f (x &amp; y) = f x &amp; f y)
+    (op_correct : forall x y, f (x * y) = f x * f y)
     (unit_correct : f mon_unit = mon_unit)
     (negate_correct : forall x, f (-x) = -f x).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 192
+Line: 194
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1110,100 +1118,92 @@ Time: 0s">
   Lemma projected_group : IsGroup B.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 194
+Line: 196
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 195
+Line: 197
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     split.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 196
+Line: 198
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 197
-Time: 0.007s">
-<div class="time" style="width: 1.6129032258065%"></div>
+Line: 199
+Time: 0.005s">
+<div class="time" style="width: 1.1261261261261%"></div>
 <pre> apply (projected_monoid f);assumption.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 197
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    -</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 198
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> repeat intro; apply (injective f).</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 198
-Time: 0.003s">
-<div class="time" style="width: 0.69124423963134%"></div>
-<pre>
-      rewrite op_correct, negate_correct, unit_correct, left_inverse.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 199
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-      apply reflexivity.</pre>
+    -</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 200
 Time: 0s">
 <div class="time" style="width: 0%"></div>
+<pre> repeat intro; apply (injective f).</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 200
+Time: 0.002s">
+<div class="time" style="width: 0.45045045045045%"></div>
 <pre>
-    -</pre>
+      rewrite op_correct, negate_correct, unit_correct, left_inverse.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 201
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> repeat intro; apply (injective f).</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 201
-Time: 0.003s">
-<div class="time" style="width: 0.69124423963134%"></div>
 <pre>
-      rewrite op_correct, negate_correct, unit_correct, right_inverse.</pre>
+      apply reflexivity.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 202
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-      reflexivity.</pre>
+    -</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 203
-Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> repeat intro; apply (injective f).</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 203
+Time: 0.003s">
+<div class="time" style="width: 0.67567567567568%"></div>
 <pre>
-  Qed.</pre>
+      rewrite op_correct, negate_correct, unit_correct, right_inverse.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 204
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-
-End from_another_group.</pre>
+      reflexivity.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 205
+Time: 0.001s">
+<div class="time" style="width: 0.22522522522523%"></div>
+<pre>
+  Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 206
@@ -1211,22 +1211,31 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-Section from_another_ab_group.</pre>
+End from_another_group.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 208
-Time: 0.004s">
-<div class="time" style="width: 0.92165898617512%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
+
+Section from_another_ab_group.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 210
+Time: 0.003s">
+<div class="time" style="width: 0.67567567567568%"></div>
+<pre>
+
   Context `{IsAbGroup A} `{IsHSet B}
    `{Bop : SgOp B} `{Bunit : MonUnit B} `{Bnegate : Negate B}
    (f : B -&gt; A) `{!IsInjective f}
-   (op_correct : forall x y, f (x &amp; y) = f x &amp; f y)
+   (op_correct : forall x y, f (x * y) = f x * f y)
    (unit_correct : f mon_unit = mon_unit)
    (negate_correct : forall x, f (-x) = -f x).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 214
+Line: 217
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1234,54 +1243,54 @@ Time: 0s">
   Lemma projected_ab_group : IsAbGroup B.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 216
+Line: 219
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 217
+Line: 220
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     split.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 218
+Line: 221
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 219
+Line: 222
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre> apply (projected_group f);assumption.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 219
+Line: 222
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 220
-Time: 0.01s">
-<div class="time" style="width: 2.3041474654378%"></div>
+Line: 223
+Time: 0.008s">
+<div class="time" style="width: 1.8018018018018%"></div>
 <pre> apply (projected_comm f);assumption.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 220
+Line: 223
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 221
+Line: 224
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1289,7 +1298,7 @@ Time: 0s">
 End from_another_ab_group.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 223
+Line: 226
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1297,63 +1306,63 @@ Time: 0s">
 Instance id_sg_morphism `{IsSemiGroup A} : IsSemiGroupPreserving (@id A).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 225
+Line: 228
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 226
+Line: 229
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   red.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 227
+Line: 230
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> split.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 227
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Qed.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 228
-Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
-<pre>
-
-Instance id_monoid_morphism `{IsMonoid A} : IsMonoidPreserving (@id A).</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 230
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Proof.</pre>
+Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 231
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
+
+Instance id_monoid_morphism `{IsMonoid A} : IsMonoidPreserving (@id A).</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 233
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 234
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
 split;split.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 232
+Line: 235
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 233
+Line: 236
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1361,7 +1370,7 @@ Time: 0s">
 Section compose_mor.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 235
+Line: 238
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1373,130 +1382,130 @@ Time: 0s">
     (f : A -&gt; B) (g : B -&gt; C).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 241
-Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+Line: 244
+Time: 0.004s">
+<div class="time" style="width: 0.9009009009009%"></div>
 <pre>
 
   Instance compose_sg_morphism : IsSemiGroupPreserving f -&gt; IsSemiGroupPreserving g -&gt;
     IsSemiGroupPreserving (g ∘ f).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 244
+Line: 247
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 245
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    red;intros.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 246
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    unfold Compose.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 247
-Time: 0.005s">
-<div class="time" style="width: 1.1520737327189%"></div>
-<pre>
-    rewrite (preserves_sg_op x y).</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 248
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    apply preserves_sg_op.</pre>
+    red;intros.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 249
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  Qed.</pre>
+    unfold Compose.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 250
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
+<pre>
+    rewrite (preserves_sg_op x y).</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 251
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    apply preserves_sg_op.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 252
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Qed.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 253
+Time: 0.001s">
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
 
   Instance compose_monoid_morphism : IsMonoidPreserving f -&gt; IsMonoidPreserving g -&gt;
     IsMonoidPreserving (g ∘ f).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 253
+Line: 256
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 254
+Line: 257
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros;split.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 255
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    -</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 256
-Time: 0.005s">
-<div class="time" style="width: 1.1520737327189%"></div>
-<pre> apply _.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 256
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    -</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 257
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> red;unfold Compose.</pre>
-</div>
-<div class="code" title="File: groups.v
-Line: 257
-Time: 0.013s">
-<div class="time" style="width: 2.9953917050691%"></div>
-<pre>
-      etransitivity;[|apply preserves_mon_unit].</pre>
-</div>
-<div class="code" title="File: groups.v
 Line: 258
-Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
-      apply ap,preserves_mon_unit.</pre>
+    -</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 259
+Time: 0.005s">
+<div class="time" style="width: 1.1261261261261%"></div>
+<pre> apply _.</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 259
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  Qed.</pre>
+    -</pre>
 </div>
 <div class="code" title="File: groups.v
 Line: 260
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> red;unfold Compose.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 260
+Time: 0.012s">
+<div class="time" style="width: 2.7027027027027%"></div>
+<pre>
+      etransitivity;[|apply preserves_mon_unit].</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 261
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
+<pre>
+      apply ap,preserves_mon_unit.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 262
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Qed.</pre>
+</div>
+<div class="code" title="File: groups.v
+Line: 263
+Time: 0.001s">
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
 
   Instance invert_sg_morphism
@@ -1504,132 +1513,132 @@ Time: 0.001s">
       IsSemiGroupPreserving (f^-1).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 264
+Line: 267
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 265
+Line: 268
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     red;intros.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 266
+Line: 269
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply (Paths.equiv_inj f).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 267
+Line: 270
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
     rewrite (preserves_sg_op (f:=f)).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 268
-Time: 0.004s">
-<div class="time" style="width: 0.92165898617512%"></div>
+Line: 271
+Time: 0.003s">
+<div class="time" style="width: 0.67567567567568%"></div>
 <pre>
     rewrite !eisretr.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 269
+Line: 272
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     reflexivity.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 270
+Line: 273
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 271
-Time: 0.002s">
-<div class="time" style="width: 0.46082949308756%"></div>
+Line: 274
+Time: 0.001s">
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
 
   Instance invert_monoid_morphism :
     forall `{!IsEquiv f}, IsMonoidPreserving f -&gt; IsMonoidPreserving (f^-1).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 274
+Line: 277
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 275
+Line: 278
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros;split.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 276
+Line: 279
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 277
-Time: 0.002s">
-<div class="time" style="width: 0.46082949308756%"></div>
+Line: 280
+Time: 0.001s">
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre> apply _.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 277
+Line: 280
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 278
+Line: 281
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply (Paths.equiv_inj f).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 278
-Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+Line: 281
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
       rewrite eisretr.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 279
+Line: 282
 Time: 0.001s">
-<div class="time" style="width: 0.23041474654378%"></div>
+<div class="time" style="width: 0.22522522522523%"></div>
 <pre>
       rewrite (preserves_mon_unit (f:=f)).</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 280
+Line: 283
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> reflexivity.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 280
+Line: 283
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 281
+Line: 284
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1637,7 +1646,7 @@ Time: 0s">
 End compose_mor.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 283
+Line: 286
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1646,7 +1655,7 @@ Hint Extern 4 (IsSemiGroupPreserving (_ ∘ _)) =&gt;
   class_apply @compose_sg_morphism : typeclass_instances.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 286
+Line: 289
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1654,7 +1663,7 @@ Hint Extern 4 (IsMonoidPreserving (_ ∘ _)) =&gt;
   class_apply @compose_monoid_morphism : typeclass_instances.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 288
+Line: 291
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1663,7 +1672,7 @@ Hint Extern 4 (IsSemiGroupPreserving (_^-1)) =&gt;
   class_apply @invert_sg_morphism : typeclass_instances.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 291
+Line: 294
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1671,7 +1680,7 @@ Hint Extern 4 (IsMonoidPreserving (_^-1)) =&gt;
   class_apply @invert_monoid_morphism : typeclass_instances.</pre>
 </div>
 <div class="code" title="File: groups.v
-Line: 294
+Line: 297
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>

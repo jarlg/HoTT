@@ -303,12 +303,12 @@
           
 
             i = 57;
-            data = "1 subgoal (ID 401)	  	  n : nat	  X : pType	  ============================	  Associative sg_op	1 subgoal (ID 593)	  	  n : nat	  X : pType	  x, y, z : Tr 0 (iterated_loops n.+1 X)	  ============================	  x & (y & z) = x & y & z	";
+            data = "1 subgoal (ID 401)	  	  n : nat	  X : pType	  ============================	  Associative sg_op	1 subgoal (ID 593)	  	  n : nat	  X : pType	  x, y, z : Tr 0 (iterated_loops n.+1 X)	  ============================	  sg_op x (sg_op y z) = sg_op (sg_op x y) z	";
             responses[i]=data;
           
 
             i = 58;
-            data = "1 subgoal (ID 884)	  	  n : nat	  X : pType	  z, y, x : iterated_loops n.+1 X	  ============================	  tr x & (tr y & tr z) = tr x & tr y & tr z	";
+            data = "1 subgoal (ID 884)	  	  n : nat	  X : pType	  z, y, x : iterated_loops n.+1 X	  ============================	  sg_op (tr x) (sg_op (tr y) (tr z)) = sg_op (sg_op (tr x) (tr y)) (tr z)	";
             responses[i]=data;
           
 
@@ -343,12 +343,12 @@
           
 
             i = 65;
-            data = "1 subgoal (ID 397)	  	  n : nat	  X : pType	  ============================	  LeftIdentity sg_op mon_unit	1 subgoal (ID 976)	  	  n : nat	  X : pType	  x : Tr 0 (iterated_loops n.+1 X)	  ============================	  mon_unit & x = x	";
+            data = "1 subgoal (ID 397)	  	  n : nat	  X : pType	  ============================	  LeftIdentity sg_op mon_unit	1 subgoal (ID 976)	  	  n : nat	  X : pType	  x : Tr 0 (iterated_loops n.+1 X)	  ============================	  sg_op mon_unit x = x	";
             responses[i]=data;
           
 
             i = 66;
-            data = "1 subgoal (ID 1047)	  	  n : nat	  X : pType	  x : iterated_loops n.+1 X	  ============================	  mon_unit & tr x = tr x	";
+            data = "1 subgoal (ID 1047)	  	  n : nat	  X : pType	  x : iterated_loops n.+1 X	  ============================	  sg_op mon_unit (tr x) = tr x	";
             responses[i]=data;
           
 
@@ -383,12 +383,12 @@
           
 
             i = 73;
-            data = "1 subgoal (ID 398)	  	  n : nat	  X : pType	  ============================	  RightIdentity sg_op mon_unit	1 subgoal (ID 1083)	  	  n : nat	  X : pType	  x : Tr 0 (iterated_loops n.+1 X)	  ============================	  x & mon_unit = x	";
+            data = "1 subgoal (ID 398)	  	  n : nat	  X : pType	  ============================	  RightIdentity sg_op mon_unit	1 subgoal (ID 1083)	  	  n : nat	  X : pType	  x : Tr 0 (iterated_loops n.+1 X)	  ============================	  sg_op x mon_unit = x	";
             responses[i]=data;
           
 
             i = 74;
-            data = "1 subgoal (ID 1154)	  	  n : nat	  X : pType	  x : iterated_loops n.+1 X	  ============================	  tr x & mon_unit = tr x	";
+            data = "1 subgoal (ID 1154)	  	  n : nat	  X : pType	  x : iterated_loops n.+1 X	  ============================	  sg_op (tr x) mon_unit = tr x	";
             responses[i]=data;
           
 
@@ -423,12 +423,12 @@
           
 
             i = 81;
-            data = "1 subgoal (ID 393)	  	  n : nat	  X : pType	  ============================	  LeftInverse sg_op negate mon_unit	1 subgoal (ID 1190)	  	  n : nat	  X : pType	  x : Tr 0 (iterated_loops n.+1 X)	  ============================	  - x & x = mon_unit	";
+            data = "1 subgoal (ID 393)	  	  n : nat	  X : pType	  ============================	  LeftInverse sg_op negate mon_unit	1 subgoal (ID 1190)	  	  n : nat	  X : pType	  x : Tr 0 (iterated_loops n.+1 X)	  ============================	  sg_op (- x) x = mon_unit	";
             responses[i]=data;
           
 
             i = 82;
-            data = "1 subgoal (ID 1261)	  	  n : nat	  X : pType	  x : iterated_loops n.+1 X	  ============================	  - tr x & tr x = mon_unit	";
+            data = "1 subgoal (ID 1261)	  	  n : nat	  X : pType	  x : iterated_loops n.+1 X	  ============================	  sg_op (- tr x) (tr x) = mon_unit	";
             responses[i]=data;
           
 
@@ -463,12 +463,12 @@
           
 
             i = 89;
-            data = "1 subgoal (ID 394)	  	  n : nat	  X : pType	  ============================	  RightInverse sg_op negate mon_unit	1 subgoal (ID 1299)	  	  n : nat	  X : pType	  x : Tr 0 (iterated_loops n.+1 X)	  ============================	  x & - x = mon_unit	";
+            data = "1 subgoal (ID 394)	  	  n : nat	  X : pType	  ============================	  RightInverse sg_op negate mon_unit	1 subgoal (ID 1299)	  	  n : nat	  X : pType	  x : Tr 0 (iterated_loops n.+1 X)	  ============================	  sg_op x (- x) = mon_unit	";
             responses[i]=data;
           
 
             i = 90;
-            data = "1 subgoal (ID 1370)	  	  n : nat	  X : pType	  x : iterated_loops n.+1 X	  ============================	  tr x & - tr x = mon_unit	";
+            data = "1 subgoal (ID 1370)	  	  n : nat	  X : pType	  x : iterated_loops n.+1 X	  ============================	  sg_op (tr x) (- tr x) = mon_unit	";
             responses[i]=data;
           
 
@@ -568,12 +568,12 @@
           
 
             i = 110;
-            data = "1 subgoal (ID 113)	  	  n : nat	  X : pType	  x, y : Pi n.+2 X	  ============================	  x & y = y & x	";
+            data = "1 subgoal (ID 113)	  	  n : nat	  X : pType	  x, y : Pi n.+2 X	  ============================	  sg_op x y = sg_op y x	";
             responses[i]=data;
           
 
             i = 111;
-            data = "1 subgoal (ID 281)	  	  n : nat	  X : pType	  y, x : iterated_loops n.+2 X	  ============================	  tr x & tr y = tr y & tr x	";
+            data = "1 subgoal (ID 281)	  	  n : nat	  X : pType	  y, x : iterated_loops n.+2 X	  ============================	  sg_op (tr x) (tr y) = sg_op (tr y) (tr x)	";
             responses[i]=data;
           
 
@@ -713,12 +713,12 @@
           
 
             i = 139;
-            data = "<infomsg>	This subproof is complete, but there are some unfocused goals.	Try unfocusing with \"}\".	</infomsg>	1 subgoal (ID 125)		subgoal 1 (ID 125) is:	 IsSemiGroupPreserving	   (Trunc_functor 0	      (let X0 :=	         fun (n0 : nat) (H : X ->* Y) =>	         pointed_fun (iterated_loops_functor n0 H) in	       X0 n.+1 f))	1 subgoal (ID 125)	  	  n : nat	  X : pType	  Y : pType	  f : X ->* Y	  ============================	  IsSemiGroupPreserving	    (Trunc_functor 0	       (let X0 :=	          fun (n0 : nat) (H : X ->* Y) =>	          pointed_fun (iterated_loops_functor n0 H) in	        X0 n.+1 f))	1 subgoal (ID 499)	  	  n : nat	  X : pType	  Y : pType	  f : X ->* Y	  x, y : Pi n.+1 X	  ============================	  Trunc_functor 0	    (let X0 :=	       fun (n0 : nat) (H : X ->* Y) =>	       pointed_fun (iterated_loops_functor n0 H) in	     X0 n.+1 f) (x & y) =	  Trunc_functor 0	    (let X0 :=	       fun (n0 : nat) (H : X ->* Y) =>	       pointed_fun (iterated_loops_functor n0 H) in	     X0 n.+1 f) x &	  Trunc_functor 0	    (let X0 :=	       fun (n0 : nat) (H : X ->* Y) =>	       pointed_fun (iterated_loops_functor n0 H) in	     X0 n.+1 f) y	";
+            data = "<infomsg>	This subproof is complete, but there are some unfocused goals.	Try unfocusing with \"}\".	</infomsg>	1 subgoal (ID 125)		subgoal 1 (ID 125) is:	 IsSemiGroupPreserving	   (Trunc_functor 0	      (let X0 :=	         fun (n0 : nat) (H : X ->* Y) =>	         pointed_fun (iterated_loops_functor n0 H) in	       X0 n.+1 f))	1 subgoal (ID 125)	  	  n : nat	  X : pType	  Y : pType	  f : X ->* Y	  ============================	  IsSemiGroupPreserving	    (Trunc_functor 0	       (let X0 :=	          fun (n0 : nat) (H : X ->* Y) =>	          pointed_fun (iterated_loops_functor n0 H) in	        X0 n.+1 f))	1 subgoal (ID 499)	  	  n : nat	  X : pType	  Y : pType	  f : X ->* Y	  x, y : Pi n.+1 X	  ============================	  Trunc_functor 0	    (let X0 :=	       fun (n0 : nat) (H : X ->* Y) =>	       pointed_fun (iterated_loops_functor n0 H) in	     X0 n.+1 f) (sg_op x y) =	  sg_op	    (Trunc_functor 0	       (let X0 :=	          fun (n0 : nat) (H : X ->* Y) =>	          pointed_fun (iterated_loops_functor n0 H) in	        X0 n.+1 f) x)	    (Trunc_functor 0	       (let X0 :=	          fun (n0 : nat) (H : X ->* Y) =>	          pointed_fun (iterated_loops_functor n0 H) in	        X0 n.+1 f) y)	";
             responses[i]=data;
           
 
             i = 140;
-            data = "1 subgoal (ID 667)	  	  n : nat	  X : pType	  Y : pType	  f : X ->* Y	  y, x : iterated_loops n.+1 X	  ============================	  Trunc_functor 0	    (let X0 :=	       fun (n0 : nat) (H : X ->* Y) =>	       pointed_fun (iterated_loops_functor n0 H) in	     X0 n.+1 f) (tr x & tr y) =	  Trunc_functor 0	    (let X0 :=	       fun (n0 : nat) (H : X ->* Y) =>	       pointed_fun (iterated_loops_functor n0 H) in	     X0 n.+1 f) (tr x) &	  Trunc_functor 0	    (let X0 :=	       fun (n0 : nat) (H : X ->* Y) =>	       pointed_fun (iterated_loops_functor n0 H) in	     X0 n.+1 f) (tr y)	";
+            data = "1 subgoal (ID 667)	  	  n : nat	  X : pType	  Y : pType	  f : X ->* Y	  y, x : iterated_loops n.+1 X	  ============================	  Trunc_functor 0	    (let X0 :=	       fun (n0 : nat) (H : X ->* Y) =>	       pointed_fun (iterated_loops_functor n0 H) in	     X0 n.+1 f) (sg_op (tr x) (tr y)) =	  sg_op	    (Trunc_functor 0	       (let X0 :=	          fun (n0 : nat) (H : X ->* Y) =>	          pointed_fun (iterated_loops_functor n0 H) in	        X0 n.+1 f) (tr x))	    (Trunc_functor 0	       (let X0 :=	          fun (n0 : nat) (H : X ->* Y) =>	          pointed_fun (iterated_loops_functor n0 H) in	        X0 n.+1 f) (tr y))	";
             responses[i]=data;
           
 
@@ -1023,22 +1023,22 @@
           
 
             i = 201;
-            data = "<infomsg>	This subproof is complete, but there are some unfocused goals.	Try unfocusing with \"}\".	</infomsg>	1 subgoal (ID 181)		subgoal 1 (ID 181) is:	 IsSemiGroupPreserving	   (equiv_O_prod_cmp (Tr 0) (iterated_loops n.+1 X) (iterated_loops n.+1 Y)	    oE Trunc_functor_equiv 0 (iterated_loops_prod X Y))	1 subgoal (ID 181)	  	  X : pType	  Y : pType	  n : nat	  ============================	  IsSemiGroupPreserving	    (equiv_O_prod_cmp (Tr 0) (iterated_loops n.+1 X) (iterated_loops n.+1 Y)	     oE Trunc_functor_equiv 0 (iterated_loops_prod X Y))	1 subgoal (ID 532)	  	  X : pType	  Y : pType	  n : nat	  x, y : Pi n.+1 (X * Y)	  ============================	  (equiv_O_prod_cmp (Tr 0) (iterated_loops n.+1 X) (iterated_loops n.+1 Y)	   oE Trunc_functor_equiv 0 (iterated_loops_prod X Y)) 	    (x & y) =	  (equiv_O_prod_cmp (Tr 0) (iterated_loops n.+1 X) (iterated_loops n.+1 Y)	   oE Trunc_functor_equiv 0 (iterated_loops_prod X Y)) x &	  (equiv_O_prod_cmp (Tr 0) (iterated_loops n.+1 X) (iterated_loops n.+1 Y)	   oE Trunc_functor_equiv 0 (iterated_loops_prod X Y)) y	";
+            data = "<infomsg>	This subproof is complete, but there are some unfocused goals.	Try unfocusing with \"}\".	</infomsg>	1 subgoal (ID 181)		subgoal 1 (ID 181) is:	 IsSemiGroupPreserving	   (equiv_O_prod_cmp (Tr 0) (iterated_loops n.+1 X) (iterated_loops n.+1 Y)	    oE Trunc_functor_equiv 0 (iterated_loops_prod X Y))	1 subgoal (ID 181)	  	  X : pType	  Y : pType	  n : nat	  ============================	  IsSemiGroupPreserving	    (equiv_O_prod_cmp (Tr 0) (iterated_loops n.+1 X) (iterated_loops n.+1 Y)	     oE Trunc_functor_equiv 0 (iterated_loops_prod X Y))	1 subgoal (ID 532)	  	  X : pType	  Y : pType	  n : nat	  x, y : Pi n.+1 (X * Y)	  ============================	  (equiv_O_prod_cmp (Tr 0) (iterated_loops n.+1 X) (iterated_loops n.+1 Y)	   oE Trunc_functor_equiv 0 (iterated_loops_prod X Y)) 	    (sg_op x y) =	  sg_op	    ((equiv_O_prod_cmp (Tr 0) (iterated_loops n.+1 X) (iterated_loops n.+1 Y)	      oE Trunc_functor_equiv 0 (iterated_loops_prod X Y)) x)	    ((equiv_O_prod_cmp (Tr 0) (iterated_loops n.+1 X) (iterated_loops n.+1 Y)	      oE Trunc_functor_equiv 0 (iterated_loops_prod X Y)) y)	";
             responses[i]=data;
           
 
             i = 202;
-            data = "1 subgoal (ID 979)	  	  X : pType	  Y : pType	  n : nat	  y, x : iterated_loops n.+1 (X * Y)	  ============================	  O_prod_cmp (Tr 0) (point (iterated_loops n X) = point (iterated_loops n X))	    (point (iterated_loops n Y) = point (iterated_loops n Y))	    (O_functor 0%trunc	       (fun	          x0 : point (iterated_loops n (X * Y)) =	               point (iterated_loops n (X * Y)) =>	        (ap fst	           ((point_eq (iterated_loops_prod X Y))^ @	            (ap (iterated_loops_prod X Y) x0 @	             point_eq (iterated_loops_prod X Y))),	        ap snd	          ((point_eq (iterated_loops_prod X Y))^ @	           (ap (iterated_loops_prod X Y) x0 @	            point_eq (iterated_loops_prod X Y))))) 	       (tr x & tr y)) =	  O_prod_cmp (Tr 0) (point (iterated_loops n X) = point (iterated_loops n X))	    (point (iterated_loops n Y) = point (iterated_loops n Y))	    (O_functor 0%trunc	       (fun	          x0 : point (iterated_loops n (X * Y)) =	               point (iterated_loops n (X * Y)) =>	        (ap fst	           ((point_eq (iterated_loops_prod X Y))^ @	            (ap (iterated_loops_prod X Y) x0 @	             point_eq (iterated_loops_prod X Y))),	        ap snd	          ((point_eq (iterated_loops_prod X Y))^ @	           (ap (iterated_loops_prod X Y) x0 @	            point_eq (iterated_loops_prod X Y))))) 	       (tr x)) &	  O_prod_cmp (Tr 0) (point (iterated_loops n X) = point (iterated_loops n X))	    (point (iterated_loops n Y) = point (iterated_loops n Y))	    (O_functor 0%trunc	       (fun	          x0 : point (iterated_loops n (X * Y)) =	               point (iterated_loops n (X * Y)) =>	        (ap fst	           ((point_eq (iterated_loops_prod X Y))^ @	            (ap (iterated_loops_prod X Y) x0 @	             point_eq (iterated_loops_prod X Y))),	        ap snd	          ((point_eq (iterated_loops_prod X Y))^ @	           (ap (iterated_loops_prod X Y) x0 @	            point_eq (iterated_loops_prod X Y))))) 	       (tr y))	";
+            data = "1 subgoal (ID 979)	  	  X : pType	  Y : pType	  n : nat	  y, x : iterated_loops n.+1 (X * Y)	  ============================	  O_prod_cmp (Tr 0) (point (iterated_loops n X) = point (iterated_loops n X))	    (point (iterated_loops n Y) = point (iterated_loops n Y))	    (O_functor 0%trunc	       (fun	          x0 : point (iterated_loops n (X * Y)) =	               point (iterated_loops n (X * Y)) =>	        (ap fst	           ((point_eq (iterated_loops_prod X Y))^ @	            (ap (iterated_loops_prod X Y) x0 @	             point_eq (iterated_loops_prod X Y))),	        ap snd	          ((point_eq (iterated_loops_prod X Y))^ @	           (ap (iterated_loops_prod X Y) x0 @	            point_eq (iterated_loops_prod X Y))))) 	       (sg_op (tr x) (tr y))) =	  sg_op	    (O_prod_cmp (Tr 0)	       (point (iterated_loops n X) = point (iterated_loops n X))	       (point (iterated_loops n Y) = point (iterated_loops n Y))	       (O_functor 0%trunc	          (fun	             x0 : point (iterated_loops n (X * Y)) =	                  point (iterated_loops n (X * Y)) =>	           (ap fst	              ((point_eq (iterated_loops_prod X Y))^ @	               (ap (iterated_loops_prod X Y) x0 @	                point_eq (iterated_loops_prod X Y))),	           ap snd	             ((point_eq (iterated_loops_prod X Y))^ @	              (ap (iterated_loops_prod X Y) x0 @	               point_eq (iterated_loops_prod X Y))))) 	          (tr x)))	    (O_prod_cmp (Tr 0)	       (point (iterated_loops n X) = point (iterated_loops n X))	       (point (iterated_loops n Y) = point (iterated_loops n Y))	       (O_functor 0%trunc	          (fun	             x0 : point (iterated_loops n (X * Y)) =	                  point (iterated_loops n (X * Y)) =>	           (ap fst	              ((point_eq (iterated_loops_prod X Y))^ @	               (ap (iterated_loops_prod X Y) x0 @	                point_eq (iterated_loops_prod X Y))),	           ap snd	             ((point_eq (iterated_loops_prod X Y))^ @	              (ap (iterated_loops_prod X Y) x0 @	               point_eq (iterated_loops_prod X Y))))) 	          (tr y)))	";
             responses[i]=data;
           
 
             i = 203;
-            data = "1 subgoal (ID 982)	  	  X : pType	  Y : pType	  n : nat	  y, x : iterated_loops n.+1 (X * Y)	  Z := iterated_loops_prod X Y	   : iterated_loops n (X * Y) <~>* iterated_loops n X * iterated_loops n Y	  ============================	  O_prod_cmp (Tr 0) (point (iterated_loops n X) = point (iterated_loops n X))	    (point (iterated_loops n Y) = point (iterated_loops n Y))	    (O_functor 0%trunc	       (fun	          x0 : point (iterated_loops n (X * Y)) =	               point (iterated_loops n (X * Y)) =>	        (ap fst ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)),	        ap snd ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)))) 	       (tr x & tr y)) =	  O_prod_cmp (Tr 0) (point (iterated_loops n X) = point (iterated_loops n X))	    (point (iterated_loops n Y) = point (iterated_loops n Y))	    (O_functor 0%trunc	       (fun	          x0 : point (iterated_loops n (X * Y)) =	               point (iterated_loops n (X * Y)) =>	        (ap fst ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)),	        ap snd ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)))) 	       (tr x)) &	  O_prod_cmp (Tr 0) (point (iterated_loops n X) = point (iterated_loops n X))	    (point (iterated_loops n Y) = point (iterated_loops n Y))	    (O_functor 0%trunc	       (fun	          x0 : point (iterated_loops n (X * Y)) =	               point (iterated_loops n (X * Y)) =>	        (ap fst ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)),	        ap snd ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)))) 	       (tr y))	";
+            data = "1 subgoal (ID 982)	  	  X : pType	  Y : pType	  n : nat	  y, x : iterated_loops n.+1 (X * Y)	  Z := iterated_loops_prod X Y	   : iterated_loops n (X * Y) <~>* iterated_loops n X * iterated_loops n Y	  ============================	  O_prod_cmp (Tr 0) (point (iterated_loops n X) = point (iterated_loops n X))	    (point (iterated_loops n Y) = point (iterated_loops n Y))	    (O_functor 0%trunc	       (fun	          x0 : point (iterated_loops n (X * Y)) =	               point (iterated_loops n (X * Y)) =>	        (ap fst ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)),	        ap snd ((point_eq Z)^ @ (ap Z x0 @ point_eq Z))))	       (sg_op (tr x) (tr y))) =	  sg_op	    (O_prod_cmp (Tr 0)	       (point (iterated_loops n X) = point (iterated_loops n X))	       (point (iterated_loops n Y) = point (iterated_loops n Y))	       (O_functor 0%trunc	          (fun	             x0 : point (iterated_loops n (X * Y)) =	                  point (iterated_loops n (X * Y)) =>	           (ap fst ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)),	           ap snd ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)))) 	          (tr x)))	    (O_prod_cmp (Tr 0)	       (point (iterated_loops n X) = point (iterated_loops n X))	       (point (iterated_loops n Y) = point (iterated_loops n Y))	       (O_functor 0%trunc	          (fun	             x0 : point (iterated_loops n (X * Y)) =	                  point (iterated_loops n (X * Y)) =>	           (ap fst ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)),	           ap snd ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)))) 	          (tr y)))	";
             responses[i]=data;
           
 
             i = 204;
-            data = "2 subgoals (ID 985)	  	  X : pType	  Y : pType	  n : nat	  y, x : iterated_loops n.+1 (X * Y)	  Z := iterated_loops_prod X Y	   : iterated_loops n (X * Y) <~>* iterated_loops n X * iterated_loops n Y	  ============================	  fst	    (O_prod_cmp (Tr 0)	       (point (iterated_loops n X) = point (iterated_loops n X))	       (point (iterated_loops n Y) = point (iterated_loops n Y))	       (O_functor 0%trunc	          (fun	             x0 : point (iterated_loops n (X * Y)) =	                  point (iterated_loops n (X * Y)) =>	           (ap fst ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)),	           ap snd ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)))) 	          (tr x & tr y))) =	  fst	    (O_prod_cmp (Tr 0)	       (point (iterated_loops n X) = point (iterated_loops n X))	       (point (iterated_loops n Y) = point (iterated_loops n Y))	       (O_functor 0%trunc	          (fun	             x0 : point (iterated_loops n (X * Y)) =	                  point (iterated_loops n (X * Y)) =>	           (ap fst ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)),	           ap snd ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)))) 	          (tr x)) &	     O_prod_cmp (Tr 0)	       (point (iterated_loops n X) = point (iterated_loops n X))	       (point (iterated_loops n Y) = point (iterated_loops n Y))	       (O_functor 0%trunc	          (fun	             x0 : point (iterated_loops n (X * Y)) =	                  point (iterated_loops n (X * Y)) =>	           (ap fst ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)),	           ap snd ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)))) 	          (tr y)))		subgoal 2 (ID 986) is:	 snd	   (O_prod_cmp (Tr 0)	      (point (iterated_loops n X) = point (iterated_loops n X))	      (point (iterated_loops n Y) = point (iterated_loops n Y))	      (O_functor 0%trunc	         (fun	            x0 : point (iterated_loops n (X * Y)) =	                 point (iterated_loops n (X * Y)) =>	          (ap fst ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)),	          ap snd ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)))) 	         (tr x & tr y))) =	 snd	   (O_prod_cmp (Tr 0)	      (point (iterated_loops n X) = point (iterated_loops n X))	      (point (iterated_loops n Y) = point (iterated_loops n Y))	      (O_functor 0%trunc	         (fun	            x0 : point (iterated_loops n (X * Y)) =	                 point (iterated_loops n (X * Y)) =>	          (ap fst ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)),	          ap snd ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)))) 	         (tr x)) &	    O_prod_cmp (Tr 0)	      (point (iterated_loops n X) = point (iterated_loops n X))	      (point (iterated_loops n Y) = point (iterated_loops n Y))	      (O_functor 0%trunc	         (fun	            x0 : point (iterated_loops n (X * Y)) =	                 point (iterated_loops n (X * Y)) =>	          (ap fst ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)),	          ap snd ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)))) 	         (tr y)))	";
+            data = "2 subgoals (ID 985)	  	  X : pType	  Y : pType	  n : nat	  y, x : iterated_loops n.+1 (X * Y)	  Z := iterated_loops_prod X Y	   : iterated_loops n (X * Y) <~>* iterated_loops n X * iterated_loops n Y	  ============================	  fst	    (O_prod_cmp (Tr 0)	       (point (iterated_loops n X) = point (iterated_loops n X))	       (point (iterated_loops n Y) = point (iterated_loops n Y))	       (O_functor 0%trunc	          (fun	             x0 : point (iterated_loops n (X * Y)) =	                  point (iterated_loops n (X * Y)) =>	           (ap fst ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)),	           ap snd ((point_eq Z)^ @ (ap Z x0 @ point_eq Z))))	          (sg_op (tr x) (tr y)))) =	  fst	    (sg_op	       (O_prod_cmp (Tr 0)	          (point (iterated_loops n X) = point (iterated_loops n X))	          (point (iterated_loops n Y) = point (iterated_loops n Y))	          (O_functor 0%trunc	             (fun	                x0 : point (iterated_loops n (X * Y)) =	                     point (iterated_loops n (X * Y)) =>	              (ap fst ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)),	              ap snd ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)))) 	             (tr x)))	       (O_prod_cmp (Tr 0)	          (point (iterated_loops n X) = point (iterated_loops n X))	          (point (iterated_loops n Y) = point (iterated_loops n Y))	          (O_functor 0%trunc	             (fun	                x0 : point (iterated_loops n (X * Y)) =	                     point (iterated_loops n (X * Y)) =>	              (ap fst ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)),	              ap snd ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)))) 	             (tr y))))		subgoal 2 (ID 986) is:	 snd	   (O_prod_cmp (Tr 0)	      (point (iterated_loops n X) = point (iterated_loops n X))	      (point (iterated_loops n Y) = point (iterated_loops n Y))	      (O_functor 0%trunc	         (fun	            x0 : point (iterated_loops n (X * Y)) =	                 point (iterated_loops n (X * Y)) =>	          (ap fst ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)),	          ap snd ((point_eq Z)^ @ (ap Z x0 @ point_eq Z))))	         (sg_op (tr x) (tr y)))) =	 snd	   (sg_op	      (O_prod_cmp (Tr 0)	         (point (iterated_loops n X) = point (iterated_loops n X))	         (point (iterated_loops n Y) = point (iterated_loops n Y))	         (O_functor 0%trunc	            (fun	               x0 : point (iterated_loops n (X * Y)) =	                    point (iterated_loops n (X * Y)) =>	             (ap fst ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)),	             ap snd ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)))) 	            (tr x)))	      (O_prod_cmp (Tr 0)	         (point (iterated_loops n X) = point (iterated_loops n X))	         (point (iterated_loops n Y) = point (iterated_loops n Y))	         (O_functor 0%trunc	            (fun	               x0 : point (iterated_loops n (X * Y)) =	                    point (iterated_loops n (X * Y)) =>	             (ap fst ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)),	             ap snd ((point_eq Z)^ @ (ap Z x0 @ point_eq Z)))) 	            (tr y))))	";
             responses[i]=data;
           
 

@@ -30,28 +30,28 @@ pre {
 
 <div class="code" title="File: QuotientGroup.v
 Line: 1
-Time: 0.022s">
-<div class="time" style="width: 5.2631578947368%"></div>
+Time: 0.02s">
+<div class="time" style="width: 5.1020408163265%"></div>
 <pre>Require Import Basics.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
 Line: 1
-Time: 0.023s">
-<div class="time" style="width: 5.5023923444976%"></div>
+Time: 0.021s">
+<div class="time" style="width: 5.3571428571429%"></div>
 <pre>
 Require Import Types.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
 Line: 2
-Time: 0.418s">
+Time: 0.392s">
 <div class="time" style="width: 100%"></div>
 <pre>
 Require Import Algebra.Group.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
 Line: 3
-Time: 0.002s">
-<div class="time" style="width: 0.47846889952153%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.25510204081633%"></div>
 <pre>
 Require Import Algebra.Subgroup.</pre>
 </div>
@@ -65,7 +65,7 @@ Require Import Algebra.Congruence.</pre>
 <div class="code" title="File: QuotientGroup.v
 Line: 5
 Time: 0.002s">
-<div class="time" style="width: 0.47846889952153%"></div>
+<div class="time" style="width: 0.51020408163265%"></div>
 <pre>
 Require Import Colimits.Quotient.</pre>
 </div>
@@ -83,12 +83,20 @@ Time: 0s">
 Line: 9
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre>Section GroupCongruenceQuotient.</pre>
+<pre>Local Open Scope mc_mult_scope.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
 Line: 9
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Section GroupCongruenceQuotient.</pre>
+</div>
+<div class="code" title="File: QuotientGroup.v
+Line: 11
 Time: 0.001s">
-<div class="time" style="width: 0.23923444976077%"></div>
+<div class="time" style="width: 0.25510204081633%"></div>
 <pre>
 
   Context `{Univalence} {G : Group} {R : Relation G}
@@ -96,7 +104,7 @@ Time: 0.001s">
     `{!Reflexive R} `{!Symmetric R} `{!Transitive R}.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 13
+Line: 15
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -104,7 +112,7 @@ Time: 0s">
   Definition CongruenceQuotient := G / R.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 15
+Line: 17
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -112,82 +120,82 @@ Time: 0s">
   Instance congquot_sgop : SgOp CongruenceQuotient.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 17
+Line: 19
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 18
-Time: 0.026s">
-<div class="time" style="width: 6.2200956937799%"></div>
+Line: 20
+Time: 0.022s">
+<div class="time" style="width: 5.6122448979592%"></div>
 <pre>
     serapply Quotient_rec2.</pre>
-</div>
-<div class="code" title="File: QuotientGroup.v
-Line: 19
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    {</pre>
-</div>
-<div class="code" title="File: QuotientGroup.v
-Line: 20
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intros x y.</pre>
-</div>
-<div class="code" title="File: QuotientGroup.v
-Line: 20
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      apply class_of.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
 Line: 21
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-      exact (x &amp; y).</pre>
+    {</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
 Line: 22
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> }</pre>
+<pre> intros x y.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
 Line: 22
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    intros x x' p y y' q.</pre>
+      apply class_of.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
 Line: 23
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    pose (iscong p q).</pre>
+      exact (x * y).</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
 Line: 24
-Time: 0.002s">
-<div class="time" style="width: 0.47846889952153%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> }</pre>
+</div>
+<div class="code" title="File: QuotientGroup.v
+Line: 24
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
-    by apply path_quotient.</pre>
+    intros x x' p y y' q.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
 Line: 25
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  Defined.</pre>
+    pose (iscong p q).</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
 Line: 26
+Time: 0.002s">
+<div class="time" style="width: 0.51020408163265%"></div>
+<pre>
+    by apply path_quotient.</pre>
+</div>
+<div class="code" title="File: QuotientGroup.v
+Line: 27
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: QuotientGroup.v
+Line: 28
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -195,28 +203,28 @@ Time: 0s">
   Instance congquot_mon_unit : MonUnit CongruenceQuotient.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 28
+Line: 30
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 29
+Line: 31
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply class_of, mon_unit.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 30
+Line: 32
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 31
+Line: 33
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -224,112 +232,112 @@ Time: 0s">
   Instance congquot_negate : Negate CongruenceQuotient.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 33
+Line: 35
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 34
+Line: 36
 Time: 0.001s">
-<div class="time" style="width: 0.23923444976077%"></div>
+<div class="time" style="width: 0.25510204081633%"></div>
 <pre>
     serapply Quotient_functor.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 35
+Line: 37
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     1: apply negate.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 36
+Line: 38
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros x y p.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 37
-Time: 0.008s">
-<div class="time" style="width: 1.9138755980861%"></div>
+Line: 39
+Time: 0.006s">
+<div class="time" style="width: 1.530612244898%"></div>
 <pre>
     rewrite &lt;- (left_identity (-x)).</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 38
+Line: 40
 Time: 0.003s">
-<div class="time" style="width: 0.7177033492823%"></div>
+<div class="time" style="width: 0.76530612244898%"></div>
 <pre>
     destruct (left_inverse y).</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 39
+Line: 41
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    set (-y &amp; y &amp; -x).</pre>
+    set (-y * y * -x).</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 40
-Time: 0.009s">
-<div class="time" style="width: 2.1531100478469%"></div>
+Line: 42
+Time: 0.007s">
+<div class="time" style="width: 1.7857142857143%"></div>
 <pre>
     rewrite &lt;- (right_identity (-y)).</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 41
+Line: 43
 Time: 0.01s">
-<div class="time" style="width: 2.3923444976077%"></div>
+<div class="time" style="width: 2.5510204081633%"></div>
 <pre>
     destruct (right_inverse x).</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 42
+Line: 44
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     unfold g; clear g.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 43
-Time: 0.034s">
-<div class="time" style="width: 8.133971291866%"></div>
+Line: 45
+Time: 0.04s">
+<div class="time" style="width: 10.204081632653%"></div>
 <pre>
     rewrite &lt;- simple_associativity.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 44
-Time: 0.001s">
-<div class="time" style="width: 0.23923444976077%"></div>
-<pre>
-    apply iscong; try reflexivity.</pre>
-</div>
-<div class="code" title="File: QuotientGroup.v
-Line: 45
-Time: 0.001s">
-<div class="time" style="width: 0.23923444976077%"></div>
-<pre>
-    apply iscong; try reflexivity.</pre>
-</div>
-<div class="code" title="File: QuotientGroup.v
 Line: 46
+Time: 0.001s">
+<div class="time" style="width: 0.25510204081633%"></div>
+<pre>
+    apply iscong; try reflexivity.</pre>
+</div>
+<div class="code" title="File: QuotientGroup.v
+Line: 47
+Time: 0.001s">
+<div class="time" style="width: 0.25510204081633%"></div>
+<pre>
+    apply iscong; try reflexivity.</pre>
+</div>
+<div class="code" title="File: QuotientGroup.v
+Line: 48
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     by symmetry.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 47
+Line: 49
 Time: 0.001s">
-<div class="time" style="width: 0.23923444976077%"></div>
+<div class="time" style="width: 0.25510204081633%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 48
+Line: 50
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -337,57 +345,57 @@ Time: 0s">
   Instance congquot_sgop_associative : Associative congquot_sgop.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 50
+Line: 52
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 51
-Time: 0.063s">
-<div class="time" style="width: 15.071770334928%"></div>
+Line: 53
+Time: 0.06s">
+<div class="time" style="width: 15.30612244898%"></div>
 <pre>
     serapply Quotient_ind_hprop; intro x.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 52
-Time: 0.058s">
-<div class="time" style="width: 13.875598086124%"></div>
+Line: 54
+Time: 0.04s">
+<div class="time" style="width: 10.204081632653%"></div>
 <pre>
     serapply Quotient_ind_hprop; intro y.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 53
-Time: 0.035s">
-<div class="time" style="width: 8.3732057416268%"></div>
+Line: 55
+Time: 0.029s">
+<div class="time" style="width: 7.3979591836735%"></div>
 <pre>
     serapply Quotient_ind_hprop; intro z.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 54
-Time: 0.022s">
-<div class="time" style="width: 5.2631578947368%"></div>
+Line: 56
+Time: 0.048s">
+<div class="time" style="width: 12.244897959184%"></div>
 <pre>
     by simpl; rewrite associativity.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 55
+Line: 57
 Time: 0.002s">
-<div class="time" style="width: 0.47846889952153%"></div>
+<div class="time" style="width: 0.51020408163265%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 56
+Line: 58
 Time: 0.001s">
-<div class="time" style="width: 0.23923444976077%"></div>
+<div class="time" style="width: 0.25510204081633%"></div>
 <pre>
 
   Instance issemigroup_congquot : IsSemiGroup CongruenceQuotient := {}.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 58
+Line: 60
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -396,35 +404,35 @@ Time: 0s">
     : LeftIdentity congquot_sgop congquot_mon_unit.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 61
+Line: 63
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 62
-Time: 0.036s">
-<div class="time" style="width: 8.6124401913876%"></div>
+Line: 64
+Time: 0.029s">
+<div class="time" style="width: 7.3979591836735%"></div>
 <pre>
     serapply Quotient_ind_hprop; intro x.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 63
-Time: 0.012s">
-<div class="time" style="width: 2.8708133971292%"></div>
+Line: 65
+Time: 0.02s">
+<div class="time" style="width: 5.1020408163265%"></div>
 <pre>
     by simpl; rewrite left_identity.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 64
-Time: 0.001s">
-<div class="time" style="width: 0.23923444976077%"></div>
+Line: 66
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 65
+Line: 67
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -433,43 +441,43 @@ Time: 0s">
     : RightIdentity congquot_sgop congquot_mon_unit.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 68
+Line: 70
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 69
-Time: 0.034s">
-<div class="time" style="width: 8.133971291866%"></div>
+Line: 71
+Time: 0.029s">
+<div class="time" style="width: 7.3979591836735%"></div>
 <pre>
     serapply Quotient_ind_hprop; intro x.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 70
-Time: 0.012s">
-<div class="time" style="width: 2.8708133971292%"></div>
+Line: 72
+Time: 0.021s">
+<div class="time" style="width: 5.3571428571429%"></div>
 <pre>
     by simpl; rewrite right_identity.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 71
+Line: 73
 Time: 0.001s">
-<div class="time" style="width: 0.23923444976077%"></div>
+<div class="time" style="width: 0.25510204081633%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 72
+Line: 74
 Time: 0.001s">
-<div class="time" style="width: 0.23923444976077%"></div>
+<div class="time" style="width: 0.25510204081633%"></div>
 <pre>
 
   Instance ismonoid_quotientgroup : IsMonoid CongruenceQuotient := {}.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 74
+Line: 76
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -478,35 +486,35 @@ Time: 0s">
     : LeftInverse congquot_sgop congquot_negate congquot_mon_unit.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 77
+Line: 79
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 78
-Time: 0.035s">
-<div class="time" style="width: 8.3732057416268%"></div>
+Line: 80
+Time: 0.027s">
+<div class="time" style="width: 6.8877551020408%"></div>
 <pre>
     serapply Quotient_ind_hprop; intro x.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 79
-Time: 0.004s">
-<div class="time" style="width: 0.95693779904306%"></div>
+Line: 81
+Time: 0.003s">
+<div class="time" style="width: 0.76530612244898%"></div>
 <pre>
     by simpl; rewrite left_inverse.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 80
+Line: 82
 Time: 0.001s">
-<div class="time" style="width: 0.23923444976077%"></div>
+<div class="time" style="width: 0.25510204081633%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 81
+Line: 83
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -515,51 +523,51 @@ Time: 0s">
     : RightInverse congquot_sgop congquot_negate congquot_mon_unit.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 84
+Line: 86
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 85
-Time: 0.035s">
-<div class="time" style="width: 8.3732057416268%"></div>
+Line: 87
+Time: 0.027s">
+<div class="time" style="width: 6.8877551020408%"></div>
 <pre>
     serapply Quotient_ind_hprop; intro x.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 86
-Time: 0.004s">
-<div class="time" style="width: 0.95693779904306%"></div>
+Line: 88
+Time: 0.003s">
+<div class="time" style="width: 0.76530612244898%"></div>
 <pre>
     by simpl; rewrite right_inverse.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 87
+Line: 89
 Time: 0.001s">
-<div class="time" style="width: 0.23923444976077%"></div>
+<div class="time" style="width: 0.25510204081633%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 88
-Time: 0.001s">
-<div class="time" style="width: 0.23923444976077%"></div>
+Line: 90
+Time: 0.002s">
+<div class="time" style="width: 0.51020408163265%"></div>
 <pre>
 
   Global Instance isgroup_quotientgroup : IsGroup CongruenceQuotient := {}.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 90
+Line: 92
 Time: 0.007s">
-<div class="time" style="width: 1.6746411483254%"></div>
+<div class="time" style="width: 1.7857142857143%"></div>
 <pre>
 
 End GroupCongruenceQuotient.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 92
+Line: 94
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -569,13 +577,13 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 95
+Line: 97
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section QuotientGroup.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 95
+Line: 97
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -584,79 +592,79 @@ Time: 0s">
     `{!IsNormalSubgroup N}.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 98
+Line: 100
 Time: 0.001s">
-<div class="time" style="width: 0.23923444976077%"></div>
+<div class="time" style="width: 0.25510204081633%"></div>
 <pre>
 
   Instance iscongruence_in_cosetL: IsCongruence in_cosetL.</pre>
-</div>
-<div class="code" title="File: QuotientGroup.v
-Line: 100
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  Proof.</pre>
-</div>
-<div class="code" title="File: QuotientGroup.v
-Line: 101
-Time: 0.001s">
-<div class="time" style="width: 0.23923444976077%"></div>
-<pre>
-    serapply Build_IsCongruence.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
 Line: 102
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    intros; by apply in_cosetL_cong.</pre>
+  Proof.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
 Line: 103
+Time: 0.001s">
+<div class="time" style="width: 0.25510204081633%"></div>
+<pre>
+    serapply Build_IsCongruence.</pre>
+</div>
+<div class="code" title="File: QuotientGroup.v
+Line: 104
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    intros; by apply in_cosetL_cong.</pre>
+</div>
+<div class="code" title="File: QuotientGroup.v
+Line: 105
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
-</div>
-<div class="code" title="File: QuotientGroup.v
-Line: 104
-Time: 0.001s">
-<div class="time" style="width: 0.23923444976077%"></div>
-<pre>
-
-  Instance iscongruence_in_cosetR: IsCongruence in_cosetR.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
 Line: 106
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  Proof.</pre>
-</div>
-<div class="code" title="File: QuotientGroup.v
-Line: 107
-Time: 0.001s">
-<div class="time" style="width: 0.23923444976077%"></div>
-<pre>
-    serapply Build_IsCongruence.</pre>
+
+  Instance iscongruence_in_cosetR: IsCongruence in_cosetR.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
 Line: 108
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    intros; by apply in_cosetR_cong.</pre>
+  Proof.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
 Line: 109
+Time: 0.001s">
+<div class="time" style="width: 0.25510204081633%"></div>
+<pre>
+    serapply Build_IsCongruence.</pre>
+</div>
+<div class="code" title="File: QuotientGroup.v
+Line: 110
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    intros; by apply in_cosetR_cong.</pre>
+</div>
+<div class="code" title="File: QuotientGroup.v
+Line: 111
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 110
+Line: 112
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -665,49 +673,49 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 113
+Line: 115
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition QuotientGroup : Group.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 113
+Line: 115
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 114
-Time: 0.012s">
-<div class="time" style="width: 2.8708133971292%"></div>
+Line: 116
+Time: 0.01s">
+<div class="time" style="width: 2.5510204081633%"></div>
 <pre>
     erapply (Build_Group (G / in_cosetL)).</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 115
-Time: 0.015s">
-<div class="time" style="width: 3.5885167464115%"></div>
+Line: 117
+Time: 0.013s">
+<div class="time" style="width: 3.3163265306122%"></div>
 <pre>
     apply isgroup_quotientgroup.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 116
+Line: 118
 Time: 0.001s">
-<div class="time" style="width: 0.23923444976077%"></div>
+<div class="time" style="width: 0.25510204081633%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 117
+Line: 119
 Time: 0.001s">
-<div class="time" style="width: 0.23923444976077%"></div>
+<div class="time" style="width: 0.25510204081633%"></div>
 <pre>
 
 End QuotientGroup.</pre>
 </div>
 <div class="code" title="File: QuotientGroup.v
-Line: 120
+Line: 122
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
