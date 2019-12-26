@@ -31,26 +31,26 @@ pre {
 <div class="code" title="File: Subgroup.v
 Line: 1
 Time: 0.017s">
-<div class="time" style="width: 4.9853372434018%"></div>
+<div class="time" style="width: 4.9418604651163%"></div>
 <pre>Require Import Basics.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 1
 Time: 0.018s">
-<div class="time" style="width: 5.2785923753666%"></div>
+<div class="time" style="width: 5.2325581395349%"></div>
 <pre>
 Require Import Types.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 2
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
 Require Import HSet.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 3
-Time: 0.341s">
+Time: 0.344s">
 <div class="time" style="width: 100%"></div>
 <pre>
 Require Import Algebra.Group.</pre>
@@ -68,22 +68,29 @@ Line: 6
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
+Generalizable Variables G H A B C N f g.</pre>
+</div>
+<div class="code" title="File: Subgroup.v
+Line: 7
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
 
 (** * Subgroups *)
 
 (** The property of being a subgroup *)</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 10
+Line: 11
 Time: 0.002s">
-<div class="time" style="width: 0.58651026392962%"></div>
+<div class="time" style="width: 0.58139534883721%"></div>
 <pre>Class IsSubgroup (G H : Group) := {
   issubgroup_incl :&gt; GroupHomomorphism G H;
   isinj_issubgroup_incl :&gt; IsInjective issubgroup_incl;
 }.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 13
+Line: 14
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -91,51 +98,51 @@ Time: 0s">
 (* Subgroup inclusion is an embedding. *)</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 15
+Line: 16
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance isembedding_issubgroup_incl `{!IsSubgroup G H}
   : IsEmbedding (@issubgroup_incl G H _).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 16
+Line: 17
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 17
+Line: 18
 Time: 0.02s">
-<div class="time" style="width: 5.8651026392962%"></div>
+<div class="time" style="width: 5.8139534883721%"></div>
 <pre>
   apply isembedding_isinj_hset.</pre>
-</div>
-<div class="code" title="File: Subgroup.v
-Line: 18
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  apply isinj_issubgroup_incl.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 19
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Defined.</pre>
+  apply isinj_issubgroup_incl.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 20
-Time: 0.01s">
-<div class="time" style="width: 2.9325513196481%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Subgroup.v
+Line: 21
+Time: 0.011s">
+<div class="time" style="width: 3.1976744186047%"></div>
 <pre>
 
 Definition issig_issubgroup G H : _ &lt;~&gt; IsSubgroup G H
   := ltac:(issig).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 23
+Line: 24
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -143,16 +150,16 @@ Time: 0s">
 (** A subgroup of a group H is a group G which is a subgroup of H. *) </pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 25
+Line: 26
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>Class Subgroup (H : Group) := {
   subgroup_group :&gt; Group;
   subgroup_issubgroup :&gt; IsSubgroup subgroup_group H;
 }.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 28
+Line: 29
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -160,7 +167,7 @@ Time: 0s">
 Coercion subgroup_group : Subgroup &gt;-&gt; Group.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 30
+Line: 31
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -168,7 +175,7 @@ Time: 0s">
 Section Cosets.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 32
+Line: 33
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -178,13 +185,13 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 36
+Line: 37
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Context {G : Group} `{!IsSubgroup H G}.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 36
+Line: 37
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -193,48 +200,48 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 39
+Line: 40
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition in_cosetL : Relation G.</pre>
-</div>
-<div class="code" title="File: Subgroup.v
-Line: 39
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 40
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    intros x y.</pre>
+  Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 41
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    refine (hfiber issubgroup_incl _).</pre>
+    intros x y.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 42
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    exact (-x * y).</pre>
+    refine (hfiber issubgroup_incl _).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 43
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  Defined.</pre>
+    exact (-x * y).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 44
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Subgroup.v
+Line: 45
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -243,48 +250,48 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 47
+Line: 48
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition in_cosetR : Relation G.</pre>
-</div>
-<div class="code" title="File: Subgroup.v
-Line: 47
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 48
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    intros x y.</pre>
+  Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 49
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    refine (hfiber issubgroup_incl _).</pre>
+    intros x y.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 50
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    exact (x * -y).</pre>
+    refine (hfiber issubgroup_incl _).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 51
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  Defined.</pre>
+    exact (x * -y).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 52
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Subgroup.v
+Line: 53
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -294,34 +301,34 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 56
+Line: 57
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance ishprop_in_cosetL : is_mere_relation G in_cosetL.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 56
+Line: 57
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 57
-Time: 0.023s">
-<div class="time" style="width: 6.7448680351906%"></div>
+Line: 58
+Time: 0.025s">
+<div class="time" style="width: 7.2674418604651%"></div>
 <pre>
     exact _.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 58
+Line: 59
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 59
+Line: 60
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -329,28 +336,28 @@ Time: 0s">
   Global Instance ishprop_in_cosetR : is_mere_relation G in_cosetR.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 61
+Line: 62
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 62
-Time: 0.019s">
-<div class="time" style="width: 5.5718475073314%"></div>
+Line: 63
+Time: 0.02s">
+<div class="time" style="width: 5.8139534883721%"></div>
 <pre>
     exact _.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 63
+Line: 64
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 64
+Line: 65
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -360,62 +367,62 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 68
+Line: 69
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance reflexive_in_cosetL : Reflexive in_cosetL.</pre>
-</div>
-<div class="code" title="File: Subgroup.v
-Line: 68
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 69
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    intro x; hnf.</pre>
+  Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 70
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    exists mon_unit.</pre>
+    intro x; hnf.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 71
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    refine (_ @ _).</pre>
+    exists mon_unit.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 72
-Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
-<pre>
-    2: apply symmetry, left_inverse.</pre>
-</div>
-<div class="code" title="File: Subgroup.v
-Line: 73
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    apply grp_homo_unit.</pre>
+    refine (_ @ _).</pre>
+</div>
+<div class="code" title="File: Subgroup.v
+Line: 73
+Time: 0.001s">
+<div class="time" style="width: 0.2906976744186%"></div>
+<pre>
+    2: apply symmetry, left_inverse.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 74
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  Defined.</pre>
+    apply grp_homo_unit.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 75
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Subgroup.v
+Line: 76
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -423,56 +430,56 @@ Time: 0s">
   Global Instance reflexive_in_cosetR : Reflexive in_cosetR.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 77
+Line: 78
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 78
+Line: 79
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intro x; hnf.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 79
+Line: 80
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     exists mon_unit.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 80
+Line: 81
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (_ @ _).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 81
+Line: 82
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
     2: apply symmetry, right_inverse.</pre>
-</div>
-<div class="code" title="File: Subgroup.v
-Line: 82
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    apply grp_homo_unit.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 83
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  Defined.</pre>
+    apply grp_homo_unit.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 84
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Subgroup.v
+Line: 85
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -480,91 +487,91 @@ Time: 0s">
   Global Instance symmetric_in_cosetL : Symmetric in_cosetL.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 86
+Line: 87
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 87
+Line: 88
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros x y [h p]; hnf.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 88
+Line: 89
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     exists (-h).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 89
+Line: 90
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (_ @ _).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 90
+Line: 91
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     1: apply grp_homo_inv.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 91
+Line: 92
 Time: 0.037s">
-<div class="time" style="width: 10.850439882698%"></div>
+<div class="time" style="width: 10.755813953488%"></div>
 <pre>
     apply moveR_equiv_M.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 92
+Line: 93
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (p @ _).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 93
+Line: 94
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
     symmetry.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 94
+Line: 95
 Time: 0.002s">
-<div class="time" style="width: 0.58651026392962%"></div>
+<div class="time" style="width: 0.58139534883721%"></div>
 <pre>
     refine (negate_sg_op _ _ @ _).</pre>
-</div>
-<div class="code" title="File: Subgroup.v
-Line: 95
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    refine (ap (-x *.) _).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 96
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    apply negate_involutive.</pre>
+    refine (ap (-x *.) _).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 97
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    apply negate_involutive.</pre>
+</div>
+<div class="code" title="File: Subgroup.v
+Line: 98
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 98
+Line: 99
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -572,91 +579,91 @@ Time: 0s">
   Global Instance symmetric_in_cosetR : Symmetric in_cosetR.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 100
+Line: 101
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 101
+Line: 102
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros x y [h p]; hnf.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 102
+Line: 103
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     exists (-h).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 103
+Line: 104
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (_ @ _).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 104
+Line: 105
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     1: apply grp_homo_inv.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 105
+Line: 106
 Time: 0.045s">
-<div class="time" style="width: 13.196480938416%"></div>
+<div class="time" style="width: 13.081395348837%"></div>
 <pre>
     apply moveR_equiv_M.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 106
+Line: 107
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (p @ _).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 107
+Line: 108
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
     symmetry.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 108
+Line: 109
 Time: 0.002s">
-<div class="time" style="width: 0.58651026392962%"></div>
+<div class="time" style="width: 0.58139534883721%"></div>
 <pre>
     refine (negate_sg_op _ _ @ _).</pre>
-</div>
-<div class="code" title="File: Subgroup.v
-Line: 109
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    refine (ap (fun x =&gt; x *  -y) _).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 110
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    apply negate_involutive.</pre>
+    refine (ap (fun x =&gt; x *  -y) _).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 111
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    apply negate_involutive.</pre>
+</div>
+<div class="code" title="File: Subgroup.v
+Line: 112
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 112
+Line: 113
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -664,91 +671,91 @@ Time: 0s">
   Global Instance transitive_in_cosetL : Transitive in_cosetL.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 114
+Line: 115
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 115
+Line: 116
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros x y z [h p] [h' q].</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 116
+Line: 117
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     exists (h * h').</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 117
+Line: 118
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (grp_homo_op _ _ _ @ _).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 118
+Line: 119
 Time: 0.002s">
-<div class="time" style="width: 0.58651026392962%"></div>
+<div class="time" style="width: 0.58139534883721%"></div>
 <pre>
     destruct p^, q^.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 119
-Time: 0.083s">
-<div class="time" style="width: 24.340175953079%"></div>
+Line: 120
+Time: 0.085s">
+<div class="time" style="width: 24.709302325581%"></div>
 <pre>
     rewrite &lt;- simple_associativity.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 120
+Line: 121
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply ap.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 121
+Line: 122
 Time: 0.081s">
-<div class="time" style="width: 23.75366568915%"></div>
+<div class="time" style="width: 23.546511627907%"></div>
 <pre>
     rewrite simple_associativity.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 122
+Line: 123
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (ap (fun x =&gt; x *  -z) _ @ _).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 123
+Line: 124
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
     1: apply right_inverse.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 124
+Line: 125
 Time: 0.021s">
-<div class="time" style="width: 6.158357771261%"></div>
+<div class="time" style="width: 6.1046511627907%"></div>
 <pre>
     apply left_identity.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 125
+Line: 126
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 126
+Line: 127
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -756,99 +763,99 @@ Time: 0s">
   Global Instance transitive_in_cosetR : Transitive in_cosetR.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 128
+Line: 129
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 129
+Line: 130
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros x y z [h p] [h' q].</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 130
+Line: 131
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     exists (h * h').</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 131
+Line: 132
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (grp_homo_op _ _ _ @ _).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 132
+Line: 133
 Time: 0.002s">
-<div class="time" style="width: 0.58651026392962%"></div>
+<div class="time" style="width: 0.58139534883721%"></div>
 <pre>
     destruct p^, q^.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 133
+Line: 134
 Time: 0.08s">
-<div class="time" style="width: 23.460410557185%"></div>
+<div class="time" style="width: 23.255813953488%"></div>
 <pre>
     rewrite &lt;- simple_associativity.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 134
+Line: 135
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply ap.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 135
-Time: 0.08s">
-<div class="time" style="width: 23.460410557185%"></div>
+Line: 136
+Time: 0.081s">
+<div class="time" style="width: 23.546511627907%"></div>
 <pre>
     rewrite simple_associativity.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 136
+Line: 137
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (ap (fun x =&gt; x *  -z) _ @ _).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 137
+Line: 138
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
     1: apply left_inverse.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 138
-Time: 0.021s">
-<div class="time" style="width: 6.158357771261%"></div>
+Line: 139
+Time: 0.019s">
+<div class="time" style="width: 5.5232558139535%"></div>
 <pre>
     apply left_identity.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 139
+Line: 140
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 140
+Line: 141
 Time: 0.007s">
-<div class="time" style="width: 2.0527859237537%"></div>
+<div class="time" style="width: 2.0348837209302%"></div>
 <pre>
 
 End Cosets.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 142
+Line: 143
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -858,136 +865,136 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 145
+Line: 146
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>Definition in_cosetL_unit {G : Group} `{!IsSubgroup N G}
   : forall x y, in_cosetL (-x * y) mon_unit &lt;~&gt; in_cosetL x y.</pre>
-</div>
-<div class="code" title="File: Subgroup.v
-Line: 146
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 147
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  intros x y.</pre>
+Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 148
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  unfold in_cosetL.</pre>
+  intros x y.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 149
-Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
-  rewrite negate_sg_op.</pre>
+  unfold in_cosetL.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 150
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
+<pre>
+  rewrite negate_sg_op.</pre>
+</div>
+<div class="code" title="File: Subgroup.v
+Line: 151
+Time: 0.001s">
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
   rewrite negate_involutive.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 151
+Line: 152
 Time: 0.015s">
-<div class="time" style="width: 4.3988269794721%"></div>
+<div class="time" style="width: 4.3604651162791%"></div>
 <pre>
   rewrite (right_identity (-y * x)).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 152
+Line: 153
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   change (in_cosetL y x &lt;~&gt; in_cosetL x y).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 153
+Line: 154
 Time: 0.02s">
-<div class="time" style="width: 5.8651026392962%"></div>
+<div class="time" style="width: 5.8139534883721%"></div>
 <pre>
   serapply equiv_iff_hprop;
   by intro; symmetry.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 155
+Line: 156
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 156
+Line: 157
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
 
 Definition in_cosetR_unit {G : Group} `{!IsSubgroup N G}
   : forall x y, in_cosetR (x * -y) mon_unit &lt;~&gt; in_cosetR x y.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 159
+Line: 160
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 160
+Line: 161
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros x y.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 161
+Line: 162
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   unfold in_cosetR.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 162
+Line: 163
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
   rewrite negate_mon_unit.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 163
+Line: 164
 Time: 0.015s">
-<div class="time" style="width: 4.3988269794721%"></div>
+<div class="time" style="width: 4.3604651162791%"></div>
 <pre>
   rewrite (right_identity (x * -y)).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 164
+Line: 165
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   reflexivity.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 165
+Line: 166
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 166
+Line: 167
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -995,93 +1002,93 @@ Time: 0s">
 (** Symmetry is an equivalence. *)</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 168
-Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
-<pre>Definition equiv_in_cosetL_symm {G : Group} `{!IsSubgroup N G}
-  : forall x y, in_cosetL x y &lt;~&gt; in_cosetL y x.</pre>
-</div>
-<div class="code" title="File: Subgroup.v
 Line: 169
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
+<pre>Definition equiv_in_cosetL_symm {G : Group} `{!IsSubgroup N G}
+  : forall x y, in_cosetL x y &lt;~&gt; in_cosetL y x.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 170
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  intros x y.</pre>
+Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 171
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  intros x y.</pre>
+</div>
+<div class="code" title="File: Subgroup.v
+Line: 172
 Time: 0.015s">
-<div class="time" style="width: 4.3988269794721%"></div>
+<div class="time" style="width: 4.3604651162791%"></div>
 <pre>
   serapply equiv_iff_hprop.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 172
+Line: 173
 Time: 0.002s">
-<div class="time" style="width: 0.58651026392962%"></div>
+<div class="time" style="width: 0.58139534883721%"></div>
 <pre>
   all: by intro.</pre>
-</div>
-<div class="code" title="File: Subgroup.v
-Line: 173
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Defined.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 174
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Subgroup.v
+Line: 175
+Time: 0.001s">
+<div class="time" style="width: 0.2906976744186%"></div>
+<pre>
 
 Definition equiv_in_cosetR_symm {G : Group} `{!IsSubgroup N G}
   : forall x y, in_cosetR x y &lt;~&gt; in_cosetR y x.</pre>
-</div>
-<div class="code" title="File: Subgroup.v
-Line: 177
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 178
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  intros x y.</pre>
+Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 179
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  intros x y.</pre>
+</div>
+<div class="code" title="File: Subgroup.v
+Line: 180
 Time: 0.014s">
-<div class="time" style="width: 4.1055718475073%"></div>
+<div class="time" style="width: 4.0697674418605%"></div>
 <pre>
   serapply equiv_iff_hprop.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 180
+Line: 181
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
   all: by intro.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 181
+Line: 182
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 182
+Line: 183
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1089,15 +1096,15 @@ Time: 0s">
 (* A subgroup is normal if being in a left coset is equivalent to being in a right coset represented by the same element. *)</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 184
+Line: 185
 Time: 0.005s">
-<div class="time" style="width: 1.466275659824%"></div>
+<div class="time" style="width: 1.453488372093%"></div>
 <pre>Class IsNormalSubgroup {G : Group} (N : Subgroup G) := {
   isnormal {x y} : in_cosetL x y &lt;~&gt; in_cosetR x y;
 }.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 186
+Line: 187
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1105,135 +1112,135 @@ Time: 0s">
 (* Inverses are then respected *)</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 188
+Line: 189
 Time: 0.004s">
-<div class="time" style="width: 1.1730205278592%"></div>
+<div class="time" style="width: 1.1627906976744%"></div>
 <pre>Definition in_cosetL_inv {G : Group} `{!IsNormalSubgroup N}
   : forall x y, in_cosetL (-x) (-y) &lt;~&gt; in_cosetL x y.</pre>
-</div>
-<div class="code" title="File: Subgroup.v
-Line: 189
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 190
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  intros x y.</pre>
+Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 191
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  refine (_ oE (in_cosetL_unit _ _)^-1).</pre>
+  intros x y.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 192
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  refine (_ oE isnormal).</pre>
+  refine (_ oE (in_cosetL_unit _ _)^-1).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 193
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  refine (_ oE in_cosetR_unit _ _).</pre>
+  refine (_ oE isnormal).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 194
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  refine (_ oE isnormal^-1).</pre>
+  refine (_ oE in_cosetR_unit _ _).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 195
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  refine (_ oE isnormal^-1).</pre>
+</div>
+<div class="code" title="File: Subgroup.v
+Line: 196
 Time: 0.003s">
-<div class="time" style="width: 0.87976539589443%"></div>
+<div class="time" style="width: 0.87209302325581%"></div>
 <pre>
   by rewrite negate_involutive.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 196
+Line: 197
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 197
+Line: 198
 Time: 0.004s">
-<div class="time" style="width: 1.1730205278592%"></div>
+<div class="time" style="width: 1.1627906976744%"></div>
 <pre>
 
 Definition in_cosetR_inv {G : Group} `{!IsNormalSubgroup N}
   : forall x y, in_cosetR (-x) (-y) &lt;~&gt; in_cosetR x y.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 200
+Line: 201
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 201
+Line: 202
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros x y.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 202
+Line: 203
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   refine (_ oE (in_cosetR_unit _ _)^-1).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 203
+Line: 204
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   refine (_ oE isnormal^-1).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 204
+Line: 205
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   refine (_ oE in_cosetL_unit _ _).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 205
+Line: 206
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   refine (_ oE isnormal).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 206
+Line: 207
 Time: 0.008s">
-<div class="time" style="width: 2.3460410557185%"></div>
+<div class="time" style="width: 2.3255813953488%"></div>
 <pre>
   by rewrite negate_involutive.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 207
-Time: 0.002s">
-<div class="time" style="width: 0.58651026392962%"></div>
+Line: 208
+Time: 0.001s">
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 208
+Line: 209
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1241,181 +1248,181 @@ Time: 0s">
 (* There is always another element of the normal subgroup allowing us to commute with an element of the group. *)</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 210
+Line: 211
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>Definition normal_subgroup_swap {G : Group}
   `{!IsNormalSubgroup N} (x : G) (h : N)
   : exists h' : N, x * issubgroup_incl h = issubgroup_incl h' * x.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 212
+Line: 213
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 213
+Line: 214
 Time: 0.002s">
-<div class="time" style="width: 0.58651026392962%"></div>
+<div class="time" style="width: 0.58139534883721%"></div>
 <pre>
   assert (X : in_cosetL x (x * issubgroup_incl h)).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 214
+Line: 215
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   {</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 215
+Line: 216
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exists h.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 215
-Time: 0.056s">
-<div class="time" style="width: 16.422287390029%"></div>
+Line: 216
+Time: 0.06s">
+<div class="time" style="width: 17.441860465116%"></div>
 <pre>
     rewrite simple_associativity.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 216
+Line: 217
 Time: 0.002s">
-<div class="time" style="width: 0.58651026392962%"></div>
+<div class="time" style="width: 0.58139534883721%"></div>
 <pre>
     rewrite left_inverse.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 217
+Line: 218
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
     symmetry.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 218
-Time: 0.015s">
-<div class="time" style="width: 4.3988269794721%"></div>
+Line: 219
+Time: 0.016s">
+<div class="time" style="width: 4.6511627906977%"></div>
 <pre>
     apply left_identity.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 219
+Line: 220
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> }</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 219
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 220
+Time: 0.001s">
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
   apply isnormal in X.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 220
+Line: 221
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   destruct X as [a p].</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 221
+Line: 222
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
   rewrite negate_sg_op in p.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 222
-Time: 0.086s">
-<div class="time" style="width: 25.219941348974%"></div>
+Line: 223
+Time: 0.089s">
+<div class="time" style="width: 25.872093023256%"></div>
 <pre>
   rewrite simple_associativity in p.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 223
+Line: 224
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   eexists (-a).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 224
+Line: 225
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
   symmetry.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 225
+Line: 226
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   rewrite grp_homo_inv.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 226
-Time: 0.057s">
-<div class="time" style="width: 16.715542521994%"></div>
+Line: 227
+Time: 0.059s">
+<div class="time" style="width: 17.151162790698%"></div>
 <pre>
   apply (moveR_equiv_M (f := (- _ *.))).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 227
+Line: 228
 Time: 0.005s">
-<div class="time" style="width: 1.466275659824%"></div>
+<div class="time" style="width: 1.453488372093%"></div>
 <pre>
   cbn; rewrite negate_involutive.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 228
-Time: 0.084s">
-<div class="time" style="width: 24.633431085044%"></div>
+Line: 229
+Time: 0.087s">
+<div class="time" style="width: 25.290697674419%"></div>
 <pre>
   rewrite simple_associativity.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 229
-Time: 0.044s">
-<div class="time" style="width: 12.903225806452%"></div>
-<pre>
-  apply (moveL_equiv_M (f := (fun x =&gt; x * _))).</pre>
-</div>
-<div class="code" title="File: Subgroup.v
 Line: 230
 Time: 0.047s">
-<div class="time" style="width: 13.782991202346%"></div>
+<div class="time" style="width: 13.662790697674%"></div>
 <pre>
   apply (moveL_equiv_M (f := (fun x =&gt; x * _))).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 231
+Time: 0.046s">
+<div class="time" style="width: 13.372093023256%"></div>
+<pre>
+  apply (moveL_equiv_M (f := (fun x =&gt; x * _))).</pre>
+</div>
+<div class="code" title="File: Subgroup.v
+Line: 232
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
   symmetry.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 232
+Line: 233
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   assumption.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 233
+Line: 234
 Time: 0.004s">
-<div class="time" style="width: 1.1730205278592%"></div>
+<div class="time" style="width: 1.1627906976744%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 234
+Line: 235
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1423,205 +1430,205 @@ Time: 0s">
 (* This let's us prove that left and right coset relations are congruences. *)</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 236
+Line: 237
 Time: 0.007s">
-<div class="time" style="width: 2.0527859237537%"></div>
+<div class="time" style="width: 2.0348837209302%"></div>
 <pre>Definition in_cosetL_cong {G : Group} `{!IsNormalSubgroup N}
   : forall x x' y y', in_cosetL x y -&gt; in_cosetL x' y' -&gt; in_cosetL (x * x') (y * y').</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 237
+Line: 238
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 238
+Line: 239
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
   intros x x' y y' [a p] [b q].</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 239
+Line: 240
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   eexists ?[c].</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 240
+Line: 241
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
   rewrite negate_sg_op.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 241
-Time: 0.097s">
-<div class="time" style="width: 28.445747800587%"></div>
+Line: 242
+Time: 0.096s">
+<div class="time" style="width: 27.906976744186%"></div>
 <pre>
   rewrite &lt;- simple_associativity.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 242
-Time: 0.047s">
-<div class="time" style="width: 13.782991202346%"></div>
+Line: 243
+Time: 0.048s">
+<div class="time" style="width: 13.953488372093%"></div>
 <pre>
   rewrite (simple_associativity (-x) y).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 243
+Line: 244
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   rewrite &lt;- p.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 244
-Time: 0.1s">
-<div class="time" style="width: 29.325513196481%"></div>
+Line: 245
+Time: 0.099s">
+<div class="time" style="width: 28.779069767442%"></div>
 <pre>
   rewrite simple_associativity.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 245
+Line: 246
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
   rewrite (normal_subgroup_swap _ a).2.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 246
-Time: 0.102s">
-<div class="time" style="width: 29.912023460411%"></div>
+Line: 247
+Time: 0.106s">
+<div class="time" style="width: 30.813953488372%"></div>
 <pre>
   rewrite &lt;- simple_associativity.</pre>
-</div>
-<div class="code" title="File: Subgroup.v
-Line: 247
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  rewrite &lt;- q.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 248
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  apply grp_homo_op.</pre>
+  rewrite &lt;- q.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 249
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  apply grp_homo_op.</pre>
+</div>
+<div class="code" title="File: Subgroup.v
+Line: 250
 Time: 0.003s">
-<div class="time" style="width: 0.87976539589443%"></div>
+<div class="time" style="width: 0.87209302325581%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 250
+Line: 251
 Time: 0.007s">
-<div class="time" style="width: 2.0527859237537%"></div>
+<div class="time" style="width: 2.0348837209302%"></div>
 <pre>
 
 Definition in_cosetR_cong {G : Group} `{!IsNormalSubgroup N}
   : forall x x' y y', in_cosetR x y -&gt; in_cosetR x' y' -&gt; in_cosetR (x * x') (y * y').</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 253
+Line: 254
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 254
+Line: 255
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
   intros x x' y y' [a p] [b q].</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 255
+Line: 256
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   eexists ?[c].</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 256
+Line: 257
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
   rewrite negate_sg_op.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 257
-Time: 0.096s">
-<div class="time" style="width: 28.152492668622%"></div>
+Line: 258
+Time: 0.095s">
+<div class="time" style="width: 27.616279069767%"></div>
 <pre>
   rewrite &lt;- simple_associativity.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 258
+Line: 259
 Time: 0.047s">
-<div class="time" style="width: 13.782991202346%"></div>
+<div class="time" style="width: 13.662790697674%"></div>
 <pre>
   rewrite (simple_associativity x' (-y')).</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 259
+Line: 260
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   rewrite &lt;- q.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 260
-Time: 0.099s">
-<div class="time" style="width: 29.032258064516%"></div>
+Line: 261
+Time: 0.098s">
+<div class="time" style="width: 28.488372093023%"></div>
 <pre>
   rewrite simple_associativity.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 261
+Line: 262
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.2906976744186%"></div>
 <pre>
   rewrite (normal_subgroup_swap _ b).2.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 262
-Time: 0.101s">
-<div class="time" style="width: 29.618768328446%"></div>
+Line: 263
+Time: 0.105s">
+<div class="time" style="width: 30.523255813953%"></div>
 <pre>
   rewrite &lt;- simple_associativity.</pre>
-</div>
-<div class="code" title="File: Subgroup.v
-Line: 263
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  rewrite &lt;- p.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 264
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  apply grp_homo_op.</pre>
+  rewrite &lt;- p.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
 Line: 265
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  apply grp_homo_op.</pre>
+</div>
+<div class="code" title="File: Subgroup.v
+Line: 266
 Time: 0.003s">
-<div class="time" style="width: 0.87976539589443%"></div>
+<div class="time" style="width: 0.87209302325581%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Subgroup.v
-Line: 267
+Line: 268
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>

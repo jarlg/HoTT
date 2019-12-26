@@ -30,7 +30,7 @@ pre {
 
 <div class="code" title="File: naturals.v
 Line: 1
-Time: 0.379s">
+Time: 0.384s">
 <div class="time" style="width: 100%"></div>
 <pre>Require Import
  HoTT.Classes.interfaces.abstract_algebra
@@ -39,7 +39,7 @@ Time: 0.379s">
 <div class="code" title="File: naturals.v
 Line: 3
 Time: 0.002s">
-<div class="time" style="width: 0.52770448548813%"></div>
+<div class="time" style="width: 0.52083333333333%"></div>
 <pre>
 
 Class NaturalsToSemiRing@{i j} (A : Type@{i}) :=
@@ -55,17 +55,17 @@ Arguments naturals_to_semiring A {_} B {_ _ _ _ _} _.</pre>
 </div>
 <div class="code" title="File: naturals.v
 Line: 8
-Time: 0.018s">
-<div class="time" style="width: 4.7493403693931%"></div>
+Time: 0.017s">
+<div class="time" style="width: 4.4270833333333%"></div>
 <pre>
 
 Class Naturals A {Aap:Apart A} {Aplus Amult Azero Aone Ale Alt}
   `{U: NaturalsToSemiRing A} :=
   { naturals_ring :&gt; @IsSemiRing A Aplus Amult Azero Aone
   ; naturals_order :&gt; FullPseudoSemiRingOrder Ale Alt
-  ; naturals_to_semiring_mor:&gt; forall `{IsSemiRing B},
+  ; naturals_to_semiring_mor:&gt; forall {B} `{IsSemiRing B},
     IsSemiRingPreserving (naturals_to_semiring A B)
-  ; naturals_initial: forall `{IsSemiRing B} {h : A -&gt; B} `{!IsSemiRingPreserving h} x,
+  ; naturals_initial: forall {B} `{IsSemiRing B} {h : A -&gt; B} `{!IsSemiRingPreserving h} x,
     naturals_to_semiring A B x = h x }.</pre>
 </div>
 <div class="code" title="File: naturals.v
@@ -79,7 +79,7 @@ Time: 0s">
 <div class="code" title="File: naturals.v
 Line: 19
 Time: 0.003s">
-<div class="time" style="width: 0.79155672823219%"></div>
+<div class="time" style="width: 0.78125%"></div>
 <pre>Class NatDistance N `{Plus N}
   := nat_distance_sig : forall x y : N, { z : N | (x + z = y)%mc } |_|
                                    { z : N | (y + z = x)%mc }.</pre>
@@ -87,9 +87,9 @@ Time: 0.003s">
 <div class="code" title="File: naturals.v
 Line: 21
 Time: 0.001s">
-<div class="time" style="width: 0.26385224274406%"></div>
+<div class="time" style="width: 0.26041666666667%"></div>
 <pre>
-Definition nat_distance `{nd : NatDistance N} (x y : N) :=
+Definition nat_distance {N} `{nd : NatDistance N} (x y : N) :=
   match nat_distance_sig x y with
   | inl (n;_) =&gt; n
   | inr (n;_) =&gt; n
