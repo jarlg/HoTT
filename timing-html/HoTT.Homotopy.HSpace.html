@@ -1,0 +1,318 @@
+<html>
+<head>
+<title>HSpace.v</title>
+<style>
+.time {
+  background-color: #ffaaaa;
+  height: 100%;
+  z-index: -1;
+  position: absolute;
+}
+.code {
+  z-index: 0;
+  position: relative;
+  border-style: solid;
+  border-color: transparent;
+  border-width: 1px;
+}
+.code:hover {
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+pre {
+  margin: 1px;
+}
+</style>
+</head>
+<body>
+<h1>Timings for HSpace.v</h1>
+
+<div class="code" title="File: HSpace.v
+Line: 1
+Time: 0.02s">
+<div class="time" style="width: 8.6580086580087%"></div>
+<pre>Require Import Basics.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 1
+Time: 0.021s">
+<div class="time" style="width: 9.0909090909091%"></div>
+<pre>
+Require Import Types.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 2
+Time: 0.172s">
+<div class="time" style="width: 74.458874458874%"></div>
+<pre>
+Require Import Truncations.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 3
+Time: 0.231s">
+<div class="time" style="width: 100%"></div>
+<pre>
+Require Export Classes.interfaces.abstract_algebra.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 4
+Time: 0.001s">
+<div class="time" style="width: 0.43290043290043%"></div>
+<pre>
+Import TrM.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 5
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Local Open Scope trunc_scope.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 7
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Local Open Scope mc_mult_scope.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 8
+Time: 0.003s">
+<div class="time" style="width: 1.2987012987013%"></div>
+<pre>
+
+Class IsHSpace (X : pType) := {
+  hspace_op :&gt; SgOp X;
+  hspace_left_identity :&gt; LeftIdentity hspace_op (point _);
+  hspace_right_identity :&gt; RightIdentity hspace_op (point _);
+}.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 14
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Global Instance hspace_mon_unit {X : pType} `{IsHSpace X} : MonUnit X := point _.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 16
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Definition hspace_id {X : pType} := point X.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 18
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Section HSpaceProperties.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 20
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  Context 
+   `{Univalence}
+    {A : pType}
+   `{IsHSpace A}
+   `{IsConnected 0 A}.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 26
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  Global Instance isequiv_hspace_left_op
+    : forall (a : A), IsEquiv (fun x =&gt; a * x).</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 29
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 30
+Time: 0.096s">
+<div class="time" style="width: 41.558441558442%"></div>
+<pre>
+    refine (conn_map_elim (-1) (unit_name hspace_id) _ _).</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 31
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 32
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exact (conn_point_incl hspace_id).</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 32
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 33
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> apply Unit_ind.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 33
+Time: 0.02s">
+<div class="time" style="width: 8.6580086580087%"></div>
+<pre>
+      serapply (isequiv_homotopic idmap).</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 34
+Time: 0.001s">
+<div class="time" style="width: 0.43290043290043%"></div>
+<pre>
+      intro a; symmetry.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 35
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      apply left_identity.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 36
+Time: 0.001s">
+<div class="time" style="width: 0.43290043290043%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 37
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  Global Instance isequiv_hspace_right_op
+    : forall (a : A), IsEquiv (fun x =&gt; x * a).</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 40
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 41
+Time: 0.098s">
+<div class="time" style="width: 42.424242424242%"></div>
+<pre>
+    refine (conn_map_elim (-1) (unit_name hspace_id) _ _).</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 42
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 43
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exact (conn_point_incl hspace_id).</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 43
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 44
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> apply Unit_ind.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 44
+Time: 0.019s">
+<div class="time" style="width: 8.2251082251082%"></div>
+<pre>
+      serapply (isequiv_homotopic idmap).</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 45
+Time: 0.001s">
+<div class="time" style="width: 0.43290043290043%"></div>
+<pre>
+      intro a; symmetry.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 46
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      apply right_identity.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 47
+Time: 0.001s">
+<div class="time" style="width: 0.43290043290043%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 48
+Time: 0.001s">
+<div class="time" style="width: 0.43290043290043%"></div>
+<pre>
+
+  Definition equiv_hspace_left_op (a : A) : A &lt;~&gt; A
+    := Build_Equiv _ _ _ (isequiv_hspace_left_op a).</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 51
+Time: 0.001s">
+<div class="time" style="width: 0.43290043290043%"></div>
+<pre>
+
+  Definition equiv_hspace_right_op (a : A) : A &lt;~&gt; A
+    := Build_Equiv _ _ _ (isequiv_hspace_right_op a).</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 54
+Time: 0.003s">
+<div class="time" style="width: 1.2987012987013%"></div>
+<pre>
+
+End HSpaceProperties.</pre>
+</div>
+<div class="code" title="File: HSpace.v
+Line: 57
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+</pre>
+</div>
+</body>
+</html>
+
