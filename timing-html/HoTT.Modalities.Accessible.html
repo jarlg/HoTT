@@ -40,21 +40,21 @@ Time: 0s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 4
-Time: 0.041s">
-<div class="time" style="width: 23.16384180791%"></div>
+Time: 0.033s">
+<div class="time" style="width: 17.837837837838%"></div>
 <pre>Require Import HoTT.Basics HoTT.Types HoTT.Tactics.</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 4
-Time: 0.01s">
-<div class="time" style="width: 5.6497175141243%"></div>
+Time: 0.009s">
+<div class="time" style="width: 4.8648648648649%"></div>
 <pre>
 Require Import Extensions NullHomotopy EquivalenceVarieties.</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 5
-Time: 0.014s">
-<div class="time" style="width: 7.909604519774%"></div>
+Time: 0.012s">
+<div class="time" style="width: 6.4864864864865%"></div>
 <pre>
 Require Import ReflectiveSubuniverse Modality.</pre>
 </div>
@@ -90,8 +90,8 @@ We now give the basic definitions related to accessibility, using [ooExtendableA
 </div>
 <div class="code" title="File: Accessible.v
 Line: 17
-Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>Record LocalGenerators :=
   { lgen_indices : Type@{a} ;
     lgen_domain : lgen_indices -&gt; Type@{a} ;
@@ -123,8 +123,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 26
-Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   Definition IsLocal f X :=
     (forall (i : lgen_indices f), ooExtendableAlong (f i) (fun _ =&gt; X)).</pre>
@@ -229,15 +229,15 @@ Time: 0s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 54
-Time: 0.07s">
-<div class="time" style="width: 39.54802259887%"></div>
+Time: 0.073s">
+<div class="time" style="width: 39.459459459459%"></div>
 <pre>
   Module Import Os_Theory := ReflectiveSubuniverses_Theory Os.</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 55
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
 
   Definition O_inverts_generators {O : ReflectiveSubuniverse}
@@ -253,15 +253,15 @@ Time: 0s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 60
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
     pose (ext_dom := fst (inO_iff_islocal O (O (lgen_domain (acc_gen O) i))) _).</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 61
-Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
     pose (ext_cod := fst (inO_iff_islocal O (O (lgen_codomain (acc_gen O) i))) _).</pre>
 </div>
@@ -287,8 +287,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 64
-Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
       exact ((fst (ext_dom i 1%nat) (to O _)).1).</pre>
 </div>
@@ -302,20 +302,20 @@ Time: 0s">
 <div class="code" title="File: Accessible.v
 Line: 66
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre> apply O_indpaths; intros x; simpl.</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 66
-Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
       rewrite O_rec_beta.</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 67
 Time: 0.004s">
-<div class="time" style="width: 2.2598870056497%"></div>
+<div class="time" style="width: 2.1621621621622%"></div>
 <pre>
       refine ((fst (snd (ext_cod i 2)
                         (fun x =&gt; O_functor O (acc_gen O i)
@@ -324,15 +324,15 @@ Time: 0.004s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 71
-Time: 0.004s">
-<div class="time" style="width: 2.2598870056497%"></div>
+Time: 0.002s">
+<div class="time" style="width: 1.0810810810811%"></div>
 <pre>
       rewrite ((fst (ext_dom i 1%nat) (to O _)).2 a).</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 72
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
       apply to_O_natural.</pre>
 </div>
@@ -345,35 +345,35 @@ Time: 0s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 74
-Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre> apply O_indpaths; intros x; simpl.</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 74
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.0810810810811%"></div>
 <pre>
       rewrite (to_O_natural O (acc_gen O i) x).</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 75
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.0810810810811%"></div>
 <pre>
       rewrite O_rec_beta.</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 76
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
       apply ((fst (ext_dom i 1%nat) (to O _)).2 x).</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 77
-Time: 0.007s">
-<div class="time" style="width: 3.954802259887%"></div>
+Time: 0.006s">
+<div class="time" style="width: 3.2432432432432%"></div>
 <pre>
   Qed.</pre>
 </div>
@@ -402,8 +402,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 88
-Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>Record NullGenerators :=
   { ngen_indices : Type@{a} ;
     ngen_type : ngen_indices -&gt; Type@{a}
@@ -465,8 +465,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 103
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>Definition extendable_isnull_fibers (n : nat)
            {A B} (f : A -&gt; B) (C : B -&gt; Type)
 : (forall b, ooExtendableAlong (@const (hfiber f b) Unit tt)
@@ -490,7 +490,7 @@ Time: 0s">
 <div class="code" title="File: Accessible.v
 Line: 109
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
   simple_induction n n IHn; intros C null; [exact tt | split].</pre>
 </div>
@@ -510,7 +510,7 @@ Time: 0s">
 <div class="code" title="File: Accessible.v
 Line: 111
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.0810810810811%"></div>
 <pre>
     exists (fun b =&gt; (fst (null b 1%nat) (fun x =&gt; x.2 # g x.1)).1 tt).</pre>
 </div>
@@ -523,15 +523,15 @@ Time: 0s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 113
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
     rewrite (path_unit tt (const tt a)).</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 114
-Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
     exact ((fst (null (f a) 1%nat) _).2 (a ; 1)).</pre>
 </div>
@@ -564,15 +564,15 @@ Time: 0s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 118
-Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 119
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.0810810810811%"></div>
 <pre>
 
 Definition ooextendable_isnull_fibers {A B} (f : A -&gt; B) (C : B -&gt; Type)
@@ -604,8 +604,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 128
-Time: 0.149s">
-<div class="time" style="width: 84.180790960452%"></div>
+Time: 0.124s">
+<div class="time" style="width: 67.027027027027%"></div>
 <pre>
   Module Import Os_Theory := Modalities_Theory Os.</pre>
 </div>
@@ -667,7 +667,7 @@ End Accessible_Modalities.</pre>
 <div class="code" title="File: Accessible.v
 Line: 142
 Time: 0.013s">
-<div class="time" style="width: 7.3446327683616%"></div>
+<div class="time" style="width: 7.027027027027%"></div>
 <pre>
 
 Module Accessible_Modalities_Theory
@@ -684,8 +684,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 148
-Time: 0.092s">
-<div class="time" style="width: 51.977401129944%"></div>
+Time: 0.085s">
+<div class="time" style="width: 45.945945945946%"></div>
 <pre>
   Module Export Os_Theory := Modalities_Theory Os.</pre>
 </div>
@@ -720,30 +720,30 @@ Time: 0s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 154
-Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+Time: 0.003s">
+<div class="time" style="width: 1.6216216216216%"></div>
 <pre>
     pose (H := fst (fst (inO_iff_isnull O (O (acc_gen O i))) _ i 1%nat)
                    (to O ((acc_gen O) i))).</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 156
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
     exists (H.1 tt).</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 157
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
     exact (fun x =&gt; (H.2 x)^).</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 158
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
   Defined.</pre>
 </div>
@@ -803,7 +803,7 @@ Time: 0s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 171
-Time: 0.177s">
+Time: 0.185s">
 <div class="time" style="width: 100%"></div>
 <pre>
       apply (equiv_ooextendable_isequiv _ _)^-1.</pre>
@@ -851,7 +851,7 @@ Time: 0s">
 <div class="code" title="File: Accessible.v
 Line: 176
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
         symmetry; exact ((c i f).2 x).</pre>
 </div>
@@ -864,8 +864,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 178
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre> intros g; apply path_arrow; intros [].</pre>
 </div>
 <div class="code" title="File: Accessible.v
@@ -885,14 +885,14 @@ Time: 0s">
 <div class="code" title="File: Accessible.v
 Line: 180
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
         symmetry; apply p, inhab.</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 181
-Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
     Defined.</pre>
 </div>
@@ -949,8 +949,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 191
-Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
 
   End InhabitedGenerators.</pre>
@@ -975,8 +975,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 199
-Time: 0.017s">
-<div class="time" style="width: 9.6045197740113%"></div>
+Time: 0.013s">
+<div class="time" style="width: 7.027027027027%"></div>
 <pre>Module Accessible_Modalities_to_ReflectiveSubuniverses
        (Os : Modalities) (Acc : Accessible_Modalities Os).</pre>
 </div>
@@ -992,7 +992,7 @@ Time: 0s">
 <div class="code" title="File: Accessible.v
 Line: 203
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>Module Os_RSU := Modalities_to_ReflectiveSubuniverses Os.</pre>
 </div>
 <div class="code" title="File: Accessible.v
@@ -1066,7 +1066,7 @@ Time: 0s">
 <div class="code" title="File: Accessible.v
 Line: 223
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
 
   Module Os_RSU := Modalities_to_ReflectiveSubuniverses Os.</pre>
@@ -1074,7 +1074,7 @@ Time: 0.001s">
 <div class="code" title="File: Accessible.v
 Line: 225
 Time: 0.003s">
-<div class="time" style="width: 1.6949152542373%"></div>
+<div class="time" style="width: 1.6216216216216%"></div>
 <pre>
   Module AccMod (Acc : Accessible_ReflectiveSubuniverses Os_RSU)
     &lt;: Accessible_Modalities Os.</pre>
@@ -1089,15 +1089,15 @@ Time: 0s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 229
-Time: 0.111s">
-<div class="time" style="width: 62.71186440678%"></div>
+Time: 0.1s">
+<div class="time" style="width: 54.054054054054%"></div>
 <pre>
     Module Import Os_Theory := Modalities_Theory Os.</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 230
-Time: 0.06s">
-<div class="time" style="width: 33.898305084746%"></div>
+Time: 0.058s">
+<div class="time" style="width: 31.351351351351%"></div>
 <pre>
     Module Import Acc_Theory := Accessible_ReflectiveSubuniverses_Theory Os_RSU Acc.</pre>
 </div>
@@ -1129,7 +1129,7 @@ Time: 0s">
 <div class="code" title="File: Accessible.v
 Line: 238
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
       refine (Build_NullGenerators
                 (  { i : lgen_indices@{a} (acc_gen O)
@@ -1140,15 +1140,15 @@ Time: 0.001s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 244
-Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
       intros [ [i x] | [i x] ]; exact (hfiber (to O _) x).</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 245
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
     Defined.</pre>
 </div>
@@ -1192,7 +1192,7 @@ Time: 0s">
 <div class="code" title="File: Accessible.v
 Line: 253
 Time: 0.006s">
-<div class="time" style="width: 3.3898305084746%"></div>
+<div class="time" style="width: 3.2432432432432%"></div>
 <pre> intros X_inO [ [i x] | [i x] ];
           exact (ooextendable_const_isconnected_inO@{u a u a a i i} O _ _).</pre>
 </div>
@@ -1262,7 +1262,7 @@ Time: 0s">
 <div class="code" title="File: Accessible.v
 Line: 263
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre> refine (ooextendable_homotopic _
                    (O_functor O (Acc.acc_gen O i)
                               o to O (lgen_domain (Acc.acc_gen O) i)) _ _).</pre>
@@ -1317,14 +1317,14 @@ Time: 0s">
 <div class="code" title="File: Accessible.v
 Line: 270
 Time: 0.005s">
-<div class="time" style="width: 2.8248587570621%"></div>
+<div class="time" style="width: 2.7027027027027%"></div>
 <pre>
     Defined.</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 271
-Time: 0.047s">
-<div class="time" style="width: 26.553672316384%"></div>
+Time: 0.045s">
+<div class="time" style="width: 24.324324324324%"></div>
 <pre>
 
   End AccMod.</pre>
@@ -1360,7 +1360,7 @@ Time: 0s">
 <div class="code" title="File: Accessible.v
 Line: 282
 Time: 0.001s">
-<div class="time" style="width: 0.56497175141243%"></div>
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
 
   Module Import New &lt;: ReflectiveSubuniverses
@@ -1414,8 +1414,8 @@ End Accessible_Restriction_ReflectiveSubuniverses.</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 301
-Time: 0.016s">
-<div class="time" style="width: 9.0395480225989%"></div>
+Time: 0.013s">
+<div class="time" style="width: 7.027027027027%"></div>
 <pre>
 
 Module Accessible_Restriction_Modalities
@@ -1425,8 +1425,8 @@ Module Accessible_Restriction_Modalities
 </div>
 <div class="code" title="File: Accessible.v
 Line: 306
-Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.54054054054054%"></div>
 <pre>
 
   Module Import New &lt;: Modalities
@@ -1435,15 +1435,15 @@ Time: 0.002s">
 <div class="code" title="File: Accessible.v
 Line: 309
 Time: 0.002s">
-<div class="time" style="width: 1.1299435028249%"></div>
+<div class="time" style="width: 1.0810810810811%"></div>
 <pre>
 
   Module Accessible_New &lt;: Accessible_Modalities New.</pre>
 </div>
 <div class="code" title="File: Accessible.v
 Line: 311
-Time: 0.12s">
-<div class="time" style="width: 67.796610169492%"></div>
+Time: 0.109s">
+<div class="time" style="width: 58.918918918919%"></div>
 <pre>
 
     Module Import Os_Theory := Modalities_Theory New.</pre>
@@ -1472,8 +1472,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Accessible.v
 Line: 323
-Time: 0.043s">
-<div class="time" style="width: 24.293785310734%"></div>
+Time: 0.037s">
+<div class="time" style="width: 20%"></div>
 <pre>
 
   End Accessible_New.</pre>
