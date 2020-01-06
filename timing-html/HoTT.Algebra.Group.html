@@ -30,28 +30,28 @@ pre {
 
 <div class="code" title="File: Group.v
 Line: 1
-Time: 0.018s">
-<div class="time" style="width: 4.9046321525886%"></div>
+Time: 0.017s">
+<div class="time" style="width: 4.4736842105263%"></div>
 <pre>Require Import Basics.</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 1
 Time: 0.018s">
-<div class="time" style="width: 4.9046321525886%"></div>
+<div class="time" style="width: 4.7368421052632%"></div>
 <pre>
 Require Import Types.</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 2
 Time: 0.005s">
-<div class="time" style="width: 1.3623978201635%"></div>
+<div class="time" style="width: 1.3157894736842%"></div>
 <pre>
 Require Import PathAny.</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 3
-Time: 0.33s">
-<div class="time" style="width: 89.91825613079%"></div>
+Time: 0.336s">
+<div class="time" style="width: 88.421052631579%"></div>
 <pre>
 Require Export Classes.interfaces.abstract_algebra.</pre>
 </div>
@@ -65,7 +65,7 @@ Require Export Classes.theory.groups.</pre>
 <div class="code" title="File: Group.v
 Line: 5
 Time: 0.003s">
-<div class="time" style="width: 0.81743869209809%"></div>
+<div class="time" style="width: 0.78947368421053%"></div>
 <pre>
 Require Import Pointed.Core.</pre>
 </div>
@@ -113,7 +113,7 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 16
 Time: 0.002s">
-<div class="time" style="width: 0.5449591280654%"></div>
+<div class="time" style="width: 0.52631578947368%"></div>
 <pre>Class Group := {
   group_type : Type;
   group_sgop :&gt; SgOp group_type;
@@ -138,8 +138,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 24
-Time: 0.057s">
-<div class="time" style="width: 15.531335149864%"></div>
+Time: 0.055s">
+<div class="time" style="width: 14.473684210526%"></div>
 <pre>
 
 Definition issig_group : _ &lt;~&gt; Group
@@ -197,7 +197,7 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 40
 Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+<div class="time" style="width: 0.26315789473684%"></div>
 <pre>
 
 Definition identity_unique' {A : Type} {Aop : SgOp A}
@@ -215,7 +215,7 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 46
 Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+<div class="time" style="width: 0.26315789473684%"></div>
 <pre>Definition inverse_unique `{IsMonoid A}
   (a x y : A) {p : x * a = mon_unit} {q : a * y = mon_unit}
   : x = y.</pre>
@@ -230,14 +230,14 @@ Proof.</pre>
 <div class="code" title="File: Group.v
 Line: 49
 Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+<div class="time" style="width: 0.26315789473684%"></div>
 <pre>
   refine ((right_identity x)^ @ ap _ q^ @ _).</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 50
 Time: 0.003s">
-<div class="time" style="width: 0.81743869209809%"></div>
+<div class="time" style="width: 0.78947368421053%"></div>
 <pre>
   refine (associativity _ _ _ @ _).</pre>
 </div>
@@ -287,7 +287,7 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 70
 Time: 0.002s">
-<div class="time" style="width: 0.5449591280654%"></div>
+<div class="time" style="width: 0.52631578947368%"></div>
 <pre>Class GroupHomomorphism (G H : Group) := Build_GroupHomomorphism' {
   grp_homo_map : G -&gt; H;
   grp_homo_ishomo :&gt; IsMonoidPreserving grp_homo_map;
@@ -318,7 +318,7 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 77
 Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+<div class="time" style="width: 0.26315789473684%"></div>
 <pre>Definition pmap_GroupHomomorphism {G H : Group} (f : GroupHomomorphism G H) : pMap G H
   := Build_pMap G H f (@monmor_unitmor _ _ _ _ _ _ _ (@grp_homo_ishomo G H f)).</pre>
 </div>
@@ -332,7 +332,7 @@ Coercion pmap_GroupHomomorphism : GroupHomomorphism &gt;-&gt; pMap.</pre>
 <div class="code" title="File: Group.v
 Line: 79
 Time: 0.012s">
-<div class="time" style="width: 3.2697547683924%"></div>
+<div class="time" style="width: 3.1578947368421%"></div>
 <pre>
 
 Definition issig_GroupHomomorphism (G H : Group) : _ &lt;~&gt; GroupHomomorphism G H
@@ -357,14 +357,14 @@ Proof.</pre>
 <div class="code" title="File: Group.v
 Line: 86
 Time: 0.014s">
-<div class="time" style="width: 3.8147138964578%"></div>
+<div class="time" style="width: 3.6842105263158%"></div>
 <pre>
   refine ((equiv_ap (issig_GroupHomomorphism G H)^-1 _ _)^-1 oE _).</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 87
-Time: 0.041s">
-<div class="time" style="width: 11.171662125341%"></div>
+Time: 0.04s">
+<div class="time" style="width: 10.526315789474%"></div>
 <pre>
   refine (equiv_path_sigma_hprop _ _ oE _).</pre>
 </div>
@@ -378,7 +378,7 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 89
 Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+<div class="time" style="width: 0.26315789473684%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -400,8 +400,8 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 94
-Time: 0.059s">
-<div class="time" style="width: 16.076294277929%"></div>
+Time: 0.063s">
+<div class="time" style="width: 16.578947368421%"></div>
 <pre>
   intros f g; apply (trunc_equiv' _ equiv_path_grouphomomorphism).</pre>
 </div>
@@ -518,8 +518,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 116
-Time: 0.013s">
-<div class="time" style="width: 3.5422343324251%"></div>
+Time: 0.014s">
+<div class="time" style="width: 3.6842105263158%"></div>
 <pre>
   apply (inverse_unique (f x)).</pre>
 </div>
@@ -572,8 +572,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 122
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.26315789473684%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -603,7 +603,7 @@ Proof.</pre>
 <div class="code" title="File: Group.v
 Line: 128
 Time: 0.007s">
-<div class="time" style="width: 1.9073569482289%"></div>
+<div class="time" style="width: 1.8421052631579%"></div>
 <pre>
   serapply (Build_GroupHomomorphism' _ _ f).</pre>
 </div>
@@ -638,14 +638,14 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 133
 Time: 0.017s">
-<div class="time" style="width: 4.6321525885559%"></div>
+<div class="time" style="width: 4.4736842105263%"></div>
 <pre>
   refine (_ @ (right_identity _)^).</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 134
-Time: 0.014s">
-<div class="time" style="width: 3.8147138964578%"></div>
+Time: 0.015s">
+<div class="time" style="width: 3.9473684210526%"></div>
 <pre>
   refine (_ @ ap _ (monoid_left_id _ mon_unit)).</pre>
 </div>
@@ -666,7 +666,7 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 137
 Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+<div class="time" style="width: 0.26315789473684%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -695,8 +695,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 143
-Time: 0.017s">
-<div class="time" style="width: 4.6321525885559%"></div>
+Time: 0.018s">
+<div class="time" style="width: 4.7368421052632%"></div>
 <pre>
   serapply Build_GroupHomomorphism.</pre>
 </div>
@@ -752,8 +752,8 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 152
-Time: 0.02s">
-<div class="time" style="width: 5.449591280654%"></div>
+Time: 0.022s">
+<div class="time" style="width: 5.7894736842105%"></div>
 <pre>
   serapply (Build_GroupHomomorphism idmap).</pre>
 </div>
@@ -775,7 +775,7 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 156
 Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+<div class="time" style="width: 0.26315789473684%"></div>
 <pre>Class GroupIsomorphism (G H : Group) := Build_GroupIsomorphism {
   grp_iso_homo :&gt; GroupHomomorphism G H;
   isequiv_group_iso :&gt; IsEquiv grp_iso_homo;
@@ -792,7 +792,7 @@ Coercion grp_iso_homo : GroupIsomorphism &gt;-&gt; GroupHomomorphism.</pre>
 <div class="code" title="File: Group.v
 Line: 161
 Time: 0.01s">
-<div class="time" style="width: 2.724795640327%"></div>
+<div class="time" style="width: 2.6315789473684%"></div>
 <pre>
 
 Definition issig_GroupIsomorphism (G H : Group)
@@ -823,8 +823,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 169
-Time: 0.005s">
-<div class="time" style="width: 1.3623978201635%"></div>
+Time: 0.006s">
+<div class="time" style="width: 1.5789473684211%"></div>
 <pre>
   serapply Build_GroupIsomorphism.</pre>
 </div>
@@ -837,8 +837,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 171
-Time: 0.021s">
-<div class="time" style="width: 5.7220708446866%"></div>
+Time: 0.022s">
+<div class="time" style="width: 5.7894736842105%"></div>
 <pre> serapply Build_GroupHomomorphism.</pre>
 </div>
 <div class="code" title="File: Group.v
@@ -864,8 +864,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 174
-Time: 0.069s">
-<div class="time" style="width: 18.801089918256%"></div>
+Time: 0.071s">
+<div class="time" style="width: 18.684210526316%"></div>
 <pre>
     apply (ap f)^-1.</pre>
 </div>
@@ -879,7 +879,7 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 176
 Time: 0.004s">
-<div class="time" style="width: 1.0899182561308%"></div>
+<div class="time" style="width: 1.0526315789474%"></div>
 <pre>
     by rewrite !eisretr.</pre>
 </div>
@@ -891,15 +891,15 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 177
-Time: 0.041s">
-<div class="time" style="width: 11.171662125341%"></div>
+Time: 0.042s">
+<div class="time" style="width: 11.052631578947%"></div>
 <pre>
   exact _.</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 178
 Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+<div class="time" style="width: 0.26315789473684%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -928,8 +928,8 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 184
-Time: 0.015s">
-<div class="time" style="width: 4.0871934604905%"></div>
+Time: 0.014s">
+<div class="time" style="width: 3.6842105263158%"></div>
 <pre>
   serapply Build_GroupIsomorphism.</pre>
 </div>
@@ -943,7 +943,7 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 186
 Time: 0.018s">
-<div class="time" style="width: 4.9046321525886%"></div>
+<div class="time" style="width: 4.7368421052632%"></div>
 <pre>
   exact _.</pre>
 </div>
@@ -985,8 +985,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 193
-Time: 0.017s">
-<div class="time" style="width: 4.6321525885559%"></div>
+Time: 0.015s">
+<div class="time" style="width: 3.9473684210526%"></div>
 <pre>
   by serapply Build_GroupIsomorphism'.</pre>
 </div>
@@ -1066,21 +1066,21 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 207
 Time: 0.002s">
-<div class="time" style="width: 0.5449591280654%"></div>
+<div class="time" style="width: 0.52631578947368%"></div>
 <pre>
   serapply Build_GroupIsomorphism.</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 208
 Time: 0.003s">
-<div class="time" style="width: 0.81743869209809%"></div>
+<div class="time" style="width: 0.78947368421053%"></div>
 <pre>
   1: serapply grp_homo_compose.</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 209
-Time: 0.036s">
-<div class="time" style="width: 9.8092643051771%"></div>
+Time: 0.037s">
+<div class="time" style="width: 9.7368421052632%"></div>
 <pre>
   exact _.</pre>
 </div>
@@ -1116,7 +1116,7 @@ Proof.</pre>
 <div class="code" title="File: Group.v
 Line: 215
 Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+<div class="time" style="width: 0.26315789473684%"></div>
 <pre>
   refine (equiv_compose'
     (B := sig (fun f : G &lt;~&gt; H =&gt; IsMonoidPreserving f)) _ _).</pre>
@@ -1130,8 +1130,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 218
-Time: 0.361s">
-<div class="time" style="width: 98.365122615804%"></div>
+Time: 0.364s">
+<div class="time" style="width: 95.789473684211%"></div>
 <pre> eqp_issig_contr issig_group.</pre>
 </div>
 <div class="code" title="File: Group.v
@@ -1143,21 +1143,21 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 219
-Time: 0.01s">
-<div class="time" style="width: 2.724795640327%"></div>
+Time: 0.009s">
+<div class="time" style="width: 2.3684210526316%"></div>
 <pre> intros [G [? [? [? ?]]]].</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 219
-Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.52631578947368%"></div>
 <pre>
       exists 1%equiv.</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 220
 Time: 0.015s">
-<div class="time" style="width: 4.0871934604905%"></div>
+<div class="time" style="width: 3.9473684210526%"></div>
 <pre>
       exact _.</pre>
 </div>
@@ -1171,35 +1171,35 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 222
 Time: 0.008s">
-<div class="time" style="width: 2.1798365122616%"></div>
+<div class="time" style="width: 2.1052631578947%"></div>
 <pre> intros [G [op [unit [neg ax]]]]; cbn.</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 222
-Time: 0.367s">
+Time: 0.38s">
 <div class="time" style="width: 100%"></div>
 <pre>
       contr_sigsig G (equiv_idmap G).</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 223
-Time: 0.005s">
-<div class="time" style="width: 1.3623978201635%"></div>
+Time: 0.004s">
+<div class="time" style="width: 1.0526315789474%"></div>
 <pre>
       srefine (Build_Contr _ ((_;(_;(_;_)));_) _); cbn;
         try assumption; try exact _.</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 225
-Time: 0.007s">
-<div class="time" style="width: 1.9073569482289%"></div>
+Time: 0.006s">
+<div class="time" style="width: 1.5789473684211%"></div>
 <pre>
       intros [[op' [unit' [neg' ax']]] eq].</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 226
-Time: 0.042s">
-<div class="time" style="width: 11.444141689373%"></div>
+Time: 0.041s">
+<div class="time" style="width: 10.789473684211%"></div>
 <pre>
       apply path_sigma_hprop; cbn.</pre>
 </div>
@@ -1214,7 +1214,7 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 229
 Time: 0.005s">
-<div class="time" style="width: 1.3623978201635%"></div>
+<div class="time" style="width: 1.3157894736842%"></div>
 <pre>refine (@ap _ _ (fun x : { oun :
         { oo : SgOp G | { u : MonUnit G | Negate G}}
         | @IsGroup G oun.1 oun.2.1 oun.2.2}
@@ -1224,7 +1224,7 @@ Time: 0.005s">
 <div class="code" title="File: Group.v
 Line: 233
 Time: 0.01s">
-<div class="time" style="width: 2.724795640327%"></div>
+<div class="time" style="width: 2.6315789473684%"></div>
 <pre>
       apply path_sigma_hprop; cbn.</pre>
 </div>
@@ -1238,14 +1238,14 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 235
 Time: 0.002s">
-<div class="time" style="width: 0.5449591280654%"></div>
+<div class="time" style="width: 0.52631578947368%"></div>
 <pre>
       1: funext x y; apply eq.</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 236
 Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+<div class="time" style="width: 0.26315789473684%"></div>
 <pre>
       rewrite transport_const.</pre>
 </div>
@@ -1266,21 +1266,21 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 239
 Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+<div class="time" style="width: 0.26315789473684%"></div>
 <pre>
       rewrite transport_const.</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 240
-Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
       funext x.</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 241
-Time: 0.063s">
-<div class="time" style="width: 17.16621253406%"></div>
+Time: 0.062s">
+<div class="time" style="width: 16.315789473684%"></div>
 <pre>
       exact (preserves_negate x).</pre>
 </div>
@@ -1299,16 +1299,16 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 243
-Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   refine (_ oE (equiv_functor_sigma' (issig_GroupHomomorphism G H)
     (fun f =&gt; 1%equiv))^-1).</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 245
-Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   refine (equiv_functor_sigma' (issig_equiv G H) (fun f =&gt; 1%equiv) oE _).</pre>
 </div>
@@ -1322,7 +1322,7 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 247
 Time: 0.01s">
-<div class="time" style="width: 2.724795640327%"></div>
+<div class="time" style="width: 2.6315789473684%"></div>
 <pre>
   refine (
     equiv_adjointify
@@ -1335,14 +1335,14 @@ Time: 0.01s">
 <div class="code" title="File: Group.v
 Line: 254
 Time: 0.019s">
-<div class="time" style="width: 5.1771117166213%"></div>
+<div class="time" style="width: 5%"></div>
 <pre>
   all: intros [[]]; reflexivity.</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 255
-Time: 0.033s">
-<div class="time" style="width: 8.991825613079%"></div>
+Time: 0.036s">
+<div class="time" style="width: 9.4736842105263%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -1359,7 +1359,7 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 260
 Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+<div class="time" style="width: 0.26315789473684%"></div>
 <pre>Global Instance isequiv_group_left_op `{IsGroup G}
   : forall x, IsEquiv (x *.).</pre>
 </div>
@@ -1400,15 +1400,15 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 266
-Time: 0.021s">
-<div class="time" style="width: 5.7220708446866%"></div>
+Time: 0.02s">
+<div class="time" style="width: 5.2631578947368%"></div>
 <pre>
   all: refine (associativity _ _ _ @ _ @ left_identity y).</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 267
 Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+<div class="time" style="width: 0.26315789473684%"></div>
 <pre>
   all: refine (ap (fun x =&gt; x * y) _).</pre>
 </div>
@@ -1421,15 +1421,15 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 269
-Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   apply left_inverse.</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 270
 Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+<div class="time" style="width: 0.26315789473684%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -1485,8 +1485,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 279
-Time: 0.024s">
-<div class="time" style="width: 6.5395095367847%"></div>
+Time: 0.025s">
+<div class="time" style="width: 6.5789473684211%"></div>
 <pre>
   all: refine ((associativity _ _ _)^ @ _ @ right_identity y).</pre>
 </div>
@@ -1514,14 +1514,14 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 283
 Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+<div class="time" style="width: 0.26315789473684%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 284
 Time: 0.013s">
-<div class="time" style="width: 3.5422343324251%"></div>
+<div class="time" style="width: 3.4210526315789%"></div>
 <pre>
 
 Definition left_mult_equiv `{IsGroup G} : G -&gt; G &lt;~&gt; G
@@ -1538,7 +1538,7 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 289
 Time: 0.013s">
-<div class="time" style="width: 3.5422343324251%"></div>
+<div class="time" style="width: 3.4210526315789%"></div>
 <pre>Definition right_mult_equiv `{IsGroup G} : G -&gt; G &lt;~&gt; G
   := fun x =&gt; Build_Equiv _ _ (fun y =&gt; y * x) _.</pre>
 </div>
@@ -1574,8 +1574,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 296
-Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   all: intro; apply negate_involutive.</pre>
 </div>
@@ -1618,8 +1618,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 303
-Time: 0.009s">
-<div class="time" style="width: 2.4523160762943%"></div>
+Time: 0.01s">
+<div class="time" style="width: 2.6315789473684%"></div>
 <pre>
   serapply (Build_Group (G * H)).</pre>
 </div>
@@ -1713,8 +1713,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 314
-Time: 0.151s">
-<div class="time" style="width: 41.144414168937%"></div>
+Time: 0.136s">
+<div class="time" style="width: 35.789473684211%"></div>
 <pre>serapply Build_IsGroup.</pre>
 </div>
 <div class="code" title="File: Group.v
@@ -1733,8 +1733,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 316
-Time: 0.31s">
-<div class="time" style="width: 84.468664850136%"></div>
+Time: 0.299s">
+<div class="time" style="width: 78.684210526316%"></div>
 <pre> serapply Build_IsMonoid.</pre>
 </div>
 <div class="code" title="File: Group.v
@@ -1753,8 +1753,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 318
-Time: 0.18s">
-<div class="time" style="width: 49.046321525886%"></div>
+Time: 0.188s">
+<div class="time" style="width: 49.473684210526%"></div>
 <pre> serapply Build_IsSemiGroup.</pre>
 </div>
 <div class="code" title="File: Group.v
@@ -1768,7 +1768,7 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 320
 Time: 0.003s">
-<div class="time" style="width: 0.81743869209809%"></div>
+<div class="time" style="width: 0.78947368421053%"></div>
 <pre>intros [g1 h1] [g2 h2] [g3 h3].</pre>
 </div>
 <div class="code" title="File: Group.v
@@ -1780,8 +1780,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 321
-Time: 0.06s">
-<div class="time" style="width: 16.348773841962%"></div>
+Time: 0.065s">
+<div class="time" style="width: 17.105263157895%"></div>
 <pre>
       1,2: apply associativity.</pre>
 </div>
@@ -1820,8 +1820,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 325
-Time: 0.026s">
-<div class="time" style="width: 7.0844686648501%"></div>
+Time: 0.029s">
+<div class="time" style="width: 7.6315789473684%"></div>
 <pre>
       1,2: apply left_identity.</pre>
 </div>
@@ -1860,8 +1860,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 329
-Time: 0.027s">
-<div class="time" style="width: 7.3569482288828%"></div>
+Time: 0.03s">
+<div class="time" style="width: 7.8947368421053%"></div>
 <pre>
       1,2: apply right_identity.</pre>
 </div>
@@ -1907,7 +1907,7 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 333
 Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+<div class="time" style="width: 0.26315789473684%"></div>
 <pre>
     1,2: apply left_inverse.</pre>
 </div>
@@ -1947,7 +1947,7 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 337
 Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+<div class="time" style="width: 0.26315789473684%"></div>
 <pre>
     1,2: apply right_inverse.</pre>
 </div>
@@ -1960,7 +1960,7 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 338
 Time: 0.008s">
-<div class="time" style="width: 2.1798365122616%"></div>
+<div class="time" style="width: 2.1052631578947%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -1990,15 +1990,15 @@ Time: 0s">
 </div>
 <div class="code" title="File: Group.v
 Line: 345
-Time: 0.039s">
-<div class="time" style="width: 10.626702997275%"></div>
+Time: 0.04s">
+<div class="time" style="width: 10.526315789474%"></div>
 <pre>
   serapply Build_GroupIsomorphism'.</pre>
 </div>
 <div class="code" title="File: Group.v
 Line: 346
 Time: 0.001s">
-<div class="time" style="width: 0.2724795640327%"></div>
+<div class="time" style="width: 0.26315789473684%"></div>
 <pre>
   1: serapply (equiv_functor_prod (f:=f) (g:=g)).</pre>
 </div>
@@ -2040,7 +2040,7 @@ Time: 0s">
 <div class="code" title="File: Group.v
 Line: 352
 Time: 0.002s">
-<div class="time" style="width: 0.5449591280654%"></div>
+<div class="time" style="width: 0.52631578947368%"></div>
 <pre>
 Defined.</pre>
 </div>
