@@ -30,21 +30,21 @@ pre {
 
 <div class="code" title="File: Square.v
 Line: 1
-Time: 0.018s">
-<div class="time" style="width: 6.7164179104478%"></div>
+Time: 0.016s">
+<div class="time" style="width: 5.9701492537313%"></div>
 <pre>Require Import Basics.</pre>
 </div>
 <div class="code" title="File: Square.v
 Line: 1
-Time: 0.021s">
-<div class="time" style="width: 7.8358208955224%"></div>
+Time: 0.018s">
+<div class="time" style="width: 6.7164179104478%"></div>
 <pre>
 Require Import Types.</pre>
 </div>
 <div class="code" title="File: Square.v
 Line: 2
-Time: 0.002s">
-<div class="time" style="width: 0.74626865671642%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.37313432835821%"></div>
 <pre>
 Require Import DPath.</pre>
 </div>
@@ -163,8 +163,8 @@ Arguments Square_ind {A} P f {_ _ _ _ _ _ _ _} _.</pre>
 </div>
 <div class="code" title="File: Square.v
 Line: 50
-Time: 0.001s">
-<div class="time" style="width: 0.37313432835821%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 Scheme Square_rec := Minimality for Square Sort Type.</pre>
 </div>
@@ -229,8 +229,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Square.v
 Line: 62
-Time: 0.006s">
-<div class="time" style="width: 2.2388059701493%"></div>
+Time: 0.005s">
+<div class="time" style="width: 1.865671641791%"></div>
 <pre>
   do 8 (apply path_forall; intro).</pre>
 </div>
@@ -243,15 +243,15 @@ Time: 0s">
 </div>
 <div class="code" title="File: Square.v
 Line: 64
-Time: 0.002s">
-<div class="time" style="width: 0.74626865671642%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.37313432835821%"></div>
 <pre>
   by intros [].</pre>
 </div>
 <div class="code" title="File: Square.v
 Line: 65
-Time: 0.008s">
-<div class="time" style="width: 2.9850746268657%"></div>
+Time: 0.007s">
+<div class="time" style="width: 2.6119402985075%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -288,8 +288,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Square.v
 Line: 73
-Time: 0.006s">
-<div class="time" style="width: 2.2388059701493%"></div>
+Time: 0.005s">
+<div class="time" style="width: 1.865671641791%"></div>
 <pre>
   by destruct px0, p0x, (cancelL 1 _ _ q), p1x.</pre>
 </div>
@@ -319,8 +319,8 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
 Line: 80
-Time: 0.004s">
-<div class="time" style="width: 1.4925373134328%"></div>
+Time: 0.005s">
+<div class="time" style="width: 1.865671641791%"></div>
 <pre>
   serapply isequiv_adjointify; try by intros [].</pre>
 </div>
@@ -333,8 +333,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Square.v
 Line: 82
-Time: 0.004s">
-<div class="time" style="width: 1.4925373134328%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.74626865671642%"></div>
 <pre>
   destruct px0, p0x.</pre>
 </div>
@@ -347,8 +347,8 @@ Time: 0.268s">
 </div>
 <div class="code" title="File: Square.v
 Line: 84
-Time: 0.083s">
-<div class="time" style="width: 30.970149253731%"></div>
+Time: 0.084s">
+<div class="time" style="width: 31.34328358209%"></div>
 <pre>
   cbn; set (p := cancelL 1 _ _ X).</pre>
 </div>
@@ -368,8 +368,8 @@ Time: 0.004s">
 </div>
 <div class="code" title="File: Square.v
 Line: 87
-Time: 0.007s">
-<div class="time" style="width: 2.6119402985075%"></div>
+Time: 0.006s">
+<div class="time" style="width: 2.2388059701493%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -379,16 +379,55 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-(* We can give degenerate squares *)</pre>
+(** Squares in (n+2)-truncated types are n-truncated *)</pre>
 </div>
 <div class="code" title="File: Square.v
 Line: 90
 Time: 0s">
 <div class="time" style="width: 0%"></div>
+<pre>Global Instance istrunc_sq n
+  {A} `{!IsTrunc n.+2 A} {a00 a10 a01 a11 : A}
+  {px0 : a00 = a10} {px1 : a01 = a11}
+  {p0x : a00 = a01} {p1x : a10 = a11}
+  : IsTrunc n (Square px0 px1 p0x p1x).</pre>
+</div>
+<div class="code" title="File: Square.v
+Line: 94
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Square.v
+Line: 95
+Time: 0.004s">
+<div class="time" style="width: 1.4925373134328%"></div>
+<pre>
+  serapply (trunc_equiv _ sq_path).</pre>
+</div>
+<div class="code" title="File: Square.v
+Line: 96
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Square.v
+Line: 97
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(* We can give degenerate squares *)</pre>
+</div>
+<div class="code" title="File: Square.v
+Line: 99
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>Section SquaresFromPaths.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 90
+Line: 99
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -399,7 +438,7 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 95
+Line: 104
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Context
@@ -407,7 +446,7 @@ Time: 0s">
     {p p' : a00 = a10} {q q' : a00 = a01}.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 97
+Line: 106
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -415,35 +454,35 @@ Time: 0s">
   Definition sq_G1  : p = p' -&gt; Square p p' 1 1.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 99
+Line: 108
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 100
+Line: 109
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intro.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 101
+Line: 110
 Time: 0.006s">
 <div class="time" style="width: 2.2388059701493%"></div>
 <pre>
     by apply sq_path, (equiv_concat_lr (concat_p1 _)^ (concat_1p _))^-1.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 102
+Line: 111
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 103
+Line: 112
 Time: 0.042s">
 <div class="time" style="width: 15.671641791045%"></div>
 <pre>
@@ -451,7 +490,7 @@ Time: 0.042s">
   Global Instance isequiv_sq_G1 : IsEquiv sq_G1 := _.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 105
+Line: 114
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -459,35 +498,35 @@ Time: 0s">
   Definition sq_1G : q = q' -&gt; Square 1 1 q q'.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 107
+Line: 116
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 108
+Line: 117
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intro.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 109
+Line: 118
 Time: 0.007s">
 <div class="time" style="width: 2.6119402985075%"></div>
 <pre>
     by apply sq_path, (equiv_concat_lr (concat_1p _)^ (concat_p1 _))^-1.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 110
+Line: 119
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 111
+Line: 120
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -495,7 +534,7 @@ Time: 0s">
   Global Instance isequiv_sq_1G : IsEquiv sq_G1 := _.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 113
+Line: 122
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>
@@ -503,7 +542,7 @@ Time: 0.001s">
 End SquaresFromPaths.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 115
+Line: 124
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -511,14 +550,14 @@ Time: 0s">
 (* Square horizontal reflexivity *)</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 117
-Time: 0.001s">
-<div class="time" style="width: 0.37313432835821%"></div>
+Line: 126
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>Definition sq_refl_h {A} {a0 a1 : A} (p : a0 = a1)
   : Square p p 1 1 := sq_G1 1.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 118
+Line: 127
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -526,62 +565,11 @@ Time: 0s">
 (* Square vertical reflexivity *)</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 120
+Line: 129
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition sq_refl_v {A} {a0 a1 : A} (p : a0 = a1)
   : Square 1 1 p p := sq_1G 1.</pre>
-</div>
-<div class="code" title="File: Square.v
-Line: 121
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-
-(* Horizontal flip *)</pre>
-</div>
-<div class="code" title="File: Square.v
-Line: 123
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>Definition sq_flip_h {A : Type} {a00 a10 a01 a11 : A}
-  {px0 : a00 = a10} {px1 : a01 = a11} {p0x : a00 = a01} {p1x : a10 = a11}
-  : Square px0 px1 p0x p1x -&gt; Square px1 px0 p0x^ p1x^.</pre>
-</div>
-<div class="code" title="File: Square.v
-Line: 125
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: Square.v
-Line: 126
-Time: 0.001s">
-<div class="time" style="width: 0.37313432835821%"></div>
-<pre>
-  destruct p0x, p1x.</pre>
-</div>
-<div class="code" title="File: Square.v
-Line: 127
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  intro.</pre>
-</div>
-<div class="code" title="File: Square.v
-Line: 128
-Time: 0.001s">
-<div class="time" style="width: 0.37313432835821%"></div>
-<pre>
-  by apply sq_G1, inverse, sq_G1^-1.</pre>
-</div>
-<div class="code" title="File: Square.v
-Line: 129
-Time: 0.001s">
-<div class="time" style="width: 0.37313432835821%"></div>
-<pre>
-Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
 Line: 130
@@ -589,9 +577,15 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-Global Instance isequiv_sq_flip_h {A : Type} {a00 a10 a01 a11 : A}
+(* Horizontal flip *)</pre>
+</div>
+<div class="code" title="File: Square.v
+Line: 132
+Time: 0.001s">
+<div class="time" style="width: 0.37313432835821%"></div>
+<pre>Definition sq_flip_h {A : Type} {a00 a10 a01 a11 : A}
   {px0 : a00 = a10} {px1 : a01 = a11} {p0x : a00 = a01} {p1x : a10 = a11}
-  : IsEquiv (sq_flip_h (px0:=px0) (px1:=px1) (p0x:=p0x) (p1x:=p1x)).</pre>
+  : Square px0 px1 p0x p1x -&gt; Square px1 px0 p0x^ p1x^.</pre>
 </div>
 <div class="code" title="File: Square.v
 Line: 134
@@ -602,66 +596,60 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
 Line: 135
-Time: 0.013s">
-<div class="time" style="width: 4.8507462686567%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.37313432835821%"></div>
 <pre>
-  destruct p0x, p1x; exact _.</pre>
+  destruct p0x, p1x.</pre>
 </div>
 <div class="code" title="File: Square.v
 Line: 136
-Time: 0.001s">
-<div class="time" style="width: 0.37313432835821%"></div>
-<pre>
-Defined.</pre>
-</div>
-<div class="code" title="File: Square.v
-Line: 137
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-
-(* Vertical flip *)</pre>
-</div>
-<div class="code" title="File: Square.v
-Line: 139
-Time: 0.001s">
-<div class="time" style="width: 0.37313432835821%"></div>
-<pre>Definition sq_flip_v {A : Type} {a00 a10 a01 a11 : A}
-  {px0 : a00 = a10} {px1 : a01 = a11} {p0x : a00 = a01} {p1x : a10 = a11}
-  : Square px0 px1 p0x p1x -&gt; Square px0^ px1^ p1x p0x.</pre>
-</div>
-<div class="code" title="File: Square.v
-Line: 141
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: Square.v
-Line: 142
-Time: 0.001s">
-<div class="time" style="width: 0.37313432835821%"></div>
-<pre>
-  destruct px0, px1.</pre>
-</div>
-<div class="code" title="File: Square.v
-Line: 143
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intro.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 144
-Time: 0.099s">
-<div class="time" style="width: 36.940298507463%"></div>
+Line: 137
+Time: 0.001s">
+<div class="time" style="width: 0.37313432835821%"></div>
 <pre>
-  by apply sq_1G, inverse, sq_1G^-1.</pre>
+  by apply sq_G1, inverse, sq_G1^-1.</pre>
+</div>
+<div class="code" title="File: Square.v
+Line: 138
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Square.v
+Line: 139
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Global Instance isequiv_sq_flip_h {A : Type} {a00 a10 a01 a11 : A}
+  {px0 : a00 = a10} {px1 : a01 = a11} {p0x : a00 = a01} {p1x : a10 = a11}
+  : IsEquiv (sq_flip_h (px0:=px0) (px1:=px1) (p0x:=p0x) (p1x:=p1x)).</pre>
+</div>
+<div class="code" title="File: Square.v
+Line: 143
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Square.v
+Line: 144
+Time: 0.034s">
+<div class="time" style="width: 12.686567164179%"></div>
+<pre>
+  destruct p0x, p1x; exact _.</pre>
 </div>
 <div class="code" title="File: Square.v
 Line: 145
-Time: 0.002s">
-<div class="time" style="width: 0.74626865671642%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.37313432835821%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -671,9 +659,15 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-Global Instance isequiv_sq_flip_v {A : Type} {a00 a10 a01 a11 : A}
+(* Vertical flip *)</pre>
+</div>
+<div class="code" title="File: Square.v
+Line: 148
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Definition sq_flip_v {A : Type} {a00 a10 a01 a11 : A}
   {px0 : a00 = a10} {px1 : a01 = a11} {p0x : a00 = a01} {p1x : a10 = a11}
-  : IsEquiv (sq_flip_v (px0:=px0) (px1:=px1) (p0x:=p0x) (p1x:=p1x)).</pre>
+  : Square px0 px1 p0x p1x -&gt; Square px0^ px1^ p1x p0x.</pre>
 </div>
 <div class="code" title="File: Square.v
 Line: 150
@@ -684,20 +678,65 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
 Line: 151
-Time: 0.086s">
-<div class="time" style="width: 32.089552238806%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  destruct px0, px1.</pre>
+</div>
+<div class="code" title="File: Square.v
+Line: 152
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  intro.</pre>
+</div>
+<div class="code" title="File: Square.v
+Line: 153
+Time: 0.087s">
+<div class="time" style="width: 32.462686567164%"></div>
+<pre>
+  by apply sq_1G, inverse, sq_1G^-1.</pre>
+</div>
+<div class="code" title="File: Square.v
+Line: 154
+Time: 0.002s">
+<div class="time" style="width: 0.74626865671642%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Square.v
+Line: 155
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Global Instance isequiv_sq_flip_v {A : Type} {a00 a10 a01 a11 : A}
+  {px0 : a00 = a10} {px1 : a01 = a11} {p0x : a00 = a01} {p1x : a10 = a11}
+  : IsEquiv (sq_flip_v (px0:=px0) (px1:=px1) (p0x:=p0x) (p1x:=p1x)).</pre>
+</div>
+<div class="code" title="File: Square.v
+Line: 159
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Square.v
+Line: 160
+Time: 0.099s">
+<div class="time" style="width: 36.940298507463%"></div>
 <pre>
   destruct px0, px1; exact _.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 152
+Line: 161
 Time: 0.008s">
 <div class="time" style="width: 2.9850746268657%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 153
+Line: 162
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -705,7 +744,7 @@ Time: 0s">
 (* Transpose of a square *)</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 155
+Line: 164
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition sq_tr {A : Type} {a00 a10 a01 a11 : A}
@@ -713,28 +752,28 @@ Time: 0s">
 : Square px0 px1 p0x p1x -&gt; Square p0x p1x px0 px1.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 157
+Line: 166
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 158
+Line: 167
 Time: 0.002s">
 <div class="time" style="width: 0.74626865671642%"></div>
 <pre>
   by intros [].</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 159
+Line: 168
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 160
+Line: 169
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -747,7 +786,7 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 166
+Line: 175
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance isequiv_sq_tr {A : Type} {a00 a10 a01 a11 : A}
@@ -755,42 +794,42 @@ Time: 0s">
   : IsEquiv (sq_tr px0 px1 p0x p1x).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 168
+Line: 177
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 169
+Line: 178
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   serapply isequiv_adjointify.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 170
+Line: 179
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   1: apply sq_tr.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 171
+Line: 180
 Time: 0.002s">
 <div class="time" style="width: 0.74626865671642%"></div>
 <pre>
   1,2: by intros [].</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 172
+Line: 181
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 173
+Line: 182
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -798,7 +837,7 @@ Time: 0s">
 Arguments sq_tr {_ _ _ _ _ _ _ _ _}.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 175
+Line: 184
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -807,28 +846,28 @@ Definition sq_tr_refl_h {A} {a b : A} {p : a = b}
   : sq_tr (sq_refl_h p) = sq_refl_v p.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 178
+Line: 187
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 179
+Line: 188
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>
   by destruct p.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 180
+Line: 189
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 181
+Line: 190
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -837,28 +876,28 @@ Definition sq_tr_refl_v {A} {a b : A} {p : a = b}
   : sq_tr (sq_refl_v p) = sq_refl_h p.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 184
+Line: 193
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 185
-Time: 0.001s">
-<div class="time" style="width: 0.37313432835821%"></div>
+Line: 194
+Time: 0.002s">
+<div class="time" style="width: 0.74626865671642%"></div>
 <pre>
   by destruct p.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 186
+Line: 195
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 187
+Line: 196
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -866,13 +905,13 @@ Time: 0s">
 (* Operations on squares *)</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 189
+Line: 198
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section SquareOps.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 189
+Line: 198
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -884,7 +923,7 @@ Time: 0s">
     {p0x : a00 = a01} {p1x : a10 = a11}.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 195
+Line: 204
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -893,27 +932,27 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 198
+Line: 207
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition sq_V : Square px0 px1 p0x p1x -&gt; Square px1^ px0^ p1x^ p0x^.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 198
+Line: 207
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 199
+Line: 208
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intro.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 200
+Line: 209
 Time: 0.004s">
 <div class="time" style="width: 1.4925373134328%"></div>
 <pre>
@@ -921,22 +960,22 @@ Time: 0.004s">
       inverse2, sq_path^-1, sq_tr.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 202
+Line: 211
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 203
-Time: 0.145s">
-<div class="time" style="width: 54.10447761194%"></div>
+Line: 212
+Time: 0.182s">
+<div class="time" style="width: 67.910447761194%"></div>
 <pre>
 
   Global Instance isequiv_sq_V : IsEquiv sq_V := _.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 205
+Line: 214
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -945,50 +984,50 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 208
+Line: 217
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition sq_rot_l : Square px0 px1 p0x p1x -&gt; Square p0x^ p1x^ px1 px0.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 208
+Line: 217
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 209
+Line: 218
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intro.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 210
-Time: 0.004s">
-<div class="time" style="width: 1.4925373134328%"></div>
+Line: 219
+Time: 0.003s">
+<div class="time" style="width: 1.1194029850746%"></div>
 <pre>
     by apply sq_path, moveR_Vp, (equiv_concat_r (concat_pp_p _ _ _)),
       moveL_pV, sq_path^-1.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 212
+Line: 221
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 213
-Time: 0.035s">
-<div class="time" style="width: 13.059701492537%"></div>
+Line: 222
+Time: 0.087s">
+<div class="time" style="width: 32.462686567164%"></div>
 <pre>
 
   Global Instance isequiv_sq_rot_l : IsEquiv sq_rot_l := _.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 215
+Line: 224
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -997,50 +1036,50 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 218
+Line: 227
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition sq_rot_r : Square px0 px1 p0x p1x -&gt; Square p1x p0x px0^ px1^.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 218
+Line: 227
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 219
+Line: 228
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intro.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 220
-Time: 0.004s">
-<div class="time" style="width: 1.4925373134328%"></div>
+Line: 229
+Time: 0.003s">
+<div class="time" style="width: 1.1194029850746%"></div>
 <pre>
     by apply sq_path, moveL_Vp, (equiv_concat_l (concat_p_pp _ _ _)),
       moveR_pV, sq_path^-1.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 222
+Line: 231
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 223
-Time: 0.036s">
-<div class="time" style="width: 13.432835820896%"></div>
+Line: 232
+Time: 0.087s">
+<div class="time" style="width: 32.462686567164%"></div>
 <pre>
 
   Global Instance isequiv_sq_rot_r : IsEquiv sq_rot_r := _.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 225
+Line: 234
 Time: 0.005s">
 <div class="time" style="width: 1.865671641791%"></div>
 <pre>
@@ -1048,7 +1087,7 @@ Time: 0.005s">
 End SquareOps.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 227
+Line: 236
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1056,13 +1095,13 @@ Time: 0s">
 (* Lemmas for rewriting sides of squares *)</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 229
+Line: 238
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section SquareRewriting.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 229
+Line: 238
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1073,7 +1112,7 @@ Time: 0s">
     {p0x : a00 = a01} {p1x : a10 = a11}.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 234
+Line: 243
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1085,7 +1124,7 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 240
+Line: 249
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>Definition sq_GGGG {px0' px1' p0x' p1x'} (qx0 : px0 = px0')
@@ -1093,28 +1132,28 @@ Time: 0.001s">
     : Square px0 px1 p0x p1x -&gt; Square px0' px1' p0x' p1x'.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 242
+Line: 251
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 243
+Line: 252
 Time: 0.002s">
 <div class="time" style="width: 0.74626865671642%"></div>
 <pre>
     by destruct qx0, qx1, q0x, q1x.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 244
+Line: 253
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 245
+Line: 254
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>
@@ -1124,28 +1163,28 @@ Time: 0.001s">
     : IsEquiv (sq_GGGG qx0 qx1 q0x q1x).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 249
+Line: 258
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 250
+Line: 259
 Time: 0.003s">
 <div class="time" style="width: 1.1194029850746%"></div>
 <pre>
     destruct qx0, qx1, q0x, q1x; exact _.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 251
+Line: 260
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 252
+Line: 261
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1155,7 +1194,7 @@ Time: 0s">
     (q0x : p0x = p0x') (q1x : p1x = p1x').</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 256
+Line: 265
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1163,92 +1202,92 @@ Time: 0s">
   Definition sq_Gccc := sq_GGGG qx0 1 1 1.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 258
+Line: 267
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Definition sq_cGcc := sq_GGGG 1 qx1 1 1.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 259
+Line: 268
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Definition sq_ccGc := sq_GGGG 1 1 q0x 1.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 260
+Line: 269
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Definition sq_cccG := sq_GGGG 1 1 1 q1x.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 261
+Line: 270
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Definition sq_GGcc := sq_GGGG qx0 qx1 1 1.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 262
+Line: 271
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Definition sq_GcGc := sq_GGGG qx0 1 q0x 1.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 263
+Line: 272
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Definition sq_GccG := sq_GGGG qx0 1 1 q1x.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 264
+Line: 273
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Definition sq_cGGc := sq_GGGG 1 qx1 q0x 1.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 265
+Line: 274
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Definition sq_cGcG := sq_GGGG 1 qx1 1 q1x.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 266
+Line: 275
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Definition sq_ccGG := sq_GGGG 1 1 q0x q1x.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 267
+Line: 276
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Definition sq_GGGc := sq_GGGG qx0 qx1 q0x 1.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 268
+Line: 277
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Definition sq_cGGG := sq_GGGG 1 qx1 q0x q1x.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 269
-Time: 0.003s">
-<div class="time" style="width: 1.1194029850746%"></div>
+Line: 278
+Time: 0.007s">
+<div class="time" style="width: 2.6119402985075%"></div>
 <pre>
 
 End SquareRewriting.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 271
+Line: 280
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1256,7 +1295,7 @@ Time: 0s">
 Section DPathSquare.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 273
+Line: 282
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1267,7 +1306,7 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 278
+Line: 287
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Context {A} {a00 a10 a01 a11 : A}
@@ -1275,7 +1314,7 @@ Time: 0s">
     {p0x : a00 = a01} {p1x : a10 = a11}.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 280
+Line: 289
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1284,65 +1323,65 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 283
+Line: 292
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>Definition sq_dp_prod : DPath (fun xy =&gt; fst xy = snd xy)
     (path_prod' p0x p1x) px0 px1 -&gt; Square px0 px1 p0x p1x.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 284
+Line: 293
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 285
+Line: 294
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intro.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 286
+Line: 295
 Time: 0.01s">
 <div class="time" style="width: 3.7313432835821%"></div>
 <pre>
     set (p := (dp_paths_FlFr _ _ _)^-1 X).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 287
-Time: 0.01s">
-<div class="time" style="width: 3.7313432835821%"></div>
+Line: 296
+Time: 0.009s">
+<div class="time" style="width: 3.3582089552239%"></div>
 <pre>
     apply (equiv_concat_l (concat_pp_p _ _ _) _)^-1,
       moveL_Mp, sq_path in p.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 289
-Time: 0.002s">
-<div class="time" style="width: 0.74626865671642%"></div>
+Line: 298
+Time: 0.001s">
+<div class="time" style="width: 0.37313432835821%"></div>
 <pre>
     exact (sq_ccGG (ap_fst_path_prod _ _) (ap_snd_path_prod _ _) p).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 290
+Line: 299
 Time: 0.002s">
 <div class="time" style="width: 0.74626865671642%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 291
-Time: 0.188s">
-<div class="time" style="width: 70.149253731343%"></div>
+Line: 300
+Time: 0.187s">
+<div class="time" style="width: 69.776119402985%"></div>
 <pre>
 
   Global Instance isequiv_sq_dpath_prod : IsEquiv sq_dp_prod := _.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 293
+Line: 302
 Time: 0.008s">
 <div class="time" style="width: 2.9850746268657%"></div>
 <pre>
@@ -1350,7 +1389,7 @@ Time: 0.008s">
 End DPathSquare.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 295
+Line: 304
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1358,13 +1397,13 @@ Time: 0s">
 (* Concatenation of squares *)</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 297
+Line: 306
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section SquareConcat.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 297
+Line: 306
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1374,7 +1413,7 @@ Time: 0s">
     {p0x : a00 = a01} {p1x : a10 = a11}.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 301
+Line: 310
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1383,7 +1422,7 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 304
+Line: 313
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>Definition sq_concat_h  {a02 a12 : A}
@@ -1392,49 +1431,49 @@ Time: 0.001s">
       -&gt; Square px0 px2 (p0x @ p0y) (p1x @ p1y).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 307
+Line: 316
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 308
+Line: 317
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros a b.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 309
+Line: 318
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>
     destruct b.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 310
+Line: 319
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (sq_ccGG _ _ a).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 311
+Line: 320
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     1,2: apply inverse, concat_p1.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 312
+Line: 321
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 313
+Line: 322
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1443,7 +1482,7 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 316
+Line: 325
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>Definition sq_concat_v {a20 a21 : A}
@@ -1452,49 +1491,49 @@ Time: 0.001s">
       -&gt; Square (px0 @ py0) (px1 @ py1) p0x p2x.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 319
+Line: 328
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 320
+Line: 329
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros a b.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 321
+Line: 330
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>
     destruct b.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 322
+Line: 331
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (sq_GGcc _ _ a).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 323
+Line: 332
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     1,2: apply inverse, concat_p1.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 324
+Line: 333
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 325
+Line: 334
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>
@@ -1502,7 +1541,7 @@ Time: 0.001s">
 End SquareConcat.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 327
+Line: 336
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1510,20 +1549,20 @@ Time: 0s">
 (* Notations for horizontal and vertical concatenation *)</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 329
+Line: 338
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Infix "@h" := sq_concat_h (at level 10) : square_scope.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 329
+Line: 338
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Infix "@v" := sq_concat_v (at level 10) : square_scope.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 330
+Line: 339
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1531,13 +1570,13 @@ Time: 0s">
 (* Horizontal groupoid laws for concatenation *)</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 332
+Line: 341
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section GroupoidLawsH.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 332
+Line: 341
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1547,7 +1586,7 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 336
+Line: 345
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>Context
@@ -1559,7 +1598,7 @@ Time: 0.001s">
     (s : Square px0 px1 p0x p1x).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 342
+Line: 351
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1567,14 +1606,14 @@ Time: 0s">
   Local Open Scope square_scope.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 344
+Line: 353
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Notation hr := (sq_refl_h _).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 345
+Line: 354
 Time: 0.003s">
 <div class="time" style="width: 1.1194029850746%"></div>
 <pre>
@@ -1582,28 +1621,28 @@ Time: 0.003s">
   Definition sq_concat_h_s1 : s @h hr = sq_ccGG (concat_p1 _)^ (concat_p1 _)^ s.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 347
+Line: 356
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 348
+Line: 357
 Time: 0.004s">
 <div class="time" style="width: 1.4925373134328%"></div>
 <pre>
     by destruct s.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 349
+Line: 358
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 350
+Line: 359
 Time: 0.004s">
 <div class="time" style="width: 1.4925373134328%"></div>
 <pre>
@@ -1611,28 +1650,28 @@ Time: 0.004s">
   Definition sq_concat_h_1s : hr @h s = sq_ccGG (concat_1p _)^ (concat_1p _)^ s.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 352
+Line: 361
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 353
+Line: 362
 Time: 0.004s">
 <div class="time" style="width: 1.4925373134328%"></div>
 <pre>
     by destruct s.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 354
+Line: 363
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 355
+Line: 364
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1640,45 +1679,45 @@ Time: 0s">
   Context (t : Square px1 px2 p0y p1y) (u : Square px2 px3 p0z p1z).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 357
-Time: 0.006s">
-<div class="time" style="width: 2.2388059701493%"></div>
+Line: 366
+Time: 0.005s">
+<div class="time" style="width: 1.865671641791%"></div>
 <pre>
 
   Definition sq_concat_h_ss_s : (s @h t) @h u
     = sq_ccGG (concat_p_pp _ _ _) (concat_p_pp _ _ _) (s @h (t @h u)).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 360
+Line: 369
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 361
-Time: 0.121s">
-<div class="time" style="width: 45.149253731343%"></div>
+Line: 370
+Time: 0.113s">
+<div class="time" style="width: 42.164179104478%"></div>
 <pre>
     by destruct s, u, (sq_1G^-1 t), p0y.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 362
+Line: 371
 Time: 0.005s">
 <div class="time" style="width: 1.865671641791%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 363
-Time: 0.005s">
-<div class="time" style="width: 1.865671641791%"></div>
+Line: 372
+Time: 0.004s">
+<div class="time" style="width: 1.4925373134328%"></div>
 <pre>
 
 End GroupoidLawsH.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 365
+Line: 374
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1688,13 +1727,13 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 368
+Line: 377
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section Kan.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 368
+Line: 377
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1703,13 +1742,13 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 371
+Line: 380
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Context {A : Type} {a00 a10 a01 a11 : A}.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 371
+Line: 380
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1718,35 +1757,35 @@ Time: 0s">
     : {px0 : a00 = a10 &amp; Square px0 px1 p0x p1x}.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 374
+Line: 383
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 375
+Line: 384
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     exists (p0x @ px1 @ p1x^).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 376
+Line: 385
 Time: 0.003s">
 <div class="time" style="width: 1.1194029850746%"></div>
 <pre>
     by destruct px1, p0x, p1x.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 377
+Line: 386
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 378
+Line: 387
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1755,35 +1794,35 @@ Time: 0s">
     : {px1 : a01 = a11 &amp; Square px0 px1 p0x p1x}.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 381
+Line: 390
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 382
+Line: 391
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     exists (p0x^ @ px0 @ p1x).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 383
+Line: 392
 Time: 0.003s">
 <div class="time" style="width: 1.1194029850746%"></div>
 <pre>
     by destruct px0, p0x, p1x.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 384
+Line: 393
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 385
+Line: 394
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1792,35 +1831,35 @@ Time: 0s">
     : {p0x : a00 = a01 &amp; Square px0 px1 p0x p1x}.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 388
+Line: 397
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 389
+Line: 398
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     exists (px0 @ p1x @ px1^).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 390
+Line: 399
 Time: 0.003s">
 <div class="time" style="width: 1.1194029850746%"></div>
 <pre>
     by destruct px0, px1, p1x.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 391
+Line: 400
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 392
+Line: 401
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1829,35 +1868,35 @@ Time: 0s">
     : {p1x : a10 = a11 &amp; Square px0 px1 p0x p1x}.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 395
+Line: 404
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 396
+Line: 405
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     exists (px0^ @ p0x @ px1).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 397
-Time: 0.003s">
-<div class="time" style="width: 1.1194029850746%"></div>
+Line: 406
+Time: 0.008s">
+<div class="time" style="width: 2.9850746268657%"></div>
 <pre>
     by destruct px0, px1, p0x.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 398
+Line: 407
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 399
+Line: 408
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>
@@ -1865,7 +1904,7 @@ Time: 0.001s">
 End Kan.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 401
+Line: 410
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1873,7 +1912,7 @@ Time: 0s">
 (* Apply a function to the sides of square *)</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 403
+Line: 412
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>Definition sq_ap {A B : Type} {a00 a10 a01 a11 : A} (f : A -&gt; B)
@@ -1881,28 +1920,28 @@ Time: 0.001s">
   : Square px0 px1 p0x p1x -&gt; Square (ap f px0) (ap f px1) (ap f p0x) (ap f p1x).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 405
+Line: 414
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 406
+Line: 415
 Time: 0.003s">
 <div class="time" style="width: 1.1194029850746%"></div>
 <pre>
   by intros [].</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 407
+Line: 416
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 408
+Line: 417
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1910,7 +1949,7 @@ Time: 0s">
 (* Curried version of the following equivalence *)</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 410
+Line: 419
 Time: 0.003s">
 <div class="time" style="width: 1.1194029850746%"></div>
 <pre>Definition sq_prod {A B : Type} {a00 a10 a01 a11 : A} {px0 : a00 = a10}
@@ -1921,28 +1960,28 @@ Time: 0.003s">
         (path_prod' p0x q0x) (path_prod' p1x q1x).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 415
+Line: 424
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 416
-Time: 0.007s">
-<div class="time" style="width: 2.6119402985075%"></div>
+Line: 425
+Time: 0.006s">
+<div class="time" style="width: 2.2388059701493%"></div>
 <pre>
   by intros [] [].</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 417
+Line: 426
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 418
+Line: 427
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1981,35 +2020,35 @@ Admitted. *)
 (* The natural square from an ap *)</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 451
-Time: 0.001s">
-<div class="time" style="width: 0.37313432835821%"></div>
+Line: 460
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>Definition ap_nat {A B} {f f' : A -&gt; B} (h : f == f') {x y : A} (p : x = y)
   : Square (ap f p) (ap f' p) (h x) (h y).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 452
+Line: 461
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 453
+Line: 462
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>
   by destruct p; apply sq_1G.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 454
+Line: 463
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 455
+Line: 464
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2017,35 +2056,35 @@ Time: 0s">
 (* The transpose of the natural square *)</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 457
+Line: 466
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition ap_nat' {A B} {f f' : A -&gt; B} (h : f == f') {x y : A} (p : x = y)
   : Square (h x) (h y) (ap f p) (ap f' p).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 458
+Line: 467
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 459
+Line: 468
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>
   by destruct p; apply sq_G1.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 460
+Line: 469
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 461
+Line: 470
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2053,14 +2092,14 @@ Time: 0s">
 (* ap_compose fits naturally into a square *)</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 463
+Line: 472
 Time: 0.002s">
 <div class="time" style="width: 0.74626865671642%"></div>
 <pre>Definition ap_compose_sq {A B C} (f : A -&gt; B) (g : B -&gt; C) {x y : A} (p : x = y)
   : Square (ap (g o f) p) (ap g (ap f p)) 1 1 := sq_G1 (ap_compose f g p).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 464
+Line: 473
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>
@@ -2069,7 +2108,7 @@ Definition ap_idmap_sq {A} {x y : A} (p : x = y) : Square (ap idmap p) p 1 1
   := sq_G1 (ap_idmap p).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 467
+Line: 476
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2077,7 +2116,7 @@ Time: 0s">
 (* A DPath of a certain form can be turned into a square *)</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 469
+Line: 478
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>Definition sq_dp {A B : Type} {f g : A -&gt; B} {a1 a2 : A} {p : a1 = a2}
@@ -2085,35 +2124,35 @@ Time: 0.001s">
   : DPath (fun x =&gt; f x = g x) p q1 q2 -&gt; Square q1 q2 (ap f p) (ap g p).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 471
+Line: 480
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 472
+Line: 481
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   destruct p.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 473
+Line: 482
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   exact sq_G1.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 474
+Line: 483
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 475
+Line: 484
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>
@@ -2123,28 +2162,28 @@ Global Instance isequiv_sq_dp {A B : Type} {f g : A -&gt; B} {a1 a2 : A}
   : IsEquiv (sq_dp (p:=p) (q1:=q1) (q2:=q2)).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 479
+Line: 488
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 480
+Line: 489
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>
   destruct p; exact _.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 481
+Line: 490
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 482
+Line: 491
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2152,9 +2191,9 @@ Time: 0s">
 (* ap2 fits into a square *)</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 484
-Time: 0.004s">
-<div class="time" style="width: 1.4925373134328%"></div>
+Line: 493
+Time: 0.003s">
+<div class="time" style="width: 1.1194029850746%"></div>
 <pre>Definition sq_ap2 {A B C} (f : A -&gt; B -&gt; C)
   {a a' : A} (p : a = a') {b b' : B} (q : b = b')
   : Square (ap (fun x =&gt; f x b) p) (ap (fun x =&gt; f x b') p)
@@ -2162,7 +2201,7 @@ Time: 0.004s">
   := sq_dp (dp_apD (fun y =&gt; ap (fun x =&gt; f x y) _) _).</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 488
+Line: 497
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2170,36 +2209,36 @@ Time: 0s">
 (* The function in ap2 can be uncurried *)</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 490
-Time: 0.002s">
-<div class="time" style="width: 0.74626865671642%"></div>
+Line: 499
+Time: 0.001s">
+<div class="time" style="width: 0.37313432835821%"></div>
 <pre>Definition ap_uncurry {A B C} (f : A -&gt; B -&gt; C) {a a' : A} (p : a = a')
   {b b' : B} (q : b = b')
   : Square (ap (uncurry f) (path_prod' p q)) (ap2 f p q) 1 1.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 492
+Line: 501
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 493
-Time: 0.004s">
-<div class="time" style="width: 1.4925373134328%"></div>
+Line: 502
+Time: 0.005s">
+<div class="time" style="width: 1.865671641791%"></div>
 <pre>
   by destruct p, q.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 494
+Line: 503
 Time: 0.001s">
 <div class="time" style="width: 0.37313432835821%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Square.v
-Line: 496
+Line: 505
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
