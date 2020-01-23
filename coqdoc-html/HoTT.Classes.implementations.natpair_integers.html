@@ -29,11 +29,15 @@
 &nbsp;&nbsp;<a class="idref" href="HoTT.Types.Sum.html#"><span class="id" title="library">HoTT.Types.Sum</span></a><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.TruncType.html#"><span class="id" title="library">HoTT.TruncType</span></a>.<br/>
 <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span><br/>
+&nbsp;&nbsp;<a class="idref" href="HoTT.Classes.implementations.peano_naturals.html#"><span class="id" title="library">HoTT.Classes.implementations.peano_naturals</span></a><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.Classes.interfaces.abstract_algebra.html#"><span class="id" title="library">HoTT.Classes.interfaces.abstract_algebra</span></a><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.Classes.interfaces.orders.html#"><span class="id" title="library">HoTT.Classes.interfaces.orders</span></a><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.Classes.interfaces.naturals.html#"><span class="id" title="library">HoTT.Classes.interfaces.naturals</span></a><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.Classes.interfaces.integers.html#"><span class="id" title="library">HoTT.Classes.interfaces.integers</span></a><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.Classes.theory.rings.html#"><span class="id" title="library">HoTT.Classes.theory.rings</span></a><br/>
+&nbsp;&nbsp;<a class="idref" href="HoTT.Classes.theory.groups.html#"><span class="id" title="library">HoTT.Classes.theory.groups</span></a><br/>
+&nbsp;&nbsp;<a class="idref" href="HoTT.Classes.theory.apartness.html#"><span class="id" title="library">HoTT.Classes.theory.apartness</span></a><br/>
+&nbsp;&nbsp;<a class="idref" href="HoTT.Classes.orders.sum.html#"><span class="id" title="library">HoTT.Classes.orders.sum</span></a><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.Classes.orders.rings.html#"><span class="id" title="library">HoTT.Classes.orders.rings</span></a><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.Classes.tactics.ring_tac.html#"><span class="id" title="library">HoTT.Classes.tactics.ring_tac</span></a><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.Classes.interfaces.naturals.html#"><span class="id" title="library">HoTT.Classes.interfaces.naturals</span></a><br/>
@@ -43,13 +47,14 @@
 <span class="id" title="keyword">Generalizable</span> <span class="id" title="keyword">Variables</span> <span class="id" title="var">B</span>.<br/>
 
 <br/>
+<span class="id" title="keyword">Import</span> <span class="id" title="var">ring_quote.Quoting.Instances</span>.<br/>
 <span class="id" title="keyword">Local</span> <span class="id" title="keyword">Set</span> <span class="id" title="var">Universe</span> <span class="id" title="var">Minimization</span> <span class="id" title="var">ToSet</span>.<br/>
 
 <br/>
 <span class="id" title="keyword">Module</span> <a name="NatPair"><span class="id" title="module">NatPair</span></a>.<br/>
 
 <br/>
-<span class="id" title="keyword">Module</span> <a name="NatPair.PairT"><span class="id" title="module">PairT</span></a>.<br/>
+<span class="id" title="keyword">Module</span> <span class="id" title="keyword">Import</span> <a name="NatPair.PairT"><span class="id" title="module">PairT</span></a>.<br/>
 
 <br/>
 <span class="id" title="keyword">Record</span> <a name="NatPair.PairT.T"><span class="id" title="record">T</span></a> (<span class="id" title="var">N</span> : <span class="id" title="keyword">Type</span>) := <a name="NatPair.PairT.C"><span class="id" title="constructor">C</span></a> { <a name="NatPair.PairT.pos"><span class="id" title="projection">pos</span></a> : <a class="idref" href="HoTT.Classes.implementations.natpair_integers.html#N"><span class="id" title="variable">N</span></a> ; <a name="NatPair.PairT.neg"><span class="id" title="projection">neg</span></a> : <a class="idref" href="HoTT.Classes.implementations.natpair_integers.html#N"><span class="id" title="variable">N</span></a> }.<br/>
@@ -1034,7 +1039,7 @@
 <span class="id" title="tactic">apply</span> (<a class="idref" href="HoTT.Classes.implementations.natpair_integers.html#NatPair.Z_ind"><span class="id" title="definition">Z_ind</span></a> <span class="id" title="var">_</span>).<br/>
 <span class="id" title="tactic">intros</span> [<span class="id" title="var">pa</span> <span class="id" title="var">na</span>];<span class="id" title="tactic">unfold</span> <a class="idref" href="HoTT.Classes.interfaces.integers.html#integers_to_ring"><span class="id" title="definition">integers_to_ring</span></a>;<span class="id" title="tactic">simpl</span>.<br/>
 <span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Classes.implementations.natpair_integers.html#NatPair.Npair_splits"><span class="id" title="lemma">Npair_splits</span></a>.<br/>
-<span class="id" title="tactic">rewrite</span> (<a class="idref" href="HoTT.Classes.theory.rings.html#preserves_plus"><span class="id" title="lemma">preserves_plus</span></a> (<span class="id" title="var">f</span>:=<span class="id" title="var">h</span>)),(<a class="idref" href="HoTT.Classes.theory.rings.html#preserves_negate"><span class="id" title="definition">preserves_negate</span></a> (<span class="id" title="var">f</span>:=<span class="id" title="var">h</span>)).<br/>
+<span class="id" title="tactic">rewrite</span> (<a class="idref" href="HoTT.Classes.theory.rings.html#preserves_plus"><span class="id" title="lemma">preserves_plus</span></a> (<span class="id" title="var">f</span>:=<span class="id" title="var">h</span>)),(<a class="idref" href="HoTT.Classes.theory.groups.html#preserves_negate"><span class="id" title="lemma">preserves_negate</span></a> (<span class="id" title="var">f</span>:=<span class="id" title="var">h</span>)).<br/>
 <span class="id" title="tactic">change</span> (<span class="id" title="var">h</span> (<a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#61d7d7080cf0ce136932a654dc05d7b7"><span class="id" title="notation">'</span></a> <span class="id" title="var">pa</span>)) <span class="id" title="keyword">with</span> (<a class="idref" href="HoTT.Basics.Overture.html#Compose"><span class="id" title="definition">Compose</span></a> <span class="id" title="var">h</span> (<a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#cast"><span class="id" title="definition">cast</span></a> <a class="idref" href="HoTT.Classes.implementations.natpair_integers.html#NatPair.contents.N"><span class="id" title="variable">N</span></a> <a class="idref" href="HoTT.Classes.implementations.natpair_integers.html#NatPair.Z"><span class="id" title="definition">Z</span></a>) <span class="id" title="var">pa</span>).<br/>
 <span class="id" title="tactic">change</span> (<span class="id" title="var">h</span> (<a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#61d7d7080cf0ce136932a654dc05d7b7"><span class="id" title="notation">'</span></a> <span class="id" title="var">na</span>)) <span class="id" title="keyword">with</span> (<a class="idref" href="HoTT.Basics.Overture.html#Compose"><span class="id" title="definition">Compose</span></a> <span class="id" title="var">h</span> (<a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#cast"><span class="id" title="definition">cast</span></a> <a class="idref" href="HoTT.Classes.implementations.natpair_integers.html#NatPair.contents.N"><span class="id" title="variable">N</span></a> <a class="idref" href="HoTT.Classes.implementations.natpair_integers.html#NatPair.Z"><span class="id" title="definition">Z</span></a>) <span class="id" title="var">na</span>).<br/>
 <span class="id" title="tactic">rewrite</span> 2!(<a class="idref" href="HoTT.Classes.interfaces.naturals.html#naturals_initial"><span class="id" title="projection">naturals_initial</span></a> (<span class="id" title="var">h</span>:=<a class="idref" href="HoTT.Basics.Overture.html#Compose"><span class="id" title="definition">Compose</span></a> <span class="id" title="var">h</span> (<a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#cast"><span class="id" title="definition">cast</span></a> <a class="idref" href="HoTT.Classes.implementations.natpair_integers.html#NatPair.contents.N"><span class="id" title="variable">N</span></a> <a class="idref" href="HoTT.Classes.implementations.natpair_integers.html#NatPair.Z"><span class="id" title="definition">Z</span></a>))).<br/>
@@ -1245,6 +1250,12 @@
 
 <br/>
 <span class="id" title="keyword">End</span> <a class="idref" href="HoTT.Classes.implementations.natpair_integers.html#NatPair.contents"><span class="id" title="section">contents</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Module</span> <a name="NatPair.Instances"><span class="id" title="module">Instances</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Global</span> <span class="id" title="var">Existing</span> <span class="id" title="var">Instances</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">T_set</span> <span class="id" title="var">inject</span> <span class="id" title="var">Tle_hprop</span> <span class="id" title="var">Tlt_hprop</span> <span class="id" title="var">Tapart_hprop</span> <span class="id" title="var">Z_of_pair</span> <span class="id" title="var">Z_of_N</span> <span class="id" title="var">R_dec</span> <span class="id" title="var">Z0</span> <span class="id" title="var">Z1</span> <span class="id" title="var">Z_plus</span> <span class="id" title="var">Z_mult</span> <span class="id" title="var">Z_negate</span> <span class="id" title="var">Z_of_N_injective</span> <span class="id" title="var">Zle</span> <span class="id" title="var">ishprop_Zle</span> <span class="id" title="var">Zle_cast_embedding</span> <span class="id" title="var">Z_order</span> <span class="id" title="var">Zle_dec</span> <span class="id" title="var">Zlt</span> <span class="id" title="var">ishprop_Zlt</span> <span class="id" title="var">Z_strict_srorder</span> <span class="id" title="var">Zlt_dec</span> <span class="id" title="var">Zapart</span> <span class="id" title="var">ishprop_Zapart</span> <span class="id" title="var">Z_trivial_apart</span> <span class="id" title="var">Z_to_ring</span> <span class="id" title="var">Z_integers</span> <span class="id" title="var">Z_abs</span> <span class="id" title="var">Z_zero_product</span> <span class="id" title="var">Z_of_N_morphism</span>.<br/>
+<span class="id" title="keyword">End</span> <a class="idref" href="HoTT.Classes.implementations.natpair_integers.html#NatPair.Instances"><span class="id" title="module">Instances</span></a>.<br/>
 
 <br/>
 <span class="id" title="keyword">End</span> <a class="idref" href="HoTT.Classes.implementations.natpair_integers.html#NatPair"><span class="id" title="module">NatPair</span></a>.<br/>

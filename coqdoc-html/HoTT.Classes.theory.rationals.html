@@ -22,20 +22,27 @@
 <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.Types.Universe.html#"><span class="id" title="library">HoTT.Types.Universe</span></a><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.Basics.Decidable.html#"><span class="id" title="library">HoTT.Basics.Decidable</span></a><br/>
+&nbsp;&nbsp;<a class="idref" href="HoTT.Classes.implementations.peano_naturals.html#"><span class="id" title="library">HoTT.Classes.implementations.peano_naturals</span></a><br/>
+&nbsp;&nbsp;<a class="idref" href="HoTT.Classes.implementations.natpair_integers.html#"><span class="id" title="library">HoTT.Classes.implementations.natpair_integers</span></a><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.Classes.interfaces.abstract_algebra.html#"><span class="id" title="library">HoTT.Classes.interfaces.abstract_algebra</span></a><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.Classes.interfaces.naturals.html#"><span class="id" title="library">HoTT.Classes.interfaces.naturals</span></a><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.Classes.interfaces.integers.html#"><span class="id" title="library">HoTT.Classes.interfaces.integers</span></a><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.Classes.interfaces.rationals.html#"><span class="id" title="library">HoTT.Classes.interfaces.rationals</span></a><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.Classes.interfaces.orders.html#"><span class="id" title="library">HoTT.Classes.interfaces.orders</span></a><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.Classes.theory.rings.html#"><span class="id" title="library">HoTT.Classes.theory.rings</span></a><br/>
+&nbsp;&nbsp;<a class="idref" href="HoTT.Classes.theory.groups.html#"><span class="id" title="library">HoTT.Classes.theory.groups</span></a><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.Classes.theory.integers.html#"><span class="id" title="library">HoTT.Classes.theory.integers</span></a><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.Classes.theory.dec_fields.html#"><span class="id" title="library">HoTT.Classes.theory.dec_fields</span></a><br/>
+&nbsp;&nbsp;<a class="idref" href="HoTT.Classes.orders.sum.html#"><span class="id" title="library">HoTT.Classes.orders.sum</span></a><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.Classes.orders.dec_fields.html#"><span class="id" title="library">HoTT.Classes.orders.dec_fields</span></a><br/>
 &nbsp;&nbsp;<a class="idref" href="HoTT.Classes.orders.lattices.html#"><span class="id" title="library">HoTT.Classes.orders.lattices</span></a><br/>
-&nbsp;&nbsp;<a class="idref" href="HoTT.Classes.implementations.natpair_integers.html#"><span class="id" title="library">HoTT.Classes.implementations.natpair_integers</span></a><br/>
-&nbsp;&nbsp;<a class="idref" href="HoTT.Classes.theory.additional_operations.html#"><span class="id" title="library">HoTT.Classes.theory.additional_operations</span></a>.<br/>
+&nbsp;&nbsp;<a class="idref" href="HoTT.Classes.theory.additional_operations.html#"><span class="id" title="library">HoTT.Classes.theory.additional_operations</span></a><br/>
+&nbsp;&nbsp;<a class="idref" href="HoTT.Classes.tactics.ring_quote.html#"><span class="id" title="library">HoTT.Classes.tactics.ring_quote</span></a><br/>
+&nbsp;&nbsp;<a class="idref" href="HoTT.Classes.tactics.ring_tac.html#"><span class="id" title="library">HoTT.Classes.tactics.ring_tac</span></a>.<br/>
 
 <br/>
+<span class="id" title="keyword">Import</span> <span class="id" title="var">Quoting.Instances</span>.<br/>
+<span class="id" title="keyword">Import</span> <span class="id" title="var">NatPair.Instances</span>.<br/>
 <span class="id" title="keyword">Local</span> <span class="id" title="keyword">Set</span> <span class="id" title="var">Universe</span> <span class="id" title="var">Minimization</span> <span class="id" title="var">ToSet</span>.<br/>
 
 <br/>
@@ -348,7 +355,8 @@
 <span class="id" title="keyword">Proof</span>.<br/>
 <span class="id" title="tactic">intros</span> <span class="id" title="var">q</span>;<span class="id" title="tactic">destruct</span> (<a class="idref" href="HoTT.Classes.theory.additional_operations.html#total_abs_either"><span class="id" title="lemma">total_abs_either</span></a> <span class="id" title="var">q</span>) <span class="id" title="keyword">as</span> [<span class="id" title="var">E</span>|<span class="id" title="var">E</span>];<span class="id" title="tactic">destruct</span> <span class="id" title="var">E</span> <span class="id" title="keyword">as</span> [<span class="id" title="var">E1</span> <span class="id" title="var">E2</span>];<span class="id" title="tactic">rewrite</span> <span class="id" title="var">E2</span>.<br/>
 - <span class="id" title="tactic">trivial</span>.<br/>
-- <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Classes.orders.rings.html#flip_nonneg_negate"><span class="id" title="lemma">flip_nonneg_negate</span></a>. <span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#involutive"><span class="id" title="definition">involutive</span></a>;<span class="id" title="tactic">trivial</span>.<br/>
+- <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Classes.orders.rings.html#flip_nonneg_negate"><span class="id" title="lemma">flip_nonneg_negate</span></a>.<br/>
+&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#involutive"><span class="id" title="definition">involutive</span></a>;<span class="id" title="tactic">trivial</span>.<br/>
 <span class="id" title="keyword">Qed</span>.<br/>
 
 <br/>

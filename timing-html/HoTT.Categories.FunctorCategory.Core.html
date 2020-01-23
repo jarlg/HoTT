@@ -36,54 +36,61 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 1
-Time: 0.04s">
+Time: 0.033s">
 <div class="time" style="width: 100%"></div>
 <pre>Require Import Category.Core Category.Strict Functor.Core NaturalTransformation.Core Functor.Paths.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 1
+Time: 0.003s">
+<div class="time" style="width: 9.0909090909091%"></div>
+<pre>
+Require Import HoTT.Basics HoTT.Types.</pre>
+</div>
+<div class="code" title="File: Core.v
+Line: 2
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 (** These must come last, so that [identity], [compose], etc., refer to natural transformations. *)</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 2
-Time: 0.001s">
-<div class="time" style="width: 2.5%"></div>
-<pre>Require Import NaturalTransformation.Composition.Core NaturalTransformation.Identity NaturalTransformation.Composition.Laws.</pre>
+Line: 3
+Time: 0.002s">
+<div class="time" style="width: 6.0606060606061%"></div>
+<pre>Require Import NaturalTransformation.Composition.Core NaturalTransformation.Identity NaturalTransformation.Composition.Laws NaturalTransformation.Paths.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 2
+Line: 3
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre>
+<pre> 
 
 Set Universe Polymorphism.</pre>
-</div>
-<div class="code" title="File: Core.v
-Line: 4
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Set Implicit Arguments.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 5
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Generalizable All Variables.</pre>
+Set Implicit Arguments.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 6
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Set Asymmetric Patterns.</pre>
+Generalizable All Variables.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 7
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Set Asymmetric Patterns.</pre>
+</div>
+<div class="code" title="File: Core.v
+Line: 8
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -91,20 +98,20 @@ Time: 0s">
 (** ** Definition of [C → D] *)</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 9
+Line: 10
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section functor_category.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 9
+Line: 10
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Context `{Funext}.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 10
+Line: 11
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -112,7 +119,7 @@ Time: 0s">
   Variables C D : PreCategory.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 12
+Line: 13
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -121,9 +128,9 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 15
-Time: 0.004s">
-<div class="time" style="width: 10%"></div>
+Line: 16
+Time: 0.003s">
+<div class="time" style="width: 9.0909090909091%"></div>
 <pre>Definition functor_category : PreCategory
     := @Build_PreCategory (Functor C D)
                           (@NaturalTransformation C D)
@@ -135,14 +142,14 @@ Time: 0.004s">
                           _.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 23
+Line: 24
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 End functor_category.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 24
+Line: 25
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -150,7 +157,7 @@ Time: 0s">
 Local Notation "C -&gt; D" := (functor_category C D) : category_scope.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 26
+Line: 27
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -158,35 +165,35 @@ Time: 0s">
 (** ** [C → D] is a strict category if [D] is *)</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 28
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 29
+Time: 0.001s">
+<div class="time" style="width: 3.030303030303%"></div>
 <pre>Lemma isstrict_functor_category `{Funext} C `{IsStrictCategory D}
 : IsStrictCategory (C -&gt; D).</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 29
+Line: 30
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 30
-Time: 0.015s">
-<div class="time" style="width: 37.5%"></div>
+Line: 31
+Time: 0.011s">
+<div class="time" style="width: 33.333333333333%"></div>
 <pre>
   typeclasses eauto.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 31
+Line: 32
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 32
+Line: 33
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -194,7 +201,7 @@ Time: 0s">
 Module Export FunctorCategoryCoreNotations.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 34
+Line: 35
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -203,20 +210,20 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 37
+Line: 38
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Notation "C -&gt; D" := (functor_category C D) : category_scope.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 37
+Line: 38
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 End FunctorCategoryCoreNotations.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 39
+Line: 40
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>

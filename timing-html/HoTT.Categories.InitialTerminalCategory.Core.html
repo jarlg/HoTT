@@ -36,19 +36,26 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 1
-Time: 0.005s">
-<div class="time" style="width: 7.9365079365079%"></div>
-<pre>Require Import Category.Core.</pre>
+Time: 0.033s">
+<div class="time" style="width: 100%"></div>
+<pre>Require Import HoTT.Basics HoTT.Types.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 1
-Time: 0.063s">
-<div class="time" style="width: 100%"></div>
+Time: 0.001s">
+<div class="time" style="width: 3.030303030303%"></div>
+<pre>
+Require Import Category.Core.</pre>
+</div>
+<div class="code" title="File: Core.v
+Line: 2
+Time: 0.013s">
+<div class="time" style="width: 39.393939393939%"></div>
 <pre>
 Require Import NatCategory Contractible.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 2
+Line: 3
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -56,35 +63,35 @@ Time: 0s">
 Set Universe Polymorphism.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 4
+Line: 5
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Set Implicit Arguments.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 5
+Line: 6
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Generalizable All Variables.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 6
+Line: 7
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Set Asymmetric Patterns.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 7
+Line: 8
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Local Unset Primitive Projections.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 8
+Line: 9
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> (* suppress a warning about [IsTerminalCategory] *)
@@ -92,20 +99,20 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 9
+Line: 10
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Notation initial_category := (nat_category 0) (only parsing).</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 9
+Line: 10
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Notation terminal_category := (nat_category 1) (only parsing).</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 10
+Line: 11
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -114,15 +121,15 @@ Time: 0s">
 (** A precategory is terminal if its objects and morphisms are contractible types. *)</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 13
+Line: 14
 Time: 0.002s">
-<div class="time" style="width: 3.1746031746032%"></div>
+<div class="time" style="width: 6.0606060606061%"></div>
 <pre>Class IsTerminalCategory (C : PreCategory)
       `{Contr (object C)}
       `{forall s d, Contr (morphism C s d)} := {}.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 15
+Line: 16
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -131,16 +138,16 @@ Time: 0s">
 (** An initial precategory is one whose objects have the recursion priniciple of the empty type *)</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 18
+Line: 19
 Time: 0.001s">
-<div class="time" style="width: 1.5873015873016%"></div>
+<div class="time" style="width: 3.030303030303%"></div>
 <pre>Class IsInitialCategory (C : PreCategory)
   := initial_category_ind : forall P : Type, C -&gt; P.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 19
+Line: 20
 Time: 0.001s">
-<div class="time" style="width: 1.5873015873016%"></div>
+<div class="time" style="width: 3.030303030303%"></div>
 <pre>
 
 Global Instance trunc_initial_category `{IsInitialCategory C}
@@ -148,16 +155,16 @@ Global Instance trunc_initial_category `{IsInitialCategory C}
   := fun x y =&gt; initial_category_ind _ x.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 23
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 24
+Time: 0.001s">
+<div class="time" style="width: 3.030303030303%"></div>
 <pre>
 Global Instance trunc_initial_category_mor `{IsInitialCategory C} x y
 : Contr (morphism C x y)
   := initial_category_ind _ x.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 26
+Line: 27
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -165,41 +172,41 @@ Time: 0s">
 (** ** Default intitial ([0]) and terminal ([1]) precategories. *)</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 28
+Line: 29
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance is_initial_category_0 : IsInitialCategory 0 := (fun T =&gt; @Empty_ind (fun _ =&gt; T)).</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 28
+Line: 29
 Time: 0.003s">
-<div class="time" style="width: 4.7619047619048%"></div>
+<div class="time" style="width: 9.0909090909091%"></div>
 <pre>
 Global Instance: IsTerminalCategory 1 | 0 := {}.</pre>
-</div>
-<div class="code" title="File: Core.v
-Line: 29
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Global Instance: Contr (object 1) | 0 := _.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 30
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Global Instance: Contr (morphism 1 x y) | 0 := fun x y =&gt; _.</pre>
+Global Instance: Contr (object 1) | 0 := _.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 31
 Time: 0.001s">
-<div class="time" style="width: 1.5873015873016%"></div>
+<div class="time" style="width: 3.030303030303%"></div>
+<pre>
+Global Instance: Contr (morphism 1 x y) | 0 := fun x y =&gt; _.</pre>
+</div>
+<div class="code" title="File: Core.v
+Line: 32
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 Global Instance default_terminal C {H H1} : @IsTerminalCategory C H H1 | 10 := {}.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 32
+Line: 33
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -207,14 +214,14 @@ Time: 0s">
 Arguments initial_category_ind / .</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 34
+Line: 35
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Arguments is_initial_category_0 / .</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 36
+Line: 37
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>

@@ -30,59 +30,69 @@ pre {
 
 <div class="code" title="File: ring_tac.v
 Line: 1
-Time: 0.44s">
+Time: 0.405s">
 <div class="time" style="width: 100%"></div>
 <pre>Require Import
   HoTT.Classes.interfaces.abstract_algebra
-  HoTT.Classes.tactics.ring_tac.</pre>
+  HoTT.Classes.implementations.peano_naturals
+  HoTT.Classes.orders.sum
+  HoTT.Classes.tactics.ring_tac
+  HoTT.Classes.tactics.ring_quote.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 3
+Line: 6
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-Generalizable Variables R.</pre>
-</div>
-<div class="code" title="File: ring_tac.v
-Line: 5
-Time: 0.001s">
-<div class="time" style="width: 0.22727272727273%"></div>
-<pre>
-
-Lemma test1 `{IsSemiRing R}
-  : forall x y : R, x + (y * x) = x * (y + 1).</pre>
+Import Quoting.Instances.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
 Line: 8
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Proof.</pre>
+Generalizable Variables R.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
 Line: 9
+Time: 0.001s">
+<div class="time" style="width: 0.24691358024691%"></div>
+<pre>
+
+Lemma test1 `{IsSemiRing R}
+  : forall x y : R, x + (y * x) = x * (y + 1).</pre>
+</div>
+<div class="code" title="File: ring_tac.v
+Line: 12
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: ring_tac.v
+Line: 13
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 intros.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 10
-Time: 0.027s">
-<div class="time" style="width: 6.1363636363636%"></div>
+Line: 14
+Time: 0.026s">
+<div class="time" style="width: 6.4197530864198%"></div>
 <pre>
 ring_with_nat.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 11
+Line: 15
 Time: 0.014s">
-<div class="time" style="width: 3.1818181818182%"></div>
+<div class="time" style="width: 3.4567901234568%"></div>
 <pre>
 Qed.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 12
+Line: 16
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -91,59 +101,59 @@ Require Import
   HoTT.Classes.interfaces.naturals.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 15
+Line: 19
 Time: 0.001s">
-<div class="time" style="width: 0.22727272727273%"></div>
+<div class="time" style="width: 0.24691358024691%"></div>
 <pre>
 
 Lemma test2 `{IsSemiRing R}
   : forall x y : R, x + (y * x) = x * (y + 1).</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 18
+Line: 22
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 19
+Line: 23
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 intros.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 20
-Time: 0.023s">
-<div class="time" style="width: 5.2272727272727%"></div>
+Line: 24
+Time: 0.024s">
+<div class="time" style="width: 5.9259259259259%"></div>
 <pre>
 apply (by_quoting (naturals_to_semiring nat R)).</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 21
+Line: 25
 Time: 0.001s">
-<div class="time" style="width: 0.22727272727273%"></div>
+<div class="time" style="width: 0.24691358024691%"></div>
 <pre>
 compute.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 22
+Line: 26
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> reflexivity.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 22
+Line: 26
 Time: 0.009s">
-<div class="time" style="width: 2.0454545454545%"></div>
+<div class="time" style="width: 2.2222222222222%"></div>
 <pre>
 Qed.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 23
+Line: 27
 Time: 0.001s">
-<div class="time" style="width: 0.22727272727273%"></div>
+<div class="time" style="width: 0.24691358024691%"></div>
 <pre>
 
 Lemma test3 `{IsSemiRing R}
@@ -152,50 +162,50 @@ Lemma test3 `{IsSemiRing R}
 = pa * pb * pc.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 28
+Line: 32
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 29
+Line: 33
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 intros.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 30
+Line: 34
 Time: 0.027s">
-<div class="time" style="width: 6.1363636363636%"></div>
+<div class="time" style="width: 6.6666666666667%"></div>
 <pre>
 apply (by_quoting (naturals_to_semiring nat R)).</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 31
+Line: 35
 Time: 0.001s">
-<div class="time" style="width: 0.22727272727273%"></div>
+<div class="time" style="width: 0.24691358024691%"></div>
 <pre> compute.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 31
+Line: 35
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 reflexivity.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 32
+Line: 36
 Time: 0.009s">
-<div class="time" style="width: 2.0454545454545%"></div>
+<div class="time" style="width: 2.2222222222222%"></div>
 <pre>
 Qed.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 33
-Time: 0.001s">
-<div class="time" style="width: 0.22727272727273%"></div>
+Line: 37
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
 Lemma test4 `{IsSemiRing R}
@@ -203,42 +213,42 @@ Lemma test4 `{IsSemiRing R}
   : a * b = b * a.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 37
+Line: 41
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 38
+Line: 42
 Time: 0.021s">
-<div class="time" style="width: 4.7727272727273%"></div>
+<div class="time" style="width: 5.1851851851852%"></div>
 <pre>
 apply (ring_quote.Quoting.eval_eqquote R).</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 39
+Line: 43
 Time: 0.009s">
-<div class="time" style="width: 2.0454545454545%"></div>
+<div class="time" style="width: 2.2222222222222%"></div>
 <pre>
 apply (prove_prequoted (naturals_to_semiring nat R)).</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 40
+Line: 44
 Time: 0.001s">
-<div class="time" style="width: 0.22727272727273%"></div>
+<div class="time" style="width: 0.24691358024691%"></div>
 <pre>
 reflexivity.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 41
+Line: 45
 Time: 0.004s">
-<div class="time" style="width: 0.90909090909091%"></div>
+<div class="time" style="width: 0.98765432098765%"></div>
 <pre>
 Qed.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 42
+Line: 46
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -246,28 +256,28 @@ Time: 0s">
 Lemma test5 : forall x y : nat, x + (y * x) = x * (y + 1).</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 44
+Line: 48
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 45
-Time: 0.024s">
-<div class="time" style="width: 5.4545454545455%"></div>
+Line: 49
+Time: 0.022s">
+<div class="time" style="width: 5.4320987654321%"></div>
 <pre>
 intros;ring_with_nat.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 46
+Line: 50
 Time: 0.01s">
-<div class="time" style="width: 2.2727272727273%"></div>
+<div class="time" style="width: 2.4691358024691%"></div>
 <pre>
 Qed.</pre>
 </div>
 <div class="code" title="File: ring_tac.v
-Line: 48
+Line: 52
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>

@@ -30,17 +30,18 @@ pre {
 
 <div class="code" title="File: ua_category.v
 Line: 1
-Time: 0.422s">
+Time: 0.397s">
 <div class="time" style="width: 100%"></div>
 <pre>Require Import
-  HoTT.Basics.Equivalences
-  HoTT.Types.Universe
+  HoTT.Basics
+  HoTT.Types
+  HoTT.UnivalenceImpliesFunext
   HoTT.Categories.Category.Core
   HoTT.Categories.Category.Univalent
   HoTT.Classes.theory.ua_isomorphic.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 6
+Line: 7
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -48,7 +49,7 @@ Time: 0s">
 Require HoTT.Categories.Category.Morphisms.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 8
+Line: 9
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -56,7 +57,7 @@ Time: 0s">
 Import Morphisms.CategoryMorphismsNotations isomorphic_notations.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 10
+Line: 11
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -64,7 +65,7 @@ Time: 0s">
 Local Open Scope category.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 12
+Line: 13
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -75,36 +76,36 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 16
+Line: 17
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Lemma precategory_algebra `{Funext} (σ : Signature) : PreCategory.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 16
+Line: 17
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 17
-Time: 0.016s">
-<div class="time" style="width: 3.7914691943128%"></div>
+Line: 18
+Time: 0.01s">
+<div class="time" style="width: 2.5188916876574%"></div>
 <pre>
   apply (@Build_PreCategory
            (SetAlgebra σ) Homomorphism hom_id (@hom_compose σ));
     [intros; by apply path_hset_homomorphism .. | exact _].</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 20
+Line: 21
 Time: 0.001s">
-<div class="time" style="width: 0.23696682464455%"></div>
+<div class="time" style="width: 0.25188916876574%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 21
+Line: 22
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -114,82 +115,82 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 24
+Line: 25
 Time: 0.001s">
-<div class="time" style="width: 0.23696682464455%"></div>
+<div class="time" style="width: 0.25188916876574%"></div>
 <pre>Lemma catiso_to_uaiso `{Funext} {σ} {A B : object (precategory_algebra σ)}
   : A &lt;~=~&gt; B → A ≅ B.</pre>
-</div>
-<div class="code" title="File: ua_category.v
-Line: 25
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
 </div>
 <div class="code" title="File: ua_category.v
 Line: 26
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  intros [f [a b c]].</pre>
+Proof.</pre>
 </div>
 <div class="code" title="File: ua_category.v
 Line: 27
-Time: 0.002s">
-<div class="time" style="width: 0.4739336492891%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  intros [f [a b c]].</pre>
+</div>
+<div class="code" title="File: ua_category.v
+Line: 28
+Time: 0.001s">
+<div class="time" style="width: 0.25188916876574%"></div>
 <pre>
   unshelve eapply (@BuildIsomorphic _ _ _ f).</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 28
+Line: 29
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros s.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 29
-Time: 0.001s">
-<div class="time" style="width: 0.23696682464455%"></div>
+Line: 30
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   refine (isequiv_adjointify (f s) (a s) _ _).</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 30
+Line: 31
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 31
+Line: 32
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact (apD10_homomorphism c s).</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 31
+Line: 32
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 32
+Line: 33
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact (apD10_homomorphism b s).</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 32
+Line: 33
 Time: 0.001s">
-<div class="time" style="width: 0.23696682464455%"></div>
+<div class="time" style="width: 0.25188916876574%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 33
+Line: 34
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -199,105 +200,105 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 36
-Time: 0.001s">
-<div class="time" style="width: 0.23696682464455%"></div>
+Line: 37
+Time: 0.002s">
+<div class="time" style="width: 0.50377833753149%"></div>
 <pre>Lemma uaiso_to_catiso `{Funext} {σ} {A B : object (precategory_algebra σ)}
   : A ≅ B → A &lt;~=~&gt; B.</pre>
-</div>
-<div class="code" title="File: ua_category.v
-Line: 37
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
 </div>
 <div class="code" title="File: ua_category.v
 Line: 38
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  intros [f F G].</pre>
+Proof.</pre>
 </div>
 <div class="code" title="File: ua_category.v
 Line: 39
 Time: 0s">
 <div class="time" style="width: 0%"></div>
+<pre>
+  intros [f F G].</pre>
+</div>
+<div class="code" title="File: ua_category.v
+Line: 40
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre> set (h := BuildHomomorphism f).</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 39
+Line: 40
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply (@Morphisms.Build_Isomorphic _ A B h).</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 40
-Time: 0.001s">
-<div class="time" style="width: 0.23696682464455%"></div>
+Line: 41
+Time: 0.002s">
+<div class="time" style="width: 0.50377833753149%"></div>
 <pre>
   apply (@Morphisms.Build_IsIsomorphism _ A B h (hom_inv h)).</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 41
+Line: 42
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 42
-Time: 0.006s">
-<div class="time" style="width: 1.4218009478673%"></div>
+Line: 43
+Time: 0.002s">
+<div class="time" style="width: 0.50377833753149%"></div>
 <pre> apply path_hset_homomorphism.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 42
-Time: 0.002s">
-<div class="time" style="width: 0.4739336492891%"></div>
+Line: 43
+Time: 0.003s">
+<div class="time" style="width: 0.75566750629723%"></div>
 <pre> funext s x.</pre>
-</div>
-<div class="code" title="File: ua_category.v
-Line: 42
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> apply eissect.</pre>
-</div>
-<div class="code" title="File: ua_category.v
-Line: 42
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
 </div>
 <div class="code" title="File: ua_category.v
 Line: 43
 Time: 0.001s">
-<div class="time" style="width: 0.23696682464455%"></div>
+<div class="time" style="width: 0.25188916876574%"></div>
+<pre> apply eissect.</pre>
+</div>
+<div class="code" title="File: ua_category.v
+Line: 43
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: ua_category.v
+Line: 44
+Time: 0.001s">
+<div class="time" style="width: 0.25188916876574%"></div>
 <pre> apply path_hset_homomorphism.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 43
+Line: 44
 Time: 0.002s">
-<div class="time" style="width: 0.4739336492891%"></div>
+<div class="time" style="width: 0.50377833753149%"></div>
 <pre> funext s x.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 43
+Line: 44
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply eisretr.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 43
+Line: 44
 Time: 0.004s">
-<div class="time" style="width: 0.9478672985782%"></div>
+<div class="time" style="width: 1.007556675063%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 44
+Line: 45
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -307,74 +308,74 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 47
+Line: 48
 Time: 0.001s">
-<div class="time" style="width: 0.23696682464455%"></div>
+<div class="time" style="width: 0.25188916876574%"></div>
 <pre>Global Instance isequiv_catiso_to_uaiso `{Funext} {σ : Signature}
   (A B : object (precategory_algebra σ))
   : IsEquiv (@catiso_to_uaiso _ σ A B).</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 49
+Line: 50
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 50
+Line: 51
 Time: 0.001s">
-<div class="time" style="width: 0.23696682464455%"></div>
+<div class="time" style="width: 0.25188916876574%"></div>
 <pre>
   refine (isequiv_adjointify catiso_to_uaiso uaiso_to_catiso _ _).</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 51
+Line: 52
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 52
+Line: 53
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros [f F G].</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 52
+Line: 53
 Time: 0.002s">
-<div class="time" style="width: 0.4739336492891%"></div>
+<div class="time" style="width: 0.50377833753149%"></div>
 <pre> by apply path_hset_isomorphic.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 52
+Line: 53
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 53
+Line: 54
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros [f F].</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 53
+Line: 54
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> by apply Morphisms.path_isomorphic.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 53
+Line: 54
 Time: 0.002s">
-<div class="time" style="width: 0.4739336492891%"></div>
+<div class="time" style="width: 0.50377833753149%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 54
+Line: 55
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -384,49 +385,49 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 57
+Line: 58
 Time: 0.007s">
-<div class="time" style="width: 1.6587677725118%"></div>
+<div class="time" style="width: 1.7632241813602%"></div>
 <pre>Lemma path_idtoiso_isomorphic_id `{Funext} {σ : Signature}
   (A B : object (precategory_algebra σ))
   : @Morphisms.idtoiso (precategory_algebra σ) A B
     = catiso_to_uaiso^-1 o isomorphic_id o (path_setalgebra A B)^-1.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 60
+Line: 61
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 61
+Line: 62
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   funext p.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 62
+Line: 63
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> destruct p.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 62
+Line: 63
 Time: 0.001s">
-<div class="time" style="width: 0.23696682464455%"></div>
+<div class="time" style="width: 0.25188916876574%"></div>
 <pre> by apply Morphisms.path_isomorphic.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 62
-Time: 0.003s">
-<div class="time" style="width: 0.71090047393365%"></div>
+Line: 63
+Time: 0.002s">
+<div class="time" style="width: 0.50377833753149%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 63
+Line: 64
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -437,52 +438,39 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 67
+Line: 68
 Time: 0.001s">
-<div class="time" style="width: 0.23696682464455%"></div>
+<div class="time" style="width: 0.25188916876574%"></div>
 <pre>Lemma iscategory_algebra `{Univalence} (σ : Signature)
   : IsCategory (precategory_algebra σ).</pre>
-</div>
-<div class="code" title="File: ua_category.v
-Line: 68
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
 </div>
 <div class="code" title="File: ua_category.v
 Line: 69
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  intros A B.</pre>
+Proof.</pre>
 </div>
 <div class="code" title="File: ua_category.v
 Line: 70
-Time: 0.001s">
-<div class="time" style="width: 0.23696682464455%"></div>
-<pre>
-  rewrite path_idtoiso_isomorphic_id.</pre>
-</div>
-<div class="code" title="File: ua_category.v
-Line: 71
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  apply @isequiv_compose.</pre>
+  intros A B.</pre>
+</div>
+<div class="code" title="File: ua_category.v
+Line: 71
+Time: 0.001s">
+<div class="time" style="width: 0.25188916876574%"></div>
+<pre>
+  rewrite path_idtoiso_isomorphic_id.</pre>
 </div>
 <div class="code" title="File: ua_category.v
 Line: 72
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  -</pre>
-</div>
-<div class="code" title="File: ua_category.v
-Line: 73
-Time: 0.031s">
-<div class="time" style="width: 7.345971563981%"></div>
-<pre> apply isequiv_compose.</pre>
+  apply @isequiv_compose.</pre>
 </div>
 <div class="code" title="File: ua_category.v
 Line: 73
@@ -493,28 +481,41 @@ Time: 0s">
 </div>
 <div class="code" title="File: ua_category.v
 Line: 74
+Time: 0.011s">
+<div class="time" style="width: 2.7707808564232%"></div>
+<pre> apply isequiv_compose.</pre>
+</div>
+<div class="code" title="File: ua_category.v
+Line: 74
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: ua_category.v
+Line: 75
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply isequiv_inverse.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 74
+Line: 75
 Time: 0.003s">
-<div class="time" style="width: 0.71090047393365%"></div>
+<div class="time" style="width: 0.75566750629723%"></div>
 <pre>
 Qed.</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 75
+Line: 76
 Time: 0.001s">
-<div class="time" style="width: 0.23696682464455%"></div>
+<div class="time" style="width: 0.25188916876574%"></div>
 <pre>
 
 Definition category_algebra `{Univalence} (σ : Signature) : Category
   := Build_Category (iscategory_algebra σ).</pre>
 </div>
 <div class="code" title="File: ua_category.v
-Line: 79
+Line: 80
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>

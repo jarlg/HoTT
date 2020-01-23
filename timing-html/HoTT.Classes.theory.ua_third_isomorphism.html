@@ -37,18 +37,19 @@ Time: 0s">
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
 Line: 2
-Time: 0.448s">
+Time: 0.405s">
 <div class="time" style="width: 100%"></div>
 <pre>Require Import
   HoTT.Types.Universe
   HoTT.HIT.quotient
+  HoTT.UnivalenceImpliesFunext
   HoTT.Classes.interfaces.canonical_names
   HoTT.Classes.theory.ua_quotient_algebra
   HoTT.Classes.theory.ua_isomorphic
   HoTT.Classes.theory.ua_first_isomorphism.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 8
+Line: 9
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -56,7 +57,7 @@ Time: 0s">
 Import algebra_notations quotient_algebra_notations isomorphic_notations.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 10
+Line: 11
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -68,15 +69,15 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 15
+Line: 16
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section cong_quotient.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 15
+Line: 16
 Time: 0.001s">
-<div class="time" style="width: 0.22321428571429%"></div>
+<div class="time" style="width: 0.24691358024691%"></div>
 <pre>
   Context
     `{Univalence}
@@ -86,9 +87,9 @@ Time: 0.001s">
     (subrel : ∀ (s : Sort σ) (x y : A s), Ψ s x y → Φ s x y).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 21
+Line: 22
 Time: 0.011s">
-<div class="time" style="width: 2.4553571428571%"></div>
+<div class="time" style="width: 2.716049382716%"></div>
 <pre>
 
   Definition cong_quotient (_ : ∀ s x y, Ψ s x y → Φ s x y)
@@ -96,7 +97,7 @@ Time: 0.011s">
     := ∀ (x y : A s), in_class (Ψ s) a x → in_class (Ψ s) b y → Φ s x y.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 25
+Line: 26
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -105,162 +106,149 @@ Time: 0s">
     : EquivRel (cong_quotient subrel s).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 28
+Line: 29
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 29
+Line: 30
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     constructor.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 30
+Line: 31
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 31
-Time: 0.093s">
-<div class="time" style="width: 20.758928571429%"></div>
+Line: 32
+Time: 0.048s">
+<div class="time" style="width: 11.851851851852%"></div>
 <pre> refine (quotient_ind_prop (Ψ s) _ _).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 31
+Line: 32
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros x y z P Q.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 31
+Line: 32
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       apply subrel.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 32
-Time: 0.006s">
-<div class="time" style="width: 1.3392857142857%"></div>
+Line: 33
+Time: 0.007s">
+<div class="time" style="width: 1.7283950617284%"></div>
 <pre>
       by transitivity x.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 33
+Line: 34
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 34
-Time: 0.126s">
-<div class="time" style="width: 28.125%"></div>
+Line: 35
+Time: 0.057s">
+<div class="time" style="width: 14.074074074074%"></div>
 <pre> refine (quotient_ind_prop (Ψ s) _ _).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 34
+Line: 35
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intro x1.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 34
-Time: 0.116s">
-<div class="time" style="width: 25.892857142857%"></div>
+Line: 35
+Time: 0.065s">
+<div class="time" style="width: 16.049382716049%"></div>
 <pre>
       refine (quotient_ind_prop (Ψ s) _ _).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 35
+Line: 36
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros x2 C y1 y2 P Q.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 35
+Line: 36
 Time: 0.003s">
-<div class="time" style="width: 0.66964285714286%"></div>
+<div class="time" style="width: 0.74074074074074%"></div>
 <pre>
       symmetry.</pre>
-</div>
-<div class="code" title="File: ua_third_isomorphism.v
-Line: 36
-Time: 0.001s">
-<div class="time" style="width: 0.22321428571429%"></div>
-<pre>
-      by apply C.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
 Line: 37
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
+      by apply C.</pre>
+</div>
+<div class="code" title="File: ua_third_isomorphism.v
+Line: 38
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
     -</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 38
-Time: 0.166s">
-<div class="time" style="width: 37.053571428571%"></div>
+Line: 39
+Time: 0.08s">
+<div class="time" style="width: 19.753086419753%"></div>
 <pre> refine (quotient_ind_prop (Ψ s) _ _).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 38
+Line: 39
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intro x1.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 38
-Time: 0.155s">
-<div class="time" style="width: 34.598214285714%"></div>
+Line: 39
+Time: 0.065s">
+<div class="time" style="width: 16.049382716049%"></div>
 <pre>
       refine (quotient_ind_prop (Ψ s) _ _).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 39
+Line: 40
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intro x2.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 39
-Time: 0.131s">
-<div class="time" style="width: 29.241071428571%"></div>
+Line: 40
+Time: 0.06s">
+<div class="time" style="width: 14.814814814815%"></div>
 <pre>
       refine (quotient_ind_prop (Ψ s) _ _).</pre>
-</div>
-<div class="code" title="File: ua_third_isomorphism.v
-Line: 40
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intros x3 C D y1 y2 P Q.</pre>
-</div>
-<div class="code" title="File: ua_third_isomorphism.v
-Line: 40
-Time: 0.004s">
-<div class="time" style="width: 0.89285714285714%"></div>
-<pre>
-      transitivity x2.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
 Line: 41
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre>
-      +</pre>
+<pre> intros x3 C D y1 y2 P Q.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 42
+Line: 41
 Time: 0.003s">
-<div class="time" style="width: 0.66964285714286%"></div>
-<pre> exact (C y1 x2 P (EquivRel_Reflexive x2)).</pre>
+<div class="time" style="width: 0.74074074074074%"></div>
+<pre>
+      transitivity x2.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
 Line: 42
@@ -271,21 +259,34 @@ Time: 0s">
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
 Line: 43
-Time: 0.003s">
-<div class="time" style="width: 0.66964285714286%"></div>
-<pre> exact (D x2 y2 (EquivRel_Reflexive x2) Q).</pre>
+Time: 0.002s">
+<div class="time" style="width: 0.49382716049383%"></div>
+<pre> exact (C y1 x2 P (EquivRel_Reflexive x2)).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
 Line: 43
-Time: 0.014s">
-<div class="time" style="width: 3.125%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      +</pre>
+</div>
+<div class="code" title="File: ua_third_isomorphism.v
+Line: 44
+Time: 0.002s">
+<div class="time" style="width: 0.49382716049383%"></div>
+<pre> exact (D x2 y2 (EquivRel_Reflexive x2) Q).</pre>
+</div>
+<div class="code" title="File: ua_third_isomorphism.v
+Line: 44
+Time: 0.012s">
+<div class="time" style="width: 2.962962962963%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 44
+Line: 45
 Time: 0.004s">
-<div class="time" style="width: 0.89285714285714%"></div>
+<div class="time" style="width: 0.98765432098765%"></div>
 <pre>
 
   Lemma for_all_relation_quotient {w : list (Sort σ)} (a b : FamilyProd A w)
@@ -295,70 +296,57 @@ Time: 0.004s">
       for_all_2_family_prod A A Φ a b.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 50
+Line: 51
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 51
+Line: 52
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intro F.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 52
-Time: 0.007s">
-<div class="time" style="width: 1.5625%"></div>
+Line: 53
+Time: 0.006s">
+<div class="time" style="width: 1.4814814814815%"></div>
 <pre> induction w; cbn in *.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 52
+Line: 53
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 53
+Line: 54
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> constructor.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 53
+Line: 54
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 54
-Time: 0.005s">
-<div class="time" style="width: 1.1160714285714%"></div>
+Line: 55
+Time: 0.004s">
+<div class="time" style="width: 0.98765432098765%"></div>
 <pre> destruct a as [x a], b as [y b], F as [Q F].</pre>
-</div>
-<div class="code" title="File: ua_third_isomorphism.v
-Line: 54
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      split.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
 Line: 55
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-      +</pre>
-</div>
-<div class="code" title="File: ua_third_isomorphism.v
-Line: 56
-Time: 0.008s">
-<div class="time" style="width: 1.7857142857143%"></div>
-<pre> apply Q; cbn; reflexivity.</pre>
+      split.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
 Line: 56
@@ -369,68 +357,81 @@ Time: 0s">
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
 Line: 57
+Time: 0.007s">
+<div class="time" style="width: 1.7283950617284%"></div>
+<pre> apply Q; cbn; reflexivity.</pre>
+</div>
+<div class="code" title="File: ua_third_isomorphism.v
+Line: 57
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      +</pre>
+</div>
+<div class="code" title="File: ua_third_isomorphism.v
+Line: 58
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> by apply IHw.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 57
+Line: 58
 Time: 0.007s">
-<div class="time" style="width: 1.5625%"></div>
+<div class="time" style="width: 1.7283950617284%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 58
-Time: 0.001s">
-<div class="time" style="width: 0.22321428571429%"></div>
+Line: 59
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
   Global Instance ops_compatible_quotient
     : OpsCompatible (A/Ψ) (cong_quotient subrel).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 61
+Line: 62
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 62
+Line: 63
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros u.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 63
-Time: 0.167s">
-<div class="time" style="width: 37.276785714286%"></div>
+Line: 64
+Time: 0.07s">
+<div class="time" style="width: 17.283950617284%"></div>
 <pre>
     refine (quotient_ind_prop_family_prod A Ψ _ _).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 64
+Line: 65
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intro a.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 64
-Time: 0.149s">
-<div class="time" style="width: 33.258928571429%"></div>
+Line: 65
+Time: 0.07s">
+<div class="time" style="width: 17.283950617284%"></div>
 <pre>
     refine (quotient_ind_prop_family_prod A Ψ _ _).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 65
+Line: 66
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intro b.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 65
+Line: 66
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -438,101 +439,101 @@ Time: 0s">
    </pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 67
-Time: 0.018s">
-<div class="time" style="width: 4.0178571428571%"></div>
+Line: 68
+Time: 0.016s">
+<div class="time" style="width: 3.9506172839506%"></div>
 <pre>destruct (compute_op_quotient A Ψ u a
               : ap_operation (u^^A / Ψ)
                  (map_family_prod (λ s, class_of (Ψ s)) _) = _)^.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 69
-Time: 0.017s">
-<div class="time" style="width: 3.7946428571429%"></div>
+Line: 70
+Time: 0.021s">
+<div class="time" style="width: 5.1851851851852%"></div>
 <pre>
     destruct (compute_op_quotient A Ψ u b
               : ap_operation (u^^A / Ψ)
                  (map_family_prod (λ s, class_of (Ψ s)) _) = _)^.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 72
+Line: 73
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros R x y P Q.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 73
+Line: 74
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply subrel in P.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 74
+Line: 75
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply subrel in Q.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 75
-Time: 0.004s">
-<div class="time" style="width: 0.89285714285714%"></div>
+Line: 76
+Time: 0.005s">
+<div class="time" style="width: 1.2345679012346%"></div>
 <pre>
     transitivity (ap_operation (u^^A) a).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 76
+Line: 77
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 77
-Time: 0.004s">
-<div class="time" style="width: 0.89285714285714%"></div>
+Line: 78
+Time: 0.003s">
+<div class="time" style="width: 0.74074074074074%"></div>
 <pre> by symmetry.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 77
+Line: 78
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 78
+Line: 79
 Time: 0.004s">
-<div class="time" style="width: 0.89285714285714%"></div>
+<div class="time" style="width: 0.98765432098765%"></div>
 <pre> transitivity (ap_operation (u^^A) b); try assumption.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 78
+Line: 79
 Time: 0.002s">
-<div class="time" style="width: 0.44642857142857%"></div>
+<div class="time" style="width: 0.49382716049383%"></div>
 <pre>
       apply (ops_compatible A Φ u).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 79
+Line: 80
 Time: 0.001s">
-<div class="time" style="width: 0.22321428571429%"></div>
+<div class="time" style="width: 0.24691358024691%"></div>
 <pre>
       by apply for_all_relation_quotient.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 80
-Time: 0.025s">
-<div class="time" style="width: 5.5803571428571%"></div>
+Line: 81
+Time: 0.021s">
+<div class="time" style="width: 5.1851851851852%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 81
-Time: 0.122s">
-<div class="time" style="width: 27.232142857143%"></div>
+Line: 82
+Time: 0.056s">
+<div class="time" style="width: 13.827160493827%"></div>
 <pre>
 
   Global Instance is_congruence_quotient
@@ -540,15 +541,15 @@ Time: 0.122s">
     := BuildIsCongruence (A/Ψ) (cong_quotient subrel).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 85
-Time: 0.022s">
-<div class="time" style="width: 4.9107142857143%"></div>
+Line: 86
+Time: 0.023s">
+<div class="time" style="width: 5.679012345679%"></div>
 <pre>
 
 End cong_quotient.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 87
+Line: 88
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -556,9 +557,9 @@ Time: 0s">
 Section third_isomorphism.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 89
-Time: 0.002s">
-<div class="time" style="width: 0.44642857142857%"></div>
+Line: 90
+Time: 0.001s">
+<div class="time" style="width: 0.24691358024691%"></div>
 <pre>
   Context
     `{Univalence}
@@ -568,9 +569,9 @@ Time: 0.002s">
     (subrel : ∀ (s : Sort σ) (x y : A s), Ψ s x y → Φ s x y).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 95
-Time: 0.009s">
-<div class="time" style="width: 2.0089285714286%"></div>
+Line: 96
+Time: 0.005s">
+<div class="time" style="width: 1.2345679012346%"></div>
 <pre>
 
   Lemma third_surjecton_well_def (s : Sort σ)
@@ -578,45 +579,45 @@ Time: 0.009s">
     : class_of (Φ s) x = class_of (Φ s) y.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 99
+Line: 100
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 100
+Line: 101
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply related_classes_eq.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 101
+Line: 102
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact (subrel s x y P).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 101
+Line: 102
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 102
+Line: 103
 Time: 0.003s">
-<div class="time" style="width: 0.66964285714286%"></div>
+<div class="time" style="width: 0.74074074074074%"></div>
 <pre>
 
   Definition def_third_surjection (s : Sort σ) : (A/Ψ) s → (A/Φ) s
     := quotient_rec (Ψ s) (class_of (Φ s)) (third_surjecton_well_def s).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 105
+Line: 106
 Time: 0.003s">
-<div class="time" style="width: 0.66964285714286%"></div>
+<div class="time" style="width: 0.74074074074074%"></div>
 <pre>
 
   Lemma oppreserving_third_surjection {w : SymbolType σ} (f : Operation A w)
@@ -625,159 +626,159 @@ Time: 0.003s">
       OpPreserving def_third_surjection β α.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 110
+Line: 111
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 111
+Line: 112
 Time: 0.001s">
-<div class="time" style="width: 0.22321428571429%"></div>
+<div class="time" style="width: 0.24691358024691%"></div>
 <pre>
     induction w.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 112
+Line: 113
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 113
-Time: 0.092s">
-<div class="time" style="width: 20.535714285714%"></div>
+Line: 114
+Time: 0.043s">
+<div class="time" style="width: 10.617283950617%"></div>
 <pre> refine (quotient_ind_prop (Φ t) _ _).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 113
+Line: 114
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros α Qα.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 113
-Time: 0.059s">
-<div class="time" style="width: 13.169642857143%"></div>
+Line: 114
+Time: 0.024s">
+<div class="time" style="width: 5.9259259259259%"></div>
 <pre>
       refine (quotient_ind_prop (Ψ t) _ _).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 114
+Line: 115
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros β Qβ.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 114
+Line: 115
 Time: 0.001s">
-<div class="time" style="width: 0.22321428571429%"></div>
+<div class="time" style="width: 0.24691358024691%"></div>
 <pre>
       apply related_classes_eq.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 115
+Line: 116
 Time: 0.003s">
-<div class="time" style="width: 0.66964285714286%"></div>
+<div class="time" style="width: 0.74074074074074%"></div>
 <pre>
       transitivity f.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 116
+Line: 117
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       +</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 117
+Line: 118
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply subrel.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 117
-Time: 0.023s">
-<div class="time" style="width: 5.1339285714286%"></div>
+Line: 118
+Time: 0.013s">
+<div class="time" style="width: 3.2098765432099%"></div>
 <pre> apply (classes_eq_related (Ψ t)).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 117
+Line: 118
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact (Qβ tt).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 117
+Line: 118
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       +</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 118
-Time: 0.017s">
-<div class="time" style="width: 3.7946428571429%"></div>
+Line: 119
+Time: 0.014s">
+<div class="time" style="width: 3.4567901234568%"></div>
 <pre> apply (classes_eq_related (Φ t)).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 118
+Line: 119
 Time: 0.001s">
-<div class="time" style="width: 0.22321428571429%"></div>
+<div class="time" style="width: 0.24691358024691%"></div>
 <pre> symmetry.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 118
+Line: 119
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact (Qα tt).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 118
+Line: 119
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 119
+Line: 120
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros α Qα β Qβ.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 119
-Time: 0.034s">
-<div class="time" style="width: 7.5892857142857%"></div>
+Line: 120
+Time: 0.018s">
+<div class="time" style="width: 4.4444444444444%"></div>
 <pre>
       refine (quotient_ind_prop (Ψ t) _ _).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 120
+Line: 121
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       intro x.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 121
-Time: 0.003s">
-<div class="time" style="width: 0.66964285714286%"></div>
+Line: 122
+Time: 0.008s">
+<div class="time" style="width: 1.9753086419753%"></div>
 <pre>
       exact (IHw (f x) (α (class_of (Φ t) x)) (λ a, Qα (x,a))
                (β (class_of (Ψ t) x)) (λ a, Qβ (x,a))).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 123
+Line: 124
 Time: 0.01s">
-<div class="time" style="width: 2.2321428571429%"></div>
+<div class="time" style="width: 2.4691358024691%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 124
+Line: 125
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -786,102 +787,102 @@ Time: 0s">
     : IsHomomorphism def_third_surjection.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 127
+Line: 128
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 128
+Line: 129
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intro u.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 129
+Line: 130
 Time: 0.001s">
-<div class="time" style="width: 0.22321428571429%"></div>
+<div class="time" style="width: 0.24691358024691%"></div>
 <pre>
     eapply oppreserving_third_surjection; apply compute_op_quotient.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 130
+Line: 131
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 131
+Line: 132
 Time: 0.002s">
-<div class="time" style="width: 0.44642857142857%"></div>
+<div class="time" style="width: 0.49382716049383%"></div>
 <pre>
 
   Definition hom_third_surjection : Homomorphism (A/Ψ) (A/Φ)
     := BuildHomomorphism def_third_surjection.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 134
-Time: 0.001s">
-<div class="time" style="width: 0.22321428571429%"></div>
+Line: 135
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
   Global Instance surjection_third_surjection (s : Sort σ)
     : IsSurjection (hom_third_surjection s).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 137
+Line: 138
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 138
+Line: 139
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply BuildIsSurjection.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 139
-Time: 0.019s">
-<div class="time" style="width: 4.2410714285714%"></div>
+Line: 140
+Time: 0.007s">
+<div class="time" style="width: 1.7283950617284%"></div>
 <pre>
     refine (quotient_ind_prop (Φ s) _ _).</pre>
-</div>
-<div class="code" title="File: ua_third_isomorphism.v
-Line: 140
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    intro x.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
 Line: 141
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    apply tr.</pre>
+    intro x.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
 Line: 142
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    apply tr.</pre>
+</div>
+<div class="code" title="File: ua_third_isomorphism.v
+Line: 143
 Time: 0.001s">
-<div class="time" style="width: 0.22321428571429%"></div>
+<div class="time" style="width: 0.24691358024691%"></div>
 <pre>
     by exists (class_of (Ψ s) x).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 143
+Line: 144
 Time: 0.002s">
-<div class="time" style="width: 0.44642857142857%"></div>
+<div class="time" style="width: 0.49382716049383%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 144
+Line: 145
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -889,147 +890,147 @@ Time: 0s">
   Local Notation Θ := (cong_quotient Φ Ψ subrel).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 146
+Line: 147
 Time: 0.007s">
-<div class="time" style="width: 1.5625%"></div>
+<div class="time" style="width: 1.7283950617284%"></div>
 <pre>
 
   Lemma path_quotient_algebras_third_surjection
     : A/Ψ / cong_ker hom_third_surjection = A/Ψ / Θ.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 149
+Line: 150
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 150
+Line: 151
 Time: 0.001s">
-<div class="time" style="width: 0.22321428571429%"></div>
+<div class="time" style="width: 0.24691358024691%"></div>
 <pre>
     apply path_quotient_algebra_iff.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 151
+Line: 152
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros s x y.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 151
-Time: 0.156s">
-<div class="time" style="width: 34.821428571429%"></div>
+Line: 152
+Time: 0.092s">
+<div class="time" style="width: 22.716049382716%"></div>
 <pre>
     split; generalize dependent y; generalize dependent x;
            refine (quotient_ind_prop (Ψ s) _ _); intro x;
            refine (quotient_ind_prop (Ψ s) _ _); intro y.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 154
+Line: 155
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 155
+Line: 156
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros K x' y' Cx Cy.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 155
+Line: 156
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       apply subrel in Cx.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 156
+Line: 157
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply subrel in Cy.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 156
-Time: 0.009s">
-<div class="time" style="width: 2.0089285714286%"></div>
+Line: 157
+Time: 0.01s">
+<div class="time" style="width: 2.4691358024691%"></div>
 <pre>
       apply (classes_eq_related (Φ s)) in K.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 157
-Time: 0.002s">
-<div class="time" style="width: 0.44642857142857%"></div>
+Line: 158
+Time: 0.003s">
+<div class="time" style="width: 0.74074074074074%"></div>
 <pre>
       transitivity x.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 158
+Line: 159
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       +</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 159
+Line: 160
 Time: 0.003s">
-<div class="time" style="width: 0.66964285714286%"></div>
+<div class="time" style="width: 0.74074074074074%"></div>
 <pre> by symmetry.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 159
+Line: 160
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       +</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 160
+Line: 161
 Time: 0.003s">
-<div class="time" style="width: 0.66964285714286%"></div>
+<div class="time" style="width: 0.74074074074074%"></div>
 <pre> by transitivity y.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 160
+Line: 161
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 161
+Line: 162
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intro T.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 161
+Line: 162
 Time: 0.002s">
-<div class="time" style="width: 0.44642857142857%"></div>
+<div class="time" style="width: 0.49382716049383%"></div>
 <pre>
       apply related_classes_eq.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 162
-Time: 0.004s">
-<div class="time" style="width: 0.89285714285714%"></div>
+Line: 163
+Time: 0.005s">
+<div class="time" style="width: 1.2345679012346%"></div>
 <pre>
       exact (T x y (EquivRel_Reflexive x) (EquivRel_Reflexive y)).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 163
-Time: 0.013s">
-<div class="time" style="width: 2.9017857142857%"></div>
+Line: 164
+Time: 0.008s">
+<div class="time" style="width: 1.9753086419753%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 164
+Line: 165
 Time: 0.009s">
-<div class="time" style="width: 2.0089285714286%"></div>
+<div class="time" style="width: 2.2222222222222%"></div>
 <pre>
 
   Definition hom_third_isomorphism : Homomorphism (A/Ψ/Θ) (A/Φ)
@@ -1038,51 +1039,51 @@ Time: 0.009s">
           (hom_first_isomorphism_surjection hom_third_surjection).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 169
+Line: 170
 Time: 0.005s">
-<div class="time" style="width: 1.1160714285714%"></div>
+<div class="time" style="width: 1.2345679012346%"></div>
 <pre>
 
   Theorem is_isomorphism_third_isomorphism
     : IsIsomorphism hom_third_isomorphism.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 172
+Line: 173
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 173
+Line: 174
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     unfold hom_third_isomorphism.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 174
-Time: 0.005s">
-<div class="time" style="width: 1.1160714285714%"></div>
+Line: 175
+Time: 0.006s">
+<div class="time" style="width: 1.4814814814815%"></div>
 <pre>
     destruct path_quotient_algebras_third_surjection.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 175
+Line: 176
 Time: 0.018s">
-<div class="time" style="width: 4.0178571428571%"></div>
+<div class="time" style="width: 4.4444444444444%"></div>
 <pre>
     exact _.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 176
-Time: 0.008s">
-<div class="time" style="width: 1.7857142857143%"></div>
+Line: 177
+Time: 0.014s">
+<div class="time" style="width: 3.4567901234568%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 177
+Line: 178
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1090,7 +1091,7 @@ Time: 0s">
   Global Existing Instance is_isomorphism_third_isomorphism.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 179
+Line: 180
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1100,70 +1101,70 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 183
+Line: 184
 Time: 0.004s">
-<div class="time" style="width: 0.89285714285714%"></div>
+<div class="time" style="width: 0.98765432098765%"></div>
 <pre>Corollary isomorphic_third_isomorphism : A/Ψ/Θ ≅ A/Φ.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 183
+Line: 184
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 184
+Line: 185
 Time: 0.006s">
-<div class="time" style="width: 1.3392857142857%"></div>
+<div class="time" style="width: 1.4814814814815%"></div>
 <pre>
     exact (BuildIsomorphic hom_third_isomorphism).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 185
+Line: 186
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 186
+Line: 187
 Time: 0.004s">
-<div class="time" style="width: 0.89285714285714%"></div>
+<div class="time" style="width: 0.98765432098765%"></div>
 <pre>
 
   Corollary id_third_isomorphism : A/Ψ/Θ = A/Φ.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 188
+Line: 189
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 189
+Line: 190
 Time: 0.001s">
-<div class="time" style="width: 0.22321428571429%"></div>
+<div class="time" style="width: 0.24691358024691%"></div>
 <pre>
     exact (id_isomorphic isomorphic_third_isomorphism).</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 190
+Line: 191
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 191
-Time: 0.015s">
-<div class="time" style="width: 3.3482142857143%"></div>
+Line: 192
+Time: 0.017s">
+<div class="time" style="width: 4.1975308641975%"></div>
 <pre>
 End third_isomorphism.</pre>
 </div>
 <div class="code" title="File: ua_third_isomorphism.v
-Line: 193
+Line: 194
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
