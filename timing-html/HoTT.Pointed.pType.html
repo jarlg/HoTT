@@ -1,0 +1,613 @@
+<html>
+<head>
+<title>pType.v</title>
+<style>
+.time {
+  background-color: #ffaaaa;
+  height: 100%;
+  z-index: -1;
+  position: absolute;
+}
+.code {
+  z-index: 0;
+  position: relative;
+  border-style: solid;
+  border-color: transparent;
+  border-width: 1px;
+}
+.code:hover {
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+pre {
+  margin: 1px;
+}
+</style>
+</head>
+<body>
+<h1>Timings for pType.v</h1>
+
+<div class="code" title="File: pType.v
+Line: 1
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>(* -*- mode: coq; mode: visual-line -*- *)</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 1
+Time: 0.034s">
+<div class="time" style="width: 9.1891891891892%"></div>
+<pre>Require Import Basics Types.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 1
+Time: 0.001s">
+<div class="time" style="width: 0.27027027027027%"></div>
+<pre>
+Require Import Pointed.Core.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 2
+Time: 0.02s">
+<div class="time" style="width: 5.4054054054054%"></div>
+<pre>
+Require Import WildCat.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 3
+Time: 0.006s">
+<div class="time" style="width: 1.6216216216216%"></div>
+<pre>
+Require Import pHomotopy pMap pEquiv.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 4
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Require Import UnivalenceImpliesFunext.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 5
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Local Open Scope pointed_scope.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 7
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Local Open Scope path_scope.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 8
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(** * pType as a wild category *)
+
+</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 11
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Global Instance is01cat_ptype : Is01Cat pType
+  := Build_Is01Cat pType pMap (@pmap_idmap) (@pmap_compose).</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 12
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Global Instance is01cat_pmap (A B : pType) : Is01Cat (A -&gt;* B).</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 14
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 15
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  srapply (Build_Is01Cat (A -&gt;* B) (@pHomotopy A B)).</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 16
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 17
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> reflexivity.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 17
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 18
+Time: 0.001s">
+<div class="time" style="width: 0.27027027027027%"></div>
+<pre> intros a b c f g; transitivity b; assumption.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 18
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 19
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Global Instance is0gpd_pmap (A B : pType) : Is0Gpd (A -&gt;* B).</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 21
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 22
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  srapply Build_Is0Gpd.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 23
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  intros; symmetry; assumption.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 24
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 25
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Global Instance is1cat_ptype : Is1Cat pType.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 27
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 28
+Time: 0.161s">
+<div class="time" style="width: 43.513513513514%"></div>
+<pre>
+  simple refine (Build_Is1Cat _ _ _ _ _ _ _ _); try exact _.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 29
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 30
+Time: 0.003s">
+<div class="time" style="width: 0.81081081081081%"></div>
+<pre> intros A B C; rapply Build_Is0Functor.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 30
+Time: 0.003s">
+<div class="time" style="width: 0.81081081081081%"></div>
+<pre>
+    intros [f1 f2] [g1 g2] [p q]; cbn.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 31
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    transitivity (f1 o* g2).</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 32
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 33
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> apply pmap_postwhisker; assumption.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 33
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 34
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> apply pmap_prewhisker; assumption.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 34
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 35
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros ? ? ? ? f g h; exact (pmap_compose_assoc h g f).</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 35
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 36
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros ? ? f; exact (pmap_postcompose_idmap f).</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 36
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 37
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros ? ? f; exact (pmap_precompose_idmap f).</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 37
+Time: 0.002s">
+<div class="time" style="width: 0.54054054054054%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 38
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Global Instance hasmorext_ptype `{Funext} : HasMorExt pType.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 40
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 41
+Time: 0.053s">
+<div class="time" style="width: 14.324324324324%"></div>
+<pre>
+  srapply Build_HasMorExt; intros A B f g.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 42
+Time: 0.366s">
+<div class="time" style="width: 98.918918918919%"></div>
+<pre>
+  refine (isequiv_homotopic (equiv_path_pmap f g)^-1 _).</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 43
+Time: 0.001s">
+<div class="time" style="width: 0.27027027027027%"></div>
+<pre>
+  intros []; reflexivity.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 44
+Time: 0.002s">
+<div class="time" style="width: 0.54054054054054%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 45
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+
+Global Instance hasequivs_ptype : HasEquivs pType.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 48
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 49
+Time: 0.003s">
+<div class="time" style="width: 0.81081081081081%"></div>
+<pre>
+  srapply (Build_HasEquivs _ _ _ pEquiv (fun A B f =&gt; IsEquiv f));
+    intros A B f; cbn; intros.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 51
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 52
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exact f.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 52
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 53
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exact _.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 53
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 54
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exact (Build_pEquiv _ _ f _).</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 54
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 55
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> reflexivity.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 55
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 56
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exact ((Build_pEquiv _ _ f _)^-1*).</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 56
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 57
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> apply peissect.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 57
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 58
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> cbn.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 58
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> refine (peisretr (Build_pEquiv _ _ f _)).</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 58
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 59
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> rapply (isequiv_adjointify f g).</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 59
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 60
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros x; exact (pointed_htpy r x).</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 60
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 61
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros x; exact (pointed_htpy s x).</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 61
+Time: 0.003s">
+<div class="time" style="width: 0.81081081081081%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 62
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Global Instance isunivalent_ptype `{Univalence} : IsUnivalent1Cat pType.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 64
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 65
+Time: 0.021s">
+<div class="time" style="width: 5.6756756756757%"></div>
+<pre>
+  srapply Build_IsUnivalent1Cat; intros A B.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 66
+Time: 0.005s">
+<div class="time" style="width: 1.3513513513514%"></div>
+<pre>
+  refine (isequiv_homotopic (equiv_path_ptype A B)^-1 _).</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 67
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  intros []; apply path_pequiv.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 68
+Time: 0.37s">
+<div class="time" style="width: 100%"></div>
+<pre>
+  cbn.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 69
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  srefine (Build_pHomotopy _ _).</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 70
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 71
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros x; reflexivity.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 71
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 72
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> cbn.</pre>
+</div>
+<div class="code" title="File: pType.v
+Line: 73
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    (* Some messy path algebra here. *)
+Abort.
+
+</pre>
+</div>
+</body>
+</html>
+
