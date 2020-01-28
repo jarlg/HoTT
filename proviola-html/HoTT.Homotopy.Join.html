@@ -413,7 +413,7 @@
           
 
             i = 79;
-            data = "1 subgoal (ID 186)	  	  A : Type	  B : Type	  a, a' : A	  b, b' : B	  p : a = a'	  q : b = b'	  ============================	  Square (ap joinl p) (ap joinr q) (jglue a b) (jglue a' b')	";
+            data = "1 subgoal (ID 186)	  	  A : Type	  B : Type	  a, a' : A	  b, b' : B	  p : a = a'	  q : b = b'	  ============================	  PathSquare (ap joinl p) (ap joinr q) (jglue a b) (jglue a' b')	";
             responses[i]=data;
           
 
@@ -423,7 +423,7 @@
           
 
             i = 81;
-            data = "1 subgoal (ID 194)	  	  A : Type	  B : Type	  a : A	  b : B	  ============================	  Square (ap joinl 1) (ap joinr 1) (jglue a b) (jglue a b)	";
+            data = "1 subgoal (ID 194)	  	  A : Type	  B : Type	  a : A	  b : B	  ============================	  PathSquare (ap joinl 1) (ap joinr 1) (jglue a b) (jglue a b)	";
             responses[i]=data;
           
 
@@ -438,7 +438,7 @@
           
 
             i = 84;
-            data = "1 subgoal (ID 220)	  	  A : Type	  B : Type	  a, a' : A	  b, b' : B	  p : a = a'	  q : b = b'	  ============================	  Square (jglue a b) (jglue a' b') (ap joinl p) (ap joinr q)	";
+            data = "1 subgoal (ID 220)	  	  A : Type	  B : Type	  a, a' : A	  b, b' : B	  p : a = a'	  q : b = b'	  ============================	  PathSquare (jglue a b) (jglue a' b') (ap joinl p) (ap joinr q)	";
             responses[i]=data;
           
 
@@ -448,7 +448,7 @@
           
 
             i = 86;
-            data = "1 subgoal (ID 228)	  	  A : Type	  B : Type	  a : A	  b : B	  ============================	  Square (jglue a b) (jglue a b) (ap joinl 1) (ap joinr 1)	";
+            data = "1 subgoal (ID 228)	  	  A : Type	  B : Type	  a : A	  b : B	  ============================	  PathSquare (jglue a b) (jglue a b) (ap joinl 1) (ap joinr 1)	";
             responses[i]=data;
           
 
@@ -533,7 +533,7 @@
           
 
             i = 103;
-            data = "1 subgoal (ID 343)	  	  A : Type	  B : Type	  C : Type	  D : Type	  E : Type	  F : Type	  f : A -> C	  g : B -> D	  h : C -> E	  i : D -> F	  a : A	  b : B	  ============================	  Square 1 1	    (ap (functor_join (fun x : A => h (f x)) (fun x : B => i (g x)))	       (jglue a b))	    (ap (fun x : Join A B => functor_join h i (functor_join f g x))	       (jglue a b))	";
+            data = "1 subgoal (ID 343)	  	  A : Type	  B : Type	  C : Type	  D : Type	  E : Type	  F : Type	  f : A -> C	  g : B -> D	  h : C -> E	  i : D -> F	  a : A	  b : B	  ============================	  PathSquare 1 1	    (ap (functor_join (fun x : A => h (f x)) (fun x : B => i (g x)))	       (jglue a b))	    (ap (fun x : Join A B => functor_join h i (functor_join f g x))	       (jglue a b))	";
             responses[i]=data;
           
 
@@ -658,22 +658,22 @@
           
 
             i = 128;
-            data = "2 subgoals (ID 482)	  	  A : Type	  B : Type	  C : Type	  D : Type	  f : A -> C	  IsEquiv0 : IsEquiv f	  g : B -> D	  IsEquiv1 : IsEquiv g	  c : C	  d : D	  ============================	  Square (ap joinl (eisretr f c)) (ap joinr (eisretr g d))	    (ap (fun x : Join C D => functor_join f g (functor_join f^-1 g^-1 x))	       (jglue c d)) (ap idmap (jglue c d))		subgoal 2 (ID 498) is:	 Square (ap joinl (eissect f c)) (ap joinr (eissect g d))	   (ap (fun x : Join A B => functor_join f^-1 g^-1 (functor_join f g x))	      (jglue c d)) (ap idmap (jglue c d))	";
+            data = "2 subgoals (ID 482)	  	  A : Type	  B : Type	  C : Type	  D : Type	  f : A -> C	  IsEquiv0 : IsEquiv f	  g : B -> D	  IsEquiv1 : IsEquiv g	  c : C	  d : D	  ============================	  PathSquare (ap joinl (eisretr f c)) (ap joinr (eisretr g d))	    (ap (fun x : Join C D => functor_join f g (functor_join f^-1 g^-1 x))	       (jglue c d)) (ap idmap (jglue c d))		subgoal 2 (ID 498) is:	 PathSquare (ap joinl (eissect f c)) (ap joinr (eissect g d))	   (ap (fun x : Join A B => functor_join f^-1 g^-1 (functor_join f g x))	      (jglue c d)) (ap idmap (jglue c d))	";
             responses[i]=data;
           
 
             i = 129;
-            data = "2 subgoals (ID 510)	  	  A : Type	  B : Type	  C : Type	  D : Type	  f : A -> C	  IsEquiv0 : IsEquiv f	  g : B -> D	  IsEquiv1 : IsEquiv g	  c : C	  d : D	  ============================	  Square (ap joinl (eisretr f c)) (ap joinr (eisretr g d))	    (ap (functor_join f g) (ap (functor_join f^-1 g^-1) (jglue c d)))	    (ap idmap (jglue c d))		subgoal 2 (ID 498) is:	 Square (ap joinl (eissect f c)) (ap joinr (eissect g d))	   (ap (fun x : Join A B => functor_join f^-1 g^-1 (functor_join f g x))	      (jglue c d)) (ap idmap (jglue c d))	";
+            data = "2 subgoals (ID 510)	  	  A : Type	  B : Type	  C : Type	  D : Type	  f : A -> C	  IsEquiv0 : IsEquiv f	  g : B -> D	  IsEquiv1 : IsEquiv g	  c : C	  d : D	  ============================	  PathSquare (ap joinl (eisretr f c)) (ap joinr (eisretr g d))	    (ap (functor_join f g) (ap (functor_join f^-1 g^-1) (jglue c d)))	    (ap idmap (jglue c d))		subgoal 2 (ID 498) is:	 PathSquare (ap joinl (eissect f c)) (ap joinr (eissect g d))	   (ap (fun x : Join A B => functor_join f^-1 g^-1 (functor_join f g x))	      (jglue c d)) (ap idmap (jglue c d))	";
             responses[i]=data;
           
 
             i = 130;
-            data = "2 subgoals (ID 510)	  	  A : Type	  B : Type	  C : Type	  D : Type	  f : A -> C	  IsEquiv0 : IsEquiv f	  g : B -> D	  IsEquiv1 : IsEquiv g	  c : C	  d : D	  ============================	  Square (ap joinl (eisretr f c)) (ap joinr (eisretr g d))	    (ap (functor_join f g) (ap (functor_join f^-1 g^-1) (jglue c d)))	    (ap idmap (jglue c d))		subgoal 2 (ID 529) is:	 Square (ap joinl (eissect f c)) (ap joinr (eissect g d))	   (ap (functor_join f^-1 g^-1) (ap (functor_join f g) (jglue c d)))	   (ap idmap (jglue c d))	";
+            data = "2 subgoals (ID 510)	  	  A : Type	  B : Type	  C : Type	  D : Type	  f : A -> C	  IsEquiv0 : IsEquiv f	  g : B -> D	  IsEquiv1 : IsEquiv g	  c : C	  d : D	  ============================	  PathSquare (ap joinl (eisretr f c)) (ap joinr (eisretr g d))	    (ap (functor_join f g) (ap (functor_join f^-1 g^-1) (jglue c d)))	    (ap idmap (jglue c d))		subgoal 2 (ID 529) is:	 PathSquare (ap joinl (eissect f c)) (ap joinr (eissect g d))	   (ap (functor_join f^-1 g^-1) (ap (functor_join f g) (jglue c d)))	   (ap idmap (jglue c d))	";
             responses[i]=data;
           
 
             i = 131;
-            data = "2 subgoals (ID 551)	  	  A : Type	  B : Type	  C : Type	  D : Type	  f : A -> C	  IsEquiv0 : IsEquiv f	  g : B -> D	  IsEquiv1 : IsEquiv g	  c : C	  d : D	  ============================	  Square (ap joinl (eisretr f c)) (ap joinr (eisretr g d))	    (jglue (f (f^-1 c)) (g (g^-1 d))) (jglue c d)		subgoal 2 (ID 569) is:	 Square (ap joinl (eissect f c)) (ap joinr (eissect g d))	   (jglue (f^-1 (f c)) (g^-1 (g d))) (jglue c d)	";
+            data = "2 subgoals (ID 551)	  	  A : Type	  B : Type	  C : Type	  D : Type	  f : A -> C	  IsEquiv0 : IsEquiv f	  g : B -> D	  IsEquiv1 : IsEquiv g	  c : C	  d : D	  ============================	  PathSquare (ap joinl (eisretr f c)) (ap joinr (eisretr g d))	    (jglue (f (f^-1 c)) (g (g^-1 d))) (jglue c d)		subgoal 2 (ID 569) is:	 PathSquare (ap joinl (eissect f c)) (ap joinr (eissect g d))	   (jglue (f^-1 (f c)) (g^-1 (g d))) (jglue c d)	";
             responses[i]=data;
           
 
@@ -1551,7 +1551,7 @@ Join is symmetric
 <br>
   <span class="id" title="keyword">Definition</span> <a name="join_natsq_v"><span class="id" title="definition">join_natsq_v</span></a> {<span class="id" title="var">A</span> <span class="id" title="var">B</span> : <span class="id" title="keyword">Type</span>} {<span class="id" title="var">a</span> <span class="id" title="var">a'</span> : <a class="idref" href="HoTT.Homotopy.Join.html#A"><span class="id" title="variable">A</span></a>} {<span class="id" title="var">b</span> <span class="id" title="var">b'</span> : <a class="idref" href="HoTT.Homotopy.Join.html#B"><span class="id" title="variable">B</span></a>}<br>
     (<span class="id" title="var">p</span> : <a class="idref" href="HoTT.Homotopy.Join.html#a"><span class="id" title="variable">a</span></a> <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#a'"><span class="id" title="variable">a'</span></a>) (<span class="id" title="var">q</span> : <a class="idref" href="HoTT.Homotopy.Join.html#b"><span class="id" title="variable">b</span></a> <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#b'"><span class="id" title="variable">b'</span></a>)<br>
-    : <a class="idref" href="HoTT.Cubical.Square.html#Square"><span class="id" title="inductive">Square</span></a> (<a class="idref" href="HoTT.Basics.Overture.html#ap"><span class="id" title="definition">ap</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#joinl"><span class="id" title="definition">joinl</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#p"><span class="id" title="variable">p</span></a>) (<a class="idref" href="HoTT.Basics.Overture.html#ap"><span class="id" title="definition">ap</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#joinr"><span class="id" title="definition">joinr</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#q"><span class="id" title="variable">q</span></a>) (<a class="idref" href="HoTT.Homotopy.Join.html#jglue"><span class="id" title="definition">jglue</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#a"><span class="id" title="variable">a</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#b"><span class="id" title="variable">b</span></a>) (<a class="idref" href="HoTT.Homotopy.Join.html#jglue"><span class="id" title="definition">jglue</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#a'"><span class="id" title="variable">a'</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#b'"><span class="id" title="variable">b'</span></a>).</span><span class="command" onmouseout="
+    : <a class="idref" href="HoTT.Cubical.PathSquare.html#PathSquare"><span class="id" title="inductive">PathSquare</span></a> (<a class="idref" href="HoTT.Basics.Overture.html#ap"><span class="id" title="definition">ap</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#joinl"><span class="id" title="definition">joinl</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#p"><span class="id" title="variable">p</span></a>) (<a class="idref" href="HoTT.Basics.Overture.html#ap"><span class="id" title="definition">ap</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#joinr"><span class="id" title="definition">joinr</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#q"><span class="id" title="variable">q</span></a>) (<a class="idref" href="HoTT.Homotopy.Join.html#jglue"><span class="id" title="definition">jglue</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#a"><span class="id" title="variable">a</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#b"><span class="id" title="variable">b</span></a>) (<a class="idref" href="HoTT.Homotopy.Join.html#jglue"><span class="id" title="definition">jglue</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#a'"><span class="id" title="variable">a'</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#b'"><span class="id" title="variable">b'</span></a>).</span><span class="command" onmouseout="
       mouseout('0_3_15');
       " onmouseover="
       mouseover(80, '0_3_15');
@@ -1566,7 +1566,7 @@ Join is symmetric
       " onmouseover="
       mouseover(82, '0_3_15');
       "><br>
-    <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Cubical.Square.html#sq_refl_v"><span class="id" title="definition">sq_refl_v</span></a>.</span><span class="command" onmouseout="
+    <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Cubical.PathSquare.html#sq_refl_v"><span class="id" title="definition">sq_refl_v</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_15');
       " onmouseover="
       mouseover(83, '0_3_15');
@@ -1579,7 +1579,7 @@ Join is symmetric
 <br>
   <span class="id" title="keyword">Definition</span> <a name="join_natsq_h"><span class="id" title="definition">join_natsq_h</span></a> {<span class="id" title="var">A</span> <span class="id" title="var">B</span> : <span class="id" title="keyword">Type</span>} {<span class="id" title="var">a</span> <span class="id" title="var">a'</span> : <a class="idref" href="HoTT.Homotopy.Join.html#A"><span class="id" title="variable">A</span></a>} {<span class="id" title="var">b</span> <span class="id" title="var">b'</span> : <a class="idref" href="HoTT.Homotopy.Join.html#B"><span class="id" title="variable">B</span></a>}<br>
     (<span class="id" title="var">p</span> : <a class="idref" href="HoTT.Homotopy.Join.html#a"><span class="id" title="variable">a</span></a> <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#a'"><span class="id" title="variable">a'</span></a>) (<span class="id" title="var">q</span> : <a class="idref" href="HoTT.Homotopy.Join.html#b"><span class="id" title="variable">b</span></a> <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#b'"><span class="id" title="variable">b'</span></a>)<br>
-    : <a class="idref" href="HoTT.Cubical.Square.html#Square"><span class="id" title="inductive">Square</span></a> (<a class="idref" href="HoTT.Homotopy.Join.html#jglue"><span class="id" title="definition">jglue</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#a"><span class="id" title="variable">a</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#b"><span class="id" title="variable">b</span></a>) (<a class="idref" href="HoTT.Homotopy.Join.html#jglue"><span class="id" title="definition">jglue</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#a'"><span class="id" title="variable">a'</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#b'"><span class="id" title="variable">b'</span></a>) (<a class="idref" href="HoTT.Basics.Overture.html#ap"><span class="id" title="definition">ap</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#joinl"><span class="id" title="definition">joinl</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#p"><span class="id" title="variable">p</span></a>) (<a class="idref" href="HoTT.Basics.Overture.html#ap"><span class="id" title="definition">ap</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#joinr"><span class="id" title="definition">joinr</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#q"><span class="id" title="variable">q</span></a>).</span><span class="command" onmouseout="
+    : <a class="idref" href="HoTT.Cubical.PathSquare.html#PathSquare"><span class="id" title="inductive">PathSquare</span></a> (<a class="idref" href="HoTT.Homotopy.Join.html#jglue"><span class="id" title="definition">jglue</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#a"><span class="id" title="variable">a</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#b"><span class="id" title="variable">b</span></a>) (<a class="idref" href="HoTT.Homotopy.Join.html#jglue"><span class="id" title="definition">jglue</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#a'"><span class="id" title="variable">a'</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#b'"><span class="id" title="variable">b'</span></a>) (<a class="idref" href="HoTT.Basics.Overture.html#ap"><span class="id" title="definition">ap</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#joinl"><span class="id" title="definition">joinl</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#p"><span class="id" title="variable">p</span></a>) (<a class="idref" href="HoTT.Basics.Overture.html#ap"><span class="id" title="definition">ap</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#joinr"><span class="id" title="definition">joinr</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#q"><span class="id" title="variable">q</span></a>).</span><span class="command" onmouseout="
       mouseout('0_3_15');
       " onmouseover="
       mouseover(85, '0_3_15');
@@ -1594,7 +1594,7 @@ Join is symmetric
       " onmouseover="
       mouseover(87, '0_3_15');
       "><br>
-    <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Cubical.Square.html#sq_refl_h"><span class="id" title="definition">sq_refl_h</span></a>.</span><span class="command" onmouseout="
+    <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Cubical.PathSquare.html#sq_refl_h"><span class="id" title="definition">sq_refl_h</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_15');
       " onmouseover="
       mouseover(88, '0_3_15');
@@ -1679,12 +1679,12 @@ Join is symmetric
       " onmouseover="
       mouseover(103, '0_3_15');
       "><br>
-    <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Cubical.Square.html#sq_dp"><span class="id" title="definition">sq_dp</span></a><a class="idref" href="HoTT.Basics.Overture.html#f3f2d22838b594a6e5dbfb541ecf90ae"><span class="id" title="notation">^-1</span></a>.</span><span class="command" onmouseout="
+    <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Cubical.PathSquare.html#sq_dp"><span class="id" title="definition">sq_dp</span></a><a class="idref" href="HoTT.Basics.Overture.html#f3f2d22838b594a6e5dbfb541ecf90ae"><span class="id" title="notation">^-1</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_15');
       " onmouseover="
       mouseover(104, '0_3_15');
       "><br>
-    <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Cubical.Square.html#sq_1G"><span class="id" title="definition">sq_1G</span></a>.</span><span class="command" onmouseout="
+    <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Cubical.PathSquare.html#sq_1G"><span class="id" title="definition">sq_1G</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_15');
       " onmouseover="
       mouseover(105, '0_3_15');
@@ -1809,7 +1809,7 @@ Join is symmetric
       " onmouseover="
       mouseover(128, '0_3_15');
       "><br>
-    1,2: <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Cubical.Square.html#sq_dp"><span class="id" title="definition">sq_dp</span></a><a class="idref" href="HoTT.Basics.Overture.html#f3f2d22838b594a6e5dbfb541ecf90ae"><span class="id" title="notation">^-1</span></a>.</span><span class="command" onmouseout="
+    1,2: <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Cubical.PathSquare.html#sq_dp"><span class="id" title="definition">sq_dp</span></a><a class="idref" href="HoTT.Basics.Overture.html#f3f2d22838b594a6e5dbfb541ecf90ae"><span class="id" title="notation">^-1</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_15');
       " onmouseover="
       mouseover(129, '0_3_15');
@@ -2143,7 +2143,7 @@ Diamond lemmas for Join
       "><br>
 <br>
   <span class="id" title="keyword">Definition</span> <a name="Diamond"><span class="id" title="definition">Diamond</span></a> (<span class="id" title="var">a</span> <span class="id" title="var">a'</span> : <a class="idref" href="HoTT.Homotopy.Join.html#Diamond.A"><span class="id" title="variable">A</span></a>) (<span class="id" title="var">b</span> <span class="id" title="var">b'</span> : <a class="idref" href="HoTT.Homotopy.Join.html#Diamond.B"><span class="id" title="variable">B</span></a>)<br>
-    := <a class="idref" href="HoTT.Cubical.Square.html#Square"><span class="id" title="inductive">Square</span></a> (<a class="idref" href="HoTT.Homotopy.Join.html#jglue"><span class="id" title="definition">jglue</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#a"><span class="id" title="variable">a</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#b"><span class="id" title="variable">b</span></a>) <a class="idref" href="HoTT.Basics.Overture.html#6bc2e8b4a6e295632a90f5f35132db8d"><span class="id" title="notation">(</span></a><a class="idref" href="HoTT.Homotopy.Join.html#jglue"><span class="id" title="definition">jglue</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#a'"><span class="id" title="variable">a'</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#b'"><span class="id" title="variable">b'</span></a><a class="idref" href="HoTT.Basics.Overture.html#6bc2e8b4a6e295632a90f5f35132db8d"><span class="id" title="notation">)^</span></a> (<a class="idref" href="HoTT.Homotopy.Join.html#jglue"><span class="id" title="definition">jglue</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#a"><span class="id" title="variable">a</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#b'"><span class="id" title="variable">b'</span></a>) <a class="idref" href="HoTT.Basics.Overture.html#6bc2e8b4a6e295632a90f5f35132db8d"><span class="id" title="notation">(</span></a><a class="idref" href="HoTT.Homotopy.Join.html#jglue"><span class="id" title="definition">jglue</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#a'"><span class="id" title="variable">a'</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#b"><span class="id" title="variable">b</span></a><a class="idref" href="HoTT.Basics.Overture.html#6bc2e8b4a6e295632a90f5f35132db8d"><span class="id" title="notation">)^</span></a>.</span><span class="command" onmouseout="
+    := <a class="idref" href="HoTT.Cubical.PathSquare.html#PathSquare"><span class="id" title="inductive">PathSquare</span></a> (<a class="idref" href="HoTT.Homotopy.Join.html#jglue"><span class="id" title="definition">jglue</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#a"><span class="id" title="variable">a</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#b"><span class="id" title="variable">b</span></a>) <a class="idref" href="HoTT.Basics.Overture.html#6bc2e8b4a6e295632a90f5f35132db8d"><span class="id" title="notation">(</span></a><a class="idref" href="HoTT.Homotopy.Join.html#jglue"><span class="id" title="definition">jglue</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#a'"><span class="id" title="variable">a'</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#b'"><span class="id" title="variable">b'</span></a><a class="idref" href="HoTT.Basics.Overture.html#6bc2e8b4a6e295632a90f5f35132db8d"><span class="id" title="notation">)^</span></a> (<a class="idref" href="HoTT.Homotopy.Join.html#jglue"><span class="id" title="definition">jglue</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#a"><span class="id" title="variable">a</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#b'"><span class="id" title="variable">b'</span></a>) <a class="idref" href="HoTT.Basics.Overture.html#6bc2e8b4a6e295632a90f5f35132db8d"><span class="id" title="notation">(</span></a><a class="idref" href="HoTT.Homotopy.Join.html#jglue"><span class="id" title="definition">jglue</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#a'"><span class="id" title="variable">a'</span></a> <a class="idref" href="HoTT.Homotopy.Join.html#b"><span class="id" title="variable">b</span></a><a class="idref" href="HoTT.Basics.Overture.html#6bc2e8b4a6e295632a90f5f35132db8d"><span class="id" title="notation">)^</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_31');
       " onmouseover="
       mouseover(199, '0_3_31');
@@ -2165,7 +2165,7 @@ Diamond lemmas for Join
       " onmouseover="
       mouseover(202, '0_3_31');
       "><br>
-    <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Cubical.Square.html#sq_path"><span class="id" title="definition">sq_path</span></a>.</span><span class="command" onmouseout="
+    <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Cubical.PathSquare.html#sq_path"><span class="id" title="definition">sq_path</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_31');
       " onmouseover="
       mouseover(203, '0_3_31');
@@ -2197,7 +2197,7 @@ Diamond lemmas for Join
       " onmouseover="
       mouseover(208, '0_3_31');
       "><br>
-    <span class="id" title="tactic">by</span> <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Cubical.Square.html#sq_path"><span class="id" title="definition">sq_path</span></a>.</span><span class="command" onmouseout="
+    <span class="id" title="tactic">by</span> <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Cubical.PathSquare.html#sq_path"><span class="id" title="definition">sq_path</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_31');
       " onmouseover="
       mouseover(209, '0_3_31');
