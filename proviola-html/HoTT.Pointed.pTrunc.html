@@ -123,22 +123,22 @@
           
 
             i = 21;
-            data = "<infomsg>ispointed_tr is defined</infomsg>	";
+            data = "";
             responses[i]=data;
           
 
             i = 22;
-            data = "<infomsg>pTr is defined</infomsg>	";
+            data = "<infomsg>ispointed_tr is defined</infomsg>	";
             responses[i]=data;
           
 
             i = 23;
-            data = "<infomsg>ptr_functor is defined</infomsg>	";
+            data = "<infomsg>pTr is defined</infomsg>	";
             responses[i]=data;
           
 
             i = 24;
-            data = "1 subgoal (ID 37)	  	  X : pType	  n : trunc_index	  ============================	  ptr_functor n pmap_idmap ==* pmap_idmap	";
+            data = "1 subgoal (ID 23)	  	  n : trunc_index	  A : pType	  ============================	  A ->* pTr n A	";
             responses[i]=data;
           
 
@@ -148,17 +148,17 @@
           
 
             i = 26;
-            data = "2 subgoals (ID 53)	  	  X : pType	  n : trunc_index	  ============================	  ptr_functor n pmap_idmap == pmap_idmap		subgoal 2 (ID 55) is:	 ?p (point (pTr n X)) @ point_eq pmap_idmap =	 point_eq (ptr_functor n pmap_idmap)	";
+            data = "2 subgoals (ID 41)	  	  n : trunc_index	  A : pType	  ============================	  A -> pTr n A		subgoal 2 (ID 43) is:	 ?pointed_fun (point A) = point (pTr n A)	";
             responses[i]=data;
           
 
             i = 27;
-            data = "1 subgoal (ID 53)	  	  X : pType	  n : trunc_index	  ============================	  ptr_functor n pmap_idmap == pmap_idmap	1 subgoal (ID 57)	  	  X : pType	  n : trunc_index	  x : pTr n X	  ============================	  ptr_functor n pmap_idmap x = pmap_idmap x	";
+            data = "1 subgoal (ID 41)	  	  n : trunc_index	  A : pType	  ============================	  A -> pTr n A	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet +.	</infomsg>	1 subgoal (ID 43)		subgoal 1 (ID 43) is:	 tr (point A) = point (pTr n A)	";
             responses[i]=data;
           
 
             i = 28;
-            data = "<infomsg>	This subproof is complete, but there are some unfocused goals.	Try unfocusing with \"}\".	</infomsg>	1 subgoal (ID 55)		subgoal 1 (ID 55) is:	 (fun x : pTr n X =>	  Trunc_ind	    (fun aa : Trunc (Tr n) X => ptr_functor n pmap_idmap aa = pmap_idmap aa)	    (fun x0 : X => 1) x) (point (pTr n X)) @ point_eq pmap_idmap =	 point_eq (ptr_functor n pmap_idmap)	1 subgoal (ID 55)	  	  X : pType	  n : trunc_index	  ============================	  (fun x : pTr n X =>	   Trunc_ind	     (fun aa : Trunc (Tr n) X => ptr_functor n pmap_idmap aa = pmap_idmap aa)	     (fun x0 : X => 1) x) (point (pTr n X)) @ point_eq pmap_idmap =	  point_eq (ptr_functor n pmap_idmap)	No more subgoals.	";
+            data = "1 subgoal (ID 43)	  	  n : trunc_index	  A : pType	  ============================	  tr (point A) = point (pTr n A)	No more subgoals.	";
             responses[i]=data;
           
 
@@ -168,87 +168,87 @@
           
 
             i = 30;
-            data = "1 subgoal (ID 59)	  	  n : trunc_index	  X : pType	  Y : pType	  Z : pType	  f : X ->* Y	  g : Y ->* Z	  ============================	  ptr_functor n (g o* f) ==* ptr_functor n g o* ptr_functor n f	";
+            data = "<infomsg>isequiv_ptr is defined</infomsg>	";
             responses[i]=data;
           
 
             i = 31;
-            data = "";
+            data = "<infomsg>pequiv_ptr is defined</infomsg>	";
             responses[i]=data;
           
 
             i = 32;
-            data = "2 subgoals (ID 75)	  	  n : trunc_index	  X : pType	  Y : pType	  Z : pType	  f : X ->* Y	  g : Y ->* Z	  ============================	  ptr_functor n (g o* f) == ptr_functor n g o* ptr_functor n f		subgoal 2 (ID 77) is:	 ?p (point (pTr n X)) @ point_eq (ptr_functor n g o* ptr_functor n f) =	 point_eq (ptr_functor n (g o* f))	";
+            data = "<infomsg>pTr_rec is defined</infomsg>	";
             responses[i]=data;
           
 
             i = 33;
-            data = "1 subgoal (ID 75)	  	  n : trunc_index	  X : pType	  Y : pType	  Z : pType	  f : X ->* Y	  g : Y ->* Z	  ============================	  ptr_functor n (g o* f) == ptr_functor n g o* ptr_functor n f	1 subgoal (ID 79)	  	  n : trunc_index	  X : pType	  Y : pType	  Z : pType	  f : X ->* Y	  g : Y ->* Z	  x : pTr n X	  ============================	  ptr_functor n (g o* f) x = (ptr_functor n g o* ptr_functor n f) x	";
+            data = "1 subgoal (ID 59)	  	  H : Funext	  n : trunc_index	  X : pType	  Y : pType	  H0 : IsTrunc n Y	  ============================	  (pTr n X ->* Y) <~> (X ->* Y)	";
             responses[i]=data;
           
 
             i = 34;
-            data = "<infomsg>	This subproof is complete, but there are some unfocused goals.	Try unfocusing with \"}\".	</infomsg>	1 subgoal (ID 77)		subgoal 1 (ID 77) is:	 (fun x : pTr n X =>	  Trunc_ind	    (fun aa : Trunc (Tr n) X =>	     ptr_functor n (g o* f) aa = (ptr_functor n g o* ptr_functor n f) aa)	    (fun x0 : X => 1) x) (point (pTr n X)) @	 point_eq (ptr_functor n g o* ptr_functor n f) =	 point_eq (ptr_functor n (g o* f))	1 subgoal (ID 77)	  	  n : trunc_index	  X : pType	  Y : pType	  Z : pType	  f : X ->* Y	  g : Y ->* Z	  ============================	  (fun x : pTr n X =>	   Trunc_ind	     (fun aa : Trunc (Tr n) X =>	      ptr_functor n (g o* f) aa = (ptr_functor n g o* ptr_functor n f) aa)	     (fun x0 : X => 1) x) (point (pTr n X)) @	  point_eq (ptr_functor n g o* ptr_functor n f) =	  point_eq (ptr_functor n (g o* f))	No more subgoals.	";
+            data = "";
             responses[i]=data;
           
 
             i = 35;
-            data = "";
+            data = "4 subgoals (ID 83)	  	  H : Funext	  n : trunc_index	  X : pType	  Y : pType	  H0 : IsTrunc n Y	  ============================	  (pTr n X ->* Y) -> X ->* Y		subgoal 2 (ID 85) is:	 (X ->* Y) -> pTr n X ->* Y	subgoal 3 (ID 87) is:	 Sect ?g ?f	subgoal 4 (ID 89) is:	 Sect ?f ?g	";
             responses[i]=data;
           
 
             i = 36;
-            data = "<infomsg>ptr_pequiv is defined</infomsg>	";
+            data = "1 subgoal (ID 83)	  	  H : Funext	  n : trunc_index	  X : pType	  Y : pType	  H0 : IsTrunc n Y	  ============================	  (pTr n X ->* Y) -> X ->* Y	1 subgoal (ID 90)	  	  H : Funext	  n : trunc_index	  X : pType	  Y : pType	  H0 : IsTrunc n Y	  f : pTr n X ->* Y	  ============================	  X ->* Y	";
             responses[i]=data;
           
 
             i = 37;
-            data = "1 subgoal (ID 76)	  	  H : Univalence	  n : trunc_index	  A : pType	  ============================	  pTr n (loops A) <~>* loops (pTr n.+1 A)	";
+            data = "<infomsg>	This subproof is complete, but there are some unfocused goals.	Try unfocusing with \"}\".	</infomsg>	3 subgoals (ID 85)		subgoal 1 (ID 85) is:	 (X ->* Y) -> pTr n X ->* Y	subgoal 2 (ID 87) is:	 Sect ?g (fun f : pTr n X ->* Y => f o* ptr)	subgoal 3 (ID 89) is:	 Sect (fun f : pTr n X ->* Y => f o* ptr) ?g	";
             responses[i]=data;
           
 
             i = 38;
-            data = "";
+            data = "3 subgoals (ID 85)	  	  H : Funext	  n : trunc_index	  X : pType	  Y : pType	  H0 : IsTrunc n Y	  ============================	  (X ->* Y) -> pTr n X ->* Y		subgoal 2 (ID 87) is:	 Sect ?g (fun f : pTr n X ->* Y => f o* ptr)	subgoal 3 (ID 89) is:	 Sect (fun f : pTr n X ->* Y => f o* ptr) ?g	2 subgoals (ID 87)	  	  H : Funext	  n : trunc_index	  X : pType	  Y : pType	  H0 : IsTrunc n Y	  ============================	  Sect (pTr_rec n) (fun f : pTr n X ->* Y => f o* ptr)		subgoal 2 (ID 89) is:	 Sect (fun f : pTr n X ->* Y => f o* ptr) (pTr_rec n)	";
             responses[i]=data;
           
 
             i = 39;
-            data = "2 subgoals (ID 86)	  	  H : Univalence	  n : trunc_index	  A : pType	  ============================	  pTr n (loops A) <~> loops (pTr n.+1 A)		subgoal 2 (ID 88) is:	 ?f (point (pTr n (loops A))) = point (loops (pTr n.+1 A))	";
+            data = "1 subgoal (ID 87)	  	  H : Funext	  n : trunc_index	  X : pType	  Y : pType	  H0 : IsTrunc n Y	  ============================	  Sect (pTr_rec n) (fun f : pTr n X ->* Y => f o* ptr)	1 subgoal (ID 117)	  	  H : Funext	  n : trunc_index	  X : pType	  Y : pType	  H0 : IsTrunc n Y	  f : X ->* Y	  ============================	  pTr_rec n f o* ptr = f	";
             responses[i]=data;
           
 
             i = 40;
-            data = "1 subgoal (ID 88)	  	  H : Univalence	  n : trunc_index	  A : pType	  ============================	  equiv_path_Tr (ispointed_type A) (ispointed_type A)	    (point (pTr n (loops A))) = point (loops (pTr n.+1 A))	";
+            data = "1 subgoal (ID 122)	  	  H : Funext	  n : trunc_index	  X : pType	  Y : pType	  H0 : IsTrunc n Y	  f : X -> Y	  p : f (point X) = point Y	  ============================	  pTr_rec n {| pointed_fun := f; point_eq := p |} o* ptr =	  {| pointed_fun := f; point_eq := p |}	";
             responses[i]=data;
           
 
             i = 41;
-            data = "No more subgoals.	";
+            data = "1 subgoal (ID 131)	  	  H : Funext	  n : trunc_index	  X : pType	  Y : pType	  H0 : IsTrunc n Y	  f : X -> Y	  p : f (point X) = point Y	  ============================	  ap (pTr_rec n {| pointed_fun := f; point_eq := p |}) (point_eq ptr) @	  point_eq (pTr_rec n {| pointed_fun := f; point_eq := p |}) = p	";
             responses[i]=data;
           
 
             i = 42;
-            data = "";
+            data = "<infomsg>	This subproof is complete, but there are some unfocused goals.	Try unfocusing with \"}\".	</infomsg>	1 subgoal (ID 89)		subgoal 1 (ID 89) is:	 Sect (fun f : pTr n X ->* Y => f o* ptr) (pTr_rec n)	1 subgoal (ID 89)	  	  H : Funext	  n : trunc_index	  X : pType	  Y : pType	  H0 : IsTrunc n Y	  ============================	  Sect (fun f : pTr n X ->* Y => f o* ptr) (pTr_rec n)	1 subgoal (ID 136)	  	  H : Funext	  n : trunc_index	  X : pType	  Y : pType	  H0 : IsTrunc n Y	  f : pTr n X ->* Y	  ============================	  pTr_rec n (f o* ptr) = f	";
             responses[i]=data;
           
 
             i = 43;
-            data = "<infomsg>ptr_loops_eq is defined</infomsg>	";
+            data = "1 subgoal (ID 142)	  	  H : Funext	  n : trunc_index	  X : pType	  Y : pType	  H0 : IsTrunc n Y	  f : pTr n X ->* Y	  ============================	  pTr_rec n (f o* ptr) ==* f	";
             responses[i]=data;
           
 
             i = 44;
-            data = "1 subgoal (ID 85)	  	  X : pType	  Y : pType	  n : trunc_index	  ============================	  X <~>* Y -> pTr n X <~>* pTr n Y	";
+            data = "2 subgoals (ID 158)	  	  H : Funext	  n : trunc_index	  X : pType	  Y : pType	  H0 : IsTrunc n Y	  f : pTr n X ->* Y	  ============================	  pTr_rec n (f o* ptr) == f		subgoal 2 (ID 160) is:	 ?p (point (pTr n X)) @ point_eq f = point_eq (pTr_rec n (f o* ptr))	";
             responses[i]=data;
           
 
             i = 45;
-            data = "";
+            data = "1 subgoal (ID 160)	  	  H : Funext	  n : trunc_index	  X : pType	  Y : pType	  H0 : IsTrunc n Y	  f : pTr n X ->* Y	  ============================	  (fun x : pTr n X =>	   Trunc_ind (fun aa : Trunc (Tr n) X => pTr_rec n (f o* ptr) aa = f aa)	     (fun x0 : X => 1) x) (point (pTr n X)) @ point_eq f =	  point_eq (pTr_rec n (f o* ptr))	";
             responses[i]=data;
           
 
             i = 46;
-            data = "1 subgoal (ID 86)	  	  X : pType	  Y : pType	  n : trunc_index	  e : X <~>* Y	  ============================	  pTr n X <~>* pTr n Y	";
+            data = "No more subgoals.	";
             responses[i]=data;
           
 
@@ -258,12 +258,12 @@
           
 
             i = 48;
-            data = "2 subgoals (ID 104)	  	  X : pType	  Y : pType	  n : trunc_index	  e : X <~>* Y	  ============================	  pTr n X ->* pTr n Y		subgoal 2 (ID 106) is:	 IsEquiv ?pointed_equiv_fun	1 subgoal (ID 104)	  	  X : pType	  Y : pType	  n : trunc_index	  e : X <~>* Y	  ============================	  pTr n X ->* pTr n Y	<infomsg>	This subproof is complete, but there are some unfocused goals.	Try unfocusing with \"}\".	</infomsg>	1 subgoal (ID 106)		subgoal 1 (ID 106) is:	 IsEquiv (ptr_functor n (let X0 := pointed_equiv_fun X Y e in X0))	1 subgoal (ID 106)	  	  X : pType	  Y : pType	  n : trunc_index	  e : X <~>* Y	  ============================	  IsEquiv (ptr_functor n (let X0 := pointed_equiv_fun X Y e in X0))	No more subgoals.	";
+            data = "<infomsg>ptr_functor is defined</infomsg>	";
             responses[i]=data;
           
 
             i = 49;
-            data = "";
+            data = "1 subgoal (ID 76)	  	  X : pType	  n : trunc_index	  ============================	  ptr_functor n pmap_idmap ==* pmap_idmap	";
             responses[i]=data;
           
 
@@ -273,17 +273,17 @@
           
 
             i = 51;
-            data = "";
+            data = "2 subgoals (ID 92)	  	  X : pType	  n : trunc_index	  ============================	  ptr_functor n pmap_idmap == pmap_idmap		subgoal 2 (ID 94) is:	 ?p (point (pTr n X)) @ point_eq pmap_idmap =	 point_eq (ptr_functor n pmap_idmap)	";
             responses[i]=data;
           
 
             i = 52;
-            data = "";
+            data = "1 subgoal (ID 92)	  	  X : pType	  n : trunc_index	  ============================	  ptr_functor n pmap_idmap == pmap_idmap	1 subgoal (ID 96)	  	  X : pType	  n : trunc_index	  x : pTr n X	  ============================	  ptr_functor n pmap_idmap x = pmap_idmap x	";
             responses[i]=data;
           
 
             i = 53;
-            data = "";
+            data = "<infomsg>	This subproof is complete, but there are some unfocused goals.	Try unfocusing with \"}\".	</infomsg>	1 subgoal (ID 94)		subgoal 1 (ID 94) is:	 (fun x : pTr n X =>	  Trunc_ind	    (fun aa : Trunc (Tr n) X => ptr_functor n pmap_idmap aa = pmap_idmap aa)	    (fun x0 : X => 1) x) (point (pTr n X)) @ point_eq pmap_idmap =	 point_eq (ptr_functor n pmap_idmap)	1 subgoal (ID 94)	  	  X : pType	  n : trunc_index	  ============================	  (fun x : pTr n X =>	   Trunc_ind	     (fun aa : Trunc (Tr n) X => ptr_functor n pmap_idmap aa = pmap_idmap aa)	     (fun x0 : X => 1) x) (point (pTr n X)) @ point_eq pmap_idmap =	  point_eq (ptr_functor n pmap_idmap)	No more subgoals.	";
             responses[i]=data;
           
 
@@ -293,7 +293,7 @@
           
 
             i = 55;
-            data = "";
+            data = "1 subgoal (ID 98)	  	  n : trunc_index	  X : pType	  Y : pType	  Z : pType	  f : X ->* Y	  g : Y ->* Z	  ============================	  ptr_functor n (g o* f) ==* ptr_functor n g o* ptr_functor n f	";
             responses[i]=data;
           
 
@@ -303,21 +303,216 @@
           
 
             i = 57;
-            data = "";
+            data = "2 subgoals (ID 114)	  	  n : trunc_index	  X : pType	  Y : pType	  Z : pType	  f : X ->* Y	  g : Y ->* Z	  ============================	  ptr_functor n (g o* f) == ptr_functor n g o* ptr_functor n f		subgoal 2 (ID 116) is:	 ?p (point (pTr n X)) @ point_eq (ptr_functor n g o* ptr_functor n f) =	 point_eq (ptr_functor n (g o* f))	";
             responses[i]=data;
           
 
             i = 58;
-            data = "";
+            data = "1 subgoal (ID 114)	  	  n : trunc_index	  X : pType	  Y : pType	  Z : pType	  f : X ->* Y	  g : Y ->* Z	  ============================	  ptr_functor n (g o* f) == ptr_functor n g o* ptr_functor n f	1 subgoal (ID 118)	  	  n : trunc_index	  X : pType	  Y : pType	  Z : pType	  f : X ->* Y	  g : Y ->* Z	  x : pTr n X	  ============================	  ptr_functor n (g o* f) x = (ptr_functor n g o* ptr_functor n f) x	";
             responses[i]=data;
           
 
             i = 59;
-            data = "";
+            data = "<infomsg>	This subproof is complete, but there are some unfocused goals.	Try unfocusing with \"}\".	</infomsg>	1 subgoal (ID 116)		subgoal 1 (ID 116) is:	 (fun x : pTr n X =>	  Trunc_ind	    (fun aa : Trunc (Tr n) X =>	     ptr_functor n (g o* f) aa = (ptr_functor n g o* ptr_functor n f) aa)	    (fun x0 : X => 1) x) (point (pTr n X)) @	 point_eq (ptr_functor n g o* ptr_functor n f) =	 point_eq (ptr_functor n (g o* f))	1 subgoal (ID 116)	  	  n : trunc_index	  X : pType	  Y : pType	  Z : pType	  f : X ->* Y	  g : Y ->* Z	  ============================	  (fun x : pTr n X =>	   Trunc_ind	     (fun aa : Trunc (Tr n) X =>	      ptr_functor n (g o* f) aa = (ptr_functor n g o* ptr_functor n f) aa)	     (fun x0 : X => 1) x) (point (pTr n X)) @	  point_eq (ptr_functor n g o* ptr_functor n f) =	  point_eq (ptr_functor n (g o* f))	No more subgoals.	";
             responses[i]=data;
           
 
             i = 60;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 61;
+            data = "<infomsg>ptr_pequiv is defined</infomsg>	";
+            responses[i]=data;
+          
+
+            i = 62;
+            data = "1 subgoal (ID 115)	  	  H : Univalence	  n : trunc_index	  A : pType	  ============================	  pTr n (loops A) <~>* loops (pTr n.+1 A)	";
+            responses[i]=data;
+          
+
+            i = 63;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 64;
+            data = "2 subgoals (ID 125)	  	  H : Univalence	  n : trunc_index	  A : pType	  ============================	  pTr n (loops A) <~> loops (pTr n.+1 A)		subgoal 2 (ID 127) is:	 ?f (point (pTr n (loops A))) = point (loops (pTr n.+1 A))	";
+            responses[i]=data;
+          
+
+            i = 65;
+            data = "1 subgoal (ID 127)	  	  H : Univalence	  n : trunc_index	  A : pType	  ============================	  equiv_path_Tr (ispointed_type A) (ispointed_type A)	    (point (pTr n (loops A))) = point (loops (pTr n.+1 A))	";
+            responses[i]=data;
+          
+
+            i = 66;
+            data = "No more subgoals.	";
+            responses[i]=data;
+          
+
+            i = 67;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 68;
+            data = "1 subgoal (ID 120)	  	  H : Univalence	  n : trunc_index	  k : nat	  A : pType	  ============================	  pTr n (iterated_loops k A) <~>* iterated_loops k (pTr (n +2+ k).-2 A)	";
+            responses[i]=data;
+          
+
+            i = 69;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 70;
+            data = "1 subgoal (ID 122)	  	  H : Univalence	  k : nat	  ============================	  forall (A : pType) (n : trunc_index),	  pTr n (iterated_loops k A) <~>* iterated_loops k (pTr (n +2+ k).-2 A)	";
+            responses[i]=data;
+          
+
+            i = 71;
+            data = "2 subgoals (ID 126)	  	  H : Univalence	  ============================	  forall (A : pType) (n : trunc_index),	  pTr n (iterated_loops 0 A) <~>* iterated_loops 0 (pTr (n +2+ 0%nat).-2 A)		subgoal 2 (ID 129) is:	 forall (A : pType) (n : trunc_index),	 pTr n (iterated_loops k.+1 A) <~>*	 iterated_loops k.+1 (pTr (n +2+ (k.+1)%nat).-2 A)	";
+            responses[i]=data;
+          
+
+            i = 72;
+            data = "1 subgoal (ID 126)	  	  H : Univalence	  ============================	  forall (A : pType) (n : trunc_index),	  pTr n (iterated_loops 0 A) <~>* iterated_loops 0 (pTr (n +2+ 0%nat).-2 A)	1 subgoal (ID 133)	  	  H : Univalence	  A : pType	  n : trunc_index	  ============================	  pTr n A <~>* pTr (n +2+ 0).-2 A	";
+            responses[i]=data;
+          
+
+            i = 73;
+            data = "1 subgoal (ID 135)	  	  H : Univalence	  A : pType	  n : trunc_index	  ============================	  pTr n A <~>* pTr (n +2+ -2).+2.-2 A	";
+            responses[i]=data;
+          
+
+            i = 74;
+            data = "1 subgoal (ID 136)	  	  H : Univalence	  A : pType	  n : trunc_index	  ============================	  pTr n A <~>* pTr n.+2.-2 A	";
+            responses[i]=data;
+          
+
+            i = 75;
+            data = "<infomsg>	This subproof is complete, but there are some unfocused goals.	Try unfocusing with \"}\".	</infomsg>	1 subgoal (ID 129)		subgoal 1 (ID 129) is:	 forall (A : pType) (n : trunc_index),	 pTr n (iterated_loops k.+1 A) <~>*	 iterated_loops k.+1 (pTr (n +2+ (k.+1)%nat).-2 A)	1 subgoal (ID 129)	  	  H : Univalence	  k : nat	  IHk : forall (A : pType) (n : trunc_index),	        pTr n (iterated_loops k A) <~>* iterated_loops k (pTr (n +2+ k).-2 A)	  ============================	  forall (A : pType) (n : trunc_index),	  pTr n (iterated_loops k.+1 A) <~>*	  iterated_loops k.+1 (pTr (n +2+ (k.+1)%nat).-2 A)	1 subgoal (ID 143)	  	  H : Univalence	  k : nat	  IHk : forall (A : pType) (n : trunc_index),	        pTr n (iterated_loops k A) <~>* iterated_loops k (pTr (n +2+ k).-2 A)	  A : pType	  n : trunc_index	  ============================	  pTr n (iterated_loops k.+1 A) <~>*	  iterated_loops k.+1 (pTr (n +2+ (k.+1)%nat).-2 A)	";
+            responses[i]=data;
+          
+
+            i = 76;
+            data = "2 focused subgoals	(shelved: 1) (ID 162)	  	  H : Univalence	  k : nat	  IHk : forall (A : pType) (n : trunc_index),	        pTr n (iterated_loops k A) <~>* iterated_loops k (pTr (n +2+ k).-2 A)	  A : pType	  n : trunc_index	  ============================	  pTr n (loops (iterated_loops k A)) <~>* ?Goal		subgoal 2 (ID 164) is:	 ?Goal <~>* loops (iterated_loops k (pTr (n +2+ k.+1).-2 A))	";
+            responses[i]=data;
+          
+
+            i = 77;
+            data = "1 subgoal (ID 164)	  	  H : Univalence	  k : nat	  IHk : forall (A : pType) (n : trunc_index),	        pTr n (iterated_loops k A) <~>* iterated_loops k (pTr (n +2+ k).-2 A)	  A : pType	  n : trunc_index	  ============================	  loops (pTr n.+1 (iterated_loops k A)) <~>*	  loops (iterated_loops k (pTr (n +2+ k.+1).-2 A))	";
+            responses[i]=data;
+          
+
+            i = 78;
+            data = "1 subgoal (ID 168)	  	  H : Univalence	  k : nat	  IHk : forall (A : pType) (n : trunc_index),	        pTr n (iterated_loops k A) <~>* iterated_loops k (pTr (n +2+ k).-2 A)	  A : pType	  n : trunc_index	  ============================	  pTr n.+1 (iterated_loops k A) <~>* iterated_loops k (pTr (n +2+ k.+1).-2 A)	";
+            responses[i]=data;
+          
+
+            i = 79;
+            data = "1 subgoal (ID 169)	  	  H : Univalence	  k : nat	  IHk : forall (A : pType) (n : trunc_index),	        pTr n (iterated_loops k A) <~>* iterated_loops k (pTr (n +2+ k).-2 A)	  A : pType	  n : trunc_index	  ============================	  pTr n.+1 (iterated_loops k A) <~>* iterated_loops k (pTr (n +2+ k).+1.-2 A)	";
+            responses[i]=data;
+          
+
+            i = 80;
+            data = "No more subgoals.	";
+            responses[i]=data;
+          
+
+            i = 81;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 82;
+            data = "<infomsg>ptr_loops_eq is defined</infomsg>	";
+            responses[i]=data;
+          
+
+            i = 83;
+            data = "1 subgoal (ID 129)	  	  X : pType	  Y : pType	  n : trunc_index	  ============================	  X <~>* Y -> pTr n X <~>* pTr n Y	";
+            responses[i]=data;
+          
+
+            i = 84;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 85;
+            data = "1 subgoal (ID 130)	  	  X : pType	  Y : pType	  n : trunc_index	  e : X <~>* Y	  ============================	  pTr n X <~>* pTr n Y	";
+            responses[i]=data;
+          
+
+            i = 86;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 87;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 88;
+            data = "2 subgoals (ID 148)	  	  X : pType	  Y : pType	  n : trunc_index	  e : X <~>* Y	  ============================	  pTr n X ->* pTr n Y		subgoal 2 (ID 150) is:	 IsEquiv ?pointed_equiv_fun	1 subgoal (ID 148)	  	  X : pType	  Y : pType	  n : trunc_index	  e : X <~>* Y	  ============================	  pTr n X ->* pTr n Y	<infomsg>	This subproof is complete, but there are some unfocused goals.	Try unfocusing with \"}\".	</infomsg>	1 subgoal (ID 150)		subgoal 1 (ID 150) is:	 IsEquiv (ptr_functor n (let X0 := pointed_equiv_fun X Y e in X0))	1 subgoal (ID 150)	  	  X : pType	  Y : pType	  n : trunc_index	  e : X <~>* Y	  ============================	  IsEquiv (ptr_functor n (let X0 := pointed_equiv_fun X Y e in X0))	No more subgoals.	";
+            responses[i]=data;
+          
+
+            i = 89;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 90;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 91;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 92;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 93;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 94;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 95;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 96;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 97;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 98;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 99;
             data = "";
             responses[i]=data;
           
@@ -363,31 +558,36 @@
       " onmouseover="
       mouseover(9, '0_3_3');
       "><br>
-<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Pointed.pEquiv.html#"><span class="id" title="library">Pointed.pEquiv</span></a>.</span><span class="command" onmouseout="
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Pointed.pMap.html#"><span class="id" title="library">Pointed.pMap</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_3');
       " onmouseover="
       mouseover(10, '0_3_3');
       "><br>
-<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Pointed.Loops.html#"><span class="id" title="library">Pointed.Loops</span></a>.</span><span class="command" onmouseout="
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Pointed.pEquiv.html#"><span class="id" title="library">Pointed.pEquiv</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_3');
       " onmouseover="
       mouseover(11, '0_3_3');
       "><br>
-<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Truncations.html#"><span class="id" title="library">HoTT.Truncations</span></a>.</span><span class="command" onmouseout="
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Pointed.Loops.html#"><span class="id" title="library">Pointed.Loops</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_3');
       " onmouseover="
       mouseover(12, '0_3_3');
       "><br>
-<span class="id" title="keyword">Import</span> <span class="id" title="var">TrM</span>.</span><span class="command" onmouseout="
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Truncations.html#"><span class="id" title="library">Truncations</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_3');
       " onmouseover="
       mouseover(13, '0_3_3');
+      "><br>
+<span class="id" title="keyword">Import</span> <span class="id" title="var">TrM</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_3');
+      " onmouseover="
+      mouseover(14, '0_3_3');
       "><br>
 <br>
 <span class="id" title="keyword">Local Open</span> <span class="id" title="keyword">Scope</span> <span class="id" title="var">pointed_scope</span>.</span><span class="command" onmouseout="
       mouseout('0_3_3');
       " onmouseover="
-      mouseover(14, '0_3_3');
+      mouseover(15, '0_3_3');
       "><br>
 <br>
 </span>
@@ -400,33 +600,24 @@
 <span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
-      mouseover(21, '0_3_7');
+      mouseover(22, '0_3_7');
       ">
 <br>
 <span class="id" title="keyword">Global Instance</span> <a name="ispointed_tr"><span class="id" title="instance">ispointed_tr</span></a> (<span class="id" title="var">n</span> : <a class="idref" href="HoTT.Basics.Overture.html#trunc_index"><span class="id" title="inductive">trunc_index</span></a>) (<span class="id" title="var">A</span> : <span class="id" title="keyword">Type</span>) `{<a class="idref" href="HoTT.Basics.Overture.html#IsPointed"><span class="id" title="class">IsPointed</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#A"><span class="id" title="variable">A</span></a>}<br>
   : <a class="idref" href="HoTT.Basics.Overture.html#IsPointed"><span class="id" title="class">IsPointed</span></a> (<a class="idref" href="HoTT.Truncations.Core.html#Tr"><span class="id" title="definition">Tr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#A"><span class="id" title="variable">A</span></a>) := <a class="idref" href="HoTT.Truncations.Core.html#Trunc.tr"><span class="id" title="constructor">tr</span></a> (<a class="idref" href="HoTT.Basics.Overture.html#point"><span class="id" title="definition">point</span></a> <span class="id" title="var">A</span>).</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
-      mouseover(22, '0_3_7');
+      mouseover(23, '0_3_7');
       "><br>
 <br>
 <span class="id" title="keyword">Definition</span> <a name="pTr"><span class="id" title="definition">pTr</span></a> (<span class="id" title="var">n</span> : <a class="idref" href="HoTT.Basics.Overture.html#trunc_index"><span class="id" title="inductive">trunc_index</span></a>) (<span class="id" title="var">A</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>) : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a><br>
   := <a class="idref" href="HoTT.Basics.Overture.html#Build_pType"><span class="id" title="constructor">Build_pType</span></a> (<a class="idref" href="HoTT.Truncations.Core.html#Tr"><span class="id" title="definition">Tr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#A"><span class="id" title="variable">A</span></a>) <span class="id" title="var">_</span>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
-      mouseover(23, '0_3_7');
-      "><br>
-<br>
-<span class="id" title="keyword">Definition</span> <a name="ptr_functor"><span class="id" title="definition">ptr_functor</span></a> {<span class="id" title="var">X</span> <span class="id" title="var">Y</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>} (<span class="id" title="var">n</span> : <a class="idref" href="HoTT.Basics.Overture.html#trunc_index"><span class="id" title="inductive">trunc_index</span></a>) (<span class="id" title="var">f</span> : <a class="idref" href="HoTT.Pointed.pTrunc.html#X"><span class="id" title="variable">X</span></a> <a class="idref" href="HoTT.Pointed.Core.html#dce20fa1e59aa814d0a053d0ce7a8a86"><span class="id" title="notation">-&gt;*</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a>)<br>
-  : <a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#X"><span class="id" title="variable">X</span></a> <a class="idref" href="HoTT.Pointed.Core.html#dce20fa1e59aa814d0a053d0ce7a8a86"><span class="id" title="notation">-&gt;*</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a> := <a class="idref" href="HoTT.Pointed.Core.html#Build_pMap"><span class="id" title="constructor">Build_pMap</span></a> (<a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#X"><span class="id" title="variable">X</span></a>) (<a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a>)<br>
-    (<a class="idref" href="HoTT.Truncations.Core.html#Trunc_functor"><span class="id" title="definition">Trunc_functor</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#f"><span class="id" title="variable">f</span></a>) (<a class="idref" href="HoTT.Basics.Overture.html#ap"><span class="id" title="definition">ap</span></a> (@<a class="idref" href="HoTT.Truncations.Core.html#Trunc.tr"><span class="id" title="constructor">tr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a>) (<a class="idref" href="HoTT.Pointed.Core.html#point_eq"><span class="id" title="projection">point_eq</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#f"><span class="id" title="variable">f</span></a>)).</span><span class="command" onmouseout="
-      mouseout('0_3_7');
-      " onmouseover="
       mouseover(24, '0_3_7');
       "><br>
 <br>
-<span class="id" title="keyword">Definition</span> <a name="ptr_functor_pmap_idmap"><span class="id" title="definition">ptr_functor_pmap_idmap</span></a> {<span class="id" title="var">X</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>} <span class="id" title="var">n</span><br>
-  : <a class="idref" href="HoTT.Pointed.pTrunc.html#ptr_functor"><span class="id" title="definition">ptr_functor</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> (@<a class="idref" href="HoTT.Pointed.Core.html#pmap_idmap"><span class="id" title="definition">pmap_idmap</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#X"><span class="id" title="variable">X</span></a>) <a class="idref" href="HoTT.Pointed.Core.html#dc9f9d584001e6dc3295fc596e6e94f6"><span class="id" title="notation">==*</span></a> <a class="idref" href="HoTT.Pointed.Core.html#pmap_idmap"><span class="id" title="definition">pmap_idmap</span></a>.</span><span class="command" onmouseout="
+<span class="id" title="keyword">Definition</span> <a name="ptr"><span class="id" title="definition">ptr</span></a> {<span class="id" title="var">n</span> : <a class="idref" href="HoTT.Basics.Overture.html#trunc_index"><span class="id" title="inductive">trunc_index</span></a>} {<span class="id" title="var">A</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>} : <a class="idref" href="HoTT.Pointed.pTrunc.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Pointed.Core.html#dce20fa1e59aa814d0a053d0ce7a8a86"><span class="id" title="notation">-&gt;*</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#A"><span class="id" title="variable">A</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
       mouseover(25, '0_3_7');
@@ -436,18 +627,17 @@
       " onmouseover="
       mouseover(26, '0_3_7');
       "><br>
-  <span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Pointed.Core.html#Build_pHomotopy"><span class="id" title="constructor">Build_pHomotopy</span></a>.</span><span class="command" onmouseout="
+  <span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Pointed.Core.html#Build_pMap"><span class="id" title="constructor">Build_pMap</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
       mouseover(27, '0_3_7');
       "><br>
-  { <span class="id" title="tactic">intro</span> <span class="id" title="var">x</span>.</span><span class="command" onmouseout="
+  + <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Truncations.Core.html#Trunc.tr"><span class="id" title="constructor">tr</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
       mouseover(28, '0_3_7');
       "><br>
-    <span class="id" title="tactic">by</span> <span class="id" title="var">strip_truncations</span>. }<br>
-  <span class="id" title="tactic">reflexivity</span>.</span><span class="command" onmouseout="
+  + <span class="id" title="tactic">reflexivity</span>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
       mouseover(29, '0_3_7');
@@ -458,76 +648,292 @@
       mouseover(30, '0_3_7');
       "><br>
 <br>
-<span class="id" title="keyword">Definition</span> <a name="ptr_functor_pmap_compose"><span class="id" title="definition">ptr_functor_pmap_compose</span></a> <span class="id" title="var">n</span> {<span class="id" title="var">X</span> <span class="id" title="var">Y</span> <span class="id" title="var">Z</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>} (<span class="id" title="var">f</span> : <a class="idref" href="HoTT.Pointed.pTrunc.html#X"><span class="id" title="variable">X</span></a> <a class="idref" href="HoTT.Pointed.Core.html#dce20fa1e59aa814d0a053d0ce7a8a86"><span class="id" title="notation">-&gt;*</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a>) (<span class="id" title="var">g</span> : <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a> <a class="idref" href="HoTT.Pointed.Core.html#dce20fa1e59aa814d0a053d0ce7a8a86"><span class="id" title="notation">-&gt;*</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Z"><span class="id" title="variable">Z</span></a>)<br>
-  : <a class="idref" href="HoTT.Pointed.pTrunc.html#ptr_functor"><span class="id" title="definition">ptr_functor</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> (<a class="idref" href="HoTT.Pointed.pTrunc.html#g"><span class="id" title="variable">g</span></a> <a class="idref" href="HoTT.Pointed.Core.html#0d028156a07f625666eaec1a9aed44c4"><span class="id" title="notation">o</span></a><a class="idref" href="HoTT.Pointed.Core.html#0d028156a07f625666eaec1a9aed44c4"><span class="id" title="notation">×</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#f"><span class="id" title="variable">f</span></a>) <a class="idref" href="HoTT.Pointed.Core.html#dc9f9d584001e6dc3295fc596e6e94f6"><span class="id" title="notation">==*</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#ptr_functor"><span class="id" title="definition">ptr_functor</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#g"><span class="id" title="variable">g</span></a> <a class="idref" href="HoTT.Pointed.Core.html#0d028156a07f625666eaec1a9aed44c4"><span class="id" title="notation">o</span></a><a class="idref" href="HoTT.Pointed.Core.html#0d028156a07f625666eaec1a9aed44c4"><span class="id" title="notation">×</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#ptr_functor"><span class="id" title="definition">ptr_functor</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#f"><span class="id" title="variable">f</span></a>.</span><span class="command" onmouseout="
+<span class="id" title="keyword">Global Instance</span> <a name="isequiv_ptr"><span class="id" title="instance">isequiv_ptr</span></a> <span class="id" title="var">n</span> (<span class="id" title="var">A</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>) `{<a class="idref" href="HoTT.Basics.Overture.html#IsTrunc"><span class="id" title="class">IsTrunc</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#A"><span class="id" title="variable">A</span></a>}<br>
+  : <a class="idref" href="HoTT.Basics.Overture.html#IsEquiv"><span class="id" title="class">IsEquiv</span></a> (@<a class="idref" href="HoTT.Pointed.pTrunc.html#ptr"><span class="id" title="definition">ptr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#A"><span class="id" title="variable">A</span></a>) := <span class="id" title="var">_</span>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
       mouseover(31, '0_3_7');
       "><br>
-<span class="id" title="keyword">Proof</span>.</span><span class="command" onmouseout="
+<br>
+<span class="id" title="keyword">Definition</span> <a name="pequiv_ptr"><span class="id" title="definition">pequiv_ptr</span></a> {<span class="id" title="var">n</span> : <a class="idref" href="HoTT.Basics.Overture.html#trunc_index"><span class="id" title="inductive">trunc_index</span></a>} {<span class="id" title="var">A</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>} `{<a class="idref" href="HoTT.Basics.Overture.html#IsTrunc"><span class="id" title="class">IsTrunc</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#A"><span class="id" title="variable">A</span></a>}<br>
+  : <a class="idref" href="HoTT.Pointed.pTrunc.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Pointed.Core.html#103880150f1b8a9c385f8c09ab3e01b0"><span class="id" title="notation">&lt;~&gt;*</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#A"><span class="id" title="variable">A</span></a> := <a class="idref" href="HoTT.Pointed.Core.html#Build_pEquiv"><span class="id" title="constructor">Build_pEquiv</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <a class="idref" href="HoTT.Pointed.pTrunc.html#ptr"><span class="id" title="definition">ptr</span></a> <span class="id" title="var">_</span>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
       mouseover(32, '0_3_7');
       "><br>
-  <span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Pointed.Core.html#Build_pHomotopy"><span class="id" title="constructor">Build_pHomotopy</span></a>.</span><span class="command" onmouseout="
+<br>
+<span class="id" title="keyword">Definition</span> <a name="pTr_rec"><span class="id" title="definition">pTr_rec</span></a> <span class="id" title="var">n</span> {<span class="id" title="var">X</span> <span class="id" title="var">Y</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>} `{<a class="idref" href="HoTT.Basics.Overture.html#IsTrunc"><span class="id" title="class">IsTrunc</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a>} (<span class="id" title="var">f</span> : <a class="idref" href="HoTT.Pointed.pTrunc.html#X"><span class="id" title="variable">X</span></a> <a class="idref" href="HoTT.Pointed.Core.html#dce20fa1e59aa814d0a053d0ce7a8a86"><span class="id" title="notation">-&gt;*</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a>)<br>
+  : <a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#X"><span class="id" title="variable">X</span></a> <a class="idref" href="HoTT.Pointed.Core.html#dce20fa1e59aa814d0a053d0ce7a8a86"><span class="id" title="notation">-&gt;*</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a><br>
+  := <a class="idref" href="HoTT.Pointed.Core.html#Build_pMap"><span class="id" title="constructor">Build_pMap</span></a> (<a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#X"><span class="id" title="variable">X</span></a>) <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a> (<a class="idref" href="HoTT.Truncations.Core.html#Trunc_rec"><span class="id" title="definition">Trunc_rec</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#f"><span class="id" title="variable">f</span></a>) (<a class="idref" href="HoTT.Pointed.Core.html#point_eq"><span class="id" title="projection">point_eq</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#f"><span class="id" title="variable">f</span></a>).</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
       mouseover(33, '0_3_7');
       "><br>
-  { <span class="id" title="tactic">intro</span> <span class="id" title="var">x</span>.</span><span class="command" onmouseout="
+<br>
+<span class="id" title="keyword">Definition</span> <a name="equiv_ptr_rec"><span class="id" title="definition">equiv_ptr_rec</span></a> `{<a class="idref" href="HoTT.Basics.Overture.html#Funext"><span class="id" title="class">Funext</span></a>} {<span class="id" title="var">n</span>} {<span class="id" title="var">X</span> <span class="id" title="var">Y</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>} `{<a class="idref" href="HoTT.Basics.Overture.html#IsTrunc"><span class="id" title="class">IsTrunc</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a>}<br>
+  : <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">(</span></a><a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#X"><span class="id" title="variable">X</span></a> <a class="idref" href="HoTT.Pointed.Core.html#dce20fa1e59aa814d0a053d0ce7a8a86"><span class="id" title="notation">-&gt;*</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a><a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">)</span></a> <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">&lt;~&gt;</span></a> <a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">(</span></a><a class="idref" href="HoTT.Pointed.pTrunc.html#X"><span class="id" title="variable">X</span></a> <a class="idref" href="HoTT.Pointed.Core.html#dce20fa1e59aa814d0a053d0ce7a8a86"><span class="id" title="notation">-&gt;*</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a><a class="idref" href="HoTT.Basics.Overture.html#068136b784cb569aaadfa01f234d5c01"><span class="id" title="notation">)</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
       mouseover(34, '0_3_7');
+      "><br>
+<span class="id" title="keyword">Proof</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(35, '0_3_7');
+      "><br>
+  <span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Basics.Equivalences.html#equiv_adjointify"><span class="id" title="definition">equiv_adjointify</span></a>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(36, '0_3_7');
+      "><br>
+  { <span class="id" title="tactic">intro</span> <span class="id" title="var">f</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(37, '0_3_7');
+      "><br>
+    <span class="id" title="tactic">refine</span> (<span class="id" title="var">f</span> <a class="idref" href="HoTT.Pointed.Core.html#0d028156a07f625666eaec1a9aed44c4"><span class="id" title="notation">o</span></a><a class="idref" href="HoTT.Pointed.Core.html#0d028156a07f625666eaec1a9aed44c4"><span class="id" title="notation">×</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#ptr"><span class="id" title="definition">ptr</span></a>). }</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(38, '0_3_7');
+      "><br>
+  1: <span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Pointed.pTrunc.html#pTr_rec"><span class="id" title="definition">pTr_rec</span></a>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(39, '0_3_7');
+      "><br>
+  { <span class="id" title="tactic">intro</span> <span class="id" title="var">f</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(40, '0_3_7');
+      "><br>
+    <span class="id" title="tactic">destruct</span> <span class="id" title="var">f</span> <span class="id" title="keyword">as</span> [<span class="id" title="var">f</span> <span class="id" title="var">p</span>].</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(41, '0_3_7');
+      "><br>
+    <span class="id" title="tactic">apply</span> (<a class="idref" href="HoTT.Basics.Overture.html#ap"><span class="id" title="definition">ap</span></a> (<a class="idref" href="HoTT.Pointed.Core.html#Build_pMap"><span class="id" title="constructor">Build_pMap</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">f</span>)).</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(42, '0_3_7');
+      "><br>
+    <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Basics.PathGroupoids.html#concat_1p"><span class="id" title="definition">concat_1p</span></a>. }<br>
+  <span class="id" title="tactic">intro</span> <span class="id" title="var">f</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(43, '0_3_7');
+      "><br>
+  <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Pointed.pMap.html#path_pmap"><span class="id" title="definition">path_pmap</span></a>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(44, '0_3_7');
+      "><br>
+  <span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Pointed.Core.html#Build_pHomotopy"><span class="id" title="constructor">Build_pHomotopy</span></a>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(45, '0_3_7');
+      "><br>
+  1: <span class="id" title="tactic">intro</span>; <span class="id" title="tactic">by</span> <span class="id" title="var">strip_truncations</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(46, '0_3_7');
+      "><br>
+  <span class="id" title="tactic">reflexivity</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(47, '0_3_7');
+      "><br>
+<span class="id" title="keyword">Defined</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(48, '0_3_7');
+      "><br>
+<br>
+<span class="id" title="keyword">Definition</span> <a name="ptr_functor"><span class="id" title="definition">ptr_functor</span></a> {<span class="id" title="var">X</span> <span class="id" title="var">Y</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>} (<span class="id" title="var">n</span> : <a class="idref" href="HoTT.Basics.Overture.html#trunc_index"><span class="id" title="inductive">trunc_index</span></a>) (<span class="id" title="var">f</span> : <a class="idref" href="HoTT.Pointed.pTrunc.html#X"><span class="id" title="variable">X</span></a> <a class="idref" href="HoTT.Pointed.Core.html#dce20fa1e59aa814d0a053d0ce7a8a86"><span class="id" title="notation">-&gt;*</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a>)<br>
+  : <a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#X"><span class="id" title="variable">X</span></a> <a class="idref" href="HoTT.Pointed.Core.html#dce20fa1e59aa814d0a053d0ce7a8a86"><span class="id" title="notation">-&gt;*</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a><br>
+  := <a class="idref" href="HoTT.Pointed.Core.html#Build_pMap"><span class="id" title="constructor">Build_pMap</span></a> (<a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#X"><span class="id" title="variable">X</span></a>) (<a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a>)<br>
+    (<a class="idref" href="HoTT.Truncations.Core.html#Trunc_functor"><span class="id" title="definition">Trunc_functor</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#f"><span class="id" title="variable">f</span></a>) (<a class="idref" href="HoTT.Basics.Overture.html#ap"><span class="id" title="definition">ap</span></a> (@<a class="idref" href="HoTT.Truncations.Core.html#Trunc.tr"><span class="id" title="constructor">tr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a>) (<a class="idref" href="HoTT.Pointed.Core.html#point_eq"><span class="id" title="projection">point_eq</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#f"><span class="id" title="variable">f</span></a>)).</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(49, '0_3_7');
+      "><br>
+<br>
+<span class="id" title="keyword">Definition</span> <a name="ptr_functor_pmap_idmap"><span class="id" title="definition">ptr_functor_pmap_idmap</span></a> {<span class="id" title="var">X</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>} <span class="id" title="var">n</span><br>
+  : <a class="idref" href="HoTT.Pointed.pTrunc.html#ptr_functor"><span class="id" title="definition">ptr_functor</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> (@<a class="idref" href="HoTT.Pointed.Core.html#pmap_idmap"><span class="id" title="definition">pmap_idmap</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#X"><span class="id" title="variable">X</span></a>) <a class="idref" href="HoTT.Pointed.Core.html#dc9f9d584001e6dc3295fc596e6e94f6"><span class="id" title="notation">==*</span></a> <a class="idref" href="HoTT.Pointed.Core.html#pmap_idmap"><span class="id" title="definition">pmap_idmap</span></a>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(50, '0_3_7');
+      "><br>
+<span class="id" title="keyword">Proof</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(51, '0_3_7');
+      "><br>
+  <span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Pointed.Core.html#Build_pHomotopy"><span class="id" title="constructor">Build_pHomotopy</span></a>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(52, '0_3_7');
+      "><br>
+  { <span class="id" title="tactic">intro</span> <span class="id" title="var">x</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(53, '0_3_7');
+      "><br>
+    <span class="id" title="tactic">by</span> <span class="id" title="var">strip_truncations</span>. }<br>
+  <span class="id" title="tactic">reflexivity</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(54, '0_3_7');
+      "><br>
+<span class="id" title="keyword">Defined</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(55, '0_3_7');
+      "><br>
+<br>
+<span class="id" title="keyword">Definition</span> <a name="ptr_functor_pmap_compose"><span class="id" title="definition">ptr_functor_pmap_compose</span></a> <span class="id" title="var">n</span> {<span class="id" title="var">X</span> <span class="id" title="var">Y</span> <span class="id" title="var">Z</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>} (<span class="id" title="var">f</span> : <a class="idref" href="HoTT.Pointed.pTrunc.html#X"><span class="id" title="variable">X</span></a> <a class="idref" href="HoTT.Pointed.Core.html#dce20fa1e59aa814d0a053d0ce7a8a86"><span class="id" title="notation">-&gt;*</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a>) (<span class="id" title="var">g</span> : <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a> <a class="idref" href="HoTT.Pointed.Core.html#dce20fa1e59aa814d0a053d0ce7a8a86"><span class="id" title="notation">-&gt;*</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Z"><span class="id" title="variable">Z</span></a>)<br>
+  : <a class="idref" href="HoTT.Pointed.pTrunc.html#ptr_functor"><span class="id" title="definition">ptr_functor</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> (<a class="idref" href="HoTT.Pointed.pTrunc.html#g"><span class="id" title="variable">g</span></a> <a class="idref" href="HoTT.Pointed.Core.html#0d028156a07f625666eaec1a9aed44c4"><span class="id" title="notation">o</span></a><a class="idref" href="HoTT.Pointed.Core.html#0d028156a07f625666eaec1a9aed44c4"><span class="id" title="notation">×</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#f"><span class="id" title="variable">f</span></a>) <a class="idref" href="HoTT.Pointed.Core.html#dc9f9d584001e6dc3295fc596e6e94f6"><span class="id" title="notation">==*</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#ptr_functor"><span class="id" title="definition">ptr_functor</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#g"><span class="id" title="variable">g</span></a> <a class="idref" href="HoTT.Pointed.Core.html#0d028156a07f625666eaec1a9aed44c4"><span class="id" title="notation">o</span></a><a class="idref" href="HoTT.Pointed.Core.html#0d028156a07f625666eaec1a9aed44c4"><span class="id" title="notation">×</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#ptr_functor"><span class="id" title="definition">ptr_functor</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#f"><span class="id" title="variable">f</span></a>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(56, '0_3_7');
+      "><br>
+<span class="id" title="keyword">Proof</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(57, '0_3_7');
+      "><br>
+  <span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Pointed.Core.html#Build_pHomotopy"><span class="id" title="constructor">Build_pHomotopy</span></a>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(58, '0_3_7');
+      "><br>
+  { <span class="id" title="tactic">intro</span> <span class="id" title="var">x</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(59, '0_3_7');
       "><br>
     <span class="id" title="tactic">by</span> <span class="id" title="var">strip_truncations</span>. }<br>
   <span class="id" title="tactic">by</span> <span class="id" title="var">pointed_reduce</span>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
-      mouseover(35, '0_3_7');
+      mouseover(60, '0_3_7');
       "><br>
 <span class="id" title="keyword">Defined</span>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
-      mouseover(36, '0_3_7');
+      mouseover(61, '0_3_7');
       "><br>
 <br>
 <span class="id" title="keyword">Definition</span> <a name="ptr_pequiv"><span class="id" title="definition">ptr_pequiv</span></a> {<span class="id" title="var">X</span> <span class="id" title="var">Y</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>} (<span class="id" title="var">n</span> : <a class="idref" href="HoTT.Basics.Overture.html#trunc_index"><span class="id" title="inductive">trunc_index</span></a>) (<span class="id" title="var">f</span> : <a class="idref" href="HoTT.Pointed.pTrunc.html#X"><span class="id" title="variable">X</span></a> <a class="idref" href="HoTT.Pointed.Core.html#103880150f1b8a9c385f8c09ab3e01b0"><span class="id" title="notation">&lt;~&gt;*</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a>)<br>
   : <a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#X"><span class="id" title="variable">X</span></a> <a class="idref" href="HoTT.Pointed.Core.html#103880150f1b8a9c385f8c09ab3e01b0"><span class="id" title="notation">&lt;~&gt;*</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a> := <a class="idref" href="HoTT.Pointed.Core.html#Build_pEquiv"><span class="id" title="constructor">Build_pEquiv</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> (<a class="idref" href="HoTT.Pointed.pTrunc.html#ptr_functor"><span class="id" title="definition">ptr_functor</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#f"><span class="id" title="variable">f</span></a>) <span class="id" title="var">_</span>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
-      mouseover(37, '0_3_7');
+      mouseover(62, '0_3_7');
       "><br>
 <br>
 <span class="id" title="keyword">Definition</span> <a name="ptr_loops"><span class="id" title="definition">ptr_loops</span></a> `{<a class="idref" href="HoTT.Types.Universe.html#Univalence"><span class="id" title="class">Univalence</span></a>} (<span class="id" title="var">n</span> : <a class="idref" href="HoTT.Basics.Overture.html#trunc_index"><span class="id" title="inductive">trunc_index</span></a>) (<span class="id" title="var">A</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>)<br>
   : <a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> (<a class="idref" href="HoTT.Pointed.Loops.html#loops"><span class="id" title="definition">loops</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#A"><span class="id" title="variable">A</span></a>) <a class="idref" href="HoTT.Pointed.Core.html#103880150f1b8a9c385f8c09ab3e01b0"><span class="id" title="notation">&lt;~&gt;*</span></a> <a class="idref" href="HoTT.Pointed.Loops.html#loops"><span class="id" title="definition">loops</span></a> (<a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a><a class="idref" href="HoTT.Basics.Overture.html#b76e54fb8c8bc6b885dddb77bd7d01b8"><span class="id" title="notation">.+1</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#A"><span class="id" title="variable">A</span></a>).</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
-      mouseover(38, '0_3_7');
+      mouseover(63, '0_3_7');
       "><br>
 <span class="id" title="keyword">Proof</span>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
-      mouseover(39, '0_3_7');
+      mouseover(64, '0_3_7');
       "><br>
   <span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Pointed.pEquiv.html#Build_pEquiv'"><span class="id" title="definition">Build_pEquiv'</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
-      mouseover(40, '0_3_7');
+      mouseover(65, '0_3_7');
       "><br>
   1: <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Truncations.Core.html#equiv_path_Tr"><span class="id" title="definition">equiv_path_Tr</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
-      mouseover(41, '0_3_7');
+      mouseover(66, '0_3_7');
       "><br>
   <span class="id" title="tactic">reflexivity</span>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
-      mouseover(42, '0_3_7');
+      mouseover(67, '0_3_7');
       "><br>
 <span class="id" title="keyword">Defined</span>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
-      mouseover(43, '0_3_7');
+      mouseover(68, '0_3_7');
+      "><br>
+<br>
+<span class="id" title="keyword">Definition</span> <a name="ptr_iterated_loops"><span class="id" title="definition">ptr_iterated_loops</span></a> `{<a class="idref" href="HoTT.Types.Universe.html#Univalence"><span class="id" title="class">Univalence</span></a>} (<span class="id" title="var">n</span> : <a class="idref" href="HoTT.Basics.Overture.html#trunc_index"><span class="id" title="inductive">trunc_index</span></a>)<br>
+  (<span class="id" title="var">k</span> : <a class="idref" href="Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>) (<span class="id" title="var">A</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>)<br>
+  : <a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> (<a class="idref" href="HoTT.Pointed.Loops.html#iterated_loops"><span class="id" title="definition">iterated_loops</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#k"><span class="id" title="variable">k</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#A"><span class="id" title="variable">A</span></a>) <a class="idref" href="HoTT.Pointed.Core.html#103880150f1b8a9c385f8c09ab3e01b0"><span class="id" title="notation">&lt;~&gt;*</span></a> <a class="idref" href="HoTT.Pointed.Loops.html#iterated_loops"><span class="id" title="definition">iterated_loops</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#k"><span class="id" title="variable">k</span></a> (<a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Basics.Trunc.html#b7122f74a1c6e37e4dc8f6e09cf15e5e"><span class="id" title="notation">(</span></a><a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Basics.Trunc.html#5c37b2558ec22aeb7a122cb85ff5d685"><span class="id" title="notation">+2+</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#k"><span class="id" title="variable">k</span></a><a class="idref" href="HoTT.Basics.Trunc.html#b7122f74a1c6e37e4dc8f6e09cf15e5e"><span class="id" title="notation">).-2</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#A"><span class="id" title="variable">A</span></a>).</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(69, '0_3_7');
+      "><br>
+<span class="id" title="keyword">Proof</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(70, '0_3_7');
+      "><br>
+  <span class="id" title="var">revert</span> <span class="id" title="var">A</span> <span class="id" title="var">n</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(71, '0_3_7');
+      "><br>
+  <span class="id" title="tactic">induction</span> <span class="id" title="var">k</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(72, '0_3_7');
+      "><br>
+  { <span class="id" title="tactic">intros</span> <span class="id" title="var">A</span> <span class="id" title="var">n</span>; <span class="id" title="var">cbn</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(73, '0_3_7');
+      "><br>
+    <span class="id" title="tactic">rewrite</span> 2 (<a class="idref" href="HoTT.Basics.Trunc.html#trunc_index_add_succ"><span class="id" title="definition">trunc_index_add_succ</span></a> <span class="id" title="var">n</span>).</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(74, '0_3_7');
+      "><br>
+    <span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Basics.Trunc.html#trunc_index_add_minus_two"><span class="id" title="definition">trunc_index_add_minus_two</span></a>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(75, '0_3_7');
+      "><br>
+    <span class="id" title="tactic">reflexivity</span>. }<br>
+  <span class="id" title="tactic">intros</span> <span class="id" title="var">A</span> <span class="id" title="var">n</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(76, '0_3_7');
+      "><br>
+  <span class="id" title="var">cbn</span>; <span class="id" title="var">etransitivity</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(77, '0_3_7');
+      "><br>
+  1: <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Pointed.pTrunc.html#ptr_loops"><span class="id" title="definition">ptr_loops</span></a>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(78, '0_3_7');
+      "><br>
+  <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Pointed.Loops.html#pequiv_loops_functor"><span class="id" title="definition">pequiv_loops_functor</span></a>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(79, '0_3_7');
+      "><br>
+  <span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Basics.Trunc.html#trunc_index_add_succ"><span class="id" title="definition">trunc_index_add_succ</span></a>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(80, '0_3_7');
+      "><br>
+  <span class="id" title="tactic">apply</span> <span class="id" title="var">IHk</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(81, '0_3_7');
+      "><br>
+<span class="id" title="keyword">Defined</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_7');
+      " onmouseover="
+      mouseover(82, '0_3_7');
       "><br>
 <br>
 <span class="id" title="keyword">Definition</span> <a name="ptr_loops_eq"><span class="id" title="definition">ptr_loops_eq</span></a> `{<a class="idref" href="HoTT.Types.Universe.html#Univalence"><span class="id" title="class">Univalence</span></a>} (<span class="id" title="var">n</span> : <a class="idref" href="HoTT.Basics.Overture.html#trunc_index"><span class="id" title="inductive">trunc_index</span></a>) (<span class="id" title="var">A</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>)<br>
@@ -535,40 +941,40 @@
   := <a class="idref" href="HoTT.Pointed.pEquiv.html#path_ptype"><span class="id" title="definition">path_ptype</span></a> (<a class="idref" href="HoTT.Pointed.pTrunc.html#ptr_loops"><span class="id" title="definition">ptr_loops</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#A"><span class="id" title="variable">A</span></a>).</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
-      mouseover(44, '0_3_7');
+      mouseover(83, '0_3_7');
       "><br>
 <br>
 <span class="id" title="keyword">Definition</span> <a name="pequiv_ptr_functor"><span class="id" title="definition">pequiv_ptr_functor</span></a> {<span class="id" title="var">X</span> <span class="id" title="var">Y</span> : <a class="idref" href="HoTT.Basics.Overture.html#pType"><span class="id" title="record">pType</span></a>} <span class="id" title="var">n</span><br>
   : <a class="idref" href="HoTT.Pointed.pTrunc.html#X"><span class="id" title="variable">X</span></a> <a class="idref" href="HoTT.Pointed.Core.html#103880150f1b8a9c385f8c09ab3e01b0"><span class="id" title="notation">&lt;~&gt;*</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#X"><span class="id" title="variable">X</span></a> <a class="idref" href="HoTT.Pointed.Core.html#103880150f1b8a9c385f8c09ab3e01b0"><span class="id" title="notation">&lt;~&gt;*</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#pTr"><span class="id" title="definition">pTr</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Pointed.pTrunc.html#Y"><span class="id" title="variable">Y</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
-      mouseover(45, '0_3_7');
+      mouseover(84, '0_3_7');
       "><br>
 <span class="id" title="keyword">Proof</span>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
-      mouseover(46, '0_3_7');
+      mouseover(85, '0_3_7');
       "><br>
   <span class="id" title="tactic">intro</span> <span class="id" title="var">e</span>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
-      mouseover(47, '0_3_7');
+      mouseover(86, '0_3_7');
       "><br>
   <span class="id" title="var">serapply</span> <a class="idref" href="HoTT.Pointed.Core.html#Build_pEquiv"><span class="id" title="constructor">Build_pEquiv</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
-      mouseover(48, '0_3_7');
+      mouseover(87, '0_3_7');
       "><br>
   { <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Pointed.pTrunc.html#ptr_functor"><span class="id" title="definition">ptr_functor</span></a>, <span class="id" title="var">e</span>. }<br>
   <span class="id" title="tactic">exact</span> <span class="id" title="var">_</span>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
-      mouseover(49, '0_3_7');
+      mouseover(88, '0_3_7');
       "><br>
 <span class="id" title="keyword">Defined</span>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
-      mouseover(50, '0_3_7');
+      mouseover(89, '0_3_7');
       "><br>
 <br>
 </span>
