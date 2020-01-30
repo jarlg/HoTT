@@ -28,12 +28,12 @@
 </div>
 
 <div class="doc">
-<a name="lab640"></a><h1 class="section">Extra tactics for homotopy type theory.</h1>
+<a name="lab643"></a><h1 class="section">Extra tactics for homotopy type theory.</h1>
 
 <div class="paragraph"> </div>
 
-<a name="lab641"></a><h2 class="section">Tactics for dealing with <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#Funext"><span class="id" title="axiom">Funext</span></a></span></h2>
-<a name="lab642"></a><h3 class="section">Tactics about <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#transport"><span class="id" title="definition">transport</span></a></span>ing with <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#path_forall"><span class="id" title="definition">path_forall</span></a></span></h3>
+<a name="lab644"></a><h2 class="section">Tactics for dealing with <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#Funext"><span class="id" title="axiom">Funext</span></a></span></h2>
+<a name="lab645"></a><h3 class="section">Tactics about <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#transport"><span class="id" title="definition">transport</span></a></span>ing with <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#path_forall"><span class="id" title="definition">path_forall</span></a></span></h3>
 
 <div class="paragraph"> </div>
 
@@ -237,7 +237,7 @@ An example showing that it works
 </div>
 
 <div class="doc">
-<a name="lab643"></a><h2 class="section">A more powerful variant of <span class="inlinecode"><span class="id" title="var">path_induction</span></span></h2>
+<a name="lab646"></a><h2 class="section">A more powerful variant of <span class="inlinecode"><span class="id" title="var">path_induction</span></span></h2>
  We first define some helper tactics, and then define <span class="inlinecode"><span class="id" title="var">path_induction_hammer</span></span>, which has poor computational behavior, but is vastly more powerful than <span class="inlinecode"><span class="id" title="var">path_induction</span></span>, and removes paths which are discoverably contractible, and paths which only appear in the goal, etc. 
 <div class="paragraph"> </div>
 
@@ -265,7 +265,7 @@ Takes a term of type <span class="inlinecode"><span class="id" title="var">_</sp
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">b</span> := <span class="id" title="keyword">match</span> <span class="id" title="keyword">goal</span> <span class="id" title="keyword">with</span> |- @<a class="idref" href="HoTT.Basics.Overture.html#paths"><span class="id" title="inductive">paths</span></a> (?<span class="id" title="var">x</span> <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> ?<span class="id" title="var">y</span>) ?<span class="id" title="var">a</span> ?<span class="id" title="var">b</span> ⇒ <span class="id" title="keyword">constr</span>:(<span class="id" title="var">b</span>) <span class="id" title="keyword">end</span> <span class="id" title="tactic">in</span><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">x</span> := <span class="id" title="keyword">match</span> <span class="id" title="keyword">goal</span> <span class="id" title="keyword">with</span> |- @<a class="idref" href="HoTT.Basics.Overture.html#paths"><span class="id" title="inductive">paths</span></a> (?<span class="id" title="var">x</span> <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> ?<span class="id" title="var">y</span>) ?<span class="id" title="var">a</span> ?<span class="id" title="var">b</span> ⇒ <span class="id" title="keyword">constr</span>:(<span class="id" title="var">x</span>) <span class="id" title="keyword">end</span> <span class="id" title="tactic">in</span><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">y</span> := <span class="id" title="keyword">match</span> <span class="id" title="keyword">goal</span> <span class="id" title="keyword">with</span> |- @<a class="idref" href="HoTT.Basics.Overture.html#paths"><span class="id" title="inductive">paths</span></a> (?<span class="id" title="var">x</span> <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> ?<span class="id" title="var">y</span>) ?<span class="id" title="var">a</span> ?<span class="id" title="var">b</span> ⇒ <span class="id" title="keyword">constr</span>:(<span class="id" title="var">y</span>) <span class="id" title="keyword">end</span> <span class="id" title="tactic">in</span><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> (@<a class="idref" href="HoTT.Basics.Overture.html#equiv_inv"><span class="id" title="projection">equiv_inv</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> (@<a class="idref" href="HoTT.Types.Paths.html#equiv_ap"><span class="id" title="definition">equiv_ap</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> (@<a class="idref" href="HoTT.Basics.Overture.html#isequiv_apD10"><span class="id" title="axiom">isequiv_apD10</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">x</span> <span class="id" title="var">y</span>) <span class="id" title="var">a</span> <span class="id" title="var">b</span>));<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> (@<a class="idref" href="HoTT.Basics.Overture.html#equiv_inv"><span class="id" title="projection">equiv_inv</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> (@<a class="idref" href="HoTT.Basics.Equivalences.html#equiv_ap"><span class="id" title="definition">equiv_ap</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> (@<a class="idref" href="HoTT.Basics.Overture.html#isequiv_apD10"><span class="id" title="axiom">isequiv_apD10</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">x</span> <span class="id" title="var">y</span>) <span class="id" title="var">a</span> <span class="id" title="var">b</span>));<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">exact</span> (<a class="idref" href="HoTT.Basics.Overture.html#center"><span class="id" title="projection">center</span></a> <span class="id" title="var">_</span>)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="tactic">pose</span> <span class="id" title="var">proof</span> (@<a class="idref" href="HoTT.Basics.Contractible.html#path_contr"><span class="id" title="definition">path_contr</span></a> <span class="id" title="var">T</span> <span class="id" title="var">_</span> <a class="idref" href="HoTT.Basics.Overture.html#idpath"><span class="id" title="constructor">idpath</span></a> <span class="id" title="var">p</span>) <span class="id" title="keyword">as</span> <span class="id" title="var">H</span> ];<br/>
@@ -385,7 +385,7 @@ And now the actual tactic.  Note that the order of the cases in the <span class=
 </div>
 
 <div class="doc">
-<a name="lab644"></a><h1 class="section">Miscellaneous tactics</h1>
+<a name="lab647"></a><h1 class="section">Miscellaneous tactics</h1>
 
 <div class="paragraph"> </div>
 

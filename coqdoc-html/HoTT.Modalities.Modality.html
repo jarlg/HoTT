@@ -30,7 +30,7 @@
 </div>
 
 <div class="doc">
-<a name="lab363"></a><h1 class="section">Modalities</h1>
+<a name="lab366"></a><h1 class="section">Modalities</h1>
 
 </div>
 <div class="code">
@@ -130,7 +130,7 @@ We add an extra unused universe parameter <span class="inlinecode"><a class="idr
 </div>
 
 <div class="doc">
-<a name="lab364"></a><h2 class="section">Modalities are reflective subuniverses</h2>
+<a name="lab367"></a><h2 class="section">Modalities are reflective subuniverses</h2>
 
 <div class="paragraph"> </div>
 
@@ -213,7 +213,7 @@ Corollary 7.7.8, part 1
 </div>
 
 <div class="doc">
-Conversely, if a reflective subuniverse is closed under sigmas, it is a modality.  This is a bit annoying to state using modules, and in fact with our current definitions there doesn't seem to be a way to actually convince Coq to accept it.  However, this is not really a problem in practice: in most or all examples, constructing <span class="inlinecode"><a class="idref" href="HoTT.Modalities.Modality.html#Modalities_Theory.O_ind"><span class="id" title="definition">O_ind</span></a></span> directly is just as easy, and preferable because it sometimes gives a judgmental computation rule.  However, for the sake of completeness, we include here the code that almost works. 
+Conversely, if a reflective subuniverse is closed under sigmas, it is a modality.  This is a bit annoying to state using modules, but it is not really a problem in practice: in most or all examples, constructing <span class="inlinecode"><a class="idref" href="HoTT.Modalities.Modality.html#Modalities_Theory.O_ind"><span class="id" title="definition">O_ind</span></a></span> directly is just as easy, and preferable because it sometimes gives a judgmental computation rule. 
 </div>
 <div class="code">
 
@@ -235,20 +235,9 @@ Conversely, if a reflective subuniverse is closed under sigmas, it is a modality
 <span class="id" title="keyword">End</span> <a class="idref" href="HoTT.Modalities.Modality.html#SigmaClosed"><span class="id" title="module">SigmaClosed</span></a>.<br/>
 
 <br/>
-</div>
-
-<div class="doc">
-We omit the module type, because Coq won't actually accept it (see below for why). 
-</div>
-<div class="code">
 <span class="id" title="keyword">Module</span> <a name="ReflectiveSubuniverses_to_Modalities"><span class="id" title="module">ReflectiveSubuniverses_to_Modalities</span></a><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" title="var">Os</span> : <a class="idref" href="HoTT.Modalities.ReflectiveSubuniverse.html#ReflectiveSubuniverses"><span class="id" title="module">ReflectiveSubuniverses</span></a>) (<span class="id" title="var">OsSigma</span> : <a class="idref" href="HoTT.Modalities.Modality.html#SigmaClosed"><span class="id" title="module">SigmaClosed</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#Os"><span class="id" title="module">Os</span></a>).<br/>
-</div>
-
-<div class="doc">
-&lt;: Modalities. 
-</div>
-<div class="code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" title="var">Os</span> : <a class="idref" href="HoTT.Modalities.ReflectiveSubuniverse.html#ReflectiveSubuniverses"><span class="id" title="module">ReflectiveSubuniverses</span></a>) (<span class="id" title="var">OsSigma</span> : <a class="idref" href="HoTT.Modalities.Modality.html#SigmaClosed"><span class="id" title="module">SigmaClosed</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#Os"><span class="id" title="module">Os</span></a>)<br/>
+&nbsp;&nbsp;&lt;: <a class="idref" href="HoTT.Modalities.Modality.html#Modalities"><span class="id" title="module">Modalities</span></a>.<br/>
 
 <br/>
 &nbsp;&nbsp;<span class="id" title="keyword">Import</span> <span class="id" title="var">Os</span> <span class="id" title="var">OsSigma</span>.<br/>
@@ -272,17 +261,11 @@ Work around https://coq.inria.fr/bugs/show_bug.cgi?id=3807
 &nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="ReflectiveSubuniverses_to_Modalities.hprop_inO"><span class="id" title="definition">hprop_inO@</span></a>{<span class="id" title="var">u</span> <span class="id" title="var">a</span> <span class="id" title="var">i</span>} := <a class="idref" href="HoTT.Modalities.Modality.html#Os.hprop_inO"><span class="id" title="axiom">hprop_inO@</span></a>{<span class="id" title="var">u</span> <span class="id" title="var">a</span> <span class="id" title="var">i</span>}.<br/>
 
 <br/>
-</div>
-
-<div class="doc">
-The reason Coq won't actually accept this as a module of type <span class="inlinecode"><a class="idref" href="HoTT.Modalities.Modality.html#Modalities"><span class="id" title="module">Modalities</span></a></span> is that the following definitions of <span class="inlinecode"><a class="idref" href="HoTT.Truncations.Core.html#Truncation_Modalities.O_ind_internal"><span class="id" title="definition">O_ind_internal</span></a></span> and <span class="inlinecode"><a class="idref" href="HoTT.Truncations.Core.html#Truncation_Modalities.O_ind_beta_internal"><span class="id" title="definition">O_ind_beta_internal</span></a></span> have an extra universe parameter <span class="inlinecode"><a class="idref" href="Coq.Init.Nat.html#k"><span class="id" title="variable">k</span></a></span> that's at least as large as both <span class="inlinecode"><a class="idref" href="HoTT.Classes.theory.ua_second_isomorphism.html#i"><span class="id" title="abbreviation">i</span></a></span> and <span class="inlinecode"><a class="idref" href="HoTT.Limits.Limit.html#j"><span class="id" title="variable">j</span></a></span>.  This is because <span class="inlinecode"><a class="idref" href="HoTT.Modalities.Localization.html#Localization_ReflectiveSubuniverses.extendable_to_O"><span class="id" title="definition">extendable_to_O</span></a></span> has such a parameter, which in turn is because <span class="inlinecode"><a class="idref" href="HoTT.Extensions.html#ooExtendableAlong"><span class="id" title="definition">ooExtendableAlong</span></a></span> does.  Unfortunately, we can't directly instantiate <span class="inlinecode"><a class="idref" href="Coq.Init.Nat.html#k"><span class="id" title="variable">k</span></a></span> to <span class="inlinecode"><a class="idref" href="HoTT.Classes.orders.lattices.html#max"><span class="id" title="definition">max</span></a>(<a class="idref" href="HoTT.Classes.theory.ua_second_isomorphism.html#i"><span class="id" title="abbreviation">i</span></a>,<a class="idref" href="HoTT.Limits.Limit.html#j"><span class="id" title="variable">j</span></a>)</span> because Coq doesn't allow "algebraic universes" in arbitrary position.  We could probably work around it by defining <span class="inlinecode"><a class="idref" href="HoTT.Extensions.html#ExtendableAlong"><span class="id" title="definition">ExtendableAlong</span></a></span> inductively rather than recursively, but given the non-usefulness of this construction in practice, that doesn't seem to be worth the trouble at the moment. 
-</div>
-<div class="code">
 &nbsp;&nbsp;<span class="id" title="keyword">Definition</span> <a name="ReflectiveSubuniverses_to_Modalities.O_ind_internal"><span class="id" title="definition">O_ind_internal@</span></a>{<span class="id" title="var">u</span> <span class="id" title="var">a</span> <span class="id" title="var">i</span> <span class="id" title="var">j</span> <span class="id" title="var">k</span>} (<span class="id" title="var">O</span> : <a class="idref" href="HoTT.Modalities.Modality.html#ReflectiveSubuniverses_to_Modalities.Modality"><span class="id" title="definition">Modality@</span></a>{<span class="id" title="var">u</span> <span class="id" title="var">a</span>})<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" title="var">A</span> : <span class="id" title="var">Type@</span>{<span class="id" title="var">i</span>}) (<span class="id" title="var">B</span> : <a class="idref" href="HoTT.Modalities.Modality.html#ReflectiveSubuniverses_to_Modalities.O_reflector"><span class="id" title="definition">O_reflector@</span></a>{<span class="id" title="var">u</span> <span class="id" title="var">a</span> <span class="id" title="var">i</span>} <a class="idref" href="HoTT.Modalities.Modality.html#O"><span class="id" title="variable">O</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <span class="id" title="var">Type@</span>{<span class="id" title="var">j</span>})<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" title="var">B_inO</span> : <a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">∀</span></a> <span class="id" title="var">oa</span><a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">,</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#ReflectiveSubuniverses_to_Modalities.In"><span class="id" title="definition">In@</span></a>{<span class="id" title="var">u</span> <span class="id" title="var">a</span> <span class="id" title="var">j</span>} <a class="idref" href="HoTT.Modalities.Modality.html#O"><span class="id" title="variable">O</span></a> (<a class="idref" href="HoTT.Modalities.Modality.html#B"><span class="id" title="variable">B</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#oa"><span class="id" title="variable">oa</span></a>))<br/>
 &nbsp;&nbsp;: <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">(</span></a><a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">∀</span></a> <span class="id" title="var">a</span><a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">,</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#B"><span class="id" title="variable">B</span></a> (<a class="idref" href="HoTT.Modalities.Modality.html#ReflectiveSubuniverses_to_Modalities.to"><span class="id" title="definition">to</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#O"><span class="id" title="variable">O</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#a"><span class="id" title="variable">a</span></a>)<a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">)</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">∀</span></a> <span class="id" title="var">a</span><a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">,</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#B"><span class="id" title="variable">B</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#a"><span class="id" title="variable">a</span></a><br/>
-&nbsp;&nbsp;:= <span class="id" title="keyword">fun</span> <span class="id" title="var">g</span> ⇒ <a class="idref" href="HoTT.Basics.Overture.html#pr1"><span class="id" title="abbreviation">pr1</span></a> ((<a class="idref" href="HoTT.Modalities.Modality.html#ReflectiveSubuniverses_to_Modalities.O_ind_from_inO_sigma"><span class="id" title="definition">O_ind_from_inO_sigma@</span></a>{<span class="id" title="var">u</span> <span class="id" title="var">a</span> <span class="id" title="var">i</span> <span class="id" title="var">j</span> <span class="id" title="var">j</span> <span class="id" title="var">k</span> <span class="id" title="var">k</span>} <a class="idref" href="HoTT.Modalities.Modality.html#O"><span class="id" title="variable">O</span></a> (<a class="idref" href="HoTT.Modalities.Modality.html#OsSigma.inO_sigma"><span class="id" title="axiom">inO_sigma</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#O"><span class="id" title="variable">O</span></a>))<br/>
+&nbsp;&nbsp;:= <span class="id" title="keyword">fun</span> <span class="id" title="var">g</span> ⇒ <a class="idref" href="HoTT.Basics.Overture.html#pr1"><span class="id" title="abbreviation">pr1</span></a> ((<a class="idref" href="HoTT.Modalities.Modality.html#ReflectiveSubuniverses_to_Modalities.O_ind_from_inO_sigma"><span class="id" title="definition">O_ind_from_inO_sigma@</span></a>{<span class="id" title="var">u</span> <span class="id" title="var">a</span> <span class="id" title="var">i</span> <span class="id" title="var">j</span> <span class="id" title="var">k</span>} <a class="idref" href="HoTT.Modalities.Modality.html#O"><span class="id" title="variable">O</span></a> (<a class="idref" href="HoTT.Modalities.Modality.html#OsSigma.inO_sigma"><span class="id" title="axiom">inO_sigma</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#O"><span class="id" title="variable">O</span></a>))<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="HoTT.Modalities.Modality.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#B"><span class="id" title="variable">B</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#B_inO"><span class="id" title="variable">B_inO</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#g"><span class="id" title="variable">g</span></a>).<br/>
 
 <br/>
@@ -291,7 +274,7 @@ The reason Coq won't actually accept this as a module of type <span class="inlin
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" title="var">B_inO</span> : <a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">∀</span></a> <span class="id" title="var">oa</span><a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">,</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#ReflectiveSubuniverses_to_Modalities.In"><span class="id" title="definition">In@</span></a>{<span class="id" title="var">u</span> <span class="id" title="var">a</span> <span class="id" title="var">j</span>} <a class="idref" href="HoTT.Modalities.Modality.html#O"><span class="id" title="variable">O</span></a> (<a class="idref" href="HoTT.Modalities.Modality.html#B"><span class="id" title="variable">B</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#oa"><span class="id" title="variable">oa</span></a>))<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" title="var">f</span> : <a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">∀</span></a> <span class="id" title="var">a</span> : <a class="idref" href="HoTT.Modalities.Modality.html#A"><span class="id" title="variable">A</span></a><a class="idref" href="HoTT.Basics.Notations.html#adf9957462624adc9c2c94f56add3958"><span class="id" title="notation">,</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#B"><span class="id" title="variable">B</span></a> (<a class="idref" href="HoTT.Modalities.Modality.html#ReflectiveSubuniverses_to_Modalities.to"><span class="id" title="definition">to</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#O"><span class="id" title="variable">O</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#a"><span class="id" title="variable">a</span></a>)) (<span class="id" title="var">a</span>:<a class="idref" href="HoTT.Modalities.Modality.html#A"><span class="id" title="variable">A</span></a>)<br/>
 &nbsp;&nbsp;: <a class="idref" href="HoTT.Modalities.Modality.html#ReflectiveSubuniverses_to_Modalities.O_ind_internal"><span class="id" title="definition">O_ind_internal</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#O"><span class="id" title="variable">O</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#B"><span class="id" title="variable">B</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#B_inO"><span class="id" title="variable">B_inO</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#f"><span class="id" title="variable">f</span></a> (<a class="idref" href="HoTT.Modalities.Modality.html#ReflectiveSubuniverses_to_Modalities.to"><span class="id" title="definition">to</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#O"><span class="id" title="variable">O</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#a"><span class="id" title="variable">a</span></a>) <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#f"><span class="id" title="variable">f</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#a"><span class="id" title="variable">a</span></a><br/>
-&nbsp;&nbsp;:= <a class="idref" href="HoTT.Basics.Overture.html#pr2"><span class="id" title="abbreviation">pr2</span></a> ((<a class="idref" href="HoTT.Modalities.Modality.html#ReflectiveSubuniverses_to_Modalities.O_ind_from_inO_sigma"><span class="id" title="definition">O_ind_from_inO_sigma@</span></a>{<span class="id" title="var">u</span> <span class="id" title="var">a</span> <span class="id" title="var">i</span> <span class="id" title="var">j</span> <span class="id" title="var">j</span> <span class="id" title="var">k</span> <span class="id" title="var">k</span>} <a class="idref" href="HoTT.Modalities.Modality.html#O"><span class="id" title="variable">O</span></a> (<a class="idref" href="HoTT.Modalities.Modality.html#OsSigma.inO_sigma"><span class="id" title="axiom">inO_sigma</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#O"><span class="id" title="variable">O</span></a>))<br/>
+&nbsp;&nbsp;:= <a class="idref" href="HoTT.Basics.Overture.html#pr2"><span class="id" title="abbreviation">pr2</span></a> ((<a class="idref" href="HoTT.Modalities.Modality.html#ReflectiveSubuniverses_to_Modalities.O_ind_from_inO_sigma"><span class="id" title="definition">O_ind_from_inO_sigma@</span></a>{<span class="id" title="var">u</span> <span class="id" title="var">a</span> <span class="id" title="var">i</span> <span class="id" title="var">j</span> <span class="id" title="var">k</span>} <a class="idref" href="HoTT.Modalities.Modality.html#O"><span class="id" title="variable">O</span></a> (<a class="idref" href="HoTT.Modalities.Modality.html#OsSigma.inO_sigma"><span class="id" title="axiom">inO_sigma</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#O"><span class="id" title="variable">O</span></a>))<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="HoTT.Modalities.Modality.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#B"><span class="id" title="variable">B</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#B_inO"><span class="id" title="variable">B_inO</span></a> <a class="idref" href="HoTT.Modalities.Modality.html#f"><span class="id" title="variable">f</span></a>) <a class="idref" href="HoTT.Modalities.Modality.html#a"><span class="id" title="variable">a</span></a>.<br/>
 
 <br/>
@@ -307,11 +290,11 @@ The reason Coq won't actually accept this as a module of type <span class="inlin
 </div>
 
 <div class="doc">
-<a name="lab365"></a><h2 class="section">Easy modalities</h2>
+<a name="lab368"></a><h2 class="section">Easy modalities</h2>
 
 <div class="paragraph"> </div>
 
- Our definition of modality is slightly different from the one in the book, which requires an induction principle only into families of the form <span class="inlinecode"><span class="id" title="keyword">fun</span></span> <span class="inlinecode"><a class="idref" href="HoTT.Modalities.Modality.html#oa"><span class="id" title="variable">oa</span></a></span> <span class="inlinecode">⇒</span> <span class="inlinecode"><a class="idref" href="HoTT.Tests.html#Issue754_1.O"><span class="id" title="constructor">O</span></a></span> <span class="inlinecode">(<a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.B"><span class="id" title="variable">B</span></a></span> <span class="inlinecode"><a class="idref" href="HoTT.Modalities.Modality.html#oa"><span class="id" title="variable">oa</span></a>)</span>, and similarly only that path-spaces of types <span class="inlinecode"><a class="idref" href="HoTT.Tests.html#Issue754_1.O"><span class="id" title="constructor">O</span></a></span> <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.A"><span class="id" title="variable">A</span></a></span> are modal, where "modal" means that the unit is an equivalence.  This is equivalent, roughly since every modal type <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.A"><span class="id" title="variable">A</span></a></span> (in this sense) is equivalent to <span class="inlinecode"><a class="idref" href="HoTT.Tests.html#Issue754_1.O"><span class="id" title="constructor">O</span></a></span> <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.A"><span class="id" title="variable">A</span></a></span>.
+ Our definition of modality is slightly different from the one in the book, which requires an induction principle only into families of the form <span class="inlinecode"><span class="id" title="keyword">fun</span></span> <span class="inlinecode"><a class="idref" href="HoTT.Modalities.ReflectiveSubuniverse.html#oa"><span class="id" title="variable">oa</span></a></span> <span class="inlinecode">⇒</span> <span class="inlinecode"><a class="idref" href="HoTT.Tests.html#Issue754_1.O"><span class="id" title="constructor">O</span></a></span> <span class="inlinecode">(<a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.B"><span class="id" title="variable">B</span></a></span> <span class="inlinecode"><a class="idref" href="HoTT.Modalities.ReflectiveSubuniverse.html#oa"><span class="id" title="variable">oa</span></a>)</span>, and similarly only that path-spaces of types <span class="inlinecode"><a class="idref" href="HoTT.Tests.html#Issue754_1.O"><span class="id" title="constructor">O</span></a></span> <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.A"><span class="id" title="variable">A</span></a></span> are modal, where "modal" means that the unit is an equivalence.  This is equivalent, roughly since every modal type <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.A"><span class="id" title="variable">A</span></a></span> (in this sense) is equivalent to <span class="inlinecode"><a class="idref" href="HoTT.Tests.html#Issue754_1.O"><span class="id" title="constructor">O</span></a></span> <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.A"><span class="id" title="variable">A</span></a></span>.
 
 <div class="paragraph"> </div>
 
@@ -532,7 +515,7 @@ As promised, we redefine <span class="inlinecode"><a class="idref" href="HoTT.Mo
 </div>
 
 <div class="doc">
-<a name="lab366"></a><h2 class="section">The induction principle <span class="inlinecode"><a class="idref" href="HoTT.Modalities.Modality.html#Modalities_Theory.O_ind"><span class="id" title="definition">O_ind</span></a></span>, like most induction principles, is an equivalence.</h2>
+<a name="lab369"></a><h2 class="section">The induction principle <span class="inlinecode"><a class="idref" href="HoTT.Modalities.Modality.html#Modalities_Theory.O_ind"><span class="id" title="definition">O_ind</span></a></span>, like most induction principles, is an equivalence.</h2>
 
 </div>
 <div class="code">
@@ -732,7 +715,7 @@ Corollary 7.3.10.  (Theorem 7.3.9 is true for any reflective subuniverse.)
 </div>
 
 <div class="doc">
-<a name="lab367"></a><h2 class="section">The modal factorization system</h2>
+<a name="lab370"></a><h2 class="section">The modal factorization system</h2>
 
 </div>
 <div class="code">
@@ -925,7 +908,7 @@ Apparently Coq needs a little help to see that these paths are the same.
 </div>
 
 <div class="doc">
-<a name="lab368"></a><h2 class="section">Restriction of a family of modalities</h2>
+<a name="lab371"></a><h2 class="section">Restriction of a family of modalities</h2>
 
 <div class="paragraph"> </div>
 
@@ -980,7 +963,7 @@ Apparently Coq needs a little help to see that these paths are the same.
 </div>
 
 <div class="doc">
-<a name="lab369"></a><h2 class="section">Union of families of modalities</h2>
+<a name="lab372"></a><h2 class="section">Union of families of modalities</h2>
 
 </div>
 <div class="code">

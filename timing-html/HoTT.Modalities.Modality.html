@@ -36,21 +36,21 @@ Time: 0s">
 </div>
 <div class="code" title="File: Modality.v
 Line: 1
-Time: 0.033s">
-<div class="time" style="width: 9.6774193548387%"></div>
+Time: 0.038s">
+<div class="time" style="width: 16.170212765957%"></div>
 <pre>Require Import HoTT.Basics HoTT.Types.</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 1
-Time: 0.019s">
-<div class="time" style="width: 5.5718475073314%"></div>
+Time: 0.021s">
+<div class="time" style="width: 8.936170212766%"></div>
 <pre>
 Require Import Fibrations EquivalenceVarieties Extensions Factorization NullHomotopy HProp Pullback.</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 2
-Time: 0.007s">
-<div class="time" style="width: 2.0527859237537%"></div>
+Time: 0.008s">
+<div class="time" style="width: 3.4042553191489%"></div>
 <pre>
 Require Export ReflectiveSubuniverse.</pre>
 </div>
@@ -62,8 +62,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Modality.v
 Line: 3
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>Require Import HoTT.Tactics.</pre>
 </div>
 <div class="code" title="File: Modality.v
@@ -194,7 +194,7 @@ Time: 0s">
 <div class="code" title="File: Modality.v
 Line: 49
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
 
   Parameter O_ind_beta_internal@{u a i j k}
@@ -360,7 +360,7 @@ Time: 0s">
 <div class="code" title="File: Modality.v
 Line: 88
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
   Defined.</pre>
 </div>
@@ -444,8 +444,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Modality.v
 Line: 113
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>Definition extendable_to_O@{u a i j k} (O : ReflectiveSubuniverse@{u a})
              {P : Type2le@{i a}} {Q : Type2le@{j a}} {Q_inO : In@{u a j} O Q}
   : ooExtendableAlong@{i i j k} (to O P) (fun _ =&gt; Q)
@@ -454,7 +454,7 @@ Time: 0s">
 <div class="code" title="File: Modality.v
 Line: 116
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
 
 End Modalities_to_ReflectiveSubuniverses.</pre>
@@ -466,7 +466,7 @@ Time: 0s">
 <pre>
 
 
-(** Conversely, if a reflective subuniverse is closed under sigmas, it is a modality.  This is a bit annoying to state using modules, and in fact with our current definitions there doesn't seem to be a way to actually convince Coq to accept it.  However, this is not really a problem in practice: in most or all examples, constructing [O_ind] directly is just as easy, and preferable because it sometimes gives a judgmental computation rule.  However, for the sake of completeness, we include here the code that almost works. *)
+(** Conversely, if a reflective subuniverse is closed under sigmas, it is a modality.  This is a bit annoying to state using modules, but it is not really a problem in practice: in most or all examples, constructing [O_ind] directly is just as easy, and preferable because it sometimes gives a judgmental computation rule. *)
 
 </pre>
 </div>
@@ -487,7 +487,7 @@ Time: 0s">
 <div class="code" title="File: Modality.v
 Line: 124
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
 
   Parameter inO_sigma@{u a i j k}
@@ -511,34 +511,22 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-(** We omit the module type, because Coq won't actually accept it (see below for why). *)</pre>
+Module ReflectiveSubuniverses_to_Modalities
+       (Os : ReflectiveSubuniverses) (OsSigma : SigmaClosed Os)
+  &lt;: Modalities.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 135
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>Module ReflectiveSubuniverses_to_Modalities
-       (Os : ReflectiveSubuniverses) (OsSigma : SigmaClosed Os).</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 136
+Line: 137
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-(** &lt;: Modalities. *)
 
- </pre>
+  Import Os OsSigma.</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 139
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>Import Os OsSigma.</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 139
-Time: 0.064s">
-<div class="time" style="width: 18.768328445748%"></div>
+Time: 0.097s">
+<div class="time" style="width: 41.276595744681%"></div>
 <pre>
   Module Import Os_Theory := ReflectiveSubuniverses_Theory Os.</pre>
 </div>
@@ -602,28 +590,21 @@ Time: 0s">
 </div>
 <div class="code" title="File: Modality.v
 Line: 150
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
 
-  (** The reason Coq won't actually accept this as a module of type [Modalities] is that the following definitions of [O_ind_internal] and [O_ind_beta_internal] have an extra universe parameter [k] that's at least as large as both [i] and [j].  This is because [extendable_to_O] has such a parameter, which in turn is because [ooExtendableAlong] does.  Unfortunately, we can't directly instantiate [k] to [max(i,j)] because Coq doesn't allow "algebraic universes" in arbitrary position.  We could probably work around it by defining [ExtendableAlong] inductively rather than recursively, but given the non-usefulness of this construction in practice, that doesn't seem to be worth the trouble at the moment. *)
- </pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 153
-Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
-<pre>Definition O_ind_internal@{u a i j k} (O : Modality@{u a})
+  Definition O_ind_internal@{u a i j k} (O : Modality@{u a})
              (A : Type@{i}) (B : O_reflector@{u a i} O A -&gt; Type@{j})
              (B_inO : forall oa, In@{u a j} O (B oa))
   : (forall a, B (to O A a)) -&gt; forall a, B a
-  := fun g =&gt; pr1 ((O_ind_from_inO_sigma@{u a i j j k k} O (inO_sigma O))
+  := fun g =&gt; pr1 ((O_ind_from_inO_sigma@{u a i j k} O (inO_sigma O))
                      A B B_inO g).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 158
+Line: 157
 Time: 0.002s">
-<div class="time" style="width: 0.58651026392962%"></div>
+<div class="time" style="width: 0.85106382978723%"></div>
 <pre>
 
   Definition O_ind_beta_internal@{u a i j k} (O : Modality@{u a})
@@ -631,13 +612,13 @@ Time: 0.002s">
              (B_inO : forall oa, In@{u a j} O (B oa))
              (f : forall a : A, B (to O A a)) (a:A)
   : O_ind_internal O A B B_inO f (to O A a) = f a
-  := pr2 ((O_ind_from_inO_sigma@{u a i j j k k} O (inO_sigma O))
+  := pr2 ((O_ind_from_inO_sigma@{u a i j k} O (inO_sigma O))
                      A B B_inO f) a.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 166
-Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+Line: 165
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
   Definition minO_paths@{u a i} (O : Modality@{u a})
@@ -646,15 +627,15 @@ Time: 0.001s">
   := @inO_paths@{u a i i} O A A_inO z z'.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 171
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 170
+Time: 0.002s">
+<div class="time" style="width: 0.85106382978723%"></div>
 <pre>
 
 End ReflectiveSubuniverses_to_Modalities.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 173
+Line: 172
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -671,13 +652,13 @@ On the other hand, in other examples (such as [~~] and open modalities) it is ea
 </pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 183
+Line: 182
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Module Type EasyModalities.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 183
+Line: 182
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -685,7 +666,7 @@ Time: 0s">
   Parameter Modality@{u a} : Type2@{u a}.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 185
+Line: 184
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -694,7 +675,7 @@ Time: 0s">
                             Type2le@{i a} -&gt; Type2le@{i a}.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 188
+Line: 187
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -703,9 +684,9 @@ Time: 0s">
                    T -&gt; O_reflector@{u a i} O T.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 191
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 190
+Time: 0.001s">
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
 
   Parameter O_indO@{u a i j}
@@ -715,9 +696,9 @@ Time: 0s">
       -&gt; forall z, O_reflector@{u a j} O (B z).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 197
-Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+Line: 196
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
   Parameter O_indO_beta@{u a i j}
@@ -727,9 +708,9 @@ Time: 0.001s">
       O_indO O A B f (to O A a) = f a.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 203
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 202
+Time: 0.001s">
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
 
   Parameter minO_pathsO@{u a i}
@@ -738,7 +719,7 @@ Time: 0s">
       IsEquiv (to@{u a i} O (z = z')).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 208
+Line: 207
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -746,7 +727,7 @@ Time: 0s">
 End EasyModalities.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 210
+Line: 209
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -755,7 +736,7 @@ Module EasyModalities_to_Modalities (Os : EasyModalities)
 &lt;: Modalities.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 213
+Line: 212
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -763,7 +744,7 @@ Time: 0s">
   Import Os.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 215
+Line: 214
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -771,7 +752,7 @@ Time: 0s">
   Definition Modality := Modality.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 217
+Line: 216
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -779,20 +760,20 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 219
+Line: 218
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition O_reflector@{u a i} := O_reflector@{u a i}.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 219
+Line: 218
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Definition to@{u a i} := to@{u a i}.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 220
+Line: 219
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -802,7 +783,7 @@ Time: 0s">
   := fun O A =&gt; IsEquiv@{i i} (to O A).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 224
+Line: 223
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -812,37 +793,37 @@ Time: 0s">
   : IsHProp (In@{u a i} O T).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 228
+Line: 227
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 229
+Line: 228
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     unfold In.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 230
+Line: 229
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     exact (hprop_isequiv (to O T)).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 231
+Line: 230
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 232
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 231
+Time: 0.001s">
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
 
   Definition O_ind_internal@{u a i j k} (O : Modality@{u a})
@@ -853,56 +834,56 @@ Time: 0s">
     (forall a, B (to O A a)) -&gt; forall oa, B oa.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 239
+Line: 238
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 240
+Line: 239
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     simpl; intros f oa.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 241
+Line: 240
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     pose (H := B_inO oa); unfold In in H.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 242
+Line: 241
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply ((to O (B oa))^-1).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 243
+Line: 242
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply O_indO.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 244
+Line: 243
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros a; apply to, f.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 245
+Line: 244
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 246
+Line: 245
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -914,42 +895,42 @@ Time: 0s">
   : O_ind_internal@{u a i j k} O A B B_inO f (to O A a) = f a.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 252
+Line: 251
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 253
+Line: 252
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     unfold O_ind_internal.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 254
+Line: 253
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply moveR_equiv_V.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 255
-Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+Line: 254
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
     apply @O_indO_beta with (f := fun x =&gt; to O _ (f x)).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 256
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 255
+Time: 0.001s">
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 257
+Line: 256
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -958,95 +939,95 @@ Time: 0s">
   : In@{u a i} O (O_reflector@{u a i} O A).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 260
+Line: 259
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 261
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 260
+Time: 0.001s">
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
     refine (isequiv_adjointify (to O (O_reflector O A))
              (O_indO O (O_reflector O A) (fun _ =&gt; A) idmap) _ _).</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 262
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    -</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 263
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros x; pattern x; apply O_ind_internal.</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 263
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    -</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 264
-Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
-<pre> intros x; pattern x; apply O_ind_internal.</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 264
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
       +</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 265
+Line: 264
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros oa; apply minO_pathsO.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 265
+Line: 264
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       +</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 266
+Line: 265
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros a; apply ap.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 266
+Line: 265
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
         exact (O_indO_beta O (O_reflector O A) (fun _ =&gt; A) idmap a).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 267
+Line: 266
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 268
+Line: 267
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros a.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 268
+Line: 267
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       exact (O_indO_beta O (O_reflector O A) (fun _ =&gt; A) idmap a).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 269
-Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+Line: 268
+Time: 0.002s">
+<div class="time" style="width: 0.85106382978723%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 270
+Line: 269
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1055,7 +1036,7 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 273
+Line: 272
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition inO_equiv_inO@{u a i j k} (O : Modality@{u a}) (A : Type@{i}) (B : Type@{j})
@@ -1063,19 +1044,32 @@ Time: 0s">
   : In@{u a j} O B.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 275
+Line: 274
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 276
-Time: 0.017s">
-<div class="time" style="width: 4.9853372434018%"></div>
+Line: 275
+Time: 0.019s">
+<div class="time" style="width: 8.0851063829787%"></div>
 <pre>
     simple refine (isequiv_commsq (to O A) (to O B) f
              (O_ind_internal O A (fun _ =&gt; O_reflector O B) _ (fun a =&gt; to O B (f a))) _).</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 277
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    -</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 278
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros; apply O_inO.</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 278
@@ -1088,7 +1082,7 @@ Time: 0s">
 Line: 279
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> intros; apply O_inO.</pre>
+<pre> intros a; refine (O_ind_beta_internal@{u a i j k} O A (fun _ =&gt; O_reflector O B) _ _ a).</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 279
@@ -1101,7 +1095,7 @@ Time: 0s">
 Line: 280
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> intros a; refine (O_ind_beta_internal@{u a i j k} O A (fun _ =&gt; O_reflector O B) _ _ a).</pre>
+<pre> apply A_inO.</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 280
@@ -1112,24 +1106,24 @@ Time: 0s">
 </div>
 <div class="code" title="File: Modality.v
 Line: 281
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> apply A_inO.</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 281
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    -</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 282
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre> simple refine (isequiv_adjointify _
                (O_ind_internal O B (fun _ =&gt; O_reflector O A) _ (fun b =&gt; to O A (f^-1 b))) _ _);
         intros x.</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 283
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      +</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 284
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> apply O_inO.</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 284
@@ -1140,97 +1134,84 @@ Time: 0s">
 </div>
 <div class="code" title="File: Modality.v
 Line: 285
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> apply O_inO.</pre>
+Time: 0.001s">
+<div class="time" style="width: 0.42553191489362%"></div>
+<pre> pattern x; refine (O_ind_internal O B _ _ _ x); intros.</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 285
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-      +</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 286
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> pattern x; refine (O_ind_internal O B _ _ _ x); intros.</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 286
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
         *</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 287
+Line: 286
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply minO_pathsO.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 287
+Line: 286
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
         *</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 288
-Time: 0.009s">
-<div class="time" style="width: 2.6392961876833%"></div>
+Line: 287
+Time: 0.01s">
+<div class="time" style="width: 4.2553191489362%"></div>
 <pre> simpl; abstract (repeat rewrite O_ind_beta_internal; apply ap, eisretr).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 288
+Line: 287
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       +</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 289
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 288
+Time: 0.001s">
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre> pattern x; refine (O_ind_internal O A _ _ _ x); intros.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 289
+Line: 288
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
         *</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 290
+Line: 289
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply minO_pathsO.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 290
+Line: 289
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
         *</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 291
-Time: 0.005s">
-<div class="time" style="width: 1.466275659824%"></div>
+Line: 290
+Time: 0.006s">
+<div class="time" style="width: 2.5531914893617%"></div>
 <pre> simpl; abstract (repeat rewrite O_ind_beta_internal; apply ap, eissect).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 291
+Line: 290
 Time: 0.006s">
-<div class="time" style="width: 1.7595307917889%"></div>
+<div class="time" style="width: 2.5531914893617%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 292
+Line: 291
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1240,19 +1221,32 @@ Time: 0s">
   : In@{u a i} O (a = a').</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 296
+Line: 295
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 297
-Time: 0.017s">
-<div class="time" style="width: 4.9853372434018%"></div>
+Line: 296
+Time: 0.04s">
+<div class="time" style="width: 17.021276595745%"></div>
 <pre>
     simple refine (inO_equiv_inO O (to O A a = to O A a') _ _
                           (@ap _ _ (to O A) a a')^-1 _).</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 298
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    -</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 299
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> apply minO_pathsO.</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 299
@@ -1265,7 +1259,7 @@ Time: 0s">
 Line: 300
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> apply minO_pathsO.</pre>
+<pre> refine (@isequiv_ap _ _ _ A_inO _ _).</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 300
@@ -1278,38 +1272,25 @@ Time: 0s">
 Line: 301
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> refine (@isequiv_ap _ _ _ A_inO _ _).</pre>
+<pre> apply isequiv_inverse.</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 301
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    -</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 302
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> apply isequiv_inverse.</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 302
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 303
-Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+Line: 302
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
 End EasyModalities_to_Modalities.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 305
+Line: 304
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1319,13 +1300,13 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 308
+Line: 307
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Module Modalities_Theory (Os : Modalities).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 308
+Line: 307
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1333,23 +1314,23 @@ Time: 0s">
 Export Os.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 310
+Line: 309
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
 Module Export Os_ReflectiveSubuniverses
   := Modalities_to_ReflectiveSubuniverses Os.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 312
-Time: 0.078s">
-<div class="time" style="width: 22.873900293255%"></div>
+Line: 311
+Time: 0.077s">
+<div class="time" style="width: 32.765957446809%"></div>
 <pre>
 Module Export RSU
   := ReflectiveSubuniverses_Theory Os_ReflectiveSubuniverses.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 314
+Line: 313
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1357,13 +1338,13 @@ Time: 0s">
 (** As with reflective subuniverses, we put this in a module so it can be exported separately (and it should be). *)</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 316
+Line: 315
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Module Export Coercions.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 316
+Line: 315
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1371,14 +1352,14 @@ Time: 0s">
     := idmap : Modality -&gt; ReflectiveSubuniverse.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 318
+Line: 317
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 End Coercions.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 319
+Line: 318
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1386,9 +1367,9 @@ Time: 0s">
 (** As promised, we redefine [O_ind] and [O_ind_beta] so that their [In] hypotheses refer to the typeclass [RSU.In]. *)</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 321
+Line: 320
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>Definition O_ind@{u a i j e0 e1 e2} {O : Modality@{u a}}
            {A : Type@{i}} (B : O A -&gt; Type@{j})
            {B_inO : forall oa, In O (B oa)}
@@ -1397,9 +1378,9 @@ Time: 0.001s">
 := O_ind_internal@{u a e0 e1 e2} O A B B_inO f oa.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 326
+Line: 325
 Time: 0.002s">
-<div class="time" style="width: 0.58651026392962%"></div>
+<div class="time" style="width: 0.85106382978723%"></div>
 <pre>
 
 Definition O_ind_beta {O : Modality@{u a}}
@@ -1410,7 +1391,7 @@ Definition O_ind_beta {O : Modality@{u a}}
 := O_ind_beta_internal O A B B_inO f a.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 333
+Line: 332
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1418,20 +1399,20 @@ Time: 0s">
 (** ** The induction principle [O_ind], like most induction principles, is an equivalence. *)</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 335
+Line: 334
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section OIndEquiv.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 335
+Line: 334
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Context {fs : Funext} (O : Modality).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 336
+Line: 335
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1439,7 +1420,7 @@ Time: 0s">
   Section OIndEquivData.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 338
+Line: 337
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1447,7 +1428,7 @@ Time: 0s">
     Context {A : Type} (B : O A -&gt; Type) `{forall a, In O (B a)}.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 340
+Line: 339
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1455,89 +1436,89 @@ Time: 0s">
     Global Instance isequiv_O_ind : IsEquiv (O_ind B).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 342
+Line: 341
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 343
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 342
+Time: 0.003s">
+<div class="time" style="width: 1.2765957446809%"></div>
 <pre>
       apply isequiv_adjointify with (g := fun h =&gt; h oD to O A).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 344
+Line: 343
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       -</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 345
+Line: 344
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros h.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 345
+Line: 344
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply path_forall.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 345
-Time: 0.003s">
-<div class="time" style="width: 0.87976539589443%"></div>
+Line: 344
+Time: 0.004s">
+<div class="time" style="width: 1.7021276595745%"></div>
 <pre>
         refine (O_ind (fun oa =&gt; O_ind B (h oD to O A) oa = h oa) _).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 346
+Line: 345
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
         exact (O_ind_beta B (h oD to O A)).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 347
+Line: 346
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       -</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 348
+Line: 347
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros f.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 348
+Line: 347
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply path_forall.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 348
+Line: 347
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
         exact (O_ind_beta B f).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 349
+Line: 348
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
     Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 350
+Line: 349
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
 
     Definition equiv_O_ind
@@ -1545,7 +1526,7 @@ Time: 0.001s">
     := Build_Equiv _ _ (O_ind B) _.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 354
+Line: 353
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1554,15 +1535,15 @@ Time: 0s">
    </pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 357
+Line: 356
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>Definition isequiv_oD_to_O
     : IsEquiv (fun (h : forall oa, B oa) =&gt; h oD to O A)
     := equiv_isequiv equiv_O_ind^-1.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 359
+Line: 358
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1570,9 +1551,9 @@ Time: 0s">
   End OIndEquivData.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 361
-Time: 0.003s">
-<div class="time" style="width: 0.87976539589443%"></div>
+Line: 360
+Time: 0.004s">
+<div class="time" style="width: 1.7021276595745%"></div>
 <pre>
 
   Local Definition isequiv_o_to_O (A B : Type) (B_inO : In O B)
@@ -1580,15 +1561,15 @@ Time: 0.003s">
     := isequiv_oD_to_O (fun _ =&gt; B).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 365
-Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+Line: 364
+Time: 0.002s">
+<div class="time" style="width: 0.85106382978723%"></div>
 <pre>
 
 End OIndEquiv.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 367
+Line: 366
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1596,14 +1577,14 @@ Time: 0s">
 (** Two modalities are the same if they have the same modal types. *)</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 369
-Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+Line: 368
+Time: 0.002s">
+<div class="time" style="width: 0.85106382978723%"></div>
 <pre>Class OeqO (O1 O2 : Modality)
   := inO_OeqO : forall A, In O1 A &lt;-&gt; In O2 A.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 370
+Line: 369
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1611,28 +1592,28 @@ Time: 0s">
 Global Instance reflexive_OeqO : Reflexive OeqO | 10.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 372
+Line: 371
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 373
+Line: 372
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros O A; reflexivity.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 374
+Line: 373
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 375
+Line: 374
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1640,42 +1621,42 @@ Time: 0s">
 Global Instance symmetric_OeqO : Symmetric OeqO | 10.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 377
+Line: 376
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 378
+Line: 377
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros O1 O2 O12 A.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 379
+Line: 378
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   specialize (O12 A).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 380
+Line: 379
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   symmetry; assumption.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 381
+Line: 380
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 382
+Line: 381
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1683,96 +1664,96 @@ Time: 0s">
 Global Instance transitive_OeqO : Transitive OeqO | 10.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 384
+Line: 383
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 385
+Line: 384
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros O1 O2 O3 O12 O23 A; split.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 386
+Line: 385
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 387
+Line: 386
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros A1.</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 386
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    apply (@inO_OeqO O2 O3 O23).</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 387
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    apply (@inO_OeqO O2 O3 O23).</pre>
+    apply (@inO_OeqO O1 O2 O12).</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 388
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    apply (@inO_OeqO O1 O2 O12).</pre>
+    exact A1.</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 389
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    exact A1.</pre>
+  -</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 390
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros A3.</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 390
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  -</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 391
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intros A3.</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 391
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
     apply (@inO_OeqO O1 O2 O12).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 392
+Line: 391
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply (@inO_OeqO O2 O3 O23).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 393
+Line: 392
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     exact A3.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 394
+Line: 393
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 395
+Line: 394
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1780,7 +1761,7 @@ Time: 0s">
 (** Two equivalent modalities have the same connected types. *)</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 397
+Line: 396
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance isconnected_OeqO {O1 O2 : Modality} `{OeqO O1 O2}
@@ -1788,42 +1769,42 @@ Time: 0s">
   : IsConnected O2 A.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 399
+Line: 398
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 400
+Line: 399
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply isconnected_from_elim.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 401
+Line: 400
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros C C2 f.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 402
+Line: 401
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
   apply (isconnected_elim O1); apply inO_OeqO; exact _.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 403
+Line: 402
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 404
+Line: 403
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1831,20 +1812,20 @@ Time: 0s">
 (** We prove some useful consequences of [O_ind] that enhance the behavior of reflective subuniverses. *)</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 406
+Line: 405
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section Enhancements.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 406
+Line: 405
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Context {O : Modality}.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 407
+Line: 406
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1853,48 +1834,48 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 410
+Line: 409
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance conn_map_to_O (A : Type) : IsConnMap O (to O A).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 410
+Line: 409
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 411
+Line: 410
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply conn_map_from_extension_elim; intros P ? d.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 412
+Line: 411
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     exists (O_ind P d); intros a.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 413
+Line: 412
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply O_ind_beta.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 414
+Line: 413
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 415
+Line: 414
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1903,7 +1884,7 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 418
+Line: 417
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance inO_sigma (A:Type) (B:A -&gt; Type)
@@ -1911,56 +1892,56 @@ Time: 0s">
   : In O {x:A &amp; B x}.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 420
+Line: 419
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 421
+Line: 420
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     generalize dependent A.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 422
+Line: 421
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (inO_sigma_from_O_ind _ _).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 423
+Line: 422
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros A B ? g.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 424
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 423
+Time: 0.001s">
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
     exists (O_ind B g).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 425
+Line: 424
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply O_ind_beta.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 426
+Line: 425
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 427
+Line: 426
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1969,7 +1950,7 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 430
+Line: 429
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance inO_equiv `{Funext} (A B : Type)
@@ -1977,42 +1958,42 @@ Time: 0s">
   : In O (A &lt;~&gt; B).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 432
+Line: 431
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 433
-Time: 0.022s">
-<div class="time" style="width: 6.4516129032258%"></div>
+Line: 432
+Time: 0.021s">
+<div class="time" style="width: 8.936170212766%"></div>
 <pre>
     refine (inO_equiv_inO _ (issig_equiv A B)).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 434
-Time: 0.009s">
-<div class="time" style="width: 2.6392961876833%"></div>
+Line: 433
+Time: 0.011s">
+<div class="time" style="width: 4.6808510638298%"></div>
 <pre>
     refine (inO_sigma _ _).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 435
-Time: 0.226s">
-<div class="time" style="width: 66.275659824047%"></div>
+Line: 434
+Time: 0.235s">
+<div class="time" style="width: 100%"></div>
 <pre>
     intros f; refine (inO_equiv_inO _ (issig_isequiv f)).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 436
+Line: 435
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 437
+Line: 436
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2021,43 +2002,43 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 440
+Line: 439
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>Global Instance mapinO_compose {A B C : Type} (f : A -&gt; B) (g : B -&gt; C)
          `{MapIn O _ _ f} `{MapIn O _ _ g}
   : MapIn O (g o f).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 442
+Line: 441
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 443
+Line: 442
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros c.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 444
-Time: 0.341s">
-<div class="time" style="width: 100%"></div>
+Line: 443
+Time: 0.192s">
+<div class="time" style="width: 81.702127659574%"></div>
 <pre>
     refine (inO_equiv_inO _ (hfiber_compose f g c)^-1).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 445
+Line: 444
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 446
+Line: 445
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2066,25 +2047,38 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 449
+Line: 448
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>Corollary equiv_sigma_inO_O {A} `{In O A} (P : A -&gt; Type)
   : {x:A &amp; O (P x)} &lt;~&gt; O {x:A &amp; P x}.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 450
+Line: 449
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 451
+Line: 450
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
     transitivity (O {x:A &amp; O (P x)}).</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 451
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    -</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 452
+Time: 0.006s">
+<div class="time" style="width: 2.5531914893617%"></div>
+<pre> apply equiv_to_O; exact _.</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 452
@@ -2095,40 +2089,27 @@ Time: 0s">
 </div>
 <div class="code" title="File: Modality.v
 Line: 453
-Time: 0.005s">
-<div class="time" style="width: 1.466275659824%"></div>
-<pre> apply equiv_to_O; exact _.</pre>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> apply equiv_O_sigma_O.</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 453
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    -</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 454
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> apply equiv_O_sigma_O.</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 454
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 455
+Line: 454
 Time: 0.003s">
-<div class="time" style="width: 0.87976539589443%"></div>
+<div class="time" style="width: 1.2765957446809%"></div>
 <pre>
 
 End Enhancements.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 457
+Line: 456
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2138,20 +2119,20 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 460
+Line: 459
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section ModalFact.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 460
+Line: 459
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Context `{fs : Funext} (O : Modality).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 461
+Line: 460
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2160,23 +2141,23 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 464
+Line: 463
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition image {A B : Type} (f : A -&gt; B)
   : Factorization (@IsConnMap O) (@MapIn O) f.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 465
+Line: 464
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 466
+Line: 465
 Time: 0.009s">
-<div class="time" style="width: 2.6392961876833%"></div>
+<div class="time" style="width: 3.8297872340426%"></div>
 <pre>
     refine (Build_Factorization {b : B &amp; O (hfiber f b)}
                                 (fun a =&gt; (f a ; to O _ (a;1)))
@@ -2185,31 +2166,31 @@ Time: 0.009s">
                                 _ _).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 471
+Line: 470
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 472
-Time: 0.057s">
-<div class="time" style="width: 16.715542521994%"></div>
+Line: 471
+Time: 0.065s">
+<div class="time" style="width: 27.659574468085%"></div>
 <pre> exact (conn_map_compose O
               (equiv_fibration_replacement f)
               (functor_sigma idmap (fun b =&gt; to O (hfiber f b)))).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 474
+Line: 473
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 475
+Line: 474
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
 
   Global Instance conn_map_factor1_image {A B : Type} (f : A -&gt; B)
@@ -2217,9 +2198,9 @@ Time: 0.001s">
     := inclass1 (image f).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 479
+Line: 478
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
 
   Global Instance inO_map_factor1_image {A B : Type} (f : A -&gt; B)
@@ -2227,7 +2208,7 @@ Time: 0.001s">
     := inclass2 (image f).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 483
+Line: 482
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2236,36 +2217,49 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 486
-Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+Line: 485
+Time: 0.002s">
+<div class="time" style="width: 0.85106382978723%"></div>
 <pre>Lemma O_hfiber_O_fact {A B : Type} {f : A -&gt; B}
         (fact : Factorization (@IsConnMap O) (@MapIn O) f) (b : B)
   : O (hfiber (factor2 fact o factor1 fact) b)
       &lt;~&gt; hfiber (factor2 fact) b.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 489
+Line: 488
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 490
+Line: 489
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
     refine (_ oE
              (equiv_O_functor O
                (hfiber_compose (factor1 fact) (factor2 fact) b))).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 493
-Time: 0.077s">
-<div class="time" style="width: 22.58064516129%"></div>
+Line: 492
+Time: 0.08s">
+<div class="time" style="width: 34.042553191489%"></div>
 <pre>
     refine (equiv_sigma_contr (fun w =&gt; O (hfiber (factor1 fact) w.1)) oE _).</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 493
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    -</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 494
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros w; exact (inclass1 fact w.1).</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 494
@@ -2276,39 +2270,26 @@ Time: 0s">
 </div>
 <div class="code" title="File: Modality.v
 Line: 495
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intros w; exact (inclass1 fact w.1).</pre>
+Time: 0.042s">
+<div class="time" style="width: 17.872340425532%"></div>
+<pre> refine ((equiv_sigma_inO_O (fun w =&gt; hfiber (factor1 fact) w.1))^-1)%equiv.</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 495
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    -</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 496
-Time: 0.03s">
-<div class="time" style="width: 8.7976539589443%"></div>
-<pre> refine ((equiv_sigma_inO_O (fun w =&gt; hfiber (factor1 fact) w.1))^-1)%equiv.</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 496
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
       exact (inclass2 fact b).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 497
+Line: 496
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 498
+Line: 497
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2317,9 +2298,9 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 501
-Time: 0.096s">
-<div class="time" style="width: 28.152492668622%"></div>
+Line: 500
+Time: 0.1s">
+<div class="time" style="width: 42.553191489362%"></div>
 <pre>Lemma O_hfiber_O_fact_inverse_beta {A B : Type} {f : A -&gt; B}
         (fact : Factorization (@IsConnMap O) (@MapIn O) f)
         (a : A) (b : B) (p : factor2 fact (factor1 fact a) = b)
@@ -2327,54 +2308,67 @@ Time: 0.096s">
       (factor1 fact a ; p) = to O _ (a ; p).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 505
+Line: 504
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 506
+Line: 505
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
     set (g := factor1 fact); set (h := factor2 fact).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 507
+Line: 506
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply moveR_equiv_V.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 508
+Line: 507
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     unfold O_hfiber_O_fact.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 509
-Time: 0.058s">
-<div class="time" style="width: 17.008797653959%"></div>
+Line: 508
+Time: 0.053s">
+<div class="time" style="width: 22.553191489362%"></div>
 <pre>
     ev_equiv.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 510
-Time: 0.003s">
-<div class="time" style="width: 0.87976539589443%"></div>
+Line: 509
+Time: 0.004s">
+<div class="time" style="width: 1.7021276595745%"></div>
 <pre>
     apply moveL_equiv_M.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 511
+Line: 510
 Time: 0.003s">
-<div class="time" style="width: 0.87976539589443%"></div>
+<div class="time" style="width: 1.2765957446809%"></div>
 <pre>
     transitivity (existT (fun (w : hfiber h b) =&gt; O (hfiber g w.1))
                          (g a; p) (to O (hfiber g (g a)) (a ; 1))).</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 512
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    -</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 513
+Time: 0.001s">
+<div class="time" style="width: 0.42553191489362%"></div>
+<pre> apply moveR_equiv_V; reflexivity.</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 513
@@ -2385,30 +2379,30 @@ Time: 0s">
 </div>
 <div class="code" title="File: Modality.v
 Line: 514
-Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
-<pre> apply moveR_equiv_V; reflexivity.</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 514
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre>
-    -</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 515
-Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
 <pre> apply moveL_equiv_V.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 515
+Line: 514
 Time: 0.002s">
-<div class="time" style="width: 0.58651026392962%"></div>
+<div class="time" style="width: 0.85106382978723%"></div>
 <pre>
       transitivity (to O _ (existT (fun (w : hfiber h b) =&gt; (hfiber g w.1))
                          (g a; p) (a ; 1))).</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 516
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      +</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 517
+Time: 0.051s">
+<div class="time" style="width: 21.702127659574%"></div>
+<pre> simpl; repeat rewrite O_rec_beta; reflexivity.</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 517
@@ -2419,32 +2413,19 @@ Time: 0s">
 </div>
 <div class="code" title="File: Modality.v
 Line: 518
-Time: 0.048s">
-<div class="time" style="width: 14.076246334311%"></div>
-<pre> simpl; repeat rewrite O_rec_beta; reflexivity.</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 518
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      +</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 519
 Time: 0.003s">
-<div class="time" style="width: 0.87976539589443%"></div>
+<div class="time" style="width: 1.2765957446809%"></div>
 <pre> symmetry; apply to_O_natural.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 519
-Time: 0.02s">
-<div class="time" style="width: 5.8651026392962%"></div>
+Line: 518
+Time: 0.028s">
+<div class="time" style="width: 11.914893617021%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 520
+Line: 519
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2452,15 +2433,15 @@ Time: 0s">
   Section TwoFactorizations.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 522
-Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+Line: 521
+Time: 0.003s">
+<div class="time" style="width: 1.2765957446809%"></div>
 <pre>
     Context {A B : Type} (f : A -&gt; B)
             (fact fact' : Factorization (@IsConnMap O) (@MapIn O) f).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 524
+Line: 523
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2468,7 +2449,7 @@ Time: 0s">
     Let H := fun x =&gt; fact_factors fact x @ (fact_factors fact' x)^.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 526
+Line: 525
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2477,63 +2458,63 @@ Time: 0s">
    </pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 529
+Line: 528
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition equiv_O_factor_hfibers (b:B)
     : hfiber (factor2 fact) b &lt;~&gt; hfiber (factor2 fact') b.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 530
+Line: 529
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 531
+Line: 530
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       refine (O_hfiber_O_fact fact' b oE _).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 532
+Line: 531
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       refine (_ oE (O_hfiber_O_fact fact b)^-1).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 533
+Line: 532
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       apply equiv_O_functor.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 534
+Line: 533
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       apply equiv_hfiber_homotopic.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 535
+Line: 534
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       exact H.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 536
+Line: 535
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 537
+Line: 536
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2542,66 +2523,79 @@ Time: 0s">
    </pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 540
+Line: 539
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>Definition equiv_O_factor_hfibers_beta (a : A)
     : equiv_O_factor_hfibers (factor2 fact (factor1 fact a))
                              (factor1 fact a ; 1)
       = (factor1 fact' a ; (H a)^).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 543
+Line: 542
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 544
+Line: 543
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       unfold equiv_O_factor_hfibers.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 545
-Time: 0.086s">
-<div class="time" style="width: 25.219941348974%"></div>
+Line: 544
+Time: 0.087s">
+<div class="time" style="width: 37.021276595745%"></div>
 <pre>
       ev_equiv.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 546
-Time: 0.155s">
-<div class="time" style="width: 45.454545454545%"></div>
+Line: 545
+Time: 0.156s">
+<div class="time" style="width: 66.382978723404%"></div>
 <pre>
       apply moveR_equiv_M.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 547
-Time: 0.009s">
-<div class="time" style="width: 2.6392961876833%"></div>
+Line: 546
+Time: 0.007s">
+<div class="time" style="width: 2.9787234042553%"></div>
 <pre>
       do 2 rewrite O_hfiber_O_fact_inverse_beta.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 548
+Line: 547
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       unfold equiv_fun, equiv_O_functor.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 549
+Line: 548
 Time: 0.004s">
-<div class="time" style="width: 1.1730205278592%"></div>
+<div class="time" style="width: 1.7021276595745%"></div>
 <pre>
       transitivity (to O _
                        (equiv_hfiber_homotopic
                           (factor2 fact o factor1 fact)
                           (factor2 fact' o factor1 fact') H
                           (factor2 fact (factor1 fact a)) (a;1))).</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 553
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      -</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 554
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> refine (to_O_natural O _ _).</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 554
@@ -2614,44 +2608,31 @@ Time: 0s">
 Line: 555
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> refine (to_O_natural O _ _).</pre>
+<pre> apply ap.</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 555
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-      -</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 556
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> apply ap.</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 556
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
         simpl.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 557
+Line: 556
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
         apply ap; auto with path_hints.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 558
+Line: 557
 Time: 0.008s">
-<div class="time" style="width: 2.3460410557185%"></div>
+<div class="time" style="width: 3.4042553191489%"></div>
 <pre>
     Qed.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 559
+Line: 558
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2659,7 +2640,7 @@ Time: 0s">
   End TwoFactorizations.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 561
+Line: 560
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2668,22 +2649,22 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 564
+Line: 563
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition O_factsys : FactorizationSystem.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 564
+Line: 563
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 565
-Time: 0.045s">
-<div class="time" style="width: 13.196480938416%"></div>
+Line: 564
+Time: 0.052s">
+<div class="time" style="width: 22.127659574468%"></div>
 <pre>
     refine (Build_FactorizationSystem
               (@IsConnMap O) _ _ _
@@ -2691,52 +2672,65 @@ Time: 0.045s">
               (@image) _).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 569
+Line: 568
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros A B f fact fact'.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 570
+Line: 569
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     simple refine (Build_PathFactorization fact fact' _ _ _ _).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 571
+Line: 570
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 572
+Line: 571
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> refine (_ oE equiv_fibration_replacement (factor2 fact)).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 572
+Line: 571
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       refine ((equiv_fibration_replacement (factor2 fact'))^-1 oE _).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 573
+Line: 572
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       refine (equiv_functor_sigma' 1 _); intros b; simpl.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 574
+Line: 573
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       apply equiv_O_factor_hfibers.</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 574
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    -</pre>
+</div>
+<div class="code" title="File: Modality.v
+Line: 575
+Time: 0.001s">
+<div class="time" style="width: 0.42553191489362%"></div>
+<pre> intros a; exact (pr1_path (equiv_O_factor_hfibers_beta f fact fact' a)).</pre>
 </div>
 <div class="code" title="File: Modality.v
 Line: 575
@@ -2747,73 +2741,60 @@ Time: 0s">
 </div>
 <div class="code" title="File: Modality.v
 Line: 576
-Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
-<pre> intros a; exact (pr1_path (equiv_O_factor_hfibers_beta f fact fact' a)).</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 576
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    -</pre>
-</div>
-<div class="code" title="File: Modality.v
-Line: 577
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros x.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 577
+Line: 576
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
       exact ((equiv_O_factor_hfibers f fact fact' (factor2 fact x) (x ; 1)).2 ^).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 578
+Line: 577
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 579
+Line: 578
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros a.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 579
+Line: 578
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
       apply moveR_pM.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 580
+Line: 579
 Time: 0.002s">
-<div class="time" style="width: 0.58651026392962%"></div>
+<div class="time" style="width: 0.85106382978723%"></div>
 <pre>
       refine ((inv_V _)^ @ _ @ inv_V _); apply inverse2.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 581
+Line: 580
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
       refine (_ @ pr2_path (equiv_O_factor_hfibers_beta f fact fact' a)).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 582
+Line: 581
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
       refine (_ @ (transport_paths_Fl _ _)^).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 583
+Line: 582
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2821,37 +2802,37 @@ Time: 0s">
      </pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 585
+Line: 584
 Time: 0.005s">
-<div class="time" style="width: 1.466275659824%"></div>
+<div class="time" style="width: 2.1276595744681%"></div>
 <pre>match goal with
           |- ((?p)^ @ ?q)^ = _ @ _ =&gt; change ((p^ @ q)^ = q^ @ p)
       end.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 587
+Line: 586
 Time: 0.003s">
-<div class="time" style="width: 0.87976539589443%"></div>
+<div class="time" style="width: 1.2765957446809%"></div>
 <pre>
       refine (inv_pp _ _ @ (1 @@ inv_V _)).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 588
-Time: 0.042s">
-<div class="time" style="width: 12.316715542522%"></div>
+Line: 587
+Time: 0.04s">
+<div class="time" style="width: 17.021276595745%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 589
-Time: 0.021s">
-<div class="time" style="width: 6.158357771261%"></div>
+Line: 588
+Time: 0.032s">
+<div class="time" style="width: 13.617021276596%"></div>
 <pre>
 
 End ModalFact.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 591
+Line: 590
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2859,7 +2840,7 @@ Time: 0s">
 End Modalities_Theory.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 593
+Line: 592
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2869,13 +2850,13 @@ Time: 0s">
 (** This is just like restriction of reflective subuniverses. *)</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 597
+Line: 596
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Module Type Modalities_Restriction_Data (Os : Modalities).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 597
+Line: 596
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2883,7 +2864,7 @@ Time: 0s">
   Parameter New_Modality : Type2@{u a}.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 599
+Line: 598
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2892,7 +2873,7 @@ Time: 0s">
   : New_Modality -&gt; Os.Modality.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 602
+Line: 601
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2900,7 +2881,7 @@ Time: 0s">
 End Modalities_Restriction_Data.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 604
+Line: 603
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2911,7 +2892,7 @@ Module Modalities_Restriction
 &lt;: Modalities.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 609
+Line: 608
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2919,7 +2900,7 @@ Time: 0s">
   Definition Modality := Res.New_Modality.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 611
+Line: 610
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2928,7 +2909,7 @@ Time: 0s">
     := Os.O_reflector@{u a i} (Res.Modalities_restriction O).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 614
+Line: 613
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2936,7 +2917,7 @@ Time: 0s">
     := Os.In@{u a i} (Res.Modalities_restriction O).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 616
+Line: 615
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2944,7 +2925,7 @@ Time: 0s">
     := Os.O_inO@{u a i} (Res.Modalities_restriction O).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 618
+Line: 617
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2952,7 +2933,7 @@ Time: 0s">
     := Os.to@{u a i} (Res.Modalities_restriction O).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 620
+Line: 619
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2960,7 +2941,7 @@ Time: 0s">
     := Os.inO_equiv_inO@{u a i j k} (Res.Modalities_restriction O).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 622
+Line: 621
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2968,7 +2949,7 @@ Time: 0s">
     := Os.hprop_inO@{u a i} H (Res.Modalities_restriction O).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 624
+Line: 623
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2976,7 +2957,7 @@ Time: 0s">
     := Os.O_ind_internal@{u a i j k} (Res.Modalities_restriction O).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 626
+Line: 625
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2984,7 +2965,7 @@ Time: 0s">
     := Os.O_ind_beta_internal@{u a i j k} (Res.Modalities_restriction O).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 628
+Line: 627
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2992,7 +2973,7 @@ Time: 0s">
     := Os.minO_paths@{u a i} (Res.Modalities_restriction O).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 630
+Line: 629
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3000,7 +2981,7 @@ Time: 0s">
 End Modalities_Restriction.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 632
+Line: 631
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3010,14 +2991,14 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 635
+Line: 634
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Module Modalities_FamUnion (Os1 Os2 : Modalities)
        &lt;: Modalities.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 636
+Line: 635
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3026,7 +3007,7 @@ Time: 0s">
     := Os1.Modality@{u a} + Os2.Modality@{u a}.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 639
+Line: 638
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3034,14 +3015,14 @@ Time: 0s">
   Coercion Mod_inl := inl : Os1.Modality -&gt; Modality.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 641
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 640
+Time: 0.003s">
+<div class="time" style="width: 1.2765957446809%"></div>
 <pre>
   Coercion Mod_inr := inr : Os2.Modality -&gt; Modality.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 642
+Line: 641
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3050,14 +3031,14 @@ Time: 0s">
                             Type2le@{i a} -&gt; Type2le@{i a}.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 645
+Line: 644
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 646
+Line: 645
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3065,14 +3046,14 @@ Time: 0s">
                   | exact (Os2.O_reflector@{u a i} O) ].</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 648
+Line: 647
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 649
+Line: 648
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3081,14 +3062,14 @@ Time: 0s">
                             Type2le@{i a} -&gt; Type2le@{i a}.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 652
+Line: 651
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 653
+Line: 652
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3096,14 +3077,14 @@ Time: 0s">
                   | exact (Os2.In@{u a i} O) ].</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 655
+Line: 654
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 656
+Line: 655
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3112,14 +3093,14 @@ Time: 0s">
                                In@{u a i} O (O_reflector@{u a i} O T).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 659
+Line: 658
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 660
+Line: 659
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3127,14 +3108,14 @@ Time: 0s">
                   | exact (Os2.O_inO@{u a i} O) ].</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 662
+Line: 661
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 663
+Line: 662
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3143,14 +3124,14 @@ Time: 0s">
                    T -&gt; O_reflector@{u a i} O T.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 666
+Line: 665
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 667
+Line: 666
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3158,14 +3139,14 @@ Time: 0s">
                   | exact (Os2.to@{u a i} O) ].</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 669
+Line: 668
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 670
+Line: 669
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3176,14 +3157,14 @@ Time: 0s">
         In@{u a j} O U.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 675
+Line: 674
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 676
+Line: 675
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3191,14 +3172,14 @@ Time: 0s">
                   | exact (Os2.inO_equiv_inO@{u a i j k} O) ].</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 678
+Line: 677
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 679
+Line: 678
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3208,14 +3189,14 @@ Time: 0s">
                 IsHProp (In@{u a i} O T).</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 683
+Line: 682
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 684
+Line: 683
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3223,14 +3204,14 @@ Time: 0s">
                     | exact (Os2.hprop_inO@{u a i} _ O) ].</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 686
+Line: 685
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 687
+Line: 686
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3242,14 +3223,14 @@ Time: 0s">
       (forall a, B (to O A a)) -&gt; forall a, B a.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 693
+Line: 692
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 694
+Line: 693
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3257,16 +3238,16 @@ Time: 0s">
                   | exact (Os2.O_ind_internal@{u a i j k} O) ].</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 696
+Line: 695
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 697
-Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+Line: 696
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
   Definition O_ind_beta_internal
@@ -3277,29 +3258,29 @@ Time: 0.001s">
       O_ind_internal@{u a i j k} O A B B_inO f (to O A a) = f a.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 704
+Line: 703
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 705
-Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+Line: 704
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
     intros [O|O]; [ exact (Os1.O_ind_beta_internal@{u a i j k} O)
                   | exact (Os2.O_ind_beta_internal@{u a i j k} O) ].</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 707
+Line: 706
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 708
+Line: 707
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3310,14 +3291,14 @@ Time: 0s">
       In@{u a i} O (z = z').</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 713
+Line: 712
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 714
+Line: 713
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3325,22 +3306,22 @@ Time: 0s">
                   | exact (Os2.minO_paths@{u a i} O) ].</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 716
+Line: 715
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 717
+Line: 716
 Time: 0.001s">
-<div class="time" style="width: 0.29325513196481%"></div>
+<div class="time" style="width: 0.42553191489362%"></div>
 <pre>
 
 End Modalities_FamUnion.</pre>
 </div>
 <div class="code" title="File: Modality.v
-Line: 720
+Line: 719
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
