@@ -39,7 +39,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 2
 Time: 0.017s">
-<div class="time" style="width: 18.888888888889%"></div>
+<div class="time" style="width: 18.478260869565%"></div>
 <pre>Require Import Basics.</pre>
 </div>
 <div class="code" title="File: Core.v
@@ -57,7 +57,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 7
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>Class IsGraph (A : Type) :=
 {
   Hom : A -&gt; A -&gt; Type
@@ -83,8 +83,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 16
-Time: 0.002s">
-<div class="time" style="width: 2.2222222222222%"></div>
+Time: 0.003s">
+<div class="time" style="width: 3.2608695652174%"></div>
 <pre>Class Is01Cat (A : Type) := Build_Is01Cat'
 {
   isgraph_1cat : IsGraph A;
@@ -116,8 +116,8 @@ Notation "g $o f" := (cat_comp g f).</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 25
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 
 Definition Build_Is01Cat A
@@ -138,14 +138,14 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 34
 Time: 0.002s">
-<div class="time" style="width: 2.2222222222222%"></div>
+<div class="time" style="width: 2.1739130434783%"></div>
 <pre>Class Is0Gpd (A : Type) `{Is01Cat A} :=
   { gpd_rev : forall {a b : A}, (a $-&gt; b) -&gt; (b $-&gt; a) }.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 35
-Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
 Definition GpdHom {A} `{Is0Gpd A} (a b : A) := a $-&gt; b.</pre>
@@ -170,7 +170,7 @@ Global Instance reflexive_GpdHom {A} `{Is0Gpd A}
 <div class="code" title="File: Core.v
 Line: 42
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 
 Definition gpd_comp {A} `{Is0Gpd A} {a b c : A}
@@ -187,7 +187,7 @@ Infix "$@" := gpd_comp.</pre>
 <div class="code" title="File: Core.v
 Line: 47
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 
 Global Instance transitive_GpdHom {A} `{Is0Gpd A}
@@ -205,7 +205,7 @@ Notation "p ^$" := (gpd_rev p).</pre>
 <div class="code" title="File: Core.v
 Line: 53
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 
 Global Instance symmetric_GpdHom {A} `{Is0Gpd A}
@@ -214,8 +214,8 @@ Global Instance symmetric_GpdHom {A} `{Is0Gpd A}
 </div>
 <div class="code" title="File: Core.v
 Line: 57
-Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
 Definition GpdHom_path {A} `{Is0Gpd A} {a b : A} (p : a = b)
@@ -252,8 +252,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 65
-Time: 0.003s">
-<div class="time" style="width: 3.3333333333333%"></div>
+Time: 0.002s">
+<div class="time" style="width: 2.1739130434783%"></div>
 <pre>Class Is0Functor {A B : Type} `{IsGraph A} `{IsGraph B} (F : A -&gt; B)
   := { fmap : forall (a b : A) (f : a $-&gt; b), F a $-&gt; F b }.</pre>
 </div>
@@ -276,7 +276,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 70
 Time: 0.002s">
-<div class="time" style="width: 2.2222222222222%"></div>
+<div class="time" style="width: 2.1739130434783%"></div>
 <pre>Global Instance isgraph_prod A B `{IsGraph A} `{IsGraph B}
   : IsGraph (A * B)
   := Build_IsGraph (A * B) (fun x y =&gt; (fst x $-&gt; fst y) * (snd x $-&gt; snd y)).</pre>
@@ -300,7 +300,7 @@ Proof.</pre>
 <div class="code" title="File: Core.v
 Line: 76
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
   refine (Build_Is01Cat (A * B) (fun x y =&gt; (fst x $-&gt; fst y) * (snd x $-&gt; snd y)) _ _).</pre>
 </div>
@@ -313,8 +313,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 78
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre> intros [a b]; exact (Id a, Id b).</pre>
 </div>
 <div class="code" title="File: Core.v
@@ -327,7 +327,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 79
 Time: 0.003s">
-<div class="time" style="width: 3.3333333333333%"></div>
+<div class="time" style="width: 3.2608695652174%"></div>
 <pre> intros [a1 b1] [a2 b2] [a3 b3] [f1 g1] [f2 g2]; cbn in *.</pre>
 </div>
 <div class="code" title="File: Core.v
@@ -340,7 +340,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 80
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -354,8 +354,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 83
-Time: 0.006s">
-<div class="time" style="width: 6.6666666666667%"></div>
+Time: 0.004s">
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>Definition fmap11 {A B C : Type} `{IsGraph A} `{IsGraph B} `{IsGraph C}
   (F : A -&gt; B -&gt; C) {H2 : Is0Functor (uncurry F)}
   {a1 a2 : A} {b1 b2 : B} (f1 : a1 $-&gt; a2) (f2 : b1 $-&gt; b2)
@@ -375,8 +375,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 92
-Time: 0.022s">
-<div class="time" style="width: 24.444444444444%"></div>
+Time: 0.019s">
+<div class="time" style="width: 20.652173913043%"></div>
 <pre>Class Is1Cat (A : Type) `{Is01Cat A} :=
 {
   is01cat_hom : forall (a b : A), Is01Cat (a $-&gt; b) ;
@@ -432,8 +432,8 @@ Arguments cat_idr {_ _ _ _ _} f.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 107
-Time: 0.005s">
-<div class="time" style="width: 5.5555555555556%"></div>
+Time: 0.008s">
+<div class="time" style="width: 8.695652173913%"></div>
 <pre>
 
 Definition cat_assoc_opp {A : Type} `{Is1Cat A}
@@ -443,8 +443,8 @@ Definition cat_assoc_opp {A : Type} `{Is1Cat A}
 </div>
 <div class="code" title="File: Core.v
 Line: 112
-Time: 0.009s">
-<div class="time" style="width: 10%"></div>
+Time: 0.01s">
+<div class="time" style="width: 10.869565217391%"></div>
 <pre>
 
 Definition Comp2 {A} `{Is1Cat A} {a b c : A}
@@ -464,7 +464,7 @@ Infix "$o@" := Comp2.</pre>
 <div class="code" title="File: Core.v
 Line: 120
 Time: 0.005s">
-<div class="time" style="width: 5.5555555555556%"></div>
+<div class="time" style="width: 5.4347826086957%"></div>
 <pre>
 
 Definition WhiskerL_Htpy {A} `{Is1Cat A} {a b c : A}
@@ -481,8 +481,8 @@ Notation "h $@L p" := (WhiskerL_Htpy h p).</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 126
-Time: 0.005s">
-<div class="time" style="width: 5.5555555555556%"></div>
+Time: 0.004s">
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
 
 Definition WhiskerR_Htpy {A} `{Is1Cat A} {a b c : A}
@@ -507,8 +507,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 134
-Time: 0.016s">
-<div class="time" style="width: 17.777777777778%"></div>
+Time: 0.015s">
+<div class="time" style="width: 16.304347826087%"></div>
 <pre>Class Is1Cat_Strong (A : Type) `{Is01Cat A} := 
 {
   is01cat_hom_strong : forall (a b : A), Is01Cat (a $-&gt; b) ;
@@ -546,7 +546,7 @@ Arguments cat_idr_strong {_ _ _ _ _} f.</pre>
 <div class="code" title="File: Core.v
 Line: 148
 Time: 0.004s">
-<div class="time" style="width: 4.4444444444444%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
 
 Definition cat_assoc_opp_strong {A : Type} `{Is1Cat_Strong A}
@@ -573,7 +573,7 @@ Proof.</pre>
 <div class="code" title="File: Core.v
 Line: 157
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
   srefine (Build_Is1Cat A _ _ _ _ _ _ _).</pre>
 </div>
@@ -632,8 +632,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 163
-Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre> intros; apply GpdHom_path, cat_assoc_strong.</pre>
 </div>
 <div class="code" title="File: Core.v
@@ -645,8 +645,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 164
-Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre> intros; apply GpdHom_path, cat_idl_strong.</pre>
 </div>
 <div class="code" title="File: Core.v
@@ -658,14 +658,14 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 165
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre> intros; apply GpdHom_path, cat_idr_strong.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 165
-Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -680,7 +680,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 168
 Time: 0.006s">
-<div class="time" style="width: 6.6666666666667%"></div>
+<div class="time" style="width: 6.5217391304348%"></div>
 <pre>Class HasMorExt (A : Type) `{Is1Cat A} :=
   { isequiv_Htpy_path : forall a b f g, IsEquiv (@GpdHom_path (a $-&gt; b) _ _ f g) }.</pre>
 </div>
@@ -693,8 +693,8 @@ Global Existing Instance isequiv_Htpy_path.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 170
-Time: 0.004s">
-<div class="time" style="width: 4.4444444444444%"></div>
+Time: 0.006s">
+<div class="time" style="width: 6.5217391304348%"></div>
 <pre>
 
 Definition path_hom {A} `{HasMorExt A} {a b : A} {f g : a $-&gt; b} (p : f $== g) : f = g
@@ -711,7 +711,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 175
 Time: 0.023s">
-<div class="time" style="width: 25.555555555556%"></div>
+<div class="time" style="width: 25%"></div>
 <pre>Class Is1Functor {A B : Type} `{Is1Cat A} `{Is1Cat B}
   (* The [!] tells Coq to use typeclass search to find the [IsGraph] parameters of [Is0Functor] instead of assuming additional copies of them. *)
       (F : A -&gt; B) `{!Is0Functor F} :=
@@ -781,7 +781,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 196
 Time: 0.01s">
-<div class="time" style="width: 11.111111111111%"></div>
+<div class="time" style="width: 10.869565217391%"></div>
 <pre>Class Is1Natural {A B : Type} `{IsGraph A} `{Is1Cat B}
       (F : A -&gt; B) `{!Is0Functor F} (G : A -&gt; B) `{!Is0Functor G}
       (alpha : F $=&gt; G) :=
@@ -800,8 +800,8 @@ Arguments isnat {_ _ _ _ _ _ _ _ _} alpha {alnat _ _} f : rename.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 204
-Time: 0.01s">
-<div class="time" style="width: 11.111111111111%"></div>
+Time: 0.008s">
+<div class="time" style="width: 8.695652173913%"></div>
 <pre>
 
 Definition isnat_opp {A B : Type} `{IsGraph A} `{Is1Cat B}
@@ -813,8 +813,8 @@ Definition isnat_opp {A B : Type} `{IsGraph A} `{Is1Cat B}
 </div>
 <div class="code" title="File: Core.v
 Line: 211
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 
 Definition id_transformation {A B : Type} `{Is01Cat B} (F : A -&gt; B)
@@ -824,7 +824,7 @@ Definition id_transformation {A B : Type} `{Is01Cat B} (F : A -&gt; B)
 <div class="code" title="File: Core.v
 Line: 215
 Time: 0.002s">
-<div class="time" style="width: 2.2222222222222%"></div>
+<div class="time" style="width: 2.1739130434783%"></div>
 <pre>
 
 Global Instance is1natural_id {A B : Type} `{IsGraph A} `{Is1Cat B}
@@ -848,21 +848,21 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 221
 Time: 0.002s">
-<div class="time" style="width: 2.2222222222222%"></div>
+<div class="time" style="width: 2.1739130434783%"></div>
 <pre>
   refine (cat_idl (fmap F f) $@ (cat_idr (fmap F f))^$).</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 222
-Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 223
 Time: 0.002s">
-<div class="time" style="width: 2.2222222222222%"></div>
+<div class="time" style="width: 2.1739130434783%"></div>
 <pre>
 
 Definition comp_transformation {A B : Type} `{Is01Cat B}
@@ -873,7 +873,7 @@ Definition comp_transformation {A B : Type} `{Is01Cat B}
 <div class="code" title="File: Core.v
 Line: 228
 Time: 0.009s">
-<div class="time" style="width: 10%"></div>
+<div class="time" style="width: 9.7826086956522%"></div>
 <pre>
 
 Global Instance is1natural_comp {A B : Type} `{IsGraph A} `{Is1Cat B}
@@ -898,43 +898,43 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 236
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
   refine (cat_assoc _ _ _ $@ _).</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 237
 Time: 0.002s">
-<div class="time" style="width: 2.2222222222222%"></div>
+<div class="time" style="width: 2.1739130434783%"></div>
 <pre>
   refine ((gamma b $@L isnat alpha f) $@ _).</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 238
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
   refine (cat_assoc_opp _ _ _ $@ _).</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 239
 Time: 0.002s">
-<div class="time" style="width: 2.2222222222222%"></div>
+<div class="time" style="width: 2.1739130434783%"></div>
 <pre>
   refine ((isnat gamma f) $@R alpha a $@ _).</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 240
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
   exact (cat_assoc _ _ _).</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 241
-Time: 0.003s">
-<div class="time" style="width: 3.3333333333333%"></div>
+Time: 0.004s">
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -948,8 +948,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 244
-Time: 0.008s">
-<div class="time" style="width: 8.8888888888889%"></div>
+Time: 0.009s">
+<div class="time" style="width: 9.7826086956522%"></div>
 <pre>Definition is1natural_homotopic {A B : Type} `{Is01Cat A} `{Is1Cat B}
       {F : A -&gt; B} `{!Is0Functor F} {G : A -&gt; B} `{!Is0Functor G}
       {alpha : F $=&gt; G} (gamma : F $=&gt; G) `{!Is1Natural F G gamma}
@@ -965,36 +965,36 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 249
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
   refine (Build_Is1Natural _ _ _ _ _ F _ G _ alpha _); intros a b f.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 250
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
   refine ((p b $@R fmap F f) $@ _).</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 251
 Time: 0.002s">
-<div class="time" style="width: 2.2222222222222%"></div>
+<div class="time" style="width: 2.1739130434783%"></div>
 <pre>
   refine (_ $@ (fmap G f $@L (p a)^$)).</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 252
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
   apply (isnat gamma).</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 253
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -1024,8 +1024,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 259
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 
   Global Instance is0functor_idmap : Is0Functor idmap.</pre>
@@ -1053,8 +1053,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 264
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 
   Global Instance is1functor_idmap : Is1Functor idmap.</pre>
@@ -1069,7 +1069,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 267
 Time: 0.023s">
-<div class="time" style="width: 25.555555555556%"></div>
+<div class="time" style="width: 25%"></div>
 <pre>
     by apply Build_Is1Functor.</pre>
 </div>
@@ -1132,7 +1132,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 281
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
     serapply Build_Is0Functor.</pre>
 </div>
@@ -1153,7 +1153,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 284
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 
   Global Instance is1functor_const
@@ -1170,7 +1170,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 289
 Time: 0.006s">
-<div class="time" style="width: 6.6666666666667%"></div>
+<div class="time" style="width: 6.5217391304348%"></div>
 <pre>
     serapply Build_Is1Functor.</pre>
 </div>
@@ -1242,8 +1242,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 296
-Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
 End ConstantFunctor.</pre>
@@ -1266,8 +1266,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 301
-Time: 0.005s">
-<div class="time" style="width: 5.5555555555556%"></div>
+Time: 0.004s">
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
 
   Context {A B C : Type} `{Is1Cat A} `{Is1Cat B} `{Is1Cat C}
@@ -1277,7 +1277,7 @@ Time: 0.005s">
 <div class="code" title="File: Core.v
 Line: 305
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 
   Global Instance is0functor_compose : Is0Functor (G o F).</pre>
@@ -1292,14 +1292,14 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 308
 Time: 0.003s">
-<div class="time" style="width: 3.3333333333333%"></div>
+<div class="time" style="width: 3.2608695652174%"></div>
 <pre>
     srapply Build_Is0Functor.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 309
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
     intros a b f; exact (fmap G (fmap F f)).</pre>
 </div>
@@ -1313,7 +1313,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 311
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 
   Global Instance is1functor_compose : Is1Functor (G o F).</pre>
@@ -1328,7 +1328,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 314
 Time: 0.007s">
-<div class="time" style="width: 7.7777777777778%"></div>
+<div class="time" style="width: 7.6086956521739%"></div>
 <pre>
     srapply Build_Is1Functor.</pre>
 </div>
@@ -1342,7 +1342,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 316
 Time: 0.002s">
-<div class="time" style="width: 2.2222222222222%"></div>
+<div class="time" style="width: 2.1739130434783%"></div>
 <pre> intros a b f g p; exact (fmap2 G (fmap2 F p)).</pre>
 </div>
 <div class="code" title="File: Core.v
@@ -1355,7 +1355,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 317
 Time: 0.003s">
-<div class="time" style="width: 3.3333333333333%"></div>
+<div class="time" style="width: 3.2608695652174%"></div>
 <pre> intros a; exact (fmap2 G (fmap_id F a) $@ fmap_id G (F a)).</pre>
 </div>
 <div class="code" title="File: Core.v
@@ -1374,28 +1374,28 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 318
 Time: 0.003s">
-<div class="time" style="width: 3.3333333333333%"></div>
+<div class="time" style="width: 3.2608695652174%"></div>
 <pre>
       refine (fmap2 G (fmap_comp F f g) $@ _).</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 319
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
       exact (fmap_comp G (fmap F f) (fmap F g)).</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 320
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 321
 Time: 0.002s">
-<div class="time" style="width: 2.2222222222222%"></div>
+<div class="time" style="width: 2.1739130434783%"></div>
 <pre>
 
 End CompositeFunctor.</pre>
@@ -1413,7 +1413,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 326
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>Global Instance is0gpd_prod A B `{Is0Gpd A} `{Is0Gpd B}
  : Is0Gpd (A * B).</pre>
 </div>
@@ -1434,7 +1434,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 329
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
   intros [x1 x2] [y1 y2] [f1 f2].</pre>
 </div>
@@ -1462,7 +1462,7 @@ Defined.</pre>
 <div class="code" title="File: Core.v
 Line: 333
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 
 Global Instance is1cat_prod A B `{Is1Cat A} `{Is1Cat B}
@@ -1477,7 +1477,7 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 337
-Time: 0.09s">
+Time: 0.092s">
 <div class="time" style="width: 100%"></div>
 <pre>
   serapply (Build_Is1Cat).</pre>
@@ -1498,7 +1498,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 339
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
     rapply is01cat_prod.</pre>
 </div>
@@ -1512,7 +1512,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 341
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre> intros [x1 x2] [y1 y2].</pre>
 </div>
 <div class="code" title="File: Core.v
@@ -1572,13 +1572,13 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 347
 Time: 0.005s">
-<div class="time" style="width: 5.5555555555556%"></div>
+<div class="time" style="width: 5.4347826086957%"></div>
 <pre> intros [x1 x2] [y1 y2] [z1 z2].</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 347
 Time: 0.004s">
-<div class="time" style="width: 4.4444444444444%"></div>
+<div class="time" style="width: 4.3478260869565%"></div>
 <pre>
     serapply Build_Is0Functor.</pre>
 </div>
@@ -1598,14 +1598,14 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 349
 Time: 0.007s">
-<div class="time" style="width: 7.7777777777778%"></div>
+<div class="time" style="width: 7.6086956521739%"></div>
 <pre>
     destruct f as [[f11 f12] [f21 f22]].</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 350
-Time: 0.011s">
-<div class="time" style="width: 12.222222222222%"></div>
+Time: 0.012s">
+<div class="time" style="width: 13.04347826087%"></div>
 <pre>
     destruct g as [[g11 g12] [g21 g22]].</pre>
 </div>
@@ -1625,13 +1625,13 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 352
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre> destruct a as [[a11 a12][a21 a22]].</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 352
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
     exact ( a11 $o@ a21, a12 $o@ a22).</pre>
 </div>
@@ -1644,8 +1644,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 354
-Time: 0.019s">
-<div class="time" style="width: 21.111111111111%"></div>
+Time: 0.018s">
+<div class="time" style="width: 19.565217391304%"></div>
 <pre> intros [a1 a2] [b1 b2] [c1 c2] [d1 d2] [f1 f2] [g1 g2] [h1 h2].</pre>
 </div>
 <div class="code" title="File: Core.v
@@ -1658,7 +1658,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 355
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre> 
     exact(cat_assoc f1 g1 h1, cat_assoc f2 g2 h2).</pre>
 </div>
@@ -1672,7 +1672,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 357
 Time: 0.005s">
-<div class="time" style="width: 5.5555555555556%"></div>
+<div class="time" style="width: 5.4347826086957%"></div>
 <pre> intros [a1 a2] [b1 b2] [f1 f2].</pre>
 </div>
 <div class="code" title="File: Core.v
@@ -1699,7 +1699,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 360
 Time: 0.005s">
-<div class="time" style="width: 5.5555555555556%"></div>
+<div class="time" style="width: 5.4347826086957%"></div>
 <pre> intros [a1 a2] [b1 b2] [g1 g2].</pre>
 </div>
 <div class="code" title="File: Core.v
@@ -1719,7 +1719,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 362
 Time: 0.011s">
-<div class="time" style="width: 12.222222222222%"></div>
+<div class="time" style="width: 11.95652173913%"></div>
 <pre> 
 Defined.</pre>
 </div>
@@ -1736,7 +1736,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 366
 Time: 0.006s">
-<div class="time" style="width: 6.6666666666667%"></div>
+<div class="time" style="width: 6.5217391304348%"></div>
 <pre>Class Is1Gpd (A : Type) `{Is1Cat A, !Is0Gpd A} :=
 { 
   gpd_issect : forall {a b : A} (f : a $-&gt; b), f^$ $o f $== Id a ;
@@ -1756,7 +1756,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 373
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>Definition cat_comp_lassoc {A : Type} `{Is1Cat A} (a b c d : A)
   : (a $-&gt; b) * (b $-&gt; c) * (c $-&gt; d) -&gt; a $-&gt; d.</pre>
 </div>
@@ -1791,7 +1791,7 @@ Defined.</pre>
 <div class="code" title="File: Core.v
 Line: 378
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 
 Definition cat_comp_rassoc {A : Type} `{Is1Cat A} (a b c d : A)
@@ -1828,7 +1828,7 @@ Defined.</pre>
 <div class="code" title="File: Core.v
 Line: 385
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 
 Global Instance is01cat_cat_assoc_dom {A : Type} `{Is1Cat A}
@@ -1844,7 +1844,7 @@ Proof.</pre>
 <div class="code" title="File: Core.v
 Line: 389
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
   rapply is01cat_prod.</pre>
 </div>
@@ -1858,7 +1858,7 @@ Defined.</pre>
 <div class="code" title="File: Core.v
 Line: 391
 Time: 0.002s">
-<div class="time" style="width: 2.2222222222222%"></div>
+<div class="time" style="width: 2.1739130434783%"></div>
 <pre>
 
 Global Instance is0functor_cat_comp_lassoc
@@ -1881,23 +1881,23 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 397
-Time: 0.013s">
-<div class="time" style="width: 14.444444444444%"></div>
+Time: 0.012s">
+<div class="time" style="width: 13.04347826087%"></div>
 <pre>
   intros [[f g] h] [[f' g'] h'] [[al be] ga] ;
     exact (fmap11 cat_comp (fmap11 cat_comp ga be) al).</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 399
-Time: 0.003s">
-<div class="time" style="width: 3.3333333333333%"></div>
+Time: 0.002s">
+<div class="time" style="width: 2.1739130434783%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 400
 Time: 0.002s">
-<div class="time" style="width: 2.2222222222222%"></div>
+<div class="time" style="width: 2.1739130434783%"></div>
 <pre>
 
 Global Instance is0functor_cat_comp_rassoc
@@ -1921,7 +1921,7 @@ Time: 0s">
 <div class="code" title="File: Core.v
 Line: 406
 Time: 0.017s">
-<div class="time" style="width: 18.888888888889%"></div>
+<div class="time" style="width: 18.478260869565%"></div>
 <pre>
   intros [[f g] h] [[f' g'] h'] [[al be] ga] ;
     exact (fmap11 cat_comp ga (fmap11 cat_comp be al)).</pre>
@@ -1929,14 +1929,14 @@ Time: 0.017s">
 <div class="code" title="File: Core.v
 Line: 408
 Time: 0.003s">
-<div class="time" style="width: 3.3333333333333%"></div>
+<div class="time" style="width: 3.2608695652174%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 409
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 
 Definition cat_assoc_transformation {A : Type} `{Is1Cat A} {a b c d : A}
@@ -1952,7 +1952,7 @@ Proof.</pre>
 <div class="code" title="File: Core.v
 Line: 413
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
   intros [[f g] h] ; exact (cat_assoc f g h).</pre>
 </div>
@@ -1966,7 +1966,7 @@ Defined.</pre>
 <div class="code" title="File: Core.v
 Line: 415
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 
 Definition cat_comp_idl {A : Type} `{Is1Cat A} (a b : A)
@@ -1976,7 +1976,7 @@ Definition cat_comp_idl {A : Type} `{Is1Cat A} (a b : A)
 <div class="code" title="File: Core.v
 Line: 419
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 
 Global Instance is0functor_cat_comp_idl {A : Type} `{Is1Cat A} (a b : A)
@@ -2020,7 +2020,7 @@ Defined.</pre>
 <div class="code" title="File: Core.v
 Line: 427
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 
 Definition cat_idl_transformation {A : Type} `{Is1Cat A} {a b : A}
@@ -2050,7 +2050,7 @@ Defined.</pre>
 <div class="code" title="File: Core.v
 Line: 433
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 
 Definition cat_comp_idr {A : Type} `{Is1Cat A} (a b : A)
@@ -2060,7 +2060,7 @@ Definition cat_comp_idr {A : Type} `{Is1Cat A} (a b : A)
 <div class="code" title="File: Core.v
 Line: 437
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 
 Global Instance is0functor_cat_comp_idr {A : Type} `{Is1Cat A} (a b : A)
@@ -2104,7 +2104,7 @@ Defined.</pre>
 <div class="code" title="File: Core.v
 Line: 445
 Time: 0.001s">
-<div class="time" style="width: 1.1111111111111%"></div>
+<div class="time" style="width: 1.0869565217391%"></div>
 <pre>
 
 Definition cat_idr_transformation {A : Type} `{Is1Cat A} {a b : A}
@@ -2134,7 +2134,7 @@ Defined.</pre>
 <div class="code" title="File: Core.v
 Line: 451
 Time: 0.072s">
-<div class="time" style="width: 80%"></div>
+<div class="time" style="width: 78.260869565217%"></div>
 <pre>
 
 Class Is21Cat (A : Type) `{Is1Cat A} :=
@@ -2186,7 +2186,7 @@ Global Existing Instance is1gpd_hom.</pre>
 <div class="code" title="File: Core.v
 Line: 485
 Time: 0.007s">
-<div class="time" style="width: 7.7777777777778%"></div>
+<div class="time" style="width: 7.6086956521739%"></div>
 <pre>
 Global Existing Instance is1functor_comp.</pre>
 </div>
