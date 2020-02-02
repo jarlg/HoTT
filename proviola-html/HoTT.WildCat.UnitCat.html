@@ -138,12 +138,12 @@
           
 
             i = 24;
-            data = "4 subgoals (ID 151)	  	  a, b, c : Unit	  ============================	  Is0Functor (uncurry cat_comp)		subgoal 2 (ID 158) is:	 (h $o g) $o f $== h $o (g $o f)	subgoal 3 (ID 161) is:	 Id b $o f $== f	subgoal 4 (ID 164) is:	 f $o Id a $== f	";
+            data = "5 subgoals (ID 28)	  	  ============================	  forall (a b c : Unit) (g : b $-> c), Is0Functor (cat_postcomp a g)		subgoal 2 (ID 29) is:	 forall (a b c : Unit) (f : a $-> b), Is0Functor (cat_precomp c f)	subgoal 3 (ID 30) is:	 forall (a b c d : Unit) (f : a $-> b) (g : b $-> c) 	 (h : c $-> d), (h $o g) $o f $== h $o (g $o f)	subgoal 4 (ID 31) is:	 forall (a b : Unit) (f : a $-> b), Id b $o f $== f	subgoal 5 (ID 32) is:	 forall (a b : Unit) (f : a $-> b), f $o Id a $== f	";
             responses[i]=data;
           
 
             i = 25;
-            data = "4 subgoals (ID 226)	  	  a, b, c : Unit	  a0, b0 : (b $-> c) * (a $-> b)	  f : a0 $-> b0	  ============================	  uncurry cat_comp a0 $-> uncurry cat_comp b0		subgoal 2 (ID 158) is:	 (h $o g) $o f $== h $o (g $o f)	subgoal 3 (ID 161) is:	 Id b $o f $== f	subgoal 4 (ID 164) is:	 f $o Id a $== f	";
+            data = "5 subgoals (ID 38)	  	  a, b, c : Unit	  g : b $-> c	  ============================	  forall a0 b0 : a $-> b,	  (a0 $-> b0) -> cat_postcomp a g a0 $-> cat_postcomp a g b0		subgoal 2 (ID 44) is:	 forall a0 b0 : b $-> c,	 (a0 $-> b0) -> cat_precomp c f a0 $-> cat_precomp c f b0	subgoal 3 (ID 30) is:	 forall (a b c d : Unit) (f : a $-> b) (g : b $-> c) 	 (h : c $-> d), (h $o g) $o f $== h $o (g $o f)	subgoal 4 (ID 31) is:	 forall (a b : Unit) (f : a $-> b), Id b $o f $== f	subgoal 5 (ID 32) is:	 forall (a b : Unit) (f : a $-> b), f $o Id a $== f	";
             responses[i]=data;
           
 
@@ -324,17 +324,17 @@ Unit category
       " onmouseover="
       mouseover(24, '0_3_7');
       "><br>
-  <span class="id" title="tactic">simple</span> <span class="id" title="var">notypeclasses</span> <span class="id" title="tactic">refine</span> (<a class="idref" href="HoTT.WildCat.Core.html#Build_Is1Cat"><span class="id" title="constructor">Build_Is1Cat</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span>); <span class="id" title="tactic">try</span> <span class="id" title="tactic">exact</span> <span class="id" title="var">_</span>; <span class="id" title="tactic">intros</span>.</span><span class="command" onmouseout="
+  <span class="id" title="tactic">econstructor</span>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
       mouseover(25, '0_3_7');
       "><br>
-  1:<span class="id" title="var">rapply</span> <a class="idref" href="HoTT.WildCat.Core.html#Build_Is0Functor"><span class="id" title="constructor">Build_Is0Functor</span></a>; <span class="id" title="tactic">intros</span>.</span><span class="command" onmouseout="
+  1,2:<span class="id" title="tactic">econstructor</span>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
       mouseover(26, '0_3_7');
       "><br>
-  <span class="id" title="var">all</span>:<span class="id" title="tactic">exact</span> <a class="idref" href="HoTT.Basics.Overture.html#tt"><span class="id" title="constructor">tt</span></a>.</span><span class="command" onmouseout="
+  <span class="id" title="var">all</span>:<span class="id" title="tactic">intros</span>; <span class="id" title="tactic">exact</span> <a class="idref" href="HoTT.Basics.Overture.html#tt"><span class="id" title="constructor">tt</span></a>.</span><span class="command" onmouseout="
       mouseout('0_3_7');
       " onmouseover="
       mouseover(27, '0_3_7');
