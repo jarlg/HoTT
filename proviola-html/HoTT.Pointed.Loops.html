@@ -498,12 +498,12 @@
           
 
             i = 96;
-            data = "";
+            data = "No more subgoals.	1 subgoal (ID 492)	  	  n : nat	  A : pType	  B : pType	  C : pType	  f : B ->* C	  g : A ->* B	  ============================	  iterated_loops_functor n (f o* g) ==*	  iterated_loops_functor n f o* iterated_loops_functor n g	";
             responses[i]=data;
           
 
             i = 97;
-            data = "No more subgoals.	1 subgoal (ID 492)	  	  n : nat	  A : pType	  B : pType	  C : pType	  f : B ->* C	  g : A ->* B	  ============================	  iterated_loops_functor n (f o* g) ==*	  iterated_loops_functor n f o* iterated_loops_functor n g	2 subgoals (ID 502)	  	  A : pType	  B : pType	  C : pType	  f : B ->* C	  g : A ->* B	  ============================	  f o* g ==* f o* g		subgoal 2 (ID 504) is:	 loops_functor	   (nat_rect	      (fun n0 : nat =>	       (A ->* C) -> iterated_loops n0 A ->* iterated_loops n0 C) idmap	      (fun (n0 : nat)	         (IHn0 : (A ->* C) -> iterated_loops n0 A ->* iterated_loops n0 C)	         (x : A ->* C) => loops_functor (IHn0 x)) n 	      (f o* g)) ==*	 loops_functor	   (nat_rect	      (fun n0 : nat =>	       (B ->* C) -> iterated_loops n0 B ->* iterated_loops n0 C) idmap	      (fun (n0 : nat)	         (IHn0 : (B ->* C) -> iterated_loops n0 B ->* iterated_loops n0 C)	         (x : B ->* C) => loops_functor (IHn0 x)) n f)	 o* loops_functor	      (nat_rect	         (fun n0 : nat =>	          (A ->* B) -> iterated_loops n0 A ->* iterated_loops n0 B) idmap	         (fun (n0 : nat)	            (IHn0 : (A ->* B) -> iterated_loops n0 A ->* iterated_loops n0 B)	            (x : A ->* B) => loops_functor (IHn0 x)) n g)	";
+            data = "2 subgoals (ID 502)	  	  A : pType	  B : pType	  C : pType	  f : B ->* C	  g : A ->* B	  ============================	  f o* g ==* f o* g		subgoal 2 (ID 504) is:	 loops_functor	   (nat_rect	      (fun n0 : nat =>	       (A ->* C) -> iterated_loops n0 A ->* iterated_loops n0 C) idmap	      (fun (n0 : nat)	         (IHn0 : (A ->* C) -> iterated_loops n0 A ->* iterated_loops n0 C)	         (x : A ->* C) => loops_functor (IHn0 x)) n 	      (f o* g)) ==*	 loops_functor	   (nat_rect	      (fun n0 : nat =>	       (B ->* C) -> iterated_loops n0 B ->* iterated_loops n0 C) idmap	      (fun (n0 : nat)	         (IHn0 : (B ->* C) -> iterated_loops n0 B ->* iterated_loops n0 C)	         (x : B ->* C) => loops_functor (IHn0 x)) n f)	 o* loops_functor	      (nat_rect	         (fun n0 : nat =>	          (A ->* B) -> iterated_loops n0 A ->* iterated_loops n0 B) idmap	         (fun (n0 : nat)	            (IHn0 : (A ->* B) -> iterated_loops n0 A ->* iterated_loops n0 B)	            (x : A ->* B) => loops_functor (IHn0 x)) n g)	";
             responses[i]=data;
           
 
@@ -663,12 +663,12 @@
           
 
             i = 129;
-            data = "1 subgoal (ID 1334)	  	  n : trunc_index	  A : pType	  B : pType	  f : A ->* B	  H : IsTruncMap n.+1 f	  p : loops B	  ============================	  IsTrunc n {q : loops A & ap f (1%equiv q) @ point_eq f = point_eq f @ p}	No more subgoals.	";
+            data = "";
             responses[i]=data;
           
 
             i = 130;
-            data = "";
+            data = "1 subgoal (ID 1334)	  	  n : trunc_index	  A : pType	  B : pType	  f : A ->* B	  H : IsTruncMap n.+1 f	  p : loops B	  ============================	  IsTrunc n {q : loops A & ap f (1%equiv q) @ point_eq f = point_eq f @ p}	No more subgoals.	";
             responses[i]=data;
           
 
@@ -1633,12 +1633,12 @@
           
 
             i = 323;
-            data = "2 subgoals (ID 2109)	  	  H : Univalence	  n : nat	  IHn : forall A : Type,	        IsTrunc n A <~> (forall a : A, Contr (iterated_loops n.+1 (A, a)))	  A : Type	  a : IsPointed A	  ============================	  (forall a0 : a = a,	   Contr	     (point (iterated_loops n (a = a, a0)) =	      point (iterated_loops n (a = a, a0)))) ->	  Contr	    (ispointed_loops (iterated_loops n (A, a))	       (point (iterated_loops n (A, a))) =	     ispointed_loops (iterated_loops n (A, a))	       (point (iterated_loops n (A, a))))		subgoal 2 (ID 2111) is:	 Contr	   (ispointed_loops (iterated_loops n (A, a))	      (point (iterated_loops n (A, a))) =	    ispointed_loops (iterated_loops n (A, a))	      (point (iterated_loops n (A, a)))) ->	 forall a0 : a = a,	 Contr	   (point (iterated_loops n (a = a, a0)) =	    point (iterated_loops n (a = a, a0)))	2 subgoals (ID 2115)	  	  H : Univalence	  n : nat	  IHn : forall A : Type,	        IsTrunc n A <~> (forall a : A, Contr (iterated_loops n.+1 (A, a)))	  A : Type	  a : IsPointed A	  ============================	  (forall p : a = a, Contr (iterated_loops n.+1 (loops (A, a), p))) ->	  Contr (iterated_loops n.+2 (A, a))		subgoal 2 (ID 2111) is:	 Contr	   (ispointed_loops (iterated_loops n (A, a))	      (point (iterated_loops n (A, a))) =	    ispointed_loops (iterated_loops n (A, a))	      (point (iterated_loops n (A, a)))) ->	 forall a0 : a = a,	 Contr	   (point (iterated_loops n (a = a, a0)) =	    point (iterated_loops n (a = a, a0)))	1 subgoal (ID 2111)	  	  H : Univalence	  n : nat	  IHn : forall A : Type,	        IsTrunc n A <~> (forall a : A, Contr (iterated_loops n.+1 (A, a)))	  A : Type	  a : IsPointed A	  ============================	  Contr	    (ispointed_loops (iterated_loops n (A, a))	       (point (iterated_loops n (A, a))) =	     ispointed_loops (iterated_loops n (A, a))	       (point (iterated_loops n (A, a)))) ->	  forall a0 : a = a,	  Contr	    (point (iterated_loops n (a = a, a0)) =	     point (iterated_loops n (a = a, a0)))	";
+            data = "";
             responses[i]=data;
           
 
             i = 324;
-            data = "1 subgoal (ID 2138)	  	  H : Univalence	  n : nat	  IHn : forall A : Type,	        IsTrunc n A <~> (forall a : A, Contr (iterated_loops n.+1 (A, a)))	  A : Type	  a : IsPointed A	  ============================	  Contr (iterated_loops n.+2 (A, a)) ->	  forall p : a = a, Contr (iterated_loops n.+1 (loops (A, a), p))	";
+            data = "2 subgoals (ID 2109)	  	  H : Univalence	  n : nat	  IHn : forall A : Type,	        IsTrunc n A <~> (forall a : A, Contr (iterated_loops n.+1 (A, a)))	  A : Type	  a : IsPointed A	  ============================	  (forall a0 : a = a,	   Contr	     (point (iterated_loops n (a = a, a0)) =	      point (iterated_loops n (a = a, a0)))) ->	  Contr	    (ispointed_loops (iterated_loops n (A, a))	       (point (iterated_loops n (A, a))) =	     ispointed_loops (iterated_loops n (A, a))	       (point (iterated_loops n (A, a))))		subgoal 2 (ID 2111) is:	 Contr	   (ispointed_loops (iterated_loops n (A, a))	      (point (iterated_loops n (A, a))) =	    ispointed_loops (iterated_loops n (A, a))	      (point (iterated_loops n (A, a)))) ->	 forall a0 : a = a,	 Contr	   (point (iterated_loops n (a = a, a0)) =	    point (iterated_loops n (a = a, a0)))	2 subgoals (ID 2115)	  	  H : Univalence	  n : nat	  IHn : forall A : Type,	        IsTrunc n A <~> (forall a : A, Contr (iterated_loops n.+1 (A, a)))	  A : Type	  a : IsPointed A	  ============================	  (forall p : a = a, Contr (iterated_loops n.+1 (loops (A, a), p))) ->	  Contr (iterated_loops n.+2 (A, a))		subgoal 2 (ID 2111) is:	 Contr	   (ispointed_loops (iterated_loops n (A, a))	      (point (iterated_loops n (A, a))) =	    ispointed_loops (iterated_loops n (A, a))	      (point (iterated_loops n (A, a)))) ->	 forall a0 : a = a,	 Contr	   (point (iterated_loops n (a = a, a0)) =	    point (iterated_loops n (a = a, a0)))	1 subgoal (ID 2111)	  	  H : Univalence	  n : nat	  IHn : forall A : Type,	        IsTrunc n A <~> (forall a : A, Contr (iterated_loops n.+1 (A, a)))	  A : Type	  a : IsPointed A	  ============================	  Contr	    (ispointed_loops (iterated_loops n (A, a))	       (point (iterated_loops n (A, a))) =	     ispointed_loops (iterated_loops n (A, a))	       (point (iterated_loops n (A, a)))) ->	  forall a0 : a = a,	  Contr	    (point (iterated_loops n (a = a, a0)) =	     point (iterated_loops n (a = a, a0)))	1 subgoal (ID 2138)	  	  H : Univalence	  n : nat	  IHn : forall A : Type,	        IsTrunc n A <~> (forall a : A, Contr (iterated_loops n.+1 (A, a)))	  A : Type	  a : IsPointed A	  ============================	  Contr (iterated_loops n.+2 (A, a)) ->	  forall p : a = a, Contr (iterated_loops n.+1 (loops (A, a), p))	";
             responses[i]=data;
           
 
@@ -1835,7 +1835,7 @@
 </div>
 <div class="goal" id="goal0_3_3"><pre><span></span></pre></div>
 <div class="doc" scenenumber="5">
-<a name="lab600"></a><h2 class="section">Loop spaces</h2>
+<a name="lab603"></a><h2 class="section">Loop spaces</h2>
 <div class="doc" scenenumber="4"> </div>
 
  The type <span class="inlinecode"><a class="idref" href="HoTT.Categories.Grothendieck.PseudofunctorToCat.html#x"><span class="id" title="projection">x</span></a></span> <span class="inlinecode">=</span> <span class="inlinecode"><a class="idref" href="HoTT.Categories.Grothendieck.PseudofunctorToCat.html#x"><span class="id" title="projection">x</span></a></span> is pointed. 
@@ -1949,7 +1949,7 @@ Similarly for connectedness.
 </div>
 <div class="goal" id="goal0_3_15"><pre><span></span></pre></div>
 <div class="doc" scenenumber="17">
-<a name="lab601"></a><h2 class="section">Functoriality of loop spaces</h2>
+<a name="lab604"></a><h2 class="section">Functoriality of loop spaces</h2>
 </div>
 <div scenenumber="19" class="code">
 <span class="command" onmouseout="
