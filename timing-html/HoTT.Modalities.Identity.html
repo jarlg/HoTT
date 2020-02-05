@@ -36,16 +36,16 @@ Time: 0s">
 </div>
 <div class="code" title="File: Identity.v
 Line: 1
-Time: 0.038s">
-<div class="time" style="width: 24.358974358974%"></div>
+Time: 0.048s">
+<div class="time" style="width: 16.608996539792%"></div>
 <pre>Require Import HoTT.Basics HoTT.Types.</pre>
 </div>
 <div class="code" title="File: Identity.v
 Line: 1
-Time: 0.133s">
-<div class="time" style="width: 85.25641025641%"></div>
+Time: 0.049s">
+<div class="time" style="width: 16.955017301038%"></div>
 <pre>
-Require Import Modality Accessible Nullification.</pre>
+Require Import Modality Accessible.</pre>
 </div>
 <div class="code" title="File: Identity.v
 Line: 2
@@ -70,8 +70,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Identity.v
 Line: 10
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.34602076124567%"></div>
 <pre>Inductive Identity_Modality : Type1
   := purely : Identity_Modality.</pre>
 </div>
@@ -134,8 +134,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Identity.v
 Line: 32
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.34602076124567%"></div>
 <pre>
 
   Definition inO_equiv_inO :
@@ -148,8 +148,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Identity.v
 Line: 40
-Time: 0.001s">
-<div class="time" style="width: 0.64102564102564%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
   Definition hprop_inO@{u a i}
@@ -159,8 +159,8 @@ Time: 0.001s">
 </div>
 <div class="code" title="File: Identity.v
 Line: 45
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.34602076124567%"></div>
 <pre>
 
   Definition O_ind_internal
@@ -174,8 +174,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Identity.v
 Line: 54
-Time: 0.001s">
-<div class="time" style="width: 0.64102564102564%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.69204152249135%"></div>
 <pre>
 
   Definition O_ind_beta_internal
@@ -204,32 +204,66 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
+  Definition IsSepFor@{u a}
+    : forall (O' O : Modality@{u a}), Type@{u}
+    := fun _ _ =&gt; Unit.</pre>
+</div>
+<div class="code" title="File: Identity.v
+Line: 72
+Time: 0.001s">
+<div class="time" style="width: 0.34602076124567%"></div>
+<pre>
+
+  Definition inO_paths_from_inSepO@{u a i iplus}
+    : forall (O' O : Modality@{u a}) (sep : IsSepFor O' O)
+             (A : Type@{i}) (A_inO : In@{u a i} O' A) (x y : A),
+      In@{u a i} O (x = y)
+    := fun _ _ _ _ _ _ _ =&gt; tt.</pre>
+</div>
+<div class="code" title="File: Identity.v
+Line: 78
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  Definition inSepO_from_inO_paths@{u a i iplus}
+    : forall (O' O : Modality@{u a}) (sep : IsSepFor O' O)
+             (A : Type@{i}),
+      (forall (x y : A), In@{u a i} O (x = y)) -&gt; In@{u a i} O' A
+    := fun _ _ _ _ _ =&gt; tt.</pre>
+</div>
+<div class="code" title="File: Identity.v
+Line: 84
+Time: 0.001s">
+<div class="time" style="width: 0.34602076124567%"></div>
+<pre>
+
 End Identity_Modalities.</pre>
 </div>
 <div class="code" title="File: Identity.v
-Line: 70
-Time: 0.135s">
-<div class="time" style="width: 86.538461538462%"></div>
+Line: 86
+Time: 0.289s">
+<div class="time" style="width: 100%"></div>
 <pre>
 
 Module purelyM := Modalities_Theory Identity_Modalities.</pre>
 </div>
 <div class="code" title="File: Identity.v
-Line: 72
+Line: 88
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Export purelyM.Coercions.</pre>
 </div>
 <div class="code" title="File: Identity.v
-Line: 73
+Line: 89
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Export purelyM.RSU.Coercions.</pre>
 </div>
 <div class="code" title="File: Identity.v
-Line: 74
+Line: 90
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -238,24 +272,24 @@ Coercion Identity_Modalities_to_Modalities := idmap
   : Identity_Modality -&gt; Identity_Modalities.Modality.</pre>
 </div>
 <div class="code" title="File: Identity.v
-Line: 77
+Line: 93
 Time: 0.003s">
-<div class="time" style="width: 1.9230769230769%"></div>
+<div class="time" style="width: 1.038062283737%"></div>
 <pre>
 
 
 Module Accessible_Identity &lt;: Accessible_Modalities Identity_Modalities.</pre>
 </div>
 <div class="code" title="File: Identity.v
-Line: 80
-Time: 0.156s">
-<div class="time" style="width: 100%"></div>
+Line: 96
+Time: 0.215s">
+<div class="time" style="width: 74.39446366782%"></div>
 <pre>
 
   Module Import Os_Theory := Modalities_Theory Identity_Modalities.</pre>
 </div>
 <div class="code" title="File: Identity.v
-Line: 82
+Line: 98
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -264,30 +298,30 @@ Time: 0s">
     := fun _ =&gt; Build_NullGenerators Empty (fun _ =&gt; Empty).</pre>
 </div>
 <div class="code" title="File: Identity.v
-Line: 85
+Line: 101
 Time: 0.001s">
-<div class="time" style="width: 0.64102564102564%"></div>
+<div class="time" style="width: 0.34602076124567%"></div>
 <pre>
 
   Definition inO_iff_isnull@{u a i}
   : forall (O : Modality@{u a}) (X : Type@{i}),
       iff@{i i i}
         (In@{u a i} O X)
-        (IsNull@{u a i} (acc_gen O) X)
+        (IsNull_Internal.IsNull@{a i} (acc_gen O) X)
   := fun O X =&gt; @pair _ (_ -&gt; Unit)
      (fun _ =&gt; Empty_ind _)
      (fun _ =&gt; tt).</pre>
 </div>
 <div class="code" title="File: Identity.v
-Line: 94
-Time: 0.059s">
-<div class="time" style="width: 37.820512820513%"></div>
+Line: 110
+Time: 0.074s">
+<div class="time" style="width: 25.60553633218%"></div>
 <pre>
 
 End Accessible_Identity.</pre>
 </div>
 <div class="code" title="File: Identity.v
-Line: 97
+Line: 113
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
