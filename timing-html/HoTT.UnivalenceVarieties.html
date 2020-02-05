@@ -39,13 +39,13 @@ Time: 0s">
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
 Line: 3
-Time: 0.039s">
-<div class="time" style="width: 32.5%"></div>
+Time: 0.037s">
+<div class="time" style="width: 35.238095238095%"></div>
 <pre>Require Import HoTT.Basics HoTT.Types.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
 Line: 3
-Time: 0.12s">
+Time: 0.105s">
 <div class="time" style="width: 100%"></div>
 <pre>
 Require Import Fibrations Idempotents EquivalenceVarieties UnivalenceImpliesFunext.</pre>
@@ -70,7 +70,7 @@ Time: 0s">
 <div class="code" title="File: UnivalenceVarieties.v
 Line: 9
 Time: 0.001s">
-<div class="time" style="width: 0.83333333333333%"></div>
+<div class="time" style="width: 0.95238095238095%"></div>
 <pre>Definition WeakUnivalence :=
   { etop : forall A B, (A &lt;~&gt; B) -&gt; (A = B) &amp;
     forall A B (f : A &lt;~&gt; B), equiv_path A B (etop A B f) = f }.</pre>
@@ -85,8 +85,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
 Line: 13
-Time: 0.004s">
-<div class="time" style="width: 3.3333333333333%"></div>
+Time: 0.003s">
+<div class="time" style="width: 2.8571428571429%"></div>
 <pre>Definition IncoherentWeakUnivalence :=
   { etop : forall A B (f : A -&gt; B) (g : B -&gt; A),
       (f o g == idmap) -&gt; (g o f == idmap) -&gt; (A = B) &amp;
@@ -103,7 +103,7 @@ Time: 0s">
 <div class="code" title="File: UnivalenceVarieties.v
 Line: 18
 Time: 0.014s">
-<div class="time" style="width: 11.666666666667%"></div>
+<div class="time" style="width: 13.333333333333%"></div>
 <pre>Record VeryWeakUnivalence :=
   { unit : forall A, A = { a : A &amp; Unit };
     flip : forall A B (C : A -&gt; B -&gt; Type),
@@ -146,46 +146,45 @@ Time: 0s">
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
 Line: 32
-Time: 0.003s">
-<div class="time" style="width: 2.5%"></div>
+Time: 0.009s">
+<div class="time" style="width: 8.5714285714286%"></div>
 <pre>
-  refine (@isequiv_contr_contr _ {B:Type &amp; A &lt;~&gt; B} (contr_basedpaths A) _ _).</pre>
+  serapply isequiv_contr_contr.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
 Line: 33
-Time: 0.002s">
-<div class="time" style="width: 1.6666666666667%"></div>
+Time: 0.005s">
+<div class="time" style="width: 4.7619047619048%"></div>
 <pre>
-  refine (contr_retracttype
-            (Build_RetractOf _ {B:Type &amp; A &lt;~&gt; B}
+  serapply (contr_retracttype
+            (Build_RetractOf _ _
                              (fun Be =&gt; (Be.1 ; equiv_path A Be.1 Be.2))
                              (fun Bf =&gt; (Bf.1 ; etop A Bf.1 Bf.2))
-                             _)
-            (contr_basedpaths A)).</pre>
+                             _)).</pre>
+</div>
+<div class="code" title="File: UnivalenceVarieties.v
+Line: 38
+Time: 0.001s">
+<div class="time" style="width: 0.95238095238095%"></div>
+<pre>
+  intros [B f].</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
 Line: 39
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  intros [B f].</pre>
-</div>
-<div class="code" title="File: UnivalenceVarieties.v
-Line: 40
-Time: 0.001s">
-<div class="time" style="width: 0.83333333333333%"></div>
-<pre>
   refine (path_sigma' (fun B =&gt; A &lt;~&gt; B) 1 (H A B f)).</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 41
-Time: 0.002s">
-<div class="time" style="width: 1.6666666666667%"></div>
+Line: 40
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 42
+Line: 41
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -193,59 +192,72 @@ Time: 0s">
 (** For this one and the next one, we need to assume funext to start with (so that these forms of univalence, unlike the usual one, probably don't suffice to prove funext from). *)</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 44
+Line: 43
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Theorem IncoherentWeakUnivalence_implies_Univalence `{Funext} :
   IncoherentWeakUnivalence -&gt; Univalence_type.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 45
+Line: 44
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 46
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 45
+Time: 0.001s">
+<div class="time" style="width: 0.95238095238095%"></div>
 <pre>
   intros [etop K].</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 47
+Line: 46
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply WeakUnivalence_implies_Univalence.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 48
+Line: 47
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   transparent assert (etop' : (forall A B, (A &lt;~&gt; B) -&gt; (A = B))).</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 49
+Line: 48
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   {</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 50
+Line: 49
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros A B f.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 50
+Line: 49
 Time: 0.001s">
-<div class="time" style="width: 0.83333333333333%"></div>
+<div class="time" style="width: 0.95238095238095%"></div>
 <pre>
     refine (etop A B f f^-1 _ _).</pre>
+</div>
+<div class="code" title="File: UnivalenceVarieties.v
+Line: 50
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    -</pre>
+</div>
+<div class="code" title="File: UnivalenceVarieties.v
+Line: 51
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros x; apply eisretr.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
 Line: 51
@@ -258,283 +270,275 @@ Time: 0s">
 Line: 52
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> intros x; apply eisretr.</pre>
+<pre> intros x; apply eissect.</pre>
+</div>
+<div class="code" title="File: UnivalenceVarieties.v
+Line: 52
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> }</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
 Line: 52
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    -</pre>
-</div>
-<div class="code" title="File: UnivalenceVarieties.v
-Line: 53
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intros x; apply eissect.</pre>
-</div>
-<div class="code" title="File: UnivalenceVarieties.v
-Line: 53
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> }</pre>
-</div>
-<div class="code" title="File: UnivalenceVarieties.v
-Line: 53
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
   exists etop'.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 54
+Line: 53
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros A B f.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 55
+Line: 54
 Time: 0.001s">
-<div class="time" style="width: 0.83333333333333%"></div>
+<div class="time" style="width: 0.95238095238095%"></div>
 <pre>
   apply path_equiv, path_arrow, K.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 56
-Time: 0.001s">
-<div class="time" style="width: 0.83333333333333%"></div>
+Line: 55
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 57
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 56
+Time: 0.001s">
+<div class="time" style="width: 0.95238095238095%"></div>
 <pre>
 
 Theorem VeryWeakUnivalence_implies_Univalence `{Funext} :
   VeryWeakUnivalence -&gt; Univalence_type.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 60
+Line: 59
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 61
+Line: 60
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros vwu.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 62
+Line: 61
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply WeakUnivalence_implies_Univalence.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 62
+Line: 61
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   simple refine (_;_).</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 63
+Line: 62
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   {</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 64
+Line: 63
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros A B f.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 64
+Line: 63
 Time: 0.001s">
-<div class="time" style="width: 0.83333333333333%"></div>
+<div class="time" style="width: 0.95238095238095%"></div>
 <pre>
     refine (unit vwu A @ _ @ (unit vwu B)^).</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 65
-Time: 0.001s">
-<div class="time" style="width: 0.83333333333333%"></div>
+Line: 64
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
     refine (_ @ flip vwu A B (fun a b =&gt; f a = b) @ _).</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 66
+Line: 65
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 67
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 66
+Time: 0.001s">
+<div class="time" style="width: 0.95238095238095%"></div>
 <pre> apply ap, path_arrow; intros a.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 67
-Time: 0.001s">
-<div class="time" style="width: 0.83333333333333%"></div>
+Line: 66
+Time: 0.004s">
+<div class="time" style="width: 3.8095238095238%"></div>
 <pre>
-      symmetry; apply (contract vwu).</pre>
+      symmetry; rapply (contract vwu).</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 68
+Line: 67
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-      apply contr_basedpaths.</pre>
+    -</pre>
+</div>
+<div class="code" title="File: UnivalenceVarieties.v
+Line: 68
+Time: 0.001s">
+<div class="time" style="width: 0.95238095238095%"></div>
+<pre> apply ap, path_arrow; intros b.</pre>
+</div>
+<div class="code" title="File: UnivalenceVarieties.v
+Line: 68
+Time: 0.002s">
+<div class="time" style="width: 1.9047619047619%"></div>
+<pre>
+      apply (contract vwu), fcontr_isequiv; exact _.</pre>
+</div>
+<div class="code" title="File: UnivalenceVarieties.v
+Line: 69
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> }</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
 Line: 69
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    -</pre>
-</div>
-<div class="code" title="File: UnivalenceVarieties.v
-Line: 70
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> apply ap, path_arrow; intros b.</pre>
-</div>
-<div class="code" title="File: UnivalenceVarieties.v
-Line: 70
-Time: 0.002s">
-<div class="time" style="width: 1.6666666666667%"></div>
-<pre>
-      apply (contract vwu), fcontr_isequiv; exact _.</pre>
-</div>
-<div class="code" title="File: UnivalenceVarieties.v
-Line: 71
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> }</pre>
-</div>
-<div class="code" title="File: UnivalenceVarieties.v
-Line: 71
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
   {</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 72
+Line: 70
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros A B f.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 72
+Line: 70
 Time: 0.003s">
-<div class="time" style="width: 2.5%"></div>
+<div class="time" style="width: 2.8571428571429%"></div>
 <pre>
     apply path_equiv, path_arrow; intros a; cbn.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 73
-Time: 0.016s">
-<div class="time" style="width: 13.333333333333%"></div>
+Line: 71
+Time: 0.015s">
+<div class="time" style="width: 14.285714285714%"></div>
 <pre>
     rewrite !transport_pp.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 74
+Line: 72
 Time: 0.001s">
-<div class="time" style="width: 0.83333333333333%"></div>
+<div class="time" style="width: 0.95238095238095%"></div>
 <pre>
     refine (moveR_transport_V idmap (unit vwu B) _ (f a) _).</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 75
-Time: 0.016s">
-<div class="time" style="width: 13.333333333333%"></div>
+Line: 73
+Time: 0.015s">
+<div class="time" style="width: 14.285714285714%"></div>
 <pre>
     rewrite !(unit_comp vwu).</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 76
+Line: 74
 Time: 0.012s">
-<div class="time" style="width: 10%"></div>
+<div class="time" style="width: 11.428571428571%"></div>
 <pre>
     rewrite &lt;- !transport_compose.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 77
+Line: 75
 Time: 0.006s">
-<div class="time" style="width: 5%"></div>
+<div class="time" style="width: 5.7142857142857%"></div>
 <pre>
     rewrite (transport_sigma' (C := fun P (a0:A) =&gt; P a0)); cbn.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
+Line: 76
+Time: 0.001s">
+<div class="time" style="width: 0.95238095238095%"></div>
+<pre>
+    refine (ap _ _ @ _).</pre>
+</div>
+<div class="code" title="File: UnivalenceVarieties.v
+Line: 77
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    1:{</pre>
+</div>
+<div class="code" title="File: UnivalenceVarieties.v
 Line: 78
-Time: 0.009s">
-<div class="time" style="width: 7.5%"></div>
-<pre>
-    assert (p : (transport (fun x : A -&gt; Type0 =&gt; x a)
-                   (path_arrow (fun _ : A =&gt; Unit)
-                      (fun a0 : A =&gt; {b : B &amp; f a0 = b})
-                      (fun a0 : A =&gt;
-                         (contract vwu {b : B &amp; f a0 = b}
-                           (contr_basedpaths (f a0)))^)) tt)
-                = (f a ; 1))
-      by apply path_contr.</pre>
+Time: 0.001s">
+<div class="time" style="width: 0.95238095238095%"></div>
+<pre> apply ap, ap.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 86
+Line: 78
 Time: 0.004s">
-<div class="time" style="width: 3.3333333333333%"></div>
+<div class="time" style="width: 3.8095238095238%"></div>
 <pre>
-    rewrite p; clear p.</pre>
+        exact (path_contr _ (f a ; 1)).</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 87
-Time: 0.006s">
-<div class="time" style="width: 5%"></div>
-<pre>
-    rewrite (flip_comp vwu).</pre>
-</div>
-<div class="code" title="File: UnivalenceVarieties.v
-Line: 88
-Time: 0.004s">
-<div class="time" style="width: 3.3333333333333%"></div>
-<pre>
-    rewrite transport_sigma'; cbn.</pre>
-</div>
-<div class="code" title="File: UnivalenceVarieties.v
-Line: 89
-Time: 0.002s">
-<div class="time" style="width: 1.6666666666667%"></div>
-<pre>
-    apply ap, path_contr.</pre>
-</div>
-<div class="code" title="File: UnivalenceVarieties.v
-Line: 90
+Line: 79
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> }</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 90
-Time: 0.065s">
-<div class="time" style="width: 54.166666666667%"></div>
+Line: 79
+Time: 0.006s">
+<div class="time" style="width: 5.7142857142857%"></div>
+<pre>
+    rewrite (flip_comp vwu).</pre>
+</div>
+<div class="code" title="File: UnivalenceVarieties.v
+Line: 80
+Time: 0.003s">
+<div class="time" style="width: 2.8571428571429%"></div>
+<pre>
+    rewrite transport_sigma'; cbn.</pre>
+</div>
+<div class="code" title="File: UnivalenceVarieties.v
+Line: 81
+Time: 0.001s">
+<div class="time" style="width: 0.95238095238095%"></div>
+<pre>
+    apply ap, path_contr.</pre>
+</div>
+<div class="code" title="File: UnivalenceVarieties.v
+Line: 82
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> }</pre>
+</div>
+<div class="code" title="File: UnivalenceVarieties.v
+Line: 82
+Time: 0.062s">
+<div class="time" style="width: 59.047619047619%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: UnivalenceVarieties.v
-Line: 92
+Line: 84
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>

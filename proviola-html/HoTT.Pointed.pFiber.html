@@ -203,27 +203,27 @@
           
 
             i = 37;
-            data = "1 subgoal (ID 114)	  	  A : pType	  B : pType	  f : A ->* B	  ============================	  {a : {a : A & a = point A} & f a.1 = point B} <~> point B = point B	";
+            data = "1 subgoal (ID 109)	  	  A : pType	  B : pType	  f : A ->* B	  ============================	  {ap : {a : A & a = point A} & f ap.1 = point B} <~> point B = point B	";
             responses[i]=data;
           
 
             i = 38;
-            data = "1 subgoal (ID 149)	  	  A : pType	  B : pType	  f : A ->* B	  ============================	  f (point A) = point B <~> point B = point B	";
+            data = "1 subgoal (ID 144)	  	  A : pType	  B : pType	  f : A ->* B	  ============================	  f (point A) = point B <~> point B = point B	";
             responses[i]=data;
           
 
             i = 39;
-            data = "1 subgoal (ID 153)	  	  A : pType	  B : pType	  f : A ->* B	  ============================	  point B = f (point A)	";
+            data = "1 subgoal (ID 148)	  	  A : pType	  B : pType	  f : A ->* B	  ============================	  point B = f (point A)	";
             responses[i]=data;
           
 
             i = 40;
-            data = "<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	1 subgoal (ID 41)		subgoal 1 (ID 41) is:	 (fun f0 : pfiber (pfib f) <~> loops B =>	  f0 (point (pfiber (pfib f))) = point (loops B))	   (equiv_concat_l (point_eq f)^ (point B)	    oE equiv_contr_sigma (fun x : {a : A & a = point A} => f x.1 = point B)	    oE equiv_sigma_assoc (fun a : A => a = point A)	         (fun a : {a : A & (fun a0 : A => a0 = point A) a} => f a.1 = point B)	    oE equiv_functor_sigma' 1	         (fun a : A => equiv_sigma_symm0 (f a = point B) (a = point A))	    oE (equiv_sigma_assoc (fun a : A => f a = point B)	          (fun x : {x : A & f x = point B} => x.1 = point A))^-1)	";
+            data = "<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	1 subgoal (ID 41)		subgoal 1 (ID 41) is:	 (fun f0 : pfiber (pfib f) <~> loops B =>	  f0 (point (pfiber (pfib f))) = point (loops B))	   (equiv_concat_l (point_eq f)^ (point B)	    oE equiv_contr_sigma (fun x : {a : A & a = point A} => f x.1 = point B)	    oE equiv_sigma_assoc' (fun a : A => a = point A)	         (fun (a : A) (_ : (fun a0 : A => a0 = point A) a) => f a = point B)	    oE equiv_functor_sigma' 1	         (fun a : A => equiv_sigma_symm0 (f a = point B) (a = point A))	    oE (equiv_sigma_assoc (fun a : A => f a = point B)	          (fun x : {x : A & f x = point B} => x.1 = point A))^-1)	";
             responses[i]=data;
           
 
             i = 41;
-            data = "1 subgoal (ID 41)	  	  A : pType	  B : pType	  f : A ->* B	  ============================	  (fun f0 : pfiber (pfib f) <~> loops B =>	   f0 (point (pfiber (pfib f))) = point (loops B))	    (equiv_concat_l (point_eq f)^ (point B)	     oE equiv_contr_sigma (fun x : {a : A & a = point A} => f x.1 = point B)	     oE equiv_sigma_assoc (fun a : A => a = point A)	          (fun a : {a : A & (fun a0 : A => a0 = point A) a} =>	           f a.1 = point B)	     oE equiv_functor_sigma' 1	          (fun a : A => equiv_sigma_symm0 (f a = point B) (a = point A))	     oE (equiv_sigma_assoc (fun a : A => f a = point B)	           (fun x : {x : A & f x = point B} => x.1 = point A))^-1)	1 subgoal (ID 171)	  	  A : pType	  B : pType	  f : A ->* B	  ============================	  (point_eq f)^ @ point_eq f = point (point B = point B)	";
+            data = "1 subgoal (ID 41)	  	  A : pType	  B : pType	  f : A ->* B	  ============================	  (fun f0 : pfiber (pfib f) <~> loops B =>	   f0 (point (pfiber (pfib f))) = point (loops B))	    (equiv_concat_l (point_eq f)^ (point B)	     oE equiv_contr_sigma (fun x : {a : A & a = point A} => f x.1 = point B)	     oE equiv_sigma_assoc' (fun a : A => a = point A)	          (fun (a : A) (_ : (fun a0 : A => a0 = point A) a) => f a = point B)	     oE equiv_functor_sigma' 1	          (fun a : A => equiv_sigma_symm0 (f a = point B) (a = point A))	     oE (equiv_sigma_assoc (fun a : A => f a = point B)	           (fun x : {x : A & f x = point B} => x.1 = point A))^-1)	1 subgoal (ID 166)	  	  A : pType	  B : pType	  f : A ->* B	  ============================	  (point_eq f)^ @ point_eq f = point (point B = point B)	";
             responses[i]=data;
           
 
@@ -612,7 +612,7 @@ The double fiber object is equivalent to loops on the base.
       " onmouseover="
       mouseover(37, '0_3_11');
       "><br>
-    <span class="id" title="tactic">refine</span> (<span class="id" title="var">_</span> <a class="idref" href="HoTT.Basics.Equivalences.html#68564a0dae726954e87d0b3370608d69"><span class="id" title="notation">oE</span></a> <a class="idref" href="HoTT.Types.Sigma.html#equiv_sigma_assoc"><span class="id" title="definition">equiv_sigma_assoc</span></a> <span class="id" title="var">_</span> (<span class="id" title="keyword">fun</span> <span class="id" title="var">a</span> ⇒ <span class="id" title="var">f</span> <a class="idref" href="HoTT.Pointed.pFiber.html#a"><span class="id" title="variable">a</span></a><a class="idref" href="HoTT.Basics.Overture.html#a0d4c290984547f24aacc208636427e2"><span class="id" title="notation">.1</span></a> <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Basics.Overture.html#point"><span class="id" title="definition">point</span></a> <span class="id" title="var">B</span>)).</span><span class="command" onmouseout="
+    <span class="id" title="tactic">refine</span> (<span class="id" title="var">_</span> <a class="idref" href="HoTT.Basics.Equivalences.html#68564a0dae726954e87d0b3370608d69"><span class="id" title="notation">oE</span></a> <a class="idref" href="HoTT.Types.Sigma.html#equiv_sigma_assoc'"><span class="id" title="definition">equiv_sigma_assoc'</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span>).</span><span class="command" onmouseout="
       mouseout('0_3_11');
       " onmouseover="
       mouseover(38, '0_3_11');
