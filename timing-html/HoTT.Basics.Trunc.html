@@ -39,7 +39,7 @@ Time: 0s">
 </div>
 <div class="code" title="File: Trunc.v
 Line: 3
-Time: 0.01s">
+Time: 0.009s">
 <div class="time" style="width: 100%"></div>
 <pre>Require Import Overture PathGroupoids Contractible Equivalences.</pre>
 </div>
@@ -70,7 +70,7 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-(** ** Arithmetic on truncation-levels. *)</pre>
+(** ** Notation for truncation-levels. *)</pre>
 </div>
 <div class="code" title="File: Trunc.v
 Line: 8
@@ -83,21 +83,255 @@ Line: 8
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Check -2.</pre>
+
+(* Increase a truncation index by a natural number. *)</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 9
+Line: 10
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Fixpoint trunc_index_inc (k : trunc_index) (n : nat)
+  : trunc_index
+  := match n with
+      | O =&gt; k
+      | S m =&gt; (trunc_index_inc k m).+1
+    end.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 15
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Fixpoint trunc_index_add (m n : trunc_index) : trunc_index
+
+(* This is a variation that inserts the successor operations in
+   the other order.  This is sometimes convenient. *)</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 18
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Fixpoint trunc_index_inc' (k : trunc_index) (n : nat)
+  : trunc_index
+  := match n with
+      | O =&gt; k
+      | S m =&gt; (trunc_index_inc' k.+1 m)
+    end.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 23
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Definition trunc_index_inc'_succ (n : nat) (k : trunc_index)
+  : trunc_index_inc' k.+1 n = (trunc_index_inc' k n).+1.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 26
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 27
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  revert k; induction n; intro k.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 28
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 29
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> reflexivity.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 29
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 30
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> apply (IHn k.+1).</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 30
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 31
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Definition trunc_index_inc_agree (k : trunc_index) (n : nat)
+  : trunc_index_inc k n = trunc_index_inc' k n.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 34
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 35
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  induction n.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 36
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 37
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> reflexivity.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 37
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 38
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> simpl.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 38
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    refine (ap _ IHn @ _).</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 39
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    symmetry; apply trunc_index_inc'_succ.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 40
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 41
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Definition nat_to_trunc_index (n : nat) : trunc_index
+  := trunc_index_inc minus_two.+2 n.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 44
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Coercion nat_to_trunc_index : nat &gt;-&gt; trunc_index.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 46
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Definition int_to_trunc_index (v : Decimal.int) : option trunc_index
+  := match v with
+     | Decimal.Pos d =&gt; Some (nat_to_trunc_index (Nat.of_uint d))
+     | Decimal.Neg d =&gt; match Nat.of_uint d with
+                        | 2%nat =&gt; Some minus_two
+                        | 1%nat =&gt; Some (minus_two.+1)
+                        | 0%nat =&gt; Some (minus_two.+2)
+                        | _ =&gt; None
+                        end
+     end.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 57
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Fixpoint trunc_index_to_little_uint n acc :=
+  match n with
+  | minus_two =&gt; acc
+  | minus_two.+1 =&gt; acc
+  | minus_two.+2 =&gt; acc
+  | trunc_S n =&gt; trunc_index_to_little_uint n (Decimal.Little.succ acc)
+  end.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 65
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Definition trunc_index_to_int n :=
+  match n with
+  | minus_two =&gt; Decimal.Neg (Nat.to_uint 2)
+  | minus_two.+1 =&gt; Decimal.Neg (Nat.to_uint 1)
+  | n =&gt; Decimal.Pos (Decimal.rev (trunc_index_to_little_uint n Decimal.zero))
+  end.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 72
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Numeral Notation trunc_index int_to_trunc_index trunc_index_to_int : trunc_scope (warning after 5000).</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 74
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(** ** Arithmetic on truncation-levels. *)</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 76
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Fixpoint trunc_index_add (m n : trunc_index) : trunc_index
   := match m with
        | -2 =&gt; n
        | m'.+1 =&gt; (trunc_index_add m' n).+1
      end.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 14
+Line: 80
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -105,7 +339,7 @@ Time: 0s">
 Notation "m +2+ n" := (trunc_index_add m n) : trunc_scope.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 16
+Line: 82
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -114,49 +348,49 @@ Definition trunc_index_add_minus_two m
   : m +2+ -2 = m.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 19
+Line: 85
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 20
+Line: 86
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   induction m.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 21
+Line: 87
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   1: reflexivity.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 22
+Line: 88
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   cbn; apply ap.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 23
+Line: 89
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   assumption.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 24
+Line: 90
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 25
+Line: 91
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -165,56 +399,56 @@ Definition trunc_index_add_succ m n
   : m +2+ n.+1 = (m +2+ n).+1.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 28
+Line: 94
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 29
+Line: 95
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   revert m.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 30
+Line: 96
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   induction n; induction m.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 31
+Line: 97
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   1,3: reflexivity.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 32
+Line: 98
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   all: cbn; apply ap.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 33
+Line: 99
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   all: assumption.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 34
-Time: 0.001s">
-<div class="time" style="width: 10%"></div>
+Line: 100
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 35
+Line: 101
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -227,7 +461,7 @@ Fixpoint trunc_index_leq (m n : trunc_index) : Type0
      end.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 42
+Line: 108
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -235,7 +469,7 @@ Time: 0s">
 Existing Class trunc_index_leq.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 44
+Line: 110
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -243,7 +477,7 @@ Time: 0s">
 Notation "m &lt;= n" := (trunc_index_leq m n) : trunc_scope.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 46
+Line: 112
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -251,7 +485,7 @@ Time: 0s">
 Global Instance trunc_index_leq_minus_two_n n : -2 &lt;= n := tt.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 48
+Line: 114
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -259,41 +493,28 @@ Time: 0s">
 Global Instance trunc_index_leq_succ n : n &lt;= n.+1.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 50
+Line: 116
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 51
-Time: 0.001s">
-<div class="time" style="width: 10%"></div>
+Line: 117
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   by induction n as [|n IHn] using trunc_index_ind.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 52
+Line: 118
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 53
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-
-Fixpoint trunc_index_inc (n : nat) (k : trunc_index)
-  : trunc_index
-  := match n with
-      | O =&gt; k
-      | S m =&gt; (trunc_index_inc m k).+1
-    end.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 60
+Line: 119
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -301,42 +522,42 @@ Time: 0s">
 Definition trunc_index_pred : trunc_index -&gt; trunc_index.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 62
+Line: 121
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 63
+Line: 122
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros [|m].</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 64
+Line: 123
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   1: exact (-2).</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 65
+Line: 124
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   exact m.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 66
+Line: 125
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 67
+Line: 126
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -344,14 +565,14 @@ Time: 0s">
 Notation "n '.-1'" := (trunc_index_pred n) : trunc_scope.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 69
+Line: 128
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Notation "n '.-2'" := (n.-1.-1) : trunc_scope.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 70
+Line: 129
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -360,42 +581,42 @@ Definition trunc_index_leq_minus_two {n}
   : n &lt;= -2 -&gt; n = -2.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 73
+Line: 132
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 74
+Line: 133
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   destruct n.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 75
+Line: 134
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   1: reflexivity.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 76
+Line: 135
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   contradiction.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 77
+Line: 136
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 78
+Line: 137
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -404,70 +625,70 @@ Definition trunc_index_leq_succ' n m
   : n &lt;= m -&gt; n &lt;= m.+1.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 81
+Line: 140
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 82
+Line: 141
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   revert m.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 83
+Line: 142
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   induction n as [|n IHn] using trunc_index_ind.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 84
+Line: 143
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   1: exact _.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 85
+Line: 144
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros m p; cbn.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 86
+Line: 145
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   induction m as [|m IHm] using trunc_index_ind.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 87
+Line: 146
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   1: destruct p.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 88
+Line: 147
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply IHn, p.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 89
+Line: 148
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 90
+Line: 149
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -476,35 +697,35 @@ Global Instance trunc_index_leq_refl
   : Reflexive trunc_index_leq.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 93
+Line: 152
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 94
+Line: 153
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intro n.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 95
+Line: 154
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   by induction n as [|n IHn] using trunc_index_ind.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 96
+Line: 155
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 97
+Line: 156
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -513,111 +734,111 @@ Global Instance trunc_index_leq_transitive
   : Transitive trunc_index_leq.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 100
+Line: 159
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 101
+Line: 160
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros a b c p q.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 102
+Line: 161
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   revert b a c p q.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 103
+Line: 162
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   induction b as [|b IHb] using trunc_index_ind.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 104
+Line: 163
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   {</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 105
+Line: 164
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros a c p.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 105
+Line: 164
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     by destruct (trunc_index_leq_minus_two p).</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 106
+Line: 165
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> }</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 106
+Line: 165
 Time: 0.001s">
-<div class="time" style="width: 10%"></div>
+<div class="time" style="width: 11.111111111111%"></div>
 <pre>
   induction a as [|a IHa] using trunc_index_ind;
   induction c as [|c IHc] using trunc_index_ind.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 108
+Line: 167
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   all: intros.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 109
+Line: 168
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   1,2: exact tt.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 110
+Line: 169
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   1: contradiction.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 111
+Line: 170
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   cbn in p, q; cbn.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 112
+Line: 171
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   by apply IHb.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 113
-Time: 0.001s">
-<div class="time" style="width: 10%"></div>
+Line: 172
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 114
+Line: 173
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -626,56 +847,56 @@ Fixpoint trunc_index_min (n m : trunc_index)
   : trunc_index.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 117
+Line: 176
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 118
+Line: 177
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   destruct n.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 119
+Line: 178
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   1: exact (-2).</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 120
+Line: 179
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   destruct m.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 121
+Line: 180
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   1: exact (-2).</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 122
+Line: 181
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   exact (trunc_index_min n m).+1.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 123
+Line: 182
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 124
+Line: 183
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -684,28 +905,28 @@ Definition trunc_index_min_minus_two n
   : trunc_index_min n (-2) = -2.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 127
+Line: 186
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 128
+Line: 187
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   by destruct n.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 129
+Line: 188
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 130
+Line: 189
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -714,395 +935,18 @@ Definition trunc_index_min_swap n m
   : trunc_index_min n m = trunc_index_min m n.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 133
+Line: 192
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 134
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  revert m.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 135
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  induction n.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 136
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  {</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 137
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intro.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 137
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    symmetry.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 138
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    apply trunc_index_min_minus_two.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 139
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> }</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 139
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  induction m.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 140
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  1: reflexivity.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 141
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  cbn; apply ap, IHn.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 142
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Defined.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 143
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-
-Definition trunc_index_min_path n m
-  : (trunc_index_min n m = n) + (trunc_index_min n m = m).</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 146
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 147
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  revert m.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 148
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  induction n.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 149
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  1: by intro; apply inl.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 150
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  induction m.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 151
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  1: by apply inr.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 152
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  destruct (IHn m).</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 153
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  1: apply inl.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 154
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  2: apply inr.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 155
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  1,2: cbn; by apply ap.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 156
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Defined.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 157
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-
-Definition trunc_index_min_leq_left (n m : trunc_index)
-  : trunc_index_min n m &lt;= n.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 160
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 161
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  revert n m.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 162
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  refine (trunc_index_ind _ _ _); [ | intros n IHn ].</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 163
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  all: refine (trunc_index_ind _ _ _); [ | intros m IHm ].</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 164
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  all: try exact tt.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 165
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  exact (IHn m).</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 166
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Defined.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 167
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-
-Definition trunc_index_min_leq_right (n m : trunc_index)
-  : trunc_index_min n m &lt;= m.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 170
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 171
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  revert n m.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 172
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  refine (trunc_index_ind _ _ _); [ | intros n IHn ].</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 173
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  all: refine (trunc_index_ind _ _ _); [ | intros m IHm ].</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 174
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  all: try exact tt.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 175
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  exact (IHn m).</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 176
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Defined.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 177
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-
-(** ** Truncatedness proper. *)
-
-(** A contractible space is (-2)-truncated, by definition. This function is the identity, so there is never any need to actually use it, but it exists to be found in searches. *)</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 181
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>Definition contr_trunc_minus_two `{H : IsTrunc (-2) A} : Contr A
-  := H.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 182
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-
-(** Truncation levels are cumulative. *)</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 184
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>Global Instance trunc_succ `{IsTrunc n A}
-  : IsTrunc n.+1 A | 1000.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 185
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 186
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  generalize dependent A.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 187
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  simple_induction n n IH; simpl; intros A H x y.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 188
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 189
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> apply contr_paths_contr.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 189
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 190
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> apply IH, H.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 190
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Qed.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 191
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-
-(* Nat to trunc index offset by 2 *)</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 193
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>Definition nat_to_trunc_index_2 (n : nat) : trunc_index.</pre>
 </div>
 <div class="code" title="File: Trunc.v
 Line: 193
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Proof.</pre>
+  revert m.</pre>
 </div>
 <div class="code" title="File: Trunc.v
 Line: 194
@@ -1116,87 +960,352 @@ Line: 195
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  +</pre>
+  {</pre>
 </div>
 <div class="code" title="File: Trunc.v
 Line: 196
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> exact (-2).</pre>
+<pre> intro.</pre>
 </div>
 <div class="code" title="File: Trunc.v
 Line: 196
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  +</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 197
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> exact IHn.+1.</pre>
+    symmetry.</pre>
 </div>
 <div class="code" title="File: Trunc.v
 Line: 197
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Defined.</pre>
+    apply trunc_index_min_minus_two.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 198
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> }</pre>
 </div>
 <div class="code" title="File: Trunc.v
 Line: 198
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-
-Lemma nat_to_trunc_index_2_eq n
-  : nat_to_trunc_index_2 n.+2 = nat_to_trunc_index n.</pre>
+  induction m.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 201
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 202
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  induction n.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 203
+Line: 199
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   1: reflexivity.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 204
+Line: 200
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  cbn; apply ap.</pre>
+  cbn; apply ap, IHn.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 205
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  assumption.</pre>
-</div>
-<div class="code" title="File: Trunc.v
-Line: 206
+Line: 201
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Trunc.v
+Line: 202
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Definition trunc_index_min_path n m
+  : (trunc_index_min n m = n) + (trunc_index_min n m = m).</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 205
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 206
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  revert m.</pre>
+</div>
+<div class="code" title="File: Trunc.v
 Line: 207
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  induction n.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 208
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  1: by intro; apply inl.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 209
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  induction m.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 210
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  1: by apply inr.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 211
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  destruct (IHn m).</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 212
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  1: apply inl.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 213
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  2: apply inr.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 214
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  1,2: cbn; by apply ap.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 215
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 216
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Definition trunc_index_min_leq_left (n m : trunc_index)
+  : trunc_index_min n m &lt;= n.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 219
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 220
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  revert n m.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 221
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  refine (trunc_index_ind _ _ _); [ | intros n IHn ].</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 222
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  all: refine (trunc_index_ind _ _ _); [ | intros m IHm ].</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 223
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  all: try exact tt.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 224
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  exact (IHn m).</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 225
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 226
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Definition trunc_index_min_leq_right (n m : trunc_index)
+  : trunc_index_min n m &lt;= m.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 229
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 230
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  revert n m.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 231
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  refine (trunc_index_ind _ _ _); [ | intros n IHn ].</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 232
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  all: refine (trunc_index_ind _ _ _); [ | intros m IHm ].</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 233
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  all: try exact tt.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 234
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  exact (IHn m).</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 235
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 236
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(** ** Truncatedness proper. *)
+
+(** A contractible space is (-2)-truncated, by definition. This function is the identity, so there is never any need to actually use it, but it exists to be found in searches. *)</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 240
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Definition contr_trunc_minus_two `{H : IsTrunc (-2) A} : Contr A
+  := H.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 241
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(** Truncation levels are cumulative. *)</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 243
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Global Instance trunc_succ `{IsTrunc n A}
+  : IsTrunc n.+1 A | 1000.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 244
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 245
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  generalize dependent A.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 246
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  simple_induction n n IH; simpl; intros A H x y.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 247
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 248
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> apply contr_paths_contr.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 248
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 249
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> apply IH, H.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 249
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Qed.</pre>
+</div>
+<div class="code" title="File: Trunc.v
+Line: 250
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1204,120 +1313,120 @@ Time: 0s">
 (** This could be an [Instance] (with very high priority, so it doesn't get applied trivially).  However, we haven't given typeclass search any hints allowing it to solve goals like [m &lt;= n], so it would only ever be used trivially.  *)</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 209
+Line: 252
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition trunc_leq {m n} (Hmn : m &lt;= n) `{IsTrunc m A}
   : IsTrunc n A.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 210
+Line: 253
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 211
+Line: 254
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   generalize dependent A; generalize dependent m.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 212
+Line: 255
 Time: 0.001s">
-<div class="time" style="width: 10%"></div>
+<div class="time" style="width: 11.111111111111%"></div>
 <pre>
   simple_induction n n' IH;
     intros [ | m'] Hmn A ? .</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 214
+Line: 257
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 215
+Line: 258
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> (* -2, -2 *)</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 215
+Line: 258
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>assumption.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 215
+Line: 258
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 216
+Line: 259
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> (* S m', -2 *)</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 216
+Line: 259
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>destruct Hmn.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 216
+Line: 259
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 217
+Line: 260
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> (* -2, S n' *)</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 217
+Line: 260
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>apply @trunc_succ, (IH (-2)); auto.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 217
+Line: 260
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 218
+Line: 261
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> (* S m', S n' *)</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 218
+Line: 261
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>intros x y; apply (IH m');
                      auto with typeclass_instances.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 219
+Line: 262
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 220
+Line: 263
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1327,14 +1436,14 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 223
+Line: 266
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition trunc_contr {n} {A} `{Contr A} : IsTrunc n.+1 A
   := (@trunc_leq (-2) n.+1 tt _ _).</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 224
+Line: 267
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1343,7 +1452,7 @@ Definition trunc_hprop {n} {A} `{IsHProp A} : IsTrunc n.+2 A
   := (@trunc_leq (-1) n.+2 tt _ _).</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 227
+Line: 270
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1353,7 +1462,7 @@ Definition trunc_hset {n} {A} `{IsHSet A}
   := (@trunc_leq 0 n.+3 tt _ _).</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 231
+Line: 274
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1361,27 +1470,27 @@ Time: 0s">
 (** Consider the preceding definitions as instances for typeclass search, but only if the requisite hypothesis is already a known assumption; otherwise they result in long or interminable searches. *)</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 233
+Line: 276
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Hint Immediate trunc_contr : typeclass_instances.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 233
+Line: 276
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Hint Immediate trunc_hprop : typeclass_instances.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 234
+Line: 277
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Hint Immediate trunc_hset : typeclass_instances.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 235
+Line: 278
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1391,7 +1500,7 @@ Time: 0s">
    *)</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 239
+Line: 282
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition trunc_equiv A {B} (f : A -&gt; B)
@@ -1399,69 +1508,69 @@ Time: 0s">
   : IsTrunc n B.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 241
+Line: 284
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 242
+Line: 285
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   generalize dependent B; generalize dependent A.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 243
+Line: 286
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   simple_induction n n IH; simpl; intros A ? B f ?.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 244
+Line: 287
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 245
+Line: 288
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact (contr_equiv _ f).</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 245
+Line: 288
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 246
+Line: 289
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros x y.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 246
+Line: 289
 Time: 0.004s">
-<div class="time" style="width: 40%"></div>
+<div class="time" style="width: 44.444444444444%"></div>
 <pre>
     exact (IH (f^-1 x = f^-1 y) (H (f^-1 x) (f^-1 y))
       (x = y) ((ap (f^-1))^-1) _).</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 248
+Line: 291
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Qed.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 249
+Line: 292
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1471,7 +1580,7 @@ Definition trunc_equiv' A {B} (f : A &lt;~&gt; B) `{IsTrunc n A}
   := trunc_equiv A f.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 253
+Line: 296
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1481,14 +1590,14 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 256
-Time: 0.001s">
-<div class="time" style="width: 10%"></div>
+Line: 299
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>Class IsTruncMap (n : trunc_index) {X Y : Type} (f : X -&gt; Y)
   := istruncmap_fiber : forall y:Y, IsTrunc n (hfiber f y).</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 257
+Line: 300
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1496,7 +1605,7 @@ Time: 0s">
 Global Existing Instance istruncmap_fiber.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 259
+Line: 302
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1504,7 +1613,7 @@ Time: 0s">
 Notation IsEmbedding := (IsTruncMap (-1)).</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 261
+Line: 304
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1516,16 +1625,16 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 266
+Line: 309
 Time: 0.001s">
-<div class="time" style="width: 10%"></div>
+<div class="time" style="width: 11.111111111111%"></div>
 <pre>Record TruncType (n : trunc_index) := BuildTruncType {
   trunctype_type : Type ;
   istrunc_trunctype_type : IsTrunc n trunctype_type
 }.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 269
+Line: 312
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1534,27 +1643,27 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 271
+Line: 314
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Arguments BuildTruncType _ _ {_}.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 271
+Line: 314
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Arguments trunctype_type {_} _.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 272
+Line: 315
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Arguments istrunc_trunctype_type [_] _.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 273
+Line: 316
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1562,14 +1671,14 @@ Time: 0s">
 Coercion trunctype_type : TruncType &gt;-&gt; Sortclass.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 275
+Line: 318
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Global Existing Instance istrunc_trunctype_type.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 276
+Line: 319
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1577,21 +1686,21 @@ Time: 0s">
 Notation "n -Type" := (TruncType n) : type_scope.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 278
+Line: 321
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Notation hProp := (-1)-Type.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 279
+Line: 322
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Notation hSet := 0-Type.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 280
+Line: 323
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1599,14 +1708,14 @@ Time: 0s">
 Notation BuildhProp := (BuildTruncType (-1)).</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 282
+Line: 325
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Notation BuildhSet := (BuildTruncType 0).</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 283
+Line: 326
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1614,13 +1723,13 @@ Time: 0s">
 (** This is (as of October 2014) the only [Canonical Structure] in the library.  It would be nice to do without it, in the interests of minimizing the number of fancy Coq features that the reader needs to know about. *)</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 285
+Line: 328
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Canonical Structure default_TruncType := fun n T P =&gt; (@BuildTruncType n T P).</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 285
+Line: 328
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1632,49 +1741,49 @@ Time: 0s">
    *)</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 291
+Line: 334
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Lemma contr_inhabited_hprop (A : Type) `{H : IsHProp A} (x : A)
   : Contr A.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 292
+Line: 335
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 293
+Line: 336
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   exists x.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 294
+Line: 337
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intro y.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 295
+Line: 338
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply center, H.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 296
+Line: 339
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 297
+Line: 340
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1682,49 +1791,49 @@ Time: 0s">
 (** If inhabitation implies contractibility, then we have an h-proposition.  We probably won't often have a hypothesis of the form [A -&gt; Contr A], so we make sure we give priority to other instances. *)</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 299
+Line: 342
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance hprop_inhabited_contr (A : Type)
   : (A -&gt; Contr A) -&gt; IsHProp A | 10000.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 300
+Line: 343
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 301
+Line: 344
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros H x y.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 302
+Line: 345
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   pose (C := H x).</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 303
+Line: 346
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply contr_paths_contr.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 304
+Line: 347
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 305
+Line: 348
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1732,35 +1841,35 @@ Time: 0s">
 (** Any two points in an hprop are connected by a path. *)</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 307
+Line: 350
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Theorem path_ishprop `{H : IsHProp A}
   : forall x y : A, x = y.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 308
+Line: 351
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 309
+Line: 352
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply H.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 310
+Line: 353
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 311
+Line: 354
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1768,42 +1877,42 @@ Time: 0s">
 (** Conversely, this property characterizes hprops. *)</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 313
+Line: 356
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Theorem hprop_allpath (A : Type)
   : (forall (x y : A), x = y) -&gt; IsHProp A.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 314
+Line: 357
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros H x y.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 315
+Line: 358
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   pose (C := Build_Contr A x (H x)).</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 316
+Line: 359
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply contr_paths_contr.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 317
+Line: 360
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 318
+Line: 361
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1811,7 +1920,7 @@ Time: 0s">
 (** Two propositions are equivalent as soon as there are maps in both directions. *)</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 320
+Line: 363
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition isequiv_iff_hprop `{IsHProp A} `{IsHProp B}
@@ -1819,14 +1928,14 @@ Time: 0s">
   : IsEquiv f.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 322
+Line: 365
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 323
+Line: 366
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1834,14 +1943,14 @@ Time: 0s">
     intros ?; apply path_ishprop.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 325
+Line: 368
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 326
+Line: 369
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1850,21 +1959,21 @@ Definition equiv_iff_hprop_uncurried `{IsHProp A} `{IsHProp B}
   : (A &lt;-&gt; B) -&gt; (A &lt;~&gt; B).</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 329
+Line: 372
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 330
+Line: 373
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intro fg.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 331
+Line: 374
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1872,14 +1981,14 @@ Time: 0s">
     intros ?; apply path_ishprop.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 333
+Line: 376
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 334
+Line: 377
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1889,7 +1998,7 @@ Definition equiv_iff_hprop `{IsHProp A} `{IsHProp B}
   := fun f g =&gt; equiv_iff_hprop_uncurried (f, g).</pre>
 </div>
 <div class="code" title="File: Trunc.v
-Line: 339
+Line: 382
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
