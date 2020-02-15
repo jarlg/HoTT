@@ -80,8 +80,8 @@ Definition lift2 {A B} (f : forall x : A, B x) : forall x : Lift A, Lift (B (low
 </div>
 <div class="code" title="File: UniverseLevel.v
 Line: 15
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 6.25%"></div>
 <pre>
 
 Definition lower2 {A B} (f : forall x : Lift A, Lift (B (lower x))) : forall x : A, B x
@@ -103,8 +103,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: UniverseLevel.v
 Line: 20
-Time: 0.001s">
-<div class="time" style="width: 6.25%"></div>
+Time: 0.002s">
+<div class="time" style="width: 12.5%"></div>
 <pre>
 
 Global Instance isequiv_lift T : IsEquiv (@lift T)
@@ -118,8 +118,8 @@ Global Instance isequiv_lift T : IsEquiv (@lift T)
 </div>
 <div class="code" title="File: UniverseLevel.v
 Line: 29
-Time: 0.003s">
-<div class="time" style="width: 18.75%"></div>
+Time: 0.002s">
+<div class="time" style="width: 12.5%"></div>
 <pre>
 
 Global Instance isequiv_lift2 A B : IsEquiv (@lift2 A B)
@@ -133,8 +133,8 @@ Global Instance isequiv_lift2 A B : IsEquiv (@lift2 A B)
 </div>
 <div class="code" title="File: UniverseLevel.v
 Line: 38
-Time: 0.013s">
-<div class="time" style="width: 81.25%"></div>
+Time: 0.014s">
+<div class="time" style="width: 87.5%"></div>
 <pre>
 
 Global Instance lift_isequiv {A B} (f : A -&gt; B) {H : IsEquiv f} : @IsEquiv (Lift A) (Lift B) (lift2 f)
@@ -307,8 +307,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: UniverseLevel.v
 Line: 101
-Time: 0.013s">
-<div class="time" style="width: 81.25%"></div>
+Time: 0.012s">
+<div class="time" style="width: 75%"></div>
 <pre>Definition lift'_isequiv@{a b i j i' j'}  {A : Type@{a}} {B : Type@{b}} (f : A -&gt; B) {H : IsEquiv f} : @IsEquiv (Lift'@{i j} A) (Lift'@{i' j'} B) (lift'2 f)
   := @Build_IsEquiv
        (Lift' A) (Lift' B)
@@ -337,8 +337,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: UniverseLevel.v
 Line: 112
-Time: 0.013s">
-<div class="time" style="width: 81.25%"></div>
+Time: 0.016s">
+<div class="time" style="width: 100%"></div>
 <pre>Definition lower'_isequiv@{i j i' j'} {A : Type@{i}} {B : Type@{j}} (f : Lift'@{i j} A -&gt; Lift'@{i' j'} B) {H : IsEquiv f} : @IsEquiv A B (lower'2 f)
   := @Build_IsEquiv
        _ _
