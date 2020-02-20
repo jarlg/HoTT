@@ -31,7 +31,7 @@ pre {
 <div class="code" title="File: Nameless.v
 Line: 1
 Time: 0s">
-<div class="time" style="width: 0%"></div>
+<div class="time" style="width: -nan%"></div>
 <pre>(** * Building blocks for a globally nameless style of tactic reasoning *)
 
 (** ** [hyp] returns any hypothesis, with subsequent failures backtracking through all hypotheses *)</pre>
@@ -39,13 +39,13 @@ Time: 0s">
 <div class="code" title="File: Nameless.v
 Line: 3
 Time: 0s">
-<div class="time" style="width: 0%"></div>
+<div class="time" style="width: -nan%"></div>
 <pre>Ltac hyp := multimatch goal with H : _ |- _ =&gt; constr:(H) end.</pre>
 </div>
 <div class="code" title="File: Nameless.v
 Line: 3
 Time: 0s">
-<div class="time" style="width: 0%"></div>
+<div class="time" style="width: -nan%"></div>
 <pre>
 
 (** ** [enforce foo] ensures that [foo] is well-typed *)</pre>
@@ -53,13 +53,13 @@ Time: 0s">
 <div class="code" title="File: Nameless.v
 Line: 5
 Time: 0s">
-<div class="time" style="width: 0%"></div>
+<div class="time" style="width: -nan%"></div>
 <pre>Tactic Notation "enforce" open_constr(term) := idtac.</pre>
 </div>
 <div class="code" title="File: Nameless.v
 Line: 5
 Time: 0s">
-<div class="time" style="width: 0%"></div>
+<div class="time" style="width: -nan%"></div>
 <pre>
 
 (** ** [syntax_enforce [ H := body ]] ensures that [H] has a body which is syntactically equal to [body] *)</pre>
@@ -67,13 +67,13 @@ Time: 0s">
 <div class="code" title="File: Nameless.v
 Line: 7
 Time: 0s">
-<div class="time" style="width: 0%"></div>
+<div class="time" style="width: -nan%"></div>
 <pre>Tactic Notation "syntax_enforce" "[" constr(H) ":=" open_constr(body) "]" := let H' := (eval unfold H in H) in constr_eq H' body.</pre>
 </div>
 <div class="code" title="File: Nameless.v
 Line: 7
 Time: 0s">
-<div class="time" style="width: 0%"></div>
+<div class="time" style="width: -nan%"></div>
 <pre>
 
 (** ** [enforce [ x = y ]] ensures that two terms, possibly containing holes, are judgmentally equal *)</pre>
@@ -81,13 +81,13 @@ Time: 0s">
 <div class="code" title="File: Nameless.v
 Line: 9
 Time: 0s">
-<div class="time" style="width: 0%"></div>
+<div class="time" style="width: -nan%"></div>
 <pre>Tactic Notation "enforce" "[" open_constr(x) "=" open_constr(y) "]" := unify x y.</pre>
 </div>
 <div class="code" title="File: Nameless.v
 Line: 9
 Time: 0s">
-<div class="time" style="width: 0%"></div>
+<div class="time" style="width: -nan%"></div>
 <pre>
 
 (** An example *)</pre>
@@ -95,27 +95,27 @@ Time: 0s">
 <div class="code" title="File: Nameless.v
 Line: 11
 Time: 0s">
-<div class="time" style="width: 0%"></div>
+<div class="time" style="width: -nan%"></div>
 <pre>Goal False -&gt; let X0 := I in False -&gt; True.</pre>
 </div>
 <div class="code" title="File: Nameless.v
 Line: 11
 Time: 0s">
-<div class="time" style="width: 0%"></div>
+<div class="time" style="width: -nan%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Nameless.v
 Line: 12
 Time: 0s">
-<div class="time" style="width: 0%"></div>
+<div class="time" style="width: -nan%"></div>
 <pre>
   intros.</pre>
 </div>
 <div class="code" title="File: Nameless.v
 Line: 13
-Time: 0.001s">
-<div class="time" style="width: 100%"></div>
+Time: 0s">
+<div class="time" style="width: -nan%"></div>
 <pre>
   let H := hyp in
   enforce (H : Logic.True);
@@ -127,7 +127,7 @@ Time: 0.001s">
 <div class="code" title="File: Nameless.v
 Line: 20
 Time: 0s">
-<div class="time" style="width: 0%"></div>
+<div class="time" style="width: -nan%"></div>
 <pre>
 Abort.
 
