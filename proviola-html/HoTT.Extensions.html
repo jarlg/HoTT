@@ -2298,7 +2298,7 @@
           
 
             i = 456;
-            data = "";
+            data = "1 subgoal (ID 47)	  	  n : nat	  A : Type	  B : Type	  A' : Type	  B' : Type	  f : A -> A'	  g : B -> B'	  P : A' + B' -> Type	  ef : ExtendableAlong n f (P o inl)	  eg : ExtendableAlong n g (P o inr)	  ============================	  ExtendableAlong n (functor_sum f g) P	";
             responses[i]=data;
           
 
@@ -2308,16 +2308,136 @@
           
 
             i = 458;
-            data = "";
+            data = "2 subgoals (ID 66)	  	  n : nat	  A : Type	  B : Type	  A' : Type	  B' : Type	  f : A -> A'	  g : B -> B'	  IH : forall P : A' + B' -> Type,	       ExtendableAlong n f (fun x : A' => P (inl x)) ->	       ExtendableAlong n g (fun x : B' => P (inr x)) ->	       ExtendableAlong n (functor_sum f g) P	  P : A' + B' -> Type	  ef : ExtendableAlong n.+1 f (fun x : A' => P (inl x))	  eg : ExtendableAlong n.+1 g (fun x : B' => P (inr x))	  ============================	  forall g0 : forall a : A + B, P (functor_sum f g a),	  ExtensionAlong (functor_sum f g) P g0		subgoal 2 (ID 67) is:	 forall h k : forall b : A' + B', P b,	 ExtendableAlong n (functor_sum f g) (fun b : A' + B' => h b = k b)	";
             responses[i]=data;
           
 
             i = 459;
-            data = "";
+            data = "1 subgoal (ID 66)	  	  n : nat	  A : Type	  B : Type	  A' : Type	  B' : Type	  f : A -> A'	  g : B -> B'	  IH : forall P : A' + B' -> Type,	       ExtendableAlong n f (fun x : A' => P (inl x)) ->	       ExtendableAlong n g (fun x : B' => P (inr x)) ->	       ExtendableAlong n (functor_sum f g) P	  P : A' + B' -> Type	  ef : ExtendableAlong n.+1 f (fun x : A' => P (inl x))	  eg : ExtendableAlong n.+1 g (fun x : B' => P (inr x))	  ============================	  forall g0 : forall a : A + B, P (functor_sum f g a),	  ExtensionAlong (functor_sum f g) P g0	1 subgoal (ID 68)	  	  n : nat	  A : Type	  B : Type	  A' : Type	  B' : Type	  f : A -> A'	  g : B -> B'	  IH : forall P : A' + B' -> Type,	       ExtendableAlong n f (fun x : A' => P (inl x)) ->	       ExtendableAlong n g (fun x : B' => P (inr x)) ->	       ExtendableAlong n (functor_sum f g) P	  P : A' + B' -> Type	  ef : ExtendableAlong n.+1 f (fun x : A' => P (inl x))	  eg : ExtendableAlong n.+1 g (fun x : B' => P (inr x))	  h : forall a : A + B, P (functor_sum f g a)	  ============================	  ExtensionAlong (functor_sum f g) P h	";
             responses[i]=data;
           
 
             i = 460;
+            data = "4 subgoals (ID 77)	  	  n : nat	  A : Type	  B : Type	  A' : Type	  B' : Type	  f : A -> A'	  g : B -> B'	  IH : forall P : A' + B' -> Type,	       ExtendableAlong n f (fun x : A' => P (inl x)) ->	       ExtendableAlong n g (fun x : B' => P (inr x)) ->	       ExtendableAlong n (functor_sum f g) P	  P : A' + B' -> Type	  ef : ExtendableAlong n.+1 f (fun x : A' => P (inl x))	  eg : ExtendableAlong n.+1 g (fun x : B' => P (inr x))	  h : forall a : A + B, P (functor_sum f g a)	  ============================	  forall a : A', P (inl a)		subgoal 2 (ID 79) is:	 forall b : B', P (inr b)	subgoal 3 (ID 85) is:	 forall a : A,	 (fun s : A + B => sum_ind P ?f ?g (functor_sum f g s) = h s) (inl a)	subgoal 4 (ID 87) is:	 forall b : B,	 (fun s : A + B => sum_ind P ?f ?g (functor_sum f g s) = h s) (inr b)	";
+            responses[i]=data;
+          
+
+            i = 461;
+            data = "1 subgoal (ID 77)	  	  n : nat	  A : Type	  B : Type	  A' : Type	  B' : Type	  f : A -> A'	  g : B -> B'	  IH : forall P : A' + B' -> Type,	       ExtendableAlong n f (fun x : A' => P (inl x)) ->	       ExtendableAlong n g (fun x : B' => P (inr x)) ->	       ExtendableAlong n (functor_sum f g) P	  P : A' + B' -> Type	  ef : ExtendableAlong n.+1 f (fun x : A' => P (inl x))	  eg : ExtendableAlong n.+1 g (fun x : B' => P (inr x))	  h : forall a : A + B, P (functor_sum f g a)	  ============================	  forall a : A', P (inl a)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet +.	</infomsg>	4 subgoals (ID 79)		subgoal 1 (ID 79) is:	 forall b : B', P (inr b)	subgoal 2 (ID 85) is:	 forall a : A,	 (fun s : A + B =>	  sum_ind P (fst ef (h o inl)).1 ?g (functor_sum f g s) = h s) 	   (inl a)	subgoal 3 (ID 87) is:	 forall b : B,	 (fun s : A + B =>	  sum_ind P (fst ef (h o inl)).1 ?g (functor_sum f g s) = h s) 	   (inr b)	subgoal 4 (ID 67) is:	 forall h k : forall b : A' + B', P b,	 ExtendableAlong n (functor_sum f g) (fun b : A' + B' => h b = k b)	";
+            responses[i]=data;
+          
+
+            i = 462;
+            data = "1 subgoal (ID 79)	  	  n : nat	  A : Type	  B : Type	  A' : Type	  B' : Type	  f : A -> A'	  g : B -> B'	  IH : forall P : A' + B' -> Type,	       ExtendableAlong n f (fun x : A' => P (inl x)) ->	       ExtendableAlong n g (fun x : B' => P (inr x)) ->	       ExtendableAlong n (functor_sum f g) P	  P : A' + B' -> Type	  ef : ExtendableAlong n.+1 f (fun x : A' => P (inl x))	  eg : ExtendableAlong n.+1 g (fun x : B' => P (inr x))	  h : forall a : A + B, P (functor_sum f g a)	  ============================	  forall b : B', P (inr b)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet +.	</infomsg>	3 subgoals (ID 85)		subgoal 1 (ID 85) is:	 forall a : A,	 (fun s : A + B =>	  sum_ind P (fst ef (h o inl)).1 (fst eg (h o inr)).1 (functor_sum f g s) =	  h s) (inl a)	subgoal 2 (ID 87) is:	 forall b : B,	 (fun s : A + B =>	  sum_ind P (fst ef (h o inl)).1 (fst eg (h o inr)).1 (functor_sum f g s) =	  h s) (inr b)	subgoal 3 (ID 67) is:	 forall h k : forall b : A' + B', P b,	 ExtendableAlong n (functor_sum f g) (fun b : A' + B' => h b = k b)	";
+            responses[i]=data;
+          
+
+            i = 463;
+            data = "1 subgoal (ID 85)	  	  n : nat	  A : Type	  B : Type	  A' : Type	  B' : Type	  f : A -> A'	  g : B -> B'	  IH : forall P : A' + B' -> Type,	       ExtendableAlong n f (fun x : A' => P (inl x)) ->	       ExtendableAlong n g (fun x : B' => P (inr x)) ->	       ExtendableAlong n (functor_sum f g) P	  P : A' + B' -> Type	  ef : ExtendableAlong n.+1 f (fun x : A' => P (inl x))	  eg : ExtendableAlong n.+1 g (fun x : B' => P (inr x))	  h : forall a : A + B, P (functor_sum f g a)	  ============================	  forall a : A,	  (fun s : A + B =>	   sum_ind P (fst ef (h o inl)).1 (fst eg (h o inr)).1 (functor_sum f g s) =	   h s) (inl a)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet +.	</infomsg>	2 subgoals (ID 87)		subgoal 1 (ID 87) is:	 forall b : B,	 (fun s : A + B =>	  sum_ind P (fst ef (h o inl)).1 (fst eg (h o inr)).1 (functor_sum f g s) =	  h s) (inr b)	subgoal 2 (ID 67) is:	 forall h k : forall b : A' + B', P b,	 ExtendableAlong n (functor_sum f g) (fun b : A' + B' => h b = k b)	";
+            responses[i]=data;
+          
+
+            i = 464;
+            data = "1 subgoal (ID 87)	  	  n : nat	  A : Type	  B : Type	  A' : Type	  B' : Type	  f : A -> A'	  g : B -> B'	  IH : forall P : A' + B' -> Type,	       ExtendableAlong n f (fun x : A' => P (inl x)) ->	       ExtendableAlong n g (fun x : B' => P (inr x)) ->	       ExtendableAlong n (functor_sum f g) P	  P : A' + B' -> Type	  ef : ExtendableAlong n.+1 f (fun x : A' => P (inl x))	  eg : ExtendableAlong n.+1 g (fun x : B' => P (inr x))	  h : forall a : A + B, P (functor_sum f g a)	  ============================	  forall b : B,	  (fun s : A + B =>	   sum_ind P (fst ef (h o inl)).1 (fst eg (h o inr)).1 (functor_sum f g s) =	   h s) (inr b)	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet -.	</infomsg>	1 subgoal (ID 67)		subgoal 1 (ID 67) is:	 forall h k : forall b : A' + B', P b,	 ExtendableAlong n (functor_sum f g) (fun b : A' + B' => h b = k b)	";
+            responses[i]=data;
+          
+
+            i = 465;
+            data = "1 subgoal (ID 67)	  	  n : nat	  A : Type	  B : Type	  A' : Type	  B' : Type	  f : A -> A'	  g : B -> B'	  IH : forall P : A' + B' -> Type,	       ExtendableAlong n f (fun x : A' => P (inl x)) ->	       ExtendableAlong n g (fun x : B' => P (inr x)) ->	       ExtendableAlong n (functor_sum f g) P	  P : A' + B' -> Type	  ef : ExtendableAlong n.+1 f (fun x : A' => P (inl x))	  eg : ExtendableAlong n.+1 g (fun x : B' => P (inr x))	  ============================	  forall h k : forall b : A' + B', P b,	  ExtendableAlong n (functor_sum f g) (fun b : A' + B' => h b = k b)	1 subgoal (ID 149)	  	  n : nat	  A : Type	  B : Type	  A' : Type	  B' : Type	  f : A -> A'	  g : B -> B'	  IH : forall P : A' + B' -> Type,	       ExtendableAlong n f (fun x : A' => P (inl x)) ->	       ExtendableAlong n g (fun x : B' => P (inr x)) ->	       ExtendableAlong n (functor_sum f g) P	  P : A' + B' -> Type	  ef : ExtendableAlong n.+1 f (fun x : A' => P (inl x))	  eg : ExtendableAlong n.+1 g (fun x : B' => P (inr x))	  h, k : forall b : A' + B', P b	  ============================	  ExtendableAlong n (functor_sum f g) (fun b : A' + B' => h b = k b)	";
+            responses[i]=data;
+          
+
+            i = 466;
+            data = "2 subgoals (ID 150)	  	  n : nat	  A : Type	  B : Type	  A' : Type	  B' : Type	  f : A -> A'	  g : B -> B'	  IH : forall P : A' + B' -> Type,	       ExtendableAlong n f (fun x : A' => P (inl x)) ->	       ExtendableAlong n g (fun x : B' => P (inr x)) ->	       ExtendableAlong n (functor_sum f g) P	  P : A' + B' -> Type	  ef : ExtendableAlong n.+1 f (fun x : A' => P (inl x))	  eg : ExtendableAlong n.+1 g (fun x : B' => P (inr x))	  h, k : forall b : A' + B', P b	  ============================	  ExtendableAlong n f (fun x : A' => h (inl x) = k (inl x))		subgoal 2 (ID 151) is:	 ExtendableAlong n g (fun x : B' => h (inr x) = k (inr x))	";
+            responses[i]=data;
+          
+
+            i = 467;
+            data = "1 subgoal (ID 150)	  	  n : nat	  A : Type	  B : Type	  A' : Type	  B' : Type	  f : A -> A'	  g : B -> B'	  IH : forall P : A' + B' -> Type,	       ExtendableAlong n f (fun x : A' => P (inl x)) ->	       ExtendableAlong n g (fun x : B' => P (inr x)) ->	       ExtendableAlong n (functor_sum f g) P	  P : A' + B' -> Type	  ef : ExtendableAlong n.+1 f (fun x : A' => P (inl x))	  eg : ExtendableAlong n.+1 g (fun x : B' => P (inr x))	  h, k : forall b : A' + B', P b	  ============================	  ExtendableAlong n f (fun x : A' => h (inl x) = k (inl x))	<infomsg>	This subproof is complete, but there are some unfocused goals.	Focus next goal with bullet +.	</infomsg>	1 subgoal (ID 151)		subgoal 1 (ID 151) is:	 ExtendableAlong n g (fun x : B' => h (inr x) = k (inr x))	";
+            responses[i]=data;
+          
+
+            i = 468;
+            data = "1 subgoal (ID 151)	  	  n : nat	  A : Type	  B : Type	  A' : Type	  B' : Type	  f : A -> A'	  g : B -> B'	  IH : forall P : A' + B' -> Type,	       ExtendableAlong n f (fun x : A' => P (inl x)) ->	       ExtendableAlong n g (fun x : B' => P (inr x)) ->	       ExtendableAlong n (functor_sum f g) P	  P : A' + B' -> Type	  ef : ExtendableAlong n.+1 f (fun x : A' => P (inl x))	  eg : ExtendableAlong n.+1 g (fun x : B' => P (inr x))	  h, k : forall b : A' + B', P b	  ============================	  ExtendableAlong n g (fun x : B' => h (inr x) = k (inr x))	No more subgoals.	";
+            responses[i]=data;
+          
+
+            i = 469;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 470;
+            data = "1 subgoal (ID 93)	  	  A : Type	  B : Type	  A' : Type	  B' : Type	  f : A -> A'	  g : B -> B'	  P : A' + B' -> Type	  ef : ooExtendableAlong f (P o inl)	  eg : ooExtendableAlong g (P o inr)	  ============================	  ooExtendableAlong (functor_sum f g) P	";
+            responses[i]=data;
+          
+
+            i = 471;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 472;
+            data = "No more subgoals.	";
+            responses[i]=data;
+          
+
+            i = 473;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 474;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 475;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 476;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 477;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 478;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 479;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 480;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 481;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 482;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 483;
+            data = "";
+            responses[i]=data;
+          
+
+            i = 484;
             data = "";
             responses[i]=data;
           
@@ -3902,9 +4022,124 @@ Extendability of a family <span class="inlinecode"><a class="idref" href="HoTTBo
       " onmouseover="
       mouseover(450, '0_3_95');
       "><br>
+<br>
 </span>
 </div>
 <div class="goal" id="goal0_3_95"><pre><span></span></pre></div>
+<div class="doc" scenenumber="97">
+Extendability along <span class="inlinecode"><a class="idref" href="HoTT.Types.Sum.html#functor_sum"><span class="id" title="definition">functor_sum</span></a></span>
+</div>
+<div scenenumber="99" class="code">
+<span class="command" onmouseout="
+      mouseout('0_3_99');
+      " onmouseover="
+      mouseover(456, '0_3_99');
+      ">
+<br>
+<span class="id" title="keyword">Definition</span> <a name="extendable_functor_sum"><span class="id" title="definition">extendable_functor_sum</span></a> (<span class="id" title="var">n</span> : <a class="idref" href="Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>)<br>
+           {<span class="id" title="var">A</span> <span class="id" title="var">B</span> <span class="id" title="var">A'</span> <span class="id" title="var">B'</span>} (<span class="id" title="var">f</span> : <a class="idref" href="HoTT.Extensions.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Extensions.html#A'"><span class="id" title="variable">A'</span></a>) (<span class="id" title="var">g</span> : <a class="idref" href="HoTT.Extensions.html#B"><span class="id" title="variable">B</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Extensions.html#B'"><span class="id" title="variable">B'</span></a>)<br>
+           (<span class="id" title="var">P</span> : <a class="idref" href="HoTT.Extensions.html#A'"><span class="id" title="variable">A'</span></a> <a class="idref" href="Coq.Init.Datatypes.html#e03f39daf98516fa530d3f6f5a1b4d92"><span class="id" title="notation">+</span></a> <a class="idref" href="HoTT.Extensions.html#B'"><span class="id" title="variable">B'</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <span class="id" title="keyword">Type</span>)<br>
+           (<span class="id" title="var">ef</span> : <a class="idref" href="HoTT.Extensions.html#ExtendableAlong"><span class="id" title="definition">ExtendableAlong</span></a> <a class="idref" href="HoTT.Extensions.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Extensions.html#f"><span class="id" title="variable">f</span></a> (<a class="idref" href="HoTT.Extensions.html#P"><span class="id" title="variable">P</span></a> <a class="idref" href="HoTT.Basics.Overture.html#38b1404556adb9f3c135a0fea94b5bdf"><span class="id" title="notation">o</span></a> <a class="idref" href="Coq.Init.Datatypes.html#inl"><span class="id" title="constructor">inl</span></a>))<br>
+           (<span class="id" title="var">eg</span> : <a class="idref" href="HoTT.Extensions.html#ExtendableAlong"><span class="id" title="definition">ExtendableAlong</span></a> <a class="idref" href="HoTT.Extensions.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Extensions.html#g"><span class="id" title="variable">g</span></a> (<a class="idref" href="HoTT.Extensions.html#P"><span class="id" title="variable">P</span></a> <a class="idref" href="HoTT.Basics.Overture.html#38b1404556adb9f3c135a0fea94b5bdf"><span class="id" title="notation">o</span></a> <a class="idref" href="Coq.Init.Datatypes.html#inr"><span class="id" title="constructor">inr</span></a>))<br>
+  : <a class="idref" href="HoTT.Extensions.html#ExtendableAlong"><span class="id" title="definition">ExtendableAlong</span></a> <a class="idref" href="HoTT.Extensions.html#n"><span class="id" title="variable">n</span></a> (<a class="idref" href="HoTT.Types.Sum.html#functor_sum"><span class="id" title="definition">functor_sum</span></a> <a class="idref" href="HoTT.Extensions.html#f"><span class="id" title="variable">f</span></a> <a class="idref" href="HoTT.Extensions.html#g"><span class="id" title="variable">g</span></a>) <a class="idref" href="HoTT.Extensions.html#P"><span class="id" title="variable">P</span></a>.</span><span class="command" onmouseout="
+      mouseout('0_3_99');
+      " onmouseover="
+      mouseover(457, '0_3_99');
+      "><br>
+<span class="id" title="keyword">Proof</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_99');
+      " onmouseover="
+      mouseover(458, '0_3_99');
+      "><br>
+  <span class="id" title="var">revert</span> <span class="id" title="var">P</span> <span class="id" title="var">ef</span> <span class="id" title="var">eg</span>; <span class="id" title="tactic">induction</span> <span class="id" title="var">n</span> <span class="id" title="keyword">as</span> [|<span class="id" title="var">n</span> <span class="id" title="var">IH</span>]; <span class="id" title="tactic">intros</span> <span class="id" title="var">P</span> <span class="id" title="var">ef</span> <span class="id" title="var">eg</span>; [ <span class="id" title="tactic">exact</span> <a class="idref" href="HoTT.Basics.Overture.html#tt"><span class="id" title="constructor">tt</span></a> | <span class="id" title="tactic">split</span> ].</span><span class="command" onmouseout="
+      mouseout('0_3_99');
+      " onmouseover="
+      mouseover(459, '0_3_99');
+      "><br>
+  - <span class="id" title="tactic">intros</span> <span class="id" title="var">h</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_99');
+      " onmouseover="
+      mouseover(460, '0_3_99');
+      "><br>
+    <span class="id" title="var">srefine</span> <a class="idref" href="HoTT.Basics.Overture.html#4887cec9c4a6ccb88dc6b18963c35c8f"><span class="id" title="notation">(</span></a><a class="idref" href="HoTT.Types.Sum.html#sum_ind"><span class="id" title="definition">sum_ind</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <a class="idref" href="HoTT.Basics.Overture.html#4887cec9c4a6ccb88dc6b18963c35c8f"><span class="id" title="notation">;</span></a> <a class="idref" href="HoTT.Types.Sum.html#sum_ind"><span class="id" title="definition">sum_ind</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span><a class="idref" href="HoTT.Basics.Overture.html#4887cec9c4a6ccb88dc6b18963c35c8f"><span class="id" title="notation">)</span></a>.</span><span class="command" onmouseout="
+      mouseout('0_3_99');
+      " onmouseover="
+      mouseover(461, '0_3_99');
+      "><br>
+    + <span class="id" title="tactic">exact</span> <a class="idref" href="HoTT.Basics.Overture.html#a0d4c290984547f24aacc208636427e2"><span class="id" title="notation">(</span></a><a class="idref" href="Coq.Init.Datatypes.html#fst"><span class="id" title="projection">fst</span></a> <span class="id" title="var">ef</span> (<span class="id" title="var">h</span> <a class="idref" href="HoTT.Basics.Overture.html#38b1404556adb9f3c135a0fea94b5bdf"><span class="id" title="notation">o</span></a> <a class="idref" href="Coq.Init.Datatypes.html#inl"><span class="id" title="constructor">inl</span></a>)<a class="idref" href="HoTT.Basics.Overture.html#a0d4c290984547f24aacc208636427e2"><span class="id" title="notation">).1</span></a>.</span><span class="command" onmouseout="
+      mouseout('0_3_99');
+      " onmouseover="
+      mouseover(462, '0_3_99');
+      "><br>
+    + <span class="id" title="tactic">exact</span> <a class="idref" href="HoTT.Basics.Overture.html#a0d4c290984547f24aacc208636427e2"><span class="id" title="notation">(</span></a><a class="idref" href="Coq.Init.Datatypes.html#fst"><span class="id" title="projection">fst</span></a> <span class="id" title="var">eg</span> (<span class="id" title="var">h</span> <a class="idref" href="HoTT.Basics.Overture.html#38b1404556adb9f3c135a0fea94b5bdf"><span class="id" title="notation">o</span></a> <a class="idref" href="Coq.Init.Datatypes.html#inr"><span class="id" title="constructor">inr</span></a>)<a class="idref" href="HoTT.Basics.Overture.html#a0d4c290984547f24aacc208636427e2"><span class="id" title="notation">).1</span></a>.</span><span class="command" onmouseout="
+      mouseout('0_3_99');
+      " onmouseover="
+      mouseover(463, '0_3_99');
+      "><br>
+    + <span class="id" title="tactic">exact</span> <a class="idref" href="HoTT.Basics.Overture.html#dec9bdefe956e49d73ffc4a7400937db"><span class="id" title="notation">(</span></a><a class="idref" href="Coq.Init.Datatypes.html#fst"><span class="id" title="projection">fst</span></a> <span class="id" title="var">ef</span> (<span class="id" title="var">h</span> <a class="idref" href="HoTT.Basics.Overture.html#38b1404556adb9f3c135a0fea94b5bdf"><span class="id" title="notation">o</span></a> <a class="idref" href="Coq.Init.Datatypes.html#inl"><span class="id" title="constructor">inl</span></a>)<a class="idref" href="HoTT.Basics.Overture.html#dec9bdefe956e49d73ffc4a7400937db"><span class="id" title="notation">).2</span></a>.</span><span class="command" onmouseout="
+      mouseout('0_3_99');
+      " onmouseover="
+      mouseover(464, '0_3_99');
+      "><br>
+    + <span class="id" title="tactic">exact</span> <a class="idref" href="HoTT.Basics.Overture.html#dec9bdefe956e49d73ffc4a7400937db"><span class="id" title="notation">(</span></a><a class="idref" href="Coq.Init.Datatypes.html#fst"><span class="id" title="projection">fst</span></a> <span class="id" title="var">eg</span> (<span class="id" title="var">h</span> <a class="idref" href="HoTT.Basics.Overture.html#38b1404556adb9f3c135a0fea94b5bdf"><span class="id" title="notation">o</span></a> <a class="idref" href="Coq.Init.Datatypes.html#inr"><span class="id" title="constructor">inr</span></a>)<a class="idref" href="HoTT.Basics.Overture.html#dec9bdefe956e49d73ffc4a7400937db"><span class="id" title="notation">).2</span></a>.</span><span class="command" onmouseout="
+      mouseout('0_3_99');
+      " onmouseover="
+      mouseover(465, '0_3_99');
+      "><br>
+  - <span class="id" title="tactic">intros</span> <span class="id" title="var">h</span> <span class="id" title="var">k</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_99');
+      " onmouseover="
+      mouseover(466, '0_3_99');
+      "><br>
+    <span class="id" title="tactic">apply</span> <span class="id" title="var">IH</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_99');
+      " onmouseover="
+      mouseover(467, '0_3_99');
+      "><br>
+    + <span class="id" title="tactic">exact</span> (<a class="idref" href="Coq.Init.Datatypes.html#snd"><span class="id" title="projection">snd</span></a> <span class="id" title="var">ef</span> (<span class="id" title="var">h</span> <a class="idref" href="HoTT.Basics.Overture.html#38b1404556adb9f3c135a0fea94b5bdf"><span class="id" title="notation">o</span></a> <a class="idref" href="Coq.Init.Datatypes.html#inl"><span class="id" title="constructor">inl</span></a>) (<span class="id" title="var">k</span> <a class="idref" href="HoTT.Basics.Overture.html#38b1404556adb9f3c135a0fea94b5bdf"><span class="id" title="notation">o</span></a> <a class="idref" href="Coq.Init.Datatypes.html#inl"><span class="id" title="constructor">inl</span></a>)).</span><span class="command" onmouseout="
+      mouseout('0_3_99');
+      " onmouseover="
+      mouseover(468, '0_3_99');
+      "><br>
+    + <span class="id" title="tactic">exact</span> (<a class="idref" href="Coq.Init.Datatypes.html#snd"><span class="id" title="projection">snd</span></a> <span class="id" title="var">eg</span> (<span class="id" title="var">h</span> <a class="idref" href="HoTT.Basics.Overture.html#38b1404556adb9f3c135a0fea94b5bdf"><span class="id" title="notation">o</span></a> <a class="idref" href="Coq.Init.Datatypes.html#inr"><span class="id" title="constructor">inr</span></a>) (<span class="id" title="var">k</span> <a class="idref" href="HoTT.Basics.Overture.html#38b1404556adb9f3c135a0fea94b5bdf"><span class="id" title="notation">o</span></a> <a class="idref" href="Coq.Init.Datatypes.html#inr"><span class="id" title="constructor">inr</span></a>)).</span><span class="command" onmouseout="
+      mouseout('0_3_99');
+      " onmouseover="
+      mouseover(469, '0_3_99');
+      "><br>
+<span class="id" title="keyword">Defined</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_99');
+      " onmouseover="
+      mouseover(470, '0_3_99');
+      "><br>
+<br>
+<span class="id" title="keyword">Definition</span> <a name="ooextendable_functor_sum"><span class="id" title="definition">ooextendable_functor_sum</span></a><br>
+           {<span class="id" title="var">A</span> <span class="id" title="var">B</span> <span class="id" title="var">A'</span> <span class="id" title="var">B'</span>} (<span class="id" title="var">f</span> : <a class="idref" href="HoTT.Extensions.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Extensions.html#A'"><span class="id" title="variable">A'</span></a>) (<span class="id" title="var">g</span> : <a class="idref" href="HoTT.Extensions.html#B"><span class="id" title="variable">B</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Extensions.html#B'"><span class="id" title="variable">B'</span></a>)<br>
+           (<span class="id" title="var">P</span> : <a class="idref" href="HoTT.Extensions.html#A'"><span class="id" title="variable">A'</span></a> <a class="idref" href="Coq.Init.Datatypes.html#e03f39daf98516fa530d3f6f5a1b4d92"><span class="id" title="notation">+</span></a> <a class="idref" href="HoTT.Extensions.html#B'"><span class="id" title="variable">B'</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <span class="id" title="keyword">Type</span>)<br>
+           (<span class="id" title="var">ef</span> : <a class="idref" href="HoTT.Extensions.html#ooExtendableAlong"><span class="id" title="definition">ooExtendableAlong</span></a> <a class="idref" href="HoTT.Extensions.html#f"><span class="id" title="variable">f</span></a> (<a class="idref" href="HoTT.Extensions.html#P"><span class="id" title="variable">P</span></a> <a class="idref" href="HoTT.Basics.Overture.html#38b1404556adb9f3c135a0fea94b5bdf"><span class="id" title="notation">o</span></a> <a class="idref" href="Coq.Init.Datatypes.html#inl"><span class="id" title="constructor">inl</span></a>))<br>
+           (<span class="id" title="var">eg</span> : <a class="idref" href="HoTT.Extensions.html#ooExtendableAlong"><span class="id" title="definition">ooExtendableAlong</span></a> <a class="idref" href="HoTT.Extensions.html#g"><span class="id" title="variable">g</span></a> (<a class="idref" href="HoTT.Extensions.html#P"><span class="id" title="variable">P</span></a> <a class="idref" href="HoTT.Basics.Overture.html#38b1404556adb9f3c135a0fea94b5bdf"><span class="id" title="notation">o</span></a> <a class="idref" href="Coq.Init.Datatypes.html#inr"><span class="id" title="constructor">inr</span></a>))<br>
+  : <a class="idref" href="HoTT.Extensions.html#ooExtendableAlong"><span class="id" title="definition">ooExtendableAlong</span></a> (<a class="idref" href="HoTT.Types.Sum.html#functor_sum"><span class="id" title="definition">functor_sum</span></a> <a class="idref" href="HoTT.Extensions.html#f"><span class="id" title="variable">f</span></a> <a class="idref" href="HoTT.Extensions.html#g"><span class="id" title="variable">g</span></a>) <a class="idref" href="HoTT.Extensions.html#P"><span class="id" title="variable">P</span></a>.</span><span class="command" onmouseout="
+      mouseout('0_3_99');
+      " onmouseover="
+      mouseover(471, '0_3_99');
+      "><br>
+<span class="id" title="keyword">Proof</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_99');
+      " onmouseover="
+      mouseover(472, '0_3_99');
+      "><br>
+  <span class="id" title="tactic">intros</span> <span class="id" title="var">n</span>; <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Extensions.html#extendable_functor_sum"><span class="id" title="definition">extendable_functor_sum</span></a>; [ <span class="id" title="tactic">apply</span> <span class="id" title="var">ef</span> | <span class="id" title="tactic">apply</span> <span class="id" title="var">eg</span> ].</span><span class="command" onmouseout="
+      mouseout('0_3_99');
+      " onmouseover="
+      mouseover(473, '0_3_99');
+      "><br>
+<span class="id" title="keyword">Defined</span>.</span><span class="command" onmouseout="
+      mouseout('0_3_99');
+      " onmouseover="
+      mouseover(474, '0_3_99');
+      "><br>
+</span>
+</div>
+<div class="goal" id="goal0_3_99"><pre><span></span></pre></div>
 </div>
 <div id="footer" scenenumber="5" class="doc">
 <hr>
