@@ -38,14 +38,14 @@ Time: 0s">
 </div>
 <div class="code" title="File: Equiv.v
 Line: 2
-Time: 0.015s">
-<div class="time" style="width: 26.785714285714%"></div>
+Time: 0.014s">
+<div class="time" style="width: 22.58064516129%"></div>
 <pre>Require Import Basics.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 2
-Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
+Time: 0.003s">
+<div class="time" style="width: 4.8387096774194%"></div>
 <pre>
 Require Import WildCat.Core.</pre>
 </div>
@@ -63,8 +63,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Equiv.v
 Line: 8
-Time: 0.023s">
-<div class="time" style="width: 41.071428571429%"></div>
+Time: 0.025s">
+<div class="time" style="width: 40.322580645161%"></div>
 <pre>Class HasEquivs (A : Type) `{Is1Cat A} :=
 {
   CatEquiv' : A -&gt; A -&gt; Type where "a $&lt;~&gt; b" := (CatEquiv' a b);
@@ -74,11 +74,11 @@ Time: 0.023s">
   cate_buildequiv' : forall a b (f : a $-&gt; b), CatIsEquiv' a b f -&gt; CatEquiv' a b;
   cate_buildequiv_fun' : forall a b (f : a $-&gt; b) (fe : CatIsEquiv' a b f),
       cate_fun' a b (cate_buildequiv' a b f fe) $== f;
-  cate_inv' : forall a b (f : a $-&gt; b), CatIsEquiv' a b f -&gt; (b $-&gt; a);
-  cate_issect' : forall a b (f : a $-&gt; b) (fe : CatIsEquiv' a b f),
-    cate_inv' _ _ f fe $o f $== Id a;
-  cate_isretr' : forall a b (f : a $-&gt; b) (fe : CatIsEquiv' a b f),
-      f $o cate_inv' _ _ f fe $== Id b;
+  cate_inv' : forall a b (f : a $&lt;~&gt; b), b $-&gt; a;
+  cate_issect' : forall a b (f : a $&lt;~&gt; b),
+    cate_inv' _ _ f $o cate_fun' _ _ f $== Id a;
+  cate_isretr' : forall a b (f : a $&lt;~&gt; b),
+      cate_fun' _ _ f $o cate_inv' _ _ f $== Id b;
   catie_adjointify' : forall a b (f : a $-&gt; b) (g : b $-&gt; a)
     (r : f $o g $== Id b) (s : g $o f $== Id a), CatIsEquiv' a b f;
 }.</pre>
@@ -96,9 +96,9 @@ Time: 0s">
 <div class="code" title="File: Equiv.v
 Line: 27
 Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+<div class="time" style="width: 1.6129032258065%"></div>
 <pre>Definition CatEquiv {A} `{HasEquivs A} (a b : A)
-  := @CatEquiv' A _ _ _ a b.</pre>
+  := @CatEquiv' A _ _ _ _ a b.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 28
@@ -118,12 +118,12 @@ Arguments CatEquiv : simpl never.</pre>
 <div class="code" title="File: Equiv.v
 Line: 31
 Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+<div class="time" style="width: 1.6129032258065%"></div>
 <pre>
 
 Definition cate_fun {A} `{HasEquivs A} {a b : A} (f : a $&lt;~&gt; b)
   : a $-&gt; b
-  := @cate_fun' A _ _ _ a b f.</pre>
+  := @cate_fun' A _ _ _ _ a b f.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 35
@@ -139,19 +139,19 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-(* Being an equivalence should be a typeclass, but we have to redefine it.  (Apparently [Existing Class] doesn't work.) *)</pre>
+(* Being an equivalence should be a typeclass, but we have to redefine it to work around https://github.com/coq/coq/issues/8994 . *)</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 39
-Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+Time: 0.002s">
+<div class="time" style="width: 3.2258064516129%"></div>
 <pre>Class CatIsEquiv {A} `{HasEquivs A} {a b : A} (f : a $-&gt; b)
   := catisequiv : CatIsEquiv' a b f.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 40
 Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 3.2258064516129%"></div>
 <pre>
 
 Global Instance cate_isequiv {A} `{HasEquivs A} {a b : A} (f : a $&lt;~&gt; b)
@@ -161,7 +161,7 @@ Global Instance cate_isequiv {A} `{HasEquivs A} {a b : A} (f : a $&lt;~&gt; b)
 <div class="code" title="File: Equiv.v
 Line: 44
 Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 3.2258064516129%"></div>
 <pre>
 
 Definition Build_CatEquiv {A} `{HasEquivs A} {a b : A}
@@ -171,8 +171,8 @@ Definition Build_CatEquiv {A} `{HasEquivs A} {a b : A}
 </div>
 <div class="code" title="File: Equiv.v
 Line: 49
-Time: 0.008s">
-<div class="time" style="width: 14.285714285714%"></div>
+Time: 0.003s">
+<div class="time" style="width: 4.8387096774194%"></div>
 <pre>
 
 Definition cate_buildequiv_fun {A} `{HasEquivs A} {a b : A}
@@ -183,7 +183,7 @@ Definition cate_buildequiv_fun {A} `{HasEquivs A} {a b : A}
 <div class="code" title="File: Equiv.v
 Line: 54
 Time: 0.005s">
-<div class="time" style="width: 8.9285714285714%"></div>
+<div class="time" style="width: 8.0645161290323%"></div>
 <pre>
 
 Definition catie_adjointify {A} `{HasEquivs A} {a b : A}
@@ -195,14 +195,14 @@ Definition catie_adjointify {A} `{HasEquivs A} {a b : A}
 <div class="code" title="File: Equiv.v
 Line: 60
 Time: 0.005s">
-<div class="time" style="width: 8.9285714285714%"></div>
+<div class="time" style="width: 8.0645161290323%"></div>
 <pre>
 
 Definition cate_adjointify {A} `{HasEquivs A} {a b : A}
            (f : a $-&gt; b) (g : b $-&gt; a)
            (r : f $o g $== Id b) (s : g $o f $== Id a)
   : a $&lt;~&gt; b
-  := @Build_CatEquiv _ _ _ _ a b f (catie_adjointify f g r s).</pre>
+  := @Build_CatEquiv _ _ _ _ _ a b f (catie_adjointify f g r s).</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 66
@@ -215,23 +215,35 @@ Time: 0s">
 <div class="code" title="File: Equiv.v
 Line: 68
 Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
-<pre>Definition cate_inv {A} `{HasEquivs A} {a b : A} (f : a $-&gt; b) {fe : CatIsEquiv f}
-  : b $&lt;~&gt; a.</pre>
+<div class="time" style="width: 1.6129032258065%"></div>
+<pre>Definition cate_inv {A} `{HasEquivs A} {a b : A} (f : a $&lt;~&gt; b) : b $&lt;~&gt; a.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 69
+Line: 68
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 70
+Line: 69
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   simple refine (cate_adjointify _ _ _ _).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 70
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 71
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exact (cate_inv' a b f).</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 71
@@ -244,7 +256,7 @@ Time: 0s">
 Line: 72
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> exact (@cate_inv' A _ _ _ a b f fe).</pre>
+<pre> exact f.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 72
@@ -257,7 +269,7 @@ Time: 0s">
 Line: 73
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> exact f.</pre>
+<pre> exact (cate_issect' a b f).</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 73
@@ -270,30 +282,17 @@ Time: 0s">
 Line: 74
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> exact (@cate_issect' A _ _ _ a b f fe).</pre>
+<pre> exact (cate_isretr' a b f).</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 74
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  -</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 75
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> exact (@cate_isretr' A _ _ _ a b f fe).</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 75
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 76
+Line: 75
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -301,95 +300,95 @@ Time: 0s">
 Notation "f ^-1$" := (cate_inv f).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 78
+Line: 77
 Time: 0.003s">
-<div class="time" style="width: 5.3571428571429%"></div>
+<div class="time" style="width: 4.8387096774194%"></div>
 <pre>
 
-Definition cate_issect {A} `{HasEquivs A} {a b} (f : a $-&gt; b) {fe : CatIsEquiv f}
+Definition cate_issect {A} `{HasEquivs A} {a b} (f : a $&lt;~&gt; b) 
   : f^-1$ $o f $== Id a.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 81
+Line: 80
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 81
+Time: 0.001s">
+<div class="time" style="width: 1.6129032258065%"></div>
+<pre>
+  refine (_ $@ cate_issect' a b f).</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 82
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  refine (_ $@ @cate_issect' A _ _ _ a b f fe).</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 83
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
   refine (_ $@R f).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 84
+Line: 83
 Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+<div class="time" style="width: 1.6129032258065%"></div>
 <pre>
   apply cate_buildequiv_fun'.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 85
+Line: 84
 Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+<div class="time" style="width: 1.6129032258065%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 86
-Time: 0.003s">
-<div class="time" style="width: 5.3571428571429%"></div>
+Line: 85
+Time: 0.004s">
+<div class="time" style="width: 6.4516129032258%"></div>
 <pre>
 
-Definition cate_isretr {A} `{HasEquivs A} {a b} (f : a $-&gt; b) {fe : CatIsEquiv f}
+Definition cate_isretr {A} `{HasEquivs A} {a b} (f : a $&lt;~&gt; b)
   : f $o f^-1$ $== Id b.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 89
+Line: 88
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 90
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 89
+Time: 0.001s">
+<div class="time" style="width: 1.6129032258065%"></div>
 <pre>
-  refine (_ $@ @cate_isretr' A _ _ _ a b f fe).</pre>
+  refine (_ $@ cate_isretr' a b f).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 91
+Line: 90
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   refine (f $@L _).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 92
+Line: 91
 Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+<div class="time" style="width: 1.6129032258065%"></div>
 <pre>
   apply cate_buildequiv_fun'.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 93
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 92
+Time: 0.001s">
+<div class="time" style="width: 1.6129032258065%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 94
+Line: 93
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -397,17 +396,17 @@ Time: 0s">
 (** The identity morphism is an equivalence *)</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 96
-Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
+Line: 95
+Time: 0.003s">
+<div class="time" style="width: 4.8387096774194%"></div>
 <pre>Global Instance catie_id {A} `{HasEquivs A} (a : A)
   : CatIsEquiv (Id a)
   := catie_adjointify (Id a) (Id a) (cat_idl (Id a)) (cat_idl (Id a)).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 98
-Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+Line: 97
+Time: 0.002s">
+<div class="time" style="width: 3.2258064516129%"></div>
 <pre>
 
 Definition id_cate {A} `{HasEquivs A} (a : A)
@@ -415,27 +414,27 @@ Definition id_cate {A} `{HasEquivs A} (a : A)
   := Build_CatEquiv (Id a).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 102
+Line: 101
 Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+<div class="time" style="width: 1.6129032258065%"></div>
 <pre>
 
 Global Instance reflexive_cate {A} `{HasEquivs A}
-  : Reflexive (@CatEquiv A _ _ _)
+  : Reflexive (@CatEquiv A _ _ _ _)
   := id_cate.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 106
+Line: 105
 Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 3.2258064516129%"></div>
 <pre>
 
 Global Instance symmetric_cate {A} `{HasEquivs A}
-  : Symmetric (@CatEquiv A _ _ _)
+  : Symmetric (@CatEquiv A _ _ _ _)
   := fun a b f =&gt; cate_inv f.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 110
+Line: 109
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -443,117 +442,117 @@ Time: 0s">
 (** Equivalences can be composed. *)</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 112
+Line: 111
 Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+<div class="time" style="width: 1.6129032258065%"></div>
 <pre>Definition compose_cate {A} `{HasEquivs A} {a b c : A}
   (g : b $&lt;~&gt; c) (f : a $&lt;~&gt; b) : a $&lt;~&gt; c.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 113
+Line: 112
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 114
-Time: 0.003s">
-<div class="time" style="width: 5.3571428571429%"></div>
+Line: 113
+Time: 0.002s">
+<div class="time" style="width: 3.2258064516129%"></div>
 <pre>
   refine (cate_adjointify (g $o f) (f^-1$ $o g^-1$) _ _).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 115
+Line: 114
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 116
-Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+Line: 115
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre> refine (cat_assoc _ _ _ $@ _).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 116
+Line: 115
 Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+<div class="time" style="width: 1.6129032258065%"></div>
 <pre>
     refine ((_ $@L cat_assoc_opp _ _ _) $@ _).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 117
+Line: 116
 Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 3.2258064516129%"></div>
 <pre>
     refine ((_ $@L (cate_isretr _ $@R _)) $@ _).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 118
+Line: 117
 Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+<div class="time" style="width: 1.6129032258065%"></div>
 <pre>
     refine ((_ $@L cat_idl _) $@ _).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 118
+Time: 0.001s">
+<div class="time" style="width: 1.6129032258065%"></div>
+<pre>
+    apply cate_isretr.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 119
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    apply cate_isretr.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 120
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
   -</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 121
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 120
+Time: 0.001s">
+<div class="time" style="width: 1.6129032258065%"></div>
 <pre> refine (cat_assoc _ _ _ $@ _).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 121
+Line: 120
 Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+<div class="time" style="width: 1.6129032258065%"></div>
 <pre>
     refine ((_ $@L cat_assoc_opp _ _ _) $@ _).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 122
+Line: 121
 Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 3.2258064516129%"></div>
 <pre>
     refine ((_ $@L (cate_issect _ $@R _)) $@ _).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 123
+Line: 122
 Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+<div class="time" style="width: 1.6129032258065%"></div>
 <pre>
     refine ((_ $@L cat_idl _) $@ _).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 124
+Line: 123
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply cate_issect.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 125
-Time: 0.008s">
-<div class="time" style="width: 14.285714285714%"></div>
+Line: 124
+Time: 0.006s">
+<div class="time" style="width: 9.6774193548387%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 126
+Line: 125
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -561,9 +560,9 @@ Time: 0s">
 Notation "g $oE f" := (compose_cate g f).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 128
-Time: 0.003s">
-<div class="time" style="width: 5.3571428571429%"></div>
+Line: 127
+Time: 0.004s">
+<div class="time" style="width: 6.4516129032258%"></div>
 <pre>
 
 Definition compose_cate_fun {A} `{HasEquivs A}
@@ -571,30 +570,30 @@ Definition compose_cate_fun {A} `{HasEquivs A}
   : cate_fun (g $oE f) $== g $o f.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 132
+Line: 131
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 133
+Line: 132
 Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 3.2258064516129%"></div>
 <pre>
   apply cate_buildequiv_fun.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 134
-Time: 0.007s">
-<div class="time" style="width: 12.5%"></div>
+Line: 133
+Time: 0.006s">
+<div class="time" style="width: 9.6774193548387%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 135
-Time: 0.003s">
-<div class="time" style="width: 5.3571428571429%"></div>
+Line: 134
+Time: 0.004s">
+<div class="time" style="width: 6.4516129032258%"></div>
 <pre>
 
 Definition compose_cate_funinv {A} `{HasEquivs A}
@@ -602,67 +601,67 @@ Definition compose_cate_funinv {A} `{HasEquivs A}
   : g $o f $== cate_fun (g $oE f).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 139
+Line: 138
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 140
-Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+Line: 139
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   apply gpd_rev.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 141
+Line: 140
 Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 3.2258064516129%"></div>
 <pre>
   apply cate_buildequiv_fun.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 142
-Time: 0.008s">
-<div class="time" style="width: 14.285714285714%"></div>
+Line: 141
+Time: 0.006s">
+<div class="time" style="width: 9.6774193548387%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 143
-Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+Line: 142
+Time: 0.002s">
+<div class="time" style="width: 3.2258064516129%"></div>
 <pre>
 
 Definition id_cate_fun {A} `{HasEquivs A} (a : A) 
   : cate_fun (id_cate a) $== Id a.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 146
+Line: 145
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 147
+Line: 146
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply cate_buildequiv_fun.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 148
+Line: 147
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 149
-Time: 0.004s">
-<div class="time" style="width: 7.1428571428571%"></div>
+Line: 148
+Time: 0.005s">
+<div class="time" style="width: 8.0645161290323%"></div>
 <pre>
 
 Definition compose_cate_assoc {A} `{HasEquivs A}
@@ -670,19 +669,32 @@ Definition compose_cate_assoc {A} `{HasEquivs A}
   : cate_fun ((h $oE g) $oE f) $== cate_fun (h $oE (g $oE f)).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 153
+Line: 152
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 154
-Time: 0.003s">
-<div class="time" style="width: 5.3571428571429%"></div>
+Line: 153
+Time: 0.004s">
+<div class="time" style="width: 6.4516129032258%"></div>
 <pre>
   refine (compose_cate_fun _ f $@ _ $@ cat_assoc f g h $@ _ $@
                            compose_cate_funinv h _).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 155
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 156
+Time: 0.001s">
+<div class="time" style="width: 1.6129032258065%"></div>
+<pre> refine (compose_cate_fun h g $@R _).</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 156
@@ -693,34 +705,21 @@ Time: 0s">
 </div>
 <div class="code" title="File: Equiv.v
 Line: 157
-Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
-<pre> refine (compose_cate_fun h g $@R _).</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 157
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 158
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> refine (_ $@L compose_cate_funinv g f).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 158
+Line: 157
 Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 3.2258064516129%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 159
+Line: 158
 Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 3.2258064516129%"></div>
 <pre>
 
 Definition compose_cate_idl {A} `{HasEquivs A}
@@ -728,37 +727,37 @@ Definition compose_cate_idl {A} `{HasEquivs A}
   : cate_fun (id_cate b $oE f) $== cate_fun f.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 163
+Line: 162
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 164
-Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+Line: 163
+Time: 0.002s">
+<div class="time" style="width: 3.2258064516129%"></div>
 <pre>
   refine (compose_cate_fun _ f $@ _ $@ cat_idl f).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 165
+Line: 164
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   refine (cate_buildequiv_fun _ $@R _).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 166
+Line: 165
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 167
-Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
+Line: 166
+Time: 0.003s">
+<div class="time" style="width: 4.8387096774194%"></div>
 <pre>
 
 Definition compose_cate_idr {A} `{HasEquivs A}
@@ -766,45 +765,93 @@ Definition compose_cate_idr {A} `{HasEquivs A}
   : cate_fun (f $oE id_cate a) $== cate_fun f.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 171
+Line: 170
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 172
+Line: 171
 Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+<div class="time" style="width: 1.6129032258065%"></div>
 <pre>
   refine (compose_cate_fun f _ $@ _ $@ cat_idr f).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 173
-Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+Line: 172
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   refine (_ $@L cate_buildequiv_fun _).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 174
-Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+Line: 173
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 175
-Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+Line: 174
+Time: 0.002s">
+<div class="time" style="width: 3.2258064516129%"></div>
 <pre>
 
 Global Instance transitive_cate {A} `{HasEquivs A}
-  : Transitive (@CatEquiv A _ _ _)
+  : Transitive (@CatEquiv A _ _ _ _)
   := fun a b c f g =&gt; g $oE f.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 179
+Line: 178
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(** Some more convenient equalities for equivalences. The naming scheme is similar to [PathGroupoids.v].*)
+
+</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 181
+Time: 0.027s">
+<div class="time" style="width: 43.548387096774%"></div>
+<pre>Definition compose_V_hh {A} `{HasEquivs A} {a b c : A} (f : b $&lt;~&gt; c) (g : a $-&gt; b) :
+  f^-1$ $o (f $o g) $== g :=
+  (cat_assoc _ _ _)^$ $@ (cate_issect f $@R g) $@ cat_idl g.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 183
+Time: 0.01s">
+<div class="time" style="width: 16.129032258065%"></div>
+<pre>
+
+Definition compose_h_Vh {A} `{HasEquivs A} {a b c : A} (f : c $&lt;~&gt; b) (g : a $-&gt; b) :
+  f $o (f^-1$ $o g) $== g :=
+  (cat_assoc _ _ _)^$ $@ (cate_isretr f $@R g) $@ cat_idl g.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 187
+Time: 0.008s">
+<div class="time" style="width: 12.903225806452%"></div>
+<pre>
+
+Definition compose_hh_V {A} `{HasEquivs A} {a b c : A} (f : b $-&gt; c) (g : a $&lt;~&gt; b) :
+  (f $o g) $o g^-1$ $== f :=
+  cat_assoc _ _ _ $@ (f $@L cate_isretr g) $@ cat_idr f.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 191
+Time: 0.008s">
+<div class="time" style="width: 12.903225806452%"></div>
+<pre>
+
+Definition compose_hV_h {A} `{HasEquivs A} {a b c : A} (f : b $-&gt; c) (g : b $&lt;~&gt; a) :
+  (f $o g^-1$) $o g $== f :=
+  cat_assoc _ _ _ $@ (f $@L cate_issect g) $@ cat_idr f.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 195
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -812,65 +859,65 @@ Time: 0s">
 (** Any sufficiently coherent functor preserves equivalences.  *)</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 181
-Time: 0.005s">
-<div class="time" style="width: 8.9285714285714%"></div>
+Line: 197
+Time: 0.004s">
+<div class="time" style="width: 6.4516129032258%"></div>
 <pre>Global Instance iemap {A B : Type} `{HasEquivs A} `{HasEquivs B}
        (F : A -&gt; B) `{!Is0Functor F, !Is1Functor F}
-       {a b : A} (f : a $-&gt; b) {fe : CatIsEquiv f}
+       {a b : A} (f : a $&lt;~&gt; b)
   : CatIsEquiv (fmap F f).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 184
+Line: 200
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 185
+Line: 201
 Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 3.2258064516129%"></div>
 <pre>
   refine (catie_adjointify (fmap F f) (fmap F f^-1$) _ _).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 186
+Line: 202
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 187
+Line: 203
 Time: 0.006s">
-<div class="time" style="width: 10.714285714286%"></div>
+<div class="time" style="width: 9.6774193548387%"></div>
 <pre> refine ((fmap_comp F f^-1$ f)^$ $@ fmap2 F (cate_isretr _) $@ fmap_id F _).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 187
+Line: 203
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 188
-Time: 0.024s">
-<div class="time" style="width: 42.857142857143%"></div>
+Line: 204
+Time: 0.006s">
+<div class="time" style="width: 9.6774193548387%"></div>
 <pre> refine ((fmap_comp F f f^-1$)^$ $@ fmap2 F (cate_issect _) $@ fmap_id F _).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 188
+Line: 204
 Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 3.2258064516129%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 189
+Line: 205
 Time: 0.006s">
-<div class="time" style="width: 10.714285714286%"></div>
+<div class="time" style="width: 9.6774193548387%"></div>
 <pre>
 
 Definition emap {A B : Type} `{HasEquivs A} `{HasEquivs B}
@@ -880,7 +927,7 @@ Definition emap {A B : Type} `{HasEquivs A} `{HasEquivs B}
   := Build_CatEquiv (fmap F f).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 195
+Line: 211
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -888,53 +935,53 @@ Time: 0s">
 (** When we have equivalences, we can define what it means for a category to be univalent. *)</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 197
+Line: 213
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition cat_equiv_path {A : Type} `{HasEquivs A} (a b : A)
   : (a = b) -&gt; (a $&lt;~&gt; b).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 198
+Line: 214
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 199
+Line: 215
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros []; reflexivity.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 200
+Line: 216
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 201
-Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
+Line: 217
+Time: 0.003s">
+<div class="time" style="width: 4.8387096774194%"></div>
 <pre>
 
 Class IsUnivalent1Cat (A : Type) `{HasEquivs A}
-  := { isequiv_cat_equiv_path : forall a b, IsEquiv (@cat_equiv_path A _ _ _ a b) }.</pre>
+  := { isequiv_cat_equiv_path : forall a b, IsEquiv (@cat_equiv_path A _ _ _ _ a b) }.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 204
+Line: 220
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Global Existing Instance isequiv_cat_equiv_path.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 205
+Line: 221
 Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 3.2258064516129%"></div>
 <pre>
 
 Definition cat_path_equiv {A : Type} `{IsUnivalent1Cat A} (a b : A)
@@ -942,7 +989,7 @@ Definition cat_path_equiv {A : Type} `{IsUnivalent1Cat A} (a b : A)
   := (cat_equiv_path a b)^-1.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 209
+Line: 225
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -952,20 +999,57 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 212
+Line: 228
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Record core (A : Type) := { uncore : A }.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 212
+Line: 228
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Arguments uncore {A} c.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 213
+Line: 229
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Global Instance isgraph_core {A : Type} `{HasEquivs A}
+  : IsGraph (core A).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 232
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 233
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  srapply Build_IsGraph.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 234
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  intros a b ; exact (uncore a $&lt;~&gt; uncore b).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 235
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 236
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -974,234 +1058,97 @@ Global Instance is01cat_core {A : Type} `{HasEquivs A}
   : Is01Cat (core A).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 216
+Line: 239
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 217
+Line: 240
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   srapply Build_Is01Cat ; cbv.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 218
+Line: 241
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 219
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intros a b ; exact (uncore a $&lt;~&gt; uncore b).</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 219
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 220
+Line: 242
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros; apply id_cate.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 220
+Line: 242
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 221
+Line: 243
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros a b c ; apply compose_cate.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 221
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Defined.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 222
-Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
-<pre>
-
-Global Instance is01cat_core_hom {A : Type} `{HasEquivs A} (a b : core A)
-  : Is01Cat (a $-&gt; b).</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 225
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 226
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  srapply Build_Is01Cat.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 227
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 228
-Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
-<pre> intros f g ; exact (cate_fun f $== cate_fun g).</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 228
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 229
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intro f ; apply Id.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 229
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 230
-Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
-<pre> intros f g h ; apply cat_comp.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 230
-Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
-<pre>
-Defined.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 231
-Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
-<pre>
-
-Global Instance is0gpd_core_hom {A : Type} `{HasEquivs A} (a b : core A)
-  : Is0Gpd (a $-&gt; b).</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 234
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 235
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  apply Build_Is0Gpd.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 236
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  intros f g ; cbv.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 237
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  apply gpd_rev.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 238
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Defined.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 239
-Time: 0.003s">
-<div class="time" style="width: 5.3571428571429%"></div>
-<pre>
-
-Global Instance is0functor_core_postcomp {A : Type} `{HasEquivs A}
-       (a b c : core A) (h : b $-&gt; c) :
-  Is0Functor (cat_postcomp a h).</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 243
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-Proof.</pre>
+Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 244
+Time: 0.001s">
+<div class="time" style="width: 1.6129032258065%"></div>
+<pre>
+
+Global Instance isgraph_core_hom {A : Type} `{HasEquivs A} (a b : core A)
+  : IsGraph (a $-&gt; b).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 247
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  apply Build_Is0Functor.</pre>
+Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 245
+Line: 248
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  intros f g al; cbn in h.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 246
-Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
-<pre>
-  exact (compose_cate_fun h f
-           $@ (h $@L al)
-           $@ (compose_cate_fun h g)^$).</pre>
+  apply Build_IsGraph.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 249
-Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
+Time: 0.001s">
+<div class="time" style="width: 1.6129032258065%"></div>
+<pre>
+  intros f g ; exact (cate_fun f $== cate_fun g).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 250
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 250
-Time: 0.003s">
-<div class="time" style="width: 5.3571428571429%"></div>
+Line: 251
+Time: 0.001s">
+<div class="time" style="width: 1.6129032258065%"></div>
 <pre>
 
-Global Instance is0functor_core_precomp {A : Type} `{HasEquivs A}
-       (a b c : core A) (h : a $-&gt; b) :
-  Is0Functor (cat_precomp c h).</pre>
+Global Instance is01cat_core_hom {A : Type} `{HasEquivs A} (a b : core A)
+  : Is01Cat (a $-&gt; b).</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 254
@@ -1215,196 +1162,344 @@ Line: 255
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  apply Build_Is0Functor.</pre>
+  srapply Build_Is01Cat.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 256
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  intros f g al; cbn in h.</pre>
+  -</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 257
-Time: 0.003s">
-<div class="time" style="width: 5.3571428571429%"></div>
-<pre>
-  exact (compose_cate_fun f h
-           $@ (al $@R h)
-           $@ (compose_cate_fun g h)^$).</pre>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intro f; cbn; apply Id.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 260
-Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
+Line: 257
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 258
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros f g h; cbn; apply cat_comp.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 258
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 261
+Line: 259
 Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+<div class="time" style="width: 1.6129032258065%"></div>
 <pre>
 
-Global Instance is1cat_core {A : Type} `{HasEquivs A}
-  : Is1Cat (core A).</pre>
+Global Instance is0gpd_core_hom {A : Type} `{HasEquivs A} (a b : core A)
+  : Is0Gpd (a $-&gt; b).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 264
+Line: 262
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 265
-Time: 0.056s">
-<div class="time" style="width: 100%"></div>
-<pre>
-  rapply Build_Is1Cat.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 266
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 267
-Time: 0.022s">
-<div class="time" style="width: 39.285714285714%"></div>
-<pre> intros; apply compose_cate_assoc.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 267
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 268
-Time: 0.006s">
-<div class="time" style="width: 10.714285714286%"></div>
-<pre> intros; apply compose_cate_idl.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 268
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 269
-Time: 0.006s">
-<div class="time" style="width: 10.714285714286%"></div>
-<pre> intros; apply compose_cate_idr.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 269
-Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
-<pre>
-Defined.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 270
-Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
-<pre>
-
-Global Instance is0gpd_core {A : Type} `{HasEquivs A}
-  : Is0Gpd (core A).</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 273
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 274
+Line: 263
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply Build_Is0Gpd.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 275
-Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+Line: 264
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
-  intros a b f; cbn in *; exact (f^-1$).</pre>
+  intros f g ; cbv.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 276
+Line: 265
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  apply gpd_rev.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 266
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 277
-Time: 0.001s">
-<div class="time" style="width: 1.7857142857143%"></div>
+Line: 267
+Time: 0.006s">
+<div class="time" style="width: 9.6774193548387%"></div>
 <pre>
 
-Global Instance is1gpd_core {A : Type} `{HasEquivs A}
-  : Is1Gpd (core A).</pre>
+Global Instance is0functor_core_postcomp {A : Type} `{HasEquivs A}
+       (a b c : core A) (h : b $-&gt; c) :
+  Is0Functor (cat_postcomp a h).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 280
+Line: 271
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 281
-Time: 0.006s">
-<div class="time" style="width: 10.714285714286%"></div>
+Line: 272
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
-  apply Build_Is1Gpd; cbn ; intros a b f;
-    refine (compose_cate_fun _ _ $@ _ $@ (id_cate_fun _)^$).</pre>
+  apply Build_Is0Functor.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 273
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  intros f g al; cbn in h.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 274
+Time: 0.005s">
+<div class="time" style="width: 8.0645161290323%"></div>
+<pre>
+  exact (compose_cate_fun h f
+           $@ (h $@L al)
+           $@ (compose_cate_fun h g)^$).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 277
+Time: 0.002s">
+<div class="time" style="width: 3.2258064516129%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 278
+Time: 0.002s">
+<div class="time" style="width: 3.2258064516129%"></div>
+<pre>
+
+Global Instance is0functor_core_precomp {A : Type} `{HasEquivs A}
+       (a b c : core A) (h : a $-&gt; b) :
+  Is0Functor (cat_precomp c h).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 282
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 283
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  -</pre>
+  apply Build_Is0Functor.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 284
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  intros f g al; cbn in h.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 285
+Time: 0.003s">
+<div class="time" style="width: 4.8387096774194%"></div>
+<pre>
+  exact (compose_cate_fun f h
+           $@ (al $@R h)
+           $@ (compose_cate_fun g h)^$).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 288
+Time: 0.001s">
+<div class="time" style="width: 1.6129032258065%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 289
+Time: 0.001s">
+<div class="time" style="width: 1.6129032258065%"></div>
+<pre>
+
+Global Instance is1cat_core {A : Type} `{HasEquivs A}
+  : Is1Cat (core A).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 292
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 293
+Time: 0.062s">
+<div class="time" style="width: 100%"></div>
+<pre>
+  rapply Build_Is1Cat.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 294
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 295
+Time: 0.024s">
+<div class="time" style="width: 38.709677419355%"></div>
+<pre> intros; apply compose_cate_assoc.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 295
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 296
+Time: 0.006s">
+<div class="time" style="width: 9.6774193548387%"></div>
+<pre> intros; apply compose_cate_idl.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 296
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 297
+Time: 0.006s">
+<div class="time" style="width: 9.6774193548387%"></div>
+<pre> intros; apply compose_cate_idr.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 297
+Time: 0.003s">
+<div class="time" style="width: 4.8387096774194%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 298
+Time: 0.001s">
+<div class="time" style="width: 1.6129032258065%"></div>
+<pre>
+
+Global Instance is0gpd_core {A : Type} `{HasEquivs A}
+  : Is0Gpd (core A).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 301
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 302
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  apply Build_Is0Gpd.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 303
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  intros a b f; cbn in *; exact (f^-1$).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 304
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 305
+Time: 0.002s">
+<div class="time" style="width: 3.2258064516129%"></div>
+<pre>
+
+Global Instance is1gpd_core {A : Type} `{HasEquivs A}
+  : Is1Gpd (core A).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 308
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 309
+Time: 0.007s">
+<div class="time" style="width: 11.290322580645%"></div>
+<pre>
+  apply Build_Is1Gpd; cbn ; intros a b f;
+    refine (compose_cate_fun _ _ $@ _ $@ (id_cate_fun _)^$).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 311
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 312
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply cate_issect.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 284
+Line: 312
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 285
+Line: 313
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply cate_isretr.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 285
-Time: 0.002s">
-<div class="time" style="width: 3.5714285714286%"></div>
+Line: 313
+Time: 0.003s">
+<div class="time" style="width: 4.8387096774194%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 287
+Line: 315
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
