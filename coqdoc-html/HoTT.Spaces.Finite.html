@@ -91,6 +91,56 @@
 </div>
 
 <div class="doc">
+The zeroth element of a non-empty finite set is the left most element. It also happens to be the biggest by termsize. 
+</div>
+<div class="code">
+<span class="id" title="keyword">Fixpoint</span> <a name="fin_zero"><span class="id" title="definition">fin_zero</span></a> {<span class="id" title="var">n</span> : <a class="idref" href="Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>} : <a class="idref" href="HoTT.Spaces.Finite.html#Fin"><span class="id" title="definition">Fin</span></a> <a class="idref" href="HoTT.Spaces.Finite.html#n"><span class="id" title="variable">n</span></a><a class="idref" href="HoTT.Basics.Overture.html#bda89d73ec4a8f23ae92b565ffb5aaa6"><span class="id" title="notation">.+1</span></a> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="HoTT.Spaces.Finite.html#n"><span class="id" title="variable">n</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| <a class="idref" href="Coq.Init.Datatypes.html#O"><span class="id" title="constructor">O</span></a> ⇒ <a class="idref" href="Coq.Init.Datatypes.html#inr"><span class="id" title="constructor">inr</span></a> <a class="idref" href="HoTT.Basics.Overture.html#tt"><span class="id" title="constructor">tt</span></a><br/>
+&nbsp;&nbsp;| <a class="idref" href="Coq.Init.Datatypes.html#S"><span class="id" title="constructor">S</span></a> <span class="id" title="var">n'</span> ⇒ <a class="idref" href="Coq.Init.Datatypes.html#inl"><span class="id" title="constructor">inl</span></a> <a class="idref" href="HoTT.Spaces.Finite.html#fin_zero"><span class="id" title="definition">fin_zero</span></a><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+There is an injection from Fin n -&gt; Fin n.+1 that maps the kth element to the (k+1)th element. 
+</div>
+<div class="code">
+<span class="id" title="keyword">Fixpoint</span> <a name="fsucc"><span class="id" title="definition">fsucc</span></a> {<span class="id" title="var">n</span> : <a class="idref" href="Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>} : <a class="idref" href="HoTT.Spaces.Finite.html#Fin"><span class="id" title="definition">Fin</span></a> <a class="idref" href="HoTT.Spaces.Finite.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Spaces.Finite.html#Fin"><span class="id" title="definition">Fin</span></a> <a class="idref" href="HoTT.Spaces.Finite.html#n"><span class="id" title="variable">n</span></a><a class="idref" href="HoTT.Basics.Overture.html#bda89d73ec4a8f23ae92b565ffb5aaa6"><span class="id" title="notation">.+1</span></a> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="HoTT.Spaces.Finite.html#n"><span class="id" title="variable">n</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| <a class="idref" href="Coq.Init.Datatypes.html#O"><span class="id" title="constructor">O</span></a> ⇒ <a class="idref" href="HoTT.Types.Empty.html#Empty_rec"><span class="id" title="lemma">Empty_rec</span></a><br/>
+&nbsp;&nbsp;| <a class="idref" href="Coq.Init.Datatypes.html#S"><span class="id" title="constructor">S</span></a> <span class="id" title="var">n'</span> ⇒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">fun</span> <span class="id" title="var">i</span> : <a class="idref" href="HoTT.Spaces.Finite.html#Fin"><span class="id" title="definition">Fin</span></a> (<a class="idref" href="Coq.Init.Datatypes.html#S"><span class="id" title="constructor">S</span></a> <span class="id" title="var">n'</span>) ⇒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="HoTT.Spaces.Finite.html#i"><span class="id" title="variable">i</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="Coq.Init.Datatypes.html#inl"><span class="id" title="constructor">inl</span></a> <span class="id" title="var">i'</span> ⇒ <a class="idref" href="Coq.Init.Datatypes.html#inl"><span class="id" title="constructor">inl</span></a> (<a class="idref" href="HoTT.Spaces.Finite.html#fsucc"><span class="id" title="definition">fsucc</span></a> <span class="id" title="var">i'</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="Coq.Init.Datatypes.html#inr"><span class="id" title="constructor">inr</span></a> <a class="idref" href="HoTT.Basics.Overture.html#tt"><span class="id" title="constructor">tt</span></a> ⇒ <a class="idref" href="Coq.Init.Datatypes.html#inr"><span class="id" title="constructor">inr</span></a> <a class="idref" href="HoTT.Basics.Overture.html#tt"><span class="id" title="constructor">tt</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">end</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+This injection is an injection/embedding 
+</div>
+<div class="code">
+<span class="id" title="keyword">Lemma</span> <a name="isembedding_fsucc"><span class="id" title="lemma">isembedding_fsucc</span></a> {<span class="id" title="var">n</span> : <a class="idref" href="Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>} : <a class="idref" href="HoTT.Basics.Trunc.html#IsEmbedding"><span class="id" title="abbreviation">IsEmbedding</span></a> (@<a class="idref" href="HoTT.Spaces.Finite.html#fsucc"><span class="id" title="definition">fsucc</span></a> <a class="idref" href="HoTT.Spaces.Finite.html#n"><span class="id" title="variable">n</span></a>).<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.HSet.html#isembedding_isinj_hset"><span class="id" title="lemma">isembedding_isinj_hset</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">induction</span> <span class="id" title="var">n</span>.<br/>
+&nbsp;&nbsp;- <span class="id" title="tactic">intro</span> <span class="id" title="var">i</span>. <span class="id" title="tactic">elim</span> <span class="id" title="var">i</span>.<br/>
+&nbsp;&nbsp;- <span class="id" title="tactic">intros</span> [] []; <span class="id" title="tactic">intro</span> <span class="id" title="var">p</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;+ <span class="id" title="var">f_ap</span>. <span class="id" title="tactic">apply</span> <span class="id" title="var">IHn</span>. <span class="id" title="tactic">eapply</span> <a class="idref" href="HoTT.Types.Sum.html#path_sum_inl"><span class="id" title="definition">path_sum_inl</span></a>. <span class="id" title="tactic">exact</span> <span class="id" title="var">p</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;+ <span class="id" title="tactic">destruct</span> <span class="id" title="var">u</span>. <span class="id" title="tactic">elim</span> (<a class="idref" href="HoTT.Types.Sum.html#inl_ne_inr"><span class="id" title="definition">inl_ne_inr</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">p</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;+ <span class="id" title="tactic">destruct</span> <span class="id" title="var">u</span>. <span class="id" title="tactic">elim</span> (<a class="idref" href="HoTT.Types.Sum.html#inr_ne_inl"><span class="id" title="definition">inr_ne_inl</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">p</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;+ <span class="id" title="tactic">destruct</span> <span class="id" title="var">u</span>, <span class="id" title="var">u0</span>; <span class="id" title="tactic">reflexivity</span>.<br/>
+<span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
 <a name="lab218"></a><h2 class="section">Transposition equivalences</h2>
 
 <div class="paragraph"> </div>
@@ -1484,6 +1534,52 @@ Therefore, the cardinality of <span class="inlinecode"><a class="idref" href="Ho
 <span class="id" title="keyword">End</span> <a class="idref" href="HoTT.Spaces.Finite.html#Enumeration"><span class="id" title="section">Enumeration</span></a>.<br/>
 
 <br/>
+</div>
+
+<div class="doc">
+<span class="inlinecode"><a class="idref" href="HoTT.Spaces.Finite.html#fsucc_mod"><span class="id" title="definition">fsucc_mod</span></a></span> is the successor function mod n 
+</div>
+<div class="code">
+<span class="id" title="keyword">Definition</span> <a name="fsucc_mod"><span class="id" title="definition">fsucc_mod</span></a> {<span class="id" title="var">n</span> : <a class="idref" href="Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>} : <a class="idref" href="HoTT.Spaces.Finite.html#Fin"><span class="id" title="definition">Fin</span></a> <a class="idref" href="HoTT.Spaces.Finite.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Spaces.Finite.html#Fin"><span class="id" title="definition">Fin</span></a> <a class="idref" href="HoTT.Spaces.Finite.html#n"><span class="id" title="variable">n</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">destruct</span> <span class="id" title="var">n</span>.<br/>
+&nbsp;&nbsp;1: <span class="id" title="tactic">exact</span> <a class="idref" href="HoTT.Basics.Overture.html#idmap"><span class="id" title="abbreviation">idmap</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">intros</span> [<span class="id" title="var">x</span>|].<br/>
+&nbsp;&nbsp;- <span class="id" title="tactic">exact</span> (<a class="idref" href="HoTT.Spaces.Finite.html#fsucc"><span class="id" title="definition">fsucc</span></a> <span class="id" title="var">x</span>).<br/>
+&nbsp;&nbsp;- <span class="id" title="tactic">exact</span> <a class="idref" href="HoTT.Spaces.Finite.html#fin_zero"><span class="id" title="definition">fin_zero</span></a>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+fsucc allows us to convert a natural number into an element of a finite set. This can be thought of as the modulo map. 
+</div>
+<div class="code">
+<span class="id" title="keyword">Fixpoint</span> <a name="fin_nat"><span class="id" title="definition">fin_nat</span></a> {<span class="id" title="var">n</span> : <a class="idref" href="Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>} (<span class="id" title="var">m</span> : <a class="idref" href="Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>) : <a class="idref" href="HoTT.Spaces.Finite.html#Fin"><span class="id" title="definition">Fin</span></a> <a class="idref" href="HoTT.Spaces.Finite.html#n"><span class="id" title="variable">n</span></a><a class="idref" href="HoTT.Basics.Overture.html#bda89d73ec4a8f23ae92b565ffb5aaa6"><span class="id" title="notation">.+1</span></a><br/>
+&nbsp;&nbsp;:= <span class="id" title="keyword">match</span> <a class="idref" href="HoTT.Spaces.Finite.html#m"><span class="id" title="variable">m</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 0 ⇒ <a class="idref" href="HoTT.Spaces.Finite.html#fin_zero"><span class="id" title="definition">fin_zero</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="Coq.Init.Datatypes.html#S"><span class="id" title="constructor">S</span></a> <span class="id" title="var">m</span> ⇒ <a class="idref" href="HoTT.Spaces.Finite.html#fsucc_mod"><span class="id" title="definition">fsucc_mod</span></a> (<a class="idref" href="HoTT.Spaces.Finite.html#fin_nat"><span class="id" title="definition">fin_nat</span></a> <a class="idref" href="HoTT.Spaces.Finite.html#m"><span class="id" title="variable">m</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+TODO: Would this notation be useful? 
+</div>
+<div class="code">
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab240"></a><h2 class="section">Tactics</h2>
+
+</div>
+<div class="code">
+
+<br/>
 <span class="id" title="keyword">Ltac</span> <span class="id" title="var">FinIndOn</span> <span class="id" title="var">X</span> := <span class="id" title="tactic">repeat</span><br/>
 &nbsp;&nbsp;<span class="id" title="keyword">match</span> <span class="id" title="keyword">type</span> <span class="id" title="keyword">of</span> <span class="id" title="var">X</span> <span class="id" title="keyword">with</span><br/>
 &nbsp;&nbsp;| <a class="idref" href="HoTT.Spaces.Finite.html#Fin"><span class="id" title="definition">Fin</span></a> 0 ⇒ <span class="id" title="tactic">destruct</span> <span class="id" title="var">X</span><br/>
@@ -1494,6 +1590,12 @@ Therefore, the cardinality of <span class="inlinecode"><a class="idref" href="Ho
 &nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
 
 <br/>
+</div>
+
+<div class="doc">
+This tactic can be used to generate n cases from a goal like forall (x : Fin n), _ 
+</div>
+<div class="code">
 <span class="id" title="keyword">Ltac</span> <span class="id" title="var">FinInd</span> := <span class="id" title="keyword">let</span> <span class="id" title="var">X</span> := <span class="id" title="tactic">fresh</span> "X" <span class="id" title="tactic">in</span> <span class="id" title="tactic">intro</span> <span class="id" title="var">X</span>; <span class="id" title="var">FinIndOn</span> <span class="id" title="var">X</span>.<br/>
 </div>
 </div>
