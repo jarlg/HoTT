@@ -1367,7 +1367,33 @@ A <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#Unit
 
 <div class="paragraph"> </div>
 
- Applying a tactic to a term with increasingly many arguments 
+ Clear a hypothesis and also its dependencies.  Taken from Coq stdlib, with the performance-enhancing change to <span class="inlinecode"><span class="id" title="keyword">lazymatch</span></span> suggested at <span class="inlinecode"><span class="id" title="var">https</span>://<span class="id" title="var">github.com</span>/<span class="id" title="var">coq</span>/<span class="id" title="var">coq</span>/<span class="id" title="var">issues</span>/11689</span>. 
+</div>
+<div class="code">
+<span class="id" title="keyword">Tactic Notation</span> "clear" "dependent" <span class="id" title="var">hyp</span>(<span class="id" title="var">h</span>) :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="keyword">rec</span> <span class="id" title="var">depclear</span> <span class="id" title="var">h</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">clear</span> <span class="id" title="var">h</span> ||<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">lazymatch</span> <span class="id" title="keyword">goal</span> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;| <span class="id" title="var">H</span> : <span class="id" title="keyword">context</span> [ <span class="id" title="var">h</span> ] |- <span class="id" title="var">_</span> ⇒ <span class="id" title="var">depclear</span> <span class="id" title="var">H</span>; <span class="id" title="var">depclear</span> <span class="id" title="var">h</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span> ||<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">fail</span> "hypothesis to clear is used in the conclusion (maybe indirectly)"<br/>
+&nbsp;<span class="id" title="tactic">in</span> <span class="id" title="var">depclear</span> <span class="id" title="var">h</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+A version of <span class="inlinecode"><span class="id" title="tactic">generalize</span></span> <span class="inlinecode"><span class="id" title="tactic">dependent</span></span> that applies only to a hypothesis.  Taken from Coq stdlib. 
+</div>
+<div class="code">
+<span class="id" title="keyword">Tactic Notation</span> "revert" "dependent" <span class="id" title="var">hyp</span>(<span class="id" title="var">h</span>) :=<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">generalize</span> <span class="id" title="tactic">dependent</span> <span class="id" title="var">h</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Applying a tactic to a term with increasingly many arguments 
 </div>
 <div class="code">
 <span class="id" title="keyword">Tactic Notation</span> "do_with_holes" <span class="id" title="var">tactic3</span>(<span class="id" title="var">x</span>) <span class="id" title="var">uconstr</span>(<span class="id" title="var">p</span>) :=<br/>
@@ -1467,6 +1493,12 @@ A shorter name for <span class="inlinecode"><span class="id" title="tactic">simp
 <span class="id" title="keyword">Tactic Notation</span> "snrefine" <span class="id" title="var">uconstr</span>(<span class="id" title="var">term</span>) := <span class="id" title="tactic">simple</span> <span class="id" title="var">notypeclasses</span> <span class="id" title="tactic">refine</span> <span class="id" title="var">term</span>.<br/>
 
 <br/>
+</div>
+
+<div class="doc">
+Note that the Coq standard library has a <span class="inlinecode"><span class="id" title="var">rapply</span></span>, but it is like our <span class="inlinecode"><span class="id" title="var">rapply'</span></span> with many-holes first.  We prefer fewer-holes first, for instance so that a theorem producing an equivalence will by preference be used to produce an equivalence rather than to apply the coercion of that equivalence to a function. 
+</div>
+<div class="code">
 <span class="id" title="keyword">Tactic Notation</span> "rapply" <span class="id" title="var">uconstr</span>(<span class="id" title="var">term</span>)<br/>
 &nbsp;&nbsp;:= <span class="id" title="var">do_with_holes</span> <span class="id" title="keyword">ltac</span>:(<span class="id" title="keyword">fun</span> <span class="id" title="var">x</span> ⇒ <span class="id" title="tactic">refine</span> <span class="id" title="var">x</span>) <span class="id" title="var">term</span>.<br/>
 <span class="id" title="keyword">Tactic Notation</span> "rapply'" <span class="id" title="var">uconstr</span>(<span class="id" title="var">term</span>)<br/>
@@ -1555,36 +1587,26 @@ A convenient tactic for using function extensionality.
 &nbsp;&nbsp;:= <span class="id" title="var">funext</span> <span class="id" title="var">a</span>; <span class="id" title="var">funext</span> <span class="id" title="var">b</span>; <span class="id" title="var">funext</span> <span class="id" title="var">c</span>; <span class="id" title="var">funext</span> <span class="id" title="var">d</span>; <span class="id" title="var">funext</span> <span class="id" title="var">e</span>; <span class="id" title="var">funext</span> <span class="id" title="var">f</span>.<br/>
 
 <br/>
-</div>
-
-<div class="doc">
-<span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#not"><span class="id" title="definition">not</span></a></span> <span class="inlinecode"><span class="id" title="var">tac</span></span> is equivalent to <span class="inlinecode"><span class="id" title="tactic">fail</span></span> <span class="inlinecode"><span class="id" title="var">tac</span></span> <span class="inlinecode">&quot;<span class="id" title="var">succeeds</span>&quot;</span> if <span class="inlinecode"><span class="id" title="var">tac</span></span> succeeds, and is equivalent to <span class="inlinecode"><span class="id" title="tactic">idtac</span></span> if <span class="inlinecode"><span class="id" title="var">tac</span></span> fails 
-</div>
-<div class="code">
-<span class="id" title="keyword">Tactic Notation</span> "not" <span class="id" title="var">tactic3</span>(<span class="id" title="var">tac</span>) :=<br/>
-&nbsp;&nbsp;(<span class="id" title="var">tryif</span> <span class="id" title="var">tac</span> <span class="id" title="keyword">then</span> <span class="id" title="tactic">fail</span> 0 <span class="id" title="var">tac</span> "succeeds" <span class="id" title="keyword">else</span> <span class="id" title="tactic">idtac</span>);  [].<br/>
-
-<br/>
-</div>
-
-<div class="doc">
-Test if a tactic succeeds, but always roll-back the results 
-</div>
-<div class="code">
-<span class="id" title="keyword">Tactic Notation</span> "test" <span class="id" title="var">tactic3</span>(<span class="id" title="var">tac</span>) := <span class="id" title="var">tryif</span> <span class="id" title="var">not</span> <span class="id" title="var">tac</span> <span class="id" title="keyword">then</span> <span class="id" title="tactic">fail</span> 0 <span class="id" title="var">tac</span> "fails" <span class="id" title="keyword">else</span> <span class="id" title="tactic">idtac</span>.<br/>
+<span class="id" title="keyword">Ltac</span> <span class="id" title="var">assert_fails</span> <span class="id" title="var">tac</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="var">tryif</span> (<span class="id" title="var">once</span> <span class="id" title="var">tac</span>) <span class="id" title="keyword">then</span> <span class="id" title="var">gfail</span> 0 <span class="id" title="var">tac</span> "succeeds" <span class="id" title="keyword">else</span> <span class="id" title="tactic">idtac</span>.<br/>
+<span class="id" title="keyword">Ltac</span> <span class="id" title="var">assert_succeeds</span> <span class="id" title="var">tac</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="var">tryif</span> (<span class="id" title="var">assert_fails</span> <span class="id" title="var">tac</span>) <span class="id" title="keyword">then</span> <span class="id" title="var">gfail</span> 0 <span class="id" title="var">tac</span> "fails" <span class="id" title="keyword">else</span> <span class="id" title="tactic">idtac</span>.<br/>
+<span class="id" title="keyword">Tactic Notation</span> "assert_succeeds" <span class="id" title="var">tactic3</span>(<span class="id" title="var">tac</span>) :=<br/>
+&nbsp;&nbsp;<span class="id" title="var">assert_succeeds</span> <span class="id" title="var">tac</span>.<br/>
+<span class="id" title="keyword">Tactic Notation</span> "assert_fails" <span class="id" title="var">tactic3</span>(<span class="id" title="var">tac</span>) :=<br/>
+&nbsp;&nbsp;<span class="id" title="var">assert_fails</span> <span class="id" title="var">tac</span>.<br/>
 
 <br/>
 </div>
 
 <div class="doc">
-Removed auto. We can write "by (path_induction;auto with path_hints)"
- if we want to.
+This tactic doesn't end with <span class="inlinecode"><span class="id" title="tactic">auto</span></span>, but you can always write "by (path_induction;auto with path_hints)" if you want.
 </div>
 <div class="code">
 <span class="id" title="keyword">Ltac</span> <span class="id" title="var">path_induction</span> :=<br/>
 &nbsp;&nbsp;<span class="id" title="tactic">intros</span>; <span class="id" title="tactic">repeat</span> <span class="id" title="tactic">progress</span> (<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">match</span> <span class="id" title="keyword">goal</span> <span class="id" title="keyword">with</span><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" title="var">p</span> : ?<span class="id" title="var">x</span> <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> ?<span class="id" title="var">y</span>  |- <span class="id" title="var">_</span> ] ⇒ <span class="id" title="var">not</span> <span class="id" title="var">constr_eq</span> <span class="id" title="var">x</span> <span class="id" title="var">y</span>; <span class="id" title="tactic">induction</span> <span class="id" title="var">p</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" title="var">p</span> : ?<span class="id" title="var">x</span> <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> ?<span class="id" title="var">y</span>  |- <span class="id" title="var">_</span> ] ⇒ <span class="id" title="var">assert_fails</span> <span class="id" title="var">constr_eq</span> <span class="id" title="var">x</span> <span class="id" title="var">y</span>; <span class="id" title="tactic">induction</span> <span class="id" title="var">p</span><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">end</span><br/>
 &nbsp;&nbsp;).<br/>
 
@@ -1639,7 +1661,7 @@ The tactic <span class="inlinecode"><span class="id" title="var">f_ap</span></sp
 &nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="keyword">match</span> <span class="id" title="var">_</span> <span class="id" title="keyword">with</span> <span class="id" title="var">_</span> ⇒ <span class="id" title="var">_</span> <span class="id" title="keyword">end</span> ⇒ <span class="id" title="tactic">fail</span> 1 <span class="id" title="var">x</span> "is not atomic (match)"<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="var">_</span> ⇒ <span class="id" title="var">is_fix</span> <span class="id" title="var">x</span>; <span class="id" title="tactic">fail</span> 1 <span class="id" title="var">x</span> "is not atomic (fix)"<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="var">_</span> ⇒ <span class="id" title="var">is_cofix</span> <span class="id" title="var">x</span>; <span class="id" title="tactic">fail</span> 1 <span class="id" title="var">x</span> "is not atomic (cofix)"<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="keyword">context</span>[?<span class="id" title="var">E</span>] ⇒  (<span class="id" title="var">not</span> <span class="id" title="var">constr_eq</span> <span class="id" title="var">E</span> <span class="id" title="var">x</span>); <span class="id" title="tactic">fail</span> 1 <span class="id" title="var">x</span> "is not atomic (has subterm" <span class="id" title="var">E</span> ")"<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="keyword">context</span>[?<span class="id" title="var">E</span>] ⇒  (<span class="id" title="var">assert_fails</span> <span class="id" title="var">constr_eq</span> <span class="id" title="var">E</span> <span class="id" title="var">x</span>); <span class="id" title="tactic">fail</span> 1 <span class="id" title="var">x</span> "is not atomic (has subterm" <span class="id" title="var">E</span> ")"<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="var">_</span> ⇒ <span class="id" title="tactic">idtac</span><br/>
 &nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
 
