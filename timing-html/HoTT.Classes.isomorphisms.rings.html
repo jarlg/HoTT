@@ -30,8 +30,8 @@ pre {
 
 <div class="code" title="File: rings.v
 Line: 1
-Time: 0.02s">
-<div class="time" style="width: 11.834319526627%"></div>
+Time: 0.023s">
+<div class="time" style="width: 11.386138613861%"></div>
 <pre>Require Import
   HoTT.Types.Universe
   HoTT.Types.Sigma
@@ -40,7 +40,7 @@ Time: 0.02s">
 </div>
 <div class="code" title="File: rings.v
 Line: 5
-Time: 0.169s">
+Time: 0.202s">
 <div class="time" style="width: 100%"></div>
 <pre>
 Require Export
@@ -49,7 +49,7 @@ Require Export
 <div class="code" title="File: rings.v
 Line: 7
 Time: 0.003s">
-<div class="time" style="width: 1.7751479289941%"></div>
+<div class="time" style="width: 1.4851485148515%"></div>
 <pre>
 Require Import HoTT.Classes.theory.rings.</pre>
 </div>
@@ -64,8 +64,8 @@ Module SemiRings.</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 11
-Time: 0.002s">
-<div class="time" style="width: 1.1834319526627%"></div>
+Time: 0.003s">
+<div class="time" style="width: 1.4851485148515%"></div>
 <pre>
 
 Class Operations
@@ -73,8 +73,8 @@ Class Operations
 </div>
 <div class="code" title="File: rings.v
 Line: 14
-Time: 0.001s">
-<div class="time" style="width: 0.59171597633136%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.99009900990099%"></div>
 <pre>
 
 Definition BuildOperations (T : Type) `{Plus T} `{Mult T} `{Zero T} `{One T}
@@ -92,7 +92,7 @@ Coercion SR_carrier (s : Operations) : Type := s.1.</pre>
 <div class="code" title="File: rings.v
 Line: 20
 Time: 0.001s">
-<div class="time" style="width: 0.59171597633136%"></div>
+<div class="time" style="width: 0.4950495049505%"></div>
 <pre>
 Instance SR_plus (s : Operations) : Plus s := fst (fst (fst s.2)).</pre>
 </div>
@@ -178,8 +178,8 @@ Context (A B : Operations@{U V}).</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 35
-Time: 0.001s">
-<div class="time" style="width: 0.59171597633136%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.99009900990099%"></div>
 <pre>
 
 Context (f : A -&gt; B) `{!IsEquiv f} `{!IsSemiRingPreserving f}.</pre>
@@ -208,15 +208,15 @@ apply path_sigma_uncurried.</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 41
-Time: 0.046s">
-<div class="time" style="width: 27.218934911243%"></div>
+Time: 0.058s">
+<div class="time" style="width: 28.712871287129%"></div>
 <pre>
 destruct A as [TA [[[plA mlA] zA] uA]], B as [TB [[[plB mlB] zB] uB]];simpl in *.</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 42
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.4950495049505%"></div>
 <pre>
 change plA with (@plus TA plA);change plB with (@plus TB plB);
 change mlA with (@mult TA mlA);change mlB with (@mult TB mlB);
@@ -225,15 +225,15 @@ change uA with (@one TA uA);change uB with (@one TB uB).</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 46
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.4950495049505%"></div>
 <pre>
 exists (path_universe f).</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 47
-Time: 0.008s">
-<div class="time" style="width: 4.7337278106509%"></div>
+Time: 0.011s">
+<div class="time" style="width: 5.4455445544554%"></div>
 <pre>
 rewrite !transport_prod;simpl.</pre>
 </div>
@@ -246,8 +246,8 @@ unfold Plus,Mult,Zero,One.</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 49
-Time: 0.019s">
-<div class="time" style="width: 11.242603550296%"></div>
+Time: 0.024s">
+<div class="time" style="width: 11.881188118812%"></div>
 <pre>
 repeat apply path_prod;simpl;try
 ( apply path_forall;intros x;rewrite transport_arrow;
@@ -263,14 +263,14 @@ Time: 0s">
 </div>
 <div class="code" title="File: rings.v
 Line: 54
-Time: 0.001s">
-<div class="time" style="width: 0.59171597633136%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.99009900990099%"></div>
 <pre> rewrite (preserves_plus (f:=f)).</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 54
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.4950495049505%"></div>
 <pre>
   apply ap011;apply eisretr.</pre>
 </div>
@@ -283,14 +283,14 @@ Time: 0s">
 </div>
 <div class="code" title="File: rings.v
 Line: 56
-Time: 0.001s">
-<div class="time" style="width: 0.59171597633136%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.99009900990099%"></div>
 <pre> rewrite (preserves_mult (f:=f)).</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 56
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.4950495049505%"></div>
 <pre>
   apply ap011;apply eisretr.</pre>
 </div>
@@ -303,8 +303,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: rings.v
 Line: 58
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.4950495049505%"></div>
 <pre> apply preserves_0.</pre>
 </div>
 <div class="code" title="File: rings.v
@@ -316,14 +316,14 @@ Time: 0s">
 </div>
 <div class="code" title="File: rings.v
 Line: 59
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.4950495049505%"></div>
 <pre> apply preserves_1.</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 59
-Time: 0.017s">
-<div class="time" style="width: 10.059171597633%"></div>
+Time: 0.025s">
+<div class="time" style="width: 12.376237623762%"></div>
 <pre>
 Qed.</pre>
 </div>
@@ -379,8 +379,8 @@ End contents.</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 68
-Time: 0.001s">
-<div class="time" style="width: 0.59171597633136%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.99009900990099%"></div>
 <pre>
 
 End SemiRings.</pre>
@@ -396,7 +396,7 @@ Module Rings.</pre>
 <div class="code" title="File: rings.v
 Line: 72
 Time: 0.002s">
-<div class="time" style="width: 1.1834319526627%"></div>
+<div class="time" style="width: 0.99009900990099%"></div>
 <pre>
 
 Class Operations
@@ -404,8 +404,8 @@ Class Operations
 </div>
 <div class="code" title="File: rings.v
 Line: 75
-Time: 0.002s">
-<div class="time" style="width: 1.1834319526627%"></div>
+Time: 0.003s">
+<div class="time" style="width: 1.4851485148515%"></div>
 <pre>
 
 Definition BuildOperations (T : Type)
@@ -423,22 +423,22 @@ Coercion R_carrier (s : Operations) : Type := s.1.</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 82
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.4950495049505%"></div>
 <pre>
 Instance R_plus (s : Operations) : Plus s := fst (fst (fst (fst s.2))).</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 83
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.4950495049505%"></div>
 <pre>
 Instance R_mult (s : Operations) : Mult s := snd (fst (fst (fst s.2))).</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 84
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.4950495049505%"></div>
 <pre>
 Instance R_zero (s : Operations) : Zero s := snd (fst (fst s.2)).</pre>
 </div>
@@ -531,8 +531,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: rings.v
 Line: 100
-Time: 0.003s">
-<div class="time" style="width: 1.7751479289941%"></div>
+Time: 0.004s">
+<div class="time" style="width: 1.980198019802%"></div>
 <pre>Context (f : A -&gt; B) `{!IsEquiv f} `{!IsRing A} `{!IsRing B} `{!IsSemiRingPreserving f}.</pre>
 </div>
 <div class="code" title="File: rings.v
@@ -559,16 +559,16 @@ apply path_sigma_uncurried.</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 104
-Time: 0.05s">
-<div class="time" style="width: 29.585798816568%"></div>
+Time: 0.064s">
+<div class="time" style="width: 31.683168316832%"></div>
 <pre>
 destruct A as [TA [[[[plA mlA] zA] uA] nA]],
   B as [TB [[[[plB mlB] zB] uB] nB]];simpl in *.</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 106
-Time: 0.001s">
-<div class="time" style="width: 0.59171597633136%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.99009900990099%"></div>
 <pre>
 change plA with (@plus TA plA);change plB with (@plus TB plB);
 change mlA with (@mult TA mlA);change mlB with (@mult TB mlB);
@@ -578,15 +578,15 @@ change nA with (@negate TA nA);change nB with (@negate TB nB).</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 111
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.4950495049505%"></div>
 <pre>
 exists (path_universe f).</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 112
-Time: 0.015s">
-<div class="time" style="width: 8.8757396449704%"></div>
+Time: 0.017s">
+<div class="time" style="width: 8.4158415841584%"></div>
 <pre>
 rewrite !transport_prod;simpl.</pre>
 </div>
@@ -599,8 +599,8 @@ unfold Plus,Mult,Zero,One,Negate.</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 114
-Time: 0.025s">
-<div class="time" style="width: 14.792899408284%"></div>
+Time: 0.034s">
+<div class="time" style="width: 16.831683168317%"></div>
 <pre>
 repeat apply path_prod;simpl;try
 ( apply path_forall;intros x;rewrite transport_arrow;
@@ -616,14 +616,14 @@ Time: 0s">
 </div>
 <div class="code" title="File: rings.v
 Line: 119
-Time: 0.001s">
-<div class="time" style="width: 0.59171597633136%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.99009900990099%"></div>
 <pre> rewrite (preserves_plus (f:=f)).</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 119
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.4950495049505%"></div>
 <pre>
   apply ap011;apply eisretr.</pre>
 </div>
@@ -636,14 +636,14 @@ Time: 0s">
 </div>
 <div class="code" title="File: rings.v
 Line: 121
-Time: 0.001s">
-<div class="time" style="width: 0.59171597633136%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.99009900990099%"></div>
 <pre> rewrite (preserves_mult (f:=f)).</pre>
 </div>
 <div class="code" title="File: rings.v
 Line: 121
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.4950495049505%"></div>
 <pre>
   apply ap011;apply eisretr.</pre>
 </div>
@@ -656,8 +656,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: rings.v
 Line: 123
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.4950495049505%"></div>
 <pre> apply preserves_0.</pre>
 </div>
 <div class="code" title="File: rings.v
@@ -669,8 +669,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: rings.v
 Line: 124
-Time: 0.006s">
-<div class="time" style="width: 3.5502958579882%"></div>
+Time: 0.008s">
+<div class="time" style="width: 3.960396039604%"></div>
 <pre> apply preserves_1.</pre>
 </div>
 <div class="code" title="File: rings.v
@@ -682,8 +682,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: rings.v
 Line: 125
-Time: 0.002s">
-<div class="time" style="width: 1.1834319526627%"></div>
+Time: 0.003s">
+<div class="time" style="width: 1.4851485148515%"></div>
 <pre> rewrite (preserves_negate (f:=f)).</pre>
 </div>
 <div class="code" title="File: rings.v
@@ -695,8 +695,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: rings.v
 Line: 126
-Time: 0.024s">
-<div class="time" style="width: 14.201183431953%"></div>
+Time: 0.039s">
+<div class="time" style="width: 19.306930693069%"></div>
 <pre>
 Qed.</pre>
 </div>
@@ -753,7 +753,7 @@ End contents.</pre>
 <div class="code" title="File: rings.v
 Line: 135
 Time: 0.001s">
-<div class="time" style="width: 0.59171597633136%"></div>
+<div class="time" style="width: 0.4950495049505%"></div>
 <pre>
 
 End Rings.</pre>
