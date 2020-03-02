@@ -198,7 +198,7 @@
           
 
             i = 36;
-            data = "1 subgoal (ID 200)	  	  A : Type	  P : A -> Type	  a00, a10, a01, a11 : A	  px0 : a00 = a10	  px1 : a01 = a11	  p0x : a00 = a01	  p1x : a10 = a11	  s : px0 @ p1x = p0x @ px1	  b00 : P a00	  b10 : P a10	  b01 : P a01	  b11 : P a11	  qx0 : DPath P px0 b00 b10	  qx1 : DPath P px1 b01 b11	  q0x : DPath P p0x b00 b01	  q1x : DPath P p1x b10 b11	  ============================	  qx0 @D q1x =[ s] q0x @D qx1 <~> DPathSquare P (sq_path s) qx0 qx1 q0x q1x	";
+            data = "1 subgoal (ID 200)	  	  A : Type	  P : A -> Type	  a00, a10, a01, a11 : A	  px0 : a00 = a10	  px1 : a01 = a11	  p0x : a00 = a01	  p1x : a10 = a11	  s : px0 @ p1x = p0x @ px1	  b00 : P a00	  b10 : P a10	  b01 : P a01	  b11 : P a11	  qx0 : DPath P px0 b00 b10	  qx1 : DPath P px1 b01 b11	  q0x : DPath P p0x b00 b01	  q1x : DPath P p1x b10 b11	  ============================	  DPath (fun p : a00 = a11 => DPath P p b00 b11) s (qx0 @D q1x) (q0x @D qx1) <~>	  DPathSquare P (sq_path s) qx0 qx1 q0x q1x	";
             responses[i]=data;
           
 
@@ -208,17 +208,17 @@
           
 
             i = 38;
-            data = "1 subgoal (ID 211)	  	  A : Type	  P : A -> Type	  a00, a10, a01, a11 : A	  px0 : a00 = a10	  px1 : a01 = a11	  p0x : a00 = a01	  p1x : a10 = a11	  s : px0 @ p1x = p0x @ px1	  b00 : P a00	  b10 : P a10	  b01 : P a01	  b11 : P a11	  qx0 : DPath P px0 b00 b10	  qx1 : DPath P px1 b01 b11	  q0x : DPath P p0x b00 b01	  q1x : DPath P p1x b10 b11	  s' := sq_path s : PathSquare px0 px1 p0x p1x	  ============================	  qx0 @D q1x =[ s] q0x @D qx1 <~> DPathSquare P s' qx0 qx1 q0x q1x	";
+            data = "1 subgoal (ID 211)	  	  A : Type	  P : A -> Type	  a00, a10, a01, a11 : A	  px0 : a00 = a10	  px1 : a01 = a11	  p0x : a00 = a01	  p1x : a10 = a11	  s : px0 @ p1x = p0x @ px1	  b00 : P a00	  b10 : P a10	  b01 : P a01	  b11 : P a11	  qx0 : DPath P px0 b00 b10	  qx1 : DPath P px1 b01 b11	  q0x : DPath P p0x b00 b01	  q1x : DPath P p1x b10 b11	  s' := sq_path s : PathSquare px0 px1 p0x p1x	  ============================	  DPath (fun p : a00 = a11 => DPath P p b00 b11) s (qx0 @D q1x) (q0x @D qx1) <~>	  DPathSquare P s' qx0 qx1 q0x q1x	";
             responses[i]=data;
           
 
             i = 39;
-            data = "1 subgoal (ID 243)	  	  A : Type	  P : A -> Type	  a00, a10, a01, a11 : A	  px0 : a00 = a10	  px1 : a01 = a11	  p0x : a00 = a01	  p1x : a10 = a11	  s : px0 @ p1x = p0x @ px1	  b00 : P a00	  b10 : P a10	  b01 : P a01	  b11 : P a11	  qx0 : DPath P px0 b00 b10	  qx1 : DPath P px1 b01 b11	  q0x : DPath P p0x b00 b01	  q1x : DPath P p1x b10 b11	  s' := sq_path s : PathSquare px0 px1 p0x p1x	  ============================	  qx0 @D q1x =[ sq_path^-1 s'] q0x @D qx1 <~>	  DPathSquare P s' qx0 qx1 q0x q1x	";
+            data = "1 subgoal (ID 243)	  	  A : Type	  P : A -> Type	  a00, a10, a01, a11 : A	  px0 : a00 = a10	  px1 : a01 = a11	  p0x : a00 = a01	  p1x : a10 = a11	  s : px0 @ p1x = p0x @ px1	  b00 : P a00	  b10 : P a10	  b01 : P a01	  b11 : P a11	  qx0 : DPath P px0 b00 b10	  qx1 : DPath P px1 b01 b11	  q0x : DPath P p0x b00 b01	  q1x : DPath P p1x b10 b11	  s' := sq_path s : PathSquare px0 px1 p0x p1x	  ============================	  DPath (fun p : a00 = a11 => DPath P p b00 b11) (sq_path^-1 s') 	    (qx0 @D q1x) (q0x @D qx1) <~> DPathSquare P s' qx0 qx1 q0x q1x	";
             responses[i]=data;
           
 
             i = 40;
-            data = "1 subgoal (ID 274)	  	  A : Type	  P : A -> Type	  a00, a10, a01, a11 : A	  px0 : a00 = a10	  px1 : a01 = a11	  p0x : a00 = a01	  p1x : a10 = a11	  b00 : P a00	  b10 : P a10	  b01 : P a01	  b11 : P a11	  qx0 : DPath P px0 b00 b10	  qx1 : DPath P px1 b01 b11	  q0x : DPath P p0x b00 b01	  q1x : DPath P p1x b10 b11	  s' : PathSquare px0 px1 p0x p1x	  ============================	  qx0 @D q1x =[ sq_path^-1 s'] q0x @D qx1 <~>	  DPathSquare P s' qx0 qx1 q0x q1x	";
+            data = "1 subgoal (ID 274)	  	  A : Type	  P : A -> Type	  a00, a10, a01, a11 : A	  px0 : a00 = a10	  px1 : a01 = a11	  p0x : a00 = a01	  p1x : a10 = a11	  b00 : P a00	  b10 : P a10	  b01 : P a01	  b11 : P a11	  qx0 : DPath P px0 b00 b10	  qx1 : DPath P px1 b01 b11	  q0x : DPath P p0x b00 b01	  q1x : DPath P p1x b10 b11	  s' : PathSquare px0 px1 p0x p1x	  ============================	  DPath (fun p : a00 = a11 => DPath P p b00 b11) (sq_path^-1 s') 	    (qx0 @D q1x) (q0x @D qx1) <~> DPathSquare P s' qx0 qx1 q0x q1x	";
             responses[i]=data;
           
 
@@ -323,7 +323,7 @@
           
 
             i = 61;
-            data = "1 subgoal (ID 580)	  	  A : Type	  P : A -> Type	  a00, a10 : A	  px0, px1 : a00 = a10	  p : px0 = px1	  b00 : P a00	  b10 : P a10	  qx0 : DPath P px0 b00 b10	  qx1 : DPath P px1 b00 b10	  ============================	  qx0 =[ p] qx1 <~> DPathSquare P (sq_G1 p) qx0 qx1 1 1	";
+            data = "1 subgoal (ID 580)	  	  A : Type	  P : A -> Type	  a00, a10 : A	  px0, px1 : a00 = a10	  p : px0 = px1	  b00 : P a00	  b10 : P a10	  qx0 : DPath P px0 b00 b10	  qx1 : DPath P px1 b00 b10	  ============================	  DPath (fun x : a00 = a10 => DPath P x b00 b10) p qx0 qx1 <~>	  DPathSquare P (sq_G1 p) qx0 qx1 1 1	";
             responses[i]=data;
           
 
@@ -333,7 +333,7 @@
           
 
             i = 63;
-            data = "1 subgoal (ID 598)	  	  A : Type	  P : A -> Type	  a00 : A	  b00, b10 : P a00	  qx0, qx1 : DPath P 1 b00 b10	  ============================	  qx0 =[ 1] qx1 <~> DPathSquare P (sq_G1 1%path) qx0 qx1 1 1	";
+            data = "1 subgoal (ID 598)	  	  A : Type	  P : A -> Type	  a00 : A	  b00, b10 : P a00	  qx0, qx1 : DPath P 1 b00 b10	  ============================	  DPath (fun x : a00 = a00 => DPath P x b00 b10) 1 qx0 qx1 <~>	  DPathSquare P (sq_G1 1%path) qx0 qx1 1 1	";
             responses[i]=data;
           
 
