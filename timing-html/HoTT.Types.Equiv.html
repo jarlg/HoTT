@@ -39,13 +39,13 @@ Time: 0s">
 <div class="code" title="File: Equiv.v
 Line: 2
 Time: 0.013s">
-<div class="time" style="width: 61.904761904762%"></div>
+<div class="time" style="width: 40.625%"></div>
 <pre>Require Import HoTT.Basics.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 2
-Time: 0.009s">
-<div class="time" style="width: 42.857142857143%"></div>
+Time: 0.008s">
+<div class="time" style="width: 25%"></div>
 <pre>
 Require Import Types.Prod Types.Sigma Types.Forall Types.Arrow Types.Paths.</pre>
 </div>
@@ -86,98 +86,98 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-  (** We begin by showing that, assuming function extensionality, [IsEquiv f] is an hprop. *)
- </pre>
+  Global Instance contr_map_isequiv {A B} (f : A -&gt; B) `{IsEquiv _ _ f}
+    : IsTruncMap (-2) f.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 12
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>Global Instance hprop_isequiv {A B} `(f : A -&gt; B)
-  : IsHProp (IsEquiv f).</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 13
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
+Line: 13
+Time: 0.002s">
+<div class="time" style="width: 6.25%"></div>
+<pre>
+    intros b; refine (contr_equiv' {a : A &amp; a = f^-1 b} _).</pre>
+</div>
+<div class="code" title="File: Equiv.v
 Line: 14
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    (** We will show that assuming [f] is an equivalence, [IsEquiv f] decomposes into a sigma of two contractible types. *)
-   </pre>
+    apply equiv_functor_sigma_id; intros a.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 15
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    apply equiv_moveR_equiv_M.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 16
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre>apply hprop_inhabited_contr; intros feq.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 16
-Time: 0.001s">
-<div class="time" style="width: 4.7619047619048%"></div>
 <pre>
-    nrefine (contr_equiv' _ (issig_isequiv f oE (equiv_sigma_assoc' _ _)^-1)).</pre>
+  Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 17
-Time: 0.005s">
-<div class="time" style="width: 23.809523809524%"></div>
-<pre>
-    srefine (contr_equiv' _ (equiv_contr_sigma _)^-1).</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 18
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    (** Each of these types is equivalent to a based homotopy space. *)
-   </pre>
+
+  Definition isequiv_contr_map {A B} (f : A -&gt; B) `{IsTruncMap (-2) A B f}
+    : IsEquiv f.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 20
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre>-</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 20
-Time: 0.004s">
-<div class="time" style="width: 19.047619047619%"></div>
-<pre> refine (contr_change_center (f^-1 ; eisretr f)).</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 20
-Time: 0.001s">
-<div class="time" style="width: 4.7619047619048%"></div>
 <pre>
-      refine (contr_equiv' { g : B -&gt; A &amp; g == f^-1 } _).</pre>
+  Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 21
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 3.125%"></div>
 <pre>
-      apply equiv_functor_sigma_id; intros g.</pre>
+    srapply Build_IsEquiv.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 22
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-      apply equiv_functor_forall_id; intros b.</pre>
+    -</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 23
+Time: 0.001s">
+<div class="time" style="width: 3.125%"></div>
+<pre> intros b; exact (center {a : A &amp; f a = b}).1.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 23
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-      apply equiv_moveR_equiv_M.</pre>
+    -</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 24
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros b.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 24
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exact (center {a : A &amp; f a = b}).2.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 24
@@ -188,134 +188,188 @@ Time: 0s">
 </div>
 <div class="code" title="File: Equiv.v
 Line: 25
-Time: 0.003s">
-<div class="time" style="width: 14.285714285714%"></div>
-<pre> refine (contr_equiv' { s : f^-1 o f == idmap &amp; eissect f == s } _).</pre>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros a.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 25
-Time: 0.001s">
-<div class="time" style="width: 4.7619047619048%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exact (@contr {x : A &amp; f x = f a} _ (a;1))..1.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 25
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
-      apply equiv_functor_sigma_id; intros s; cbn.</pre>
+    -</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 26
 Time: 0s">
 <div class="time" style="width: 0%"></div>
+<pre> intros a; cbn.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 26
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> apply moveL_M1.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 26
+Time: 0.003s">
+<div class="time" style="width: 9.375%"></div>
 <pre>
-      apply equiv_functor_forall_id; intros a.</pre>
+      rewrite &lt;- transport_paths_l, &lt;- transport_compose.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 27
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-      refine (equiv_concat_l (eisadj f a) _ oE _).</pre>
+      exact ((@contr {x : A &amp; f x = f a} _ (a;1))..2).</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 28
-Time: 0.021s">
-<div class="time" style="width: 100%"></div>
+Time: 0.003s">
+<div class="time" style="width: 9.375%"></div>
 <pre>
-      rapply equiv_ap.</pre>
+  Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 29
-Time: 0.01s">
-<div class="time" style="width: 47.619047619048%"></div>
-<pre>
-  Qed.</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 30
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-  (** Thus, paths of equivalences are equivalent to paths of functions. *)
+  (** As usual, we can't make both of these [Instances]. *)
  </pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 33
+Line: 32
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre>Lemma equiv_path_equiv {A B : Type} (e1 e2 : A &lt;~&gt; B)
-  : (e1 = e2 :&gt; (A -&gt; B)) &lt;~&gt; (e1 = e2 :&gt; (A &lt;~&gt; B)).</pre>
+<pre>Hint Immediate isequiv_contr_map : typeclass_instances.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 34
+Line: 32
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  (** It follows that when proving a map is an equivalence, we may assume its codomain is inhabited. *)
+ </pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 35
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Definition isequiv_inhab_codomain {A B} (f : A -&gt; B) (feq : B -&gt; IsEquiv f)
+    : IsEquiv f.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 36
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 35
-Time: 0.002s">
-<div class="time" style="width: 9.5238095238095%"></div>
-<pre>
-    equiv_via ((issig_equiv A B) ^-1 e1 = (issig_equiv A B) ^-1 e2).</pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 36
-Time: 0.001s">
-<div class="time" style="width: 4.7619047619048%"></div>
-<pre>
-    2: symmetry; apply equiv_ap; refine _.</pre>
-</div>
-<div class="code" title="File: Equiv.v
 Line: 37
-Time: 0.003s">
-<div class="time" style="width: 14.285714285714%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
-    exact (equiv_path_sigma_hprop ((issig_equiv A B)^-1 e1) ((issig_equiv A B)^-1 e2)).</pre>
+    apply isequiv_contr_map.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 38
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  Defined.</pre>
+    intros b.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 39
 Time: 0.001s">
-<div class="time" style="width: 4.7619047619048%"></div>
+<div class="time" style="width: 3.125%"></div>
 <pre>
-
-  Definition path_equiv {A B : Type} {e1 e2 : A &lt;~&gt; B}
-  : (e1 = e2 :&gt; (A -&gt; B)) -&gt; (e1 = e2 :&gt; (A &lt;~&gt; B))
-    := equiv_path_equiv e1 e2.</pre>
+    pose (feq b); exact _.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 43
+Line: 40
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 41
 Time: 0.001s">
-<div class="time" style="width: 4.7619047619048%"></div>
+<div class="time" style="width: 3.125%"></div>
 <pre>
 
-  Global Instance isequiv_path_equiv {A B : Type} {e1 e2 : A &lt;~&gt; B}
-  : IsEquiv (@path_equiv _ _ e1 e2)
-    (* Coq can find this instance by itself, but it's slow. *)
-    := equiv_isequiv (equiv_path_equiv e1 e2).</pre>
+  Global Instance contr_sect_equiv {A B} (f : A -&gt; B) `{IsEquiv A B f}
+    : Contr {g : B -&gt; A &amp; Sect g f}.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 48
+Line: 44
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 45
+Time: 0.004s">
+<div class="time" style="width: 12.5%"></div>
+<pre>
+    refine (contr_change_center (f^-1 ; eisretr f)).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 46
+Time: 0.006s">
+<div class="time" style="width: 18.75%"></div>
+<pre>
+    refine (contr_equiv' { g : B -&gt; A &amp; f o g = idmap } _).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 47
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    (* Typeclass inference finds this contractible instance: it's the fiber over [idmap] of postcomposition with [f], and the latter is an equivalence since [f] is. *)
+   </pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 49
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>apply equiv_functor_sigma_id; intros g.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 49
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    apply equiv_ap10.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 50
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 51
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-  (** This implies that types of equivalences inherit truncation.  Note that we only state the theorem for [n.+1]-truncatedness, since it is not true for contractibility: if [B] is contractible but [A] is not, then [A &lt;~&gt; B] is not contractible because it is not inhabited.
-
-   Don't confuse this lemma with [trunc_equiv], which says that if [A] is truncated and [A] is equivalent to [B], then [B] is truncated.  It would be nice to find a better pair of names for them. *)
- </pre>
-</div>
-<div class="code" title="File: Equiv.v
-Line: 53
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>Global Instance istrunc_equiv {n : trunc_index} {A B : Type} `{IsTrunc n.+1 B}
-  : IsTrunc n.+1 (A &lt;~&gt; B).</pre>
+  Global Instance contr_retr_equiv {A B} (f : A -&gt; B) `{IsEquiv A B f}
+    : Contr {g : B -&gt; A &amp; Sect f g}.</pre>
 </div>
 <div class="code" title="File: Equiv.v
 Line: 54
@@ -326,33 +380,330 @@ Time: 0s">
 </div>
 <div class="code" title="File: Equiv.v
 Line: 55
+Time: 0.003s">
+<div class="time" style="width: 9.375%"></div>
+<pre>
+    refine (contr_change_center (f^-1 ; eissect f)).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 56
+Time: 0.005s">
+<div class="time" style="width: 15.625%"></div>
+<pre>
+    refine (contr_equiv' { g : B -&gt; A &amp; g o f = idmap } _).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 57
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    apply equiv_functor_sigma_id; intros g.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 58
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    apply equiv_ap10.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 59
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 60
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  (** We begin by showing that, assuming function extensionality, [IsEquiv f] is an hprop. *)
+ </pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 63
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Global Instance hprop_isequiv {A B} (f : A -&gt; B)
+  : IsHProp (IsEquiv f).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 64
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 65
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    (** We will show that assuming [f] is an equivalence, [IsEquiv f] decomposes into a sigma of two contractible types. *)
+   </pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 67
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>apply hprop_inhabited_contr; intros feq.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 67
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    nrefine (contr_equiv' _ (issig_isequiv f oE (equiv_sigma_assoc' _ _)^-1)).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 68
+Time: 0.032s">
+<div class="time" style="width: 100%"></div>
+<pre>
+    srefine (contr_equiv' _ (equiv_contr_sigma _)^-1).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 69
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    (** Each of these types is equivalent to a based homotopy space.  The first is exactly [contr_sect_equiv]. *)
+   </pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 71
+Time: 0.001s">
+<div class="time" style="width: 3.125%"></div>
+<pre>1: rapply contr_sect_equiv.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 71
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    (** The second requires a bit more work. *)
+   </pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 73
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>cbn.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 73
+Time: 0.003s">
+<div class="time" style="width: 9.375%"></div>
+<pre>
+    refine (contr_equiv' { s : f^-1 o f == idmap &amp; eissect f == s } _).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 74
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    apply equiv_functor_sigma_id; intros s; cbn.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 75
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    apply equiv_functor_forall_id; intros a.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 76
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    refine (equiv_concat_l (eisadj f a) _ oE _).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 77
+Time: 0.022s">
+<div class="time" style="width: 68.75%"></div>
+<pre>
+    rapply equiv_ap.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 78
+Time: 0.003s">
+<div class="time" style="width: 9.375%"></div>
+<pre>
+  Qed.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 79
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  (** Now since [IsEquiv f] and the assertion that its fibers are contractible are both HProps, logical equivalence implies equivalence. *)
+ </pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 82
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Definition equiv_contr_map_isequiv {A B} (f : A -&gt; B)
+    : IsTruncMap (-2) f &lt;~&gt; IsEquiv f.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 83
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 84
+Time: 0.024s">
+<div class="time" style="width: 75%"></div>
+<pre>
+    rapply equiv_iff_hprop.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 85
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    (** Both directions are found by typeclass inference! *)
+ </pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 87
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Defined.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 87
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  (** Thus, paths of equivalences are equivalent to paths of functions. *)
+ </pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 90
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Lemma equiv_path_equiv {A B : Type} (e1 e2 : A &lt;~&gt; B)
+  : (e1 = e2 :&gt; (A -&gt; B)) &lt;~&gt; (e1 = e2 :&gt; (A &lt;~&gt; B)).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 91
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 92
+Time: 0.001s">
+<div class="time" style="width: 3.125%"></div>
+<pre>
+    equiv_via ((issig_equiv A B) ^-1 e1 = (issig_equiv A B) ^-1 e2).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 93
+Time: 0.001s">
+<div class="time" style="width: 3.125%"></div>
+<pre>
+    2: symmetry; apply equiv_ap; refine _.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 94
+Time: 0.003s">
+<div class="time" style="width: 9.375%"></div>
+<pre>
+    exact (equiv_path_sigma_hprop ((issig_equiv A B)^-1 e1) ((issig_equiv A B)^-1 e2)).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 95
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 96
+Time: 0.001s">
+<div class="time" style="width: 3.125%"></div>
+<pre>
+
+  Definition path_equiv {A B : Type} {e1 e2 : A &lt;~&gt; B}
+  : (e1 = e2 :&gt; (A -&gt; B)) -&gt; (e1 = e2 :&gt; (A &lt;~&gt; B))
+    := equiv_path_equiv e1 e2.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 100
+Time: 0.001s">
+<div class="time" style="width: 3.125%"></div>
+<pre>
+
+  Global Instance isequiv_path_equiv {A B : Type} {e1 e2 : A &lt;~&gt; B}
+  : IsEquiv (@path_equiv _ _ e1 e2)
+    (* Coq can find this instance by itself, but it's slow. *)
+    := equiv_isequiv (equiv_path_equiv e1 e2).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 105
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  (** This implies that types of equivalences inherit truncation.  Note that we only state the theorem for [n.+1]-truncatedness, since it is not true for contractibility: if [B] is contractible but [A] is not, then [A &lt;~&gt; B] is not contractible because it is not inhabited.
+
+   Don't confuse this lemma with [trunc_equiv], which says that if [A] is truncated and [A] is equivalent to [B], then [B] is truncated.  It would be nice to find a better pair of names for them. *)
+ </pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 110
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Global Instance istrunc_equiv {n : trunc_index} {A B : Type} `{IsTrunc n.+1 B}
+  : IsTrunc n.+1 (A &lt;~&gt; B).</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 111
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Equiv.v
+Line: 112
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     simpl.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 56
+Line: 113
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros e1 e2.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 56
-Time: 0.004s">
-<div class="time" style="width: 19.047619047619%"></div>
+Line: 113
+Time: 0.003s">
+<div class="time" style="width: 9.375%"></div>
 <pre>
     apply (trunc_equiv _ (equiv_path_equiv e1 e2)).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 57
+Line: 114
 Time: 0.001s">
-<div class="time" style="width: 4.7619047619048%"></div>
+<div class="time" style="width: 3.125%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 58
+Line: 115
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -361,54 +712,54 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 61
+Line: 118
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance contr_equiv_contr_contr {A B : Type} `{Contr A} `{Contr B}
   : Contr (A &lt;~&gt; B).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 62
+Line: 119
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 63
+Line: 120
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     exists equiv_contr_contr.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 64
+Line: 121
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros e.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 65
+Line: 122
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply path_equiv, path_forall.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 65
-Time: 0.001s">
-<div class="time" style="width: 4.7619047619048%"></div>
+Line: 122
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre> intros ?; apply contr.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 65
+Line: 122
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 66
+Line: 123
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -417,48 +768,48 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 69
+Line: 126
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance contr_aut_hprop A `{IsHProp A}
   : Contr (A &lt;~&gt; A).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 70
+Line: 127
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 71
+Line: 128
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     exists 1%equiv.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 72
+Line: 129
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros e; apply path_equiv, path_forall.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 73
+Line: 130
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros ?; apply path_ishprop.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 73
+Line: 130
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 74
+Line: 131
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -467,15 +818,15 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 77
-Time: 0.001s">
-<div class="time" style="width: 4.7619047619048%"></div>
+Line: 134
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>Definition functor_equiv {A B C D} (h : A &lt;~&gt; C) (k : B &lt;~&gt; D)
   : (A &lt;~&gt; B) -&gt; (C &lt;~&gt; D)
   := fun f =&gt; ((k oE f) oE h^-1).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 79
+Line: 136
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -484,14 +835,14 @@ Time: 0s">
   : IsEquiv (functor_equiv h k).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 82
+Line: 139
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 83
+Line: 140
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -499,56 +850,56 @@ Time: 0s">
               (functor_equiv (equiv_inverse h) (equiv_inverse k)) _ _).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 85
+Line: 142
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 86
-Time: 0.001s">
-<div class="time" style="width: 4.7619047619048%"></div>
+Line: 143
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre> intros f; apply path_equiv, path_arrow; intros x; simpl.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 86
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 143
+Time: 0.001s">
+<div class="time" style="width: 3.125%"></div>
 <pre>
       exact (eisretr k _ @ ap f (eisretr h x)).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 87
+Line: 144
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 88
-Time: 0.001s">
-<div class="time" style="width: 4.7619047619048%"></div>
+Line: 145
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre> intros g; apply path_equiv, path_arrow; intros x; simpl.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 88
+Line: 145
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       exact (eissect k _ @ ap g (eissect h x)).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 89
+Line: 146
 Time: 0.001s">
-<div class="time" style="width: 4.7619047619048%"></div>
+<div class="time" style="width: 3.125%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 90
+Line: 147
 Time: 0.001s">
-<div class="time" style="width: 4.7619047619048%"></div>
+<div class="time" style="width: 3.125%"></div>
 <pre>
 
   Definition equiv_functor_equiv {A B C D} (h : A &lt;~&gt; C) (k : B &lt;~&gt; D)
@@ -556,7 +907,7 @@ Time: 0.001s">
   := Build_Equiv _ _ (functor_equiv h k) _.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 94
+Line: 151
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -565,36 +916,36 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 97
+Line: 154
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance isequiv_equiv_inverse {A B}
   : IsEquiv (@equiv_inverse A B).</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 98
+Line: 155
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 99
+Line: 156
 Time: 0.001s">
-<div class="time" style="width: 4.7619047619048%"></div>
+<div class="time" style="width: 3.125%"></div>
 <pre>
     refine (isequiv_adjointify _ equiv_inverse _ _);
       intros e; apply path_equiv; reflexivity.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 101
+Line: 158
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 102
+Line: 159
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -604,15 +955,15 @@ Time: 0s">
     := Build_Equiv _ _ (@equiv_inverse A B) _.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 106
-Time: 0.003s">
-<div class="time" style="width: 14.285714285714%"></div>
+Line: 163
+Time: 0.016s">
+<div class="time" style="width: 50%"></div>
 <pre>
 
 End AssumeFunext.</pre>
 </div>
 <div class="code" title="File: Equiv.v
-Line: 109
+Line: 166
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>

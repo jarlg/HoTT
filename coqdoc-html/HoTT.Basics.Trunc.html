@@ -576,6 +576,48 @@ Two propositions are equivalent as soon as there are maps in both directions.
 </div>
 
 <div class="doc">
+Truncatedness is an hprop. 
+</div>
+<div class="code">
+<span class="id" title="keyword">Global Instance</span> <a name="ishprop_istrunc"><span class="id" title="instance">ishprop_istrunc</span></a> `{<a class="idref" href="HoTT.Basics.Overture.html#Funext"><span class="id" title="class">Funext</span></a>} (<span class="id" title="var">n</span> : <a class="idref" href="HoTT.Basics.Overture.html#trunc_index"><span class="id" title="inductive">trunc_index</span></a>) (<span class="id" title="var">A</span> : <span class="id" title="keyword">Type</span>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="HoTT.Basics.Overture.html#IsHProp"><span class="id" title="abbreviation">IsHProp</span></a> (<a class="idref" href="HoTT.Basics.Overture.html#IsTrunc"><span class="id" title="class">IsTrunc</span></a> <a class="idref" href="HoTT.Basics.Trunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Basics.Trunc.html#A"><span class="id" title="variable">A</span></a>) | 0.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Basics.Trunc.html#hprop_inhabited_contr"><span class="id" title="instance">hprop_inhabited_contr</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">revert</span> <span class="id" title="var">A</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">simple_induction</span> <span class="id" title="var">n</span> <span class="id" title="var">n</span> <span class="id" title="var">IH</span>; <span class="id" title="tactic">unfold</span> <a class="idref" href="HoTT.Basics.Overture.html#IsTrunc"><span class="id" title="class">IsTrunc</span></a>; <span class="id" title="tactic">simpl</span>.<br/>
+&nbsp;&nbsp;- <span class="id" title="tactic">intros</span> <span class="id" title="var">A</span> ?.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">exact</span> <span class="id" title="var">_</span>.<br/>
+&nbsp;&nbsp;- <span class="id" title="tactic">intros</span> <span class="id" title="var">A</span> <span class="id" title="var">AH1</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">∃</span> <span class="id" title="var">AH1</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intro</span> <span class="id" title="var">AH2</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Basics.Overture.html#path_forall"><span class="id" title="definition">path_forall</span></a>; <span class="id" title="tactic">intro</span> <span class="id" title="var">x</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Basics.Overture.html#path_forall"><span class="id" title="definition">path_forall</span></a>; <span class="id" title="tactic">intro</span> <span class="id" title="var">y</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> @<a class="idref" href="HoTT.Basics.Contractible.html#path_contr"><span class="id" title="definition">path_contr</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <span class="id" title="var">IH</span>, <span class="id" title="var">AH1</span>.<br/>
+<span class="id" title="keyword">Qed</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+By <span class="inlinecode"><a class="idref" href="HoTT.Basics.Trunc.html#trunc_hprop"><span class="id" title="definition">trunc_hprop</span></a></span>, it follows that <span class="inlinecode"><a class="idref" href="HoTT.Basics.Overture.html#IsTrunc"><span class="id" title="record">IsTrunc</span></a></span> <span class="inlinecode"><a class="idref" href="Coq.Init.Peano.html#n"><span class="id" title="variable">n</span></a></span> <span class="inlinecode"><a class="idref" href="HoTTBookExercises.html#Book_4_5.parts.A"><span class="id" title="variable">A</span></a></span> is also <span class="inlinecode"><a class="idref" href="HoTT.Categories.Functor.Attributes.html#fully_faithful_helpers.m"><span class="id" title="variable">m</span></a></span>-truncated for any <span class="inlinecode"><a class="idref" href="HoTT.Categories.Functor.Attributes.html#fully_faithful_helpers.m"><span class="id" title="variable">m</span></a></span> <span class="inlinecode">≥</span> <span class="inlinecode">-1</span>. 
+<div class="paragraph"> </div>
+
+ Similarly, a map being truncated is also a proposition. 
+</div>
+<div class="code">
+<span class="id" title="keyword">Global Instance</span> <a name="ishprop_istruncmap"><span class="id" title="instance">ishprop_istruncmap</span></a> `{<a class="idref" href="HoTT.Basics.Overture.html#Funext"><span class="id" title="class">Funext</span></a>} (<span class="id" title="var">n</span> : <a class="idref" href="HoTT.Basics.Overture.html#trunc_index"><span class="id" title="inductive">trunc_index</span></a>) {<span class="id" title="var">X</span> <span class="id" title="var">Y</span> : <span class="id" title="keyword">Type</span>} (<span class="id" title="var">f</span> : <a class="idref" href="HoTT.Basics.Trunc.html#X"><span class="id" title="variable">X</span></a> <a class="idref" href="Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Basics.Trunc.html#Y"><span class="id" title="variable">Y</span></a>)<br/>
+: <a class="idref" href="HoTT.Basics.Overture.html#IsHProp"><span class="id" title="abbreviation">IsHProp</span></a> (<a class="idref" href="HoTT.Basics.Trunc.html#IsTruncMap"><span class="id" title="class">IsTruncMap</span></a> <a class="idref" href="HoTT.Basics.Trunc.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="HoTT.Basics.Trunc.html#f"><span class="id" title="variable">f</span></a>).<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Basics.Trunc.html#hprop_allpath"><span class="id" title="lemma">hprop_allpath</span></a>; <span class="id" title="tactic">intros</span> <span class="id" title="var">s</span> <span class="id" title="var">t</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Basics.Overture.html#path_forall"><span class="id" title="definition">path_forall</span></a>; <span class="id" title="tactic">intros</span> <span class="id" title="var">x</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Basics.Trunc.html#path_ishprop"><span class="id" title="lemma">path_ishprop</span></a>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
 If you are looking for a theorem about truncation, you may want to read the note "Finding Theorems" in "STYLE.md". 
 </div>
 <div class="code">
