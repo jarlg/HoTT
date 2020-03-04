@@ -848,12 +848,12 @@
           
 
             i = 166;
-            data = "";
+            data = "1 subgoal (ID 142)	  	  X : pType	  Y : pType	  Z : pType	  psi : pMap Y Z	  phi : pMap X Y	  g : group_loops X	  p := eisretr (loops_group X) g : loops_group X ((loops_group X)^-1 g) = g	  ============================	  loops_group Z	    (loops_functor psi (loops_functor phi ((loops_group X)^-1 g))) =	  loops_group Z (loops_functor (pmap_compose psi phi) ((loops_group X)^-1 g))	1 subgoal (ID 150)	  	  X : pType	  Y : pType	  Z : pType	  psi : pMap Y Z	  phi : pMap X Y	  g : group_loops X	  p := eisretr (loops_group X) g : loops_group X ((loops_group X)^-1 g) = g	  ============================	  loops_functor psi (loops_functor phi ((loops_group X)^-1 g)) =	  loops_functor (pmap_compose psi phi) ((loops_group X)^-1 g)	No more subgoals.	";
             responses[i]=data;
           
 
             i = 167;
-            data = "1 subgoal (ID 142)	  	  X : pType	  Y : pType	  Z : pType	  psi : pMap Y Z	  phi : pMap X Y	  g : group_loops X	  p := eisretr (loops_group X) g : loops_group X ((loops_group X)^-1 g) = g	  ============================	  loops_group Z	    (loops_functor psi (loops_functor phi ((loops_group X)^-1 g))) =	  loops_group Z (loops_functor (pmap_compose psi phi) ((loops_group X)^-1 g))	1 subgoal (ID 150)	  	  X : pType	  Y : pType	  Z : pType	  psi : pMap Y Z	  phi : pMap X Y	  g : group_loops X	  p := eisretr (loops_group X) g : loops_group X ((loops_group X)^-1 g) = g	  ============================	  loops_functor psi (loops_functor phi ((loops_group X)^-1 g)) =	  loops_functor (pmap_compose psi phi) ((loops_group X)^-1 g)	No more subgoals.	";
+            data = "";
             responses[i]=data;
           
 
@@ -1178,7 +1178,7 @@
           
 
             i = 232;
-            data = "";
+            data = "1 subgoal (ID 330)	  	  G : Type	  ispointed_type0 : IsPointed G	  isconn_classifying_space1 : IsConnected (Tr 0) G	  H : Type	  isconn_classifying_space0 : IsConnected (Tr 0) H	  phi : G -> H	  g1, g2,	  g3 : {|	       classifying_space := {|	                            pointed_type := G;	                            ispointed_type := ispointed_type0 |};	       isconn_classifying_space := isconn_classifying_space1 |}	  ============================	  (grouphom_pp {| pointed_fun := phi; point_eq := 1 |} (g1 @ g2) g3 @	   whiskerR (grouphom_pp {| pointed_fun := phi; point_eq := 1 |} g1 g2)	     (1 @ (ap phi g3 @ 1))) @	  concat_pp_p (1 @ (ap phi g1 @ 1)) (1 @ (ap phi g2 @ 1))	    (1 @ (ap phi g3 @ 1)) =	  (ap (fun p : ispointed_type0 = ispointed_type0 => 1 @ (ap phi p @ 1))	     (concat_pp_p g1 g2 g3) @	   grouphom_pp {| pointed_fun := phi; point_eq := 1 |} g1 (g2 @ g3)) @	  whiskerL (1 @ (ap phi g1 @ 1))	    (grouphom_pp {| pointed_fun := phi; point_eq := 1 |} g2 g3)	";
             responses[i]=data;
           
 
@@ -1218,7 +1218,7 @@
           
 
             i = 240;
-            data = "1 subgoal (ID 330)	  	  G : Type	  ispointed_type0 : IsPointed G	  isconn_classifying_space1 : IsConnected (Tr 0) G	  H : Type	  isconn_classifying_space0 : IsConnected (Tr 0) H	  phi : G -> H	  g1, g2,	  g3 : {|	       classifying_space := {|	                            pointed_type := G;	                            ispointed_type := ispointed_type0 |};	       isconn_classifying_space := isconn_classifying_space1 |}	  ============================	  (grouphom_pp {| pointed_fun := phi; point_eq := 1 |} (g1 @ g2) g3 @	   whiskerR (grouphom_pp {| pointed_fun := phi; point_eq := 1 |} g1 g2)	     (1 @ (ap phi g3 @ 1))) @	  concat_pp_p (1 @ (ap phi g1 @ 1)) (1 @ (ap phi g2 @ 1))	    (1 @ (ap phi g3 @ 1)) =	  (ap (fun p : ispointed_type0 = ispointed_type0 => 1 @ (ap phi p @ 1))	     (concat_pp_p g1 g2 g3) @	   grouphom_pp {| pointed_fun := phi; point_eq := 1 |} g1 (g2 @ g3)) @	  whiskerL (1 @ (ap phi g1 @ 1))	    (grouphom_pp {| pointed_fun := phi; point_eq := 1 |} g2 g3)	";
+            data = "";
             responses[i]=data;
           
 
@@ -1587,12 +1587,12 @@ Keyed unification makes <span class="inlinecode"><span class="id" title="tactic"
 </div>
 <div class="goal" id="goal0_3_7"><pre><span></span></pre></div>
 <div class="doc" scenenumber="9">
-<a name="lab657"></a><h1 class="section">oo-Groups</h1>
+<a name="lab658"></a><h1 class="section">oo-Groups</h1>
 <div class="doc" scenenumber="4"> </div>
 
  We want a workable definition of "oo-group" (what a classical homotopy theorist would call a "grouplike Aoo-space"). The classical definitions using operads or Segal spaces involve infinitely much data, which we don't know how to handle in HoTT. But instead, we can invoke the theorem (which is a theorem in classical homotopy theory, and also in any oo-topos) that every oo-group is the loop space of some pointed connected object, and use it instead as a definition: we define an oo-group to be a pointed connected type (its classifying space or delooping). Then we make subsidiary definitions to allow us to treat such an object in the way we would expect, e.g. an oo-group homomorphism is a pointed map between classifying spaces. 
 <div class="doc" scenenumber="6"> </div>
-<a name="lab658"></a><h2 class="section">Definition</h2>
+<a name="lab659"></a><h2 class="section">Definition</h2>
 </div>
 <div scenenumber="11" class="code">
 <span class="command" onmouseout="
@@ -1788,9 +1788,9 @@ Unfortunately, the underlying type of that oo-group is not *definitionally* the 
 </div>
 <div class="goal" id="goal0_3_27"><pre><span></span></pre></div>
 <div class="doc" scenenumber="29">
-<a name="lab659"></a><h2 class="section">Homomorphisms</h2>
+<a name="lab660"></a><h2 class="section">Homomorphisms</h2>
 <div class="doc" scenenumber="4"> </div>
-<a name="lab660"></a><h3 class="section">Definition</h3>
+<a name="lab661"></a><h3 class="section">Definition</h3>
 </div>
 <div scenenumber="31" class="code">
 <span class="command" onmouseout="
@@ -1982,7 +1982,7 @@ And this functor "is" the same as the ordinary loop space functor.
 </div>
 <div class="goal" id="goal0_3_39"><pre><span></span></pre></div>
 <div class="doc" scenenumber="41">
-<a name="lab661"></a><h3 class="section">Functoriality</h3>
+<a name="lab662"></a><h3 class="section">Functoriality</h3>
 </div>
 <div scenenumber="43" class="code">
 <span class="command" onmouseout="
@@ -2191,7 +2191,7 @@ And this functor "is" the same as the ordinary loop space functor.
 </div>
 <div class="goal" id="goal0_3_43"><pre><span></span></pre></div>
 <div class="doc" scenenumber="45">
-<a name="lab662"></a><h3 class="section">Homomorphic properties</h3>
+<a name="lab663"></a><h3 class="section">Homomorphic properties</h3>
 <div class="doc" scenenumber="4"> </div>
 
  The following tactic often allows us to "pretend" that phi preserves basepoints strictly.  This is basically a simple extension of <span class="inlinecode"><span class="id" title="var">pointed_reduce</span></span> (see Pointed.v). 
@@ -2381,7 +2381,7 @@ And this functor "is" the same as the ordinary loop space functor.
 </div>
 <div class="goal" id="goal0_3_47"><pre><span></span></pre></div>
 <div class="doc" scenenumber="49">
-<a name="lab663"></a><h2 class="section">Subgroups</h2>
+<a name="lab664"></a><h2 class="section">Subgroups</h2>
 </div>
 <div scenenumber="51" class="code">
 <span class="command" onmouseout="
