@@ -36,40 +36,33 @@ Time: 0s">
 </div>
 <div class="code" title="File: Universe.v
 Line: 1
-Time: 0.031s">
-<div class="time" style="width: 9.3939393939394%"></div>
-<pre>Require Import HoTT.Basics HoTT.Types.</pre>
+Time: 0.037s">
+<div class="time" style="width: 15.87982832618%"></div>
+<pre>Require Import Basics Types HProp.</pre>
 </div>
 <div class="code" title="File: Universe.v
 Line: 1
-Time: 0.005s">
-<div class="time" style="width: 1.5151515151515%"></div>
-<pre>
-Require Import HProp Fibrations.</pre>
-</div>
-<div class="code" title="File: Universe.v
-Line: 2
-Time: 0.067s">
-<div class="time" style="width: 20.30303030303%"></div>
+Time: 0.071s">
+<div class="time" style="width: 30.472103004292%"></div>
 <pre>
 Require Import Modalities.Modality HoTT.Truncations.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 3
-Time: 0.019s">
-<div class="time" style="width: 5.7575757575758%"></div>
+Line: 2
+Time: 0.021s">
+<div class="time" style="width: 9.0128755364807%"></div>
 <pre>
 Require Import Spaces.BAut Spaces.BAut.Rigid.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 4
+Line: 3
 Time: 0.001s">
-<div class="time" style="width: 0.3030303030303%"></div>
+<div class="time" style="width: 0.42918454935622%"></div>
 <pre>
 Require Import ExcludedMiddle.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 5
+Line: 4
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -77,14 +70,14 @@ Time: 0s">
 Local Open Scope trunc_scope.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 7
+Line: 6
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Local Open Scope path_scope.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 8
+Line: 7
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -98,13 +91,13 @@ Time: 0s">
 (** If two inequivalent types have equivalent automorphism oo-groups, then assuming LEM we can swap them and leave the rest of the universe untouched. *)</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 16
+Line: 15
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section SwapTypes.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 16
+Line: 15
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -112,20 +105,20 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 18
+Line: 17
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Context `{Funext} `{ExcludedMiddle}.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 18
+Line: 17
 Time: 0.001s">
-<div class="time" style="width: 0.3030303030303%"></div>
+<div class="time" style="width: 0.42918454935622%"></div>
 <pre>
   Context (A B : Type) (ne : ~(A &lt;~&gt; B)) (e : BAut A &lt;~&gt; BAut B).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 19
+Line: 18
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -133,25 +126,25 @@ Time: 0s">
   Definition equiv_swap_types : Type &lt;~&gt; Type.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 21
+Line: 20
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 22
-Time: 0.135s">
-<div class="time" style="width: 40.909090909091%"></div>
+Line: 21
+Time: 0.138s">
+<div class="time" style="width: 59.227467811159%"></div>
 <pre>
     refine (((equiv_decidable_sum (fun X:Type =&gt; merely (X=A)))^-1)
               oE _ oE
               (equiv_decidable_sum (fun X:Type =&gt; merely (X=A)))).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 25
-Time: 0.131s">
-<div class="time" style="width: 39.69696969697%"></div>
+Line: 24
+Time: 0.15s">
+<div class="time" style="width: 64.377682403433%"></div>
 <pre>
     refine ((equiv_functor_sum_l
                (equiv_decidable_sum (fun X =&gt; merely (X.1=B)))^-1)
@@ -160,129 +153,142 @@ Time: 0.131s">
                  (equiv_decidable_sum (fun X =&gt; merely (X.1=B))))).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 30
+Line: 29
 Time: 0.001s">
-<div class="time" style="width: 0.3030303030303%"></div>
+<div class="time" style="width: 0.42918454935622%"></div>
 <pre>
     refine ((equiv_sum_assoc _ _ _)
               oE _ oE
               (equiv_sum_assoc _ _ _)^-1).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 33
+Line: 32
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply equiv_functor_sum_r.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 34
+Line: 33
 Time: 0.001s">
-<div class="time" style="width: 0.3030303030303%"></div>
+<div class="time" style="width: 0.42918454935622%"></div>
 <pre>
     assert (q : BAut B &lt;~&gt; {x : {x : Type &amp; ~ merely (x = A)} &amp;
                                 merely (x.1 = B)}).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 36
+Line: 35
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     {</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 37
+Line: 36
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> refine (equiv_sigma_assoc _ _ oE _).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 37
-Time: 0.002s">
-<div class="time" style="width: 0.60606060606061%"></div>
+Line: 36
+Time: 0.001s">
+<div class="time" style="width: 0.42918454935622%"></div>
 <pre>
       apply equiv_functor_sigma_id; intros X.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 38
-Time: 0.015s">
-<div class="time" style="width: 4.5454545454545%"></div>
+Line: 37
+Time: 0.019s">
+<div class="time" style="width: 8.1545064377682%"></div>
 <pre>
       apply equiv_iff_hprop.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 39
+Line: 38
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       -</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 40
+Line: 39
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros p.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 40
+Line: 39
 Time: 0.001s">
-<div class="time" style="width: 0.3030303030303%"></div>
+<div class="time" style="width: 0.42918454935622%"></div>
 <pre>
         refine (fun q =&gt; _ ; p).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 41
-Time: 0.06s">
-<div class="time" style="width: 18.181818181818%"></div>
+Line: 40
+Time: 0.073s">
+<div class="time" style="width: 31.330472103004%"></div>
 <pre>
         strip_truncations.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 42
+Line: 41
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
         destruct q.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 43
+Line: 42
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
         exact (ne (equiv_path X B p)).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 44
+Line: 43
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       -</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 45
+Line: 44
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact pr2.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 45
+Line: 44
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> }</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 45
+Line: 44
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (_ oE equiv_sum_symm _ _).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 46
+Line: 45
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply equiv_functor_sum'.</pre>
+</div>
+<div class="code" title="File: Universe.v
+Line: 46
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    -</pre>
+</div>
+<div class="code" title="File: Universe.v
+Line: 47
+Time: 0.001s">
+<div class="time" style="width: 0.42918454935622%"></div>
+<pre> exact (e^-1 oE q^-1).</pre>
 </div>
 <div class="code" title="File: Universe.v
 Line: 47
@@ -293,206 +299,193 @@ Time: 0s">
 </div>
 <div class="code" title="File: Universe.v
 Line: 48
-Time: 0.001s">
-<div class="time" style="width: 0.3030303030303%"></div>
-<pre> exact (e^-1 oE q^-1).</pre>
-</div>
-<div class="code" title="File: Universe.v
-Line: 48
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    -</pre>
-</div>
-<div class="code" title="File: Universe.v
-Line: 49
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact (q oE e).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 49
-Time: 0.006s">
-<div class="time" style="width: 1.8181818181818%"></div>
+Line: 48
+Time: 0.007s">
+<div class="time" style="width: 3.0042918454936%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 50
+Line: 49
 Time: 0.001s">
-<div class="time" style="width: 0.3030303030303%"></div>
+<div class="time" style="width: 0.42918454935622%"></div>
 <pre>
 
   Definition equiv_swap_types_swaps : merely (equiv_swap_types A = B).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 52
+Line: 51
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 53
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 52
+Time: 0.001s">
+<div class="time" style="width: 0.42918454935622%"></div>
 <pre>
     assert (ea := (e (point _)).2).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 54
+Line: 53
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> cbn in ea.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 54
-Time: 0.012s">
-<div class="time" style="width: 3.6363636363636%"></div>
+Line: 53
+Time: 0.015s">
+<div class="time" style="width: 6.4377682403433%"></div>
 <pre>
     strip_truncations; apply tr.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 55
+Line: 54
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     unfold equiv_swap_types.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 56
-Time: 0.328s">
-<div class="time" style="width: 99.393939393939%"></div>
+Line: 55
+Time: 0.044s">
+<div class="time" style="width: 18.884120171674%"></div>
 <pre>
     apply moveR_equiv_V.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 57
-Time: 0.021s">
-<div class="time" style="width: 6.3636363636364%"></div>
+Line: 56
+Time: 0.026s">
+<div class="time" style="width: 11.158798283262%"></div>
 <pre>
     rewrite (equiv_decidable_sum_l
                (fun X =&gt; merely (X=A)) A (tr 1)).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 59
-Time: 0.046s">
-<div class="time" style="width: 13.939393939394%"></div>
+Line: 58
+Time: 0.072s">
+<div class="time" style="width: 30.901287553648%"></div>
 <pre>
     assert (ne' : ~ merely (B=A))
       by (intros p; strip_truncations; exact (ne (equiv_path A B p^))).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 61
-Time: 0.017s">
-<div class="time" style="width: 5.1515151515152%"></div>
+Line: 60
+Time: 0.019s">
+<div class="time" style="width: 8.1545064377682%"></div>
 <pre>
     rewrite (equiv_decidable_sum_r
                (fun X =&gt; merely (X=A)) B ne').</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 63
-Time: 0.179s">
-<div class="time" style="width: 54.242424242424%"></div>
+Line: 62
+Time: 0.232s">
+<div class="time" style="width: 99.570815450644%"></div>
 <pre>
     cbn.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 64
-Time: 0.021s">
-<div class="time" style="width: 6.3636363636364%"></div>
+Line: 63
+Time: 0.017s">
+<div class="time" style="width: 7.2961373390558%"></div>
 <pre>
     apply ap, path_sigma_hprop; cbn.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 65
+Line: 64
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     exact ea.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 66
-Time: 0.055s">
-<div class="time" style="width: 16.666666666667%"></div>
+Line: 65
+Time: 0.061s">
+<div class="time" style="width: 26.18025751073%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 67
+Line: 66
 Time: 0.001s">
-<div class="time" style="width: 0.3030303030303%"></div>
+<div class="time" style="width: 0.42918454935622%"></div>
 <pre>
 
   Definition equiv_swap_types_not_id
     : equiv_swap_types &lt;&gt; equiv_idmap.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 70
+Line: 69
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 71
+Line: 70
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros p.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 72
+Line: 71
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     assert (q := equiv_swap_types_swaps).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 73
-Time: 0.021s">
-<div class="time" style="width: 6.3636363636364%"></div>
+Line: 72
+Time: 0.024s">
+<div class="time" style="width: 10.300429184549%"></div>
 <pre>
     strip_truncations.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 74
+Line: 73
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply ne.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 75
+Line: 74
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply equiv_path.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 76
+Line: 75
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     rewrite p in q; exact q.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 77
+Line: 76
 Time: 0.001s">
-<div class="time" style="width: 0.3030303030303%"></div>
+<div class="time" style="width: 0.42918454935622%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 78
-Time: 0.03s">
-<div class="time" style="width: 9.0909090909091%"></div>
+Line: 77
+Time: 0.033s">
+<div class="time" style="width: 14.163090128755%"></div>
 <pre>
 
 End SwapTypes.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 80
+Line: 79
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -502,7 +495,7 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 83
+Line: 82
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition equiv_swap_rigid `{Univalence} `{ExcludedMiddle}
@@ -510,35 +503,35 @@ Time: 0s">
   : Type &lt;~&gt; Type.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 85
+Line: 84
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 86
+Line: 85
 Time: 0.001s">
-<div class="time" style="width: 0.3030303030303%"></div>
+<div class="time" style="width: 0.42918454935622%"></div>
 <pre>
   refine (equiv_swap_types A B ne _).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 87
-Time: 0.012s">
-<div class="time" style="width: 3.6363636363636%"></div>
+Line: 86
+Time: 0.011s">
+<div class="time" style="width: 4.7210300429185%"></div>
 <pre>
   apply equiv_contr_contr.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 88
+Line: 87
 Time: 0.001s">
-<div class="time" style="width: 0.3030303030303%"></div>
+<div class="time" style="width: 0.42918454935622%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 89
+Line: 88
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -548,15 +541,15 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 92
+Line: 91
 Time: 0.005s">
-<div class="time" style="width: 1.5151515151515%"></div>
+<div class="time" style="width: 2.1459227467811%"></div>
 <pre>Definition equiv_swap_empty_unit `{Univalence} `{ExcludedMiddle}
   : Type &lt;~&gt; Type
   := equiv_swap_rigid Empty Unit (fun e =&gt; e^-1 tt).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 94
+Line: 93
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -566,88 +559,88 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 97
+Line: 96
 Time: 0.002s">
-<div class="time" style="width: 0.60606060606061%"></div>
+<div class="time" style="width: 0.85836909871245%"></div>
 <pre>Definition equiv_swap_rigid_swaps `{Univalence} `{ExcludedMiddle}
            (A B : Type) `{IsRigid A} `{IsRigid B} (ne : ~(A &lt;~&gt; B))
   : equiv_swap_rigid A B ne A = B.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 99
+Line: 98
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 100
+Line: 99
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   unfold equiv_swap_rigid, equiv_swap_types.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 101
-Time: 0.33s">
-<div class="time" style="width: 100%"></div>
+Line: 100
+Time: 0.053s">
+<div class="time" style="width: 22.74678111588%"></div>
 <pre>
   apply moveR_equiv_V.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 102
-Time: 0.032s">
-<div class="time" style="width: 9.6969696969697%"></div>
+Line: 101
+Time: 0.021s">
+<div class="time" style="width: 9.0128755364807%"></div>
 <pre>
   rewrite (equiv_decidable_sum_l
              (fun X =&gt; merely (X=A)) A (tr 1)).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 104
-Time: 0.049s">
-<div class="time" style="width: 14.848484848485%"></div>
+Line: 103
+Time: 0.062s">
+<div class="time" style="width: 26.609442060086%"></div>
 <pre>
   assert (ne' : ~ merely (B=A))
     by (intros p; strip_truncations; exact (ne (equiv_path A B p^))).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 106
-Time: 0.023s">
-<div class="time" style="width: 6.969696969697%"></div>
+Line: 105
+Time: 0.02s">
+<div class="time" style="width: 8.5836909871245%"></div>
 <pre>
   rewrite (equiv_decidable_sum_r
              (fun X =&gt; merely (X=A)) B ne').</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 108
-Time: 0.2s">
-<div class="time" style="width: 60.606060606061%"></div>
+Line: 107
+Time: 0.233s">
+<div class="time" style="width: 100%"></div>
 <pre>
   cbn.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 109
-Time: 0.011s">
-<div class="time" style="width: 3.3333333333333%"></div>
+Line: 108
+Time: 0.013s">
+<div class="time" style="width: 5.5793991416309%"></div>
 <pre>
   apply ap, path_sigma_hprop; cbn.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 110
-Time: 0.015s">
-<div class="time" style="width: 4.5454545454545%"></div>
+Line: 109
+Time: 0.014s">
+<div class="time" style="width: 6.0085836909871%"></div>
 <pre>
   exact ((path_contr (center (BAut B)) (point (BAut B)))..1).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 111
+Line: 110
 Time: 0.06s">
-<div class="time" style="width: 18.181818181818%"></div>
+<div class="time" style="width: 25.751072961373%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 112
+Line: 111
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -657,9 +650,9 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 115
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 114
+Time: 0.001s">
+<div class="time" style="width: 0.42918454935622%"></div>
 <pre>Definition equiv_swap_prod_rigid  `{Univalence} `{ExcludedMiddle}
            (X A B : Type) (n : trunc_index) (ne : ~(X*A &lt;~&gt; X*B))
            `{IsRigid A} `{IsConnected n.+1 A}
@@ -668,25 +661,38 @@ Time: 0s">
   : Type &lt;~&gt; Type.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 120
+Line: 119
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 121
+Line: 120
 Time: 0.001s">
-<div class="time" style="width: 0.3030303030303%"></div>
+<div class="time" style="width: 0.42918454935622%"></div>
 <pre>
   refine (equiv_swap_types (X*A) (X*B) ne _).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 122
+Line: 121
 Time: 0.001s">
-<div class="time" style="width: 0.3030303030303%"></div>
+<div class="time" style="width: 0.42918454935622%"></div>
 <pre>
   transitivity (BAut X).</pre>
+</div>
+<div class="code" title="File: Universe.v
+Line: 122
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Universe.v
+Line: 123
+Time: 0.002s">
+<div class="time" style="width: 0.85836909871245%"></div>
+<pre> symmetry; exact (baut_prod_rigid_equiv X A n).</pre>
 </div>
 <div class="code" title="File: Universe.v
 Line: 123
@@ -697,32 +703,19 @@ Time: 0s">
 </div>
 <div class="code" title="File: Universe.v
 Line: 124
-Time: 0.002s">
-<div class="time" style="width: 0.60606060606061%"></div>
-<pre> symmetry; exact (baut_prod_rigid_equiv X A n).</pre>
-</div>
-<div class="code" title="File: Universe.v
-Line: 124
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Universe.v
-Line: 125
 Time: 0.001s">
-<div class="time" style="width: 0.3030303030303%"></div>
+<div class="time" style="width: 0.42918454935622%"></div>
 <pre> exact (baut_prod_rigid_equiv X B n).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 125
+Line: 124
 Time: 0.002s">
-<div class="time" style="width: 0.60606060606061%"></div>
+<div class="time" style="width: 0.85836909871245%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 126
+Line: 125
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -732,7 +725,7 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 129
+Line: 128
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition lem_from_aut_type_unit_empty `{Univalence}
@@ -740,48 +733,48 @@ Time: 0s">
   : ExcludedMiddle_type.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 131
+Line: 130
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 132
+Line: 131
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply DNE_to_LEM, DNE_from_allneg; intros P ?.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 133
+Line: 132
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   exists (f P); split.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 134
+Line: 133
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 135
+Line: 134
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros p.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 135
+Line: 134
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     assert (Contr P) by (apply contr_inhabited_hprop; assumption).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 136
+Line: 135
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -789,41 +782,41 @@ Time: 0s">
       by (apply path_universe_uncurried, equiv_contr_contr).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 138
+Line: 137
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     destruct q.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 139
+Line: 138
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     rewrite eu.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 140
+Line: 139
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     auto.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 141
+Line: 140
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 142
+Line: 141
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros nfp.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 142
+Line: 141
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -831,35 +824,35 @@ Time: 0s">
       by (apply path_universe_uncurried, equiv_to_empty, nfp).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 144
+Line: 143
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     rewrite &lt;- eu in q.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 145
-Time: 0.02s">
-<div class="time" style="width: 6.0606060606061%"></div>
+Line: 144
+Time: 0.021s">
+<div class="time" style="width: 9.0128755364807%"></div>
 <pre>
     apply ((ap f)^-1) in q.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 146
+Line: 145
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     rewrite q; exact tt.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 147
+Line: 146
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 148
+Line: 147
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -869,38 +862,51 @@ Lemma equiv_hprop_idprod `{Univalence}
   : P &lt;-&gt; (P * A = A).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 152
+Line: 151
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 153
+Line: 152
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   split.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 154
+Line: 153
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 155
+Line: 154
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros p; apply path_universe with snd.</pre>
+</div>
+<div class="code" title="File: Universe.v
+Line: 154
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    apply isequiv_adjointify with (fun a =&gt; (p,a)).</pre>
 </div>
 <div class="code" title="File: Universe.v
 Line: 155
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    apply isequiv_adjointify with (fun a =&gt; (p,a)).</pre>
+    +</pre>
+</div>
+<div class="code" title="File: Universe.v
+Line: 156
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros x; reflexivity.</pre>
 </div>
 <div class="code" title="File: Universe.v
 Line: 156
@@ -913,71 +919,58 @@ Time: 0s">
 Line: 157
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> intros x; reflexivity.</pre>
-</div>
-<div class="code" title="File: Universe.v
-Line: 157
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    +</pre>
-</div>
-<div class="code" title="File: Universe.v
-Line: 158
-Time: 0s">
-<div class="time" style="width: 0%"></div>
 <pre> intros [p' x].</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 158
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 157
+Time: 0.001s">
+<div class="time" style="width: 0.42918454935622%"></div>
 <pre>
       apply path_prod; [ apply path_ishprop | reflexivity ].</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 159
+Line: 158
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 160
+Line: 159
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros q.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 160
-Time: 0.048s">
-<div class="time" style="width: 14.545454545455%"></div>
+Line: 159
+Time: 0.06s">
+<div class="time" style="width: 25.751072961373%"></div>
 <pre>
     strip_truncations.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 161
+Line: 160
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply equiv_path in q.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 162
+Line: 161
 Time: 0.001s">
-<div class="time" style="width: 0.3030303030303%"></div>
+<div class="time" style="width: 0.42918454935622%"></div>
 <pre>
     exact (fst (q^-1 a)).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 163
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 162
+Time: 0.001s">
+<div class="time" style="width: 0.42918454935622%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 164
+Line: 163
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -988,124 +981,124 @@ Definition lem_from_aut_type_inhabited_empty `{Univalence}
   : ExcludedMiddle_type.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 169
+Line: 168
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 170
+Line: 169
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply DNE_to_LEM, DNE_from_allneg; intros P ?.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 171
+Line: 170
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   exists (f (P * A)); split.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 172
+Line: 171
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 173
+Line: 172
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros p.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 173
+Line: 172
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     assert (q := fst (equiv_hprop_idprod A P a) p).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 174
+Line: 173
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply (ap f) in q.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 175
+Line: 174
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     rewrite eu in q.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 176
+Line: 175
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     rewrite q; auto.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 177
+Line: 176
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 178
+Line: 177
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros q.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 178
+Line: 177
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply equiv_to_empty in q.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 179
+Line: 178
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply path_universe_uncurried in q.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 180
+Line: 179
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     rewrite &lt;- eu in q.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 181
-Time: 0.021s">
-<div class="time" style="width: 6.3636363636364%"></div>
+Line: 180
+Time: 0.022s">
+<div class="time" style="width: 9.4420600858369%"></div>
 <pre>
     apply ((ap f)^-1) in q.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 182
+Line: 181
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     exact (snd (equiv_hprop_idprod A P a) q).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 183
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 182
+Time: 0.001s">
+<div class="time" style="width: 0.42918454935622%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 184
+Line: 183
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1115,7 +1108,7 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 187
+Line: 186
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition zero_beers `{Univalence}
@@ -1123,70 +1116,70 @@ Time: 0s">
   : ~~ExcludedMiddle_type.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 189
+Line: 188
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 190
+Line: 189
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   pose (f := equiv_inverse g).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 191
+Line: 190
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros nlem.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 192
+Line: 191
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply ge.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 193
+Line: 192
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply path_universe_uncurried, equiv_to_empty; intros gz.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 194
+Line: 193
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply nlem.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 195
+Line: 194
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply (lem_from_aut_type_inhabited_empty f (g Empty) (tr gz)).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 196
+Line: 195
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   unfold f; apply eissect.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 197
+Line: 196
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 198
+Line: 197
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1196,63 +1189,63 @@ Definition lem_beers `{Univalence}
   : ~~ExcludedMiddle_type.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 202
+Line: 201
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 203
+Line: 202
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros nlem.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 204
+Line: 203
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   pose (nlem' := equiv_to_empty nlem).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 205
+Line: 204
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply path_universe_uncurried in nlem'.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 206
+Line: 205
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   rewrite nlem' in ge.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 207
+Line: 206
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply (zero_beers g) in ge.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 208
+Line: 207
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   exact (ge nlem).</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 209
+Line: 208
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Universe.v
-Line: 211
+Line: 210
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
