@@ -106,8 +106,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 17
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 5.5555555555556%"></div>
 <pre>Global Instance ispointed_prod `{IsPointed A, IsPointed B} : IsPointed (A * B)
   := (point A, point B).</pre>
 </div>
@@ -272,8 +272,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 63
-Time: 0.001s">
-<div class="time" style="width: 5.5555555555556%"></div>
+Time: 0.002s">
+<div class="time" style="width: 11.111111111111%"></div>
 <pre>Record pEquiv (A B : pType) :=
   { pointed_equiv_fun : A -&gt;* B ;
     pointed_isequiv : IsEquiv pointed_equiv_fun
@@ -419,8 +419,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Core.v
 Line: 95
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 5.5555555555556%"></div>
 <pre>Definition pforall {A : Type} (F : A -&gt; pType) : pType
   := Build_pType (forall (a : A), pointed_type (F a)) (ispointed_type o F).</pre>
 </div>
@@ -430,24 +430,24 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-(** The following tactic often allows us to "pretend" that pointed maps and homotopies preserve basepoints strictly.  We have carefully defined [pMap] and [pHomotopy] so that when destructed, their second components are paths with right endpoints free, to which we can apply Paulin-Morhing path-induction. *)</pre>
+(** The following tactics often allows us to "pretend" that pointed maps and homotopies preserve basepoints strictly.  We have carefully defined [pMap] and [pHomotopy] so that when destructed, their second components are paths with right endpoints free, to which we can apply Paulin-Morhing path-induction. *)
+
+(** First a version with no rewrites, which leaves some cleanup to be done but which can be used in transparent proofs. *)</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 98
+Line: 100
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre>Ltac pointed_reduce :=
+<pre>Ltac pointed_reduce' :=
   unfold pointed_fun, pointed_htpy; cbn;
   repeat match goal with
-           | [ X : pType |- _ ] =&gt; destruct X as [X ?]
+           | [ X : pType |- _ ] =&gt; destruct X as [X ?point]
            | [ phi : pMap ?X ?Y |- _ ] =&gt; destruct phi as [phi ?]
            | [ alpha : pHomotopy ?f ?g |- _ ] =&gt; destruct alpha as [alpha ?]
-           | [ equiv : pEquiv ?X ?Y |- _ ] =&gt; destruct equiv as [equiv ?]
+           | [ equiv : pEquiv ?X ?Y |- _ ] =&gt; destruct equiv as [equiv ?iseq]
          end;
   cbn in *; unfold point in *;
-  path_induction; cbn;
-  (** TODO: [pointed_reduce] uses [rewrite], and thus according to our current general rules, it should only be used in opaque proofs.  We don't yet need any of the proofs that use it to be transparent, but there's a good chance we will eventually.  At that point we can consider whether to allow it in transparent proofs, modify it to not use [rewrite], or exclude it from proofs that need to be transparent. *)
-  rewrite ?concat_p1, ?concat_1p.</pre>
+  path_induction; cbn.</pre>
 </div>
 <div class="code" title="File: Core.v
 Line: 109
@@ -455,39 +455,76 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
+(** Next a version that uses [rewrite], and should only be used in opaque proofs. *)</pre>
+</div>
+<div class="code" title="File: Core.v
+Line: 111
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Ltac pointed_reduce :=
+  pointed_reduce';
+  rewrite ?concat_p1, ?concat_1p.</pre>
+</div>
+<div class="code" title="File: Core.v
+Line: 113
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(** Finally, a version that just strictifies a single map or equivalence.  This has the advantage that it leaves the context more readable. *)</pre>
+</div>
+<div class="code" title="File: Core.v
+Line: 115
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Ltac pointed_reduce_pmap f
+  := try match type of f with
+    | pEquiv ?X ?Y =&gt; destruct f as [f ?iseq]
+    end;
+    match type of f with
+    | _ -&gt;* ?Y =&gt; destruct Y as [Y ?], f as [f p]; cbn in *; destruct p; cbn
+    end.</pre>
+</div>
+<div class="code" title="File: Core.v
+Line: 121
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+
 (** ** Equivalences *)
 
 </pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 112
+Line: 125
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition issig_ptype : { X : Type &amp; X } &lt;~&gt; pType.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 112
+Line: 125
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 113
-Time: 0.006s">
-<div class="time" style="width: 33.333333333333%"></div>
+Line: 126
+Time: 0.007s">
+<div class="time" style="width: 38.888888888889%"></div>
 <pre>
   issig.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 114
+Line: 127
 Time: 0.001s">
 <div class="time" style="width: 5.5555555555556%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 115
+Line: 128
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -496,25 +533,33 @@ Definition issig_pmap (A B : pType)
 : { f : A -&gt; B &amp; f (point A) = point B } &lt;~&gt; (A -&gt;* B).</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 118
+Line: 131
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 119
+Line: 132
 Time: 0.01s">
 <div class="time" style="width: 55.555555555556%"></div>
 <pre>
   issig.</pre>
 </div>
 <div class="code" title="File: Core.v
-Line: 120
-Time: 0.001s">
-<div class="time" style="width: 5.5555555555556%"></div>
+Line: 133
+Time: 0.002s">
+<div class="time" style="width: 11.111111111111%"></div>
 <pre>
 Defined.</pre>
+</div>
+<div class="code" title="File: Core.v
+Line: 135
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+</pre>
 </div>
 </body>
 </html>
