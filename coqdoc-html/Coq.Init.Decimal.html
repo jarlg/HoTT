@@ -30,7 +30,7 @@
 
  These numbers coded in base 10 will be used for parsing and printing
     other Coq numeral datatypes in an human-readable way.
-    See the <span class="inlinecode"><span class="id" title="var">Numeral</span></span> <span class="inlinecode"><span class="id" title="keyword">Notation</span></span> command.
+    See the <span class="inlinecode"><span class="id" title="library">Numeral</span></span> <span class="inlinecode"><span class="id" title="keyword">Notation</span></span> command.
     We represent numbers in base 10 as lists of decimal digits,
     in big-endian order (most significant digit comes first). 
 </div>
@@ -66,9 +66,9 @@ Unsigned integers are just lists of digits.
 </div>
 
 <div class="doc">
-<span class="inlinecode"><a class="idref" href="Coq.Init.Decimal.html#Nil"><span class="id" title="constructor">Nil</span></a></span> is the number terminator. Taken alone, it behaves as zero,
-    but rather use <span class="inlinecode"><a class="idref" href="Coq.Init.Decimal.html#D0"><span class="id" title="constructor">D0</span></a></span> <span class="inlinecode"><a class="idref" href="Coq.Init.Decimal.html#Nil"><span class="id" title="constructor">Nil</span></a></span> instead, since this form will be denoted
-    as <span class="inlinecode">0</span>, while <span class="inlinecode"><a class="idref" href="Coq.Init.Decimal.html#Nil"><span class="id" title="constructor">Nil</span></a></span> will be printed as <span class="inlinecode"><a class="idref" href="Coq.Init.Decimal.html#Nil"><span class="id" title="constructor">Nil</span></a></span>. 
+<span class="inlinecode"><a class="idref" href="Coq.Init.Hexadecimal.html#Nil"><span class="id" title="constructor">Nil</span></a></span> is the number terminator. Taken alone, it behaves as zero,
+    but rather use <span class="inlinecode"><a class="idref" href="Coq.Init.Hexadecimal.html#D0"><span class="id" title="constructor">D0</span></a></span> <span class="inlinecode"><a class="idref" href="Coq.Init.Hexadecimal.html#Nil"><span class="id" title="constructor">Nil</span></a></span> instead, since this form will be denoted
+    as <span class="inlinecode">0</span>, while <span class="inlinecode"><a class="idref" href="Coq.Init.Hexadecimal.html#Nil"><span class="id" title="constructor">Nil</span></a></span> will be printed as <span class="inlinecode"><a class="idref" href="Coq.Init.Hexadecimal.html#Nil"><span class="id" title="constructor">Nil</span></a></span>. 
 </div>
 <div class="code">
 
@@ -131,11 +131,11 @@ For decimal numbers, we use two constructors <span class="inlinecode"><a class="
 <div class="doc">
 This representation favors simplicity over canonicity.
     For normalizing numbers, we need to remove head zero digits,
-    and choose our canonical representation of 0 (here <span class="inlinecode"><a class="idref" href="Coq.Init.Decimal.html#D0"><span class="id" title="constructor">D0</span></a></span> <span class="inlinecode"><a class="idref" href="Coq.Init.Decimal.html#Nil"><span class="id" title="constructor">Nil</span></a></span>
-    for unsigned numbers and <span class="inlinecode"><a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#Pos"><span class="id" title="definition">Pos</span></a></span> <span class="inlinecode">(<a class="idref" href="Coq.Init.Decimal.html#D0"><span class="id" title="constructor">D0</span></a></span> <span class="inlinecode"><a class="idref" href="Coq.Init.Decimal.html#Nil"><span class="id" title="constructor">Nil</span></a>)</span> for signed numbers). 
+    and choose our canonical representation of 0 (here <span class="inlinecode"><a class="idref" href="Coq.Init.Hexadecimal.html#D0"><span class="id" title="constructor">D0</span></a></span> <span class="inlinecode"><a class="idref" href="Coq.Init.Hexadecimal.html#Nil"><span class="id" title="constructor">Nil</span></a></span>
+    for unsigned numbers and <span class="inlinecode"><a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#Pos"><span class="id" title="definition">Pos</span></a></span> <span class="inlinecode">(<a class="idref" href="Coq.Init.Hexadecimal.html#D0"><span class="id" title="constructor">D0</span></a></span> <span class="inlinecode"><a class="idref" href="Coq.Init.Hexadecimal.html#Nil"><span class="id" title="constructor">Nil</span></a>)</span> for signed numbers). 
 <div class="paragraph"> </div>
 
- <span class="inlinecode"><a class="idref" href="Coq.Init.Decimal.html#nzhead"><span class="id" title="definition">nzhead</span></a></span> removes all head zero digits 
+ <span class="inlinecode"><a class="idref" href="Coq.Init.Hexadecimal.html#nzhead"><span class="id" title="definition">nzhead</span></a></span> removes all head zero digits 
 </div>
 <div class="code">
 
@@ -150,7 +150,7 @@ This representation favors simplicity over canonicity.
 </div>
 
 <div class="doc">
-<span class="inlinecode"><a class="idref" href="Coq.Init.Decimal.html#unorm"><span class="id" title="definition">unorm</span></a></span> : normalization of unsigned integers 
+<span class="inlinecode"><a class="idref" href="Coq.Init.Hexadecimal.html#unorm"><span class="id" title="definition">unorm</span></a></span> : normalization of unsigned integers 
 </div>
 <div class="code">
 
@@ -165,7 +165,7 @@ This representation favors simplicity over canonicity.
 </div>
 
 <div class="doc">
-<span class="inlinecode"><a class="idref" href="Coq.Init.Decimal.html#norm"><span class="id" title="definition">norm</span></a></span> : normalization of signed integers 
+<span class="inlinecode"><a class="idref" href="Coq.Init.Hexadecimal.html#norm"><span class="id" title="definition">norm</span></a></span> : normalization of signed integers 
 </div>
 <div class="code">
 
@@ -235,7 +235,7 @@ For conversions with binary numbers, it is easier to operate
 </div>
 
 <div class="doc">
-<span class="inlinecode"><a class="idref" href="Coq.Init.Decimal.html#nztail"><span class="id" title="definition">nztail</span></a></span> removes all trailing zero digits and return both the
+<span class="inlinecode"><a class="idref" href="Coq.Init.Hexadecimal.html#nztail"><span class="id" title="definition">nztail</span></a></span> removes all trailing zero digits and return both the
     result and the number of removed digits. 
 </div>
 <div class="code">
@@ -330,7 +330,7 @@ Doubling little-endian numbers
 
 <div class="doc">
 Pseudo-conversion functions used when declaring
-    Numeral Notations on <span class="inlinecode"><a class="idref" href="Coq.Init.Decimal.html#uint"><span class="id" title="inductive">uint</span></a></span> and <span class="inlinecode"><a class="idref" href="Coq.Init.Decimal.html#int"><span class="id" title="inductive">int</span></a></span>. 
+    Numeral Notations on <span class="inlinecode"><a class="idref" href="Coq.Init.Numeral.html#uint"><span class="id" title="inductive">uint</span></a></span> and <span class="inlinecode"><a class="idref" href="Coq.Init.Numeral.html#int"><span class="id" title="inductive">int</span></a></span>. 
 </div>
 <div class="code">
 
