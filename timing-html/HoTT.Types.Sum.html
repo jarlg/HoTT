@@ -39,14 +39,14 @@ Time: 0s">
 </div>
 <div class="code" title="File: Sum.v
 Line: 3
-Time: 0.014s">
-<div class="time" style="width: 32.558139534884%"></div>
+Time: 0.015s">
+<div class="time" style="width: 30.612244897959%"></div>
 <pre>Require Import HoTT.Basics.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 3
 Time: 0.009s">
-<div class="time" style="width: 20.93023255814%"></div>
+<div class="time" style="width: 18.367346938776%"></div>
 <pre>
 Require Import Types.Empty Types.Unit Types.Prod Types.Sigma.</pre>
 </div>
@@ -60,7 +60,7 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 5
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>Require Import Types.Bool Types.Forall.</pre>
 </div>
 <div class="code" title="File: Sum.v
@@ -118,7 +118,7 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 20
 Time: 0.002s">
-<div class="time" style="width: 4.6511627906977%"></div>
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre>Definition eta_sum `(z : A + B) : match z with
                                     | inl z' =&gt; inl z'
                                     | inr z' =&gt; inr z'
@@ -137,8 +137,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Sum.v
 Line: 27
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>Definition path_sum {A B : Type} (z z' : A + B)
            (pq : match z, z' with
                    | inl z0, inl z'0 =&gt; z0 = z'0
@@ -150,14 +150,14 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 33
 Time: 0.002s">
-<div class="time" style="width: 4.6511627906977%"></div>
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre>
   destruct z, z'.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 34
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
   all:try apply ap, pq.</pre>
 </div>
@@ -170,15 +170,15 @@ Time: 0s">
 </div>
 <div class="code" title="File: Sum.v
 Line: 36
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 37
-Time: 0.002s">
-<div class="time" style="width: 4.6511627906977%"></div>
+Time: 0.003s">
+<div class="time" style="width: 6.1224489795918%"></div>
 <pre>
 
 Definition path_sum_inv {A B : Type} {z z' : A + B}
@@ -207,8 +207,8 @@ Definition inl_ne_inr {A B : Type} (a : A) (b : B)
 </div>
 <div class="code" title="File: Sum.v
 Line: 55
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
 Definition inr_ne_inl {A B : Type} (b : B) (a : A)
@@ -225,16 +225,16 @@ Time: 0s">
 </div>
 <div class="code" title="File: Sum.v
 Line: 61
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>Definition path_sum_inl {A : Type} (B : Type) {x x' : A}
 : inl x = inl x' -&gt; x = x'
   := fun p =&gt; @path_sum_inv A B _ _ p.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 63
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
 Definition path_sum_inr (A : Type) {B : Type} {x x' : B}
@@ -254,7 +254,7 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 70
 Time: 0.005s">
-<div class="time" style="width: 11.627906976744%"></div>
+<div class="time" style="width: 10.204081632653%"></div>
 <pre>Definition eisretr_path_sum {A B} {z z' : A + B}
 : Sect (@path_sum_inv _ _ z z') (path_sum z z')
   := fun p =&gt; match p as p in (_ = z') return
@@ -270,8 +270,8 @@ Time: 0.005s">
 </div>
 <div class="code" title="File: Sum.v
 Line: 81
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 
 Definition eissect_path_sum {A B} {z z' : A + B}
@@ -294,14 +294,14 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 86
 Time: 0.005s">
-<div class="time" style="width: 11.627906976744%"></div>
+<div class="time" style="width: 10.204081632653%"></div>
 <pre>
   destruct z, z', p; exact idpath.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 87
 Time: 0.002s">
-<div class="time" style="width: 4.6511627906977%"></div>
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -324,7 +324,7 @@ Proof.</pre>
 <div class="code" title="File: Sum.v
 Line: 92
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
   refine (Build_IsEquiv _ _
                        (path_sum z z')
@@ -335,8 +335,8 @@ Time: 0.001s">
 </div>
 <div class="code" title="File: Sum.v
 Line: 98
-Time: 0.011s">
-<div class="time" style="width: 25.581395348837%"></div>
+Time: 0.009s">
+<div class="time" style="width: 18.367346938776%"></div>
 <pre>
   destruct z, z';
     intros [];
@@ -345,14 +345,14 @@ Time: 0.011s">
 <div class="code" title="File: Sum.v
 Line: 101
 Time: 0.006s">
-<div class="time" style="width: 13.953488372093%"></div>
+<div class="time" style="width: 12.244897959184%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 102
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
 Definition equiv_path_sum {A B : Type} (z z' : A + B)
@@ -372,8 +372,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Sum.v
 Line: 110
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>Global Instance ishprop_hfiber_inl {A B : Type} (z : A + B)
 : IsHProp (hfiber inl z).</pre>
 </div>
@@ -386,8 +386,8 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 112
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   destruct z as [a|b]; unfold hfiber.</pre>
 </div>
@@ -401,7 +401,7 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 114
 Time: 0.002s">
-<div class="time" style="width: 4.6511627906977%"></div>
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre> refine (trunc_equiv' _
               (equiv_functor_sigma_id
                  (fun x =&gt; equiv_path_sum (inl x) (inl a)))).</pre>
@@ -416,21 +416,21 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 117
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre> refine (trunc_equiv _
               (fun xp =&gt; inl_ne_inr (xp.1) b xp.2)^-1).</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 118
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 119
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
 Global Instance decidable_hfiber_inl {A B : Type} (z : A + B)
@@ -460,7 +460,7 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 125
 Time: 0.003s">
-<div class="time" style="width: 6.9767441860465%"></div>
+<div class="time" style="width: 6.1224489795918%"></div>
 <pre> refine (decidable_equiv' _
               (equiv_functor_sigma_id
                  (fun x =&gt; equiv_path_sum (inl x) (inl a))) _).</pre>
@@ -475,14 +475,14 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 128
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre> refine (decidable_equiv _
               (fun xp =&gt; inl_ne_inr (xp.1) b xp.2)^-1 _).</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 129
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -504,8 +504,8 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 134
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
   destruct z as [a|b]; unfold hfiber.</pre>
 </div>
@@ -519,7 +519,7 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 136
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre> refine (trunc_equiv _
               (fun xp =&gt; inr_ne_inl (xp.1) a xp.2)^-1).</pre>
 </div>
@@ -532,8 +532,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Sum.v
 Line: 138
-Time: 0.003s">
-<div class="time" style="width: 6.9767441860465%"></div>
+Time: 0.002s">
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre> refine (trunc_equiv' _
               (equiv_functor_sigma_id
                  (fun x =&gt; equiv_path_sum (inr x) (inr b)))).</pre>
@@ -541,7 +541,7 @@ Time: 0.003s">
 <div class="code" title="File: Sum.v
 Line: 140
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -563,8 +563,8 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 145
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   destruct z as [a|b]; unfold hfiber.</pre>
 </div>
@@ -577,8 +577,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Sum.v
 Line: 147
-Time: 0.002s">
-<div class="time" style="width: 4.6511627906977%"></div>
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre> refine (decidable_equiv _
               (fun xp =&gt; inr_ne_inl (xp.1) a xp.2)^-1 _).</pre>
 </div>
@@ -591,8 +591,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Sum.v
 Line: 149
-Time: 0.003s">
-<div class="time" style="width: 6.9767441860465%"></div>
+Time: 0.002s">
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre> refine (decidable_equiv' _
               (equiv_functor_sigma_id
                  (fun x =&gt; equiv_path_sum (inr x) (inr b))) _).</pre>
@@ -600,7 +600,7 @@ Time: 0.003s">
 <div class="code" title="File: Sum.v
 Line: 151
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -624,8 +624,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Sum.v
 Line: 157
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
   Context `{Funext} {A : Type} (P : A -&gt; Type)
           `{forall a, IsHProp (P a)} `{forall a, Decidable (P a)}.</pre>
@@ -669,7 +669,7 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 165
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
       destruct (dec (P x)) as [p|np].</pre>
 </div>
@@ -708,14 +708,14 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 168
 Time: 0.002s">
-<div class="time" style="width: 4.6511627906977%"></div>
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre>
     refine (Build_Equiv _ _ f _).</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 169
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
     refine (isequiv_adjointify
               _ (fun z =&gt; match z with
@@ -733,7 +733,7 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 175
 Time: 0.012s">
-<div class="time" style="width: 27.906976744186%"></div>
+<div class="time" style="width: 24.489795918367%"></div>
 <pre> intros [[x p]|[x np]]; unfold f;
         destruct (dec (P x)) as [p'|np'].</pre>
 </div>
@@ -747,7 +747,7 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 177
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre> apply ap, ap, path_ishprop.</pre>
 </div>
 <div class="code" title="File: Sum.v
@@ -772,8 +772,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Sum.v
 Line: 179
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre> elim (np p').</pre>
 </div>
 <div class="code" title="File: Sum.v
@@ -786,7 +786,7 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 180
 Time: 0.007s">
-<div class="time" style="width: 16.279069767442%"></div>
+<div class="time" style="width: 14.285714285714%"></div>
 <pre> apply ap, ap, path_ishprop.</pre>
 </div>
 <div class="code" title="File: Sum.v
@@ -805,14 +805,14 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 181
 Time: 0.005s">
-<div class="time" style="width: 11.627906976744%"></div>
+<div class="time" style="width: 10.204081632653%"></div>
 <pre>
       destruct (dec (P x)); cbn; reflexivity.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 182
 Time: 0.003s">
-<div class="time" style="width: 6.9767441860465%"></div>
+<div class="time" style="width: 6.1224489795918%"></div>
 <pre>
   Defined.</pre>
 </div>
@@ -842,7 +842,7 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 188
 Time: 0.003s">
-<div class="time" style="width: 6.9767441860465%"></div>
+<div class="time" style="width: 6.1224489795918%"></div>
 <pre>
     destruct (dec (P a)) as [p'|np'].</pre>
 </div>
@@ -856,7 +856,7 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 190
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre> apply ap, path_sigma_hprop; reflexivity.</pre>
 </div>
 <div class="code" title="File: Sum.v
@@ -875,7 +875,7 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 191
 Time: 0.004s">
-<div class="time" style="width: 9.3023255813953%"></div>
+<div class="time" style="width: 8.1632653061224%"></div>
 <pre>
   Defined.</pre>
 </div>
@@ -905,7 +905,7 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 197
 Time: 0.003s">
-<div class="time" style="width: 6.9767441860465%"></div>
+<div class="time" style="width: 6.1224489795918%"></div>
 <pre>
     destruct (dec (P a)) as [p'|np'].</pre>
 </div>
@@ -932,20 +932,20 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 200
 Time: 0.007s">
-<div class="time" style="width: 16.279069767442%"></div>
+<div class="time" style="width: 14.285714285714%"></div>
 <pre> apply ap, path_sigma_hprop; reflexivity.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 200
-Time: 0.004s">
-<div class="time" style="width: 9.3023255813953%"></div>
+Time: 0.003s">
+<div class="time" style="width: 6.1224489795918%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 201
-Time: 0.007s">
-<div class="time" style="width: 16.279069767442%"></div>
+Time: 0.006s">
+<div class="time" style="width: 12.244897959184%"></div>
 <pre>
 
 End DecidableSum.</pre>
@@ -963,7 +963,7 @@ Time: 0s">
 <div class="code" title="File: Sum.v
 Line: 206
 Time: 0.007s">
-<div class="time" style="width: 16.279069767442%"></div>
+<div class="time" style="width: 14.285714285714%"></div>
 <pre>Definition transport_sum {A : Type} {P Q : A -&gt; Type} {a a' : A} (p : a = a')
            (z : P a + Q a)
 : transport (fun a =&gt; P a + Q a) p z = match z with
@@ -991,8 +991,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: Sum.v
 Line: 216
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
 Definition is_inr_and {A B} (P : B -&gt; Type@{p}) : A + B -&gt; Type@{p}
@@ -1035,7 +1035,7 @@ Proof.</pre>
 <div class="code" title="File: Sum.v
 Line: 229
 Time: 0.002s">
-<div class="time" style="width: 4.6511627906977%"></div>
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre>
   destruct x; exact _.</pre>
 </div>
@@ -1064,8 +1064,8 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 235
-Time: 0.003s">
-<div class="time" style="width: 6.9767441860465%"></div>
+Time: 0.002s">
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre>
   destruct x; exact _.</pre>
 </div>
@@ -1082,8 +1082,8 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-Definition un_inl {A B} (z : A + B)
-: is_inl z -&gt; A.</pre>
+Global Instance decidable_is_inl {A B} (x : A + B)
+: Decidable (is_inl x).</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 240
@@ -1094,46 +1094,106 @@ Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 241
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
-  destruct z as [a|b].</pre>
+  destruct x; exact _.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 242
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  -</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 243
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intros; exact a.</pre>
+Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 243
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  -</pre>
+
+Global Instance decidable_is_inr {A B} (x : A + B)
+: Decidable (is_inr x).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 244
+Line: 246
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> intros e; elim e.</pre>
+<pre>
+Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 244
+Line: 247
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
+<pre>
+  destruct x; exact _.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 248
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 245
+Line: 249
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Definition un_inl {A B} (z : A + B)
+: is_inl z -&gt; A.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 252
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 253
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
+<pre>
+  destruct z as [a|b].</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 254
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 255
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros; exact a.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 255
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 256
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros e; elim e.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 256
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 257
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1142,56 +1202,82 @@ Definition un_inr {A B} (z : A + B)
 : is_inr z -&gt; B.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 248
+Line: 260
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 249
+Line: 261
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   destruct z as [a|b].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 250
+Line: 262
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 251
+Line: 263
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros e; elim e.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 251
+Line: 263
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 252
+Line: 264
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros; exact b.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 252
+Line: 264
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 253
-Time: 0.002s">
-<div class="time" style="width: 4.6511627906977%"></div>
+Line: 265
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+Definition is_inl_not_inr {A B} (x : A + B)  (na : ~ A)
+: is_inr x
+  := match x with
+     | inl a =&gt; na a
+     | inr b =&gt; tt
+     end.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 272
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
+<pre>
+
+Definition is_inr_not_inl {A B} (x : A + B)  (nb : ~ B)
+: is_inl x
+  := match x with
+     | inl a =&gt; tt
+     | inr b =&gt; nb b
+     end.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 279
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
 Definition un_inl_inl {A B : Type} (a : A) (w : is_inl (inl a))
@@ -1199,9 +1285,9 @@ Definition un_inl_inl {A B : Type} (a : A) (w : is_inl (inl a))
   := 1.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 257
+Line: 283
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 
 Definition un_inr_inr {A B : Type} (b : B) (w : is_inr (inr b))
@@ -1209,7 +1295,7 @@ Definition un_inr_inr {A B : Type} (b : B) (w : is_inr (inr b))
   := 1.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 261
+Line: 287
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1218,54 +1304,54 @@ Definition inl_un_inl {A B : Type} (z : A + B) (w : is_inl z)
 : inl (un_inl z w) = z.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 264
+Line: 290
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 265
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Line: 291
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   destruct z as [a|b]; simpl.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 266
+Line: 292
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 267
+Line: 293
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> reflexivity.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 267
+Line: 293
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 268
+Line: 294
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> elim w.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 268
+Line: 294
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 269
+Line: 295
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1274,54 +1360,54 @@ Definition inr_un_inr {A B : Type} (z : A + B) (w : is_inr z)
 : inr (un_inr z w) = z.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 272
+Line: 298
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 273
+Line: 299
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   destruct z as [a|b]; simpl.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 274
+Line: 300
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 275
+Line: 301
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> elim w.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 275
+Line: 301
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 276
+Line: 302
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> reflexivity.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 276
+Line: 302
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 277
+Line: 303
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1331,54 +1417,54 @@ Definition not_is_inl_and_inr {A B} (P : A -&gt; Type) (Q : B -&gt; Type)
 : is_inl_and P x -&gt; is_inr_and Q x -&gt; Empty.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 281
+Line: 307
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 282
+Line: 308
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   destruct x as [a|b]; simpl.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 283
+Line: 309
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 284
+Line: 310
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact (fun _ e =&gt; e).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 284
+Line: 310
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 285
+Line: 311
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact (fun e _ =&gt; e).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 285
+Line: 311
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 286
+Line: 312
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1388,9 +1474,9 @@ Definition not_is_inl_and_inr' {A B} (x : A + B)
   := not_is_inl_and_inr (fun _ =&gt; Unit) (fun _ =&gt; Unit) x.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 290
+Line: 316
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 
 Definition is_inl_or_is_inr {A B} (x : A + B)
@@ -1401,7 +1487,7 @@ Definition is_inl_or_is_inr {A B} (x : A + B)
      end.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 297
+Line: 323
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1411,28 +1497,28 @@ Definition is_inl_ind {A B : Type} (P : A + B -&gt; Type)
 : forall (x:A+B), is_inl x -&gt; P x.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 301
+Line: 327
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 302
+Line: 328
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros [a|b] H; [ exact (f a) | elim H ].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 303
+Line: 329
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 304
+Line: 330
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1442,28 +1528,28 @@ Definition is_inr_ind {A B : Type} (P : A + B -&gt; Type)
 : forall (x:A+B), is_inr x -&gt; P x.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 308
+Line: 334
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 309
+Line: 335
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros [a|b] H; [ elim H | exact (f b) ].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 310
+Line: 336
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 311
+Line: 337
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1473,20 +1559,20 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 314
+Line: 340
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section FunctorSum.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 314
+Line: 340
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Context {A A' B B' : Type} (f : A -&gt; A') (g : B -&gt; B').</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 315
+Line: 341
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1495,7 +1581,7 @@ Time: 0s">
     := fun z =&gt; match z with inl z' =&gt; inl (f z') | inr z' =&gt; inr (g z') end.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 318
+Line: 344
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1504,295 +1590,71 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 321
+Line: 347
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition hfiber_functor_sum_l (a' : A')
   : hfiber functor_sum (inl a') &lt;~&gt; hfiber f a'.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 322
+Line: 348
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 323
+Line: 349
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     simple refine (equiv_adjointify _ _ _ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 324
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    -</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 325
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intros [[a|b] p].</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 325
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      +</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 326
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> exists a.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 326
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-        exact (path_sum_inl _ p).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 327
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      +</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 328
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> elim (inr_ne_inl _ _ p).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 328
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    -</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 329
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intros [a p].</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 329
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      exists (inl a).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 330
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      exact (ap inl p).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 331
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    -</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 332
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intros [a p].</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 332
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      apply ap.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 333
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      (** Why doesn't Coq find this? *)
-     </pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 335
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>pose (@isequiv_path_sum A' B' (inl (f a)) (inl a')).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 335
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      exact (eissect (@path_sum A' B' (inl (f a)) (inl a')) p).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 336
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    -</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 337
-Time: 0.004s">
-<div class="time" style="width: 9.3023255813953%"></div>
-<pre> intros [[a|b] p]; simpl.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 337
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      +</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 338
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> apply ap.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 338
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-        pose (@isequiv_path_sum A' B' (inl (f a)) (inl a')).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 339
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
-<pre>
-        exact (eisretr (@path_sum A' B' (inl (f a)) (inl a')) p).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 340
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      +</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 341
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> elim (inr_ne_inl _ _ p).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 341
-Time: 0.003s">
-<div class="time" style="width: 6.9767441860465%"></div>
-<pre>
-  Defined.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 342
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-
-  Definition hfiber_functor_sum_r (b' : B')
-  : hfiber functor_sum (inr b') &lt;~&gt; hfiber g b'.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 345
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  Proof.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 346
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    simple refine (equiv_adjointify _ _ _ _).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 347
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    -</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 348
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intros [[a|b] p].</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 348
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      +</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 349
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> elim (inl_ne_inr _ _ p).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 349
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      +</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 350
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> exists b.</pre>
-</div>
-<div class="code" title="File: Sum.v
 Line: 350
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-        exact (path_sum_inr _ p).</pre>
+    -</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 351
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros [[a|b] p].</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 351
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    -</pre>
+      +</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 352
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> intros [b p].</pre>
+<pre> exists a.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 352
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-      exists (inr b).</pre>
+        exact (path_sum_inl _ p).</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 353
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-      exact (ap inr p).</pre>
+      +</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 354
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> elim (inr_ne_inl _ _ p).</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 354
@@ -1805,17 +1667,44 @@ Time: 0s">
 Line: 355
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> intros [b p].</pre>
+<pre> intros [a p].</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 355
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-      apply ap.</pre>
+      exists (inl a).</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 356
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      exact (ap inl p).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 357
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    -</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 358
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros [a p].</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 358
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      apply ap.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 359
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1823,88 +1712,285 @@ Time: 0s">
      </pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 358
+Line: 361
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre>pose (@isequiv_path_sum A' B' (inr (g b)) (inr b')).</pre>
+<pre>pose (@isequiv_path_sum A' B' (inl (f a)) (inl a')).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 358
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 361
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
-      exact (eissect (@path_sum A' B' (inr (g b)) (inr b')) p).</pre>
+      exact (eissect (@path_sum A' B' (inl (f a)) (inl a')) p).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 359
+Line: 362
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 360
-Time: 0.003s">
-<div class="time" style="width: 6.9767441860465%"></div>
+Line: 363
+Time: 0.004s">
+<div class="time" style="width: 8.1632653061224%"></div>
 <pre> intros [[a|b] p]; simpl.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 360
+Line: 363
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       +</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 361
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> elim (inl_ne_inr _ _ p).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 361
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      +</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 362
+Line: 364
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply ap.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 362
+Line: 364
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+        pose (@isequiv_path_sum A' B' (inl (f a)) (inl a')).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 365
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
+<pre>
+        exact (eisretr (@path_sum A' B' (inl (f a)) (inl a')) p).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 366
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      +</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 367
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> elim (inr_ne_inl _ _ p).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 367
+Time: 0.003s">
+<div class="time" style="width: 6.1224489795918%"></div>
+<pre>
+  Defined.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 368
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+  Definition hfiber_functor_sum_r (b' : B')
+  : hfiber functor_sum (inr b') &lt;~&gt; hfiber g b'.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 371
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  Proof.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 372
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    simple refine (equiv_adjointify _ _ _ _).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 373
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    -</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 374
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros [[a|b] p].</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 374
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      +</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 375
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> elim (inl_ne_inr _ _ p).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 375
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      +</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 376
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exists b.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 376
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+        exact (path_sum_inr _ p).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 377
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    -</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 378
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros [b p].</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 378
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      exists (inr b).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 379
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      exact (ap inr p).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 380
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    -</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 381
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros [b p].</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 381
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      apply ap.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 382
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      (** Why doesn't Coq find this? *)
+     </pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 384
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>pose (@isequiv_path_sum A' B' (inr (g b)) (inr b')).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 384
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
+<pre>
+      exact (eissect (@path_sum A' B' (inr (g b)) (inr b')) p).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 385
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    -</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 386
+Time: 0.004s">
+<div class="time" style="width: 8.1632653061224%"></div>
+<pre> intros [[a|b] p]; simpl.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 386
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      +</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 387
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> elim (inl_ne_inr _ _ p).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 387
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      +</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 388
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> apply ap.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 388
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
         pose (@isequiv_path_sum A' B' (inr (g b)) (inr b')).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 363
+Line: 389
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
         exact (eisretr (@path_sum A' B' (inr (g b)) (inr b')) p).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 364
+Line: 390
 Time: 0.003s">
-<div class="time" style="width: 6.9767441860465%"></div>
+<div class="time" style="width: 6.1224489795918%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 365
-Time: 0.003s">
-<div class="time" style="width: 6.9767441860465%"></div>
+Line: 391
+Time: 0.004s">
+<div class="time" style="width: 8.1632653061224%"></div>
 <pre>
 
 End FunctorSum.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 367
+Line: 393
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1916,16 +2002,16 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 372
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 398
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>Definition unfunctor_sum_l {A A' B B' : Type} (h : A + B -&gt; A' + B')
            (Ha : forall a:A, is_inl (h (inl a)))
 : A -&gt; A'
   := fun a =&gt; un_inl (h (inl a)) (Ha a).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 375
+Line: 401
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1936,9 +2022,9 @@ Definition unfunctor_sum_r {A A' B B' : Type} (h : A + B -&gt; A' + B')
   := fun b =&gt; un_inr (h (inr b)) (Hb b).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 380
+Line: 406
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 
 Definition unfunctor_sum_eta {A A' B B' : Type} (h : A + B -&gt; A' + B')
@@ -1947,56 +2033,56 @@ Definition unfunctor_sum_eta {A A' B B' : Type} (h : A + B -&gt; A' + B')
 : functor_sum (unfunctor_sum_l h Ha) (unfunctor_sum_r h Hb) == h.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 385
+Line: 411
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 386
+Line: 412
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros [a|b]; simpl.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 387
+Line: 413
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 388
+Line: 414
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> unfold unfunctor_sum_l; apply inl_un_inl.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 388
+Line: 414
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 389
+Line: 415
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> unfold unfunctor_sum_r; apply inr_un_inr.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 389
+Line: 415
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 390
+Line: 416
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 
 Definition unfunctor_sum_l_beta {A A' B B' : Type} (h : A + B -&gt; A' + B')
@@ -2004,133 +2090,35 @@ Definition unfunctor_sum_l_beta {A A' B B' : Type} (h : A + B -&gt; A' + B')
 : inl o unfunctor_sum_l h Ha == h o inl.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 394
+Line: 420
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 395
+Line: 421
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros a; unfold unfunctor_sum_l; apply inl_un_inl.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 396
+Line: 422
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 397
+Line: 423
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 
 Definition unfunctor_sum_r_beta {A A' B B' : Type} (h : A + B -&gt; A' + B')
            (Hb : forall b:B, is_inr (h (inr b)))
 : inr o unfunctor_sum_r h Hb == h o inr.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 401
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 402
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  intros b; unfold unfunctor_sum_r; apply inr_un_inr.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 403
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Defined.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 404
-Time: 0.002s">
-<div class="time" style="width: 4.6511627906977%"></div>
-<pre>
-
-Definition unfunctor_sum_l_compose {A A' A'' B B' B'' : Type}
-           (h : A + B -&gt; A' + B') (k : A' + B' -&gt; A'' + B'')
-           (Ha : forall a:A, is_inl (h (inl a)))
-           (Ha' : forall a':A', is_inl (k (inl a')))
-: unfunctor_sum_l k Ha' o unfunctor_sum_l h Ha
-  == unfunctor_sum_l (k o h)
-     (fun a =&gt; is_inl_ind (fun x' =&gt; is_inl (k x')) Ha' (h (inl a)) (Ha a)).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 412
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 413
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  intros a.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 414
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  refine (path_sum_inl B'' _).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 415
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  refine (unfunctor_sum_l_beta _ _ _ @ _).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 416
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  refine (ap k (unfunctor_sum_l_beta _ _ _) @ _).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 417
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  refine ((unfunctor_sum_l_beta _ _ _)^).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 418
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
-<pre>
-Defined.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 419
-Time: 0.002s">
-<div class="time" style="width: 4.6511627906977%"></div>
-<pre>
-
-Definition unfunctor_sum_r_compose {A A' A'' B B' B'' : Type}
-           (h : A + B -&gt; A' + B') (k : A' + B' -&gt; A'' + B'')
-           (Hb : forall b:B, is_inr (h (inr b)))
-           (Hb' : forall b':B', is_inr (k (inr b')))
-: unfunctor_sum_r k Hb' o unfunctor_sum_r h Hb
-  == unfunctor_sum_r (k o h)
-     (fun b =&gt; is_inr_ind (fun x' =&gt; is_inr (k x')) Hb' (h (inr b)) (Hb b)).</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 427
@@ -2144,45 +2132,143 @@ Line: 428
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  intros b.</pre>
+  intros b; unfold unfunctor_sum_r; apply inr_un_inr.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 429
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  refine (path_sum_inr A'' _).</pre>
+Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 430
+Time: 0.002s">
+<div class="time" style="width: 4.0816326530612%"></div>
+<pre>
+
+Definition unfunctor_sum_l_compose {A A' A'' B B' B'' : Type}
+           (h : A + B -&gt; A' + B') (k : A' + B' -&gt; A'' + B'')
+           (Ha : forall a:A, is_inl (h (inl a)))
+           (Ha' : forall a':A', is_inl (k (inl a')))
+: unfunctor_sum_l k Ha' o unfunctor_sum_l h Ha
+  == unfunctor_sum_l (k o h)
+     (fun a =&gt; is_inl_ind (fun x' =&gt; is_inl (k x')) Ha' (h (inl a)) (Ha a)).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 438
 Time: 0s">
 <div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 439
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  intros a.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 440
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  refine (path_sum_inl B'' _).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 441
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  refine (unfunctor_sum_l_beta _ _ _ @ _).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 442
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  refine (ap k (unfunctor_sum_l_beta _ _ _) @ _).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 443
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  refine ((unfunctor_sum_l_beta _ _ _)^).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 444
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 445
+Time: 0.003s">
+<div class="time" style="width: 6.1224489795918%"></div>
+<pre>
+
+Definition unfunctor_sum_r_compose {A A' A'' B B' B'' : Type}
+           (h : A + B -&gt; A' + B') (k : A' + B' -&gt; A'' + B'')
+           (Hb : forall b:B, is_inr (h (inr b)))
+           (Hb' : forall b':B', is_inr (k (inr b')))
+: unfunctor_sum_r k Hb' o unfunctor_sum_r h Hb
+  == unfunctor_sum_r (k o h)
+     (fun b =&gt; is_inr_ind (fun x' =&gt; is_inr (k x')) Hb' (h (inr b)) (Hb b)).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 453
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 454
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  intros b.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 455
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  refine (path_sum_inr A'' _).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 456
+Time: 0.005s">
+<div class="time" style="width: 10.204081632653%"></div>
 <pre>
   refine (unfunctor_sum_r_beta _ _ _ @ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 431
+Line: 457
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   refine (ap k (unfunctor_sum_r_beta _ _ _) @ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 432
+Line: 458
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   refine ((unfunctor_sum_r_beta _ _ _)^).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 433
-Time: 0.007s">
-<div class="time" style="width: 16.279069767442%"></div>
+Line: 459
+Time: 0.002s">
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 434
+Line: 460
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2190,9 +2276,9 @@ Time: 0s">
 (** [unfunctor_sum] also preserves fibers, if both summands are preserved. *)</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 436
+Line: 462
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>Definition hfiber_unfunctor_sum_l {A A' B B' : Type}
            (h : A + B -&gt; A' + B')
            (Ha : forall a:A, is_inl (h (inl a)))
@@ -2201,330 +2287,160 @@ Time: 0.001s">
 : hfiber (unfunctor_sum_l h Ha) a' &lt;~&gt; hfiber h (inl a').</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 441
+Line: 467
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 442
+Line: 468
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   simple refine (equiv_adjointify _ _ _ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 443
+Line: 469
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 444
+Line: 470
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros [a p].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 444
+Line: 470
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     exists (inl a).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 445
+Line: 471
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (_ @ ap inl p).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 446
+Line: 472
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     symmetry; apply inl_un_inl.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 447
+Line: 473
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 448
+Line: 474
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros [[a|b] p].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 448
+Line: 474
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 449
+Line: 475
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exists a.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 449
+Line: 475
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       apply path_sum_inl with B'.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 450
+Line: 476
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       refine (_ @ p).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 451
+Line: 477
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       apply inl_un_inl.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 452
+Line: 478
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 453
+Line: 479
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> specialize (Hb b).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 453
+Line: 479
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
       abstract (rewrite p in Hb; elim Hb).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 454
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 455
-Time: 0.013s">
-<div class="time" style="width: 30.232558139535%"></div>
-<pre> intros [[a|b] p]; simpl.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 455
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    +</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 456
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> apply ap.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 456
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      apply moveR_Vp.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 457
-Time: 0.002s">
-<div class="time" style="width: 4.6511627906977%"></div>
-<pre>
-      exact (eisretr (@path_sum A' B' _ _)
-                     (inl_un_inl (h (inl a)) (Ha a) @ p)).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 459
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    +</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 460
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> apply Empty_rec.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 460
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      specialize (Hb b).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 461
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
-<pre>
-      abstract (rewrite p in Hb; elim Hb).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 462
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 463
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
-<pre> intros [a p].</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 463
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    apply ap.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 464
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
-<pre>
-    rewrite concat_p_Vp.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 465
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    pose (@isequiv_path_sum
-            A' B' (inl (unfunctor_sum_l h Ha a)) (inl a')).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 467
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
-<pre>
-    exact (eissect (@path_sum A' B' (inl (unfunctor_sum_l h Ha a)) (inl a')) p).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 468
-Time: 0.011s">
-<div class="time" style="width: 25.581395348837%"></div>
-<pre>
-Defined.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 469
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
-<pre>
-
-Definition hfiber_unfunctor_sum_r {A A' B B' : Type}
-           (h : A + B -&gt; A' + B')
-           (Ha : forall a:A, is_inl (h (inl a)))
-           (Hb : forall b:B, is_inr (h (inr b)))
-           (b' : B')
-: hfiber (unfunctor_sum_r h Hb) b' &lt;~&gt; hfiber h (inr b').</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 476
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 477
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  simple refine (equiv_adjointify _ _ _ _).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 478
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 479
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intros [b p].</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 479
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    exists (inr b).</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 480
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    refine (_ @ ap inr p).</pre>
+  -</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 481
+Time: 0.015s">
+<div class="time" style="width: 30.612244897959%"></div>
+<pre> intros [[a|b] p]; simpl.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 481
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    symmetry; apply inr_un_inr.</pre>
+    +</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 482
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> apply ap.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 482
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  -</pre>
+      apply moveR_Vp.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 483
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intros [[a|b] p].</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 483
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.002s">
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre>
-    +</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 484
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> specialize (Ha a).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 484
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
-<pre>
-      abstract (rewrite p in Ha; elim Ha).</pre>
+      exact (eisretr (@path_sum A' B' _ _)
+                     (inl_un_inl (h (inl a)) (Ha a) @ p)).</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 485
@@ -2537,126 +2453,296 @@ Time: 0s">
 Line: 486
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> exists b.</pre>
+<pre> apply Empty_rec.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 486
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-      apply path_sum_inr with A'.</pre>
+      specialize (Hb b).</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 487
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
-      refine (_ @ p).</pre>
+      abstract (rewrite p in Hb; elim Hb).</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 488
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-      apply inr_un_inr.</pre>
+  -</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 489
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
+<pre> intros [a p].</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 489
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
+    apply ap.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 490
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
+<pre>
+    rewrite concat_p_Vp.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 491
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    pose (@isequiv_path_sum
+            A' B' (inl (unfunctor_sum_l h Ha a)) (inl a')).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 493
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
+<pre>
+    exact (eissect (@path_sum A' B' (inl (unfunctor_sum_l h Ha a)) (inl a')) p).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 494
+Time: 0.012s">
+<div class="time" style="width: 24.489795918367%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 495
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
+<pre>
+
+Definition hfiber_unfunctor_sum_r {A A' B B' : Type}
+           (h : A + B -&gt; A' + B')
+           (Ha : forall a:A, is_inl (h (inl a)))
+           (Hb : forall b:B, is_inr (h (inr b)))
+           (b' : B')
+: hfiber (unfunctor_sum_r h Hb) b' &lt;~&gt; hfiber h (inr b').</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 502
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 503
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  simple refine (equiv_adjointify _ _ _ _).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 504
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 490
-Time: 0.013s">
-<div class="time" style="width: 30.232558139535%"></div>
-<pre> intros [[a|b] p]; simpl.</pre>
+Line: 505
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros [b p].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 490
+Line: 505
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    exists (inr b).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 506
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    refine (_ @ ap inr p).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 507
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    symmetry; apply inr_un_inr.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 508
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 509
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intros [[a|b] p].</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 509
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 491
-Time: 0.008s">
-<div class="time" style="width: 18.604651162791%"></div>
+Line: 510
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> specialize (Ha a).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 510
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
+<pre>
+      abstract (rewrite p in Ha; elim Ha).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 511
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 512
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exists b.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 512
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      apply path_sum_inr with A'.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 513
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      refine (_ @ p).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 514
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      apply inr_un_inr.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 515
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 516
+Time: 0.016s">
+<div class="time" style="width: 32.65306122449%"></div>
+<pre> intros [[a|b] p]; simpl.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 516
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 517
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre> apply Empty_rec.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 491
+Line: 517
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       specialize (Ha a).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 492
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Line: 518
+Time: 0.008s">
+<div class="time" style="width: 16.326530612245%"></div>
 <pre>
       abstract (rewrite p in Ha; elim Ha).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 493
+Line: 519
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 494
+Line: 520
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply ap.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 494
+Line: 520
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       apply moveR_Vp.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 495
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Line: 521
+Time: 0.002s">
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre>
       exact (eisretr (@path_sum A' B' _ _)
                      (inr_un_inr (h (inr b)) (Hb b) @ p)).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 497
+Line: 523
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 498
+Line: 524
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre> intros [b p].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 498
+Line: 524
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply ap.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 499
+Line: 525
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
     rewrite concat_p_Vp.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 500
+Line: 526
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2664,21 +2750,21 @@ Time: 0s">
             A' B' (inr (unfunctor_sum_r h Hb b)) (inr b')).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 502
+Line: 528
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
     exact (eissect (@path_sum A' B' (inr (unfunctor_sum_r h Hb b)) (inr b')) p).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 503
-Time: 0.011s">
-<div class="time" style="width: 25.581395348837%"></div>
+Line: 529
+Time: 0.013s">
+<div class="time" style="width: 26.530612244898%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 504
+Line: 530
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2688,23 +2774,23 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 507
+Line: 533
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance isequiv_functor_sum `{IsEquiv A A' f} `{IsEquiv B B' g}
 : IsEquiv (functor_sum f g) | 1000.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 508
+Line: 534
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 509
+Line: 535
 Time: 0.003s">
-<div class="time" style="width: 6.9767441860465%"></div>
+<div class="time" style="width: 6.1224489795918%"></div>
 <pre>
   apply (isequiv_adjointify
            (functor_sum f g)
@@ -2713,16 +2799,16 @@ Time: 0.003s">
   | intros [?|?]; simpl; apply ap; apply eissect ].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 514
+Line: 540
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 515
-Time: 0.003s">
-<div class="time" style="width: 6.9767441860465%"></div>
+Line: 541
+Time: 0.004s">
+<div class="time" style="width: 8.1632653061224%"></div>
 <pre>
 
 Definition equiv_functor_sum `{IsEquiv A A' f} `{IsEquiv B B' g}
@@ -2730,9 +2816,9 @@ Definition equiv_functor_sum `{IsEquiv A A' f} `{IsEquiv B B' g}
   := Build_Equiv _ _ (functor_sum f g) _.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 519
+Line: 545
 Time: 0.002s">
-<div class="time" style="width: 4.6511627906977%"></div>
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre>
 
 Definition equiv_functor_sum' {A A' B B' : Type} (f : A &lt;~&gt; A') (g : B &lt;~&gt; B')
@@ -2740,7 +2826,7 @@ Definition equiv_functor_sum' {A A' B B' : Type} (f : A &lt;~&gt; A') (g : B &lt
   := equiv_functor_sum (f := f) (g := g).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 523
+Line: 549
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2748,7 +2834,7 @@ Time: 0s">
 Notation "f +E g" := (equiv_functor_sum' f g) : equiv_scope.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 525
+Line: 551
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2758,7 +2844,7 @@ Definition equiv_functor_sum_l {A B B' : Type} (g : B &lt;~&gt; B')
   := 1 +E g.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 529
+Line: 555
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2768,7 +2854,7 @@ Definition equiv_functor_sum_r {A A' B : Type} (f : A &lt;~&gt; A')
   := f +E 1.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 533
+Line: 559
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -2778,9 +2864,9 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 536
+Line: 562
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>Global Instance isequiv_unfunctor_sum_l {A A' B B' : Type}
            (h : A + B &lt;~&gt; A' + B')
            (Ha : forall a:A, is_inl (h (inl a)))
@@ -2788,172 +2874,172 @@ Time: 0.001s">
 : IsEquiv (unfunctor_sum_l h Ha).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 540
+Line: 566
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 541
+Line: 567
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   simple refine (isequiv_adjointify _ _ _ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 542
+Line: 568
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 543
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 569
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre> refine (unfunctor_sum_l h^-1 _); intros a'.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 543
+Line: 569
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
     remember (h^-1 (inl a')) as x eqn:p.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 544
+Line: 570
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     destruct x as [a|b].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 545
+Line: 571
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 546
+Line: 572
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact tt.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 546
+Line: 572
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 547
+Line: 573
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply moveL_equiv_M in p.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 547
+Line: 573
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       elim (p^ # (Hb b)).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 548
+Line: 574
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 549
+Line: 575
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros a'.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 549
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 575
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
     refine (unfunctor_sum_l_compose _ _ _ _ _ @ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 550
+Line: 576
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (path_sum_inl B' _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 551
+Line: 577
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (unfunctor_sum_l_beta _ _ _ @ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 552
+Line: 578
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply eisretr.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 553
+Line: 579
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 554
+Line: 580
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros a.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 554
+Line: 580
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
     refine (unfunctor_sum_l_compose _ _ _ _ _ @ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 555
+Line: 581
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (path_sum_inl B _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 556
+Line: 582
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
     refine (unfunctor_sum_l_beta (h^-1 o h) _ a @ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 557
+Line: 583
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply eissect.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 558
-Time: 0.01s">
-<div class="time" style="width: 23.255813953488%"></div>
+Line: 584
+Time: 0.013s">
+<div class="time" style="width: 26.530612244898%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 559
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Line: 585
+Time: 0.002s">
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre>
 
 Definition equiv_unfunctor_sum_l {A A' B B' : Type}
@@ -2965,9 +3051,9 @@ Definition equiv_unfunctor_sum_l {A A' B B' : Type}
                 (isequiv_unfunctor_sum_l h Ha Hb).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 567
+Line: 593
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 
 Global Instance isequiv_unfunctor_sum_r {A A' B B' : Type}
@@ -2977,172 +3063,172 @@ Global Instance isequiv_unfunctor_sum_r {A A' B B' : Type}
 : IsEquiv (unfunctor_sum_r h Hb).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 573
+Line: 599
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 574
+Line: 600
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   simple refine (isequiv_adjointify _ _ _ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 575
+Line: 601
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 576
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 602
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre> refine (unfunctor_sum_r h^-1 _); intros b'.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 576
+Line: 602
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
     remember (h^-1 (inr b')) as x eqn:p.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 577
+Line: 603
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     destruct x as [a|b].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 578
+Line: 604
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 579
+Line: 605
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply moveL_equiv_M in p.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 579
+Line: 605
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       elim (p^ # (Ha a)).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 580
+Line: 606
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 581
+Line: 607
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> exact tt.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 581
+Line: 607
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 582
+Line: 608
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros b'.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 582
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 608
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
     refine (unfunctor_sum_r_compose _ _ _ _ _ @ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 583
+Line: 609
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (path_sum_inr A' _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 584
+Line: 610
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (unfunctor_sum_r_beta _ _ _ @ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 585
+Line: 611
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply eisretr.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 586
+Line: 612
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 587
+Line: 613
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros b.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 587
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 613
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
     refine (unfunctor_sum_r_compose _ _ _ _ _ @ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 588
+Line: 614
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (path_sum_inr A _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 589
+Line: 615
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
     refine (unfunctor_sum_r_beta (h^-1 o h) _ b @ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 590
+Line: 616
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply eissect.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 591
-Time: 0.015s">
-<div class="time" style="width: 34.883720930233%"></div>
+Line: 617
+Time: 0.016s">
+<div class="time" style="width: 32.65306122449%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 592
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Line: 618
+Time: 0.002s">
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre>
 
 Definition equiv_unfunctor_sum_r {A A' B B' : Type}
@@ -3154,9 +3240,9 @@ Definition equiv_unfunctor_sum_r {A A' B B' : Type}
                 (isequiv_unfunctor_sum_r h Ha Hb).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 600
+Line: 626
 Time: 0.002s">
-<div class="time" style="width: 4.6511627906977%"></div>
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre>
 
 Definition equiv_unfunctor_sum {A A' B B' : Type}
@@ -3167,7 +3253,7 @@ Definition equiv_unfunctor_sum {A A' B B' : Type}
   := (equiv_unfunctor_sum_l h Ha Hb , equiv_unfunctor_sum_r h Ha Hb).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 607
+Line: 633
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3179,22 +3265,22 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 612
+Line: 638
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition equiv_sum_symm (A B : Type) : A + B &lt;~&gt; B + A.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 612
+Line: 638
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 613
+Line: 639
 Time: 0.002s">
-<div class="time" style="width: 4.6511627906977%"></div>
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre>
   apply (equiv_adjointify
            (fun ab =&gt; match ab with inl a =&gt; inr a | inr b =&gt; inl b end)
@@ -3202,14 +3288,14 @@ Time: 0.002s">
   intros [?|?]; exact idpath.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 617
+Line: 643
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 618
+Line: 644
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3219,88 +3305,88 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 621
+Line: 647
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition equiv_sum_assoc (A B C : Type) : (A + B) + C &lt;~&gt; A + (B + C).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 621
+Line: 647
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 622
+Line: 648
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   simple refine (equiv_adjointify _ _ _ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 623
+Line: 649
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 624
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 650
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre> intros [[a|b]|c];
     [ exact (inl a) | exact (inr (inl b)) | exact (inr (inr c)) ].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 625
+Line: 651
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 626
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 652
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre> intros [a|[b|c]];
     [ exact (inl (inl a)) | exact (inl (inr b)) | exact (inr c) ].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 627
+Line: 653
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 628
+Line: 654
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre> intros [a|[b|c]]; reflexivity.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 628
+Line: 654
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 629
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Line: 655
+Time: 0.002s">
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre> intros [[a|b]|c]; reflexivity.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 629
+Line: 655
 Time: 0.002s">
-<div class="time" style="width: 4.6511627906977%"></div>
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 630
+Line: 656
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3310,20 +3396,20 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 633
+Line: 659
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition sum_empty_l (A : Type) : Empty + A &lt;~&gt; A.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 633
+Line: 659
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 634
+Line: 660
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3335,21 +3421,21 @@ Time: 0s">
        inr (fun a =&gt; 1) _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 640
+Line: 666
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros [e|z]; [ elim e | reflexivity ].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 641
+Line: 667
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 642
+Line: 668
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3357,14 +3443,14 @@ Time: 0s">
 Definition sum_empty_r (A : Type) : A + Empty &lt;~&gt; A.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 644
+Line: 670
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 645
+Line: 671
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3376,21 +3462,21 @@ Time: 0s">
        inl (fun a =&gt; 1) _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 651
+Line: 677
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros [z|e]; [ reflexivity | elim e ].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 652
+Line: 678
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 653
+Line: 679
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3400,23 +3486,23 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 656
+Line: 682
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition sum_distrib_l A B C
 : A * (B + C) &lt;~&gt; (A * B) + (A * C).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 657
+Line: 683
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 658
-Time: 0.005s">
-<div class="time" style="width: 11.627906976744%"></div>
+Line: 684
+Time: 0.007s">
+<div class="time" style="width: 14.285714285714%"></div>
 <pre>
   refine (Build_Equiv (A * (B + C)) ((A * B) + (A * C))
             (fun abc =&gt; let (a,bc) := abc in
@@ -3426,9 +3512,9 @@ Time: 0.005s">
                         end) _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 664
+Line: 690
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
   simple refine (Build_IsEquiv (A * (B + C)) ((A * B) + (A * C)) _
             (fun ax =&gt; match ax with
@@ -3437,53 +3523,53 @@ Time: 0.001s">
                        end) _ _ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 669
+Line: 695
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 670
+Line: 696
 Time: 0.002s">
-<div class="time" style="width: 4.6511627906977%"></div>
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre> intros [[a b]|[a c]]; reflexivity.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 670
+Line: 696
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 671
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Line: 697
+Time: 0.002s">
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre> intros [a [b|c]]; reflexivity.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 671
+Line: 697
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 672
-Time: 0.01s">
-<div class="time" style="width: 23.255813953488%"></div>
+Line: 698
+Time: 0.013s">
+<div class="time" style="width: 26.530612244898%"></div>
 <pre> intros [a [b|c]]; reflexivity.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 672
+Line: 698
 Time: 0.007s">
-<div class="time" style="width: 16.279069767442%"></div>
+<div class="time" style="width: 14.285714285714%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 673
+Line: 699
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3492,16 +3578,16 @@ Definition sum_distrib_r A B C
 : (B + C) * A &lt;~&gt; (B * A) + (C * A).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 676
+Line: 702
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 677
-Time: 0.005s">
-<div class="time" style="width: 11.627906976744%"></div>
+Line: 703
+Time: 0.007s">
+<div class="time" style="width: 14.285714285714%"></div>
 <pre>
   refine (Build_Equiv ((B + C) * A) ((B * A) + (C * A))
             (fun abc =&gt; let (bc,a) := abc in
@@ -3511,9 +3597,9 @@ Time: 0.005s">
                         end) _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 683
+Line: 709
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
   simple refine (Build_IsEquiv ((B + C) * A) ((B * A) + (C * A)) _
             (fun ax =&gt; match ax with
@@ -3522,53 +3608,53 @@ Time: 0.001s">
                        end) _ _ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 688
+Line: 714
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 689
-Time: 0.008s">
-<div class="time" style="width: 18.604651162791%"></div>
+Line: 715
+Time: 0.002s">
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre> intros [[b a]|[c a]]; reflexivity.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 689
+Line: 715
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 690
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Line: 716
+Time: 0.008s">
+<div class="time" style="width: 16.326530612245%"></div>
 <pre> intros [[b|c] a]; reflexivity.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 690
+Line: 716
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 691
-Time: 0.01s">
-<div class="time" style="width: 23.255813953488%"></div>
+Line: 717
+Time: 0.012s">
+<div class="time" style="width: 24.489795918367%"></div>
 <pre> intros [[b|c] a]; reflexivity.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 691
-Time: 0.006s">
-<div class="time" style="width: 13.953488372093%"></div>
+Line: 717
+Time: 0.007s">
+<div class="time" style="width: 14.285714285714%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 692
+Line: 718
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3580,7 +3666,7 @@ Time: 0s">
 (** The first is a statement about types dependent on a sum type. *)</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 698
+Line: 724
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition equiv_sigma_sum A B (C : A + B -&gt; Type)
@@ -3588,16 +3674,16 @@ Time: 0s">
   { a : A &amp; C (inl a) } + { b : B &amp; C (inr b) }.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 700
+Line: 726
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 701
-Time: 0.007s">
-<div class="time" style="width: 16.279069767442%"></div>
+Line: 727
+Time: 0.009s">
+<div class="time" style="width: 18.367346938776%"></div>
 <pre>
   refine (Build_Equiv { x : A+B &amp; C x }
                      ({ a : A &amp; C (inl a) } + { b : B &amp; C (inr b) })
@@ -3610,9 +3696,9 @@ Time: 0.007s">
                       end c) _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 710
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Line: 736
+Time: 0.002s">
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre>
   simple refine (Build_IsEquiv { x : A+B &amp; C x }
                        ({ a : A &amp; C (inl a) } + { b : B &amp; C (inr b) }) _
@@ -3622,53 +3708,53 @@ Time: 0.001s">
                        end) _ _ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 716
+Line: 742
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 717
-Time: 0.004s">
-<div class="time" style="width: 9.3023255813953%"></div>
+Line: 743
+Time: 0.005s">
+<div class="time" style="width: 10.204081632653%"></div>
 <pre> intros [[a c]|[b c]]; reflexivity.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 717
+Line: 743
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 718
-Time: 0.002s">
-<div class="time" style="width: 4.6511627906977%"></div>
+Line: 744
+Time: 0.003s">
+<div class="time" style="width: 6.1224489795918%"></div>
 <pre> intros [[a|b] c]; reflexivity.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 718
+Line: 744
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 719
+Line: 745
 Time: 0.026s">
-<div class="time" style="width: 60.46511627907%"></div>
+<div class="time" style="width: 53.061224489796%"></div>
 <pre> intros [[a|b] c]; reflexivity.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 719
-Time: 0.012s">
-<div class="time" style="width: 27.906976744186%"></div>
+Line: 745
+Time: 0.02s">
+<div class="time" style="width: 40.816326530612%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 720
+Line: 746
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3676,14 +3762,14 @@ Time: 0s">
 (** The second is a statement about functions into a sum type. *)</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 722
+Line: 748
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition decompose_l {A B C} (f : C -&gt; A + B) : Type
   := { c:C &amp; is_inl (f c) }.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 723
+Line: 749
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3692,7 +3778,7 @@ Definition decompose_r {A B C} (f : C -&gt; A + B) : Type
   := { c:C &amp; is_inr (f c) }.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 726
+Line: 752
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3701,122 +3787,122 @@ Definition equiv_decompose {A B C} (f : C -&gt; A + B)
 : decompose_l f + decompose_r f &lt;~&gt; C.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 729
+Line: 755
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 730
+Line: 756
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   simple refine (equiv_adjointify (sum_ind (fun _ =&gt; C) pr1 pr1) _ _ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 731
+Line: 757
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 732
+Line: 758
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre> intros c; destruct (is_inl_or_is_inr (f c));
     [ left | right ]; exists c; assumption.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 733
+Line: 759
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 734
+Line: 760
 Time: 0.002s">
-<div class="time" style="width: 4.6511627906977%"></div>
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre> intros c; destruct (is_inl_or_is_inr (f c)); reflexivity.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 734
+Line: 760
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 735
-Time: 0.014s">
-<div class="time" style="width: 32.558139534884%"></div>
+Line: 761
+Time: 0.017s">
+<div class="time" style="width: 34.69387755102%"></div>
 <pre> intros [[c l]|[c r]]; simpl; destruct (is_inl_or_is_inr (f c)).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 735
+Line: 761
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 736
+Line: 762
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre> apply ap, ap, path_ishprop.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 736
+Line: 762
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 737
+Line: 763
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> elim (not_is_inl_and_inr' _ l i).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 737
+Line: 763
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 738
+Line: 764
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> elim (not_is_inl_and_inr' _ i r).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 738
+Line: 764
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 739
+Line: 765
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre> apply ap, ap, path_ishprop.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 739
-Time: 0.008s">
-<div class="time" style="width: 18.604651162791%"></div>
+Line: 765
+Time: 0.01s">
+<div class="time" style="width: 20.408163265306%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 740
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Line: 766
+Time: 0.002s">
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre>
 
 Definition is_inl_decompose_l {A B C} (f : C -&gt; A + B)
@@ -3825,9 +3911,9 @@ Definition is_inl_decompose_l {A B C} (f : C -&gt; A + B)
   := z.2.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 745
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Line: 771
+Time: 0.002s">
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre>
 
 Definition is_inr_decompose_r {A B C} (f : C -&gt; A + B)
@@ -3836,7 +3922,7 @@ Definition is_inr_decompose_r {A B C} (f : C -&gt; A + B)
   := z.2.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 750
+Line: 776
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3846,16 +3932,16 @@ Time: 0s">
 (** A type is indecomposable if whenever it maps into a finite sum, it lands entirely in one of the summands.  It suffices to assert this for binary and nullary sums; in the latter case it reduces to nonemptiness. *)</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 754
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Line: 780
+Time: 0.002s">
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre>Class Indecomposable (X : Type) :=
   { indecompose : forall A B (f : X -&gt; A + B),
                     (forall x, is_inl (f x)) + (forall x, is_inr (f x))
   ; indecompose0 : ~~X }.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 757
+Line: 783
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3863,74 +3949,74 @@ Time: 0s">
 (** For instance, contractible types are indecomposable. *)</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 759
+Line: 785
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance indecomposable_contr `{Contr X} : Indecomposable X.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 759
+Line: 785
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 760
+Line: 786
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   constructor.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 761
+Line: 787
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 762
+Line: 788
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros A B f.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 762
+Line: 788
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
     destruct (is_inl_or_is_inr (f (center X))); [ left | right ]; intros x.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 763
+Line: 789
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
     all:refine (transport _ (ap f (contr x)) _); assumption.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 764
+Line: 790
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 765
+Line: 791
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros nx; exact (nx (center X)).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 765
+Line: 791
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 766
+Line: 792
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -3938,7 +4024,7 @@ Time: 0s">
 (** In particular, if an indecomposable type is equivalent to a sum type, then one summand is empty and it is equivalent to the other. *)</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 768
+Line: 794
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition equiv_indecomposable_sum {X A B} `{Indecomposable X}
@@ -3946,56 +4032,56 @@ Time: 0s">
 : ((X &lt;~&gt; A) * (Empty &lt;~&gt; B)) + ((X &lt;~&gt; B) * (Empty &lt;~&gt; A)).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 770
+Line: 796
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 771
+Line: 797
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
   destruct (indecompose A B f) as [i|i]; [ left | right ].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 772
+Line: 798
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   1:pose (g := (f oE sum_empty_r X)).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 773
+Line: 799
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   2:pose (g := (f oE sum_empty_l X)).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 774
+Line: 800
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   2:apply (equiv_prod_symm _ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 775
+Line: 801
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
   all:refine (equiv_unfunctor_sum g _ _); try assumption; try intros [].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 776
+Line: 802
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 777
+Line: 803
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -4003,7 +4089,7 @@ Time: 0s">
 (** Summing with an indecomposable type is injective on equivalence classes of types. *)</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 779
+Line: 805
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition equiv_unfunctor_sum_indecomposable_ll {A B B' : Type}
@@ -4011,35 +4097,35 @@ Time: 0s">
 : B &lt;~&gt; B'.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 781
+Line: 807
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 782
+Line: 808
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   pose (f := equiv_decompose (h o inl)).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 783
+Line: 809
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   pose (g := equiv_decompose (h o inr)).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 784
+Line: 810
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   pose (k := (h oE (f +E g))).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 785
+Line: 811
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -4047,9 +4133,9 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 787
-Time: 0.003s">
-<div class="time" style="width: 6.9767441860465%"></div>
+Line: 813
+Time: 0.004s">
+<div class="time" style="width: 8.1632653061224%"></div>
 <pre>pose (k' := k
                 oE (equiv_sum_assoc _ _ _)
                 oE ((equiv_sum_assoc _ _ _)^-1 +E 1)
@@ -4058,8 +4144,8 @@ Time: 0.003s">
                 oE (equiv_sum_assoc _ _ _)^-1).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 792
-Time: 0.043s">
+Line: 818
+Time: 0.049s">
 <div class="time" style="width: 100%"></div>
 <pre>
   destruct (equiv_unfunctor_sum k'
@@ -4075,116 +4161,116 @@ Time: 0.043s">
         end)) as [s t]; clear k k'.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 803
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 829
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
   refine (t oE (_ +E 1) oE g^-1).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 804
-Time: 0.03s">
-<div class="time" style="width: 69.767441860465%"></div>
+Line: 830
+Time: 0.036s">
+<div class="time" style="width: 73.469387755102%"></div>
 <pre>
   destruct (equiv_indecomposable_sum s^-1) as [[p q]|[p q]];
   destruct (equiv_indecomposable_sum f^-1) as [[u v]|[u v]].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 806
+Line: 832
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 807
+Line: 833
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> refine (v oE q^-1).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 807
+Line: 833
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 808
+Line: 834
 Time: 0.002s">
-<div class="time" style="width: 4.6511627906977%"></div>
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre> elim (indecompose0 (v^-1 o p)).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 808
+Line: 834
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 809
+Line: 835
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> refine (Empty_rec (indecompose0 _)); intros a.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 809
+Line: 835
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
     destruct (is_inl_or_is_inr (h (inl a))) as [l|r].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 810
+Line: 836
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     *</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 811
+Line: 837
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre> exact (q^-1 (a;l)).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 811
+Line: 837
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     *</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 812
-Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+Line: 838
+Time: 0.002s">
+<div class="time" style="width: 4.0816326530612%"></div>
 <pre> exact (v^-1 (a;r)).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 812
+Line: 838
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 813
+Line: 839
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> refine (u oE p^-1).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 813
-Time: 0.019s">
-<div class="time" style="width: 44.186046511628%"></div>
+Line: 839
+Time: 0.016s">
+<div class="time" style="width: 32.65306122449%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 814
-Time: 0.005s">
-<div class="time" style="width: 11.627906976744%"></div>
+Line: 840
+Time: 0.011s">
+<div class="time" style="width: 22.448979591837%"></div>
 <pre>
 
 Definition equiv_unfunctor_sum_contr_ll {A A' B B' : Type}
@@ -4195,7 +4281,7 @@ Definition equiv_unfunctor_sum_contr_ll {A A' B B' : Type}
        ((equiv_contr_contr +E 1) oE h).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 821
+Line: 847
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -4207,16 +4293,16 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 826
+Line: 852
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>Definition sum_ind_uncurried {A B} (P : A + B -&gt; Type)
            (fg : (forall a, P (inl a)) * (forall b, P (inr b)))
 : forall s, P s
   := @sum_ind A B P (fst fg) (snd fg).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 829
+Line: 855
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -4225,23 +4311,23 @@ Time: 0s">
    Doing this sort of thing without adjointifying will require very careful use of funext. *)</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 832
+Line: 858
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance isequiv_sum_ind `{Funext} `(P : A + B -&gt; Type)
 : IsEquiv (sum_ind_uncurried P) | 0.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 833
+Line: 859
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 834
+Line: 860
 Time: 0.003s">
-<div class="time" style="width: 6.9767441860465%"></div>
+<div class="time" style="width: 6.1224489795918%"></div>
 <pre>
   apply (isequiv_adjointify
            (sum_ind_uncurried P)
@@ -4252,23 +4338,23 @@ Time: 0.003s">
             || apply path_forall).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 841
+Line: 867
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 842
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 868
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 
 Definition equiv_sum_ind `{Funext} `(P : A + B -&gt; Type)
   := Build_Equiv _ _ _ (isequiv_sum_ind P).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 845
+Line: 871
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -4276,15 +4362,15 @@ Time: 0s">
 (* The non-dependent version, which is a special case, is the sum-distributive equivalence. *)</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 847
+Line: 873
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>Definition equiv_sum_distributive `{Funext} (A B C : Type)
 : (A -&gt; C) * (B -&gt; C) &lt;~&gt; (A + B -&gt; C)
   := equiv_sum_ind (fun _ =&gt; C).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 849
+Line: 875
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -4294,7 +4380,7 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 852
+Line: 878
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance trunc_sum n' (n := n'.+2)
@@ -4302,21 +4388,21 @@ Time: 0s">
 : IsTrunc n (A + B) | 100.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 854
+Line: 880
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 855
+Line: 881
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros a b.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 856
+Line: 882
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -4324,23 +4410,23 @@ Time: 0s">
     [ exact (equiv_path_sum _ _) | ].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 858
-Time: 0.013s">
-<div class="time" style="width: 30.232558139535%"></div>
+Line: 884
+Time: 0.008s">
+<div class="time" style="width: 16.326530612245%"></div>
 <pre>
   destruct a, b; simpl in *;
   try typeclasses eauto;
   intros [].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 861
-Time: 0.003s">
-<div class="time" style="width: 6.9767441860465%"></div>
+Line: 887
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 862
+Line: 888
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -4349,7 +4435,7 @@ Global Instance hset_sum `{HA : IsHSet A, HB : IsHSet B} : IsHSet (A + B) | 100
   := @trunc_sum (-2) A HA B HB.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 865
+Line: 891
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -4359,245 +4445,45 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 868
+Line: 894
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance ishprop_sum A B `{IsHProp A} `{IsHProp B}
 : (A -&gt; B -&gt; Empty) -&gt; IsHProp (A + B).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 869
+Line: 895
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 870
+Line: 896
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros H.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 871
-Time: 0.003s">
-<div class="time" style="width: 6.9767441860465%"></div>
+Line: 897
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
   apply hprop_allpath; intros [a1|b1] [a2|b2].</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 872
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 873
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> apply ap, path_ishprop.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 873
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 874
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> case (H a1 b2).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 874
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 875
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> case (H a2 b1).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 875
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 876
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> apply ap, path_ishprop.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 876
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Defined.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 877
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-
-(** ** Decidability *)
-
-(** Sums preserve decidability *)</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 881
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>Global Instance decidable_sum {A B : Type}
-       `{Decidable A} `{Decidable B}
-: Decidable (A + B).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 883
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 884
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  destruct (dec A) as [x1|y1].</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 885
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 886
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> exact (inl (inl x1)).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 886
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 887
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> destruct (dec B) as [x2|y2].</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 887
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    +</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 888
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> exact (inl (inr x2)).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 888
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    +</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 889
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> apply inr; intros z.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 889
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      destruct z as [x1|x2].</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 890
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      *</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 891
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> exact (y1 x1).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 891
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-      *</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 892
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> exact (y2 x2).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 892
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Defined.</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 893
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-
-(** Sums preserve decidable paths *)</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 895
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>Global Instance decidablepaths_sum {A B}
-       `{DecidablePaths A} `{DecidablePaths B}
-: DecidablePaths (A + B).</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 897
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 898
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  intros [a1|b1] [a2|b2].</pre>
+  -</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 899
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> apply ap, path_ishprop.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 899
@@ -4610,122 +4496,322 @@ Time: 0s">
 Line: 900
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> destruct (dec_paths a1 a2) as [p|np].</pre>
+<pre> case (H a1 b2).</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 900
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    +</pre>
+  -</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 901
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> exact (inl (ap inl p)).</pre>
+<pre> case (H a2 b1).</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 901
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    +</pre>
+  -</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 902
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> apply inr; intros p.</pre>
+<pre> apply ap, path_ishprop.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 902
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-      exact (np ((path_sum _ _)^-1 p)).</pre>
+Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
 Line: 903
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-  -</pre>
+
+(** ** Decidability *)
+
+(** Sums preserve decidability *)</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 904
+Line: 907
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> exact (inr (path_sum _ _)^-1).</pre>
+<pre>Global Instance decidable_sum {A B : Type}
+       `{Decidable A} `{Decidable B}
+: Decidable (A + B).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 904
+Line: 909
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 910
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  destruct (dec A) as [x1|y1].</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 911
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 905
+Line: 912
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exact (inl (inl x1)).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 912
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 913
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> destruct (dec B) as [x2|y2].</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 913
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 914
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exact (inl (inr x2)).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 914
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 915
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> apply inr; intros z.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 915
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      destruct z as [x1|x2].</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 916
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      *</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 917
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exact (y1 x1).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 917
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      *</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 918
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exact (y2 x2).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 918
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Defined.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 919
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+(** Sums preserve decidable paths *)</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 921
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>Global Instance decidablepaths_sum {A B}
+       `{DecidablePaths A} `{DecidablePaths B}
+: DecidablePaths (A + B).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 923
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+Proof.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 924
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  intros [a1|b1] [a2|b2].</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 925
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 926
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
-<pre> exact (inr (path_sum _ _)^-1).</pre>
+<div class="time" style="width: 2.0408163265306%"></div>
+<pre> destruct (dec_paths a1 a2) as [p|np].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 905
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-  -</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 906
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> destruct (dec_paths b1 b2) as [p|np].</pre>
-</div>
-<div class="code" title="File: Sum.v
-Line: 906
+Line: 926
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 907
+Line: 927
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> exact (inl (ap inr p)).</pre>
+<pre> exact (inl (ap inl p)).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 907
+Line: 927
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 908
+Line: 928
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> apply inr; intros p.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 908
+Line: 928
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       exact (np ((path_sum _ _)^-1 p)).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 909
+Line: 929
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 930
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exact (inr (path_sum _ _)^-1).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 930
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 931
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exact (inr (path_sum _ _)^-1).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 931
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+  -</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 932
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> destruct (dec_paths b1 b2) as [p|np].</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 932
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 933
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exact (inl (ap inr p)).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 933
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 934
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> apply inr; intros p.</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 934
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+      exact (np ((path_sum _ _)^-1 p)).</pre>
+</div>
+<div class="code" title="File: Sum.v
+Line: 935
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 910
+Line: 936
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -4733,42 +4819,42 @@ Time: 0s">
 (** Because of [ishprop_sum], decidability of an hprop is again an hprop. *)</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 912
+Line: 938
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance ishprop_decidable_hprop `{Funext} A `{IsHProp A}
 : IsHProp (Decidable A).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 913
+Line: 939
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 914
-Time: 0.005s">
-<div class="time" style="width: 11.627906976744%"></div>
+Line: 940
+Time: 0.004s">
+<div class="time" style="width: 8.1632653061224%"></div>
 <pre>
   unfold Decidable; refine (ishprop_sum _ _ _).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 915
+Line: 941
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intros a na; exact (na a).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 916
+Line: 942
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 917
+Line: 943
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -4778,9 +4864,9 @@ Time: 0s">
 </pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 920
+Line: 946
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>Definition sigT_of_sum A B (x : A + B)
 : { b : Bool &amp; if b then A else B }
   := (_;
@@ -4797,9 +4883,9 @@ Time: 0.001s">
       end).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 933
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 959
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 
 Definition sum_of_sigT A B (x : { b : Bool &amp; if b then A else B })
@@ -4810,7 +4896,7 @@ Definition sum_of_sigT A B (x : { b : Bool &amp; if b then A else B })
      end.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 940
+Line: 966
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -4818,14 +4904,14 @@ Time: 0s">
 Global Instance isequiv_sigT_of_sum A B : IsEquiv (@sigT_of_sum A B) | 0.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 942
+Line: 968
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 943
+Line: 969
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -4833,49 +4919,49 @@ Time: 0s">
                             (@sum_of_sigT A B)).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 945
+Line: 971
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 946
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 972
+Time: 0.001s">
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre> intros [[] ?]; exact idpath.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 946
+Line: 972
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   -</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 947
+Line: 973
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros []; exact idpath.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 947
+Line: 973
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 948
+Line: 974
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
 
 Global Instance isequiv_sum_of_sigT A B : IsEquiv (sum_of_sigT A B)
   := isequiv_inverse (@sigT_of_sum A B).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 951
+Line: 977
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -4883,21 +4969,21 @@ Time: 0s">
 (** An alternative way of proving the truncation property of [sum]. *)</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 953
+Line: 979
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition trunc_sum' n A B `{IsTrunc n Bool, IsTrunc n A, IsTrunc n B}
 : (IsTrunc n (A + B)).</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 954
+Line: 980
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 955
+Line: 981
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -4906,21 +4992,21 @@ Time: 0s">
                        | ].</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 958
+Line: 984
 Time: 0.001s">
-<div class="time" style="width: 2.3255813953488%"></div>
+<div class="time" style="width: 2.0408163265306%"></div>
 <pre>
   typeclasses eauto.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 959
+Line: 985
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: Sum.v
-Line: 961
+Line: 987
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
