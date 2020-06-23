@@ -30,7 +30,7 @@ pre {
 
 <div class="code" title="File: archimedean.v
 Line: 1
-Time: 0.286s">
+Time: 0.311s">
 <div class="time" style="width: 100%"></div>
 <pre>Require Import
   HoTT.Classes.interfaces.abstract_algebra
@@ -61,8 +61,8 @@ Section strict_field_order.</pre>
 </div>
 <div class="code" title="File: archimedean.v
 Line: 14
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.32154340836013%"></div>
 <pre>
   Context `{Rationals Q}.</pre>
 </div>
@@ -76,21 +76,21 @@ Time: 0s">
 <div class="code" title="File: archimedean.v
 Line: 16
 Time: 0.001s">
-<div class="time" style="width: 0.34965034965035%"></div>
+<div class="time" style="width: 0.32154340836013%"></div>
 <pre>
   Context `{OrderedField F}.</pre>
 </div>
 <div class="code" title="File: archimedean.v
 Line: 17
-Time: 0.009s">
-<div class="time" style="width: 3.1468531468531%"></div>
+Time: 0.01s">
+<div class="time" style="width: 3.2154340836013%"></div>
 <pre>
   Context {archim : ArchimedeanProperty Q F}.</pre>
 </div>
 <div class="code" title="File: archimedean.v
 Line: 18
-Time: 0.01s">
-<div class="time" style="width: 3.4965034965035%"></div>
+Time: 0.016s">
+<div class="time" style="width: 5.1446945337621%"></div>
 <pre>
 
   Definition qinc : Cast Q F := rationals_to_field Q F.</pre>
@@ -105,7 +105,7 @@ Time: 0s">
 <div class="code" title="File: archimedean.v
 Line: 21
 Time: 0.001s">
-<div class="time" style="width: 0.34965034965035%"></div>
+<div class="time" style="width: 0.32154340836013%"></div>
 <pre>
 
   Lemma char_minus_left x y : - x &lt; y -&gt; - y &lt; x.</pre>
@@ -127,13 +127,13 @@ Time: 0s">
 <div class="code" title="File: archimedean.v
 Line: 25
 Time: 0.004s">
-<div class="time" style="width: 1.3986013986014%"></div>
+<div class="time" style="width: 1.2861736334405%"></div>
 <pre> rewrite &lt;- (negate_involutive x).</pre>
 </div>
 <div class="code" title="File: archimedean.v
 Line: 25
 Time: 0.008s">
-<div class="time" style="width: 2.7972027972028%"></div>
+<div class="time" style="width: 2.572347266881%"></div>
 <pre> apply (snd (flip_lt_negate _ _)).</pre>
 </div>
 <div class="code" title="File: archimedean.v
@@ -152,7 +152,7 @@ Time: 0s">
 <div class="code" title="File: archimedean.v
 Line: 26
 Time: 0.001s">
-<div class="time" style="width: 0.34965034965035%"></div>
+<div class="time" style="width: 0.32154340836013%"></div>
 <pre>
 
   Lemma char_minus_right x y : x &lt; - y -&gt; y &lt; - x.</pre>
@@ -174,13 +174,13 @@ Time: 0s">
 <div class="code" title="File: archimedean.v
 Line: 30
 Time: 0.004s">
-<div class="time" style="width: 1.3986013986014%"></div>
+<div class="time" style="width: 1.2861736334405%"></div>
 <pre> rewrite &lt;- (negate_involutive y).</pre>
 </div>
 <div class="code" title="File: archimedean.v
 Line: 30
-Time: 0.007s">
-<div class="time" style="width: 2.4475524475524%"></div>
+Time: 0.009s">
+<div class="time" style="width: 2.8938906752412%"></div>
 <pre> apply (snd (flip_lt_negate _ _)).</pre>
 </div>
 <div class="code" title="File: archimedean.v
@@ -199,7 +199,7 @@ Time: 0s">
 <div class="code" title="File: archimedean.v
 Line: 31
 Time: 0.002s">
-<div class="time" style="width: 0.6993006993007%"></div>
+<div class="time" style="width: 0.64308681672026%"></div>
 <pre>
 
   Lemma char_plus_left : forall (q : Q) (x y : F),
@@ -222,7 +222,7 @@ Time: 0s">
 <div class="code" title="File: archimedean.v
 Line: 36
 Time: 0.001s">
-<div class="time" style="width: 0.34965034965035%"></div>
+<div class="time" style="width: 0.32154340836013%"></div>
 <pre>Lemma char_plus_right : forall (r : Q) (x y : F),
       x + y &lt; ' r &lt;-&gt; hexists (fun t : Q =&gt; (x &lt; ' t) /\ (y &lt; ' (r - t))).</pre>
 </div>
@@ -244,7 +244,7 @@ Time: 0s">
 <div class="code" title="File: archimedean.v
 Line: 40
 Time: 0.01s">
-<div class="time" style="width: 3.4965034965035%"></div>
+<div class="time" style="width: 3.2154340836013%"></div>
 <pre>Definition hexists4 {X Y Z W} (f : X -&gt; Y -&gt; Z -&gt; W -&gt; Type) : hProp
     := hexists (fun xyzw =&gt; match xyzw with
                             | ((x , y) , (z , w)) =&gt; f x y z w
@@ -253,7 +253,7 @@ Time: 0.01s">
 <div class="code" title="File: archimedean.v
 Line: 43
 Time: 0.003s">
-<div class="time" style="width: 1.048951048951%"></div>
+<div class="time" style="width: 0.96463022508039%"></div>
 <pre>
 
   Lemma char_times_left : forall (q : Q) (x y : F),
@@ -284,7 +284,7 @@ Time: 0s">
 <div class="code" title="File: archimedean.v
 Line: 56
 Time: 0.003s">
-<div class="time" style="width: 1.048951048951%"></div>
+<div class="time" style="width: 0.96463022508039%"></div>
 <pre>Lemma char_times_right : forall (r : Q) (x y : F),
           x * y &lt; ' r
       &lt;-&gt; hexists4 (fun a b c d : Q =&gt;
@@ -312,7 +312,7 @@ Time: 0s">
 <div class="code" title="File: archimedean.v
 Line: 66
 Time: 0.006s">
-<div class="time" style="width: 2.0979020979021%"></div>
+<div class="time" style="width: 1.9292604501608%"></div>
 <pre>Lemma char_recip_pos_left : forall (q : Q) (z : F) (nu : 0 &lt; z),
     'q &lt; recip' z (positive_apart_zero z nu) &lt;-&gt; ' q * z &lt; 1.</pre>
 </div>
@@ -333,7 +333,7 @@ Time: 0s">
 <div class="code" title="File: archimedean.v
 Line: 69
 Time: 0.006s">
-<div class="time" style="width: 2.0979020979021%"></div>
+<div class="time" style="width: 1.9292604501608%"></div>
 <pre>Lemma char_recip_pos_right : forall (r : Q) (z : F) (nu : 0 &lt; z),
     recip' z (positive_apart_zero z nu) &lt; ' r &lt;-&gt; 1 &lt; ' r * z.</pre>
 </div>
@@ -353,8 +353,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: archimedean.v
 Line: 72
-Time: 0.005s">
-<div class="time" style="width: 1.7482517482517%"></div>
+Time: 0.006s">
+<div class="time" style="width: 1.9292604501608%"></div>
 <pre>Lemma char_recip_neg_left : forall (q : Q) (w : F) (nu : w &lt; 0),
     'q &lt; recip' w (negative_apart_zero w nu) &lt;-&gt; ' q * w &lt; 1.</pre>
 </div>
@@ -374,8 +374,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: archimedean.v
 Line: 75
-Time: 0.005s">
-<div class="time" style="width: 1.7482517482517%"></div>
+Time: 0.006s">
+<div class="time" style="width: 1.9292604501608%"></div>
 <pre>Lemma char_recip_neg_right : forall (r : Q) (w : F) (nu : w &lt; 0),
     recip' w (negative_apart_zero w nu) &lt; ' r &lt;-&gt; ' r * w &lt; 1.</pre>
 </div>
@@ -397,7 +397,7 @@ Time: 0s">
 <div class="code" title="File: archimedean.v
 Line: 79
 Time: 0.001s">
-<div class="time" style="width: 0.34965034965035%"></div>
+<div class="time" style="width: 0.32154340836013%"></div>
 <pre>Lemma char_meet_left : forall (q : Q) (x y : F),
       ' q &lt; meet x y &lt;-&gt; ' q &lt; x /\ ' q &lt; y.</pre>
 </div>
@@ -418,7 +418,7 @@ Time: 0s">
 <div class="code" title="File: archimedean.v
 Line: 82
 Time: 0.001s">
-<div class="time" style="width: 0.34965034965035%"></div>
+<div class="time" style="width: 0.32154340836013%"></div>
 <pre>Lemma char_meet_right : forall (r : Q) (x y : F),
       meet x y &lt; 'r &lt;-&gt; hor (x &lt; 'r) (y &lt; 'r).</pre>
 </div>
@@ -439,7 +439,7 @@ Time: 0s">
 <div class="code" title="File: archimedean.v
 Line: 85
 Time: 0.001s">
-<div class="time" style="width: 0.34965034965035%"></div>
+<div class="time" style="width: 0.32154340836013%"></div>
 <pre>Lemma char_join_left : forall (q : Q) (x y : F),
       ' q &lt; join x y &lt;-&gt; hor ('q &lt; x) ('q &lt; y).</pre>
 </div>
@@ -460,7 +460,7 @@ Time: 0s">
 <div class="code" title="File: archimedean.v
 Line: 88
 Time: 0.001s">
-<div class="time" style="width: 0.34965034965035%"></div>
+<div class="time" style="width: 0.32154340836013%"></div>
 <pre>Lemma char_join_right : forall (r : Q) (x y : F),
       join x y &lt; ' r &lt;-&gt; x &lt; ' r /\ y &lt; ' r.</pre>
 </div>
@@ -481,8 +481,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: archimedean.v
 Line: 91
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.32154340836013%"></div>
 <pre>End strict_field_order.</pre>
 </div>
 <div class="code" title="File: archimedean.v
