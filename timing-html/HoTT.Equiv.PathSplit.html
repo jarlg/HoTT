@@ -38,7 +38,7 @@ Time: 0s">
 </div>
 <div class="code" title="File: PathSplit.v
 Line: 2
-Time: 0.028s">
+Time: 0.034s">
 <div class="time" style="width: 100%"></div>
 <pre>Require Import HoTT.Basics HoTT.Types.</pre>
 </div>
@@ -95,7 +95,7 @@ A map is n-path-split if its induced maps on the first n iterated path-spaces ar
 <div class="code" title="File: PathSplit.v
 Line: 15
 Time: 0.001s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 2.9411764705882%"></div>
 <pre>Fixpoint PathSplit (n : nat) `(f : A -&gt; B) : Type
   := match n with
        | 0 =&gt; Unit
@@ -122,7 +122,7 @@ Proof.</pre>
 <div class="code" title="File: PathSplit.v
 Line: 24
 Time: 0.001s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 2.9411764705882%"></div>
 <pre>
   intros [g k].</pre>
 </div>
@@ -135,8 +135,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: PathSplit.v
 Line: 26
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 2.9411764705882%"></div>
 <pre>
   pose (hs := fun x y =&gt; (fun p =&gt; (fst (k x y) p).2)
                          : Sect (h x y) (ap f)).</pre>
@@ -172,7 +172,7 @@ Time: 0s">
 <div class="code" title="File: PathSplit.v
 Line: 32
 Time: 0.001s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 2.9411764705882%"></div>
 <pre>
   apply hprop_allpath; intros [a p] [a' p'].</pre>
 </div>
@@ -186,14 +186,14 @@ Time: 0s">
 <div class="code" title="File: PathSplit.v
 Line: 34
 Time: 0.001s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 2.9411764705882%"></div>
 <pre>
   refine (transport_paths_Fl _ _ @ _).</pre>
 </div>
 <div class="code" title="File: PathSplit.v
 Line: 35
 Time: 0.001s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 2.9411764705882%"></div>
 <pre>
   refine ((inverse2 (hs a a' (p @ p'^)) @@ 1) @ _).</pre>
 </div>
@@ -207,7 +207,7 @@ Time: 0s">
 <div class="code" title="File: PathSplit.v
 Line: 37
 Time: 0.001s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 2.9411764705882%"></div>
 <pre>
   refine (concat_pp_p _ _ _ @ _).</pre>
 </div>
@@ -228,14 +228,14 @@ Time: 0s">
 <div class="code" title="File: PathSplit.v
 Line: 40
 Time: 0.002s">
-<div class="time" style="width: 7.1428571428571%"></div>
+<div class="time" style="width: 5.8823529411765%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: PathSplit.v
 Line: 41
 Time: 0.001s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 2.9411764705882%"></div>
 <pre>
 
 Global Instance contr_pathsplit_isequiv
@@ -258,8 +258,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: PathSplit.v
 Line: 47
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 2.9411764705882%"></div>
 <pre>
   simple_induction n n IHn; intros A B f ?.</pre>
 </div>
@@ -285,21 +285,21 @@ Time: 0s">
 </div>
 <div class="code" title="File: PathSplit.v
 Line: 50
-Time: 0.017s">
-<div class="time" style="width: 60.714285714286%"></div>
+Time: 0.02s">
+<div class="time" style="width: 58.823529411765%"></div>
 <pre> apply contr_prod.</pre>
 </div>
 <div class="code" title="File: PathSplit.v
 Line: 50
-Time: 0.002s">
-<div class="time" style="width: 7.1428571428571%"></div>
+Time: 0.001s">
+<div class="time" style="width: 2.9411764705882%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: PathSplit.v
 Line: 51
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 2.9411764705882%"></div>
 <pre>
 
 Global Instance ishprop_pathsplit (n : nat) `(f : A -&gt; B)
@@ -359,7 +359,7 @@ Proof.</pre>
 <div class="code" title="File: PathSplit.v
 Line: 63
 Time: 0.004s">
-<div class="time" style="width: 14.285714285714%"></div>
+<div class="time" style="width: 11.764705882353%"></div>
 <pre>
   refine (equiv_iff_hprop _ _).</pre>
 </div>
@@ -386,7 +386,7 @@ Time: 0s">
 <div class="code" title="File: PathSplit.v
 Line: 66
 Time: 0.001s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 2.9411764705882%"></div>
 <pre> intros ?; refine (center _).</pre>
 </div>
 <div class="code" title="File: PathSplit.v
@@ -406,8 +406,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: PathSplit.v
 Line: 69
-Time: 0.001s">
-<div class="time" style="width: 3.5714285714286%"></div>
+Time: 0.003s">
+<div class="time" style="width: 8.8235294117647%"></div>
 <pre>Lemma equiv_functor_pathsplit (n : nat) {A B C D}
       (f : A -&gt; B) (g : C -&gt; D) (h : A &lt;~&gt; C) (k : B &lt;~&gt; D)
       (p : g o h == k o f)
@@ -457,14 +457,14 @@ Time: 0s">
 <div class="code" title="File: PathSplit.v
 Line: 77
 Time: 0.004s">
-<div class="time" style="width: 14.285714285714%"></div>
+<div class="time" style="width: 11.764705882353%"></div>
 <pre>
     refine (_ *E equiv_contr_contr).</pre>
 </div>
 <div class="code" title="File: PathSplit.v
 Line: 78
 Time: 0.001s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 2.9411764705882%"></div>
 <pre>
     refine (equiv_functor_forall' k^-1 _); intros d.</pre>
 </div>
@@ -484,8 +484,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: PathSplit.v
 Line: 81
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 2.9411764705882%"></div>
 <pre>
     refine (equiv_concat_l (p a) d oE _).</pre>
 </div>
@@ -512,14 +512,14 @@ Time: 0s">
 <div class="code" title="File: PathSplit.v
 Line: 84
 Time: 0.001s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 2.9411764705882%"></div>
 <pre>
     refine ((equiv_pathsplit_isequiv n g)^-1 oE _).</pre>
 </div>
 <div class="code" title="File: PathSplit.v
 Line: 85
-Time: 0.003s">
-<div class="time" style="width: 10.714285714286%"></div>
+Time: 0.002s">
+<div class="time" style="width: 5.8823529411765%"></div>
 <pre>
     apply equiv_iff_hprop; intros e.</pre>
 </div>
@@ -533,7 +533,7 @@ Time: 0s">
 <div class="code" title="File: PathSplit.v
 Line: 87
 Time: 0.002s">
-<div class="time" style="width: 7.1428571428571%"></div>
+<div class="time" style="width: 5.8823529411765%"></div>
 <pre> refine (isequiv_commsq f g h k (fun a =&gt; (p a)^)).</pre>
 </div>
 <div class="code" title="File: PathSplit.v
@@ -545,14 +545,14 @@ Time: 0s">
 </div>
 <div class="code" title="File: PathSplit.v
 Line: 88
-Time: 0.002s">
-<div class="time" style="width: 7.1428571428571%"></div>
+Time: 0.003s">
+<div class="time" style="width: 8.8235294117647%"></div>
 <pre> refine (isequiv_commsq' f g h k p).</pre>
 </div>
 <div class="code" title="File: PathSplit.v
 Line: 88
-Time: 0.001s">
-<div class="time" style="width: 3.5714285714286%"></div>
+Time: 0.002s">
+<div class="time" style="width: 5.8823529411765%"></div>
 <pre>
 Defined.</pre>
 </div>
@@ -569,7 +569,7 @@ Time: 0s">
 <div class="code" title="File: PathSplit.v
 Line: 92
 Time: 0.001s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 2.9411764705882%"></div>
 <pre>Definition ooPathSplit `(f : A -&gt; B) : Type
   := forall n, PathSplit n f.</pre>
 </div>
@@ -585,8 +585,8 @@ Definition isequiv_oopathsplit `{f : A -&gt; B}
 </div>
 <div class="code" title="File: PathSplit.v
 Line: 97
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 2.9411764705882%"></div>
 <pre>
 
 Global Instance contr_oopathsplit_isequiv
@@ -603,7 +603,7 @@ Proof.</pre>
 <div class="code" title="File: PathSplit.v
 Line: 102
 Time: 0.003s">
-<div class="time" style="width: 10.714285714286%"></div>
+<div class="time" style="width: 8.8235294117647%"></div>
 <pre>
   apply contr_forall.</pre>
 </div>
@@ -647,7 +647,7 @@ Time: 0s">
 <div class="code" title="File: PathSplit.v
 Line: 110
 Time: 0.001s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 2.9411764705882%"></div>
 <pre>
   exact _.</pre>
 </div>
@@ -677,7 +677,7 @@ Proof.</pre>
 <div class="code" title="File: PathSplit.v
 Line: 116
 Time: 0.004s">
-<div class="time" style="width: 14.285714285714%"></div>
+<div class="time" style="width: 11.764705882353%"></div>
 <pre>
   refine (equiv_iff_hprop _ _).</pre>
 </div>
@@ -704,7 +704,7 @@ Time: 0s">
 <div class="code" title="File: PathSplit.v
 Line: 119
 Time: 0.001s">
-<div class="time" style="width: 3.5714285714286%"></div>
+<div class="time" style="width: 2.9411764705882%"></div>
 <pre> intros ?; refine (center _).</pre>
 </div>
 <div class="code" title="File: PathSplit.v
@@ -717,7 +717,7 @@ Defined.</pre>
 <div class="code" title="File: PathSplit.v
 Line: 120
 Time: 0.005s">
-<div class="time" style="width: 17.857142857143%"></div>
+<div class="time" style="width: 14.705882352941%"></div>
 <pre>
 
 End AssumeFunext.</pre>

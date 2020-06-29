@@ -61,8 +61,8 @@ Instance decide_eqb `{DecidablePaths A} : Eqb A
 </div>
 <div class="code" title="File: additional_operations.v
 Line: 8
-Time: 0.001s">
-<div class="time" style="width: 0.41666666666667%"></div>
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
 
 Lemma decide_eqb_ok@{i} {A:Type@{i} } `{DecidablePaths A} :
@@ -117,8 +117,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: additional_operations.v
 Line: 16
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.41666666666667%"></div>
 <pre>
 Qed.</pre>
 </div>
@@ -128,7 +128,7 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-Lemma LT_EQ : ~ LT = EQ.</pre>
+Lemma LT_EQ : LT &lt;&gt; EQ.</pre>
 </div>
 <div class="code" title="File: additional_operations.v
 Line: 19
@@ -177,7 +177,7 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-Lemma LT_GT : ~ LT = GT.</pre>
+Lemma LT_GT : LT &lt;&gt; GT.</pre>
 </div>
 <div class="code" title="File: additional_operations.v
 Line: 26
@@ -226,7 +226,7 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-Lemma EQ_LT : ~ EQ = LT.</pre>
+Lemma EQ_LT : EQ &lt;&gt; LT.</pre>
 </div>
 <div class="code" title="File: additional_operations.v
 Line: 33
@@ -255,7 +255,7 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-Lemma EQ_GT : ~ EQ = GT.</pre>
+Lemma EQ_GT : EQ &lt;&gt; GT.</pre>
 </div>
 <div class="code" title="File: additional_operations.v
 Line: 38
@@ -304,7 +304,7 @@ Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-Lemma GT_EQ : ~ GT = EQ.</pre>
+Lemma GT_EQ : GT &lt;&gt; EQ.</pre>
 </div>
 <div class="code" title="File: additional_operations.v
 Line: 45
@@ -329,8 +329,8 @@ Qed.</pre>
 </div>
 <div class="code" title="File: additional_operations.v
 Line: 48
-Time: 0.021s">
-<div class="time" style="width: 8.75%"></div>
+Time: 0.026s">
+<div class="time" style="width: 10.833333333333%"></div>
 <pre>
 
 Instance compare_eqb `{Compare A} : Eqb A | 2 := fun a b =&gt;
@@ -341,8 +341,8 @@ Instance compare_eqb `{Compare A} : Eqb A | 2 := fun a b =&gt;
 </div>
 <div class="code" title="File: additional_operations.v
 Line: 54
-Time: 0.004s">
-<div class="time" style="width: 1.6666666666667%"></div>
+Time: 0.007s">
+<div class="time" style="width: 2.9166666666667%"></div>
 <pre>
 
 Lemma compare_eqb_eq `{Compare A} : forall a b : A, a =? b = true -&gt; a ?= b = EQ.</pre>
@@ -460,8 +460,8 @@ Qed.</pre>
 </div>
 <div class="code" title="File: additional_operations.v
 Line: 77
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.41666666666667%"></div>
 <pre>
 
 Lemma tricho_compare_ok `{Trichotomy A R} `{Irreflexive A R}
@@ -483,8 +483,8 @@ unfold compare,tricho_compare.</pre>
 </div>
 <div class="code" title="File: additional_operations.v
 Line: 82
-Time: 0.003s">
-<div class="time" style="width: 1.25%"></div>
+Time: 0.004s">
+<div class="time" style="width: 1.6666666666667%"></div>
 <pre>
 intros a b;destruct (trichotomy R a b) as [E1|[E1|E1]];split;auto.</pre>
 </div>
@@ -554,15 +554,15 @@ Time: 0s">
 </div>
 <div class="code" title="File: additional_operations.v
 Line: 87
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.41666666666667%"></div>
 <pre>
 Qed.</pre>
 </div>
 <div class="code" title="File: additional_operations.v
 Line: 88
-Time: 0.001s">
-<div class="time" style="width: 0.41666666666667%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.83333333333333%"></div>
 <pre>
 
 Lemma total_abs_either `{Abs A} `{!TotalRelation le}
@@ -584,8 +584,8 @@ intros x.</pre>
 </div>
 <div class="code" title="File: additional_operations.v
 Line: 93
-Time: 0.001s">
-<div class="time" style="width: 0.41666666666667%"></div>
+Time: 0.002s">
+<div class="time" style="width: 0.83333333333333%"></div>
 <pre>
 destruct (total le 0 x) as [E|E].</pre>
 </div>
@@ -610,8 +610,8 @@ Time: 0s">
 </div>
 <div class="code" title="File: additional_operations.v
 Line: 95
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.41666666666667%"></div>
 <pre> apply ((abs_sig x).2);trivial.</pre>
 </div>
 <div class="code" title="File: additional_operations.v
@@ -641,8 +641,8 @@ Time: 0.001s">
 </div>
 <div class="code" title="File: additional_operations.v
 Line: 96
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Time: 0.001s">
+<div class="time" style="width: 0.41666666666667%"></div>
 <pre>
 Qed.</pre>
 </div>
