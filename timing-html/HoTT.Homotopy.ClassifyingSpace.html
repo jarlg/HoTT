@@ -30,68 +30,40 @@ pre {
 
 <div class="code" title="File: ClassifyingSpace.v
 Line: 1
-Time: 0.023s">
-<div class="time" style="width: 2.7980535279805%"></div>
-<pre>Require Import Basics.</pre>
+Time: 0.116s">
+<div class="time" style="width: 16.618911174785%"></div>
+<pre>Require Import Basics Types Pointed Cubical.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
 Line: 1
-Time: 0.021s">
-<div class="time" style="width: 2.5547445255474%"></div>
+Time: 0.184s">
+<div class="time" style="width: 26.361031518625%"></div>
 <pre>
-Require Import Types.</pre>
+Require Import Algebra.AbGroups.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
 Line: 2
-Time: 0.104s">
-<div class="time" style="width: 12.652068126521%"></div>
-<pre>
-Require Import Pointed.</pre>
-</div>
-<div class="code" title="File: ClassifyingSpace.v
-Line: 3
-Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
-<pre>
-Require Import Cubical.</pre>
-</div>
-<div class="code" title="File: ClassifyingSpace.v
-Line: 4
-Time: 0.182s">
-<div class="time" style="width: 22.141119221411%"></div>
-<pre>
-Require Import Algebra.Group.</pre>
-</div>
-<div class="code" title="File: ClassifyingSpace.v
-Line: 5
-Time: 0.009s">
-<div class="time" style="width: 1.0948905109489%"></div>
-<pre>
-Require Import Algebra.AbelianGroup.</pre>
-</div>
-<div class="code" title="File: ClassifyingSpace.v
-Line: 6
-Time: 0.038s">
-<div class="time" style="width: 4.6228710462287%"></div>
+Time: 0.008s">
+<div class="time" style="width: 1.1461318051576%"></div>
 <pre>
 Require Import Homotopy.HSpace.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 7
+Line: 3
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Require Import TruncType.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 8
+Line: 4
 Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
 Require Import Truncations.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 9
+Line: 5
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -99,21 +71,21 @@ Time: 0s">
 Local Open Scope pointed_scope.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 11
+Line: 7
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Local Open Scope trunc_scope.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 12
+Line: 8
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Local Open Scope mc_mult_scope.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 13
+Line: 9
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -121,14 +93,14 @@ Time: 0s">
 Declare Scope bg_scope.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 15
+Line: 11
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Local Open Scope bg_scope.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 16
+Line: 12
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -144,13 +116,13 @@ Time: 0s">
 *)</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 26
+Line: 22
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Module Export ClassifyingSpace.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 26
+Line: 22
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -158,16 +130,16 @@ Time: 0s">
   Section ClassifyingSpace.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 28
+Line: 24
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-    Private Inductive ClassifyingSpace {G : Group} :=
-      | bbase : ClassifyingSpace.</pre>
+    Private Inductive ClassifyingSpace (G : Group) :=
+      | bbase : ClassifyingSpace G.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 31
+Line: 27
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -175,45 +147,53 @@ Time: 0s">
     Context {G : Group}.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 33
+Line: 29
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
-    Axiom bloop : G -&gt; bbase = bbase.</pre>
+    Axiom bloop : G -&gt; bbase G = bbase G.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 35
+Line: 31
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+
+    Global Arguments bbase {_}.</pre>
+</div>
+<div class="code" title="File: ClassifyingSpace.v
+Line: 33
 Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
 
     Axiom bloop_pp : forall x y, bloop (x * y) = bloop x @ bloop y.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 37
+Line: 35
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 
     Global Instance istrunc_ClassifyingSpace
-      : IsTrunc 1 ClassifyingSpace.</pre>
+      : IsTrunc 1 (ClassifyingSpace G).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 40
+Line: 38
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 41
+Line: 39
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> Admitted.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 41
+Line: 39
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -221,7 +201,7 @@ Time: 0s">
   End ClassifyingSpace.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 43
+Line: 41
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -229,7 +209,7 @@ Time: 0s">
   Arguments ClassifyingSpace G : clear implicits.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 45
+Line: 43
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -238,13 +218,13 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 48
+Line: 46
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section ClassifyingSpace_ind.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 48
+Line: 46
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -252,7 +232,7 @@ Time: 0s">
     Local Open Scope dpath_scope.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 50
+Line: 48
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -260,7 +240,7 @@ Time: 0s">
     Context {G : Group}.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 52
+Line: 50
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -269,9 +249,9 @@ Time: 0s">
    </pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 55
-Time: 0.009s">
-<div class="time" style="width: 1.0948905109489%"></div>
+Line: 53
+Time: 0.006s">
+<div class="time" style="width: 0.85959885386819%"></div>
 <pre>Definition ClassifyingSpace_ind
       (P : ClassifyingSpace G -&gt; Type)
      `{forall x, IsTrunc 1 (P x)}
@@ -284,7 +264,7 @@ Time: 0.009s">
          end bloop' bloop_pp'.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 64
+Line: 62
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -293,9 +273,9 @@ Time: 0s">
    </pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 67
-Time: 0.005s">
-<div class="time" style="width: 0.60827250608273%"></div>
+Line: 65
+Time: 0.003s">
+<div class="time" style="width: 0.4297994269341%"></div>
 <pre>Definition ClassifyingSpace_ind_beta_bloop
       (P : ClassifyingSpace G -&gt; Type)
      `{forall x, IsTrunc 1 (P x)}
@@ -306,28 +286,28 @@ Time: 0.005s">
         = bloop' x.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 74
+Line: 72
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 75
+Line: 73
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> Admitted.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 75
+Line: 73
 Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
 
   End ClassifyingSpace_ind.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 77
+Line: 75
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -335,7 +315,7 @@ Time: 0s">
 End ClassifyingSpace.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 79
+Line: 77
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -343,13 +323,13 @@ Time: 0s">
 (** Other eliminators *)</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 81
+Line: 79
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section Eliminators.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 81
+Line: 79
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -357,7 +337,7 @@ Time: 0s">
   Context {G : Group}.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 83
+Line: 81
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -366,86 +346,86 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 86
+Line: 84
 Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>Definition ClassifyingSpace_rec
     (P : Type) `{IsTrunc 1 P} (bbase' : P) (bloop' : G -&gt; bbase' = bbase')
     (bloop_pp' : forall x y : G, bloop' (x * y) = bloop' x @ bloop' y)
     : ClassifyingSpace G -&gt; P.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 89
+Line: 87
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 90
+Line: 88
 Time: 0.002s">
-<div class="time" style="width: 0.24330900243309%"></div>
+<div class="time" style="width: 0.2865329512894%"></div>
 <pre>
     srefine (ClassifyingSpace_ind (fun _ =&gt; P) bbase' _ _).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 91
+Line: 89
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     1: intro; apply dp_const, bloop', x.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 92
+Line: 90
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros x y.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 93
-Time: 0.005s">
-<div class="time" style="width: 0.60827250608273%"></div>
+Line: 91
+Time: 0.004s">
+<div class="time" style="width: 0.5730659025788%"></div>
 <pre>
     apply ds_const'.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 94
+Line: 92
 Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
     rapply sq_GGcc.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 95
-Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+Line: 93
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
     2: refine (_ @ ap _ (dp_const_pp _ _)).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 96
-Time: 0.003s">
-<div class="time" style="width: 0.36496350364964%"></div>
+Line: 94
+Time: 0.002s">
+<div class="time" style="width: 0.2865329512894%"></div>
 <pre>
     1,2: symmetry; apply eissect.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 97
-Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+Line: 95
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
     by apply sq_G1.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 98
-Time: 0.005s">
-<div class="time" style="width: 0.60827250608273%"></div>
+Line: 96
+Time: 0.004s">
+<div class="time" style="width: 0.5730659025788%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 99
+Line: 97
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -454,58 +434,58 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 102
+Line: 100
 Time: 0.002s">
-<div class="time" style="width: 0.24330900243309%"></div>
+<div class="time" style="width: 0.2865329512894%"></div>
 <pre>Definition ClassifyingSpace_rec_beta_bloop
     (P : Type) `{IsTrunc 1 P} (bbase' : P) (bloop' : G -&gt; bbase' = bbase')
     (bloop_pp' : forall x y : G, bloop' (x * y) = bloop' x @ bloop' y) (x : G)
     : ap (ClassifyingSpace_rec P bbase' bloop' bloop_pp') (bloop x) = bloop' x.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 105
+Line: 103
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 106
+Line: 104
 Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
     rewrite &lt;- dp_apD_const'.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 107
-Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+Line: 105
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
     unfold ClassifyingSpace_rec.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 108
-Time: 0.065s">
-<div class="time" style="width: 7.9075425790754%"></div>
+Line: 106
+Time: 0.054s">
+<div class="time" style="width: 7.7363896848138%"></div>
 <pre>
     rewrite ClassifyingSpace_ind_beta_bloop.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 109
-Time: 0.018s">
-<div class="time" style="width: 2.1897810218978%"></div>
+Line: 107
+Time: 0.013s">
+<div class="time" style="width: 1.8624641833811%"></div>
 <pre>
     apply eissect.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 110
-Time: 0.088s">
-<div class="time" style="width: 10.705596107056%"></div>
+Line: 108
+Time: 0.074s">
+<div class="time" style="width: 10.601719197708%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 111
+Line: 109
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -514,9 +494,9 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 114
-Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+Line: 112
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>Definition ClassifyingSpace_ind_hset
     (P : ClassifyingSpace G -&gt; Type)
    `{forall x, IsTrunc 0 (P x)}
@@ -524,49 +504,49 @@ Time: 0.001s">
     : forall x, P x.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 118
+Line: 116
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 119
+Line: 117
 Time: 0.002s">
-<div class="time" style="width: 0.24330900243309%"></div>
+<div class="time" style="width: 0.2865329512894%"></div>
 <pre>
     refine (ClassifyingSpace_ind P bbase' bloop' _).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 120
+Line: 118
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 121
-Time: 0.003s">
-<div class="time" style="width: 0.36496350364964%"></div>
+Line: 119
+Time: 0.002s">
+<div class="time" style="width: 0.2865329512894%"></div>
 <pre>
     apply ds_G1, dp_path_transport.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 122
-Time: 0.042s">
-<div class="time" style="width: 5.1094890510949%"></div>
+Line: 120
+Time: 0.033s">
+<div class="time" style="width: 4.7277936962751%"></div>
 <pre>
     srapply path_ishprop.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 123
-Time: 0.002s">
-<div class="time" style="width: 0.24330900243309%"></div>
+Line: 121
+Time: 0.001s">
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 124
+Line: 122
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -576,43 +556,43 @@ Time: 0s">
     : ClassifyingSpace G -&gt; P.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 128
+Line: 126
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 129
+Line: 127
 Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
     srapply (ClassifyingSpace_rec P bbase' bloop' _).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 130
-Time: 0.003s">
-<div class="time" style="width: 0.36496350364964%"></div>
+Line: 128
+Time: 0.002s">
+<div class="time" style="width: 0.2865329512894%"></div>
 <pre>
     intros; apply path_ishprop.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 131
+Line: 129
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 132
-Time: 0.006s">
-<div class="time" style="width: 0.72992700729927%"></div>
+Line: 130
+Time: 0.004s">
+<div class="time" style="width: 0.5730659025788%"></div>
 <pre>
 
 End Eliminators.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 134
+Line: 132
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -620,77 +600,77 @@ Time: 0s">
 (** We can prove that the classifying space is 0-connected. *)</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 136
+Line: 134
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Global Instance isconnected_classifyingspace {G : Group}
   : IsConnected 0 (ClassifyingSpace G).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 137
+Line: 135
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 138
+Line: 136
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   exists (tr bbase).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 139
-Time: 0.021s">
-<div class="time" style="width: 2.5547445255474%"></div>
+Line: 137
+Time: 0.028s">
+<div class="time" style="width: 4.0114613180516%"></div>
 <pre>
   srapply Trunc_ind.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 140
-Time: 0.037s">
-<div class="time" style="width: 4.5012165450122%"></div>
+Line: 138
+Time: 0.05s">
+<div class="time" style="width: 7.163323782235%"></div>
 <pre>
   srapply ClassifyingSpace_ind_hset; cbn.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 141
+Line: 139
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   1: reflexivity.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 142
+Line: 140
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intro x.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 143
-Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+Line: 141
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
   apply dp_paths_FlFr.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 144
-Time: 0.004s">
-<div class="time" style="width: 0.48661800486618%"></div>
+Line: 142
+Time: 0.012s">
+<div class="time" style="width: 1.7191977077364%"></div>
 <pre>
   apply path_ishprop.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 145
-Time: 0.005s">
-<div class="time" style="width: 0.60827250608273%"></div>
+Line: 143
+Time: 0.003s">
+<div class="time" style="width: 0.4297994269341%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 146
+Line: 144
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -700,14 +680,14 @@ Time: 0s">
 (** The classifying space of a group is the following pointed type. *)</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 150
+Line: 148
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Definition pClassifingSpace (G : Group)
   := Build_pType (ClassifyingSpace G) bbase.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 151
+Line: 149
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -715,27 +695,27 @@ Time: 0s">
 (** To use the B G notation for pClassifyingSpace import this module. *)</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 153
+Line: 151
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Module Import ClassifyingSpaceNotation.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 153
+Line: 151
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Definition B G := pClassifingSpace G.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 154
+Line: 152
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 End ClassifyingSpaceNotation.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 155
+Line: 153
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -743,7 +723,7 @@ Time: 0s">
 Import ClassifyingSpaceNotation.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 157
+Line: 155
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -751,62 +731,62 @@ Time: 0s">
 (** We can show that [bloop] takes the unit of the group to reflexivity. *)</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 159
+Line: 157
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre>Definition bloop_id {G : Group} : bloop mon_unit = idpath.</pre>
+<pre>Definition bloop_id {G : Group} : bloop (mon_unit : G) = idpath.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 159
+Line: 157
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 160
+Line: 158
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   symmetry.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 161
-Time: 0s">
-<div class="time" style="width: 0%"></div>
+Line: 159
+Time: 0.001s">
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
   apply (cancelL (bloop mon_unit)).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 162
+Line: 160
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   refine (_ @ bloop_pp _ _).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 163
+Line: 161
 Time: 0.004s">
-<div class="time" style="width: 0.48661800486618%"></div>
+<div class="time" style="width: 0.5730659025788%"></div>
 <pre>
   refine (_ @ ap _ (left_identity _)^).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 164
+Line: 162
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply concat_p1.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 165
+Line: 163
 Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 166
+Line: 164
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -814,69 +794,69 @@ Time: 0s">
 (** We can show that [bloop] "preserves inverses" by taking inverses in G to inverses of paths in BG *)</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 168
+Line: 166
 Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
-<pre>Definition bloop_inv {G : Group} : forall x, bloop (-x) = (bloop x)^.</pre>
+<div class="time" style="width: 0.1432664756447%"></div>
+<pre>Definition bloop_inv {G : Group} : forall x : G, bloop (-x) = (bloop x)^.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 168
+Line: 166
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
 Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 169
+Line: 167
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   intro x.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 170
+Line: 168
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   refine (_ @ concat_p1 _).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 171
+Line: 169
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   apply moveL_Vp.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 172
+Line: 170
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   refine (_ @ bloop_id).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 173
+Line: 171
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   refine ((bloop_pp _ _)^ @ _).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 174
+Line: 172
 Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
   apply ap, right_inverse.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 175
+Line: 173
 Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
 Defined.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 176
+Line: 174
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -884,13 +864,13 @@ Time: 0s">
 (** Here we pove that BG is the delooping of G, in that loops BG &lt;~&gt; G. *)</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 178
+Line: 176
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section EncodeDecode.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 178
+Line: 176
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -898,7 +878,7 @@ Time: 0s">
   Context `{Univalence} {G : Group}.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 180
+Line: 178
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -906,109 +886,109 @@ Time: 0s">
   Local Definition codes : B G -&gt; 0 -Type.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 182
+Line: 180
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 183
-Time: 0.07s">
-<div class="time" style="width: 8.5158150851582%"></div>
+Line: 181
+Time: 0.081s">
+<div class="time" style="width: 11.604584527221%"></div>
 <pre>
     srapply ClassifyingSpace_rec.</pre>
+</div>
+<div class="code" title="File: ClassifyingSpace.v
+Line: 182
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: ClassifyingSpace.v
+Line: 183
+Time: 0.029s">
+<div class="time" style="width: 4.1547277936963%"></div>
+<pre> srapply (BuildhSet G).</pre>
+</div>
+<div class="code" title="File: ClassifyingSpace.v
+Line: 183
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: ClassifyingSpace.v
+Line: 184
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intro x.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
 Line: 184
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    +</pre>
-</div>
-<div class="code" title="File: ClassifyingSpace.v
-Line: 185
-Time: 0.014s">
-<div class="time" style="width: 1.7031630170316%"></div>
-<pre> srapply (BuildhSet G).</pre>
-</div>
-<div class="code" title="File: ClassifyingSpace.v
-Line: 185
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    +</pre>
-</div>
-<div class="code" title="File: ClassifyingSpace.v
-Line: 186
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intro x.</pre>
-</div>
-<div class="code" title="File: ClassifyingSpace.v
-Line: 186
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
       apply path_trunctype.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 187
+Line: 185
 Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
       apply (right_mult_equiv x).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 188
+Line: 186
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 189
+Line: 187
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intros x y.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 189
+Line: 187
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       refine (_ @ path_trunctype_pp _ _).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 190
-Time: 0.002s">
-<div class="time" style="width: 0.24330900243309%"></div>
+Line: 188
+Time: 0.001s">
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
       apply ap, path_equiv, path_forall.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 191
+Line: 189
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       intro; cbn.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 192
-Time: 0.011s">
-<div class="time" style="width: 1.338199513382%"></div>
+Line: 190
+Time: 0.006s">
+<div class="time" style="width: 0.85959885386819%"></div>
 <pre>
       apply associativity.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 193
-Time: 0.003s">
-<div class="time" style="width: 0.36496350364964%"></div>
+Line: 191
+Time: 0.002s">
+<div class="time" style="width: 0.2865329512894%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 194
+Line: 192
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1016,100 +996,100 @@ Time: 0s">
   Local Definition encode : forall z, bbase = z -&gt; codes z.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 196
+Line: 194
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 197
+Line: 195
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros z p.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 198
+Line: 196
 Time: 0.005s">
-<div class="time" style="width: 0.60827250608273%"></div>
+<div class="time" style="width: 0.7163323782235%"></div>
 <pre>
     exact (transport codes p mon_unit).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 199
+Line: 197
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 200
-Time: 0.005s">
-<div class="time" style="width: 0.60827250608273%"></div>
+Line: 198
+Time: 0.004s">
+<div class="time" style="width: 0.5730659025788%"></div>
 <pre>
 
   Local Definition codes_transport
     : forall x y, transport codes (bloop x) y = y * x.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 203
+Line: 201
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 204
+Line: 202
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros x y.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 205
+Line: 203
 Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
     rewrite transport_idmap_ap.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 206
-Time: 0.002s">
-<div class="time" style="width: 0.24330900243309%"></div>
+Line: 204
+Time: 0.001s">
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
     rewrite ap_compose.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 207
+Line: 205
 Time: 0.016s">
-<div class="time" style="width: 1.9464720194647%"></div>
+<div class="time" style="width: 2.2922636103152%"></div>
 <pre>
     rewrite ClassifyingSpace_rec_beta_bloop.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 208
-Time: 0.002s">
-<div class="time" style="width: 0.24330900243309%"></div>
+Line: 206
+Time: 0.001s">
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
     rewrite ap_trunctype.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 209
+Line: 207
 Time: 0.002s">
-<div class="time" style="width: 0.24330900243309%"></div>
+<div class="time" style="width: 0.2865329512894%"></div>
 <pre>
     by rewrite transport_path_universe_uncurried.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 210
-Time: 0.033s">
-<div class="time" style="width: 4.014598540146%"></div>
+Line: 208
+Time: 0.025s">
+<div class="time" style="width: 3.5816618911175%"></div>
 <pre>
   Qed.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 211
+Line: 209
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1117,96 +1097,96 @@ Time: 0s">
   Local Definition decode : forall (z : B G), codes z -&gt; bbase = z.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 213
+Line: 211
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 214
-Time: 0.058s">
-<div class="time" style="width: 7.0559610705596%"></div>
+Line: 212
+Time: 0.071s">
+<div class="time" style="width: 10.171919770774%"></div>
 <pre>
     srapply ClassifyingSpace_ind_hset.</pre>
+</div>
+<div class="code" title="File: ClassifyingSpace.v
+Line: 213
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: ClassifyingSpace.v
+Line: 214
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exact bloop.</pre>
+</div>
+<div class="code" title="File: ClassifyingSpace.v
+Line: 214
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: ClassifyingSpace.v
+Line: 215
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> intro x.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
 Line: 215
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    +</pre>
-</div>
-<div class="code" title="File: ClassifyingSpace.v
-Line: 216
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> exact bloop.</pre>
-</div>
-<div class="code" title="File: ClassifyingSpace.v
-Line: 216
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    +</pre>
-</div>
-<div class="code" title="File: ClassifyingSpace.v
-Line: 217
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intro x.</pre>
-</div>
-<div class="code" title="File: ClassifyingSpace.v
-Line: 217
-Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
-<pre>
       apply dp_arrow.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 218
-Time: 0.002s">
-<div class="time" style="width: 0.24330900243309%"></div>
+Line: 216
+Time: 0.001s">
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
       intro y; cbn in *.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 219
-Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+Line: 217
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
       apply dp_paths_r.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 220
+Line: 218
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       refine ((bloop_pp _ _)^ @ _).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 221
+Line: 219
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       symmetry.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 222
-Time: 0.002s">
-<div class="time" style="width: 0.24330900243309%"></div>
+Line: 220
+Time: 0.001s">
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
       apply ap, codes_transport.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 223
-Time: 0.005s">
-<div class="time" style="width: 0.60827250608273%"></div>
+Line: 221
+Time: 0.004s">
+<div class="time" style="width: 0.5730659025788%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 224
+Line: 222
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1214,42 +1194,42 @@ Time: 0s">
   Local Lemma decode_encode : forall z p, decode z (encode z p) = p.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 226
+Line: 224
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 227
+Line: 225
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros z p.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 228
+Line: 226
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     destruct p.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 229
-Time: 0.002s">
-<div class="time" style="width: 0.24330900243309%"></div>
+Line: 227
+Time: 0.001s">
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
     apply bloop_id.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 230
+Line: 228
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 231
+Line: 229
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1258,24 +1238,50 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 234
+Line: 232
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Lemma equiv_loops_bg_g : loops (B G) &lt;~&gt; G.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 234
+Line: 232
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 235
+Line: 233
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     srapply equiv_adjointify.</pre>
+</div>
+<div class="code" title="File: ClassifyingSpace.v
+Line: 234
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: ClassifyingSpace.v
+Line: 235
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exact (encode _).</pre>
+</div>
+<div class="code" title="File: ClassifyingSpace.v
+Line: 235
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre>
+    +</pre>
+</div>
+<div class="code" title="File: ClassifyingSpace.v
+Line: 236
+Time: 0s">
+<div class="time" style="width: 0%"></div>
+<pre> exact bloop.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
 Line: 236
@@ -1288,77 +1294,51 @@ Time: 0s">
 Line: 237
 Time: 0s">
 <div class="time" style="width: 0%"></div>
-<pre> exact (encode _).</pre>
+<pre> intro x.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
 Line: 237
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
-    +</pre>
-</div>
-<div class="code" title="File: ClassifyingSpace.v
-Line: 238
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> exact bloop.</pre>
-</div>
-<div class="code" title="File: ClassifyingSpace.v
-Line: 238
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
-    +</pre>
-</div>
-<div class="code" title="File: ClassifyingSpace.v
-Line: 239
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre> intro x.</pre>
-</div>
-<div class="code" title="File: ClassifyingSpace.v
-Line: 239
-Time: 0s">
-<div class="time" style="width: 0%"></div>
-<pre>
       refine (codes_transport _ _ @ _).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 240
-Time: 0.016s">
-<div class="time" style="width: 1.9464720194647%"></div>
+Line: 238
+Time: 0.012s">
+<div class="time" style="width: 1.7191977077364%"></div>
 <pre>
       apply left_identity.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 241
+Line: 239
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     +</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 242
+Line: 240
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intro.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 242
+Line: 240
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       apply (decode_encode bbase x).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 243
-Time: 0.004s">
-<div class="time" style="width: 0.48661800486618%"></div>
+Line: 241
+Time: 0.003s">
+<div class="time" style="width: 0.4297994269341%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 244
+Line: 242
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1367,57 +1347,57 @@ Time: 0s">
  </pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 247
+Line: 245
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Lemma pequiv_loops_bg_g
     : loops (B G) &lt;~&gt;* Build_pType G _.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 248
+Line: 246
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 249
+Line: 247
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     srapply Build_pEquiv'.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 250
+Line: 248
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     1: apply equiv_loops_bg_g.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 251
+Line: 249
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     reflexivity.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 252
+Line: 250
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 253
-Time: 0.005s">
-<div class="time" style="width: 0.60827250608273%"></div>
+Line: 251
+Time: 0.004s">
+<div class="time" style="width: 0.5730659025788%"></div>
 <pre>
 
 End EncodeDecode.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 255
+Line: 253
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1425,13 +1405,13 @@ Time: 0s">
 (** When G is an abelian group, BG is a H-space. *)</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 257
+Line: 255
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>Section HSpace_bg.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 257
+Line: 255
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1439,7 +1419,7 @@ Time: 0s">
   Context `{Funext} {G : AbGroup}.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 259
+Line: 257
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1447,224 +1427,224 @@ Time: 0s">
   Definition bg_mul : B G -&gt; B G -&gt; B G.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 261
+Line: 259
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 262
-Time: 0.097s">
-<div class="time" style="width: 11.800486618005%"></div>
+Line: 260
+Time: 0.094s">
+<div class="time" style="width: 13.467048710602%"></div>
 <pre>
     srapply ClassifyingSpace_rec.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 263
+Line: 261
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     1: exact idmap.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 264
+Line: 262
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     {</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 265
+Line: 263
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> intro x.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 265
+Line: 263
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       apply path_forall.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 266
-Time: 0.012s">
-<div class="time" style="width: 1.4598540145985%"></div>
+Line: 264
+Time: 0.051s">
+<div class="time" style="width: 7.3065902578797%"></div>
 <pre>
       srapply ClassifyingSpace_ind_hset.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 267
+Line: 265
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       1: exact (bloop x).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 268
+Line: 266
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       cbn; intro y.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 269
-Time: 0.003s">
-<div class="time" style="width: 0.36496350364964%"></div>
+Line: 267
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
       apply dp_paths_lr.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 270
+Line: 268
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       refine (concat_pp_p _ _ _ @ _).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 271
+Line: 269
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       apply moveR_Vp.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 272
-Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+Line: 270
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
       refine ((bloop_pp _ _)^ @ _ @ bloop_pp _ _).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 273
-Time: 0.008s">
-<div class="time" style="width: 0.97323600973236%"></div>
+Line: 271
+Time: 0.005s">
+<div class="time" style="width: 0.7163323782235%"></div>
 <pre>
       apply ap, commutativity.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 274
+Line: 272
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> }</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 274
+Line: 272
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intros x y.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 275
-Time: 0.038s">
-<div class="time" style="width: 4.6228710462287%"></div>
+Line: 273
+Time: 0.027s">
+<div class="time" style="width: 3.8681948424069%"></div>
 <pre>
     rewrite &lt;- path_forall_pp.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 276
-Time: 0.014s">
-<div class="time" style="width: 1.7031630170316%"></div>
+Line: 274
+Time: 0.01s">
+<div class="time" style="width: 1.432664756447%"></div>
 <pre>
     apply ap; cbn.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 277
-Time: 0.005s">
-<div class="time" style="width: 0.60827250608273%"></div>
+Line: 275
+Time: 0.004s">
+<div class="time" style="width: 0.5730659025788%"></div>
 <pre>
     apply path_forall.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 278
-Time: 0.092s">
-<div class="time" style="width: 11.192214111922%"></div>
+Line: 276
+Time: 0.135s">
+<div class="time" style="width: 19.340974212034%"></div>
 <pre>
     srapply ClassifyingSpace_ind_hset.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 279
+Line: 277
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     1: exact (bloop_pp x y).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 280
+Line: 278
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intro z.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 281
-Time: 0.034s">
-<div class="time" style="width: 4.1362530413625%"></div>
+Line: 279
+Time: 0.032s">
+<div class="time" style="width: 4.5845272206304%"></div>
 <pre>
     srapply dp_paths_FlFr_D.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 282
-Time: 0.097s">
-<div class="time" style="width: 11.800486618005%"></div>
+Line: 280
+Time: 0.086s">
+<div class="time" style="width: 12.320916905444%"></div>
 <pre>
     srapply path_ishprop.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 283
-Time: 0.112s">
-<div class="time" style="width: 13.625304136253%"></div>
+Line: 281
+Time: 0.084s">
+<div class="time" style="width: 12.034383954155%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 284
-Time: 0.003s">
-<div class="time" style="width: 0.36496350364964%"></div>
+Line: 282
+Time: 0.001s">
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
 
   Definition bg_mul_beta x
     : ap (fun x0 =&gt; bg_mul x0 bbase) (bloop x) = bloop x.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 287
+Line: 285
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 288
-Time: 0.004s">
-<div class="time" style="width: 0.48661800486618%"></div>
+Line: 286
+Time: 0.002s">
+<div class="time" style="width: 0.2865329512894%"></div>
 <pre>
     rewrite ap_apply_Fl.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 289
-Time: 0.822s">
+Line: 287
+Time: 0.698s">
 <div class="time" style="width: 100%"></div>
 <pre>
     rewrite ClassifyingSpace_rec_beta_bloop.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 290
-Time: 0.055s">
-<div class="time" style="width: 6.69099756691%"></div>
+Line: 288
+Time: 0.046s">
+<div class="time" style="width: 6.5902578796562%"></div>
 <pre>
     by rewrite eisretr.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 291
-Time: 0.789s">
-<div class="time" style="width: 95.985401459854%"></div>
+Line: 289
+Time: 0.588s">
+<div class="time" style="width: 84.240687679083%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 292
+Line: 290
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1672,301 +1652,301 @@ Time: 0s">
   Definition bg_mul_symm : forall x y, bg_mul x y = bg_mul y x.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 294
+Line: 292
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 295
-Time: 0.028s">
-<div class="time" style="width: 3.4063260340633%"></div>
+Line: 293
+Time: 0.094s">
+<div class="time" style="width: 13.467048710602%"></div>
 <pre>
     srapply ClassifyingSpace_ind_hset.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 296
+Line: 294
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     {</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 297
-Time: 0.01s">
-<div class="time" style="width: 1.2165450121655%"></div>
+Line: 295
+Time: 0.046s">
+<div class="time" style="width: 6.5902578796562%"></div>
 <pre> srapply ClassifyingSpace_ind_hset.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 297
+Line: 295
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       1: reflexivity.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 298
+Line: 296
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       intro x.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 299
-Time: 0.004s">
-<div class="time" style="width: 0.48661800486618%"></div>
+Line: 297
+Time: 0.003s">
+<div class="time" style="width: 0.4297994269341%"></div>
 <pre>
       apply sq_dp^-1, sq_1G.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 300
-Time: 0.004s">
-<div class="time" style="width: 0.48661800486618%"></div>
+Line: 298
+Time: 0.003s">
+<div class="time" style="width: 0.4297994269341%"></div>
 <pre>
       rewrite ap_idmap.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 301
-Time: 0.014s">
-<div class="time" style="width: 1.7031630170316%"></div>
+Line: 299
+Time: 0.011s">
+<div class="time" style="width: 1.5759312320917%"></div>
 <pre>
       symmetry.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 302
+Line: 300
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
       apply bg_mul_beta.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 303
+Line: 301
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> }</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 303
+Line: 301
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intro.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 304
-Time: 0.002s">
-<div class="time" style="width: 0.24330900243309%"></div>
+Line: 302
+Time: 0.001s">
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
     apply dp_forall_domain.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 305
-Time: 0.036s">
-<div class="time" style="width: 4.3795620437956%"></div>
+Line: 303
+Time: 0.004s">
+<div class="time" style="width: 0.5730659025788%"></div>
 <pre>
     intro y; apply dp_paths_FlFr; revert y.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 306
-Time: 0.081s">
-<div class="time" style="width: 9.8540145985401%"></div>
+Line: 304
+Time: 0.128s">
+<div class="time" style="width: 18.338108882521%"></div>
 <pre>
     srapply ClassifyingSpace_ind_hset.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 307
+Line: 305
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     {</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 308
-Time: 0.105s">
-<div class="time" style="width: 12.773722627737%"></div>
+Line: 306
+Time: 0.042s">
+<div class="time" style="width: 6.0171919770774%"></div>
 <pre> cbn; rewrite concat_p1.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 308
-Time: 0.005s">
-<div class="time" style="width: 0.60827250608273%"></div>
+Line: 306
+Time: 0.003s">
+<div class="time" style="width: 0.4297994269341%"></div>
 <pre>
       rewrite ap_idmap.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 309
-Time: 0.002s">
-<div class="time" style="width: 0.24330900243309%"></div>
+Line: 307
+Time: 0.001s">
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
       apply moveR_Vp.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 310
-Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+Line: 308
+Time: 0s">
+<div class="time" style="width: 0%"></div>
 <pre>
       symmetry.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 311
-Time: 0.003s">
-<div class="time" style="width: 0.36496350364964%"></div>
+Line: 309
+Time: 0.001s">
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
       rewrite concat_p1.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 312
-Time: 0.004s">
-<div class="time" style="width: 0.48661800486618%"></div>
+Line: 310
+Time: 0.002s">
+<div class="time" style="width: 0.2865329512894%"></div>
 <pre>
       apply bg_mul_beta.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 313
+Line: 311
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre> }</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 313
+Line: 311
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intro y.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 314
-Time: 0.018s">
-<div class="time" style="width: 2.1897810218978%"></div>
+Line: 312
+Time: 0.015s">
+<div class="time" style="width: 2.1489971346705%"></div>
 <pre>
     apply dp_paths_FlFr_D.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 315
-Time: 0.05s">
-<div class="time" style="width: 6.0827250608273%"></div>
+Line: 313
+Time: 0.043s">
+<div class="time" style="width: 6.1604584527221%"></div>
 <pre>
     apply path_ishprop.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 316
-Time: 0.484s">
-<div class="time" style="width: 58.880778588808%"></div>
+Line: 314
+Time: 0.369s">
+<div class="time" style="width: 52.865329512894%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 317
+Line: 315
 Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
 
   Definition bg_mul_left_id
     : forall a : B G, bg_mul (point (B G)) a = a.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 320
+Line: 318
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 321
-Time: 0.01s">
-<div class="time" style="width: 1.2165450121655%"></div>
+Line: 319
+Time: 0.046s">
+<div class="time" style="width: 6.5902578796562%"></div>
 <pre>
     srapply ClassifyingSpace_ind_hset.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 322
+Line: 320
 Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
     1: reflexivity.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 323
+Line: 321
 Time: 0.004s">
-<div class="time" style="width: 0.48661800486618%"></div>
+<div class="time" style="width: 0.5730659025788%"></div>
 <pre>
     intro; cbn; apply dp_paths_lr.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 324
+Line: 322
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (concat_pp_p _ _ _ @ _).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 325
+Line: 323
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply moveR_Vp.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 326
+Line: 324
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     refine (concat_1p _ @ (concat_p1 _)^).</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 327
-Time: 0.007s">
-<div class="time" style="width: 0.85158150851582%"></div>
+Line: 325
+Time: 0.006s">
+<div class="time" style="width: 0.85959885386819%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 328
+Line: 326
 Time: 0.001s">
-<div class="time" style="width: 0.12165450121655%"></div>
+<div class="time" style="width: 0.1432664756447%"></div>
 <pre>
 
   Definition bg_mul_right_id
     : forall a : B G, bg_mul a (point (B G)) = a.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 331
+Line: 329
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Proof.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 332
+Line: 330
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     intro.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 333
+Line: 331
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     rewrite bg_mul_symm.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 334
+Line: 332
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
     apply bg_mul_left_id.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 335
+Line: 333
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
   Defined.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 336
+Line: 334
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>
@@ -1978,15 +1958,15 @@ Time: 0s">
           bg_mul_right_id.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 342
-Time: 0.613s">
-<div class="time" style="width: 74.574209245742%"></div>
+Line: 340
+Time: 0.578s">
+<div class="time" style="width: 82.808022922636%"></div>
 <pre>
 
 End HSpace_bg.</pre>
 </div>
 <div class="code" title="File: ClassifyingSpace.v
-Line: 345
+Line: 343
 Time: 0s">
 <div class="time" style="width: 0%"></div>
 <pre>

@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="coqdoc.css" rel="stylesheet" type="text/css" />
+<title>HoTT.Algebra.AbGroups.AbelianGroup</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library HoTT.Algebra.AbGroups.AbelianGroup</h1>
+
+<div class="code">
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Basics.html#"><span class="id" title="library">HoTT.Basics</span></a> <a class="idref" href="HoTT.Types.html#"><span class="id" title="library">HoTT.Types</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Truncations.html#"><span class="id" title="library">Truncations</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.HIT.Coeq.html#"><span class="id" title="library">HIT.Coeq</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Export</span> <a class="idref" href="HoTT.Algebra.Groups.html#"><span class="id" title="library">Algebra.Groups</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.Cubical.html#"><span class="id" title="library">Cubical</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="HoTT.WildCat.html#"><span class="id" title="library">WildCat</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Local Open</span> <span class="id" title="keyword">Scope</span> <span class="id" title="var">mc_mult_scope</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a id="lab679"></a><h1 class="section">Abelian groups</h1>
+
+<div class="paragraph"> </div>
+
+ Definition of an abelian group 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Record</span> <a id="AbGroup" class="idref" href="#AbGroup"><span class="id" title="record">AbGroup</span></a> := {<br/>
+&nbsp;&nbsp;<a id="abgroup_type" class="idref" href="#abgroup_type"><span class="id" title="projection">abgroup_type</span></a> : <span class="id" title="keyword">Type</span>;<br/>
+&nbsp;&nbsp;<a id="abgroup_sgop" class="idref" href="#abgroup_sgop"><span class="id" title="projection">abgroup_sgop</span></a> : <a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#SgOp"><span class="id" title="class">SgOp</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#abgroup_type:2"><span class="id" title="method">abgroup_type</span></a>;<br/>
+&nbsp;&nbsp;<a id="abgroup_unit" class="idref" href="#abgroup_unit"><span class="id" title="projection">abgroup_unit</span></a> : <a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#MonUnit"><span class="id" title="class">MonUnit</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#abgroup_type:2"><span class="id" title="method">abgroup_type</span></a>;<br/>
+&nbsp;&nbsp;<a id="abgroup_inverse" class="idref" href="#abgroup_inverse"><span class="id" title="projection">abgroup_inverse</span></a> : <a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#Negate"><span class="id" title="class">Negate</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#abgroup_type:2"><span class="id" title="method">abgroup_type</span></a>;<br/>
+&nbsp;&nbsp;<a id="abgroup_isabgroup" class="idref" href="#abgroup_isabgroup"><span class="id" title="projection">abgroup_isabgroup</span></a> : <a class="idref" href="HoTT.Classes.interfaces.abstract_algebra.html#IsAbGroup"><span class="id" title="class">IsAbGroup</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#abgroup_type:2"><span class="id" title="method">abgroup_type</span></a>;<br/>
+}.<br/>
+
+<br/>
+<span class="id" title="var">Existing</span> <span class="id" title="var">Instances</span> <span class="id" title="var">abgroup_sgop</span> <span class="id" title="var">abgroup_unit</span> <span class="id" title="var">abgroup_inverse</span> <span class="id" title="var">abgroup_isabgroup</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+We want abelian groups to be coerced to the underlying type. 
+</div>
+<div class="code">
+<span class="id" title="keyword">Coercion</span> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#abgroup_type"><span class="id" title="projection">abgroup_type</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#abgroup_type"><span class="id" title="projection">:</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#abgroup_type"><span class="id" title="projection">AbGroup</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#abgroup_type"><span class="id" title="projection">&gt;-&gt;</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#abgroup_type"><span class="id" title="projection">Sortclass</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a id="Build_AbGroup'" class="idref" href="#Build_AbGroup'"><span class="id" title="definition">Build_AbGroup'</span></a> (<a id="G:7" class="idref" href="#G:7"><span class="id" title="binder">G</span></a> : <a class="idref" href="HoTT.Algebra.Groups.Group.html#Group"><span class="id" title="record">Group</span></a>) {<a id="H:8" class="idref" href="#H:8"><span class="id" title="binder">H</span></a> : <a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#Commutative"><span class="id" title="class">Commutative</span></a> (@<a class="idref" href="HoTT.Algebra.Groups.Group.html#group_sgop"><span class="id" title="projection">group_sgop</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#G:7"><span class="id" title="variable">G</span></a>)} : <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#AbGroup"><span class="id" title="record">AbGroup</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">srapply</span> (<a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#Build_AbGroup"><span class="id" title="constructor">Build_AbGroup</span></a> <span class="id" title="var">G</span>).<br/>
+&nbsp;&nbsp;4: <span class="id" title="tactic">split</span>.<br/>
+&nbsp;&nbsp;1-5: <span class="id" title="tactic">exact</span> <span class="id" title="var">_</span>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+The underlying group of an abelian group. 
+</div>
+<div class="code">
+<span class="id" title="keyword">Definition</span> <a id="group_abgroup" class="idref" href="#group_abgroup"><span class="id" title="definition">group_abgroup</span></a> : <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#AbGroup"><span class="id" title="record">AbGroup</span></a> <a class="idref" href="Coq.Init.Logic.html#::type_scope:x_'-&gt;'_x"><span class="id" title="notation">→</span></a> <a class="idref" href="HoTT.Algebra.Groups.Group.html#Group"><span class="id" title="record">Group</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">intros</span> [<span class="id" title="var">G</span> ? ? ? [<span class="id" title="var">l</span> ?]].<br/>
+&nbsp;&nbsp;<span class="id" title="var">nrapply</span> (<a class="idref" href="HoTT.Algebra.Groups.Group.html#Build_Group"><span class="id" title="constructor">Build_Group</span></a> <span class="id" title="var">G</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">l</span>).<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+We also want abelian groups to be coerced to the underlying group. 
+</div>
+<div class="code">
+<span class="id" title="keyword">Coercion</span> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#group_abgroup"><span class="id" title="definition">group_abgroup</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#group_abgroup"><span class="id" title="definition">:</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#group_abgroup"><span class="id" title="definition">AbGroup</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#group_abgroup"><span class="id" title="definition">&gt;-&gt;</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#group_abgroup"><span class="id" title="definition">Group</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a id="lab680"></a><h2 class="section">Subgroups of abelian groups</h2>
+
+<div class="paragraph"> </div>
+
+ Subgroups of abelian groups are abelian 
+</div>
+<div class="code">
+<span class="id" title="keyword">Global Instance</span> <a id="isabgroup_subgroup" class="idref" href="#isabgroup_subgroup"><span class="id" title="instance">isabgroup_subgroup</span></a> (<a id="G:9" class="idref" href="#G:9"><span class="id" title="binder">G</span></a> : <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#AbGroup"><span class="id" title="record">AbGroup</span></a>) (<a id="H:10" class="idref" href="#H:10"><span class="id" title="binder">H</span></a> : <a class="idref" href="HoTT.Algebra.Groups.Subgroup.html#Subgroup"><span class="id" title="record">Subgroup</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#G:9"><span class="id" title="variable">G</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="HoTT.Classes.interfaces.abstract_algebra.html#IsAbGroup"><span class="id" title="class">IsAbGroup</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#H:10"><span class="id" title="variable">H</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">nrapply</span> <a class="idref" href="HoTT.Classes.interfaces.abstract_algebra.html#Build_IsAbGroup"><span class="id" title="constructor">Build_IsAbGroup</span></a>.<br/>
+&nbsp;&nbsp;1: <span class="id" title="tactic">exact</span> <span class="id" title="var">_</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">x</span> <span class="id" title="var">y</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">apply</span> (<a class="idref" href="HoTT.Classes.interfaces.abstract_algebra.html#injective"><span class="id" title="definition">injective</span></a> <a class="idref" href="HoTT.Algebra.Groups.Subgroup.html#issubgroup_incl"><span class="id" title="method">issubgroup_incl</span></a>).<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">refine</span> (<span class="id" title="var">_</span> <a class="idref" href="HoTT.Basics.Overture.html#da4283005a63bc086811fc2e64b35356"><span class="id" title="notation">@</span></a> <span class="id" title="var">_</span> <a class="idref" href="HoTT.Basics.Overture.html#da4283005a63bc086811fc2e64b35356"><span class="id" title="notation">@</span></a> <span class="id" title="var">_</span><a class="idref" href="HoTT.Basics.Overture.html#6bc2e8b4a6e295632a90f5f35132db8d"><span class="id" title="notation">^</span></a>).<br/>
+&nbsp;&nbsp;1,3: <span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Algebra.Groups.Group.html#grp_homo_op"><span class="id" title="definition">grp_homo_op</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#commutativity"><span class="id" title="definition">commutativity</span></a>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Global Instance</span> <a id="isnormal_ab_subgroup" class="idref" href="#isnormal_ab_subgroup"><span class="id" title="instance">isnormal_ab_subgroup</span></a> (<a id="G:11" class="idref" href="#G:11"><span class="id" title="binder">G</span></a> : <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#AbGroup"><span class="id" title="record">AbGroup</span></a>) (<a id="H:12" class="idref" href="#H:12"><span class="id" title="binder">H</span></a> : <a class="idref" href="HoTT.Algebra.Groups.Subgroup.html#Subgroup"><span class="id" title="record">Subgroup</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#G:11"><span class="id" title="variable">G</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="HoTT.Algebra.Groups.Subgroup.html#IsNormalSubgroup"><span class="id" title="class">IsNormalSubgroup</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#H:12"><span class="id" title="variable">H</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">x</span> <span class="id" title="var">y</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">unfold</span> <a class="idref" href="HoTT.Algebra.Groups.Subgroup.html#in_cosetL"><span class="id" title="definition">in_cosetL</span></a>, <a class="idref" href="HoTT.Algebra.Groups.Subgroup.html#in_cosetR"><span class="id" title="definition">in_cosetR</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">refine</span> (<a class="idref" href="HoTT.Types.Sigma.html#equiv_functor_sigma'"><span class="id" title="definition">equiv_functor_sigma'</span></a> (<a class="idref" href="HoTT.Basics.Overture.html#Build_Equiv"><span class="id" title="constructor">Build_Equiv</span></a> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <a class="idref" href="HoTT.Algebra.Groups.Group.html#group_inverse"><span class="id" title="projection">group_inverse</span></a> <span class="id" title="var">_</span>) <span class="id" title="var">_</span>).<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">h</span>; <span class="id" title="tactic">simpl</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">srapply</span> <a class="idref" href="HoTT.Basics.Trunc.html#equiv_iff_hprop"><span class="id" title="definition">equiv_iff_hprop</span></a>.<br/>
+&nbsp;&nbsp;+ <span class="id" title="tactic">intros</span> <span class="id" title="var">p</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Algebra.Groups.Group.html#grp_homo_inv"><span class="id" title="definition">grp_homo_inv</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <span class="id" title="var">p</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Classes.theory.groups.html#negate_sg_op"><span class="id" title="lemma">negate_sg_op</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> (<a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#involutive"><span class="id" title="definition">involutive</span></a> <span class="id" title="var">x</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#commutativity"><span class="id" title="definition">commutativity</span></a>.<br/>
+&nbsp;&nbsp;+ <span class="id" title="tactic">intros</span> <span class="id" title="var">p</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Algebra.Groups.Group.html#grp_homo_inv"><span class="id" title="definition">grp_homo_inv</span></a> <span class="id" title="tactic">in</span> <span class="id" title="var">p</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Basics.Equivalences.html#moveL_equiv_V"><span class="id" title="definition">moveL_equiv_V</span></a> <span class="id" title="tactic">in</span> <span class="id" title="var">p</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <span class="id" title="var">p</span>; <span class="id" title="var">cbn</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">change</span> (<a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#::mc_scope:'-'_x"><span class="id" title="notation">-</span></a> <a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#::mc_scope:'-'_x"><span class="id" title="notation">(</span></a><span class="id" title="var">x</span> <a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#601809684726b80a51fcd53b156c93ba"><span class="id" title="notation">×</span></a> <a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#::mc_scope:'-'_x"><span class="id" title="notation">-</span></a><span class="id" title="var">y</span><a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#::mc_scope:'-'_x"><span class="id" title="notation">)</span></a> <a class="idref" href="HoTT.Basics.Overture.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#::mc_scope:'-'_x"><span class="id" title="notation">-</span></a> <span class="id" title="var">x</span> <a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#601809684726b80a51fcd53b156c93ba"><span class="id" title="notation">×</span></a> <span class="id" title="var">y</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="HoTT.Classes.theory.groups.html#negate_sg_op"><span class="id" title="lemma">negate_sg_op</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> (<a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#involutive"><span class="id" title="definition">involutive</span></a> <span class="id" title="var">y</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#commutativity"><span class="id" title="definition">commutativity</span></a>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Quotients of abelian groups 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Global Instance</span> <a id="isabgroup_quotient" class="idref" href="#isabgroup_quotient"><span class="id" title="instance">isabgroup_quotient</span></a> (<a id="G:13" class="idref" href="#G:13"><span class="id" title="binder">G</span></a> : <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#AbGroup"><span class="id" title="record">AbGroup</span></a>) (<a id="H:14" class="idref" href="#H:14"><span class="id" title="binder">H</span></a> : <a class="idref" href="HoTT.Algebra.Groups.Subgroup.html#Subgroup"><span class="id" title="record">Subgroup</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#G:13"><span class="id" title="variable">G</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="HoTT.Classes.interfaces.abstract_algebra.html#IsAbGroup"><span class="id" title="class">IsAbGroup</span></a> (<a class="idref" href="HoTT.Algebra.Groups.QuotientGroup.html#QuotientGroup"><span class="id" title="definition">QuotientGroup</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#G:13"><span class="id" title="variable">G</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#H:14"><span class="id" title="variable">H</span></a>).<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">nrapply</span> <a class="idref" href="HoTT.Classes.interfaces.abstract_algebra.html#Build_IsAbGroup"><span class="id" title="constructor">Build_IsAbGroup</span></a>.<br/>
+&nbsp;&nbsp;1: <span class="id" title="tactic">exact</span> <span class="id" title="var">_</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">intro</span> <span class="id" title="var">x</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">srapply</span> <a class="idref" href="HoTT.Colimits.Quotient.html#Quotient_ind_hprop"><span class="id" title="definition">Quotient_ind_hprop</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">intro</span> <span class="id" title="var">y</span>; <span class="id" title="var">revert</span> <span class="id" title="var">x</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">srapply</span> <a class="idref" href="HoTT.Colimits.Quotient.html#Quotient_ind_hprop"><span class="id" title="definition">Quotient_ind_hprop</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">intro</span> <span class="id" title="var">x</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">apply</span> (<a class="idref" href="HoTT.Basics.Overture.html#ap"><span class="id" title="definition">ap</span></a> (<a class="idref" href="HoTT.Truncations.Core.html#Trunc.tr"><span class="id" title="constructor">tr</span></a> <a class="idref" href="HoTT.Basics.Overture.html#::function_scope:x_'o'_x"><span class="id" title="notation">o</span></a> <a class="idref" href="HoTT.HIT.Coeq.html#Coeq.coeq"><span class="id" title="constructor">coeq</span></a>)).<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#commutativity"><span class="id" title="definition">commutativity</span></a>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a id="QuotientAbGroup" class="idref" href="#QuotientAbGroup"><span class="id" title="definition">QuotientAbGroup</span></a> (<a id="G:15" class="idref" href="#G:15"><span class="id" title="binder">G</span></a> : <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#AbGroup"><span class="id" title="record">AbGroup</span></a>) (<a id="H:16" class="idref" href="#H:16"><span class="id" title="binder">H</span></a> : <a class="idref" href="HoTT.Algebra.Groups.Subgroup.html#Subgroup"><span class="id" title="record">Subgroup</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#G:15"><span class="id" title="variable">G</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#AbGroup"><span class="id" title="record">AbGroup</span></a> := <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#Build_AbGroup"><span class="id" title="constructor">Build_AbGroup</span></a> (<a class="idref" href="HoTT.Algebra.Groups.QuotientGroup.html#QuotientGroup"><span class="id" title="definition">QuotientGroup</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#G:15"><span class="id" title="variable">G</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#H:16"><span class="id" title="variable">H</span></a>) <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+The wild category of abelian groups 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Global Instance</span> <a id="isgraph_abgroup" class="idref" href="#isgraph_abgroup"><span class="id" title="instance">isgraph_abgroup</span></a> : <a class="idref" href="HoTT.WildCat.Core.html#IsGraph"><span class="id" title="class">IsGraph</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#AbGroup"><span class="id" title="record">AbGroup</span></a><br/>
+&nbsp;&nbsp;:= <a class="idref" href="HoTT.WildCat.Induced.html#induced_graph"><span class="id" title="instance">induced_graph</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#group_abgroup"><span class="id" title="definition">group_abgroup</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Global Instance</span> <a id="is01cat_AbGroup" class="idref" href="#is01cat_AbGroup"><span class="id" title="instance">is01cat_AbGroup</span></a> : <a class="idref" href="HoTT.WildCat.Core.html#Is01Cat"><span class="id" title="class">Is01Cat</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#AbGroup"><span class="id" title="record">AbGroup</span></a><br/>
+&nbsp;&nbsp;:= <a class="idref" href="HoTT.WildCat.Induced.html#induced_01cat"><span class="id" title="instance">induced_01cat</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#group_abgroup"><span class="id" title="definition">group_abgroup</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Global Instance</span> <a id="is01cat_GroupHomomorphism" class="idref" href="#is01cat_GroupHomomorphism"><span class="id" title="instance">is01cat_GroupHomomorphism</span></a> {<a id="A:17" class="idref" href="#A:17"><span class="id" title="binder">A</span></a> <a id="B:18" class="idref" href="#B:18"><span class="id" title="binder">B</span></a> : <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#AbGroup"><span class="id" title="record">AbGroup</span></a>} : <a class="idref" href="HoTT.WildCat.Core.html#Is01Cat"><span class="id" title="class">Is01Cat</span></a> (<a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#A:17"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.WildCat.Core.html#c02781df22df625c7b63399d41d90de5"><span class="id" title="notation">$-&gt;</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#B:18"><span class="id" title="variable">B</span></a>)<br/>
+&nbsp;&nbsp;:= <a class="idref" href="HoTT.WildCat.Induced.html#induced_01cat"><span class="id" title="instance">induced_01cat</span></a> (@<a class="idref" href="HoTT.Algebra.Groups.Group.html#grp_homo_map"><span class="id" title="projection">grp_homo_map</span></a> <span class="id" title="var">A</span> <span class="id" title="var">B</span>).<br/>
+
+<br/>
+<span class="id" title="keyword">Global Instance</span> <a id="is0gpd_GroupHomomorphism" class="idref" href="#is0gpd_GroupHomomorphism"><span class="id" title="instance">is0gpd_GroupHomomorphism</span></a> {<a id="A:19" class="idref" href="#A:19"><span class="id" title="binder">A</span></a> <a id="B:20" class="idref" href="#B:20"><span class="id" title="binder">B</span></a> : <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#AbGroup"><span class="id" title="record">AbGroup</span></a>}: <a class="idref" href="HoTT.WildCat.Core.html#Is0Gpd"><span class="id" title="class">Is0Gpd</span></a> (<a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#A:19"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.WildCat.Core.html#c02781df22df625c7b63399d41d90de5"><span class="id" title="notation">$-&gt;</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#B:20"><span class="id" title="variable">B</span></a>)<br/>
+&nbsp;&nbsp;:= <a class="idref" href="HoTT.WildCat.Induced.html#induced_0gpd"><span class="id" title="instance">induced_0gpd</span></a> (@<a class="idref" href="HoTT.Algebra.Groups.Group.html#grp_homo_map"><span class="id" title="projection">grp_homo_map</span></a> <span class="id" title="var">A</span> <span class="id" title="var">B</span>).<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+AbGroup forms a 1Cat 
+</div>
+<div class="code">
+<span class="id" title="keyword">Global Instance</span> <a id="is1cat_abgroup" class="idref" href="#is1cat_abgroup"><span class="id" title="instance">is1cat_abgroup</span></a> : <a class="idref" href="HoTT.WildCat.Core.html#Is1Cat"><span class="id" title="class">Is1Cat</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#AbGroup"><span class="id" title="record">AbGroup</span></a><br/>
+&nbsp;&nbsp;:= <a class="idref" href="HoTT.WildCat.Induced.html#induced_1cat"><span class="id" title="instance">induced_1cat</span></a> <span class="id" title="var">_</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Instance</span> <a id="hasmorext_abgroup" class="idref" href="#hasmorext_abgroup"><span class="id" title="instance">hasmorext_abgroup</span></a> `{<a id="H:21" class="idref" href="#H:21"><span class="id" title="binder">Funext</span></a>} : <a class="idref" href="HoTT.WildCat.Core.html#HasMorExt"><span class="id" title="class">HasMorExt</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#AbGroup"><span class="id" title="record">AbGroup</span></a><br/>
+&nbsp;&nbsp;:= <a class="idref" href="HoTT.WildCat.Induced.html#induced_hasmorext"><span class="id" title="instance">induced_hasmorext</span></a> <span class="id" title="var">_</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Global Instance</span> <a id="hasequivs_abgroup" class="idref" href="#hasequivs_abgroup"><span class="id" title="instance">hasequivs_abgroup</span></a> : <a class="idref" href="HoTT.WildCat.Equiv.html#HasEquivs"><span class="id" title="class">HasEquivs</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#AbGroup"><span class="id" title="record">AbGroup</span></a><br/>
+&nbsp;&nbsp;:= <a class="idref" href="HoTT.WildCat.Induced.html#induced_hasequivs"><span class="id" title="definition">induced_hasequivs</span></a> <span class="id" title="var">_</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Zero object of AbGroup 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a id="abgroup_trivial" class="idref" href="#abgroup_trivial"><span class="id" title="definition">abgroup_trivial</span></a> : <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#AbGroup"><span class="id" title="record">AbGroup</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">rapply</span> (<a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#Build_AbGroup'"><span class="id" title="definition">Build_AbGroup'</span></a> <a class="idref" href="HoTT.Algebra.Groups.Group.html#grp_trivial"><span class="id" title="definition">grp_trivial</span></a>).<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">by</span> <span class="id" title="tactic">intros</span> [].<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+AbGroup is a pointed category 
+</div>
+<div class="code">
+<span class="id" title="keyword">Global Instance</span> <a id="ispointedcat_abgroup" class="idref" href="#ispointedcat_abgroup"><span class="id" title="instance">ispointedcat_abgroup</span></a> : <a class="idref" href="HoTT.WildCat.PointedCat.html#IsPointedCat"><span class="id" title="class">IsPointedCat</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#AbGroup"><span class="id" title="record">AbGroup</span></a>.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">snrapply</span> <a class="idref" href="HoTT.WildCat.PointedCat.html#Build_IsPointedCat"><span class="id" title="constructor">Build_IsPointedCat</span></a>.<br/>
+&nbsp;&nbsp;1: <span class="id" title="tactic">exact</span> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#abgroup_trivial"><span class="id" title="definition">abgroup_trivial</span></a>.<br/>
+&nbsp;&nbsp;{ <span class="id" title="tactic">intro</span> <span class="id" title="var">A</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">snrefine</span> <a class="idref" href="HoTT.Basics.Overture.html#4887cec9c4a6ccb88dc6b18963c35c8f"><span class="id" title="notation">(</span></a><a class="idref" href="HoTT.Algebra.Groups.Group.html#Build_GroupHomomorphism"><span class="id" title="definition">Build_GroupHomomorphism</span></a> (<span class="id" title="keyword">fun</span> <span class="id" title="var">_</span> ⇒ <a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#mon_unit"><span class="id" title="definition">mon_unit</span></a>)<a class="idref" href="HoTT.Basics.Overture.html#4887cec9c4a6ccb88dc6b18963c35c8f"><span class="id" title="notation">;</span></a> <span class="id" title="var">_</span><a class="idref" href="HoTT.Basics.Overture.html#4887cec9c4a6ccb88dc6b18963c35c8f"><span class="id" title="notation">)</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;1: <span class="id" title="tactic">exact</span> <span class="id" title="var">_</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{ <span class="id" title="tactic">intros</span> [] [].<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">symmetry</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#left_identity"><span class="id" title="definition">left_identity</span></a>. }<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">g</span> []; <span class="id" title="var">cbn</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">exact</span> (<a class="idref" href="HoTT.Algebra.Groups.Group.html#grp_homo_unit"><span class="id" title="definition">grp_homo_unit</span></a> <span class="id" title="var">g</span>). }<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">intro</span> <span class="id" title="var">A</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">snrefine</span> <a class="idref" href="HoTT.Basics.Overture.html#4887cec9c4a6ccb88dc6b18963c35c8f"><span class="id" title="notation">(</span></a><a class="idref" href="HoTT.Algebra.Groups.Group.html#Build_GroupHomomorphism"><span class="id" title="definition">Build_GroupHomomorphism</span></a> (<span class="id" title="keyword">fun</span> <span class="id" title="var">_</span> ⇒ <a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#mon_unit"><span class="id" title="definition">mon_unit</span></a>)<a class="idref" href="HoTT.Basics.Overture.html#4887cec9c4a6ccb88dc6b18963c35c8f"><span class="id" title="notation">;</span></a> <span class="id" title="var">_</span><a class="idref" href="HoTT.Basics.Overture.html#4887cec9c4a6ccb88dc6b18963c35c8f"><span class="id" title="notation">)</span></a>.<br/>
+&nbsp;&nbsp;1: <span class="id" title="tactic">exact</span> <span class="id" title="var">_</span>.<br/>
+&nbsp;&nbsp;{ <span class="id" title="tactic">intros</span> <span class="id" title="var">x</span> <span class="id" title="var">y</span>; <span class="id" title="tactic">symmetry</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Classes.interfaces.canonical_names.html#left_identity"><span class="id" title="definition">left_identity</span></a>. }<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">g</span> <span class="id" title="var">x</span>; <span class="id" title="var">cbn</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Types.Unit.html#path_unit"><span class="id" title="definition">path_unit</span></a>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Image of group homomorphisms between abelian groups 
+</div>
+<div class="code">
+<span class="id" title="keyword">Definition</span> <a id="abgroup_image" class="idref" href="#abgroup_image"><span class="id" title="definition">abgroup_image</span></a> {<a id="A:22" class="idref" href="#A:22"><span class="id" title="binder">A</span></a> <a id="B:23" class="idref" href="#B:23"><span class="id" title="binder">B</span></a> : <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#AbGroup"><span class="id" title="record">AbGroup</span></a>} (<a id="f:24" class="idref" href="#f:24"><span class="id" title="binder">f</span></a> : <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#A:22"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.WildCat.Core.html#c02781df22df625c7b63399d41d90de5"><span class="id" title="notation">$-&gt;</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#B:23"><span class="id" title="variable">B</span></a>) : <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#AbGroup"><span class="id" title="record">AbGroup</span></a><br/>
+&nbsp;&nbsp;:= <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#Build_AbGroup"><span class="id" title="constructor">Build_AbGroup</span></a> (<a class="idref" href="HoTT.Algebra.Groups.Image.html#grp_image"><span class="id" title="definition">grp_image</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#f:24"><span class="id" title="variable">f</span></a>) <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+First isomorphism theorem of abelian groups 
+</div>
+<div class="code">
+<span class="id" title="keyword">Definition</span> <a id="abgroup_first_iso" class="idref" href="#abgroup_first_iso"><span class="id" title="definition">abgroup_first_iso</span></a> `{<a id="H:25" class="idref" href="#H:25"><span class="id" title="binder">Funext</span></a>} {<a id="A:26" class="idref" href="#A:26"><span class="id" title="binder">A</span></a> <a id="B:27" class="idref" href="#B:27"><span class="id" title="binder">B</span></a> : <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#AbGroup"><span class="id" title="record">AbGroup</span></a>} (<a id="f:28" class="idref" href="#f:28"><span class="id" title="binder">f</span></a> : <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#A:26"><span class="id" title="variable">A</span></a> <a class="idref" href="HoTT.WildCat.Core.html#c02781df22df625c7b63399d41d90de5"><span class="id" title="notation">$-&gt;</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#B:27"><span class="id" title="variable">B</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="HoTT.Algebra.Groups.Group.html#GroupIsomorphism"><span class="id" title="record">GroupIsomorphism</span></a> (<a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#QuotientAbGroup"><span class="id" title="definition">QuotientAbGroup</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#A:26"><span class="id" title="variable">A</span></a> (<a class="idref" href="HoTT.Algebra.Groups.Kernel.html#grp_kernel"><span class="id" title="definition">grp_kernel</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#f:28"><span class="id" title="variable">f</span></a>)) (<a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#abgroup_image"><span class="id" title="definition">abgroup_image</span></a> <a class="idref" href="HoTT.Algebra.AbGroups.AbelianGroup.html#f:28"><span class="id" title="variable">f</span></a>).<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">etransitivity</span>.<br/>
+&nbsp;&nbsp;2: <span class="id" title="var">rapply</span> <a class="idref" href="HoTT.Algebra.Groups.QuotientGroup.html#grp_first_iso"><span class="id" title="lemma">grp_first_iso</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="HoTT.Algebra.Groups.QuotientGroup.html#grp_iso_quotient_normal"><span class="id" title="definition">grp_iso_quotient_normal</span></a>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>
